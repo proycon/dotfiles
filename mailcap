@@ -1,0 +1,8 @@
+text/html;                      mutt_bgrun chromium-browser %s; nametemplate=%s.html
+text/html;                      links -dump %s; nametemplate=%s.html; copiousoutput
+image/*; mutt_bgrun feh %s
+application/x-pdf; mutt_bgrun evince %s
+application/pdf; mutt_bgrun evince %s
+application/vnd.openxmlformats-officedocument.wordprocessingml.document; mutt_bgrun soffice -no-oosplash --writer '%s'; edit=soffice -no-oosplash --writer '%s'; test=test -n "$DISPLAY"; description="Office Open XML Document"; nametemplate=%s.docx
+application/msword; mutt_bgrun soffice -no-oosplash --writer '%s'; edit=soffice -no-oosplash --writer '%s'; test=test -n "$DISPLAY"; description="Microsoft Word Document"; nametemplate=%s.doc
+application/vnd.openxmlformats-officedocument.presentationml.presentation; mutt_bgrun soffice -no-oosplash --impress '%s'; edit=soffice -no-oosplash --impress '%s'; test=test -n "$DISPLAY"; description="Office Open XML Presentation"; nametemplate=%s.pptx
