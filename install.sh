@@ -15,6 +15,8 @@ ln -s $DOTDIR/signature.ru $HOMEDIR/.signature.ru
 ln -s $DOTDIR/signature.unilang $HOMEDIR/.signature.unilang
 ln -s $DOTDIR/xinitrc $HOMEDIR/.xinitrc
 ln -s $DOTDIR/openbox $HOMEDIR/.config/openbox
+ln -s $DOTDIR/irssi $HOMEDIR/.irssi
+cat $HOMEDIR/.irssi/config.masked | sed -e "/NICKSERVPASS/r /home/proycon/.nickserv" -e "/NICKSERVPASS/d" | sed -e "/BOUNCERPASS/r /home/proycon/.anaproy" -e "/BOUNCERPASS/d" > $HOMEDIR/.irssi/config
 
 #ln -s $DOTDIR/oh-my-zsh $HOMEDIR/.oh-my-zsh
 #ln -s $DOTDIR/oh-my-zsh $HOMEDIR/oh-my-zsh
