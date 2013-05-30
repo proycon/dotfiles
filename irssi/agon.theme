@@ -231,7 +231,7 @@ abstracts = {
   # ',' separator
   sb_act_sep = "%w$*";
   # normal text
-  sb_act_text = "%w$*";
+  sb_act_text = "%r$*";
   # public message
   sb_act_msg = "%W$*";
   # hilight
