@@ -9,6 +9,7 @@ ln -s $DOTDIR/vim $HOMEDIR/.vim
 ln -s $DOTDIR/vimrc $HOMEDIR/.vimrc
 ln -s $DOTDIR/zshrc $HOMEDIR/.zshrc
 ln -s $DOTDIR/muttrc $HOMEDIR/.muttrc
+ln -s $DOTDIR/mailcap $HOMEDIR/.mailcap
 ln -s $DOTDIR/signature $HOMEDIR/.signature
 ln -s $DOTDIR/signature.ru $HOMEDIR/.signature.ru
 ln -s $DOTDIR/signature.unilang $HOMEDIR/.signature.unilang
