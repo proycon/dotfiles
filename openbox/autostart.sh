@@ -1,0 +1,19 @@
+#!/bin/bash
+#xcompmgr -cC -t-3 -l-5 -r5 &
+xcompmgr &
+setinput.sh
+pulseaudio --start &
+gnome-settings-daemon &
+gnome-keyring-daemon -s --components=pkcs11,secrets,ssh,gpg &
+feh --bg-scale ~/Pictures/Local/wallpapers/shirahige2.jpg &
+setlayout 0 3 3 0
+synapse -s &
+guake &
+sleep 1 && tint2 &
+thunar-volman &
+nm-applet &
+udiskie &
+#offlineimap &
+sleep 3 && feh --bg-scale ~/Pictures/Local/wallpapers/shirahige2.jpg &
+play ~/cylontune_low.ogg &
+

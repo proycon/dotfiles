@@ -1,0 +1,74 @@
+// $XKeyboardConfig: xkbdesc/symbols/proylatin,v 1.8 2007/01/31 00:28:39 svu Exp $
+
+// based on a keyboard
+// Made by proycon
+//
+// $XFree86: xc/programs/xkbcomp/symbols/proylatin,v 1.2 2002/11/22 04:03:28 dawes Exp $
+
+partial default alphanumeric_keys
+xkb_symbols "basic" {
+    
+    #include "pc(common)"
+
+    name[Group1]="Universal Latin (Proycon)";
+
+    key <TLDE>	{ [ apostrophe, asciitilde,    grave,   asciitilde ]	};
+    key <LSGT>	{ [ apostrophe, asciitilde,    grave,   asciitilde ]}; //for mac keyboards
+
+    key <AE01>	{ [         1,     exclam,      exclamdown,   exclamdown ]	};
+    key <AE02>	{ [         2,     U0259,  U0250, U00E6 ]	};
+    key <AE03>	{ [         3,     U025C, U025E ]	};
+    key <AE04>	{ [         4,     dollar,   U0279,  U027B ]	};
+    key <AE05>	{ [         5,     percent,   U0281 ]	};
+    key <AE06>	{ [         6,     asciicircum, U028E  ]	};
+    key <AE07>	{ [         7,     U0272, U0273, U014B  ]	};
+    key <AE08>	{ [         8,     U0258, U0275  ]	};
+    key <AE09>	{ [         9,     parenleft, bracketleft, braceleft  ]	};
+    key <AE10>	{ [         0,     parenright, bracketright, braceright  ]	};
+    key <AE11>	{ [minus,   underscore,    braceleft, braceleft ]	};
+    key <AE12>	{ [equal, plus, braceright,   braceright ]	};
+
+    key <AD01> {        [         q, U02C0,  U02C1,  U02BD               ]       };
+    key <AD02> {        [         w, U02B2,  U02B7, U02BD               ]       };
+    key <AD03> {        [         e, U025B, U00F8, U0153           ]       };
+    key <AD04> {        [         r,   U0280, U027E,  U027D               ]       };
+    key <AD05> {        [         t,    U0288, U03B8, U0287              ]       };
+    key <AD06> {        [         y,    U028F, U0264               ]       };
+    key <AD07> {        [         u,    U028A, U0289, U026F              ]       };
+    key <AD08> {        [         i,    U026A, U0268, U026F     ]       };
+    key <AD09> {        [         o,    U0254, U0264, U028C             ]       };
+    key <AD10> {        [         p,    P              ]       };
+    key <AD11>	{ [dead_grave, dead_circumflex, dead_caron, dead_breve ] };
+    key <AD12>	{ [      U0303, U0304, U0307, U0323 ]	};
+
+    key <AC01> {        [         a,   U0251, U0276, U0252              ]       };
+    key <AC02> {        [         s,   U0283, U0282, U03B8             ]       };
+    key <AC03> {        [         d,    U0256, U00F0               ]       };
+    key <AC04> {        [         f,    U0278, U025F, U03B8               ]       };
+    key <AC05> {        [         g,    U0262, U0263, U014B             ]       };
+    key <AC06> {        [         h,    U02B0, U0127, U0266              ]       };
+    key <AC07> {        [         j,    U025F, U029D, U0265               ]       };
+    key <AC08> {        [         k,    K, U0296              ]       };
+    key <AC09> {        [         l,    U026D, U026C, U026E             ]       };
+
+    key <AC10>	{ [    semicolon, colon, U02D0, U0346 ]	};
+    key <AC11>	{ [dead_acute, dead_diaeresis, apostrophe,   quotedbl ]	};
+
+    key <BKSL>	{ [  backslash,   bar,   ccedilla,   Ccedilla ]	};
+
+    key <AB01> {        [         z,   U0292, U0290, U0291              ]       };
+    key <AB02> {        [         x,   U03C7, U0294, U0295               ]       };
+    key <AB03> {        [         c,    U0255, U0295               ]       };
+    key <AB04> {        [         v,    U03B2               ]       };
+    key <AB05> {        [         b,    U0299, U0298            ]       };
+    key <AB06> {        [         n,    U0274, U0273, U0272             ]       };
+    key <AB07> {        [         m,    M, U0270, U0271             ]       };
+    key <AB08> {        [     comma,    U02D1,  U02C8            ]       };
+    key <AB09> {        [    period,    greater, U02CC         ]       };
+    key <AB10> {        [     slash,    question , U0294, U0295      ]       };
+
+
+    include "level3(ralt_switch)"
+    include "level3(rwin_switch)"
+    include "ctrl(nocaps)"
+};

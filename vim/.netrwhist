@@ -1,0 +1,9 @@
+let g:netrw_dirhistmax  =10
+let g:netrw_dirhist_cnt =7
+let g:netrw_dirhist_1='/home/proycon/.vim/bundle'
+let g:netrw_dirhist_2='/home/proycon/.vim/bundle/python-mode'
+let g:netrw_dirhist_3='/home/proycon/work/colibri/src'
+let g:netrw_dirhist_4='/home/proycon/.offlineimap'
+let g:netrw_dirhist_5='/home/proycon/.config/terminator'
+let g:netrw_dirhist_6='/home/proycon/tmp'
+let g:netrw_dirhist_7='/home/proycon/work/pynlpl'

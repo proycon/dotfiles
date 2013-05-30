@@ -1,0 +1,77 @@
+// $XKeyboardConfig: xkbdesc/symbols/proylatin,v 1.8 2007/01/31 00:28:39 svu Exp $
+
+// based on a keyboard
+// Made by proycon
+//
+// $XFree86: xc/programs/xkbcomp/symbols/proylatin,v 1.2 2002/11/22 04:03:28 dawes Exp $
+
+partial default alphanumeric_keys
+xkb_symbols "basic" {
+
+    #include "pc(common)"
+
+    name[Group1]="Universal Arabic (Proycon)";
+
+    key <TLDE>	{ [ apostrophe, asciitilde,    grave,   asciitilde ]	};
+    key <LSGT>	{ [ apostrophe, asciitilde,    grave,   asciitilde ]}; //for mac keyboards
+
+    key <AE01>	{ [         U0661,     exclam,      exclamdown,   exclamdown ]	};
+    key <AE02>	{ [         U0662,     at,      quotedbl,   quotedbl ]	};
+    key <AE03>	{ [         U0663,     numbersign, periodcentered,   sterling ]	};
+    key <AE04>	{ [         U0664,     dollar,   EuroSign,       sterling ]	};
+    key <AE05>	{ [         U0665,     U066A     ]	};
+    key <AE06>	{ [         U0666,     asciicircum, notsign  ]	};
+    key <AE07>	{ [         U0667,     ampersand, braceleft  ]	};
+    key <AE08>	{ [         U0668,     asterisk, asterisk  ]	};
+    key <AE09>	{ [         U0669,     parenleft, bracketleft, braceleft  ]	};
+    key <AE10>	{ [         U0660,     parenright, bracketright, braceright  ]	};
+    key <AE11>	{ [minus,   underscore,    question, questiondown ]	};
+    key <AE12>	{ [equal, plus, exclamdown,   exclam ]	};
+
+    key <AD01> { [    Arabic_qaf,  Arabic_qaf,  q,    Q    ] };
+    key <AD02> { [    Arabic_waw,  Arabic_hamzaonwaw, w,    W    ] };
+    key <AD03> { [    Arabic_alefmaksura,  Arabic_maddaonalef,  U0670,  U0625 ] };
+    key <AD04> { [    Arabic_ra,  Arabic_kasratan,U0698,    R    ] };
+    key <AD05> { [    Arabic_teh,  Arabic_tah,  Arabic_tehmarbuta,  Arabic_theh ] };
+    key <AD06> { [    Arabic_yeh,  Arabic_hamzaonyeh,  Arabic_alefmaksura    ] };
+    key <AD07> { [    Arabic_damma,  Arabic_dammatan ] };
+    key <AD08> { [    Arabic_kasra,  Arabic_kasratan,  U0625  ]       };
+    key <AD09> { [    Arabic_sukun,  U0671,  U0610,  U0610  ] };
+    key <AD10> { [    U067E, Arabic_tatweel,  U0625   ] };
+
+    key <AD11>	{ [dead_grave, dead_circumflex, dead_caron, dead_breve ] };
+    key <AD12>	{ [      dead_tilde,   dead_diaeresis, dead_macron,  dead_abovedot ]	};
+
+    key <AC01> { [   Arabic_fatha, Arabic_alef , Arabic_hamzaonalef,  Arabic_fathatan  ] };
+    key <AC02> { [    Arabic_seen, Arabic_sad, Arabic_sheen  ] };
+    key <AC03> { [     Arabic_dal, Arabic_dad, Arabic_thal ] };
+    key <AC04> { [    Arabic_feh, UFEF9, Arabic_theh ] };
+    key <AC05> { [    Arabic_ghain, U06AF, U06AF   ] };
+    key <AC06> { [    Arabic_ha, Arabic_hah, Arabic_hamza ] };
+    key <AC07> { [    Arabic_jeem, Arabic_jeem  ] };
+    key <AC08> { [    Arabic_kaf, Arabic_kaf , U06A9, U06A9 ] };
+    key <AC09> { [    Arabic_lam, UFEF7  ] };
+
+
+    key <AC10>	{ [    semicolon, colon, ntilde, Ntilde ]	};
+    key <AC11>	{ [dead_acute, dead_diaeresis, apostrophe,   quotedbl ]	};
+
+    key <BKSL>	{ [  backslash,   bar,   ccedilla,   Ccedilla ]	};
+
+    key <AB01> { [    Arabic_zain, Arabic_zah  ] };
+    key <AB02> { [    Arabic_khah, Arabic_khah ] };
+    key <AB03> { [    Arabic_ain, Arabic_ain, U0686, c    ] };
+    key <AB04> { [    Arabic_shadda, Arabic_shadda ] };
+    key <AB05> { [     Arabic_beh, Arabic_beh ] };
+    key <AB06> { [    Arabic_noon, Arabic_noon  ] };
+    key <AB07> { [    Arabic_meem, Arabic_meem  ] };
+    key <AB08> {        [     Arabic_comma,    less ] };
+    key <AB09> {        [    period,    greater         ]       };
+    key <AB10> {        [     slash,    Arabic_question_mark,  question , questiondown     ]       };
+
+    //key <RWIN> {        [       ISO_Level3_Shift ]       };
+
+    include "level3(ralt_switch)"
+    include "level3(rwin_switch)"
+    include "ctrl(nocaps)"
+};

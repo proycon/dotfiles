@@ -1,0 +1,78 @@
+// $XKeyboardConfig: xkbdesc/symbols/proylatin,v 1.8 2007/01/31 00:28:39 svu Exp $
+
+// based on a keyboard
+// Made by proycon
+//
+// $XFree86: xc/programs/xkbcomp/symbols/proylatin,v 1.2 2002/11/22 04:03:28 dawes Exp $
+
+partial default alphanumeric_keys
+xkb_symbols "basic" {
+    
+    #include "pc(common)"
+
+    name[Group1]="Math and Logic (Proycon)";
+
+    key <TLDE>	{ [ apostrophe, asciitilde,    grave,    U220E ]	};
+    key <LSGT>	{ [ apostrophe, asciitilde,      grave,    U220E  ]}; //for mac keyboards
+
+    key <AE01>	{ [         1,     exclam,      U00AC,   U2260]	};
+    key <AE02>	{ [         2,     at,      U00B2,   U00B2 ]	};
+    key <AE03>	{ [         3,     numbersign, U00B3,   U00B3 ]	};
+    key <AE04>	{ [         4,     dollar,   U2282,       U2284 ]	};
+    key <AE05>	{ [         5,     percent,   U2208,       U2209 ]	};
+    key <AE06>	{ [         6,     asciicircum, U2228,U222A  ]	};
+    key <AE07>	{ [         7,     ampersand, U2227, U2229  ]	};
+    key <AE08>	{ [         8,     asterisk, U2219,U2218  ]	};
+    key <AE09>	{ [         9,     parenleft, bracketleft, braceleft  ]	};
+    key <AE10>	{ [         0,     parenright, bracketright, braceright  ]	};
+    key <AE11>	{ [minus,   underscore,    U2194, U21D4 ]	};
+    key <AE12>	{ [equal, plus, U2260, U2248 ]	};
+
+    key <AD01> {        [         q,    Q  ,U221A , U2261         ]       };
+    key <AD02> {        [         w,    W   ,U222B , U2262        ]       };
+    key <AD03> {        [         e,    E   ,U2203,U2203           ]       };
+    key <AD04> {        [         r,    R   , U22A6, U211D       ]       };
+    key <AD05> {        [         t,    T  ,U2329,U230A           ]       };
+    key <AD06> {        [         y,    Y  ,U232A,U2309            ]       };
+    key <AD07> {        [         u,    U  , U2227, U2229            ]       };
+    key <AD08> {        [         i,    I , U221E, U221E    ]       };
+    key <AD09> {        [         o,    O ,U2205, U227A            ]       };
+    key <AD10> {        [         p,    P  ,U03C8, U220F            ]       };
+
+
+    key <AD11>	{ [U02C6, U02C7, U25A1, U25C7 ] };
+    key <AD12>	{ [dead_macron, dead_tilde, dead_macron, dead_abovedot       ]	};
+
+    key <AC01> {        [         a,    A , U03B1, U2200              ]       };
+    key <AC02> {        [         s,    S , U2211, U2211              ]       };
+    key <AC03> {        [         d,    D , U2202, U2206               ]       };
+    key <AC04> {        [         f,    F , U0192, U03C6            ]       };
+    key <AC05> {        [         g,    G , U03B3, U0393             ]       };
+    key <AC06> {        [         h,    H , h, U220E            ]       };
+    key <AC07> {        [         j,    J , U2264, U226A             ]       };
+    key <AC08> {        [         k,    K , U2265, U226B             ]       };
+    key <AC09> {        [         l,    L , U03BB, U2285         ]       };
+
+
+    key <AC10>	{ [    semicolon, colon,U22A8, U22AD ]	};
+    key <AC11>	{ [U20D7 ,quotedbl ,U223C, U223E ]	};
+
+    key <BKSL>	{ [  backslash,   bar,   U22A2, U22AC ]	};
+
+    key <AB01> {        [         z,    Z, U00F7, U00B1           ]       };
+    key <AB02> {        [         x,    X, U2A2F, U2A09          ]       };
+    key <AB03> {        [         c,    C, U2286, U2287            ]       };
+    key <AB04> {        [         v,    V, U22A5, U22A4               ]       };
+    key <AB05> {        [         b,    B , U03B2, U2225             ]       };
+    key <AB06> {        [         n,    N , U207F, U2115            ]       };
+    key <AB07> {        [         m,    M , U03BC, U2283            ]       };
+    key <AB08> {        [     comma,    less , U2190, U21D0           ]       };
+    key <AB09> {        [    period,    greater, U2192, U21D2        ]       };
+    key <AB10> {        [     slash,    question , U21A6, U225F       ]       };
+
+   
+
+    include "level3(ralt_switch)"
+    include "level3(rwin_switch)"
+    include "ctrl(nocaps)"
+};
