@@ -33,8 +33,13 @@ source $ZSH/oh-my-zsh.sh
 setopt cshnullglob
 unsetopt correct_all
 
+
+
 #apps
 alias x='wrexp'
+alias hr="echo '_____________________________________________________________________________________'"
+alias en='LANGUAGE="en_US.UTF-8" zsh'
+alias km="setxkbmap proylatin"
 alias m='mutt'
 alias mk='LANGUAGE="en_GB.UTF-8" make'
 alias mi='LANGUAGE="en_GB.UTF-8" make install; if (( $? == 0 )); then; play -q /usr/share/sounds/KDE-Sys-App-Positive.ogg 2> /dev/null &!; else; play -q /usr/share/sounds/KDE-K3B-Finish-Error.ogg 2> /dev/null &!; fi; hr'

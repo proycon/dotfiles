@@ -24,7 +24,7 @@ cat $HOMEDIR/.irssi/config.masked | sed -e "s/NICKSERVPASS/$NICKSERVPASS/" -e "s
 #ln -s $DOTDIR/oh-my-zsh $HOMEDIR/oh-my-zsh
 cd $HOMEDIR
 git clone git://github.com/robbyrussell/oh-my-zsh.git
-ln -s oh-my-zsh .oh-my-zsh
+ln -sT oh-my-zsh .oh-my-zsh
 cd .oh-my-zsh/themes
 ln -s $HOMEDIR/dotfiles/proysh.zsh-theme
 
