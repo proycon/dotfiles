@@ -11,14 +11,14 @@ servers = (
     address = "anaproy.nl";
     chatnet = "UniLang";
     port = "6667";
-    autoconnect = "true";
+    autoconnect = "false";
     autosendcmd = "/msg nickserv identify proycon NICKSERVPASS";
   },
   {
     address = "irc.freenode.org";
     chatnet = "Freenode";
     port = "6667";
-    autoconnect = "true";
+    autoconnect = "false";
     autosendcmd = "/msg nickserv identify proycon NICKSERVPASS";
   },
   { address = "irc.ubuntu.com"; chatnet = "Ubuntu"; port = "8001"; },
@@ -239,9 +239,9 @@ statusbar = {
         window = { };
         window_empty = { };
         lag = { priority = "-1"; };
-        act = { priority = "10"; };
         more = { priority = "-1"; alignment = "right"; };
         barend = { priority = "100"; alignment = "right"; };
+        usercount = { };
       };
     };
 
@@ -289,6 +289,13 @@ statusbar = {
         topicbarend = { priority = "100"; alignment = "right"; };
       };
     };
+    awl_0 = {
+      items = {
+        barstart = { priority = "100"; };
+        awl_0 = { };
+        barend = { priority = "100"; alignment = "right"; };
+      };
+    };
   };
 };
 settings = {
@@ -296,6 +303,51 @@ settings = {
     real_name = "Maarten van Gompel";
     user_name = "proycon";
     nick = "proycon";
+    timestamp_format = "%H:%M";
   };
   "fe-text" = { actlist_sort = "refnum"; };
+  "fe-common/core" = {
+    theme = "agon";
+    bell_beeps = "yes";
+    beep_msg_level = "HILIGHT";
+  };
+  "perl/core/scripts" = {
+    awl_display_key = "$Q%K|%n$H$C$S";
+    awl_block = "-15";
+    beep_cmd = "play -q ~/.irssi/sounds/chime.wav &";
+  };
+};
+hilights = (
+  { text = "proycon"; nick = "yes"; word = "yes"; },
+  { text = "proy"; nick = "yes"; word = "yes"; },
+  { text = "Maarten"; nick = "yes"; word = "yes"; }
+);
+logs = { };
+windows = {
+  1 = { immortal = "yes"; name = "(status)"; level = "ALL"; };
+  2 = {
+    items = (
+      {
+        type = "CHANNEL";
+        chat_type = "IRC";
+        name = "#ticc";
+        tag = "BOUNCER";
+      }
+    );
+  };
+  3 = {
+    items = (
+      {
+        type = "CHANNEL";
+        chat_type = "IRC";
+        name = "#lst";
+        tag = "BOUNCER";
+      }
+    );
+  };
+  4 = { name = "hilight"; sticky = "yes"; };
+};
+mainwindows = {
+  1 = { first_line = "8"; lines = "26"; };
+  4 = { first_line = "1"; lines = "7"; };
 };

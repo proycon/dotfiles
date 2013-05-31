@@ -151,7 +151,6 @@ alias -s cxx=vim
 alias -s h=vim
 alias -s tex=vim
 alias -s bib=vim
-alias -s py=vim
 alias -s js=vim
 alias -s css=vim
 
