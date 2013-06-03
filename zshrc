@@ -37,6 +37,8 @@ unsetopt correct_all
 
 #apps
 alias x='wrexp'
+alias xh='wrexp history'
+alias exp='wrexp'
 alias hr="echo '_____________________________________________________________________________________'"
 alias en='LANGUAGE="en_US.UTF-8" zsh'
 alias km="setxkbmap proylatin"
