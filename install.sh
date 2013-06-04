@@ -17,6 +17,7 @@ ln -sT $DOTDIR/xinitrc $HOMEDIR/.xinitrc
 ln -sT $DOTDIR/openbox $HOMEDIR/.config/openbox
 ln -sT $DOTDIR/irssi $HOMEDIR/.irssi
 ln -s $DOTDIR/tmux.conf $HOMEDIR/.tmux.conf
+ln -s $DOTDIR/tmux-powerlinerc $HOMEDIR/.tmux-powerlinerc
 NICKSERVPASS=`cat ~/.nickserv`
 BOUNCERPASS=`cat ~/.anaproy`
 cat $HOMEDIR/.irssi/config.masked | sed -e "s/NICKSERVPASS/$NICKSERVPASS/" -e "s/BOUNCERPASS/$BOUNCERPASS/" > $HOMEDIR/.irssi/config
