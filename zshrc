@@ -51,6 +51,7 @@ alias t='~/todo.sh'
 alias tls='~/todo.sh ls'
 alias tlsh='~/todo.sh ls | head'
 alias tlsp='~/todo.sh projectview'
+alias a='tmux attach'
 alias ta='~/todo.sh add'
 alias ka='killall'
 alias gpp='git push origin gh-pages'
@@ -124,13 +125,13 @@ fi
 
 alias ssha='ssh -Y -A anaproy.nl'
 alias sshilk='ssh mvgompel@radium.uvt.nl'
-alias aj="LC_ALL=en_US.UTF-8 LANG=en_US.UTF-8 ssh -Y -A -t lilo.science.ru.nl ssh -Y -A -t applejack zsh"
-alias fs="LC_ALL=en_US.UTF-8 LANG=en_US.UTF-8 ssh -Y -A -t lilo.science.ru.nl ssh -Y -A -t fluttershy zsh"
-alias rr="LC_ALL=en_US.UTF-8 LANG=en_US.UTF-8 ssh -Y -A -t lilo.science.ru.nl ssh -Y -A -t rarity zsh"
-alias cl="LC_ALL=en_US.UTF-8 LANG=en_US.UTF-8 ssh -Y -A -t lilo.science.ru.nl ssh -Y -A -t cheerilee zsh"
-alias fp="LC_ALL=en_US.UTF-8 LANG=en_US.UTF-8 ssh -Y -A -t lilo.science.ru.nl ssh -Y -A -t fancypants zsh"
-alias pq="LC_ALL=en_US.UTF-8 LANG=en_US.UTF-8 ssh -Y -A -t lilo.science.ru.nl ssh -Y -A -t pipsqueak zsh"
-alias so="LC_ALL=en_US.UTF-8 LANG=en_US.UTF-8 ssh -Y -A -t lilo.science.ru.nl ssh -Y -A -t scootaloo zsh"
+alias aj="LC_ALL=en_US.UTF-8 LANG=en_US.UTF-8 ssh -Y -A -t lilo.science.ru.nl ssh -Y -A -t applejack zsh -c tmux attach"
+alias fs="LC_ALL=en_US.UTF-8 LANG=en_US.UTF-8 ssh -Y -A -t lilo.science.ru.nl ssh -Y -A -t fluttershy zsh -c tmux attach"
+alias rr="LC_ALL=en_US.UTF-8 LANG=en_US.UTF-8 ssh -Y -A -t lilo.science.ru.nl ssh -Y -A -t rarity zsh -c tmux attach"
+alias cl="LC_ALL=en_US.UTF-8 LANG=en_US.UTF-8 ssh -Y -A -t lilo.science.ru.nl ssh -Y -A -t cheerilee zsh -c tmux attach"
+alias fp="LC_ALL=en_US.UTF-8 LANG=en_US.UTF-8 ssh -Y -A -t lilo.science.ru.nl ssh -Y -A -t fancypants zsh -c tmux attach"
+alias pq="LC_ALL=en_US.UTF-8 LANG=en_US.UTF-8 ssh -Y -A -t lilo.science.ru.nl ssh -Y -A -t pipsqueak zsh -c tmux attach"
+alias so="LC_ALL=en_US.UTF-8 LANG=en_US.UTF-8 ssh -Y -A -t lilo.science.ru.nl ssh -Y -A -t scootaloo zsh -c tmux attach"
 alias sc="LC_ALL=en_US.UTF-8 LANG=en_US.UTF-8 ssh -Y -A -t mvgompel@radium.uvt.nl ssh -Y -A -t scylla zsh"
 alias st="LC_ALL=en_US.UTF-8 LANG=en_US.UTF-8 ssh -Y -A -t mvgompel@radium.uvt.nl ssh -Y -A -t stheno zsh"
 alias ct="LC_ALL=en_US.UTF-8 LANG=en_US.UTF-8 ssh -Y -A -t mvgompel@radium.uvt.nl ssh -Y -A -t ceto zsh"
