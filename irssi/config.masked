@@ -1,11 +1,27 @@
 servers = (
   {
     address = "anaproy.nl";
-    chatnet = "BOUNCER";
+    chatnet = "BOUNCER-work";
     port = "6999";
     autoconnect = "true";
     use_ssl = "yes";
     password = "proycon:BOUNCERPASS";
+  },
+  {
+    address = "anaproy.nl";
+    chatnet = "BOUNCER-unilang";
+    port = "6999";
+    autoconnect = "true";
+    use_ssl = "yes";
+    password = "proycon_unilang:BOUNCERPASS";
+  },
+  {
+    address = "anaproy.nl";
+    chatnet = "BOUNCER-freenode";
+    port = "6999";
+    autoconnect = "true";
+    use_ssl = "yes";
+    password = "proycon_freenode:BOUNCERPASS";
   },
   {
     address = "anaproy.nl";
@@ -124,10 +140,11 @@ chatnets = {
 };
 
 channels = (
-  { name = "#ticc"; chatnet = "BOUNCER"; autojoin = "Yes"; },
-  { name = "#lst"; chatnet = "BOUNCER"; autojoin = "Yes"; },
-  { name = "#unilang"; chatnet = "UniLang"; autojoin = "Yes"; },
-  { name = "#irssi"; chatnet = "ircnet"; autojoin = "No"; }
+  { name = "#ticc"; chatnet = "BOUNCER-work"; autojoin = "Yes"; },
+  { name = "#lst"; chatnet = "BOUNCER-work"; autojoin = "Yes"; },
+  { name = "#haitlab"; chatnet = "BOUNCER-work"; autojoin = "Yes"; },
+  { name = "#unilang"; chatnet = "BOUNCER-unilang"; autojoin = "Yes"; },
+  { name = "#esperanto"; chatnet = "BOUNCER-freenode"; autojoin = "Yes"; }
 );
 
 aliases = {

@@ -233,9 +233,9 @@ abstracts = {
   # normal text
   sb_act_text = "%r$*";
   # public message
-  sb_act_msg = "%W$*";
+  sb_act_msg = "%R$*";
   # hilight
-  sb_act_hilight = "%M$*";
+  sb_act_hilight = "%Y$*";
   # hilight with specified color, $0 = color, $1 = text
   sb_act_hilight_color = "$0$1-%n";
 };
