@@ -109,6 +109,7 @@ elif [[ $HOST == "applejack" || $HOST == "fluttershy" || $HOST == "rarity" || $H
     hash -d corpora=/vol/bigdata/corpora/
     hash -d ur=/vol/customopt/uvt-ru/
     hash -d clb=/vol/customopt/uvt-ru/src/colibri/
+    hash -d cta=/vol/customopt/uvt-ru/src/colibrita/
     hash -d mt=/vol/customopt/machine-translation/
     hash -d corp=/vol/bigdata/corpora/
     hash -d bd=/vol/bigdata/users/proycon/
