@@ -86,13 +86,20 @@ if [[ $HOST == "galactica" ]]; then
     hash -d X=/home/proycon/exp
     hash -d lsrc=/home/proycon/local/src/
     hash -d clb=/home/proycon/work/colibri/
+    hash -d cta=/home/proycon/work/colibrita/
     hash -d W=/home/proycon/work
 elif [[ $HOST == "roma" ]]; then
     export PATH="/home/proycon/bin:/home/proycon/local/bin:$PATH"
     export LD_LIBRARY_PATH="$LD_LIBRARY_PATH:/home/proycon/local/lib"
     export PYTHONPATH="/home/proycon/work/"
     export ALPINO_HOME="/usr/local/Alpino"
-
+    export CDPATH=.:~/work
+    
+    hash -d X=/home/proycon/exp
+    hash -d lsrc=/home/proycon/local/src/
+    hash -d clb=/home/proycon/work/colibri/
+    hash -d cta=/home/proycon/work/colibrita/
+    hash -d W=/home/proycon/work
 elif [[ $HOST == "applejack" || $HOST == "fluttershy" || $HOST == "rarity" || $HOST == "cheerilee" || $HOST == "fancypants" || $HOST == "pipsqueak" || $HOST == "scootaloo" ]]; then
 
     export LD_LIBRARY_PATH="/scratch/proycon/local/lib:/home/proycon/local/lib:/vol/customopt/uvt-ru/lib:/vol/customopt/machine-translation/lib:/vol/customopt/nlptools/lib/:$LD_LIBRARY_PATH"
@@ -124,7 +131,9 @@ if [[ -f  /usr/share/source-highlight/src-hilite-lesspipe.sh ]]; then
 fi
 
 
+alias ap='ssh -Y -A anaproy.nl'
 alias ssha='ssh -Y -A anaproy.nl'
+alias e='ssh -Y -A -t anaproy.nl /home/proycon/bin/tm_vi'
 alias sshilk='ssh mvgompel@radium.uvt.nl'
 alias aj="LC_ALL=en_US.UTF-8 LANG=en_US.UTF-8 ssh -Y -A -t lilo.science.ru.nl ssh -Y -A -t applejack /home/proycon/bin/tm"
 alias fs="LC_ALL=en_US.UTF-8 LANG=en_US.UTF-8 ssh -Y -A -t lilo.science.ru.nl ssh -Y -A -t fluttershy /home/proycon/bin/tm"
