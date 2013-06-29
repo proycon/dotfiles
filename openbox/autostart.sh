@@ -13,7 +13,7 @@ sleep 1 && tint2 &
 thunar-volman &
 nm-applet &
 udiskie &
-#offlineimap &
+ibus-daemon -d -x
 sleep 3 && feh --bg-scale ~/Pictures/Local/wallpapers/shirahige2.jpg &
 play ~/cylontune_low.ogg &
 
