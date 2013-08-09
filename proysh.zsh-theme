@@ -1,5 +1,5 @@
 
-if [[ $HOST == "galactica" || $HOST == "pegasus" ]] {
+if [[ $HOST == "galactica" || $HOST == "pegasus" || $HOST == "mhysa" ]] {
 	host="{$fg_bold[green]%}@%m%{$reset_color%}"
 } elif [[ $HOST == "roma" ]] {
 	host="{$fg_bold[yellow]%}@%m%{$reset_color%}"
