@@ -14,6 +14,7 @@ fi
 guake &
 tint2 &
 thunar-volman &
+conky &
 nm-applet &
 udiskie &
 ibus-daemon -d -x
