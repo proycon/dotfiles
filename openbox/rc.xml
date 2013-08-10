@@ -459,8 +459,8 @@
         <startupnotify>
           <enabled>true</enabled>
           <name>Terminator</name>
-          </startupnotify>
-          <command>terminator -e "tm vim"</command>
+        </startupnotify>
+        <command>terminator -e "tm vim"</command>
       </action>
     </keybind>
     <keybind key="W-m">
@@ -468,26 +468,26 @@
         <startupnotify>
           <enabled>true</enabled>
           <name>Terminator</name>
-          </startupnotify>
-          <command>terminator -e "tm mutt"</command>
+        </startupnotify>
+        <command>terminator -e "tm mutt"</command>
       </action>
-    </keybind>    
+    </keybind>
     <keybind key="W-i">
       <action name="Execute">
         <startupnotify>
           <enabled>true</enabled>
           <name>Terminator</name>
-          </startupnotify>
-          <command>terminator -e "tm irssi"</command>
+        </startupnotify>
+        <command>terminator -e "tm irssi"</command>
       </action>
-    </keybind>    
+    </keybind>
     <keybind key="W-n">
       <action name="Execute">
         <startupnotify>
           <enabled>true</enabled>
           <name>Ncmpcpp</name>
-          </startupnotify>
-          <command>terminator -e ncmpcpp</command>
+        </startupnotify>
+        <command>terminator -e ncmpcpp</command>
       </action>
     </keybind>
     <keybind key="W-y">

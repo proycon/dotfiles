@@ -78,7 +78,7 @@ export GPGKEY="1A31555C"
 export EDITOR="vim"
 
 #PATHS
-if [[ $HOST == "galactica" ]]; then
+if [[ $HOST == "galactica" || $HOST == "mhysa" ]]; then
     export PATH="/home/proycon/bin:/home/proycon/local/bin:$PATH"
     export LD_LIBRARY_PATH="$LD_LIBRARY_PATH:/home/proycon/local/lib"
     export CDPATH=.:~/work

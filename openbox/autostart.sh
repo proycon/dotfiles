@@ -8,8 +8,11 @@ gnome-keyring-daemon -s --components=pkcs11,secrets,ssh,gpg &
 feh --bg-scale ~/Pictures/Local/wallpapers/shirahige2.jpg &
 setlayout 0 3 3 0
 synapse -s &
+if [[ $HOST == "mhysa" ]]; then
+mountssh &
+fi
 guake &
-sleep 1 && tint2 &
+tint2 &
 thunar-volman &
 nm-applet &
 udiskie &
