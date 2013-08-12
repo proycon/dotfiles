@@ -18,7 +18,7 @@
   <item label="Web browser" icon="/usr/share/icons/Faenza/apps/16/chromium.png">
     <action name="Execute"><execute>x-www-browser</execute></action>
   </item>
-  <item label="IM (Pidgin)" icon="/usr/share/icons/Faenza/apps/16/empathy.png">
+  <item label="IM (Pidgin)" icon="/usr/share/icons/Faenza/apps/16/pidgin.png">
     <action name="Execute"><execute>pidgin</execute></action>
   </item>
   <item label="Editor (vim)" icon="/usr/share/icons/Faenza/apps/16/vim.png">
@@ -33,27 +33,57 @@
   <item label="Music" icon="/usr/share/icons/Faenza/apps/16/minitunes.png">
     <action name="Execute"><execute>terminator -e ncmpcpp</execute></action>
   </item>
-  <item label="Viewer" icon="/usr/share/icons/Faenza/apps/16/eog.png">
-    <action name="Execute"><execute>eog</execute></action>
-  </item>
   <item label="Gimp" icon="/usr/share/icons/Faenza/apps/16/gimp.png">
     <action name="Execute"><execute>gimp</execute></action>
   </item>
+  <item label="Inkscape" icon="/usr/share/icons/Faenza/apps/16/inkscape.png">
+    <action name="Execute"><execute>inkscape</execute></action>
+  </item>
+  <menu id="otherapps" label="Lesser-used apps">
+    <item label="Firefox" icon="/usr/share/icons/Faenza/apps/16/mozilla-firefox.png">
+        <action name="Execute"><execute>firefox</execute></action>
+    </item>
+    <item label="Thunderbird" icon="/usr/share/icons/Faenza/apps/16/mozilla-thunderbird.png">
+        <action name="Execute"><execute>thunderbird</execute></action>
+    </item>
+    <item label="Gedit" icon="/usr/share/icons/Faenza/apps/16/mousepad.png">
+        <action name="Execute"><execute>gedit</execute></action>
+    </item>
+    <item label="Libreoffice" icon="/usr/share/icons/Faenza/apps/16/office-writer.png">
+        <action name="Execute"><execute>libreoffice</execute></action>
+    </item>
+    <item label="Skype" icon="/usr/share/icons/Faenza/apps/16/skype.png">
+        <action name="Execute"><execute>skype</execute></action>
+    </item>
+    <item label="Deluge Torrent Client" icon="/usr/share/icons/Faenza/apps/16/package-manager-icon.png">
+        <action name="Execute"><execute>deluge</execute></action>
+    </item>
+    <separator />
+    <item label="Character Map">
+        <action name="Execute"><execute>gucharmap</execute></action>
+    </item>
+    <item label="OpenShot Video Editor" icon="/usr/share/icons/Faenza/apps/16/openshot.png">
+        <action name="Execute"><execute>openshot</execute></action>
+    </item>
+    <item label="puddletag MP3 tagger">
+        <action name="Execute"><execute>puddletag</execute></action>
+    </item>
+  </menu>
   <separator />
   <menu id="actions-menu" label="Actions">
-        <item label="Mount ssh">
+        <item label="Mount ssh" icon="/usr/share/icons/Faenza/apps/16/usermount.png">
         <action name="Execute"><execute>mountssh</execute></action>
         </item>
-        <item label="Connect to music stream">
+        <item label="Connect to music stream" icon="/usr/share/icons/Faenza/apps/16/minitunes.png">
         <action name="Execute"><execute>lala</execute></action>
         </item>
-        <item label="Reset keymap (Proylatin)">
+        <item label="Reset keymap (Proylatin)" icon="/usr/share/icons/Faenza/apps/16/im-chooser.png">
         <action name="Execute"><execute>setxkbmap proylatin</execute></action>
         </item>
-        <item label="Reset keymap (US)">
+        <item label="Reset keymap (US)" icon="/usr/share/icons/Faenza/apps/16/im-chooser.png">
             <action name="Execute"><execute>setxkbmap us</execute></action>
         </item>
-        <item label="xkill">
+        <item label="xkill" icon="/usr/share/icons/Faenza/apps/16/system-hibernate.png">
             <action name="Execute"><execute>xkill</execute></action>
         </item>
         <item label="Reconfigure openbox">
@@ -74,7 +104,7 @@
 			
   <separator />
 
-  <menu id="config" label="Configuration">
+  <menu id="config" label="Configuration" icon="/usr/share/icons/Faenza/apps/16/paprefs.png">
     <item label="Openbox Configuration">
         <action name="Execute"><execute>obconf</execute></action>
     </item>
@@ -90,8 +120,17 @@
         <action name="Execute"><execute>gnome-control-center</execute></action>
     </item>
     <item label="Gnome Tweak Tool">
-        <action name="Execute"><execute>gnome-tweak-tool</execute></action>
+        <action name="execute"><execute>gnome-tweak-tool</execute></action>
     </item>
+    <separator />
+    <item label="Software Center">
+        <action name="execute"><execute>software-center</execute></action>
+    </item>
+    <item label="Update Manager">
+        <action name="execute"><execute>update-manager</execute></action>
+    </item>
+
+
   </menu>
 
   <separator />
