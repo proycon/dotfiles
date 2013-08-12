@@ -1,6 +1,6 @@
 #!/bin/bash
 #xcompmgr -cC -t-3 -l-5 -r5 &
-xcompmgr &
+xcompmgr -fF &
 setinput.sh
 pulseaudio --start &
 gnome-settings-daemon &
