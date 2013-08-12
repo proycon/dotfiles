@@ -33,7 +33,7 @@
   </item>
   <separator />
   <item label="Lock">
-	<action name="Execute"> <execute>xlock -mousemotion -mode blank -bg black -fg grey30</execute></action>
+	<action name="Execute"> <execute>gnome-screensaver-command -a</execute></action>
   </item>    
   <item label="Suspend">
 	<action name="Execute"> <execute>suspend.sh</execute></action>
