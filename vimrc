@@ -349,6 +349,15 @@ endfunction
  
 map <Leader>fu :call ToggleFullScreen()<CR>
 
+
+fun! PullAndRefresh()
+  set noconfirm
+  !git pull
+  bufdo e!
+  set confirm
+endfun
+
+" nmap <leader>gr call PullAndRefresh()
 function! s:MakeWhite()
     set background=light
     colorscheme github
@@ -364,6 +373,7 @@ command! Dark call s:MakeDark()
 command! W w
 command! P2 let g:pymode_lint_checker = 'pylint'
 command! P3 let g:pymode_lint_checker = 'pylint3'
+command! UP call PullAndRefresh()
 
 command! Spen setlocal spell spelllang=en_gb
 command! Spus setlocal spell spelllang=en_us
