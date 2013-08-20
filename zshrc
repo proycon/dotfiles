@@ -137,6 +137,7 @@ alias ap='ssh -Y -A anaproy.nl'
 alias ssha='ssh -Y -A anaproy.nl'
 alias e='ssh -Y -A -t anaproy.nl /home/proycon/bin/tm_vi'
 alias sshilk='ssh mvgompel@radium.uvt.nl'
+alias lo="LC_ALL=en_US.UTF-8 LANG=en_US.UTF-8 ssh -Y -A -t lilo3.science.ru.nl zsh"
 alias aj="LC_ALL=en_US.UTF-8 LANG=en_US.UTF-8 ssh -Y -A -t lilo.science.ru.nl ssh -Y -A -t applejack /home/proycon/bin/tm"
 alias fs="LC_ALL=en_US.UTF-8 LANG=en_US.UTF-8 ssh -Y -A -t lilo.science.ru.nl ssh -Y -A -t fluttershy /home/proycon/bin/tm"
 alias rr="LC_ALL=en_US.UTF-8 LANG=en_US.UTF-8 ssh -Y -A -t lilo.science.ru.nl ssh -Y -A -t rarity /home/proycon/bin/tm"
