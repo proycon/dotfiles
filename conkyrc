@@ -1,0 +1,148 @@
+# Use Xft?
+use_xft yes
+xftfont Trebuchet MS:size=8
+xftalpha 0.8
+text_buffer_size 2048
+
+# Update interval in seconds
+update_interval 1
+
+# This is the number of times Conky will update before quitting.
+# Set to zero to run forever.
+total_run_times 0
+
+# Create own window instead of using desktop (required in nautilus)
+    own_window yes
+    own_window_transparent yes
+    own_window_type desktop
+    own_window_hints undecorated,below,sticky,skip_taskbar,skip_pager
+
+# Use double buffering (reduces flicker, may not work for everyone)
+double_buffer yes
+
+# Minimum size of text area
+minimum_size 180 0
+
+# Draw shades?
+draw_shades no
+
+# Draw outlines?
+draw_outline no
+
+# Draw borders around text
+draw_borders no
+
+# Stippled borders?
+stippled_borders 0
+
+# border margins
+border_margin 5
+
+# border width
+border_width 1
+
+# Default colors and also border colors
+default_color white
+own_window_colour white
+
+# Text alignment, other possible values are commented
+alignment bottom_right
+
+# Gap between borders of screen and text
+# same thing as passing -x at command line
+gap_x 35
+gap_y 50
+
+# Subtract file system buffers from used memory?
+no_buffers yes
+
+# set to yes if you want all text to be in uppercase
+uppercase no
+
+# number of cpu samples to average
+# set to 1 to disable averaging
+cpu_avg_samples 2
+
+# number of net samples to average
+# set to 1 to disable averaging
+net_avg_samples 2
+
+# Force UTF8? note that UTF8 support required XFT
+override_utf8_locale yes
+
+# Add spaces to keep things from moving about?  This only affects certain objects.
+use_spacer none
+
+TEXT
+SYSTEM (${desktop}) ${hr 2}
+
+#Kernel:  ${alignr}${kernel}
+CPU: ${cpu cpu}% ${alignr}${cpubar 8,60 cpu}
+RAM: $memperc% ${alignr}${membar 8,60}
+Load: ${alignr}${loadavg}
+Temp: ${alignr}${acpitemp}°C
+#Uptime: ${alignr}${uptime}
+#
+#NETWORK ${hr 2}
+#${if_existing /proc/net/route wlan0}
+#Up: ${upspeed wlan0} kb/s ${alignr}${upspeedgraph wlan0 8,60 789E2D A7CC5C}
+#Down: ${downspeed wlan0} kb/s ${alignr}${downspeedgraph wlan0 8,60 789E2D A7CC5C}
+#Upload: ${alignr}${totalup wlan0}
+#Download: ${alignr}${totaldown wlan0}
+#Signal: ${wireless_link_qual wlan0}% ${alignr}${wireless_link_bar 8,60 wlan0}${else}${if_existing /proc/net/route eth0}
+#Up: ${upspeed eth0} kb/s ${alignr}${upspeedgraph eth0 8,60 789E2D A7CC5C}
+#Down: ${downspeed eth0} kb/s ${alignr}${downspeedgraph eth0 8,60 789E2D A7CC5C}
+#Upload: ${alignr}${totalup eth0}
+#Download: ${alignr}${totaldown eth0}${endif}${else}${if_existing /proc/net/route eth1}
+#Up: ${upspeed eth1} kb/s ${alignr}${upspeedgraph eth1 8,60 789E2D A7CC5C}
+#Down: ${downspeed eth1} kb/s ${alignr}${downspeedgraph eth1 8,60 789E2D A7CC5C}
+#Upload: ${alignr}${totalup eth1}
+#Download: ${alignr}${totaldown eth1}${endif}${else}${font PizzaDude Bullets:size=14}4${font}   Network Unavailable${endif}
+
+${if_mpd_playing}
+MUSIC ${hr 2}
+${mpd_title}
+${mpd_bar}
+${endif}
+
+DATE ${hr 2}
+${alignc 35}${font Trebuchet MS:size=26}${time %H:%M}${font}
+${alignc}${time %a %d %b %Y}
+
+#${alignc 35}${font Buttons and Switches JL:size=38}J${font}
+#${voffset 7}${exec conkyExaile --datatype=TI} by ${exec conkyExaile --datatype=AR}
+#
+#HD ${hr 2}
+#Home:
+#${fs_free /home}/${fs_size /home} ${alignr}${fs_bar 8,60 /home}
+#Root:
+#${fs_free /root}/${fs_size /root} ${alignr}${fs_bar 8,60 /root}
+#
+#WEATHER ${hr 2}
+#
+#${if_existing /proc/net/route wlan0}
+#${voffset -8}${alignr 56}${font ConkyWeather:style=Bold:size=40}${execi 600 conkyForecast --location=FIXX0020 --datatype=WF}${font}
+#${voffset -52}${font Weather:size=40}y${font}   ${voffset -38}${font Trebuchet MS:size=26}${execi 600 conkyForecast --location=FIXX0020 --datatype=HT}${font}
+#
+#${voffset 0}Humidity: ${alignr}${execi 600 conkyForecast --location=FIXX0020 --datatype=HM}
+#${voffset 0}Moon Phase: ${alignr}${execi 600 conkyForecast --location=FIXX0020 --datatype=MP}
+#${voffset 0}${font}Wind Speed: ${alignr}${execi 600 conkyForecast --location=FIXX0020 --datatype=WS}
+#${else}${if_existing /proc/net/route eth0}
+#${voffset -8}${alignr 56}${font ConkyWeather:style=Bold:size=40}${execi 600 conkyForecast --location=FIXX0020 --datatype=WF}${font}
+#${voffset -52}${font Weather:size=40}y${font}   ${voffset -38}${font Trebuchet MS:size=26}${execi 600 conkyForecast --location=FIXX0020 --datatype=HT}${font}
+#
+#
+#${voffset 0}Humidity: ${alignr}${execi 600 conkyForecast --location=FIXX0020 --datatype=HM}
+#${voffset 0}Moon Phase: ${alignr}${execi 600 conkyForecast --location=FIXX0020 --datatype=MP}
+#${voffset 0}${font}Wind Speed: ${alignr}${execi 600 conkyForecast --location=FIXX0020 --datatype=WS}
+#${endif}${else}${if_existing /proc/net/route eth1}
+#${voffset -8}${alignr 56}${font ConkyWeather:style=Bold:size=40}${execi 600 conkyForecast --location=FIXX0020 --datatype=WF}${font}
+#${voffset -52}${font Weather:size=40}y${font}   ${voffset -38}${font Trebuchet MS:size=26}${execi 600 conkyForecast --location=FIXX0020 --datatype=HT}${font}
+#
+#
+#${voffset 0}Humidity: ${alignr}${execi 600 conkyForecast --location=FIXX0020 --datatype=HM}
+#${voffset 0}Moon Phase: ${alignr}${execi 600 conkyForecast --location=FIXX0020 --datatype=MP}
+#${voffset 0}${font}Wind Speed: ${alignr}${execi 600 conkyForecast --location=FIXX0020 --datatype=WS}
+#${endif}${else}
+#${font PizzaDude Bullets:size=14}4${font}   Weather Unavailable
+#${endif}

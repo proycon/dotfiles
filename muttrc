@@ -1,18 +1,20 @@
-set imap_user=proycon
-set imap_pass=`cat ~/.anaproy`
-set folder=imaps://mail.anaproy.nl/
-set imap_check_subscribed
+#set imap_user=proycon
+#set imap_pass=`cat ~/.anaproy`
+#set folder=imaps://mail.anaproy.nl/
+#set imap_check_subscribed
 
 
 
 
-#set mbox_type=Maildir
-#set folder="~/Maildir/"
-#set mask="!^\\.[^.]"
+
+
+set mbox_type=Maildir
+set folder="~/Maildir/"
+set mask="!^\\.[^.]"
 set record="+.Sent"
 set postponed="+.Drafts"
 set spoolfile="+INBOX"
-#mailboxes `echo -n "+ "; find ~/Maildir -maxdepth 1 -type d -name ".*" -printf "+'%f' "`
+mailboxes `echo -n "+ "; find ~/Maildir -maxdepth 1 -type d -name ".*" -printf "+'%f' "`
 #source ~/.mutt/mailboxes 
 alternative_order text/plain text/html
 
@@ -21,7 +23,10 @@ alternative_order text/plain text/html
 #set spoolfile=+INBOX
 #mailboxes =INBOX
 
-set smtp_url=`python -c 'print "smtps://proycon:X@mail.anaproy.nl".replace("X",open("/home/proycon/.anaproy","r").read()[:-1]).strip()'`
+#set smtp_url=`python -c 'print "smtps://proycon:X@mail.anaproy.nl".replace("X",open("/home/proycon/.anaproy","r").read()[:-1]).strip()'`
+set from     = "proycon@anaproy.nl"
+set sendmail = "/usr/bin/msmtp -a proycon"
+set sendmail_wait = 0
 
 set ssl_verify_host = no
 set ssl_verify_dates = no

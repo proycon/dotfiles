@@ -6,6 +6,7 @@ autocmd! bufwritepost .vimrc source %
 " " When you want to paste large blocks of code into vim, press F2 before you
 " " paste. At the bottom you should see ``-- INSERT (paste) --``.
 "
+
 set pastetoggle=<F2>
 set clipboard=unnamed
 
@@ -210,7 +211,7 @@ let g:pymode_syntax_builtin_funcs = 0
 " Skip errors and warnings
 " E.g. "E501,W002", "E2,W" (Skip all Warnings and Errors startswith E2) and etc
 let g:pymode_lint_checker = 'pylint'
-let g:pymode_lint_ignore = "E203,E225,E251,E301,E501,W291,W292,W293,C0103,C0111,E1101,R09,W0141,W0142,W0221,W0232,W0401,W0613,W0631"
+let g:pymode_lint_ignore = "C0103,C0111,E1101,W0141,W0142,W0221,W0232,W0401,W0613,W0631"
 
 " Load show documentation plugin
 let g:pymode_doc = 1
@@ -265,8 +266,6 @@ map <leader>27 :b27<CR>
 map <leader>28 :b28<CR>
 map <leader>29 :b29<CR>
 map <leader>30 :b30<CR>
-map <leader>30 :b30<CR>
-map <leader>30 :b30<CR>
 map <leader>31 :b31<CR>
 map <leader>32 :b32<CR>
 map <leader>33 :b33<CR>
@@ -276,6 +275,17 @@ map <leader>36 :b36<CR>
 map <leader>37 :b37<CR>
 map <leader>38 :b38<CR>
 map <leader>39 :b39<CR>
+map <leader>40 :b30<CR>
+map <leader>41 :b41<CR>
+map <leader>42 :b42<CR>
+map <leader>43 :b43<CR>
+map <leader>44 :b44<CR>
+map <leader>45 :b45<CR>
+map <leader>46 :b46<CR>
+map <leader>47 :b47<CR>
+map <leader>48 :b48<CR>
+map <leader>49 :b49<CR>
+
 
 map <leader>r :resize<CR>
 
@@ -339,6 +349,15 @@ endfunction
  
 map <Leader>fu :call ToggleFullScreen()<CR>
 
+
+fun! PullAndRefresh()
+  set noconfirm
+  !git pull
+  bufdo e!
+  set confirm
+endfun
+
+" nmap <leader>gr call PullAndRefresh()
 function! s:MakeWhite()
     set background=light
     colorscheme github
@@ -354,6 +373,7 @@ command! Dark call s:MakeDark()
 command! W w
 command! P2 let g:pymode_lint_checker = 'pylint'
 command! P3 let g:pymode_lint_checker = 'pylint3'
+command! UP call PullAndRefresh()
 
 command! Spen setlocal spell spelllang=en_gb
 command! Spus setlocal spell spelllang=en_us

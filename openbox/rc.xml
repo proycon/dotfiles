@@ -12,7 +12,7 @@
        apply -->
     <followMouse>yes</followMouse>
     <!-- move focus to a window when you move the mouse into it -->
-    <focusLast>no</focusLast>
+    <focusLast>yes</focusLast>
     <!-- focus the last used window when changing desktops, instead of the one
        under the mouse pointer. when followMouse is enabled -->
     <underMouse>no</underMouse>
@@ -351,6 +351,15 @@
         <height>75%</height>
       </action>
     </keybind>
+    <keybind key="W-f">
+      <action name="UnmaximizeFull"/>
+      <action name="MoveResizeTo">
+        <x>5%</x>
+        <y>5%</y>
+        <width>90%</width>
+        <height>90%</height>
+      </action>
+    </keybind>
     <keybind key="W-d">
       <action name="UnmaximizeFull"/>
       <action name="MoveResizeTo">
@@ -459,8 +468,8 @@
         <startupnotify>
           <enabled>true</enabled>
           <name>Terminator</name>
-          </startupnotify>
-          <command>terminator -e vim</command>
+        </startupnotify>
+        <command>terminator -e "tm vim"</command>
       </action>
     </keybind>
     <keybind key="W-m">
@@ -468,17 +477,26 @@
         <startupnotify>
           <enabled>true</enabled>
           <name>Terminator</name>
-          </startupnotify>
-          <command>terminator -e mutt</command>
+        </startupnotify>
+        <command>terminator -e "tm mutt"</command>
       </action>
-    </keybind>    
+    </keybind>
+    <keybind key="W-i">
+      <action name="Execute">
+        <startupnotify>
+          <enabled>true</enabled>
+          <name>Terminator</name>
+        </startupnotify>
+        <command>terminator -e "tm irssi"</command>
+      </action>
+    </keybind>
     <keybind key="W-n">
       <action name="Execute">
         <startupnotify>
           <enabled>true</enabled>
           <name>Ncmpcpp</name>
-          </startupnotify>
-          <command>terminator -e ncmpcpp</command>
+        </startupnotify>
+        <command>terminator -e ncmpcpp</command>
       </action>
     </keybind>
     <keybind key="W-y">
@@ -921,8 +939,18 @@
       <desktop>6</desktop>
     </application>
     <application class="Wine">
-      <desktop>8</desktop>
-    </application>
+      <desktop>9</desktop>
+  </application>
+
+  <application name="tint2">
+      <decor>no</decor>
+  </application>
+
+  <application class="Terminator">
+      <decor>no</decor>
+      <maximized>true</maximized>
+  </application>
+
     <!--
   # this is an example with comments through out. use these to make your
   # own rules, but without the comments of course.
@@ -1007,4 +1035,5 @@
   # end of the example
 -->
   </applications>
+
 </openbox_config>

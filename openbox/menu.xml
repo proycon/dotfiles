@@ -6,47 +6,152 @@
                 file:///usr/share/openbox/menu.xsd">
 
 <menu id="root-menu" label="Openbox 3">
-  <item label="Terminal emulator">
+    <item label="Terminal emulator (default)" icon="/usr/share/icons/Faenza/apps/16/terminal.png">
     <action name="Execute"><execute>x-terminal-emulator</execute></action>
   </item>
-  <item label="Web browser">
+  <item label="Windowed terminal" icon="/usr/share/icons/Faenza/apps/16/terminal.png">
+    <action name="Execute"><execute>gnome-terminal</execute></action>
+  </item>
+  <item label="File manager" icon="/usr/share/icons/Faenza/apps/16/file-manager.png">
+    <action name="Execute"><execute>pcmanfm</execute></action>
+  </item>
+  <item label="Web browser" icon="/usr/share/icons/Faenza/apps/16/chromium.png">
     <action name="Execute"><execute>x-www-browser</execute></action>
   </item>
+  <item label="IM (Pidgin)" icon="/usr/share/icons/Faenza/apps/16/pidgin.png">
+    <action name="Execute"><execute>pidgin</execute></action>
+  </item>
+  <item label="Editor (vim)" icon="/usr/share/icons/Faenza/apps/16/vim.png">
+    <action name="Execute"><execute>terminator -e "tm vim"</execute></action>
+  </item>
+  <item label="Mail (mutt)" icon="/usr/share/icons/Faenza/apps/16/claws-mail.png">
+    <action name="Execute"><execute>terminator -e "tm mutt"</execute></action>
+  </item>
+  <item label="IRC (irssi)" icon="/usr/share/icons/Faenza/apps/16/xchat.png">
+    <action name="Execute"><execute>terminator -e "tm irssi"</execute></action>
+  </item>
+  <item label="Music" icon="/usr/share/icons/Faenza/apps/16/minitunes.png">
+    <action name="Execute"><execute>terminator -e ncmpcpp</execute></action>
+  </item>
+  <item label="Gimp" icon="/usr/share/icons/Faenza/apps/16/gimp.png">
+    <action name="Execute"><execute>gimp</execute></action>
+  </item>
+  <item label="Inkscape" icon="/usr/share/icons/Faenza/apps/16/inkscape.png">
+    <action name="Execute"><execute>inkscape</execute></action>
+  </item>
+  <menu id="otherapps" label="Lesser-used apps">
+    <item label="Firefox" icon="/usr/share/icons/Faenza/apps/16/mozilla-firefox.png">
+        <action name="Execute"><execute>firefox</execute></action>
+    </item>
+    <item label="Thunderbird" icon="/usr/share/icons/Faenza/apps/16/mozilla-thunderbird.png">
+        <action name="Execute"><execute>thunderbird</execute></action>
+    </item>
+    <item label="Gedit" icon="/usr/share/icons/Faenza/apps/16/mousepad.png">
+        <action name="Execute"><execute>gedit</execute></action>
+    </item>
+    <item label="Libreoffice" icon="/usr/share/icons/Faenza/apps/16/office-writer.png">
+        <action name="Execute"><execute>libreoffice</execute></action>
+    </item>
+    <item label="Skype" icon="/usr/share/icons/Faenza/apps/16/skype.png">
+        <action name="Execute"><execute>skype</execute></action>
+    </item>
+    <item label="Deluge Torrent Client" icon="/usr/share/icons/Faenza/apps/16/package-manager-icon.png">
+        <action name="Execute"><execute>deluge</execute></action>
+    </item>
+    <separator />
+    <item label="Character Map">
+        <action name="Execute"><execute>gucharmap</execute></action>
+    </item>
+    <item label="OpenShot Video Editor" icon="/usr/share/icons/Faenza/apps/16/openshot.png">
+        <action name="Execute"><execute>openshot</execute></action>
+    </item>
+    <item label="puddletag MP3 tagger">
+        <action name="Execute"><execute>puddletag</execute></action>
+    </item>
+  </menu>
+  <separator />
+  <menu id="actions-menu" label="Actions">
+        <item label="Mount ssh" icon="/usr/share/icons/Faenza/apps/16/usermount.png">
+        <action name="Execute"><execute>mountssh</execute></action>
+        </item>
+        <item label="Connect to music stream" icon="/usr/share/icons/Faenza/apps/16/minitunes.png">
+        <action name="Execute"><execute>lala</execute></action>
+        </item>
+        <item label="Reset keymap (Proylatin)" icon="/usr/share/icons/Faenza/apps/16/im-chooser.png">
+        <action name="Execute"><execute>setxkbmap proylatin</execute></action>
+        </item>
+        <item label="Reset keymap (US)" icon="/usr/share/icons/Faenza/apps/16/im-chooser.png">
+            <action name="Execute"><execute>setxkbmap us</execute></action>
+        </item>
+        <item label="xkill" icon="/usr/share/icons/Faenza/apps/16/system-hibernate.png">
+            <action name="Execute"><execute>xkill</execute></action>
+        </item>
+        <item label="Reconfigure openbox">
+            <action name="Reconfigure" />
+        </item>
+        <item label="Restart openbox">
+            <action name="Restart" />
+        </item>
+  </menu>
+  <separator />
   <!-- This requires the presence of the 'menu' package to work -->
-  <menu id="/Debian" />
+  
+  <menu id="/Debian" label="Full Menu" />
+  
   <separator />
+
   <menu id="client-list-menu" />
-  <separator />
-  <item label="Start all">
-   <action name="Execute"><execute>startall</execute></action>
-  </item>
-  <seperator />
 			
-  <item label="ObConf">
-    <action name="Execute"><execute>obconf</execute></action>
-  </item>
-  <item label="Reconfigure">
-    <action name="Reconfigure" />
-  </item>
-  <item label="Restart">
-    <action name="Restart" />
-  </item>
   <separator />
-  <item label="Lock">
-	<action name="Execute"> <execute>xlock -mousemotion -mode blank -bg black -fg grey30</execute></action>
+
+  <menu id="config" label="Configuration" icon="/usr/share/icons/Faenza/apps/16/paprefs.png">
+    <item label="Openbox Configuration">
+        <action name="Execute"><execute>obconf</execute></action>
+    </item>
+    <item label="Reconfigure openbox">
+        <action name="Reconfigure" />
+    </item>
+    <item label="Restart openbox">
+        <action name="Restart" />
+    </item>
+  <separator />
+
+    <item label="Gnome Control Center">
+        <action name="Execute"><execute>gnome-control-center</execute></action>
+    </item>
+    <item label="Gnome Tweak Tool">
+        <action name="execute"><execute>gnome-tweak-tool</execute></action>
+    </item>
+    <separator />
+    <item label="Software Center">
+        <action name="execute"><execute>software-center</execute></action>
+    </item>
+    <item label="Update Manager">
+        <action name="execute"><execute>update-manager</execute></action>
+    </item>
+
+
+  </menu>
+
+  <separator />
+  <item label="Lock Screen" icon="/usr/share/icons/Faenza/apps/16/gdm.png">
+	<action name="Execute"> <execute>gnome-screensaver-command -a</execute></action>
   </item>    
-  <item label="Suspend">
+  <item label="Suspend" icon="/usr/share/icons/Faenza/apps/16/xscreensaver.png">
 	<action name="Execute"> <execute>suspend.sh</execute></action>
-  </item>  
-  <item label="Reboot">
+  </item> 
+  <menu id="system" label="Shutdown &amp; Reboot">
+  <item label="Reboot" icon="/usr/share/icons/Faenza/apps/16/gnome-session-reboot.png">
 	<action name="Execute"> <execute>sudo shutdown -r now</execute></action>
   </item>
-  <item label="Shut down">
-   <action name="Execute"> <execute>sudo shutdown -h now</execute></action></item>
-  <separator />
-  <item label="Exit">
+  <item label="Shut down" icon="/usr/share/icons/Faenza/apps/16/gnome-logout.png">
+      <action name="Execute"> <execute>sudo shutdown -h now</execute></action>
+  </item>
+  <item label="Exit Session">
     <action name="Exit" />
   </item>
+  </menu>
+  <separator />
 </menu>
 
 </openbox_menu>
