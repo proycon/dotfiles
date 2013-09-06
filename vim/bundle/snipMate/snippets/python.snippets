@@ -633,6 +633,10 @@ snippet ii
 	import os
 	import sys
 
+snippet idd
+	from collections import defaultdict
+
+
 snippet now
 	datetime.datetime.now()
 
@@ -728,6 +732,19 @@ snippet server
 			reactor.listenTCP(port, Factory(settings))
 			reactor.run()
 
+snippet client
+	import socket
 
+	class Client():
+		def __init__(self,host= "localhost",port=12346):        
+			self.BUFSIZE = 1024
+			self.socket = socket.socket(socket.AF_INET,socket.SOCK_STREAM) #Create the socket
+			self.socket.settimeout(120)
+			assert isinstance(port,int) 
+			self.socket.connect((host, port)) #Connect to server
+
+		def process(self, sentence):
+			self.socket.send(sentence+ "\r\n")
+			return self.socket.recv(self.BUFSIZE).strip()
 
 
