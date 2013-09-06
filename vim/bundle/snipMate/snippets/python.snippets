@@ -707,5 +707,27 @@ snippet httpserver
 			reactor.listenTCP(port, server.Site(Resource(settings)))
 			reactor.run()
 
+snippet server
+	from twisted.internet import protocol, reactor
+	from twisted.protocols import basic
+
+	class Protocol(basic.LineReceiver):
+		def lineReceived(self, sentence):
+			#self.factory.settings
+			self.sendLine(sentence) #echo back
+
+	class Factory(protocol.ServerFactory):
+		protocol = Protocol
+
+		def __init__(self, settings):
+			self.settings = settings #custom thing, just an example
+			
+
+	class Server:
+		def __init__(self, settings, port=12346):
+			reactor.listenTCP(port, Factory(settings))
+			reactor.run()
+
+
 
 
