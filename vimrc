@@ -379,6 +379,7 @@ command! Spen setlocal spell spelllang=en_gb
 command! Spus setlocal spell spelllang=en_us
 command! Spnl setlocal spell spelllang=nl
 command! Spbr setlocal spell spelllang=pt_br
+command! Sppt setlocal spell spelllang=pt
 command! Spes setlocal spell spelllang=es
 command! Spit setlocal spell spelllang=it
 
