@@ -7,7 +7,11 @@ snippet py3
 snippet imp
 	import ${1:module}
 # Module Docstring
+snippet p
+	print(${1})
 snippet printe
+	print(${1:s},file=sys.stderr)
+snippet pe
 	print(${1:s},file=sys.stderr)
 snippet printf
 	print(${1:s},file=f)
@@ -17,6 +21,18 @@ snippet docs
 	Author: ${2:`g:snips_author`}
 	Description: ${3}
 	'''
+snippet header
+	################################################
+	# ${1:Title}
+	#	by Maarten van Gompel (proycon)
+	#	proycon AT anaproy DOT nl
+	#	Centre for Language Studies Radboud University Nijmegen
+	#
+	# ${2:Description}
+	#
+	# Licensed under GNU Public License v3
+	#
+	################################################
 snippet wh
 	while ${1:condition}:
 		${2:# code...}
@@ -573,6 +589,11 @@ snippet matrix
 	import numpy as np
 	M = np.mat([[1,0,0],[0,1,0],[0,0,1]])
 
+snippet enc
+	encoding='utf-8'
+
+
+
 snippet mail
 	import smtplib
 	from email.mime.text import MIMEText
@@ -586,3 +607,105 @@ snippet mail
 	s = smtplib.SMTP(${5:'localhost'})
 	s.sendmail(from, [to], msg.as_string())
 	s.quit()
+
+snippet opb
+	os.path.basename(${1})
+
+snippet opd
+	os.path.dirname(${1})
+
+snippet dtdt
+	datetime.datetime.${1:now()}
+
+snippet ix
+	import lxml.etree
+
+snippet idt
+	import datetime.datetime
+
+snippet im
+	import math
+
+snippet iop
+	import os.path
+
+snippet ii
+	import os
+	import sys
+
+snippet now
+	datetime.datetime.now()
+
+snippet stripext
+	'.'join(${1:s}.split('.')[:-1])
+
+snippet super
+	super(${1}, self).${2:__init__}()}
+
+snippet webpy
+	import web
+			
+	urls = (
+		'/(.*)', 'hello'
+	)
+	app = web.application(urls, globals())
+
+	class hello:        
+		def GET(self, name):
+			if not name: 
+				name = 'World'
+			return 'Hello, ' + name + '!'
+
+	if __name__ == "__main__":
+		app.run()
+
+snippet pairwise
+	from itertools import tee, izip
+	def pairwise(l)
+		"""[1,2,3,4] -> [(1,2),(2,3),(3,4)]"""
+		a, b = tee(l)
+		next(b, None)
+		return izip(a,b)
+
+snippet pairwise2
+	def pairwise2(l)
+		"""[1,2,3,4] -> [(1,2),(3,4)]"""
+		a = iter(l)
+		return zip(a,a)
+
+snippet httpserver
+	from twisted.web import server, resource
+	from twisted.internet import reactor
+
+	class Resource(resource.Resource):
+		isLeaf = True
+		numberRequests = 0
+
+		def __init__(self, settings):
+			self.settings = settings
+
+		def render_GET(self, request):
+			self.numberRequests += 1
+			if b'input' in request.args:
+				request.setHeader(b"content-type", b"application/xml")
+				print("Server input: ", request.args[b'input'][0], file=sys.stderr)
+				return ""
+			else:
+				request.setHeader(b"content-type", b"text/html")
+				return b"""<?xml version="1.0" encoding="utf-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><html>
+	<head>
+		<meta http-equiv="content-type" content="application/xhtml+xml; charset=utf-8"/>
+		<title></title>
+	</head>
+	<body>
+	</body>
+	</html>"""
+
+	class Server:
+		def __init__(self, port, settings):
+			assert isinstance(port, int)
+			reactor.listenTCP(port, server.Site(Resource(settings)))
+			reactor.run()
+
+
+
