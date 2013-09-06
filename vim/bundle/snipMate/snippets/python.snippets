@@ -108,7 +108,37 @@ snippet getopt
 				sys.exit(0)
 			elif o == "${3:-f}":
 				${4:pass}
+snippet argparse
+	import argparse
+    parser = argparse.ArgumentParser(description="", formatter_class=argparse.ArgumentDefaultsHelpFormatter)
+    parser.add_argument('--storeconst',dest='settype',help="", action='store_const',const='somevalue')
+    parser.add_argument('-f','--dataset', type=str,help="", action='store',default="",required=False)
+    parser.add_argument('-i','--dataset', type=int,help="", action='store',default="",required=False)
+	parser.add_argument('bar', nargs='+', help='bar help')
+    args = parser.parse_args()
 snippet importfuture
 	from __future__ import print_function, unicode_literals, division, absolute_import
+snippet stripaccents
+	unicodedata.normalize('NFKD',${1}).encode('ascii','ignore')
+snippet readxml
+	import lxml.etree
+	doc = lxml.etree.parse(${1}).getroot()
+	for element in doc:
+		element.tag
+		element.attrib
+	for element in doc.xpath("//test"):
+		${2:pass}
+snippet readzip
+	import zipfile
+	with zipfile.ZipFile(${1},'r',zipfile.ZIP_DEFLATED) as f:
+		${2:pass}
+snippet readgzip
+	import gzip
+	with gzip.open(${1},'r') as f:
+		${2:pass}
+snippet readbz2
+	import bz2
+	with bz2.open(${1},'r') as f:
+		${2:pass}
 snippet pdb
 	import pdb; pdb.set_trace()	
