@@ -141,12 +141,13 @@ snippet getopt
 				${4:pass}
 snippet argparse
 	import argparse
-	parser = argparse.ArgumentParser(description="", formatter_class=argparse.ArgumentDefaultsHelpFormatter)
+	parser = argparse.ArgumentParser(description="${1}", formatter_class=argparse.ArgumentDefaultsHelpFormatter)
 	parser.add_argument('--storeconst',dest='settype',help="", action='store_const',const='somevalue')
 	parser.add_argument('-f','--dataset', type=str,help="", action='store',default="",required=False)
-	parser.add_argument('-i','--dataset', type=int,help="", action='store',default="",required=False)
+	parser.add_argument('-i','--number',dest="num", type=int,help="", action='store',default="",required=False)
 	parser.add_argument('bar', nargs='+', help='bar help')
 	args = parser.parse_args()
+	#args.storeconst, args.dataset, args.num, args.bar
 snippet importfuture
 	from __future__ import print_function, unicode_literals, division, absolute_import
 snippet stripaccents
@@ -155,9 +156,14 @@ snippet readxml
 	import lxml.etree
 	doc = lxml.etree.parse(${1}).getroot()
 	for element in doc:
-		element.tag
-		element.attrib
+		#element.tag, element.attrib['blah'], element.text
+		${2:pass}
 	for element in doc.xpath("//test"):
+		${3:pass}
+snippet xpath
+	doc = lxml.etree.parse(${1}).getroot()
+	for element in doc.xpath("//test"):
+		#element.tag, element.attrib['blah'], element.text
 		${2:pass}
 snippet readtab
 	with open(${1},'r',encoding='utf-8') as f:
@@ -472,6 +478,34 @@ snippet xslt
 		with open(targetfilename,'wb') as f:
 			f.write( lxml.etree.tostring(transformed, pretty_print=True, encoding=encoding) )
 
+snippet printxml
+	print(lxml.etree.tostring(${1:xml}, pretty_print=True, encoding='utf-8'))
+
+snippet xmlprint
+	print(lxml.etree.tostring(${1:xml}, pretty_print=True, encoding='utf-8'))
+
+snippet newxml Using lxml.etree
+	import lxml.etree
+	xml = lxml.etree.Element(${1:"root"})
+	c = lxml.etree.Element(${2:"child"})
+	c.text = "text"
+	xml.append(c)
+	lxml.etree.tostring(xml, pretty_print=True, encoding='utf-8')
+
+
+snippet newxml Using lxml.builder.E
+	from lxml.builder import E
+	xml = E.root(
+		E.child("text",someattrib="blah")
+	)
+
+snippet newxml Using lxml.builder.ElementMaker with regard for namespaces
+	from lxml.builder import E
+	E = ElementMaker(namespace=${1:"http://my.de/fault/namespace"}, nsmap={'ns' : $1}
+	xml = E.root(
+		E.child("text",someattrib="blah")
+	)
+
 snippet frogclient
 	from pynlpl.clients.frogclient import FrogClient
 
@@ -505,7 +539,7 @@ snippet timbl
 	print(classifier.getAccuracy())
 
 
-snippet multiprocessing
+snippet mp Simple multiprocessing with Process
 	from multiprocessing import Process
 
 	def f(name):
@@ -516,7 +550,7 @@ snippet multiprocessing
 	    p.start()
 	    p.join()
 
-snippet multiprocessingpool
+snippet mp Multiprocessing with a pool
 	from multiprocessing import Pool
 
 	def f(x):
@@ -686,7 +720,7 @@ snippet pairwise2
 		a = iter(l)
 		return zip(a,a)
 
-snippet httpserver
+snippet httpserver Twisted-based HTTP Server
 	from twisted.web import server, resource
 	from twisted.internet import reactor
 
