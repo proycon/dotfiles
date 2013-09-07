@@ -154,57 +154,79 @@ snippet stripaccents
 	unicodedata.normalize('NFKD',${1}).encode('ascii','ignore')
 snippet readxml
 	import lxml.etree
-	doc = lxml.etree.parse(${1}).getroot()
+	doc = lxml.etree.parse(${1:filename}).getroot()
 	for element in doc:
 		#element.tag, element.attrib['blah'], element.text
 		${2:pass}
 	for element in doc.xpath("//test"):
 		${3:pass}
 snippet xpath
-	doc = lxml.etree.parse(${1}).getroot()
+	doc = lxml.etree.parse(${1:filename}).getroot()
 	for element in doc.xpath("//test"):
 		#element.tag, element.attrib['blah'], element.text
 		${2:pass}
 snippet readtab
-	with open(${1},'r',encoding='utf-8') as f:
+	with open(${1:filename},'r',encoding='utf-8') as f:
 		for line in f:
 			if line and line[0] != '#': 
 				fields = line.split("\t")
-snippet readwords
-	with open(${1},'r',encoding='utf-8') as f:
+snippet readwords Read words from file (file already tokenised)
+	with open(${1:filename},'r',encoding='utf-8') as f:
 		for line in f:
 			if line:
 				words = line.split(" ")
 				for word in words:
 					${2:pass}
+snippet readwords Read words from file (tokenise on the fly)
+	from pynlpl.textprocessors import Tokenizer
+	with open(${1:filename},'r',encoding='utf-8') as f:
+		for sentence in Tokenizer(f, ${2:splitsentences_bool},${3:onesentenceperline_bool}):
+			if sentence:
+				words = sentence.split(" ")
+				for word in words:
+					${4:pass}
+snippet readngrams Read ngrams from file (file already tokenised)
+	from pynlpl.textprocessors import Windower
+	with open(${1:filename},'r',encoding='utf-8') as f:
+		for line in f:
+			if line:
+				for ngram in Windower(line.split(" "),${2:n},None,None):
+					${2:pass}
+snippet readngrams Read ngrams from file (tokenise on the fly)
+	from pynlpl.textprocessors import Tokenizer, Windower
+	with open(${1:filename},'r',encoding='utf-8') as f:
+		for sentence in Tokenizer(f, ${2:splitsentences_bool},${3:onesentenceperline_bool}):
+			if sentence:
+				for ngram in Windower(sentence.split(" "),${4:n},None,None):
+					${4:pass}
 snippet readcsv
 	import csv
-	with open(${1}, 'r') as f:
+	with open(${1:filename}, 'r') as f:
 		reader = csv.reader(f, delimiter=',', quotechar='"')
 		for row in reader:
 			print(', '.join(row))
 snippet readzip
 	import zipfile
-	with zipfile.ZipFile(${1},'r',zipfile.ZIP_DEFLATED) as f:
+	with zipfile.ZipFile(${1:filename},'r',zipfile.ZIP_DEFLATED) as f:
 		${2:pass}
 snippet readgzip
 	import gzip
-	with gzip.open(${1},'r') as f:
+	with gzip.open(${1:filename},'r') as f:
 		${2:pass}
 snippet readbz2
 	import bz2
-	with bz2.open(${1},'r') as f:
+	with bz2.open(${1:filename},'r') as f:
 		${2:pass}
 snippet readfolia
 	from pynlpl.formats import folia
-	doc = folia.Document(file=${1})
+	doc = folia.Document(file=${1:filename})
 snippet newfolia
 	from pynlpl.formats import folia
 	doc = folia.Document(id=${1})
 	doc.append(folia.Text, id="text.1")
 snippet writecsv
 	import csv
-	with open(${1}, 'w') as f:
+	with open(${1:filename}, 'w',encoding='utf-8') as f:
 		writer = csv.writer(f, delimiter=',',quotechar='"')
 		writer.writerows(${2:someiterable})
 snippet plotfunc
@@ -790,4 +812,34 @@ snippet client
 			self.socket.send(sentence+ "\r\n")
 			return self.socket.recv(self.BUFSIZE).strip()
 
+snippet isint
+	isinstance($1,int)
+
+snippet isstr
+	isinstance($1,str)
+
+snippet isfloat
+	isinstance($1,float)
+
+snippet islist
+	isinstance($1,list)
+
+snippet isdict
+	isinstance($1,dict)
+
+snippet isa
+	isinstance($1,${2:type})
+
+snippet sf
+	self.${1} = $1
+
+snippet savefile
+	with open(${1:filename},'w',encoding='utf-8') as f:
+		f.write(${2})
+snippet classeval
+	from pynlpl.evaluation import ClassEvaluation
+	e = ClassEvaluation(${1:goals}, ${2:observations})
+	print(e)
+	print(e.confusionmatrix())
+	#e.accuracy(cls), fscore, recall, precision etc
 
