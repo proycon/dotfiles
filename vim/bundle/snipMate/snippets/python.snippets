@@ -7,18 +7,38 @@ snippet py3
 snippet imp
 	import ${1:module}
 # Module Docstring
+snippet p
+	print(${1})
+snippet printe
+	print(${1:s},file=sys.stderr)
+snippet pe
+	print(${1:s},file=sys.stderr)
+snippet printf
+	print(${1:s},file=f)
 snippet docs
 	'''
 	File: ${1:`Filename('$1.py', 'foo.py')`}
 	Author: ${2:`g:snips_author`}
 	Description: ${3}
 	'''
+snippet header
+	################################################
+	# ${1:Title}
+	#	by Maarten van Gompel (proycon)
+	#	proycon AT anaproy DOT nl
+	#	Centre for Language Studies Radboud University Nijmegen
+	#
+	# ${2:Description}
+	#
+	# Licensed under GNU Public License v3
+	#
+	################################################
 snippet wh
 	while ${1:condition}:
-		${2:# code...}
+		${2:pass # code...}
 snippet for
 	for ${1:needle} in ${2:haystack}:
-		${3:# code...}
+		${3:pass # code...}
 # New Class
 snippet cl
 	class ${1:ClassName}(${2:object}):
@@ -35,7 +55,18 @@ snippet def
 snippet deff
 	def ${1:fname}(${2:`indent('.') ? 'self' : ''`}):
 		${3}
-# New Method
+snippet glob
+	for filepath in glob.glob(${1}):
+		filename = os.path.basename(filepath)
+		${2}
+snippet transpose
+	zip(*${1:iterable})
+snippet flatten
+	sum(${1:iterable},[])
+snippet gcd
+	def gcd(a,b):
+	    while(b):a,b=b,a%b
+	    return a	
 snippet defs
 	def ${1:mname}(self, ${2:arg}):
 		${3:pass}
@@ -100,15 +131,715 @@ snippet getopt
 			# print help information and exit:
 			print(str(err),file=sys.stderr)
 			usage()
-			sys.exit(2)     
+			sys.exit(2)
 
 		for o, a in opts:
-			if o == "--help" or o == '-h':	
+			if o == "--help" or o == '-h':
 				usage()
 				sys.exit(0)
 			elif o == "${3:-f}":
 				${4:pass}
+snippet argparse
+	import argparse
+	parser = argparse.ArgumentParser(description="${1}", formatter_class=argparse.ArgumentDefaultsHelpFormatter)
+	parser.add_argument('--storeconst',dest='settype',help="", action='store_const',const='somevalue')
+	parser.add_argument('-f','--dataset', type=str,help="", action='store',default="",required=False)
+	parser.add_argument('-i','--number',dest="num", type=int,help="", action='store',default="",required=False)
+	parser.add_argument('bar', nargs='+', help='bar help')
+	args = parser.parse_args()
+	#args.storeconst, args.dataset, args.num, args.bar
 snippet importfuture
 	from __future__ import print_function, unicode_literals, division, absolute_import
+snippet stripaccents
+	unicodedata.normalize('NFKD',${1}).encode('ascii','ignore')
+snippet readxml
+	import lxml.etree
+	doc = lxml.etree.parse(${1:filename}).getroot()
+	for element in doc:
+		#element.tag, element.attrib['blah'], element.text
+		${2:pass}
+	for element in doc.xpath("//test"):
+		${3:pass}
+snippet xpath
+	doc = lxml.etree.parse(${1:filename}).getroot()
+	for element in doc.xpath("//test"):
+		#element.tag, element.attrib['blah'], element.text
+		${2:pass}
+snippet readtab
+	with open(${1:filename},'r',encoding='utf-8') as f:
+		for line in f:
+			if line and line[0] != '#': 
+				fields = line.split("\t")
+snippet readwords Read words from file (file already tokenised)
+	with open(${1:filename},'r',encoding='utf-8') as f:
+		for line in f:
+			if line:
+				words = line.split(" ")
+				for word in words:
+					${2:pass}
+snippet readwords Read words from file (tokenise on the fly)
+	from pynlpl.textprocessors import Tokenizer
+	with open(${1:filename},'r',encoding='utf-8') as f:
+		for sentence in Tokenizer(f, ${2:splitsentences_bool},${3:onesentenceperline_bool}):
+			if sentence:
+				words = sentence.split(" ")
+				for word in words:
+					${4:pass}
+snippet readngrams Read ngrams from file (file already tokenised)
+	from pynlpl.textprocessors import Windower
+	with open(${1:filename},'r',encoding='utf-8') as f:
+		for line in f:
+			if line:
+				for ngram in Windower(line.split(" "),${2:n},None,None):
+					${2:pass}
+snippet readngrams Read ngrams from file (tokenise on the fly)
+	from pynlpl.textprocessors import Tokenizer, Windower
+	with open(${1:filename},'r',encoding='utf-8') as f:
+		for sentence in Tokenizer(f, ${2:splitsentences_bool},${3:onesentenceperline_bool}):
+			if sentence:
+				for ngram in Windower(sentence.split(" "),${4:n},None,None):
+					${4:pass}
+snippet readcsv
+	import csv
+	with open(${1:filename}, 'r') as f:
+		reader = csv.reader(f, delimiter=',', quotechar='"')
+		for row in reader:
+			print(', '.join(row))
+snippet readzip
+	import zipfile
+	with zipfile.ZipFile(${1:filename},'r',zipfile.ZIP_DEFLATED) as f:
+		${2:pass}
+snippet readgzip
+	import gzip
+	with gzip.open(${1:filename},'r') as f:
+		${2:pass}
+snippet readbz2
+	import bz2
+	with bz2.open(${1:filename},'r') as f:
+		${2:pass}
+snippet readfolia
+	from pynlpl.formats import folia
+	doc = folia.Document(file=${1:filename})
+snippet newfolia
+	from pynlpl.formats import folia
+	doc = folia.Document(id=${1})
+	doc.append(folia.Text, id="text.1")
+snippet writecsv
+	import csv
+	with open(${1:filename}, 'w',encoding='utf-8') as f:
+		writer = csv.writer(f, delimiter=',',quotechar='"')
+		writer.writerows(${2:someiterable})
+snippet plotfunc
+	import pylab
+	import numpy as np
+
+	pylab.figure(figsize=(8,5), dpi=80)
+	pylab.subplot(111)
+
+	X = np.linspace(-1, 1, 100,endpoint=True)
+	f = X**2
+
+	pylab.plot(X, f, color="blue", linewidth=2.5, linestyle="-")
+	#pylab.plot(X, S, color="red", linewidth=2.5, linestyle="-")
+
+	pylab.xlim(-1, 1)
+	pylab.xticks([-1,-0.5,0,0.5,1])
+
+	pylab.ylim(f.min()*1.1,f.max()*1.1)
+	pylab.yticks([-1, 0, +1])
+
+	# pylab.savefig("../figures/exercice_5.png",dpi=72)
+	pylab.show()
+
+snippet plotbar
+	import pylab
+	import numpy as np
+
+	n = 12
+	X = np.arange(n)
+	Y1 = (1-X/float(n)) * np.random.uniform(0.5,1.0,n)
+	Y2 = (1-X/float(n)) * np.random.uniform(0.5,1.0,n)
+
+	pylab.bar(X, +Y1, facecolor='#9999ff', edgecolor='white')
+	pylab.bar(X, -Y2, facecolor='#ff9999', edgecolor='white')
+
+	for x,y in zip(X,Y1):
+		pylab.text(x+0.4, y+0.05, '%.2f' % y, ha='center', va= 'bottom')
+
+	pylab.ylim(-1.25,+1.25)
+	pylab.show()
+
+snippet httpget
+	import urllib.request
+	import urllib parse
+	#opener = urllib.request.build_opener()
+	#opener.addheaders = [('User-agent', 'Mozilla/5.0')]
+	params = urllib.parse.urlencode({'foo': 1, 'bar': 2})
+	f = urllib.request.urlopen("http://${1}/" % params) #or opener.open()
+	for line in f:
+		${2:pass}
+snippet httppost
+	import urllib.request
+	import urllib parse
+	#opener = urllib.request.build_opener()
+	#opener.addheaders = [('User-agent', 'Mozilla/5.0')]
+	params = urllib.parse.urlencode({'foo': 1, 'bar': 2})
+	f = urllib.request.urlopen("http://${1}/", params) #or opener.open()
+	for line in f:
+		${2:pass}
+snippet httpauth
+	import urllib.request
+	auth_handler = urllib.request.HTTPBasicAuthHandler()
+	auth_handler.add_password(realm=realm,uri=url,user=user, passwd=password)
+	opener = urllib.request.build_opener(auth_handler)
+	urllib.request.install_opener(opener)
+	f = urllib.request.urlopen(url)
+	for line in f:
+		${2:pass}
+snippet httpescape
+	import urllib.parse.quote  #Python 3, use urllib.quote in Python 2
+	s = urllib.parse.quote(s)
+snippet htmlunescape
+	import html.parser
+	s = html.parser.HTMLParser().unescape(${1})
+snippet htmlescape
+	import html
+	s = html.escape(${1})
+snippet xmlunescape
+	from xml.sax.saxutils import escape, unescape
+	unescape(${1})
+
+snippet xmlescape
+	from xml.sax.saxutils import escape, unescape
+	escape(${1})
+
+snippet clamclient
+	import clam.common.client
+	import time
+	client = clam.common.client.CLAMClient(url, user, password)
+	#client.index()
+	client.create(project)
+	client.upload(project, inputtemplate, localfilepath, **parameters)
+	client.start(project, parameters)
+	while data.status == 1:
+		data = client.get()
+		time.sleep(1)
+	if data.status == 2:
+		client.download(project, filepath, localtargetfile)
+		client.delete(project)
+	else:
+		raise Exception("Error")
+snippet getalllinks
+	from urllib.request import urlopen #python2: urllib2.urlopen
+	import re
+
+	#connect to a URL
+	website = urlopen(url)
+
+	#read html code
+	html = website.read()
+
+	#use re.findall to get all the links
+	links = re.findall('"((http|ftp)s?://.*?)"', html)
+
+	print(links)
+snippet numericmethods
+	def __add__(self, other):
+		${1:pass}
+
+	def __sub__(self, other):
+		${2:pass}
+
+	def __mul__(self, other):
+		${3:pass}
+
+	def __div__(self, other):
+		${4:pass}
+
+	def __pow__(self, pow):
+		${4:pass}
+
+snippet boolmethods
+	def __and__(self, other):
+		${12:pass}
+
+	def __neg__(self, other):
+		${13:pass}
+
+	def __or__(self, other):
+		${14:pass}
+
+snippet cmpmethods
+	def __eq__(self, other):
+		${1:pass}
+
+	def __ne__(self, other):
+		${2:pass}
+
+	def __lt__(self, other):
+		${3:pass}
+
+	def __le__(self, other):
+		${4:pass}
+
+	def __gt__(self, other):
+		${5:pass}
+
+	def __ge__(self, other):
+		${6:pass}
+
+snippet containermethods
+	def __len__(self):
+		${1:pass}
+
+	def __getitem__(self, key):
+		${2:pass}
+
+	def __setitem__(self, key, value):
+		${3:pass}
+
+	def __delitem__(self, key):
+		${4:pass}
+
+	def __iter__(self):
+		${5:pass}
+
+	def __reversed__(self):
+		${6:pass}
+
+	def __contains__(self, item):
+		${7:pass}
+
+snippet test
+	class Test${1:Class}(unittest.TestCase):
+		def setUp(self):
+			${2:pass}
+
+		def tearDown(self):
+			${3:pass}
+
+		def test_${4:name}(self):
+			${5:pass}
+
+snippet testeq
+	self.assertEqual(${1:first},${2:second})
+
+snippet test1
+	self.assertTrue(${1:first})
+
+snippet test0
+	self.assertFalse(${1:first})
+
 snippet pdb
-	import pdb; pdb.set_trace()	
+	import pdb; pdb.set_trace()
+
+snippet ipdb
+	import ipdb; ipdb.set_trace()
+snippet npa
+	np.array(${1})
+
+snippet colorf
+	ansicolors = {"red":31,"green":32,"yellow":33,"blue":34,"magenta":35, "bold":1 }
+	def colorf(color):
+		return lambda x: "\x1B[" + ansicolors[color] + "m" + x + "\x1B[0m"
+		
+snippet printc
+	print(colorf(${1:color})(${2}))
+
+snippet printce
+	print(colorf(${1:color})(${2}), file=sys.stderr)
+
+snippet begintime
+	begintime = time.time()
+
+snippet printtime
+	print(${1:datetime.datetime.now()}.strftime(${2:"%Y:%M:%D %h:%m:%s"})
+
+snippet printdate
+	print(${1:datetime.datetime.now()}.strftime(${2:"%Y:%M:%D"})
+
+snippet printdatetime
+	print(${1:datetime.datetime.now()}.strftime(${2:"%Y:%M:%D %h:%m:%s"})
+
+snippet duration
+	int(time.time() - begintime)
+
+snippet sample
+	random.sample(${1:iterable},${2:size})
+
+snippet windower
+	from pynlpl.textprocessors import Windower
+	for ngram in Windower(${1:iterable},${2:n}, None, None):
+		${2:pass}
+	
+snippet multiwindower
+	from pynlpl.textprocessors import MultiWindower
+	for ngram in MultiWindower(${1:iterable},${2:1}, ${3:maxn}, None, None):
+		${2:pass}
+
+snippet tokenize
+	from pynlpl.textprocessors import Tokenizer
+	with open(${1:filename},'r',encoding='utf-8') as f:
+		for sentence in Tokenizer(f, ${2:splitsentences_bool},${3:onesentenceperline_bool}):
+			${4:pass}
+
+snippet calcoverlap
+	from pynlpl.textprocessors import calculate_overlap
+	for overlap, placement in calculate_overlap(${1:haystack}, ${2:needle},${3:allowpartial_bool}):
+		${4:pass}
+
+snippet xslt
+	import lxml.etree
+	def xslttransform(xsltfilename, sourcefilename, targetfilename, encoding = 'utf-8'):    
+		xsldir = os.path.dirname(__file__)
+		if xsltfilename[0] != '/': xsltfilename = xsldir + '/' + xsltfilename
+		xslt = lxml.etree.parse(xsltfilename)
+		transformer = lxml.etree.XSLT(xslt)
+		parsedsource = lxml.etree.parse(sourcefilename)
+		transformed = transformer(parsedsource)
+		with open(targetfilename,'wb') as f:
+			f.write( lxml.etree.tostring(transformed, pretty_print=True, encoding=encoding) )
+
+snippet printxml
+	print(lxml.etree.tostring(${1:xml}, pretty_print=True, encoding='utf-8'))
+
+snippet xmlprint
+	print(lxml.etree.tostring(${1:xml}, pretty_print=True, encoding='utf-8'))
+
+snippet newxml Using lxml.etree
+	import lxml.etree
+	xml = lxml.etree.Element(${1:"root"})
+	c = lxml.etree.Element(${2:"child"})
+	c.text = "text"
+	xml.append(c)
+	lxml.etree.tostring(xml, pretty_print=True, encoding='utf-8')
+
+
+snippet newxml Using lxml.builder.E
+	from lxml.builder import E
+	xml = E.root(
+		E.child("text",someattrib="blah")
+	)
+
+snippet newxml Using lxml.builder.ElementMaker with regard for namespaces
+	from lxml.builder import E
+	E = ElementMaker(namespace=${1:"http://my.de/fault/namespace"}, nsmap={'ns' : $1}
+	xml = E.root(
+		E.child("text",someattrib="blah")
+	)
+
+snippet frogclient
+	from pynlpl.clients.frogclient import FrogClient
+
+	frogclient = FrogClient(${1:'localhost'},${2:port})
+	for sentence in sentences:
+		#sentence is a str
+		response = frogclient.process(sentence)
+		words = []
+		for i, (word, lemma, morph, pos) in enumerate(response):
+			if word:
+				words.append(( word,lemma,morph,pos) )
+
+snippet timbl
+	import timbl
+	classifier = timbl.TimblClassifier(${1:id}, ${2:timblopts} )
+
+	#add some instances
+	classifier.append( (1,0,0), 'financial')
+	classifier.append( (0,1,0), 'furniture')
+	classifier.append( (0,0,1), 'geographic')
+
+	classifier.train()
+	
+	#classifier.save()
+	classlabel, distribution, distance = classifier.classify( (1,0,0) )
+
+	#or create a test file:
+	#classifier.addinstance("testfile", (1,1,0),'geograpic' ) #this one will be wrongly classified as financial & furniture
+	#classifier.test("testfile")
+
+	print(classifier.getAccuracy())
+
+
+snippet mp Simple multiprocessing with Process
+	from multiprocessing import Process
+
+	def f(name):
+	    print('hello', name)
+
+	if __name__ == '__main__':
+	    p = Process(target=f, args=('bob',))
+	    p.start()
+	    p.join()
+
+snippet mp Multiprocessing with a pool
+	from multiprocessing import Pool
+
+	def f(x):
+		return x*x
+
+	if __name__ == '__main__':
+		with Pool(processes=4) as pool:        # start 4 worker processes
+			result = pool.apply_async(f, [10]) # evaluate "f(10)" asynchronously
+			print(result.get(timeout=1))       # prints "100" unless your computer is *very* slow
+			print(pool.map(f, range(10)))      # prints "[0, 1, 4,..., 81]"
+
+
+snippet defruncmd
+	def execheader(name,*outputfiles, **kwargs):
+		print("----------------------------------------------------",file=sys.stderr)
+		if outputfiles:
+			skip = True
+			for outputfile in outputfiles:
+				if not os.path.exists(outputfile):
+					skip = False
+					break
+			if skip:
+				print(colorf('bold')colorf('yellow")("Skipping " + name), file=sys.stderr)
+				return False
+		if 'cmd' in kwargs:
+			print("Calling " + name + " " + datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S'), file=sys.stderr)
+			print("Command "+ ": " + kwargs['cmd'], file=sys.stderr)
+		else:
+			print(colorf('bold')colorf('white')("Calling " + name + " " + datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S')),file=sys.stderr)
+		return True
+
+	def execfooter(name, r, *outputfiles, **kwargs):
+		if 'successcodes' in kwargs:
+			successcodes = kwargs['successcodes']
+		else:
+			successcodes = [0]
+		if r in successcodes:
+			print(colorf('bold')colorf('green')("Finished " + name + " " + datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S')),file=sys.stderr)
+		else:
+			print(colorf('bold')colorf('red')("Runtime error from " + name + ' (return code ' + str(r) + ') ' +datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S')),file=sys.stderr)
+			return False
+		if outputfiles:
+			error = False
+			for outputfile in outputfiles:
+				if os.path.exists(outputfile):
+					print("Produced output file " + outputfile,file=sys.stderr)
+				else:
+					print("Expected output file " + outputfile+ ", not produced!",file=sys.stderr)
+					error = True
+			if error:
+				return False
+		return True
+
+	def runcmd(cmd, name, *outputfiles, **kwargs):
+		if not execheader(name,*outputfiles, cmd=cmd): return True
+		r = subprocess.call(cmd, shell=True)
+		return execfooter(name, r, *outputfiles,**kwargs)
+
+snippet runcmd
+	r = runcmd(${1:cmd},${2:name},${3:*outputfiles})
+
+snippet mysql
+	import pymysql
+	conn = pymysql.connect(host=${1:'127.0.0.1'}, user=${2:'root'}, passwd=${3:None}, db='mysql')
+	cur = conn.cursor()
+	cur.execute("SELECT ${4:*} FROM ${5:somedatabase}")
+	for r in cur:
+		print(r)
+	cur.close()
+	conn.close()
+
+snippet linalg
+	import scipy.linalg
+	x = linalg.solve(a,b)
+
+snippet mat
+	np.mat([${1:[1,0,0],[0,1,0],[0,0,1]}])
+
+snippet enc
+	encoding='utf-8'
+
+snippet mail
+	import smtplib
+	from email.mime.text import MIMEText
+
+	msg = MIMEText(${1:"message"})
+
+	msg['Subject'] = ${2:"subject"}
+	from = msg['From'] = ${3:"from"}
+	to = msg['To'] = ${4:"to"}
+
+	s = smtplib.SMTP(${5:'localhost'})
+	s.sendmail(from, [to], msg.as_string())
+	s.quit()
+
+snippet opb
+	os.path.basename(${1})
+
+snippet opd
+	os.path.dirname(${1})
+
+snippet dtdt
+	datetime.datetime.${1:now()}
+
+snippet ix
+	import lxml.etree
+
+snippet idt
+	import datetime.datetime
+
+snippet im
+	import math
+
+snippet iop
+	import os.path
+
+snippet ii
+	import os
+	import sys
+
+snippet idd
+	from collections import defaultdict
+
+snippet inp
+	import numpy as np
+
+snippet isp
+	import scipy
+
+snippet now
+	datetime.datetime.now()
+
+snippet stripext
+	'.'join(${1:s}.split('.')[:-1])
+
+snippet super
+	super(${1}, self).${2:__init__}()}
+
+snippet webpy
+	import web
+			
+	urls = (
+		'/(.*)', 'hello'
+	)
+	app = web.application(urls, globals())
+
+	class hello:        
+		def GET(self, name):
+			if not name: 
+				name = 'World'
+			return 'Hello, ' + name + '!'
+
+	if __name__ == "__main__":
+		app.run()
+
+snippet pairwise
+	from itertools import tee, izip
+	def pairwise(l)
+		"""[1,2,3,4] -> [(1,2),(2,3),(3,4)]"""
+		a, b = tee(l)
+		next(b, None)
+		return izip(a,b)
+
+snippet pairwise2
+	def pairwise2(l)
+		"""[1,2,3,4] -> [(1,2),(3,4)]"""
+		a = iter(l)
+		return zip(a,a)
+
+snippet httpserver Twisted-based HTTP Server
+	from twisted.web import server, resource
+	from twisted.internet import reactor
+
+	class Resource(resource.Resource):
+		isLeaf = True
+		numberRequests = 0
+
+		def __init__(self, settings):
+			self.settings = settings
+
+		def render_GET(self, request):
+			self.numberRequests += 1
+			if b'input' in request.args:
+				request.setHeader(b"content-type", b"application/xml")
+				print("Server input: ", request.args[b'input'][0], file=sys.stderr)
+				return ""
+			else:
+				request.setHeader(b"content-type", b"text/html")
+				return b"""<?xml version="1.0" encoding="utf-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><html>
+	<head>
+		<meta http-equiv="content-type" content="application/xhtml+xml; charset=utf-8"/>
+		<title></title>
+	</head>
+	<body>
+	</body>
+	</html>"""
+
+	class Server:
+		def __init__(self, port, settings):
+			assert isinstance(port, int)
+			reactor.listenTCP(port, server.Site(Resource(settings)))
+			reactor.run()
+
+snippet server
+	from twisted.internet import protocol, reactor
+	from twisted.protocols import basic
+
+	class Protocol(basic.LineReceiver):
+		def lineReceived(self, sentence):
+			#self.factory.settings
+			self.sendLine(sentence) #echo back
+
+	class Factory(protocol.ServerFactory):
+		protocol = Protocol
+
+		def __init__(self, settings):
+			self.settings = settings #custom thing, just an example
+			
+
+	class Server:
+		def __init__(self, settings, port=12346):
+			reactor.listenTCP(port, Factory(settings))
+			reactor.run()
+
+snippet client
+	import socket
+
+	class Client():
+		def __init__(self,host= "localhost",port=12346):        
+			self.BUFSIZE = 1024
+			self.socket = socket.socket(socket.AF_INET,socket.SOCK_STREAM) #Create the socket
+			self.socket.settimeout(120)
+			assert isinstance(port,int) 
+			self.socket.connect((host, port)) #Connect to server
+
+		def process(self, sentence):
+			self.socket.send(sentence+ "\r\n")
+			return self.socket.recv(self.BUFSIZE).strip()
+
+snippet isint
+	isinstance($1,int)
+
+snippet isstr
+	isinstance($1,str)
+
+snippet isfloat
+	isinstance($1,float)
+
+snippet islist
+	isinstance($1,list)
+
+snippet isdict
+	isinstance($1,dict)
+
+snippet isa
+	isinstance($1,${2:type})
+
+snippet sf
+	self.${1} = $1
+
+snippet savefile
+	with open(${1:filename},'w',encoding='utf-8') as f:
+		f.write(${2})
+snippet classeval
+	from pynlpl.evaluation import ClassEvaluation
+	e = ClassEvaluation(${1:goals}, ${2:observations})
+	print(e)
+	print(e.confusionmatrix())
+	#e.accuracy(cls), fscore, recall, precision etc
+
