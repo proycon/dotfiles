@@ -71,7 +71,7 @@ fi
 alias vless='vim -R -u /usr/share/vim/vim72/macros/less.vim'
 alias l='ls'
 alias z='less -rN'
-alias less='less -rN'
+#alias less='less -rN'
 
 export MPD_HOST="proycon@anaproy.nl"
 
@@ -130,9 +130,9 @@ elif [[ $HOST == "applejack" || $HOST == "fluttershy" || $HOST == "rarity" || $H
 fi
 
 
-if [[ -f  /usr/share/source-highlight/src-hilite-lesspipe.sh ]]; then
-    export LESSOPEN="| /usr/share/source-highlight/src-hilite-lesspipe.sh %s"
-fi
+#if [[ -f  /usr/share/source-highlight/src-hilite-lesspipe.sh ]]; then
+#    export LESSOPEN="| /usr/share/source-highlight/src-hilite-lesspipe.sh %s"
+#fi
 
 
 alias ap='ssh -Y -A anaproy.nl'
