@@ -25,16 +25,21 @@ alternative_order text/plain text/html
 
 #set smtp_url=`python -c 'print "smtps://proycon:X@mail.anaproy.nl".replace("X",open("/home/proycon/.anaproy","r").read()[:-1]).strip()'`
 set from     = "proycon@anaproy.nl"
-set sendmail = "/usr/bin/msmtp -a proycon"
+set sendmail = "/usr/bin/msmtp"
 set sendmail_wait = 0
+set envelope_from=yes
+set use_envelope_from=yes
+macro generic "<esc>1" ":set from=proycon@anaproy.nl"
+macro generic "<esc>2" ":set from=m.vangompel@let.ru.nl"
+macro generic "<esc>3" ":set from=proycon@unilang.org"
 
 set ssl_verify_host = no
 set ssl_verify_dates = no
 set wait_key = no  
 
 set realname="Maarten van Gompel"
-set from="proycon@anaproy.nl"
-set use_from=yes
+#set from="proycon@anaproy.nl"
+#set use_from=yes
 set edit_headers = yes
 
 #set sidebar_width = 32 
@@ -123,19 +128,33 @@ set pgp_verify_command="gpg --no-verbose --batch --output - --verify %s %f"
 set pgp_decrypt_command="gpg --passphrase-fd 0 --no-verbose --batch --output - %f"
 set pgp_sign_command="gpg --no-verbose --batch --output - --passphrase-fd 0 --armor --detach-sign --textmode %?a?-u %a? %f"
 set pgp_clearsign_command="gpg --no-verbose --batch --output - --passphrase-fd 0 --armor --textmode --clearsign %?a?-u %a? %f"
-set pgp_encrypt_only_command="/usr/lib/mutt/pgpewrap gpg --batch --quiet --no-verbose --output - --encrypt --textmode --armor --always-trust --encrypt-to 0xFC29BDCDF15F5BE8 -- -r %r -- %f"
-set pgp_encrypt_sign_command="/usr/lib/mutt/pgpewrap gpg --passphrase-fd 0 --batch --quiet --no-verbose --textmode --output - --encrypt --sign %?a?-u %a? --armor --always-trust --encrypt-to 0xFC29BDCDF15F5BE8 -- -r %r -- %f"
+set pgp_encrypt_only_command="/usr/lib/mutt/pgpewrap gpg --batch --quiet --no-verbose --output - --encrypt --textmode --armor --always-trust --encrypt-to 0x1A31555C -- -r %r -- %f"
+set pgp_encrypt_sign_command="/usr/lib/mutt/pgpewrap gpg --passphrase-fd 0 --batch --quiet --no-verbose --textmode --output - --encrypt --sign %?a?-u %a? --armor --always-trust --encrypt-to 0x1A31555C -- -r %r -- %f"
 set pgp_import_command="gpg --no-verbose --import -v %f"
 set pgp_export_command="gpg --no-verbose --export --armor %r"
 set pgp_verify_key_command="gpg --no-verbose --batch --fingerprint --check-sigs %r"
 set pgp_list_pubring_command="gpg --no-verbose --batch --with-colons --list-keys %r" 
 set pgp_list_secring_command="gpg --no-verbose --batch --with-colons --list-secret-keys %r" 
 #set pgp_autosign=yes
-#set pgp_sign_as=PGP_KEY_ID
+set pgp_sign_as=0x1A31555C
 set pgp_replyencrypt=yes
 set pgp_timeout=1800
 set pgp_good_sign="^gpg: Good signature from"
 
+# automatically sign all outgoing messages
+#set crypt_autosign
+# sign only replies to signed messages
+set crypt_replysign
+
+# automatically encrypt outgoing messages
+#set crypt_autoencrypt=yes
+# encrypt only replies to signed messages
+#set crypt_replyencrypt=yes
+# encrypt and sign replies to encrypted messages
+set crypt_replysignencrypted=yes
+
+# automatically verify the sign of a message when opened
+set crypt_verify_sig=yes
 
 # Message Display Options
 set smart_wrap = yes        # Wrap at word boundaries if possible
