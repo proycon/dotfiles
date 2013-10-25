@@ -441,7 +441,7 @@ snippet npa
 snippet colorf
 	ansicolors = {"red":31,"green":32,"yellow":33,"blue":34,"magenta":35, "bold":1 }
 	def colorf(color):
-		return lambda x: "\x1B[" + ansicolors[color] + "m" + x + "\x1B[0m"
+		return lambda x: "\x1B[" + ansicolors[str(color)] + "m" + x + "\x1B[0m"
 		
 snippet printc
 	print(colorf(${1:color})(${2}))
