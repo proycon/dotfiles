@@ -41,6 +41,8 @@ map <Leader>l <c-w>l
 map <Leader>h <c-w>h
 
 
+nnoremap <Leader>d "_d
+xnoremap <Leader>d "_d
 
 " easier moving between tabs
 map <Leader>< <esc>:tabprevious<CR>
@@ -73,6 +75,7 @@ map <Leader>B <esc>:MiniBufExplorer<CR>
 
 " map sort function to a key
 vnoremap <Leader>s :sort<CR>
+map <Leader>S :r ~/sru<CR>
 
 set t_Co=256
 color wombat256mod
