@@ -158,7 +158,7 @@ alias _sc="LC_ALL=en_US.UTF-8 LANG=en_US.UTF-8 ssh -Y -A -t mvgompel@radium.uvt.
 alias st="LC_ALL=en_US.UTF-8 LANG=en_US.UTF-8 ssh -Y -A -t mvgompel@radium.uvt.nl ssh -Y -A -t stheno zsh"
 alias ct="LC_ALL=en_US.UTF-8 LANG=en_US.UTF-8 ssh -Y -A -t mvgompel@radium.uvt.nl ssh -Y -A -t ceto zsh"
 alias rv="LC_ALL=en_US.UTF-8 LANG=en_US.UTF-8 ssh -Y -A -t lilo.science.ru.nl ssh -Y -A -t applejack /home/proycon/bin/tm_vi"
-alias homsar="ssh -Y -A -t homsar.uvt.nl"
+alias homsar="ssh -Y -A -t homsar.uvt.nl zsh"
 alias luon="ssh -Y -A -t maartenvg@void.luon.net"
 
 alias py="python"
