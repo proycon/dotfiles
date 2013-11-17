@@ -18,6 +18,7 @@ thunar-volman &
 conky &
 nm-applet &
 udiskie &
+volumeicon &
 ibus-daemon -d -x
 #sleep 3 && feh --bg-scale ~/Pictures/Local/wallpapers/shirahige2.jpg &
 sleep 2 && feh --bg-scale ~/Pictures/Local/wallpapers/Perfection_Cold_by_yaromanzarek.jpg &
