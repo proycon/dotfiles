@@ -9,6 +9,8 @@ ln -sT $DOTDIR/vim $HOMEDIR/.vim
 ln -s $DOTDIR/vimrc $HOMEDIR/.vimrc
 ln -s $DOTDIR/zshrc $HOMEDIR/.zshrc
 ln -s $DOTDIR/muttrc $HOMEDIR/.muttrc
+ln -s $DOTDIR/mutt-compose.sh $HOMEDIR/bin/mutt-compose.sh
+ln -s $DOTDIR/mutt-compose $HOMEDIR/.mutt-compose
 ln -s $DOTDIR/mailcap $HOMEDIR/.mailcap
 ln -s $DOTDIR/signature $HOMEDIR/.signature
 ln -s $DOTDIR/signature.ru $HOMEDIR/.signature.ru

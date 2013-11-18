@@ -1,0 +1,11 @@
+# read main config
+source ~/.muttrc
+
+# remove hooks, headers and sig, they are already in the draft
+unhook send-hook
+unset signature
+unmy_hdr *
+
+# call the right editor immediately
+set autoedit=yes
+set editor="vim +'set tw=72' +/^$/+1"

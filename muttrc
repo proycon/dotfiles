@@ -94,6 +94,10 @@ set send_charset="utf-8"
 bind  index   \Cr      imap-fetch-mail
 
 
+#scroll rather than page
+set menu_scroll = yes
+
+
 set signature = "~/.signature"
 set postpone = ask-yes
 #set postponed = =MuttMail/postponed
@@ -231,6 +235,9 @@ color index cyan black "~Q"
 color index brightwhite black "~O"
 color index brightwhite black "~N"
 
+# Colour URLs in mails
+color body blue black "(finger|ftp|hg|http(|s)|news|tel)://[^ ]*"
+color body blue black "mailto:[-a-z_0-9.]+@[-a-z_0-9.]+"
 
 #color sidebar_new brightyellow black
 
@@ -267,4 +274,25 @@ save-hook "~h '(From|To|Cc): .*fryske.*" =Work.RU.Oersetter
 save-hook "~h '(From|To|Cc): .*(Korse|Wanda|Zen Centrum|zen.\nl).*" =Psi
 save-hook "~h '(From|To|Cc): .*(Hornix|Wakkerman|Waarsenburg|Ansem|Oor|Lisenka Fox|cls\@let\.ru\.nl|Faculteit|Hilberink|Matos\-Krez).*" =Work.Notifications
 
+## Multiplexing using tmux
 
+# edit messages in a new screen window
+set editor="cp %s %s.2; tmux new-window -a -t mutt '~/bin/mutt-compose.sh %s.2'"
+unset wait_key
+
+# forward messages
+#macro index,pager f "v<save-entry>/tmp/mutt-forward<enter>q<shell-escape>tmux new-window -t mail '~/bin/mutt-compose.sh /tmp/mutt-forward personal'<enter>"
+
+# override the <recall-message> hotkey
+macro index,pager M "<shell-escape>tmux new-window -t mutt 'mutt -F ~/.mutt_compose -p'<enter>"
+# prevent recall on <mail>
+set recall=no
+
+# Set the editor for for editing messages in-place,
+# allows re-editing of messages before sending, e.g. for use in forwarding messages.
+macro compose e '<enter-command>set my_oldeditor=$editor<enter><enter-command>set editor="vim"<enter><edit-message><enter-command>set editor=$my_oldeditor<enter>'
+#macro index,pager e '<enter-command>set editor="vim +set\ tw=72 +/^$/+1"<enter><edit>'
+#<enter-command>set editor="cp %s %s.2; tmux new-window -t mail '~/bin/mutt-compose.sh %s.2'"<enter>'
+
+# open mailbox listing in a new window
+macro index,pager y '<shell-escape>tmux new-window -t mutt "mutt -y"<enter>'
