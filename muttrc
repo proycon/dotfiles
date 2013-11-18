@@ -213,6 +213,14 @@ color index yellow  black "~h '(From|To|Cc): .*uvt.nl"
 color index yellow  black "~h '(From|To|Cc): .*\.(ru|mpi|knaw|uu|fryske-akademy|uva|vu)\.nl"
 color index yellow  black "~h '(From|To|Cc): .*(tilburguniversity)\.edu"
 color index yellow  black "~h '(From|To|Cc): .*(kunneman|hurriyetoglu|versteegh).*"
+color index brightblack black "~h 'From: (Marjon van Waarsenburg).*"
+
+
+color index brightwhite black "~O"
+color index brightwhite black "~N" #mark as unread!
+
+#unread messages after this will not be marked bright white!
+
 color index brightblack black "~h 'Subject: .*Internal Server Error.*"
 color index brightblack black "~h 'Subject: .*(Studcki|StudCKI).*"
 color index brightblack black "~h 'Subject: .*java-nlp-user.*"
@@ -226,14 +234,11 @@ color index brightblack black "~h '(From|To|Cc): .*allout\.org.*"
 color index brightblack black "~h '(From|To|Cc): .*piratenpartij.*"
 
 color index magenta black "~h 'List-Id:"
-color index brightblack black "~h 'From: (Marjon van Waarsenburg).*"
 color index brightblack black "~D"
 
 color index brightred black "~F"
 
 color index cyan black "~Q"
-color index brightwhite black "~O"
-color index brightwhite black "~N"
 
 # Colour URLs in mails
 color body blue black "(finger|ftp|hg|http(|s)|news|tel)://[^ ]*"
