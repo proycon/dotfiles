@@ -210,10 +210,7 @@ color index yellow  black "~h '(From|To|Cc): .*\.(ru|mpi|knaw|uu|fryske-akademy|
 color index yellow  black "~h '(From|To|Cc): .*(tilburguniversity)\.edu"
 color index yellow  black "~h '(From|To|Cc): .*(kunneman|hurriyetoglu|versteegh).*"
 color index brightblack black "~h 'Subject: .*Internal Server Error.*"
-color index brightblack black "~h 'Subject: .*Siksleden.*"
-color index brightblack black "~h 'Subject: .*landsresearch.*"
 color index brightblack black "~h 'Subject: .*(Studcki|StudCKI).*"
-color index brightblack black "~h 'Subject: .*landsresearch.*"
 color index brightblack black "~h 'Subject: .*java-nlp-user.*"
 color index brightblack black "~h 'Subject: .*SPAM.*"
 color index brightblack black "~h 'Subject: .*Newsletter.*"
@@ -221,9 +218,10 @@ color index brightblack black "~h 'Subject: .*finished succesfully.*"
 color index brightblack black "~h 'Subject: .*finished with errors.*"
 color index brightblack black "~h 'Subject: .*Periodic process report.*"
 color index brightblack black "~h 'Subject: .*[N|n]otification.*"
-color index brightblack black "~h '(From|To|Cc): .*lists\.debian.*"
 color index brightblack black "~h '(From|To|Cc): .*allout\.org.*"
 color index brightblack black "~h '(From|To|Cc): .*piratenpartij.*"
+
+color index magenta black "~h 'List-Id:"
 color index brightblack black "~h 'From: (Marjon van Waarsenburg).*"
 color index brightblack black "~D"
 
@@ -256,11 +254,17 @@ save-hook "~h 'Subject: .*[Cc][Ll][Aa][Mm].*" =Work.RU.CLAM+TICCLops
 save-hook "~h 'Subject: .*[Cc]olibri.*" "=Work.RU.Colibri PhD"
 save-hook "~h 'Subject: .*[Tt]\-?[Ss]can.*" =Work.RU.tscan
 save-hook "~h 'Subject: .*[Ff]rog.*" =Work.RU.Frog+ucto
+save-hook "~h 'Subject: .*[Uu]cto.*" =Work.RU.Frog+ucto
 save-hook "~h 'Subject: .*[Ff][Oo][Ll][Ii][Aa].*" =Work.RU.FoLiA+SoNaR
 save-hook "~h 'Subject: .*[Ss][Oo][Nn][Aa][Rr].*" =Work.RU.FoLiA+SoNaR
 save-hook "~h 'Subject: .*[Dd]utch[Ss]em[Cc]or.*" =Work.ILK.DutchSemCor
+save-hook "~h 'Subject: .*[Oo]ersetter.*" =Work.RU.Oersetter
+save-hook "~h 'Subject: .*[Ss]em[Ee]val.*" =Work.RU.semeval
+save-hook "~h 'Subject: .*\[Corpora-List\].*" =ReadOnly.CorporaList
+save-hook "~h 'Subject: .*\[Moses-support\].*" =ReadOnly.MosesSupport
+save-hook "~h '(From|To|Cc): .*debian-science.*" =ReadOnly
 save-hook "~h '(From|To|Cc): .*fryske.*" =Work.RU.Oersetter
-save-hook "~h '(From|To|Cc): .*(Korse|zen\.nl).*" =Psi
+save-hook "~h '(From|To|Cc): .*(Korse|Wanda|Zen Centrum|zen.\nl).*" =Psi
 save-hook "~h '(From|To|Cc): .*(Hornix|Wakkerman|Waarsenburg|Ansem|Oor|Lisenka Fox|cls\@let\.ru\.nl|Faculteit|Hilberink|Matos\-Krez).*" =Work.Notifications
 
 

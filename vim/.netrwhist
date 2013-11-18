@@ -1,4 +1,8 @@
 let g:netrw_dirhistmax  =10
-let g:netrw_dirhist_cnt =2
+let g:netrw_dirhist_cnt =6
 let g:netrw_dirhist_1='/home/proycon/work/colibri-core/src'
 let g:netrw_dirhist_2='/home/proycon/work/colibri-core/include'
+let g:netrw_dirhist_3='/home/proycon/work/colibri-core/src'
+let g:netrw_dirhist_4='/home/proycon/work/colibri-core'
+let g:netrw_dirhist_5='/home/proycon/work/colibri-core/include'
+let g:netrw_dirhist_6='/home/proycon/work/colibri-mt/colibrimt'
