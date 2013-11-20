@@ -3,6 +3,7 @@
 xcompmgr -fF &
 setinput.sh
 pulseaudio --start &
+/usr/lib/policykit-1-gnome/polkit-gnome-authentication-agent-1 &
 gnome-settings-daemon &
 gnome-keyring-daemon -s --components=pkcs11,secrets,ssh,gpg &
 #feh --bg-scale ~/Pictures/Local/wallpapers/shirahige2.jpg &
