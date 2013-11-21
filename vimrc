@@ -61,7 +61,7 @@ map <C-m> <esc>:CtrlPFunky<Cr>
 map <C-n> <esc>:CtrlPMRU<Cr>
 
 " close quickfix window
-map <leader>E <esc>:ccl<CR>
+" map <leader>E <esc>:ccl<CR>
 " open
 map <Leader>e <esc>:cw<CR> 
 
@@ -291,6 +291,7 @@ map <leader>48 :b48<CR>
 map <leader>49 :b49<CR>
 
 
+ map <leader>E <esc>:bufdo e<CR>
 map <leader>r :resize<CR>
 
 map <leader>n :NERDTreeToggle<CR>
