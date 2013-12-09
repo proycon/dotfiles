@@ -32,4 +32,4 @@ ZSH_THEME_GIT_PROMPT_UNMERGED="%{$fg[yellow]%} ═"
 ZSH_THEME_GIT_PROMPT_UNTRACKED="%{$fg[cyan]%} ✭"
 
 PROMPT="${user} ${pwd}$ "
-RPROMPT="${return_code} ${git_branch} %{$fg_bold[grey]%}%*%{$reset_color%}"
+RPROMPT="${return_code} ${git_branch} %{$fg_bold[grey]%}%* %w%{$reset_color%}"

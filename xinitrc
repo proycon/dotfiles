@@ -6,4 +6,3 @@ source ~/.zshrc
 export BROWSER=firefox
 export DE=xfceexec
 dbus-launch openbox
-#exec dbus-launch --exit-with-session startxfce4
