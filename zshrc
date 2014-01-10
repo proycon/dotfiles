@@ -81,7 +81,7 @@ export EDITOR="vim"
 
 #PATHS
 if [[ $HOST == "galactica" || $HOST == "mhysa" ]]; then
-    export PATH="/home/proycon/bin:/home/proycon/local/bin:$PATH"
+    export PATH="/home/proycon/bin:/home/proycon/local/bin:/usr/local/android-sdk-linux/tools:/usr/local/android-sdk-linux/platform-tools:$PATH"
     export LD_LIBRARY_PATH="$LD_LIBRARY_PATH:/home/proycon/local/lib"
     export CDPATH=.:~/work
     export PYTHONPATH="/home/proycon/work/"
@@ -137,6 +137,7 @@ fi
 
 alias ap='ssh -Y -A anaproy.nl'
 alias ssha='ssh -Y -A anaproy.nl'
+alias sshat='ssh -Y -A anaproy.nl tmux attach'
 alias e='ssh -Y -A -t anaproy.nl /home/proycon/bin/tm_vi'
 alias sshilk='ssh mvgompel@radium.uvt.nl'
 alias lo="LC_ALL=en_US.UTF-8 LANG=en_US.UTF-8 ssh -Y -A -t lilo3.science.ru.nl zsh"
