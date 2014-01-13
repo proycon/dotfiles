@@ -388,4 +388,4 @@ command! Sppt setlocal spell spelllang=pt
 command! Spes setlocal spell spelllang=es
 command! Spit setlocal spell spelllang=it
 
-source /home/proycon/.vim/bundle/vim-ipython/ftplugin/python/ipy.vim 
+" source /home/proycon/.vim/bundle/vim-ipython/ftplugin/python/ipy.vim 

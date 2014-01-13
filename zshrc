@@ -86,6 +86,7 @@ if [[ $HOST == "galactica" || $HOST == "mhysa" ]]; then
     export CDPATH=.:~/work
     export PYTHONPATH="/home/proycon/work/"
     export ALPINO_HOME="/usr/local/Alpino"
+    export ANDROID_SDK="/usr/local/android-sdk-linux"
     
     hash -d X=/home/proycon/exp
     hash -d lsrc=/home/proycon/local/src/
