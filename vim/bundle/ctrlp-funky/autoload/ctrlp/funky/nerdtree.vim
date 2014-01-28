@@ -1,28 +1,22 @@
-" File: autoload/ctrlp/funky/nerdtree.vim
-" Description: adds NERDTree support to ctrlp's funky extension
-" Author: Takahiro Yoshihara <tacahiroy\AT/gmail.com>
+" Language: The NERD tree (nerdtree)
+" Author: Takahiro Yoshihara
 " License: The MIT License
 
-let s:filter = [{ 'pattern': '\m\C^\s*[▸▾|~+].*\/$',
-                \ 'filter': []}
-\ ]
+let s:is_files = get(g:, 'ctrlp_funky_nerdtree_include_files', 0)
 
-" useful?
-if get(g:, 'ctrlp_funky_nerdtree_include_files', 0)
-  call add(s:filter, { 'pattern': '\m\C^\s\+.\+$',
-                     \ 'filter': []})
-endif
+function! ctrlp#funky#nerdtree#filters()
+  let filters = [
+        \ { 'pattern': '\m\C^\s*[▸▾|~+].*\/$',
+        \   'formatter': [] }
+  \ ]
 
-function! ctrlp#funky#nerdtree#apply_filter(bufnr)
-  return ctrlp#funky#abstract(a:bufnr, s:filter)
+  " useful?
+  if s:is_files
+    call add(filters,
+          \ { 'pattern': '\m\C^\s\+.\+$',
+          \   'formatter': [] }
+    \ )
+  endif
+
+  return filters
 endfunction
-
-function! ctrlp#funky#nerdtree#get_filter()
-  return s:filter
-endfunction
-
-" prevent splitting NERDTree window
-function! ctrlp#funky#nerdtree#line_mode()
-  return 1
-endfunction
-

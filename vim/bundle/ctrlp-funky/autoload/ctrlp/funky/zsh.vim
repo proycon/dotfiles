@@ -1,21 +1,19 @@
-" File: autoload/ctrlp/funky/zsh.vim
-" Description: adds zsh support to ctrlp's funky extension
-" Author: Takahiro Yoshihara <tacahiroy\AT/gmail.com>
+" License: shell script (zsh)
+" Author: Takahiro Yoshihara
 " License: The MIT License
 
-" The zsh is really tolerant of the function definition
-let s:filter = [{ 'pattern': '\m\C^[\t ]*\(function \)\?' .
-                \            '\([-/+_a-zA-Z0-9]\+\)()[\t ]*{',
-                \ 'filter': ['\m\C()[\t ]*{', '', ''] },
-              \ { 'pattern': '\m\C^[\t ]*function[\t ]\+{',
-                \ 'filter': ['\m\C[\t ]\+{', ' *anonymous*', ''] }
-\]
+function! ctrlp#funky#zsh#filters()
+  " The zsh is really tolerant of the function definition
+  let filters = [
+        \ { 'pattern': '\m\C^[\t ]*\%(function[\t ]\)\?\%([-/+_a-zA-Z0-9]\+\)\?[\t ]*\%(()\)\?[\t ]*{',
+        \   'formatter' : [] },
+        \ { 'pattern': '\m\C^[\t ]*\%(function[\t ]*\)\@<=\%([-/+_a-zA-Z0-9]\+[\t ]*\)\(()\)\?[\t ]*{',
+        \   'formatter' : [] }
+  \ ]
 
-function! ctrlp#funky#zsh#apply_filter(bufnr)
-  return ctrlp#funky#abstract(a:bufnr, s:filter)
+  return filters
 endfunction
 
-function! ctrlp#funky#zsh#get_filter()
-  return s:filter
+function! ctrlp#funky#zsh#is_kinda_sh()
+  return 1
 endfunction
-
