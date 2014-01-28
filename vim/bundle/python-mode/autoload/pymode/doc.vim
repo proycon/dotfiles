@@ -1,19 +1,38 @@
 " Python-mode search by documentation
+"
+PymodePython import pymode
 
 
-fun! pymode#doc#Show(word) "{{{
-    if a:word == ''
-        echoerr "No name/symbol under cursor!"
-    else
-        py import StringIO
-        py sys.stdout, _ = StringIO.StringIO(), sys.stdout
-        py help(vim.eval('a:word'))
-        py sys.stdout, out = _, sys.stdout.getvalue()
-        call pymode#TempBuffer()
-        py vim.current.buffer.append(str(out).split('\n'), 0)
-        wincmd p
-    endif
+fun! pymode#doc#find() "{{{
+    " Extract the 'word' at the cursor, expanding leftwards across identifiers
+    " and the . operator, and rightwards across the identifier only.
+    "
+    " For example:
+    "   import xml.dom.minidom
+    "           ^   !
+    "
+    " With the cursor at ^ this returns 'xml'; at ! it returns 'xml.dom'.
+    let l:line = getline(".")
+    let l:pre = l:line[:col(".") - 1]
+    let l:suf = l:line[col("."):]
+    let word = matchstr(pre, "[A-Za-z0-9_.]*$") . matchstr(suf, "^[A-Za-z0-9_]*")
+    call pymode#doc#show(word)
 endfunction "}}}
 
 
-" vim: fdm=marker:fdl=0
+
+fun! pymode#doc#show(word) "{{{
+    if a:word == ''
+        call pymode#error("No name/symbol under cursor!")
+        return 0
+    endif
+
+    call pymode#tempbuffer_open('__doc__')
+    PymodePython pymode.get_documentation()
+    setlocal nomodifiable
+    setlocal nomodified
+    setlocal filetype=rst
+    wincmd p
+
+endfunction "}}}
+
