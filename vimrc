@@ -143,6 +143,7 @@ syntax on
 
 
 """"" Settings for NERDTree
+
 let NERDTreeIgnore=['\~$', '^\.git', '^\.svn', '\.swp$', '\.DS_Store$','\.pyc$','\.jpg$','\.png$','\.gif$','\.bak$','\.o$','\.lo$','\.in$','\.so$','\.aux$','\.pdf$','\.bbl$' ]
 let NERDTreeShowHidden=0
 " nmap <Leader>n :NERDTreeToggle<cr>
@@ -214,8 +215,10 @@ let g:pymode_syntax_builtin_objs = 0
 let g:pymode_syntax_builtin_funcs = 0
 " Skip errors and warnings
 " E.g. "E501,W002", "E2,W" (Skip all Warnings and Errors startswith E2) and etc
+let g:pymode_lint_checkers = ['pyflakes']
 let g:pymode_lint_checker = 'pylint'
-let g:pymode_lint_ignore = "C0103,C0111,E1101,W0141,W0142,W0221,W0232,W0401,W0613,W0631"
+" let g:pymode_lint_ignore = "C0103,C0111,E1101,W0141,W0142,W0221,W0232,W0401,W0613,W0631"
+let g:pymode_lint_ignore = "R0201,R0922,C0111,E1103,C0301,C0302,C0321,C0322,C0323,C0324,R0201,R0901,R0902,R0903,R0904,R0912,R0913,R0914,R0915,R0922,R0923,C0103,C0111,E1101,W0141,W0142,W0221,W0232,W0401,W0613,W0631"
 
 " Load show documentation plugin
 let g:pymode_doc = 1
