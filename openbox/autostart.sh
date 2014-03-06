@@ -1,7 +1,6 @@
 #!/bin/bash
 #xcompmgr -cC -t-3 -l-5 -r5 &
 xcompmgr -fF &
-setinput.sh
 pulseaudio --start &
 /usr/lib/policykit-1-gnome/polkit-gnome-authentication-agent-1 &
 gnome-settings-daemon &
@@ -24,12 +23,16 @@ fi
 tint2 &
 thunar-volman &
 conky &
-nm-applet &
+pidof nm-applet
+if [[ "$?" == "1" ]]; then
+    nm-applet &
+fi
 udiskie &
 volumeicon &
 ibus-daemon -d -x
 #sleep 3 && feh --bg-scale ~/Pictures/Local/wallpapers/shirahige2.jpg &
 #sleep 2 && feh --bg-scale ~/Pictures/Local/wallpapers/Perfection_Cold_by_yaromanzarek.jpg &
+~/bin/setinput.sh
 sleep 2 && feh --bg-scale ~/Pictures/Local/wallpapers/buddhavoid1920.png &
 play ~/cylontune_low.ogg &
 
