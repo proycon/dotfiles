@@ -27,6 +27,11 @@ DISABLE_AUTO_UPDATE="true"
 plugins=(history history-substring-search git svn python django command-not-found debian pip github git-flow )
 
 
+if [ -f ~/.sgesh ]; then
+    source ~/.sgesh
+    rm ~/.sgesh
+fi
+
 source $ZSH/oh-my-zsh.sh
 
 setopt cshnullglob
@@ -163,6 +168,8 @@ alias rv="LC_ALL=en_US.UTF-8 LANG=en_US.UTF-8 ssh -Y -A -t applejack.science.ru.
 alias homsar="ssh -Y -A -t homsar.uvt.nl zsh"
 alias luon="ssh -Y -A -t maartenvg@void.luon.net"
 
+alias lq="source ~/.sgesh"
+
 alias py="python"
 alias py3="python3"
 alias ipy="ipython"
@@ -205,6 +212,7 @@ function git_prompt_info() {
 
 export TERM=xterm-256color
 export PS1="$PS1"'$([ -n "$TMUX" ] && tmux setenv TMUXPWD_$(tmux display -p "#D" | tr -d %) "$PWD")' #tmux-powerline support
+
 
 bindkey '\e[A' history-substring-search-up
 bindkey '\e[B' history-substring-search-down
