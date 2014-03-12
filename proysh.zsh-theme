@@ -31,5 +31,9 @@ ZSH_THEME_GIT_PROMPT_RENAMED="%{$fg[magenta]%} ➜"
 ZSH_THEME_GIT_PROMPT_UNMERGED="%{$fg[yellow]%} ═"
 ZSH_THEME_GIT_PROMPT_UNTRACKED="%{$fg[cyan]%} ✭"
 
-PROMPT="${user} ${pwd}$ "
+if [ -n "$JOB_NAME" ]; then
+    PROMPT="${user} ${pwd} %{$fg_bold[grey]%}job:${JOB_NAME}%{$reset_color%}$ "
+else
+    PROMPT="${user} ${pwd}$ "
+fi
 RPROMPT="${return_code} ${git_branch} %{$fg_bold[grey]%}%* %w%{$reset_color%}"

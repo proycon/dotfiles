@@ -27,6 +27,11 @@ DISABLE_AUTO_UPDATE="true"
 plugins=(history history-substring-search git svn python django command-not-found debian pip github git-flow )
 
 
+if [ -f ~/.sgesh ]; then
+    source ~/.sgesh
+    rm ~/.sgesh
+fi
+
 source $ZSH/oh-my-zsh.sh
 
 setopt cshnullglob
@@ -141,14 +146,14 @@ alias ssha='ssh -Y -A anaproy.nl'
 alias sshat='ssh -Y -A anaproy.nl tmux attach'
 alias e='ssh -Y -A -t anaproy.nl /home/proycon/bin/tm_vi'
 alias sshilk='ssh mvgompel@radium.uvt.nl'
-alias lo="LC_ALL=en_US.UTF-8 LANG=en_US.UTF-8 ssh -Y -A -t lilo3.science.ru.nl zsh"
-alias aj="LC_ALL=en_US.UTF-8 LANG=en_US.UTF-8 ssh -Y -A -t applejack.science.ru.nl /home/proycon/bin/tm"
-alias fs="LC_ALL=en_US.UTF-8 LANG=en_US.UTF-8 ssh -Y -A -t applejack.science.ru.nl ssh -Y -A -t fluttershy /home/proycon/bin/tm"
-alias rr="LC_ALL=en_US.UTF-8 LANG=en_US.UTF-8 ssh -Y -A -t applejack.science.ru.nl ssh -Y -A -t rarity /home/proycon/bin/tm"
-alias cl="LC_ALL=en_US.UTF-8 LANG=en_US.UTF-8 ssh -Y -A -t applejack.science.ru.nl ssh -Y -A -t cheerilee /home/proycon/bin/tm"
-alias fp="LC_ALL=en_US.UTF-8 LANG=en_US.UTF-8 ssh -Y -A -t applejack.science.ru.nl ssh -Y -A -t fancypants /home/proycon/bin/tm"
-alias pq="LC_ALL=en_US.UTF-8 LANG=en_US.UTF-8 ssh -Y -A -t applejack.science.ru.nl ssh -Y -A -t pipsqueak /home/proycon/bin/tm"
-alias so="LC_ALL=en_US.UTF-8 LANG=en_US.UTF-8 ssh -Y -A -t applejack.science.ru.nl ssh -Y -A -t scootaloo /home/proycon/bin/tm"
+alias lo="lilo=1 LC_ALL=en_US.UTF-8 LANG=en_US.UTF-8 ssh -Y -A -t lilo3.science.ru.nl zsh"
+alias aj="applejack=1 LC_ALL=en_US.UTF-8 LANG=en_US.UTF-8 ssh -Y -A -t applejack.science.ru.nl /home/proycon/bin/tm"
+alias fs="fluttershy=1 LC_ALL=en_US.UTF-8 LANG=en_US.UTF-8 ssh -Y -A -t applejack.science.ru.nl ssh -Y -A -t fluttershy /home/proycon/bin/tm"
+alias rr="rarity=1 LC_ALL=en_US.UTF-8 LANG=en_US.UTF-8 ssh -Y -A -t applejack.science.ru.nl ssh -Y -A -t rarity /home/proycon/bin/tm"
+alias cl="cheerilee=1 LC_ALL=en_US.UTF-8 LANG=en_US.UTF-8 ssh -Y -A -t applejack.science.ru.nl ssh -Y -A -t cheerilee /home/proycon/bin/tm"
+alias fp="fancypants=1 LC_ALL=en_US.UTF-8 LANG=en_US.UTF-8 ssh -Y -A -t applejack.science.ru.nl ssh -Y -A -t fancypants /home/proycon/bin/tm"
+alias pq="pipsqueak=1 LC_ALL=en_US.UTF-8 LANG=en_US.UTF-8 ssh -Y -A -t applejack.science.ru.nl ssh -Y -A -t pipsqueak /home/proycon/bin/tm"
+alias so="scootaloo=1 LC_ALL=en_US.UTF-8 LANG=en_US.UTF-8 ssh -Y -A -t applejack.science.ru.nl ssh -Y -A -t scootaloo /home/proycon/bin/tm"
 alias _aj="LC_ALL=en_US.UTF-8 LANG=en_US.UTF-8 ssh -Y -A -t applejack.science.ru.nl zsh"
 alias _fs="LC_ALL=en_US.UTF-8 LANG=en_US.UTF-8 ssh -Y -A -t applejack.science.ru.nl ssh -Y -A -t fluttershy zsh"
 alias _rr="LC_ALL=en_US.UTF-8 LANG=en_US.UTF-8 ssh -Y -A -t applejack.science.ru.nl ssh -Y -A -t rarity zsh"
@@ -162,6 +167,8 @@ alias ct="LC_ALL=en_US.UTF-8 LANG=en_US.UTF-8 ssh -Y -A -t mvgompel@radium.uvt.n
 alias rv="LC_ALL=en_US.UTF-8 LANG=en_US.UTF-8 ssh -Y -A -t applejack.science.ru.nl ssh -Y -A -t applejack /home/proycon/bin/tm_vi"
 alias homsar="ssh -Y -A -t homsar.uvt.nl zsh"
 alias luon="ssh -Y -A -t maartenvg@void.luon.net"
+
+alias lq="source ~/.sgesh"
 
 alias py="python"
 alias py3="python3"
@@ -207,6 +214,7 @@ if [[ $TERM == "xterm" ]] && [[ $COLORTERM == "gnome-terminal" ]]; then
     export TERM="xterm-256color"
 fi
 export PS1="$PS1"'$([ -n "$TMUX" ] && tmux setenv TMUXPWD_$(tmux display -p "#D" | tr -d %) "$PWD")' #tmux-powerline support
+
 
 bindkey '\e[A' history-substring-search-up
 bindkey '\e[B' history-substring-search-down
