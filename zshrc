@@ -210,7 +210,9 @@ function git_prompt_info() {
   echo "$ZSH_THEME_GIT_PROMPT_PREFIX${ref#refs/heads/}$ZSH_THEME_GIT_PROMPT_SUFFIX"
 }
 
-export TERM=xterm-256color
+if [[ $TERM == "xterm" ]] && [[ $COLORTERM == "gnome-terminal" ]]; then
+    export TERM="xterm-256color"
+fi
 export PS1="$PS1"'$([ -n "$TMUX" ] && tmux setenv TMUXPWD_$(tmux display -p "#D" | tr -d %) "$PWD")' #tmux-powerline support
 
 
@@ -219,3 +221,15 @@ bindkey '\e[B' history-substring-search-down
 bindkey '^H' history-substring-search-up
 bindkey '^[[A' history-substring-search-up
 bindkey '^[[B' history-substring-search-down
+
+case $TERM in
+    xterm*|rxvt)
+        PROMPT_COMMAND='echo -ne "\033]0;${USER}@${HOSTNAME}\007"'
+        export PROMPT_COMMAND
+        ;;
+    screen*|screen)
+      TITLE=$(hostname -s)                                                      
+      PROMPT_COMMAND='/bin/echo -ne "\033k${TITLE}\033\\"'                      
+      export PROMPT_COMMAND
+        ;;
+esac
