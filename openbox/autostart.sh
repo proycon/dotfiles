@@ -17,7 +17,7 @@ fi
 guake &
 tint2 &
 thunar-volman &
-conky &
+#conky &
 nm-applet &
 udiskie &
 volumeicon &

@@ -42,7 +42,7 @@
                   'Active' - where the active window is -->
   </placement>
   <theme>
-    <name>Siva Flat Round Darkest</name>
+    <name>Onyx-Citrus</name>
     <titleLayout>CIMLDSN</titleLayout>
     <!--
       available characters are NDSLIMC, each can occur at most once.
@@ -949,17 +949,14 @@
     </application>
     <application class="Wine">
       <desktop>9</desktop>
-  </application>
-
-  <application name="tint2">
+    </application>
+    <application name="tint2">
       <decor>no</decor>
-  </application>
-
-  <application class="Terminator">
+    </application>
+    <application class="Terminator">
       <decor>no</decor>
       <maximized>true</maximized>
-  </application>
-
+    </application>
     <!--
   # this is an example with comments through out. use these to make your
   # own rules, but without the comments of course.
@@ -1044,5 +1041,4 @@
   # end of the example
 -->
   </applications>
-
 </openbox_config>
