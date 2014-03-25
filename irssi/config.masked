@@ -25,43 +25,12 @@ servers = (
   },
   {
     address = "anaproy.nl";
-    chatnet = "UniLang";
-    port = "6667";
-    autoconnect = "false";
-    autosendcmd = "/msg nickserv identify proycon NICKSERVPASS";
-  },
-  {
-    address = "irc.freenode.org";
-    chatnet = "Freenode";
-    port = "6667";
-    autoconnect = "false";
-    autosendcmd = "/msg nickserv identify proycon NICKSERVPASS";
-  },
-  { address = "irc.ubuntu.com"; chatnet = "Ubuntu"; port = "8001"; },
-  { address = "eu.irc6.net"; chatnet = "IRCnet"; port = "6667"; },
-  { address = "open.ircnet.net"; chatnet = "IRCnet"; port = "6667"; },
-  { address = "irc.efnet.org"; chatnet = "EFNet"; port = "6667"; },
-  { 
-    address = "irc.undernet.org";
-    chatnet = "Undernet";
-    port = "6667";
-  },
-  { address = "irc.dal.net"; chatnet = "DALnet"; port = "6667"; },
-  { 
-    address = "irc.quakenet.org";
-    chatnet = "QuakeNet";
-    port = "6667";
-  },
-  { address = "irc.oftc.net"; chatnet = "OFTC"; port = "6667"; },
-  {
-    address = "irc.gamesurge.net";
-    chatnet = "GameSurge";
-    port = "6667";
-  },
-  { address = "irc.webchat.org"; chatnet = "WebChat"; port = "6667"; },
-  { address = "irc.rizon.net"; chatnet = "Rizon"; port = "6667"; },
-  { address = "irc.link-net.org"; chatnet = "LinkNet"; port = "6667"; },
-  { address = "silc.silcnet.org"; chatnet = "SILC"; port = "706"; }
+    chatnet = "BOUNCER-pirateirc";
+    port = "6999";
+    autoconnect = "true";
+    use_ssl = "yes";
+    password = "proycon_pirateirc:BOUNCERPASS";
+  }
 );
 
 chatnets = {
