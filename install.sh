@@ -2,8 +2,10 @@
 
 cd ~
 HOMEDIR=`pwd`
+mkdir bin
 cd dotfiles
 DOTDIR=`pwd`
+
 
 ln -sT $DOTDIR/vim $HOMEDIR/.vim
 ln -s $DOTDIR/vimrc $HOMEDIR/.vimrc
@@ -20,6 +22,7 @@ ln -sT $DOTDIR/openbox $HOMEDIR/.config/openbox
 ln -sT $DOTDIR/irssi $HOMEDIR/.irssi
 ln -s $DOTDIR/tmux.conf $HOMEDIR/.tmux.conf
 ln -s $DOTDIR/tmux-powerlinerc $HOMEDIR/.tmux-powerlinerc
+ln -s $DOTDIR/tm $HOMEDIR/bin/tm
 NICKSERVPASS=`cat ~/.nickserv`
 BOUNCERPASS=`cat ~/.anaproy`
 cat $HOMEDIR/.irssi/config.masked | sed -e "s/NICKSERVPASS/$NICKSERVPASS/" -e "s/BOUNCERPASS/$BOUNCERPASS/" > $HOMEDIR/.irssi/config
