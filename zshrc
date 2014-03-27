@@ -85,7 +85,7 @@ export GPGKEY="1A31555C"
 export EDITOR="vim"
 
 #PATHS
-if [[ $HOST == "galactica" || $HOST == "mhysa" ]]; then
+if [[ $HOST == "galactica" || $HOST == "mhysa" || $HOST == "drasha" ]]; then
     export PATH="/home/proycon/bin:/home/proycon/local/bin:/usr/local/android-sdk-linux/tools:/usr/local/android-sdk-linux/platform-tools:$PATH"
     export LD_LIBRARY_PATH="$LD_LIBRARY_PATH:/home/proycon/local/lib"
     export CDPATH=.:~/work
