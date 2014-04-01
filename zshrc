@@ -170,13 +170,43 @@ alias luon="ssh -Y -A -t maartenvg@void.luon.net"
 
 alias lq="source ~/.sgesh"
 
-alias py="python"
-alias py3="python3"
-alias ipy="ipython"
-alias ipy3="ipython3"
 
-alias ipyq="ipython qtconsole"
-alias ipyq3="ipython3 qtconsole"
+if [[ $HOST == "applejack" || $HOST == "fluttershy" || $HOST == "rarity" || $HOST == "cheerilee" || $HOST == "fancypants" || $HOST == "pipsqueak" || $HOST == "scootaloo" ]]; then
+    alias expy2="export PYTHONPATH=/home/proycon/:/vol/customopt/uvt-ru/src/colibri/scripts:/vol/customopt/nlptools/stanford-corenlp-python:/vol/customopt/uvt-ru/lib/python2.7/site-packages/:/vol/customopt/python2-packages/lib/python2.7/site-packages:/vol/customopt/clam/lib/python2.7/site-packages"
+    alias expy3="export PYTHONPATH=/home/proycon/:/vol/customopt/uvt-ru/src/colibri/scripts:/vol/customopt/nlptools/stanford-corenlp-python:/vol/customopt/uvt-ru/lib/python3.2/site-packages/:/vol/customopt/cython3/lib/python3.2/site-packages/:/vol/customopt/twisted3/lib/python3.2/site-packages/:/vol/customopt/python3-packages/lib/python3.2/site-packages/"
+
+    alias ipy3="expy3 && /vol/customopt/python3-packages/bin/ipython3"
+    alias ipy="expy3 && /vol/customopt/python3-packages/bin/ipython3"
+
+    alias py="exp3 && python3"
+    alias py2="exp2 && python"
+    alias py3="expy3 && python3"
+    alias ipy2="expy2 && ipython"
+    alias ipyq="expy3 && ipython qtconsole"
+    alias ipyq3="expy3 && ipython3 qtconsole"
+
+    ipynb() {
+        if [ ! -z "$1" ]; then
+            ipy3 notebook --no-browser --port=$1
+        else
+            ipy3 notebook --no-browser --port=8888
+        fi
+    }
+
+else
+    alias py="python3"
+    alias py2="python"
+    alias py3="python3"
+    alias ipy="ipython3"
+    alias ipy2="ipython"
+    alias ipyq="ipython qtconsole"
+    alias ipyq3="ipython3 qtconsole"
+    alias ipynb="ipython3 notebook"
+fi
+
+sshtunnel() {
+    ssh -N -f -L localhost:$2:localhost:$2 $1
+}
 
 alias dps="dirpersiststore"
 
@@ -197,9 +227,9 @@ alias -s gif=gqview
 alias -s mp3=mpg321
 alias -s ogg=play
 
-alias -s html=chromium-browser
+alias -s html=firefox
 
-if [[ $HOST == "galactica" ]]; then
+if [[ $HOST == "galactica" ]] || [[ $HOST == "mhysa" ]]; then
     export GTK_IM_MODULE="ibus"
     export QT_IM_MODULE="ibus"
     export XMODIFIERS="@im=ibus"
