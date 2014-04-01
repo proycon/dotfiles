@@ -186,6 +186,7 @@ if [[ $HOST == "applejack" || $HOST == "fluttershy" || $HOST == "rarity" || $HOS
     alias ipyq3="expy3 && ipython3 qtconsole"
 
     ipynb() {
+        expy3 
         if [ ! -z "$1" ]; then
             ipy3 notebook --no-browser --port=$1
         else
