@@ -487,7 +487,7 @@
           <enabled>true</enabled>
           <name>Terminator</name>
         </startupnotify>
-        <command>terminator -e "tm mutt" -T mutt</command>
+        <command>terminator -e "ssh -Y -A -t anaproy.nl /home/proycon/bin/tm_alot" -T mail</command>
       </action>
     </keybind>
     <keybind key="W-i">
