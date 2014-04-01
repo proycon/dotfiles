@@ -206,7 +206,7 @@ else
 fi
 
 sshtunnel() {
-    ssh -N -f -L localhost:$2:localhost:$2 $1
+    ssh -N -f -L localhost:${2}:localhost:${2} $1
 }
 
 alias dps="dirpersiststore"
