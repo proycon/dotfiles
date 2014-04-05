@@ -158,7 +158,7 @@
      Many programs reserve space automatically, but you can use this in other
      cases. -->
   <margins>
-    <top>0</top>
+    <top>18</top>
     <bottom>0</bottom>
     <left>0</left>
     <right>0</right>
@@ -277,8 +277,20 @@
         <to>9</to>
       </action>
     </keybind>
-    <keybind key="W-0">
-      <action name="ToggleShowDesktop"/>
+    <keybind key="W-asciitilde">
+      <action name="GoToDesktop">
+        <to>last</to>
+      </action>
+    </keybind>
+    <keybind key="W-period">
+      <action name="GoToDesktop">
+        <to>last</to>
+      </action>
+    </keybind>
+    <keybind key="KP_0">
+      <action name="GoToDesktop">
+        <to>last</to>
+      </action>
     </keybind>
     <keybind key="W-b">
       <action name="ToggleMaximize"/>
