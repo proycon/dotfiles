@@ -484,7 +484,7 @@
         <enabled>true</enabled>
         <name>Terminal</name>
     </startupnotify>
-    <command>terminology -2</command>
+    <command>terminator</command>
     </action>
 </keybind>
 <keybind key="W-v">
@@ -493,7 +493,7 @@
         <enabled>true</enabled>
         <name>Vim</name>
     </startupnotify>
-    <command>terminology -2 -e "tm vim" -T vim</command>
+    <command>terminator -e "tm vim" -T vim</command>
     </action>
 </keybind>
 <keybind key="W-m">
@@ -502,7 +502,7 @@
         <enabled>true</enabled>
         <name>Mail</name>
     </startupnotify>
-    <command>terminology -2 -e "ssh -Y -A -t anaproy.nl /home/proycon/bin/tm_alot" -T mail</command>
+    <command>terminator -e "ssh -Y -A -t anaproy.nl /home/proycon/bin/tm_alot" -T mail</command>
     </action>
 </keybind>
 <keybind key="W-i">
@@ -511,7 +511,7 @@
         <enabled>true</enabled>
         <name>Terminator</name>
     </startupnotify>
-    <command>terminology -2 -e "tm irssi" -T irssi</command>
+    <command>terminator -e "tm irssi" -T irssi</command>
     </action>
 </keybind>
 <keybind key="W-n">
@@ -520,12 +520,12 @@
         <enabled>true</enabled>
         <name>Ncmpcpp</name>
     </startupnotify>
-    <command>terminology -2 -e ncmpcpp -T ncmpcpp</command>
+    <command>terminator -e ncmpcpp -T ncmpcpp</command>
     </action>
 </keybind>
 <keybind key="W-y">
     <action name="Execute">
-    <command>terminology</command>
+    <command>terminator -p white</command>
     </action>
 </keybind>
 <keybind key="A-F2">
