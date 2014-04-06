@@ -1,6 +1,6 @@
 #!/bin/zsh
-#export LANG=pt_PT.UTF-8
-#export LC_ALL=pt_PT.UTF-8
+export LANG=en_GB.UTF-8
+export LC_ALL=en_GB.UTF-8
 source ~/.zshrc
 ~/.config/openbox/autostart.sh
 exec dbus-launch openbox
