@@ -42,7 +42,7 @@
                   'Active' - where the active window is -->
   </placement>
   <theme>
-    <name>Onyx-Citrus</name>
+    <name>Mint</name>
     <titleLayout>CIMLDSN</titleLayout>
     <!--
       available characters are NDSLIMC, each can occur at most once.
@@ -158,7 +158,7 @@
      Many programs reserve space automatically, but you can use this in other
      cases. -->
   <margins>
-    <top>0</top>
+    <top>18</top>
     <bottom>0</bottom>
     <left>0</left>
     <right>0</right>
@@ -277,8 +277,20 @@
         <to>9</to>
       </action>
     </keybind>
-    <keybind key="W-0">
-      <action name="ToggleShowDesktop"/>
+    <keybind key="W-asciitilde">
+      <action name="GoToDesktop">
+        <to>last</to>
+      </action>
+    </keybind>
+    <keybind key="W-period">
+      <action name="GoToDesktop">
+        <to>last</to>
+      </action>
+    </keybind>
+    <keybind key="KP_0">
+      <action name="GoToDesktop">
+        <to>last</to>
+      </action>
     </keybind>
     <keybind key="W-b">
       <action name="ToggleMaximize"/>
@@ -304,6 +316,9 @@
       <action name="ShowMenu">
         <menu>client-menu</menu>
       </action>
+    </keybind>
+    <keybind key="W-J">
+      <action name="ToggleDecorations"/>
     </keybind>
     <!-- Tiling -->
     <keybind key="W-q">
@@ -487,7 +502,7 @@
           <enabled>true</enabled>
           <name>Terminator</name>
         </startupnotify>
-        <command>terminator -e "tm mutt" -T mutt</command>
+        <command>terminator -e "ssh -Y -A -t anaproy.nl /home/proycon/bin/tm_alot" -T mail</command>
       </action>
     </keybind>
     <keybind key="W-i">
@@ -940,6 +955,10 @@
     </application>
     <application name="chromium-browser">
       <desktop>3</desktop>
+    </application>
+    <application name="firefox">
+      <desktop>3</desktop>
+      <decor>no</decor>
     </application>
     <application name="Mail">
       <desktop>4</desktop>

@@ -4,24 +4,40 @@
 
 # Background definitions
 # ID 1
-rounded = 7
-border_width = 2
-background_color = #000000 60
+#rounded = 7
+rounded = 0
+#border_width = 2
+border_width = 0
+background_color = #000000 100
 border_color = #FFFFFF 16
 
 # ID 2
+#rounded = 5
 rounded = 5
 border_width = 0
-background_color = #FFFFFF 40
+background_color = #22662f 100
 border_color = #FFFFFF 48
 
 # ID 3
+#rounded = 5
 rounded = 5
 border_width = 0
-background_color = #FFFFFF 16
+background_color = #559862 100
 border_color = #FFFFFF 68
 
+# ID 4
+#rounded = 5
+rounded = 5
+border_width = 0
+background_color = #809885 100
+border_color = #FFFFFF 68
 
+# ID 5
+#rounded = 5
+rounded = 5
+border_width = 0
+background_color = #000000 100
+border_color = #FFFFFF 68
 
 #launcher_icon_theme = name_of_theme tint2 will follow the theme of your desktop when you have an XSETTINGS manager running. Otherwise, launcher_icon_theme parameter is used.
 launcher_icon_theme = AwOken
@@ -47,7 +63,8 @@ launcher_item_app = /usr/share/applications/firefox.desktop
 # Panel
 panel_monitor = all
 panel_position = top center horizontal
-panel_size = 94% 30
+#panel_size = 94% 30
+panel_size = 100% 18
 panel_margin = 0 0
 panel_padding = 7 0 7
 panel_dock = 0
@@ -57,18 +74,19 @@ panel_background_id = 1
 panel_items = LTSBC
 
 # Panel Autohide
-autohide = 1
-autohide_show_timeout = 0.3
-autohide_hide_timeout = 0.5
-autohide_height = 0
-strut_policy = none
+autohide = 0
+#autohide = 1
+#autohide_show_timeout = 0.3
+#autohide_hide_timeout = 0.5
+#autohide_height = 0
+#strut_policy = none
 #strut_policy = follow_size
 
 # Taskbar
 taskbar_mode = multi_desktop
-taskbar_padding = 2 3 2
+taskbar_padding = 5 3 5
 taskbar_background_id = 0
-taskbar_active_background_id = 1
+taskbar_active_background_id = 2
 
 # Tasks
 urgent_nb_of_blink = 8
@@ -77,10 +95,11 @@ task_text = 1
 task_centered = 1
 task_maximum_size = 140 35
 task_padding = 6 2
-task_background_id = 3
-task_active_background_id = 2
-task_urgent_background_id = 2
-task_iconified_background_id = 3
+task_background_id = 1
+task_active_background_id = 3
+task_inactive_background_id = 5
+task_urgent_background_id = 3
+#task_iconified_background_id = 3
 task_tooltip = 0
 
 # Task Icons
@@ -106,10 +125,10 @@ systray_icon_size = 16
 systray_icon_asb = 70 0 0
 
 # Clock
-time1_format = %H:%M
+time1_format = %A %d %B %H:%M
 time1_font = sans 8
-time2_format = %A %d %B
-time2_font = sans 6
+#time2_format = %A %d %B
+#time2_font = sans 6
 clock_font_color = #FFFFFF 74
 clock_padding = 1 0
 clock_background_id = 0

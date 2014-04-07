@@ -22,7 +22,6 @@ if [[ $LINES -lt 2 ]]; then
 fi
 tint2 &
 thunar-volman &
-conky &
 pidof nm-applet
 if [[ "$?" == "1" ]]; then
     nm-applet &
