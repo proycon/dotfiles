@@ -178,8 +178,8 @@ if [[ $HOST == "applejack" || $HOST == "fluttershy" || $HOST == "rarity" || $HOS
     alias ipy3="expy3 && /vol/customopt/python3-packages/bin/ipython3"
     alias ipy="expy3 && /vol/customopt/python3-packages/bin/ipython3"
 
-    alias py="exp3 && python3"
-    alias py2="exp2 && python"
+    alias py="expy3 && python3"
+    alias py2="expy2 && python"
     alias py3="expy3 && python3"
     alias ipy2="expy2 && ipython"
     alias ipyq="expy3 && ipython qtconsole"
