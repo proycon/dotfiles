@@ -79,7 +79,6 @@ alias z='less -rN'
 
 export MPD_HOST="proycon@anaproy.nl"
 
-export GPGKEY="1A31555C"
 
 export EDITOR="vim"
 
@@ -138,6 +137,7 @@ fi
 #if [[ -f  /usr/share/source-highlight/src-hilite-lesspipe.sh ]]; then
 #    export LESSOPEN="| /usr/share/source-highlight/src-hilite-lesspipe.sh %s"
 #fi
+
 
 
 alias ap='ssh -Y -A anaproy.nl'
@@ -245,6 +245,15 @@ if [[ $TERM == "xterm" ]] && [[ $COLORTERM == "gnome-terminal" ]]; then
 fi
 export PS1="$PS1"'$([ -n "$TMUX" ] && tmux setenv TMUXPWD_$(tmux display -p "#D" | tr -d %) "$PWD")' #tmux-powerline support
 
+
+export GPGKEY="1A31555C"
+if [ -f "${HOME}/.gpg-agent-info" ]; then
+    . "${HOME}/.gpg-agent-info"
+    export GPG_AGENT_INFO
+    export SSH_AUTH_SOCK
+fi
+GPG_TTY=$(tty)
+export GPG_TTY
 
 bindkey '\e[A' history-substring-search-up
 bindkey '\e[B' history-substring-search-down
