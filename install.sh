@@ -19,6 +19,7 @@ ln -s $DOTDIR/signature.ru $HOMEDIR/.signature.ru
 ln -s $DOTDIR/signature.unilang $HOMEDIR/.signature.unilang
 ln -sT $DOTDIR/xinitrc $HOMEDIR/.xinitrc
 ln -sT $DOTDIR/openbox $HOMEDIR/.config/openbox
+ln -sT $DOTDIR/terminator $HOMEDIR/.config/terminator
 ln -sT $DOTDIR/irssi $HOMEDIR/.irssi
 ln -s $DOTDIR/tmux.conf $HOMEDIR/.tmux.conf
 ln -s $DOTDIR/tmux-powerlinerc $HOMEDIR/.tmux-powerlinerc
