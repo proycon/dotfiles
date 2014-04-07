@@ -22,7 +22,6 @@
   [[default]]
     use_system_font = False
     copy_on_selection = True
-    visible_bell = True
     background_darkness = 0.92
     urgent_bell = True
     background_type = transparent
