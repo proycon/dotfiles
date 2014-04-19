@@ -13,7 +13,8 @@ set folder="~/Maildir/"
 set mask="!^\\.[^.]"
 set record="+.Sent"
 set postponed="+.Drafts"
-set spoolfile="+INBOX"
+#set spoolfile="+INBOX"
+set spoolfile="~/Maildir/"
 mailboxes `echo -n "+ "; find ~/Maildir -maxdepth 1 -type d -name ".*" -printf "+'%f' "`
 #source ~/.mutt/mailboxes 
 alternative_order text/plain text/html

@@ -79,7 +79,6 @@ alias z='less -rN'
 
 export MPD_HOST="proycon@anaproy.nl"
 
-export GPGKEY="1A31555C"
 
 export EDITOR="vim"
 
@@ -140,6 +139,7 @@ fi
 #fi
 
 
+
 alias ap='ssh -Y -A anaproy.nl'
 alias ssha='ssh -Y -A anaproy.nl'
 alias sshat='ssh -Y -A anaproy.nl tmux attach'
@@ -177,8 +177,8 @@ if [[ $HOST == "applejack" || $HOST == "fluttershy" || $HOST == "rarity" || $HOS
     alias ipy3="expy3 && /vol/customopt/python3-packages/bin/ipython3"
     alias ipy="expy3 && /vol/customopt/python3-packages/bin/ipython3"
 
-    alias py="exp3 && python3"
-    alias py2="exp2 && python"
+    alias py="expy3 && python3"
+    alias py2="expy2 && python"
     alias py3="expy3 && python3"
     alias ipy2="expy2 && ipython"
     alias ipyq="expy3 && ipython qtconsole"
@@ -245,6 +245,15 @@ if [[ $TERM == "xterm" ]] && [[ $COLORTERM == "gnome-terminal" ]]; then
 fi
 export PS1="$PS1"'$([ -n "$TMUX" ] && tmux setenv TMUXPWD_$(tmux display -p "#D" | tr -d %) "$PWD")' #tmux-powerline support
 
+
+export GPGKEY="1A31555C"
+if [ -f "${HOME}/.gpg-agent-info" ]; then
+    . "${HOME}/.gpg-agent-info"
+    export GPG_AGENT_INFO
+    export SSH_AUTH_SOCK
+fi
+GPG_TTY=$(tty)
+export GPG_TTY
 
 bindkey '\e[A' history-substring-search-up
 bindkey '\e[B' history-substring-search-down
