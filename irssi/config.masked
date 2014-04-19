@@ -152,6 +152,7 @@ aliases = {
   WC = "window close";
   WN = "window new hide";
   SV = "say Irssi $J ($V) - http://irssi.org/";
+  DL = "say http://download.anaproy.nl/";
   GOTO = "sb goto";
   CHAT = "dcc chat";
   RUN = "SCRIPT LOAD";
@@ -311,27 +312,37 @@ hilights = (
 logs = { };
 windows = {
   1 = { immortal = "yes"; name = "(status)"; level = "ALL"; };
-  2 = {
-    items = (
-      {
-        type = "CHANNEL";
-        chat_type = "IRC";
-        name = "#ticc";
-        tag = "BOUNCER";
-      }
-    );
-  };
+  2 = { immortal = "yes"; name = "hilight"; sticky = "yes"; };
   3 = {
     items = (
       {
         type = "CHANNEL";
         chat_type = "IRC";
-        name = "#lst";
-        tag = "BOUNCER";
+        name = "#ticc";
+        tag = "BOUNCER-work";
       }
     );
   };
-  4 = { name = "hilight"; sticky = "yes"; };
+  4 = {
+    items = (
+      {
+        type = "CHANNEL";
+        chat_type = "IRC";
+        name = "#lst";
+        tag = "BOUNCER-work";
+      }
+    );
+  };
+  5 = {
+    items = (
+      {
+        type = "CHANNEL";
+        chat_type = "IRC";
+        name = "#unilang";
+        tag = "BOUNCER-unilang";
+      }
+    );
+  };
 };
 mainwindows = {
   1 = { first_line = "8"; lines = "26"; };

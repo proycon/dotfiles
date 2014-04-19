@@ -1,6 +1,8 @@
 
 if [[ $HOST == "galactica" || $HOST == "pegasus" || $HOST == "mhysa" ]] {
 	host="{$fg_bold[green]%}@%m%{$reset_color%}"
+} elif [[ $HOST == "mhysa" || $HOST == "drasha" ]] {
+	host="{$fg_bold[blue]%}@%m%{$reset_color%}"
 } elif [[ $HOST == "roma" ]] {
 	host="{$fg_bold[yellow]%}@%m%{$reset_color%}"
 } elif [[ $HOST == 'charon' ]] || [[ $HOST == 'cerberus' ]] || [[ $HOST == 'zeus' ]] || [[ $HOST == 'applejack' ]] || [[ $HOST == 'pipsqueak' ]]   {
