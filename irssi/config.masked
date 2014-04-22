@@ -346,5 +346,5 @@ windows = {
 };
 mainwindows = {
   1 = { first_line = "8"; lines = "26"; };
-  4 = { first_line = "1"; lines = "7"; };
+  2 = { first_line = "1"; lines = "7"; };
 };
