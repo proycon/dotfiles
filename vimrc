@@ -238,6 +238,9 @@ let g:pymode_motion = 1
 
 let g:pymode_syntax_space_errors = 0
 
+let g:airline_powerline_fonts = 1
+let g:airline#extensions#bufferline#enabled = 1
+
 map <leader>_ :%s=\s\+$==<CR>
 
 
