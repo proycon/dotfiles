@@ -172,6 +172,7 @@ set sessionoptions+=resize,buffers,blank,curdir
 let g:session_default_to_last="yes"
 let g:session_autoload="yes"
 
+
 map <leader>ct :!ctags -R --c++-kinds=+p --fields=+iaS --extra=+q .<CR>
 
 
@@ -240,6 +241,7 @@ let g:pymode_syntax_space_errors = 0
 
 let g:airline_powerline_fonts = 1
 let g:airline#extensions#bufferline#enabled = 1
+let g:bufferline_echo = 1  
 
 map <leader>_ :%s=\s\+$==<CR>
 
