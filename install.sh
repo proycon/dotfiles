@@ -3,6 +3,8 @@
 cd ~
 HOMEDIR=`pwd`
 mkdir bin
+mkdir .ncmpcpp
+mkdir .config
 cd dotfiles
 DOTDIR=`pwd`
 
@@ -24,6 +26,7 @@ ln -sT $DOTDIR/irssi $HOMEDIR/.irssi
 ln -s $DOTDIR/tmux.conf $HOMEDIR/.tmux.conf
 ln -s $DOTDIR/tmux-powerlinerc $HOMEDIR/.tmux-powerlinerc
 ln -s $DOTDIR/tm $HOMEDIR/bin/tm
+ln -s $DOTDIR/ncmpcpp.config $HOMEDIR/.ncmpcpp/config
 NICKSERVPASS=`cat ~/.nickserv`
 BOUNCERPASS=`cat ~/.anaproy`
 cat $HOMEDIR/.irssi/config.masked | sed -e "s/NICKSERVPASS/$NICKSERVPASS/" -e "s/BOUNCERPASS/$BOUNCERPASS/" > $HOMEDIR/.irssi/config
