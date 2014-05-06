@@ -51,6 +51,7 @@ alias mi='LANGUAGE="en_GB.UTF-8" make install; if (( $? == 0 )); then; play -q /
 alias glmi='git pull && LANGUAGE="en_GB.UTF-8" make install; if (( $? == 0 )); then; play -q /usr/share/sounds/KDE-Sys-App-Positive.ogg 2> /dev/null &!; else; play -q /usr/share/sounds/KDE-K3B-Finish-Error.ogg 2> /dev/null &!; fi; hr'
 alias gl='git pull; if (( $? == 0 )); then; play -q /usr/share/sounds/KDE-Window-Minimize.ogg 2> /dev/null &!; fi'
 alias gp='git push; if (( $? == 0 )); then; play -q /usr/share/sounds/KDE-Window-Maximize.ogg 2> /dev/null &!; fi'
+alias pg='git push; if (( $? == 0 )); then; play -q /usr/share/sounds/KDE-Window-Maximize.ogg 2> /dev/null &!; fi'
 alias cf='LANGUAGE="en_GB.UTF-8" ./configure'
 alias t='~/todo/todo.sh'
 alias tls='~/todo/todo.sh ls'
@@ -140,9 +141,9 @@ fi
 
 
 
-alias ap='ssh -Y -A anaproy.nl tmux a'
+alias ap='ssh -Y -A -t anaproy.nl /home/proycon/bin/tm'
 alias ssha='ssh -Y -A anaproy.nl'
-alias sshat='ssh -Y -A anaproy.nl tmux attach'
+alias sshat='ssh -Y -A anaproy.nl /home/proycon/bin/tm'
 alias e='ssh -Y -A -t anaproy.nl /home/proycon/bin/tm_vi'
 alias m="ssh -Y -A -t anaproy.nl /home/proycon/bin/tm_alot"
 alias sshilk='ssh mvgompel@radium.uvt.nl'
