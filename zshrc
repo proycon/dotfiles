@@ -140,7 +140,7 @@ fi
 
 
 
-alias ap='ssh -Y -A anaproy.nl'
+alias ap='ssh -Y -A anaproy.nl tmux a'
 alias ssha='ssh -Y -A anaproy.nl'
 alias sshat='ssh -Y -A anaproy.nl tmux attach'
 alias e='ssh -Y -A -t anaproy.nl /home/proycon/bin/tm_vi'
