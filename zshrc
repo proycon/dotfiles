@@ -173,7 +173,7 @@ alias lq="source ~/.sgesh"
 
 
 if [[ $HOST == "applejack" || $HOST == "fluttershy" || $HOST == "rarity" || $HOST == "cheerilee" || $HOST == "fancypants" || $HOST == "pipsqueak" || $HOST == "scootaloo" ]]; then
-    alias expy2="export PYTHONPATH=/home/proycon/:/vol/customopt/uvt-ru/src/colibri/scripts:/vol/customopt/nlptools/stanford-corenlp-python:/vol/customopt/uvt-ru/lib/python2.7/site-packages/:/vol/customopt/python2-packages/lib/python2.7/site-packages:/vol/customopt/clam/lib/python2.7/site-packages"
+    alias expy2="export PYTHONPATH=/home/proycon/:/vol/customopt/uvt-ru/src/colibri/scripts:/vol/customopt/nlptools/stanford-corenlp-python:/vol/customopt/uvt-ru/lib/python2.7/site-packages/:/vol/customopt/python2-packages/lib/python2.7/site-packages:/vol/customopt/cython2/lib/python2.7/site-packages/:/vol/customopt/clam/lib/python2.7/site-packages"
     alias expy3="export PYTHONPATH=/home/proycon/:/vol/customopt/uvt-ru/src/colibri/scripts:/vol/customopt/nlptools/stanford-corenlp-python:/vol/customopt/uvt-ru/lib/python3.2/site-packages/:/vol/customopt/cython3/lib/python3.2/site-packages/:/vol/customopt/twisted3/lib/python3.2/site-packages/:/vol/customopt/python3-packages/lib/python3.2/site-packages/"
 
     alias ipy3="expy3 && /vol/customopt/python3-packages/bin/ipython3"
