@@ -548,6 +548,16 @@
         <command>switch</command>
       </action>
     </keybind>
+    <keybind key="A-F7">
+      <action name="Execute">
+      <command>~/bin/house.sh "office light on"</command>
+      </action>
+    </keybind>
+    <keybind key="A-F8">
+      <action name="Execute">
+      <command>~/bin/house.sh "office light off"</command>
+      </action>
+    </keybind>
     <keybind key="A-F9">
       <action name="Execute">
         <command>setxkbmap proylatin</command>
