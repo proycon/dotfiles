@@ -175,6 +175,9 @@ let g:session_autoload="yes"
 
 map <leader>ct :!ctags -R --c++-kinds=+p --fields=+iaS --extra=+q .<CR>
 
+" map <leader>y y:e ~/clipboard<CR>P:w !pbcopy<CR><CR>:bdelete!<CR>
+map <leader>y :w! ~/clipboard<CR>!cpcopy<CR>
+
 
 " " ============================================================================
 " Python IDE Setup
