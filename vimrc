@@ -59,6 +59,7 @@ map <C-h> <c-w>h
 
 map <C-m> <esc>:CtrlPFunky<Cr>
 map <C-n> <esc>:CtrlPMRU<Cr>
+map <C-b> <esc>:CtrlPBuffer<Cr>
 
 " close quickfix window
 " map <leader>E <esc>:ccl<CR>
