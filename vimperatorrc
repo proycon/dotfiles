@@ -93,7 +93,7 @@ noremap K <C-b>
 noremap h <C-p>
 noremap l <C-n>
 
-noremap x :bd
+noremap s <C-o>
 
 " Move the current tab
 noremap <leader>h <Esc>:tabmove! -1<CR>
