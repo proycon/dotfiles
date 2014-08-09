@@ -79,7 +79,7 @@ set maxitems=35
 colorscheme solarized-light
 
 " set a stupid title
-set titlestring="oh hai!"
+set titlestring="Firefox"
 
 " only show the tab bar if there are more than 1 tabs
 set showtabline=multitab
