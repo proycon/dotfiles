@@ -131,11 +131,12 @@ set scrolltime=200
 map -builtin w 10h
 map -builtin e 10l
 " go forward and back
-map -builtin J <C-f>
-map -builtin K <C-b>
+map -builtin j <C-f>
+map -builtin k <C-b>
 
 map -builtin h gT
 map -builtin l gt
+map -builtin z :back<CR>
 
 " Go to the next/previous tab
 map -builtin <C-h> <C-p>
