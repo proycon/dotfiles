@@ -52,7 +52,7 @@
 " Use home row letters for hints instead of numbers
 set hintkeys=asdfg;lkjh
 
-set editor="vim"
+set editor="terminator -e vim"
 
 " tell the bell to go beep itself!
 set visualbell
@@ -136,7 +136,7 @@ map -builtin k <C-b>
 
 map -builtin h gT
 map -builtin l gt
-map -builtin z :back<CR>
+map -builtin e <C-o>
 
 " Go to the next/previous tab
 map -builtin <C-h> <C-p>
@@ -160,7 +160,7 @@ imap -builtin <C-e> <C-i>
 " nmap -builtin d <silent> <Nop>
 
 " Never wanted to go back when I hit delete, now it won't
-nmap -builtin <bs> <nop>
+" nmap -builtin <bs> <nop>
 
 " The auto number incremeting is kind of annoying
 nmap -builtin <C-a> <nop>
