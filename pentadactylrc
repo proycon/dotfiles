@@ -77,7 +77,7 @@ set complete=lS
 set maxitems=35
 
 " use a different color scheme
-colorscheme solarized-light
+" colorscheme solarized-dark
 
 " set a stupid title
 set titlestring="Pentadactyl"
