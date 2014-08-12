@@ -52,7 +52,7 @@
 " Use home row letters for hints instead of numbers
 set hintkeys=asdfg;lkjh
 
-set editor="terminator -e vim"
+set editor='terminator -e "vim +<line> +\"sil! call cursor(0, <column>)\" <file>"'
 
 " tell the bell to go beep itself!
 set visualbell
@@ -80,7 +80,7 @@ set maxitems=35
 colorscheme solarized-light
 
 " set a stupid title
-set titlestring="Firefox"
+set titlestring="Pentadactyl"
 
 " only show the tab bar if there are more than 1 tabs
 set showtabline=multitab
