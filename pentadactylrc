@@ -61,8 +61,8 @@ set visualbell
 hi Bell display: none;
 "
 " remove the right and bottom scrollbars
-set guioptions-=rb
-set guioptions+=T
+set guioptions-=Bm
+set guioptions+=Trbn
 
 " get rid of the tab bar, that is valuable space!
 "set showtabline=0
