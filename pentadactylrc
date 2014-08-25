@@ -104,15 +104,16 @@ set findcase=smart
 map <silent> coh :set hlfind!<CR>
 " Set up google as the default search engine
 set defsearch=duckduckgo
+set suggestengines=duckduckgo
 
 " Mappings                                                     {{{1
 " -----------------------------------------------------------------
 "
 " Don't follow a hint immediately
-map -builtin f ;;
+" map -builtin f ;;
 
 " bring back/hide portions of the GUI
-map -builtin <silent> cog :set guioptions+=mBT<CR>
+map -builtin <silent> cog :set guioptions+=Trbn<CR>
 map -builtin <silent> coG :set guioptions-=mBT<CR>
 map -builtin <silent> cob :toolbartoggle Bookmarks Toolbar<CR>
 map -builtin <silent> cot :set showtabline=always<CR>
@@ -129,8 +130,8 @@ set scrollsteps=20
 set scrolltime=200
 
 " Scroll settings
-map -builtin w 10h
-map -builtin e 10l
+" map -builtin w 10h
+" map -builtin e 10l
 " go forward and back
 map -builtin j <C-f>
 map -builtin k <C-b>
