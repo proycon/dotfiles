@@ -258,8 +258,8 @@ GPG_TTY=$(tty)
 export GPG_TTY
 
 #VIM mode
-bindkey -v
-bindkey -M viins 'jj' vi-cmd-mode
+#bindkey -v
+#bindkey -M viins 'jj' vi-cmd-mode
 
 bindkey '\e[A' history-substring-search-up
 bindkey '\e[B' history-substring-search-down
