@@ -103,8 +103,8 @@ set findcase=smart
 " a toggle for search highlight
 map <silent> coh :set hlfind!<CR>
 " Set up google as the default search engine
-set defsearch=duckduckgo
-set suggestengines=duckduckgo
+set defsearch=google
+" set suggestengines=google
 
 " Mappings                                                     {{{1
 " -----------------------------------------------------------------
