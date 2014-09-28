@@ -258,6 +258,11 @@ fi
 GPG_TTY=$(tty)
 export GPG_TTY
 
+PANEL_FIFO=/tmp/panel-fifo
+PANEL_HEIGHT=24
+PANEL_FONT_FAMILY="-*-terminus-medium-r-normal-*-12-*-*-*-c-*-*-1"
+export PANEL_FIFO PANEL_HEIGHT PANEL_FONT_FAMILY
+
 #VIM mode
 #bindkey -v
 #bindkey -M viins 'jj' vi-cmd-mode
