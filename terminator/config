@@ -20,16 +20,17 @@
   split_vert = <Alt>v
 [profiles]
   [[default]]
-    use_system_font = False
+    palette = "#000000:#9f0000:#3c5b31:#c2a946:#3465a4:#8a4762:#1e876d:#d3d7cf:#555753:#fb8080:#659438:#dbdc7a:#729fcf:#ad7fa8:#8ad7c2:#eeeeec"
     copy_on_selection = True
+    background_image = None
     background_darkness = 0.92
     urgent_bell = True
     background_type = transparent
-    background_image = None
+    use_system_font = False
     split_to_group = True
-    foreground_color = "#e5e5e5"
+    foreground_color = "#d4d4d4"
     font = Ubuntu Mono 13
-    background_color = "#212121"
+    background_color = "#2f2f2f"
     scrollback_lines = 5000
     audible_bell = True
   [[solarized-dark]]
