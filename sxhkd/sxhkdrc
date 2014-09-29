@@ -23,11 +23,14 @@ super + apostrophe
     bspc window -s last
 
 
+super + alt + w
+    bspc window -k  
+
 
 super + i
     terminator -e "tm irssi" -T irssi
 
-super + n
+super + shift + m 
     terminator -e "source ~/.zshrc; zsh -c ncmpcpp" -T ncmpcpp
 
 super + m
@@ -36,7 +39,7 @@ super + m
 super + v
     terminator -e "tm vim" -T vim
 
-super + {o,p}
+super + {p,n}
     bspc control --record-history off; \
     bspc window {older,newer} -f; \
     bspc control --record-history on
@@ -76,6 +79,9 @@ super + ctrl + {1-9}
 
 super + {_,shift + }{1-9,0,minus,equal}
     bspc {desktop -f,window -d} ^{1-9,10,11,12}
+
+super + {Left,Right}
+    bspc desktop -f {prev,next}
 
 ~button1
     bspc pointer -g focus
