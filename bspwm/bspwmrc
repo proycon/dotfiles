@@ -12,7 +12,7 @@ bspc config gapless_monocle true
 bspc config focus_by_distance true
 bspc config focus_follows_pointer true
 bspc monitor -d im edit www mail term irc 7 8 9 10 11 12 
-bspc rule -a Gimp desktop=^8 follow=on floating=on
+bspc rule -a Gimp desktop=^8 follow=on 
 bspc rule -a Firefox desktop=^3
 bspc rule -a gajim desktop=^1
 bspc rule -a mplayer floating=on
