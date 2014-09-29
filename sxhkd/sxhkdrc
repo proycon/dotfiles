@@ -56,8 +56,14 @@ super + {_,shift + }{h,j,k,l}
 super + {_,shift + }c
     bspc window -f {next,prev}
 
+super + {_,shift + }slash
+    bspc desktop -C {forward,backward}
+
+super + {_,shift + }backslash
+    bspc desktop -F {vertical,horizontal}
+
 super + {comma,period}
-    bspc desktop -C {backward,forward}
+    bspc desktop -l {tiled,monocle}
 
 super + bracket{left,right}
     bspc desktop -f {prev,next}
