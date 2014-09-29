@@ -1,7 +1,8 @@
 #!/bin/bash
 #xcompmgr -cC -t-3 -l-5 -r5 &
-xcompmgr -fF &
+#xcompmgr -fF &
 pulseaudio --start &
+#compton -cC -r 3 -l 2 -t 2 -f -b -i 0.9
 /usr/lib/policykit-1-gnome/polkit-gnome-authentication-agent-1 &
 gnome-settings-daemon &
 gnome-keyring-daemon -s --components=pkcs11,secrets,ssh,gpg &
@@ -17,9 +18,10 @@ fi
 if [[ $HOST == "mhysa" ]]; then
     mountssh &
 fi
-LINES=`ps aux | grep guake | wc -l`
+LINES=`ps aux | grep tilda | wc -l`
 if [[ $LINES -lt 2 ]]; then
-    guake &
+    tilda &
+    #guake &
 fi
 tint2 &
 thunar-volman &

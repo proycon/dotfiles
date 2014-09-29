@@ -23,7 +23,7 @@
     palette = "#000000:#9f0000:#3c5b31:#c2a946:#3465a4:#8a4762:#1e876d:#d3d7cf:#555753:#fb8080:#659438:#dbdc7a:#729fcf:#ad7fa8:#8ad7c2:#eeeeec"
     copy_on_selection = True
     background_image = None
-    background_darkness = 0.92
+    background_darkness = 0.81
     urgent_bell = True
     background_type = transparent
     use_system_font = False
