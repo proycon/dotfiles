@@ -2,10 +2,10 @@ urxvt*depth: 32
 urxvt*background: rgba:2f00/2f00/2f00/c800
 
 urxvt*scrollBar: false
-urxvt*font: xft:Ubuntu Mono derivative Powerline:size=13:antialias=true:hinting=true,xft:PowerLineSymbols
-urxvt*boldFont: xft:Ubuntu Mono derivative Powerline:bold:size=13:antialias=true:hinting=true,xft:PowerLineSymbols
-urxvt*italicFont: xft:Ubuntu Mono derivative Powerline:italic:size=13:antialias=true:hinting=true,xft:PowerLineSymbols
-urxvt*boldItalicFont: xft:Ubuntu Mono derivative Powerline:bold:italic:size=13:antialias=true:hinting=true,xft:PowerLineSymbols
+urxvt*font: xft:Ubuntu Mono derivative Powerline:size=13:antialias=true:hinting=true
+urxvt*boldFont: xft:Ubuntu Mono derivative Powerline:bold:size=13:antialias=true:hinting=true
+urxvt*italicFont: xft:Ubuntu Mono derivative Powerline:italic:size=13:antialias=true:hinting=true
+urxvt*boldItalicFont: xft:Ubuntu Mono derivative Powerline:bold:italic:size=13:antialias=true:hinting=true
 urxvt*letterSpace: -1
 
 urxvt.perl-ext-common : default,matcher

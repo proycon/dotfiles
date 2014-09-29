@@ -32,16 +32,16 @@ super + alt + w
 
 
 super + i
-    urxvt -T irssi -e "tm irssi" -T 
+    urxvt -T irssi -e tm irssi 
 
 super + shift + m 
-    urxvt -T ncmpcpp -e "source ~/.zshrc; zsh -c ncmpcpp"
+    urxvt -T ncmpcpp -e ncmpcpp
 
 super + m
-    urxvt -T mail -e "zsh -c 'source ~/.zshrc; ssh -Y -A -t anaproy.nl /home/proycon/bin/tm_alot'" 
+    urxvt -T mail -e ssh -Y -A -t anaproy.nl /home/proycon/bin/tm_alot
 
 super + v
-    urxvt -T vim -e "tm vim"
+    urxvt -T vim -e tm vim
 
 super + {p,n}
     bspc control --record-history off; \

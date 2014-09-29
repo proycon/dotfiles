@@ -12,7 +12,8 @@ set clipboard=unnamed
 
 set mouse=a  " on OSX press ALT and click
 set bs=2     " make backspace behave like normal again
-set term=screen-256color
+
+" set term=screen-256color
 
 set hidden " allow leaving buffers without saving
 nnoremap <F9> :buffers<CR>:buffer<Space>
