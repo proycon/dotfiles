@@ -2,7 +2,7 @@
 #xcompmgr -cC -t-3 -l-5 -r5 &
 #xcompmgr -fF &
 pulseaudio --start &
-#compton -cC -r 3 -l 2 -t 2 -f -b -i 0.9
+compton -cC -r 3 -l 2 -t 2 -f -b -i 0.9
 /usr/lib/policykit-1-gnome/polkit-gnome-authentication-agent-1 &
 gnome-settings-daemon &
 gnome-keyring-daemon -s --components=pkcs11,secrets,ssh,gpg &

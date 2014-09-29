@@ -8,7 +8,7 @@ super + w
     bspc window -c
 
 super + t
-    terminator
+    urxvt
 
 super + u
     pcmanfm
@@ -32,16 +32,16 @@ super + alt + w
 
 
 super + i
-    terminator -e "tm irssi" -T irssi
+    urxvt -e "tm irssi" -T irssi
 
 super + shift + m 
-    terminator -e "source ~/.zshrc; zsh -c ncmpcpp" -T ncmpcpp
+    urxvt -e "source ~/.zshrc; zsh -c ncmpcpp" -T ncmpcpp
 
 super + m
-    terminator -e "zsh -c 'source ~/.zshrc; ssh -Y -A -t anaproy.nl /home/proycon/bin/tm_alot'" -T mail
+    urxvt -e "zsh -c 'source ~/.zshrc; ssh -Y -A -t anaproy.nl /home/proycon/bin/tm_alot'" -T mail
 
 super + v
-    terminator -e "tm vim" -T vim
+    urxvt -e "tm vim" -T vim
 
 super + {p,n}
     bspc control --record-history off; \
@@ -132,7 +132,7 @@ alt + @F12
 # wm independent hotkeys
 #
 super + Return
-    terminator
+    urxvt
 
 super + space
     dmenu_run
