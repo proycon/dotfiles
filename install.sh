@@ -22,6 +22,9 @@ ln -s $DOTDIR/signature.unilang $HOMEDIR/.signature.unilang
 ln -sT $DOTDIR/xinitrc $HOMEDIR/.xinitrc
 ln -sT $DOTDIR/openbox $HOMEDIR/.config/openbox
 ln -sT $DOTDIR/terminator $HOMEDIR/.config/terminator
+ln -sT $DOTDIR/bspwm $HOMEDIR/.config/bspwm
+ln -sT $DOTDIR/sxhkd $HOMEDIR/.config/sxhkd
+ln -sT $DOTDIR/tilda $HOMEDIR/.config/tilda
 ln -sT $DOTDIR/irssi $HOMEDIR/.irssi
 ln -s $DOTDIR/tmux.conf $HOMEDIR/.tmux.conf
 ln -s $DOTDIR/tmux-powerlinerc $HOMEDIR/.tmux-powerlinerc
@@ -31,6 +34,8 @@ ln -s $DOTDIR/pdbrc.py $HOMEDIR/.pdbrc.py
 ln -s $DOTDIR/vimperatorrc $HOMEDIR/.vimperatorrc
 ln -s $DOTDIR/pentadactylrc $HOMEDIR/.pentadactylrc
 ln -s $DOTDIR/inputrc $HOMEDIR/.inputrc
+ln -s $DOTDIR/Xresources $HOMEDIR/.Xresources
+ln -s $DOTDIR/Xresources $HOMEDIR/Xresources
 NICKSERVPASS=`cat ~/.nickserv`
 BOUNCERPASS=`cat ~/.anaproy`
 cat $HOMEDIR/.irssi/config.masked | sed -e "s/NICKSERVPASS/$NICKSERVPASS/" -e "s/BOUNCERPASS/$BOUNCERPASS/" > $HOMEDIR/.irssi/config
