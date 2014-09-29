@@ -12,6 +12,9 @@ urxvt.perl-ext-common : default,matcher
 urxvt.urlLauncher     : firefox
 urxvt.matcher.button  : 2
 
+urxvt*keysym.Home: \033[1~
+urxvt*keysym.End: \033[4~
+
 !!urxvt*foreground: #D6C3B6
 urxvt*foreground: #d4d4d4
 urxvt*cursorColor: #9a875f
