@@ -10,6 +10,9 @@ super + w
 super + t
     terminator
 
+super + u
+    pcmanfm
+
 super + q
     bspc desktop -B
 
@@ -21,6 +24,7 @@ super + {grave,Tab}
 
 super + apostrophe
     bspc window -s last
+
 
 
 super + alt + w
