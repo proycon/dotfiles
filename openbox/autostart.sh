@@ -18,10 +18,18 @@ fi
 if [[ $HOST == "mhysa" ]]; then
     mountssh &
 fi
-LINES=`ps aux | grep tilda | wc -l`
-if [[ $LINES -lt 2 ]]; then
-    tilda &
-    #guake &
+if [[ $HOST == "drasha" ]]; then
+    LINES=`ps aux | grep guake | wc -l`
+    if [[ $LINES -lt 2 ]]; then
+        tilda &
+        #guake &
+    fi
+else
+    LINES=`ps aux | grep tilda | wc -l`
+    if [[ $LINES -lt 2 ]]; then
+        tilda &
+        #guake &
+    fi
 fi
 tint2 &
 thunar-volman &
