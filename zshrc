@@ -64,6 +64,7 @@ alias a='tmux attach'
 alias ta='~/todo.sh add'
 alias ka='killall'
 alias gpp='git push origin gh-pages'
+alias r='ranger'
 #colours
 alias g="grep -n --color=auto"
 alias grep='grep --color=no'
