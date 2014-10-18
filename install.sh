@@ -9,33 +9,33 @@ cd dotfiles
 DOTDIR=`pwd`
 
 
-ln -sT $DOTDIR/vim $HOMEDIR/.vim
-ln -s $DOTDIR/vimrc $HOMEDIR/.vimrc
-ln -s $DOTDIR/zshrc $HOMEDIR/.zshrc
-ln -s $DOTDIR/muttrc $HOMEDIR/.muttrc
-ln -s $DOTDIR/mutt-compose.sh $HOMEDIR/bin/mutt-compose.sh
-ln -s $DOTDIR/mutt-compose $HOMEDIR/.mutt-compose
-ln -s $DOTDIR/mailcap $HOMEDIR/.mailcap
-ln -s $DOTDIR/signature $HOMEDIR/.signature
-ln -s $DOTDIR/signature.ru $HOMEDIR/.signature.ru
-ln -s $DOTDIR/signature.unilang $HOMEDIR/.signature.unilang
-ln -sT $DOTDIR/xinitrc $HOMEDIR/.xinitrc
-ln -sT $DOTDIR/openbox $HOMEDIR/.config/openbox
-ln -sT $DOTDIR/terminator $HOMEDIR/.config/terminator
-ln -sT $DOTDIR/bspwm $HOMEDIR/.config/bspwm
-ln -sT $DOTDIR/sxhkd $HOMEDIR/.config/sxhkd
-ln -sT $DOTDIR/tilda $HOMEDIR/.config/tilda
-ln -sT $DOTDIR/irssi $HOMEDIR/.irssi
-ln -s $DOTDIR/tmux.conf $HOMEDIR/.tmux.conf
-ln -s $DOTDIR/tmux-powerlinerc $HOMEDIR/.tmux-powerlinerc
-ln -s $DOTDIR/tm $HOMEDIR/bin/tm
-ln -s $DOTDIR/ncmpcpp.config $HOMEDIR/.ncmpcpp/config
-ln -s $DOTDIR/pdbrc.py $HOMEDIR/.pdbrc.py
-ln -s $DOTDIR/vimperatorrc $HOMEDIR/.vimperatorrc
-ln -s $DOTDIR/pentadactylrc $HOMEDIR/.pentadactylrc
-ln -s $DOTDIR/inputrc $HOMEDIR/.inputrc
-ln -s $DOTDIR/Xresources $HOMEDIR/.Xresources
-ln -s $DOTDIR/Xresources $HOMEDIR/Xresources
+ln -sfn $DOTDIR/vim $HOMEDIR/.vim
+ln -sfn $DOTDIR/vimrc $HOMEDIR/.vimrc
+ln -sfn $DOTDIR/zshrc $HOMEDIR/.zshrc
+ln -sfn $DOTDIR/muttrc $HOMEDIR/.muttrc
+ln -sfn $DOTDIR/mutt-compose.sh $HOMEDIR/bin/mutt-compose.sh
+ln -sfn $DOTDIR/mutt-compose $HOMEDIR/.mutt-compose
+ln -sfn $DOTDIR/mailcap $HOMEDIR/.mailcap
+ln -sfn $DOTDIR/signature $HOMEDIR/.signature
+ln -sfn $DOTDIR/signature.ru $HOMEDIR/.signature.ru
+ln -sfn $DOTDIR/signature.unilang $HOMEDIR/.signature.unilang
+ln -sfn $DOTDIR/xinitrc $HOMEDIR/.xinitrc
+ln -sfn $DOTDIR/openbox $HOMEDIR/.config/openbox
+ln -sfn $DOTDIR/terminator $HOMEDIR/.config/terminator
+ln -sfn $DOTDIR/bspwm $HOMEDIR/.config/bspwm
+ln -sfn $DOTDIR/sxhkd $HOMEDIR/.config/sxhkd
+ln -sfn $DOTDIR/tilda $HOMEDIR/.config/tilda
+ln -sfn $DOTDIR/irssi $HOMEDIR/.irssi
+ln -sfn $DOTDIR/tmux.conf $HOMEDIR/.tmux.conf
+ln -sfn $DOTDIR/tmux-powerlinerc $HOMEDIR/.tmux-powerlinerc
+ln -sfn $DOTDIR/tm $HOMEDIR/bin/tm
+ln -sfn $DOTDIR/ncmpcpp.config $HOMEDIR/.ncmpcpp/config
+ln -sfn $DOTDIR/pdbrc.py $HOMEDIR/.pdbrc.py
+ln -sfn $DOTDIR/vimperatorrc $HOMEDIR/.vimperatorrc
+ln -sfn $DOTDIR/pentadactylrc $HOMEDIR/.pentadactylrc
+ln -sfn $DOTDIR/inputrc $HOMEDIR/.inputrc
+ln -sfn $DOTDIR/Xresources $HOMEDIR/.Xresources
+ln -sfn $DOTDIR/Xresources $HOMEDIR/Xresources
 NICKSERVPASS=`cat ~/.nickserv`
 BOUNCERPASS=`cat ~/.anaproy`
 cat $HOMEDIR/.irssi/config.masked | sed -e "s/NICKSERVPASS/$NICKSERVPASS/" -e "s/BOUNCERPASS/$BOUNCERPASS/" > $HOMEDIR/.irssi/config
@@ -44,7 +44,7 @@ cat $HOMEDIR/.irssi/config.masked | sed -e "s/NICKSERVPASS/$NICKSERVPASS/" -e "s
 #ln -s $DOTDIR/oh-my-zsh $HOMEDIR/oh-my-zsh
 cd $HOMEDIR
 git clone git://github.com/robbyrussell/oh-my-zsh.git
-ln -sT oh-my-zsh .oh-my-zsh
+ln -sfn oh-my-zsh .oh-my-zsh
 cd .oh-my-zsh/themes
-ln -s $HOMEDIR/dotfiles/proysh.zsh-theme
+ln -sfn $HOMEDIR/dotfiles/proysh.zsh-theme
 

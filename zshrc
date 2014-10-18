@@ -274,6 +274,8 @@ bindkey '\e[B' history-substring-search-down
 bindkey '^H' history-substring-search-up
 bindkey '^[[A' history-substring-search-up
 bindkey '^[[B' history-substring-search-down
+bindkey '[C' forward-word
+bindkey '[D' backward-word
 
 case $TERM in
     xterm*|rxvt)
