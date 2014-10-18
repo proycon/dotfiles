@@ -6,6 +6,8 @@ export LC_ALL=en_GB.UTF-8
 source ~/.zshrc
 ~/.config/openbox/autostart.sh
 
+xrdb -merge ~/.Xresources
+
 which bspwm > /dev/null 2>/dev/null
 if [ $? -eq 0 ]; then
     HAVE_BSPWM=1
