@@ -482,50 +482,45 @@
       <action name="Execute">
         <startupnotify>
           <enabled>true</enabled>
-          <name>Terminator</name>
+          <name>urxvt</name>
         </startupnotify>
-        <command>terminator</command>
+        <command>urxvt</command>
       </action>
     </keybind>
     <keybind key="W-v">
       <action name="Execute">
         <startupnotify>
           <enabled>true</enabled>
-          <name>Terminator</name>
+          <name>urxvt</name>
         </startupnotify>
-        <command>terminator -e "tm vim" -T vim</command>
+        <command>urxvt -e "tm vim" -T vim</command>
       </action>
     </keybind>
     <keybind key="W-m">
       <action name="Execute">
         <startupnotify>
           <enabled>true</enabled>
-          <name>Terminator</name>
+          <name>urxvt</name>
         </startupnotify>
-        <command>terminator -e "zsh -c 'source ~/.zshrc; ssh -Y -A -t anaproy.nl /home/proycon/bin/tm_alot'" -T mail</command>
+        <command>urxvt -T mail -e ssh -Y -A -t anaproy.nl /home/proycon/bin/tm_alot</command>
       </action>
     </keybind>
     <keybind key="W-i">
       <action name="Execute">
         <startupnotify>
           <enabled>true</enabled>
-          <name>Terminator</name>
+          <name>urxvt</name>
         </startupnotify>
-        <command>terminator -e "tm irssi" -T irssi</command>
+        <command>urxvt -T irssi -e tm irssi</command>
       </action>
     </keybind>
     <keybind key="W-n">
       <action name="Execute">
         <startupnotify>
           <enabled>true</enabled>
-          <name>Terminator</name>
+          <name>urxvt</name>
         </startupnotify>
-        <command>terminator -e "source ~/.zshrc; zsh -c ncmpcpp" -T ncmpcpp</command>
-      </action>
-    </keybind>
-    <keybind key="W-y">
-      <action name="Execute">
-        <command>terminator -p white</command>
+        <command>urxvt -T ncmpcpp -e ncmpcpp</command>
       </action>
     </keybind>
     <keybind key="A-F2">
