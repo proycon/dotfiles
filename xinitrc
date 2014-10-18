@@ -14,15 +14,15 @@ else
 fi
 which dbus-launch > /dev/null 2>/dev/null
 if [ $? -eq 0 ]; then
-    HAVE_DBUS=1
-else
-    HAVE_DBUS=0
-fi
-which openbox > /dev/null 2>/dev/null
-if [ $? -eq 0 ]; then
     DBUSLAUNCH="dbus-launch"
 else
     DBUSLAUNCH=""
+fi
+which openbox > /dev/null 2>/dev/null
+if [ $? -eq 0 ]; then
+    HAVE_OPENBOX=1
+else
+    HAVE_OPENBOX=0
 fi
 which startxfce4 > /dev/null 2>/dev/null
 if [ $? -eq 0 ]; then
