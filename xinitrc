@@ -7,6 +7,7 @@ source ~/.zshrc
 ~/.config/openbox/autostart.sh
 
 xrdb -merge ~/.Xresources
+setxkbmap proylatin
 
 which bspwm > /dev/null 2>/dev/null
 if [ $? -eq 0 ]; then
