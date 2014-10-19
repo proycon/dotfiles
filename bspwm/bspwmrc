@@ -1,12 +1,25 @@
 #!/bin/sh
 bspc config top_padding 18
 bspc config border_width 2
+
+for desktop in $(bspc query -D); do
+    if [ $desktop -eq 1 ]; then
+        bspc config -d $desktop window_gap 50;
+    elif [ $desktop -eq 4 ]; then
+        bspc config -d $desktop window_gap 25;
+    elif [ $desktop -eq 6 ]; then
+        bspc config -d $desktop window_gap 25;
+    else
+        bspc config -d $desktop window_gap 5;
+    fi
+done
+
 bspc config split_ratio 0.52
-bspc config window_gap 5
-bspc config -d ^1 window_gap 50
-bspc config -d ^4 window_gap 25
-bspc config -d ^6 window_gap 25
-bspc config -d ^12 window_gap 50
+#bspc config window_gap 5
+#bspc config -d ^1 window_gap 50
+#bspc config -d ^4 window_gap 25
+#bspc config -d ^6 window_gap 25
+#bspc config -d ^12 window_gap 50
 bspc config borderless_monocle true
 bspc config gapless_monocle true
 bspc config focus_by_distance true
