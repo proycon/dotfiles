@@ -15,7 +15,7 @@ for desktop in $(bspc query -D); do
 done
 
 bspc config split_ratio 0.52
-#bspc config window_gap 5
+bspc config window_gap 5
 #bspc config -d ^1 window_gap 50
 #bspc config -d ^4 window_gap 25
 #bspc config -d ^6 window_gap 25

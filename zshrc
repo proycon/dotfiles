@@ -77,12 +77,27 @@ fi
 alias vless='vim -R -u /usr/share/vim/vim72/macros/less.vim'
 alias l='ls'
 alias z='less -rN'
-#alias less='less -rN'
+alias myip="dig +short myip.opendns.com @resolver1.opendns.com"
 
 export MPD_HOST="proycon@anaproy.nl"
 
 
 export EDITOR="vim"
+
+#coloured man pages
+export GROFF_NO_SGR=1
+man() {
+    env LESS_TERMCAP_mb=$'\E[01;31m'   \
+    LESS_TERMCAP_md=$'\E[01;38;5;74m'  \
+    LESS_TERMCAP_me=$'\E[0m'           \
+    LESS_TERMCAP_se=$'\E[0m'           \
+    LESS_TERMCAP_so=$'\E[38;5;246m'    \
+    LESS_TERMCAP_ue=$'\E[0m'           \
+    LESS_TERMCAP_us=$'\E[04;38;5;146m' \
+    man "$@"
+}
+
+alias dis='export $(tmux showenv | grep DISPLAY)'
 
 #PATHS
 if [[ $HOST == "galactica" || $HOST == "mhysa" || $HOST == "drasha" ]]; then
