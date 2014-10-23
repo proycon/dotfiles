@@ -31,6 +31,26 @@ super + e
 super + alt + w
     bspc window -k  
 
+super + z
+    /home/proycon/bin/house.sh "office light on"
+
+super + shift + z
+    /home/proycon/bin/house.sh "office light off"
+
+super + shift + alt + z
+    /home/proycon/bin/house.sh "lights off"
+
+super + x
+    /home/proycon/bin/house.sh "tv light on"
+
+super + shift + x
+    /home/proycon/bin/house.sh "tv light off"
+
+super + shift + alt + x
+    /home/proycon/bin/house.sh "lights off"
+
+super + h
+    firefox https://home.anaproy.nl
 
 super + i
     urxvt -T irssi -e tm irssi 
