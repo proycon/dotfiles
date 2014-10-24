@@ -93,6 +93,9 @@ super + {comma,period}
 super + bracket{left,right}
     bspc desktop -f {prev,next}
 
+super + shift + {comma,period,slash}
+     bspc config -d focused window_gap {5,25,50}
+
 super + ctrl + {h,j,k,l}
     bspc window -p {left,down,up,right}
 
