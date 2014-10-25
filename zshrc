@@ -280,6 +280,10 @@ PANEL_HEIGHT=24
 PANEL_FONT_FAMILY="-*-terminus-medium-r-normal-*-12-*-*-*-c-*-*-1"
 export PANEL_FIFO PANEL_HEIGHT PANEL_FONT_FAMILY
 
+DEBEMAIL="proycon@anaproy.nl"
+DEBFULLNAME="Maarten van Gompel"
+export DEBEMAIL DEBFULLNAME
+
 #VIM mode
 #bindkey -v
 #bindkey -M viins 'jj' vi-cmd-mode
