@@ -29,5 +29,6 @@ bspc rule -a Gimp
 bspc rule -a Firefox desktop=^3
 bspc rule -a gajim desktop=^1
 bspc rule -a mplayer floating=on
+bspc rule -a feh floating=on
 bspc rule -a wine floating=on
 bspc rule -a exefile floating=on
