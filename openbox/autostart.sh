@@ -11,18 +11,13 @@ gnome-keyring-daemon -s --components=pkcs11,secrets,ssh,gpg &
 #feh --bg-scale ~/Pictures/Local/wallpapers/buddhavoid1920.png &
 feh --bg-scale ~/Pictures/Local/wallpapers/thomascolliers.png &
 setlayout 0 3 3 0
-pidof synapse
-if [[ "$?" == "1" ]]; then
-    synapse -s &
-fi
 if [[ $HOST == "mhysa" ]]; then
     mountssh &
 fi
 if [[ $HOST == "drasha" ]]; then
     LINES=`ps aux | grep guake | wc -l`
     if [[ $LINES -lt 2 ]]; then
-        tilda &
-        #guake &
+        guake &
     fi
 else
     LINES=`ps aux | grep tilda | wc -l`

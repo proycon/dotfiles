@@ -11,7 +11,7 @@ urxvt*boldItalicFont: xft:Ubuntu Mono derivative Powerline:bold:italic:pixelsize
 !urxvt*boldItalicFont: xft:Ubuntu Mono derivative Powerline:bold:italic:pixelsize=16:antialias=true:hinting=true
 urxvt*letterSpace: -1
 
-urxvt.perl-ext-common : default,matcher
+urxvt.perl-ext-common : default,matcher,xim-onthespot
 urxvt.urlLauncher     : firefox
 urxvt.matcher.button  : 2
 

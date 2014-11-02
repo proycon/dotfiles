@@ -250,9 +250,13 @@ alias -s ogg=play
 alias -s html=firefox
 
 if [[ $HOST == "galactica" ]] || [[ $HOST == "mhysa" ]]; then
-    export GTK_IM_MODULE="ibus"
-    export QT_IM_MODULE="ibus"
-    export XMODIFIERS="@im=ibus"
+    #export GTK_IM_MODULE="ibus"
+    #export QT_IM_MODULE="ibus"
+    #export XMODIFIERS="@im=ibus"
+   export XMODIFIERS="@im=SCIM"
+   export XIM_PROGRAM="/usr/bin/scim -d"
+   export GTK_IM_MODULE=scim
+   export QT_IM_MODULE=scim
 fi
 
 function git_prompt_info() {
