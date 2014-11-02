@@ -2,10 +2,13 @@ urxvt*depth: 32
 urxvt*background: rgba:2f00/2f00/2f00/c800
 
 urxvt*scrollBar: false
-urxvt*font: xft:Ubuntu Mono derivative Powerline:size=13:antialias=true:hinting=true
-urxvt*boldFont: xft:Ubuntu Mono derivative Powerline:bold:size=13:antialias=true:hinting=true
-urxvt*italicFont: xft:Ubuntu Mono derivative Powerline:italic:size=13:antialias=true:hinting=true
-urxvt*boldItalicFont: xft:Ubuntu Mono derivative Powerline:bold:italic:size=13:antialias=true:hinting=true
+urxvt*font: xft:Ubuntu Mono derivative Powerline:pixelsize=16:antialias=true:hinting=true,xft:WenQuanYi Micro Hei Mono:pixelsize=16,xft:DejaVu Sans Mono:pixelsize=16,xft:Gargi:pixelsize=16,xft:Khmer OS System:pixelsize=16,xft:Lohit Tamil,xft:Lohit Gujarati,xft:Lohit Bengali,xft:Lohit Oriya,xft:Lohit Kannada,xft:Lohit Konkani,xft:Lohit Malayam,xft:Lohit Telugu,xft:Lohit Nepali,xft:Lohit Assamese,xft:Lohit Punjabi
+urxvt*italicFont: xft:Ubuntu Mono derivative Powerline:italic:pixelsize=16:antialias=true:hinting=true,xft:WenQuanYi Micro Hei Mono:italic:pixelsize=16
+urxvt*boldFont: xft:Ubuntu Mono derivative Powerline:bold:pixelsize=16:antialias=true:hinting=true,xft:WenQuanYi Micro Hei Mono:bold:pixelsize=16
+urxvt*boldItalicFont: xft:Ubuntu Mono derivative Powerline:bold:italic:pixelsize=16:antialias=true:hinting=true,xft:WenQuanYi Micro Hei Mono:bold:italic:pixelsize=16
+!urxvt*boldFont: xft:Ubuntu Mono derivative Powerline:bold:pixelsize=16:antialias=true:hinting=true
+!urxvt*italicFont: xft:Ubuntu Mono derivative Powerline:italic:pixelsize=16:antialias=true:hinting=true
+!urxvt*boldItalicFont: xft:Ubuntu Mono derivative Powerline:bold:italic:pixelsize=16:antialias=true:hinting=true
 urxvt*letterSpace: -1
 
 urxvt.perl-ext-common : default,matcher
