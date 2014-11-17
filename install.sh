@@ -34,6 +34,7 @@ ln -sfn $DOTDIR/ncmpcpp.config $HOMEDIR/.ncmpcpp/config
 ln -sfn $DOTDIR/pdbrc.py $HOMEDIR/.pdbrc.py
 ln -sfn $DOTDIR/vimperatorrc $HOMEDIR/.vimperatorrc
 ln -sfn $DOTDIR/pentadactylrc $HOMEDIR/.pentadactylrc
+ln -sfn $DOTDIR/pentadactyl $HOMEDIR/.pentadactyl
 ln -sfn $DOTDIR/inputrc $HOMEDIR/.inputrc
 ln -sfn $DOTDIR/Xresources $HOMEDIR/.Xresources
 ln -sfn $DOTDIR/Xresources $HOMEDIR/Xresources

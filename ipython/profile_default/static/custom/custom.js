@@ -13,7 +13,7 @@ function load_vimception() {
     }
 }
 
-$([IPython.events]).on('notebook_loaded.Notebook', function(){
+$([IPython.events]).on('app_initialized.NotebookApp', function(){
     $('#help_menu').prepend([
             '<li id="vimception" title="load up vimception cell">',
             '<a href="#" title="vimception" onClick="load_vimception()">vimception</a></li>',
