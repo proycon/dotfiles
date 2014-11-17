@@ -52,7 +52,7 @@
 " Use home row letters for hints instead of numbers
 set hintkeys=asdfg;lkjh
 
-set editor='terminator -e "vim +<line> +\"sil! call cursor(0, <column>)\" <file>"'
+set editor='urxvt -e vim +<line> +"sil! call cursor(0, <column>)" <file>'
 
 " tell the bell to go beep itself!
 set visualbell
