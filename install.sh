@@ -25,6 +25,7 @@ ln -sfn $DOTDIR/terminator $HOMEDIR/.config/terminator
 ln -sfn $DOTDIR/bspwm $HOMEDIR/.config/bspwm
 ln -sfn $DOTDIR/sxhkd $HOMEDIR/.config/sxhkd
 ln -sfn $DOTDIR/tilda $HOMEDIR/.config/tilda
+ln -sfn $DOTDIR/ipython $HOMEDIR/.config/ipython
 ln -sfn $DOTDIR/irssi $HOMEDIR/.irssi
 ln -sfn $DOTDIR/tmux.conf $HOMEDIR/.tmux.conf
 ln -sfn $DOTDIR/tmux-powerlinerc $HOMEDIR/.tmux-powerlinerc
