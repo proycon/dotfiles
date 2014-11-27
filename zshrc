@@ -66,10 +66,6 @@ alias ka='killall'
 alias gpp='git push origin gh-pages'
 alias r='ranger'
 #colours
-alias g="grep -n --color=auto"
-alias grep='grep --color=no'
-alias fgrep='fgrep -n --color=auto'
-alias egrep='egrep -n --color=auto'
 which colorgcc > /dev/null 2> /dev/null
 if (( $? == 0 )); then
     export CC="colorgcc"

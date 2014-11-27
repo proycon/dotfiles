@@ -1,6 +1,7 @@
 #!/bin/bash
 #xcompmgr -cC -t-3 -l-5 -r5 &
 #xcompmgr -fF &
+amixer sset Master unmute
 pulseaudio --start &
 compton -cC -z -r 3 -l 2 -t 2 -f -b
 /usr/lib/policykit-1-gnome/polkit-gnome-authentication-agent-1 &
@@ -14,17 +15,9 @@ setlayout 0 3 3 0
 if [[ $HOST == "mhysa" ]]; then
     mountssh &
 fi
-if [[ $HOST == "drasha" ]]; then
-    LINES=`ps aux | grep guake | wc -l`
-    if [[ $LINES -lt 2 ]]; then
-        guake &
-    fi
-else
-    LINES=`ps aux | grep tilda | wc -l`
-    if [[ $LINES -lt 2 ]]; then
-        tilda &
-        #guake &
-    fi
+LINES=`ps aux | grep guake | wc -l`
+if [[ $LINES -lt 2 ]]; then
+    guake &
 fi
 tint2 &
 thunar-volman &
