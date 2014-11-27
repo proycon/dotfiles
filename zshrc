@@ -36,6 +36,7 @@ source $ZSH/oh-my-zsh.sh
 
 setopt cshnullglob
 unsetopt correct_all
+unset GREP_OPTIONS #deprecated
 
 
 
