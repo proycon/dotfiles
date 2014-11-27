@@ -1,6 +1,7 @@
 #!/bin/bash
 #xcompmgr -cC -t-3 -l-5 -r5 &
 #xcompmgr -fF &
+xrdb ~/.Xresources &
 amixer sset Master unmute
 pulseaudio --start &
 compton -cC -z -r 3 -l 2 -t 2 -f -b
@@ -15,9 +16,9 @@ setlayout 0 3 3 0
 if [[ $HOST == "mhysa" ]]; then
     mountssh &
 fi
-LINES=`ps aux | grep guake | wc -l`
+LINES=`ps aux | grep tilda | wc -l`
 if [[ $LINES -lt 2 ]]; then
-    guake &
+    tilda &
 fi
 tint2 &
 thunar-volman &

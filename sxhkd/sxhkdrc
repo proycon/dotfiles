@@ -170,3 +170,9 @@ super + Escape
 
 super + shift + Escape
     /home/proycon/bin/suspend.sh
+
+Audio{Raise,Lower}Volume
+    amixer sset Master {5+,5-} unmute
+
+AudioMute
+    pamixer --toggle-mute
