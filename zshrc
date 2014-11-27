@@ -75,6 +75,10 @@ alias vless='vim -R -u /usr/share/vim/vim72/macros/less.vim'
 alias l='ls'
 alias z='less -rN'
 alias myip="dig +short myip.opendns.com @resolver1.opendns.com"
+which vim > /dev/null 2>/dev/null
+if (( $? == 0 )); then
+    alias vi="vim"
+fi
 
 export MPD_HOST="proycon@anaproy.nl"
 
@@ -261,9 +265,10 @@ function git_prompt_info() {
   echo "$ZSH_THEME_GIT_PROMPT_PREFIX${ref#refs/heads/}$ZSH_THEME_GIT_PROMPT_SUFFIX"
 }
 
-if [[ $TERM == "xterm" ]] && [[ $COLORTERM == "gnome-terminal" ]]; then
-    export TERM="xterm-256color"
-fi
+
+#if [[ $TERM == "xterm" ]] && [[ $COLORTERM == "gnome-terminal" ]]; then
+#    export TERM="xterm-256color"
+#fi
 export PS1="$PS1"'$([ -n "$TMUX" ] && tmux setenv TMUXPWD_$(tmux display -p "#D" | tr -d %) "$PWD")' #tmux-powerline support
 
 
@@ -289,6 +294,8 @@ export DEBEMAIL DEBFULLNAME
 #bindkey -v
 #bindkey -M viins 'jj' vi-cmd-mode
 
+bindkey '\e[1' beginning-of-line
+bindkey '\e[4' end-of-line
 bindkey '\e[A' history-substring-search-up
 bindkey '\e[B' history-substring-search-down
 bindkey '^H' history-substring-search-up
@@ -296,6 +303,7 @@ bindkey '^[[A' history-substring-search-up
 bindkey '^[[B' history-substring-search-down
 bindkey '[C' forward-word
 bindkey '[D' backward-word
+
 
 case $TERM in
     xterm*|rxvt)
