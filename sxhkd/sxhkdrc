@@ -172,7 +172,7 @@ super + shift + Escape
     /home/proycon/bin/suspend.sh
 
 Audio{Raise,Lower}Volume
-    amixer sset Master {5+,5-} unmute
+    amixer sset Master {665+,655-} unmute
 
 AudioMute
-    pamixer --toggle-mute
+    amixer -D pulse set Master 1+ toggle
