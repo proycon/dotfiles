@@ -348,3 +348,18 @@ mainwindows = {
   1 = { first_line = "8"; lines = "26"; };
   2 = { first_line = "1"; lines = "7"; };
 };
+keyboard = (
+    { key = "meta-'"; id = "active_window"; },
+    { key = "meta-`"; id = "change_window"; data = "20"; },
+    { key = "meta-a"; id = "change_window"; data = "21"; },
+    { key = "meta-s"; id = "change_window"; data = "22"; },
+    { key = "meta-d"; id = "change_window"; data = "23"; },
+    { key = "meta-f"; id = "change_window"; data = "24"; },
+    { key = "meta-g"; id = "change_window"; data = "25"; },
+    { key = "meta-h"; id = "change_window"; data = "26"; },
+    { key = "meta-j"; id = "change_window"; data = "27"; },
+    { key = "meta-k"; id = "change_window"; data = "28"; },
+    { key = "meta-l"; id = "change_window"; data = "29"; },
+    { key = "meta-;"; id = "change_window"; data = "30"; },
+    { key = "^Z"; id = "command"; data = "window last"; }
+);

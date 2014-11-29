@@ -71,13 +71,25 @@ map <Leader>e <esc>:cw<CR>
 
 
 map <Leader>O <esc>:on<CR>
-map <Leader>P <esc>:hide<CR>
+"map <Leader>P <esc>:hide<CR>
 map <Leader>b <esc>:buffers<CR>:b 
 map <Leader>B <esc>:MiniBufExplorer<CR>
 
+"custom copy'n'paste
+"
+"copy the current visual selection to ~/.vbuf
+vmap <Leader>y :w! ~/.vbuf<CR>     
+"copy the current line to the buffer file if no visual selection
+nmap <Leader>y :.w! ~/.vbuf<CR>    
+"paste the contents of the buffer file
+nmap <Leader>p :r ~/.vbuf<CR>       
+nmap <Leader>P :-1r ~/.vbuf<CR>       
 
+command! Caj !scp proycon@applejack.science.ru.nl:~/.vbuf ~/<CR>
+command! C2aj !scp ~/.vbuf proycon@applejack.science.ru.nl:~/.vbuf<CR>
+command! Cap !scp proycon@anaproy.nl:~/.vbuf ~/<CR>
+command! C2ap !scp ~/.vbuf proycon@anaproy.nl:~/<CR>
 
-" map sort function to a key
 vnoremap <Leader>s :sort<CR>
 map <Leader>S :r ~/sru<CR>
 
@@ -180,7 +192,7 @@ let g:session_autoload="yes"
 map <leader>ct :!ctags -R --c++-kinds=+p --fields=+iaS --extra=+q .<CR>
 
 " map <leader>y y:e ~/clipboard<CR>P:w !pbcopy<CR><CR>:bdelete!<CR>
-map <leader>y :w! ~/clipboard<CR>!cpcopy<CR>
+" map <leader>y :w! ~/clipboard<CR>!cpcopy<CR>
 
 
 " " ============================================================================

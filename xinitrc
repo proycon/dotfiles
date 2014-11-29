@@ -3,8 +3,12 @@ export LANG=en_GB.UTF-8
 export LANGUAGE=en_GB.UTF-8
 export LC_ALL=en_GB.UTF-8
 
+cd $HOME
+
 source ~/.zshrc
 ~/.config/openbox/autostart.sh
+
+cd $HOME
 
 xrdb -merge ~/.Xresources
 setxkbmap proylatin
