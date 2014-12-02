@@ -1,7 +1,9 @@
 #!/bin/bash
 #xcompmgr -cC -t-3 -l-5 -r5 &
 #xcompmgr -fF &
-xrdb ~/.Xresources &
+~/bin/setinput.sh
+xrdb -merge ~/.Xresources
+xsetroot -cursor_name left_ptr
 amixer sset Master unmute
 pulseaudio --start &
 compton -cC -z -r 3 -l 2 -t 2 -f -b
@@ -28,10 +30,10 @@ if [[ "$?" == "1" ]]; then
 fi
 udiskie &
 volumeicon &
-ibus-daemon -d -x
+#ibus-daemon -d -x
+setxkbmap proylatin
 #sleep 3 && feh --bg-scale ~/Pictures/Local/wallpapers/shirahige2.jpg &
 #sleep 2 && feh --bg-scale ~/Pictures/Local/wallpapers/Perfection_Cold_by_yaromanzarek.jpg &
-~/bin/setinput.sh
 #sleep 2 && feh --bg-scale ~/Pictures/Local/wallpapers/buddhavoid1920.png &
 play ~/cylontune_low.ogg &
 

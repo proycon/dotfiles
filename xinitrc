@@ -10,7 +10,6 @@ source ~/.zshrc
 
 cd $HOME
 
-xrdb -merge ~/.Xresources
 setxkbmap proylatin
 
 which bspwm > /dev/null 2>/dev/null
