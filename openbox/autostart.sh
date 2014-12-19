@@ -10,6 +10,9 @@ compton -cC -z -r 3 -l 2 -t 2 -f -b
 /usr/lib/policykit-1-gnome/polkit-gnome-authentication-agent-1 &
 gnome-settings-daemon &
 gnome-keyring-daemon -s --components=pkcs11,secrets,ssh,gpg &
+if [[ $HOST == "caprica" ]]; then
+    cbatticon &
+fi
 #feh --bg-scale ~/Pictures/Local/wallpapers/shirahige2.jpg &
 #feh --bg-scale ~/Pictures/Local/wallpapers/Perfection_Cold_by_yaromanzarek.jpg &
 #feh --bg-scale ~/Pictures/Local/wallpapers/buddhavoid1920.png &

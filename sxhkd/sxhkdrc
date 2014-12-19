@@ -53,7 +53,7 @@ super + h
     firefox https://home.anaproy.nl
 
 super + i
-    urxvt -T irssi -e tm irssi 
+    urxvt -T irssi -e /home/proycon/bin/tm irssi 
 
 super + shift + m 
     urxvt -T ncmpcpp -e ncmpcpp
@@ -62,7 +62,7 @@ super + m
     urxvt -T mail -e ssh -Y -A -t anaproy.nl /home/proycon/bin/tm_alot
 
 super + v
-    urxvt -T vim -e tm vim
+    urxvt -T vim -e /home/proycon/bin/tm vim
 
 super + {p,n}
     bspc control --record-history off; \
@@ -159,7 +159,7 @@ super + Return
     urxvt
 
 super + space
-    dmenu_run
+    dmenu_run -fn "Ubuntu Mono-20"
 
 # make sxhkd reload its configuration files:
 super + ctrl + Escape
@@ -169,7 +169,7 @@ super + Escape
     xflock4
 
 super + shift + Escape
-    /home/proycon/bin/suspend.sh
+    systemctl suspend
 
 XF86Audio{Raise,Lower}Volume
     amixer sset Master {665+,655-} unmute

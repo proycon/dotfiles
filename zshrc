@@ -103,7 +103,7 @@ man() {
 alias dis='export $(tmux showenv | grep DISPLAY)'
 
 #PATHS
-if [[ $HOST == "galactica" || $HOST == "mhysa" || $HOST == "drasha" ]]; then
+if [[ $HOST == "galactica" || $HOST == "mhysa" || $HOST == "caprica" || $HOST == "drasha" ]]; then
     export PATH="/home/proycon/bin:/home/proycon/local/bin:/usr/local/android-sdk-linux/tools:/usr/local/android-sdk-linux/platform-tools:$PATH"
     export LD_LIBRARY_PATH="$LD_LIBRARY_PATH:/home/proycon/local/lib"
     export CDPATH=.:~/work
@@ -176,6 +176,8 @@ alias cl="cheerilee=1 LC_ALL=en_US.UTF-8 LANG=en_US.UTF-8 ssh -Y -A -t applejack
 alias fp="fancypants=1 LC_ALL=en_US.UTF-8 LANG=en_US.UTF-8 ssh -Y -A -t applejack.science.ru.nl ssh -Y -A -t fancypants /home/proycon/bin/tm"
 alias pq="pipsqueak=1 LC_ALL=en_US.UTF-8 LANG=en_US.UTF-8 ssh -Y -A -t applejack.science.ru.nl ssh -Y -A -t pipsqueak /home/proycon/bin/tm"
 alias so="scootaloo=1 LC_ALL=en_US.UTF-8 LANG=en_US.UTF-8 ssh -Y -A -t applejack.science.ru.nl ssh -Y -A -t scootaloo /home/proycon/bin/tm"
+alias fw="featherweight=1 LC_ALL=en_US.UTF-8 LANG=en_US.UTF-8 ssh -Y -A -t applejack.science.ru.nl ssh -Y -A -t featherweight /home/proycon/bin/tm"
+alias bf="blossomforth=1 LC_ALL=en_US.UTF-8 LANG=en_US.UTF-8 ssh -Y -A -t applejack.science.ru.nl ssh -Y -A -t blossomforth /home/proycon/bin/tm"
 alias _aj="LC_ALL=en_US.UTF-8 LANG=en_US.UTF-8 ssh -Y -A -t applejack.science.ru.nl zsh"
 alias _fs="LC_ALL=en_US.UTF-8 LANG=en_US.UTF-8 ssh -Y -A -t applejack.science.ru.nl ssh -Y -A -t fluttershy zsh"
 alias _rr="LC_ALL=en_US.UTF-8 LANG=en_US.UTF-8 ssh -Y -A -t applejack.science.ru.nl ssh -Y -A -t rarity zsh"

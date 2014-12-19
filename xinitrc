@@ -38,7 +38,7 @@ else
 fi
 
 if [ $HAVE_BSPWM -eq 1 ]; then
-    sxhkd &!
+    PATH=/home/proycon/bin:$PATH sxhkd &!
     exec $DBUSLAUNCH bspwm
 elif [ $HAVE_OPENBOX -eq 1 ]; then
     exec $DBUSLAUNCH openbox 
