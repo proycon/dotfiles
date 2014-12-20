@@ -43,7 +43,7 @@ border_color = #FFFFFF 68
 launcher_icon_theme = AwOken
 #launcher_padding = horizontal_left_right_padding vertical_padding horizontal_spacing
 #launcher_background_id = integer : Which background to use
-#launcher_icon_size = number : Set the launcher icon size to number.
+launcher_icon_size = 48
 #launcher_item_app = path_to_application : Each launcher_item_app must be a full path to a .desktop file
 #launcher_item_app = /usr/share/applications/Thunar.desktop
 launcher_item_app = /usr/share/applications/pcmanfm.desktop
@@ -125,7 +125,7 @@ systray = 1
 systray_padding = 0 8 10
 systray_sort = ascending
 systray_background_id = 0
-systray_icon_size = 32
+systray_icon_size = 48
 systray_icon_asb = 70 0 0
 
 # Clock
