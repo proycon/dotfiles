@@ -5,24 +5,41 @@ export LC_ALL=en_GB.UTF-8
 
 cd $HOME
 
-source ~/.zshrc
-~/.config/openbox/autostart.sh
-
-cd $HOME
-
+xrdb -merge ~/.Xresources
+xsetroot -cursor_name left_ptr
+amixer sset Master unmute
+pulseaudio --start &
+compton -cC -z -r 3 -l 2 -t 2 -f -b
+sleep 0.2
+#dbus-launch /usr/lib/policykit-1-gnome/polkit-gnome-authentication-agent-1 
+dbus-launch gnome-keyring-daemon -s --components=pkcs11,secrets,ssh,gpg  &
+dbus-launch /usr/lib/gnome-settings-daemon/gnome-settings-daemon & 
+feh --bg-scale ~/Pictures/Local/wallpapers/thomascolliers.png &
+#setlayout 0 3 3 0
+if [[ $HOST == "mhysa" ]]; then
+    mountssh &
+fi
+LINES=`ps aux | grep tilda | wc -l`
+if [[ $LINES -lt 2 ]]; then
+    tilda &
+fi
+#thunar-volman &
+pidof nm-applet
+if [[ "$?" == "1" ]]; then
+    nm-applet &
+fi
+udiskie &
+volumeicon &
+tint2 &
+#ibus-daemon -d -x
 setxkbmap proylatin
+play ~/cylontune_low.ogg &
 
 which bspwm > /dev/null 2>/dev/null
 if [ $? -eq 0 ]; then
     HAVE_BSPWM=1
 else
     HAVE_BSPWM=0
-fi
-which dbus-launch > /dev/null 2>/dev/null
-if [ $? -eq 0 ]; then
-    DBUSLAUNCH="dbus-launch"
-else
-    DBUSLAUNCH=""
 fi
 which openbox > /dev/null 2>/dev/null
 if [ $? -eq 0 ]; then
@@ -38,12 +55,12 @@ else
 fi
 
 if [ $HAVE_BSPWM -eq 1 ]; then
-    sxhkd &!
-    exec $DBUSLAUNCH bspwm
+    dbus-launch sxhkd &
+    exec dbus-launch bspwm
 elif [ $HAVE_OPENBOX -eq 1 ]; then
-    exec $DBUSLAUNCH openbox 
+    exec dbus-launch openbox 
 elif [ $HAVE_XFCE4 -eq 1 ]; then
-    exec $DBUSLAUNCH --exit-with-session startxfce4 
+    exec dbus-launch --exit-with-session startxfce4 
 else
     exec xterm
 fi
