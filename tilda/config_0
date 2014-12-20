@@ -1,7 +1,7 @@
 tilda_config_version = "1.1.11"
 # image = ""
 # command = ""
-font = "Source Code Pro for Powerline Light 20"
+font = "Source Code Pro for Powerline Light 10"
 key = "F12"
 addtab_key = "<Shift><Control>t"
 fullscreen_key = "F11"

@@ -159,7 +159,7 @@ super + Return
     urxvt
 
 super + space
-    dmenu_run -fn "Ubuntu Mono-20"
+    dmenu_run
 
 # make sxhkd reload its configuration files:
 super + ctrl + Escape
