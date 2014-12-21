@@ -28,6 +28,8 @@ pidof nm-applet
 if [[ "$?" == "1" ]]; then
     nm-applet &
 fi
+xscreensaver -no-splash &
+xss-lock -- xscreensaver-command -lock &
 udiskie &
 volumeicon &
 tint2 &
