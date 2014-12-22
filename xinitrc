@@ -5,7 +5,7 @@ export LC_ALL=en_GB.UTF-8
 
 cd $HOME
 
-xrdb -merge ~/.Xresources
+xrdb -merge /home/proycon/.Xresources
 xsetroot -cursor_name left_ptr
 amixer sset Master unmute
 pulseaudio --start &
@@ -13,7 +13,8 @@ compton -cC -z -r 3 -l 2 -t 2 -f -b
 sleep 0.2
 #dbus-launch /usr/lib/policykit-1-gnome/polkit-gnome-authentication-agent-1 
 dbus-launch gnome-keyring-daemon -s --components=pkcs11,secrets,ssh,gpg  &
-dbus-launch /usr/lib/gnome-settings-daemon/gnome-settings-daemon & 
+#dbus-launch /usr/lib/gnome-settings-daemon/gnome-settings-daemon & 
+xrdb -merge /home/proycon/.Xresources
 feh --bg-scale ~/Pictures/Local/wallpapers/thomascolliers.png &
 #setlayout 0 3 3 0
 if [[ $HOST == "mhysa" ]]; then
