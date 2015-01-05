@@ -111,6 +111,12 @@ super + alt + shift + {h,j,k,l}
 super + ctrl + {1-9}
     bspc window -r 0.{1-9}
 
+super + g
+    feh --bg-scale /home/proycon/Pictures/Local/wallpapers/03529_marronbells_5120x2880.jpg && compton -cC -z -r 3 -l 2 -t 2 -f -b 
+
+super + alt + g
+    xsetroot -solid "#333"  && killall compton
+
 super + {_,shift + }{1-9,0,minus,equal}
     bspc {desktop -f,window -d} ^{1-9,10,11,12}
 
