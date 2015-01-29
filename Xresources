@@ -24,8 +24,8 @@ urxvt*perl-ext: default,matcher
 urxvt*url-launcher: /usr/bin/firefox
 urxvt*matcher.button: 1
 
-urxvt*keysym.Home: \033[1~
-urxvt*keysym.End: \033[4~
+urxvt*keysym.Home: \033[1
+urxvt*keysym.End: \033[4
 
 !!urxvt*foreground: #D6C3B6
 urxvt*foreground: #d4d4d4
