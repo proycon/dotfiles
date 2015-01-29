@@ -20,6 +20,7 @@ local pwd='%{$fg[blue]%}%~%{$reset_color%}'
 #local rvm='%{$fg[green]%}‹$(rvm-prompt i v g)›%{$reset_color%}'
 local return_code='%(?..%{$fg[red]%}%? ←%{$reset_color%})'
 local git_branch='$(git_prompt_status)%{$reset_color%}$(git_prompt_info)%{$reset_color%}'
+local vi_prompt='$(vi_mode_prompt_info)'
 
 ZSH_THEME_GIT_PROMPT_PREFIX="%{$fg[green]%}"
 ZSH_THEME_GIT_PROMPT_SUFFIX="%{$reset_color%}"
@@ -38,4 +39,4 @@ if [ -n "$JOB_NAME" ]; then
 else
     PROMPT="${user} ${pwd}$ "
 fi
-RPROMPT="${return_code} ${git_branch} %{$fg_bold[grey]%}%* %w%{$reset_color%}"
+RPROMPT="${return_code} ${vi_prompt} ${git_branch} %{$fg_bold[grey]%}%* %w%{$reset_color%}"

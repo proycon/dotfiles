@@ -10,7 +10,7 @@ ZSH_THEME="proysh"
 # CASE_SENSITIVE="true"
 
 # Comment this out to disable weekly auto-update checks
-DISABLE_AUTO_UPDATE="true"
+export DISABLE_AUTO_UPDATE="true"
 
 # Uncomment following line if you want to disable colors in ls
 # DISABLE_LS_COLORS="true"
@@ -24,7 +24,7 @@ DISABLE_AUTO_UPDATE="true"
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
-plugins=(history history-substring-search git svn python django command-not-found debian pip github git-flow )
+plugins=(vi-mode history history-substring-search git svn python django command-not-found debian pip github git-flow )
 
 
 if [ -f ~/.sgesh ]; then
@@ -296,6 +296,28 @@ export DEBEMAIL DEBFULLNAME
 
 #VIM mode
 #bindkey -v
+
+bindkey '^P' up-history
+bindkey '^N' down-history
+bindkey '^?' backward-delete-char
+bindkey '^h' backward-delete-char
+bindkey '^w' backward-kill-word
+bindkey '^r' history-incremental-search-backward
+
+#function zle-line-init zle-keymap-select {
+#    VIM_PROMPT="%{$fg_bold[yellow]%} [% NORMAL]%  %{$reset_color%}"
+#    RPS1="${${KEYMAP/vicmd/$VIM_PROMPT}/(main|viins)/}$RPROMPT $EPS1"
+#    zle reset-prompt
+#}
+
+#zle -N zle-line-init
+#zle -N zle-keymap-select
+export KEYTIMEOUT=1
+
+source $HOME/dotfiles/opp.zsh/opp.zsh
+source $HOME/dotfiles/opp.zsh/opp/*.zsh
+
+
 #bindkey -M viins 'jj' vi-cmd-mode
 
 bindkey '\e[1' beginning-of-line
