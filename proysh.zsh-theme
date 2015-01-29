@@ -19,7 +19,8 @@ local user='%{$fg_bold[white]%}%n%$host%}'
 local pwd='%{$fg[blue]%}%~%{$reset_color%}'
 #local rvm='%{$fg[green]%}‹$(rvm-prompt i v g)›%{$reset_color%}'
 local return_code='%(?..%{$fg[red]%}%? ←%{$reset_color%})'
-local git_branch='$(git_prompt_status)%{$reset_color%}$(git_prompt_info)%{$reset_color%}'
+#local git_branch='$(git_prompt_status)%{$reset_color%}$(git_prompt_info)%{$reset_color%}'
+local git_branch='$(git_prompt_info)%{$reset_color%}'
 local vi_prompt='$(vi_mode_prompt_info)'
 
 ZSH_THEME_GIT_PROMPT_PREFIX="%{$fg[green]%}"
