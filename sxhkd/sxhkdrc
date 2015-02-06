@@ -16,8 +16,8 @@ super + u
 super + q
     bspc desktop -B
 
-super + {s,f}
-    bspc window -t {floating,fullscreen}
+super + {s,f,S}
+    bspc window -t {floating,fullscreen,pseudo_tiled}
 
 super + {grave,Tab}
     bspc {window,desktop} -f last
