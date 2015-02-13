@@ -19,6 +19,9 @@ super + q
 super + {s,f,S}
     bspc window -t {floating,fullscreen,pseudo_tiled}
 
+super + alt + S
+    bspc window -t sticky
+
 super + {grave,Tab}
     bspc {window,desktop} -f last
 
