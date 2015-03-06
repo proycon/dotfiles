@@ -8,7 +8,7 @@ super + w
     bspc window -c
 
 super + t
-    urxvt
+    urxvt -cd /home/proycon
 
 super + u
     pcmanfm
@@ -56,16 +56,16 @@ super + h
     firefox https://home.anaproy.nl
 
 super + i
-    urxvt -T irssi -e /home/proycon/bin/tm irssi 
+    urxvt -cd /home/proycon -T irssi -e /home/proycon/bin/tm irssi 
 
 super + shift + m 
-    urxvt -T ncmpcpp -e ncmpcpp
+    urxvt -cd /home/proycon -T ncmpcpp -e ncmpcpp
 
 super + m
-    urxvt -T mail -e ssh -Y -A -t anaproy.nl /home/proycon/bin/tm_alot
+    urxvt -cd /home/proycon -T mail -e ssh -Y -A -t anaproy.nl /home/proycon/bin/tm_alot
 
 super + v
-    urxvt -T vim -e /home/proycon/bin/tm vim
+    urxvt -cd /home/proycon -T vim -e /home/proycon/bin/tm vim
 
 super + {p,n}
     bspc control --record-history off; \
@@ -171,7 +171,7 @@ alt + @F12
 # wm independent hotkeys
 #
 super + Return
-    urxvt
+    urxvt -cd /home/proycon
 
 super + space
     dmenu_run -fn "Ubuntu Mono-10"
