@@ -28,7 +28,7 @@ bspc monitor -d im edit www mail term irc 7 8 9 10 11 12
 bspc rule -a Gimp 
 bspc rule -a Firefox desktop=^3
 bspc rule -a gajim desktop=^1
-bspc rule -a mplayer pseudo_tiled=on
+bspc rule -a MPlayer pseudo_tiled=on
 bspc rule -a feh pseudo_tiled=on
 bspc rule -a wine floating=on
 bspc rule -a exefile floating=on
