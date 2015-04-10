@@ -19,7 +19,14 @@ super + q
 super + {s,f,S}
     bspc window -t {floating,fullscreen,pseudo_tiled}
 
+<<<<<<< HEAD
 super + alt + S
+=======
+super + alt + s
+    bspc window -t sticky
+
+super + ctrl + s
+>>>>>>> 0693585... update
     bspc window -t sticky
 
 super + {grave,Tab}

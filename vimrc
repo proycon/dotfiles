@@ -397,7 +397,7 @@ endfun
 " nmap <leader>gr call PullAndRefresh()
 function! s:MakeWhite()
     set background=light
-    colorscheme github
+    colorscheme lucius
 endfunction
 
 function! s:MakeDark()
