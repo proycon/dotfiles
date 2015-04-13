@@ -120,7 +120,7 @@ urxvtwhite*matcher.button: 1
 urxvtwhite*keysym.Home: \033[1
 urxvtwhite*keysym.End: \033[4
 
-urxvtwhite*cursorColor: #00000
+urxvtwhite*cursorColor: #ff0000
 urxvtwhite*colorIT: #000000
 urxvtwhite*colorUL: #000000
 urxvtwhite*colorBD: #000000
