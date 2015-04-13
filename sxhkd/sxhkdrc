@@ -10,6 +10,9 @@ super + w
 super + t
     urxvt
 
+super + y
+    urxvt -name urxvtwhite
+
 super + u
     pcmanfm
 
@@ -74,9 +77,6 @@ super + {p,n}
     bspc control --record-history off; \
     bspc window {older,newer} -f; \
     bspc control --record-history on
-
-super + y
-    bspc window -w last.manual
 
 super + b
     bspc window -s biggest
