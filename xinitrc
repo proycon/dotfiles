@@ -35,6 +35,7 @@ volumeicon &
 tint2 &
 #ibus-daemon -d -x
 setxkbmap proylatin
+/home/proycon/homeautomation/notifyclient_autoconnect.sh &
 play ~/cylontune_low.ogg &
 
 which bspwm > /dev/null 2>/dev/null

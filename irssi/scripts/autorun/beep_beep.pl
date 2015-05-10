@@ -45,7 +45,14 @@ sub beep_beep() {
 	}
 }
 
+sub pri_msg {
+    my ($server,$msg,$nick,$address,$target) = @_;
+    system("play -q ~/.irssi/sounds/ircprivate.wav &");
+}
+
+
 Irssi::settings_add_str("lookandfeel", "beep_cmd", "play ~/.irssi/scripts/beep_beep.wav > /dev/null &");
-Irssi::settings_add_int("lookandfeel", "beep_flood", 250);
+Irssi::settings_add_int("lookandfeel", "beep_flood", 5000);
 Irssi::signal_add("beep", "beep_beep");
+Irssi::signal_add_last("message private", "pri_msg");
 
