@@ -55,3 +55,6 @@
 [submodule "vim/bundle/vim-cytho"]
 	path = vim/bundle/vim-cytho
 	url = git@github.com:tshirtman/vim-cython.git
+[submodule "vim/bundle/vim-powerline"]
+	path = vim/bundle/vim-powerline
+	url = https://github.com/Lokaltog/vim-powerline
