@@ -16,3 +16,36 @@
 [submodule "vim/bundle/ctrlp-funky"]
 	path = vim/bundle/ctrlp-funky
 	url = https://github.com/tacahiroy/ctrlp-funky
+[submodule "vim/bundle/python-mode"]
+	path = vim/bundle/python-mode
+	url = https://github.com/klen/python-mode
+[submodule "vim/bundle/vimtex"]
+	path = vim/bundle/vimtex
+	url = https://github.com/lervag/vimtex
+[submodule "vim/bundle/nerdtree"]
+	path = vim/bundle/nerdtree
+	url = https://github.com/scrooloose/nerdtree
+[submodule "vim/bundle/vim-fugitive"]
+	path = vim/bundle/vim-fugitive
+	url = https://github.com/tpope/vim-fugitive
+[submodule "vim/bundle/vim-sensible"]
+	path = vim/bundle/vim-sensible
+	url = https://github.com/tpope/vim-sensible
+[submodule "vim/bundle/vim-ipython"]
+	path = vim/bundle/vim-ipython
+	url = git@github.com:ivanov/vim-ipython.git
+[submodule "vim/bundle/vim-airline"]
+	path = vim/bundle/vim-airline
+	url = https://github.com/bling/vim-airline
+[submodule "vim/bundle/tlib_vim"]
+	path = vim/bundle/tlib_vim
+	url = https://github.com/tomtom/tlib_vim
+[submodule "vim/bundle/vim-bufferline"]
+	path = vim/bundle/vim-bufferline
+	url = https://github.com/bling/vim-bufferline
+[submodule "vim/bundle/vim-expand-region"]
+	path = vim/bundle/vim-expand-region
+	url = https://github.com/terryma/vim-expand-region
+[submodule "vim/bundle/vim-cython"]
+	path = vim/bundle/vim-cython
+	url = git@github.com:tshirtman/vim-cython.git
