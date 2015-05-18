@@ -274,6 +274,21 @@ let g:jedi#usages_command = "<leader>u"
 let g:jedi#completions_command = "<C-Space>"
 let g:jedi#rename_command = "<leader>r"
 
+set statusline+=%#warningmsg#
+set statusline+=%{SyntasticStatuslineFlag()}  
+set statusline+=%* 
+let g:syntastic_always_populate_loc_list = 1                                                                                                                                                                                                             
+let g:syntastic_auto_loc_list = 1                                                                                                                                                                                                                        
+let g:syntastic_check_on_wq = 0
+let g:syntastic_check_on_open = 1
+let g:syntastic_python_python_exec = "/usr/bin/python3"
+let g:syntastic_python_checkers = ['python', 'pylint']
+let g:syntastic_python_flake8_args = "--ignore=E501,E225 --max-complexity 10"
+let g:syntastic_error_symbol = "E>"
+let g:syntastic_warning_symbol = "W>"
+let g:syntastic_auto_jump = 3
+let g:syntastic_loc_list_height = 5
+
 
 let g:airline_powerline_fonts = 1
 let g:airline_theme = 'powerlineish'
