@@ -5,7 +5,7 @@ export LC_ALL=en_GB.UTF-8
 
 cd $HOME
 
-xrdb -merge ~/.Xresources
+xrdb -merge /home/proycon/.Xresources
 xsetroot -cursor_name left_ptr
 amixer sset Master unmute
 pulseaudio --start &
@@ -13,8 +13,9 @@ compton -cC -z -r 3 -l 2 -t 2 -f -b
 sleep 0.2
 #dbus-launch /usr/lib/policykit-1-gnome/polkit-gnome-authentication-agent-1 
 dbus-launch gnome-keyring-daemon -s --components=pkcs11,secrets,ssh,gpg  &
-dbus-launch /usr/lib/gnome-settings-daemon/gnome-settings-daemon & 
-feh --bg-scale ~/Pictures/Local/wallpapers/thomascolliers.png &
+#dbus-launch /usr/lib/gnome-settings-daemon/gnome-settings-daemon & 
+xrdb -merge /home/proycon/.Xresources
+feh --bg-scale /home/proycon/Pictures/Local/wallpapers/03529_marronbells_5120x2880.jpg &  #~/Pictures/Local/wallpapers/thomascolliers.png &
 #setlayout 0 3 3 0
 if [[ $HOST == "mhysa" ]]; then
     mountssh &
@@ -35,6 +36,7 @@ volumeicon &
 tint2 &
 #ibus-daemon -d -x
 setxkbmap proylatin
+/home/proycon/homeautomation/notifyclient_autoconnect.sh &
 play ~/cylontune_low.ogg &
 
 which bspwm > /dev/null 2>/dev/null

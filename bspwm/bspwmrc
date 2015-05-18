@@ -1,21 +1,21 @@
 #!/bin/sh
-bspc config top_padding 18
-bspc config border_width 2
+bspc config top_padding 36
+bspc config border_width 4
 
 for desktop in $(bspc query -D); do
     if [ $desktop -eq 1 ]; then
-        bspc config -d $desktop window_gap 50;
+        bspc config -d $desktop window_gap 100;
     elif [ $desktop -eq 4 ]; then
-        bspc config -d $desktop window_gap 25;
+        bspc config -d $desktop window_gap 50;
     elif [ $desktop -eq 6 ]; then
-        bspc config -d $desktop window_gap 25;
+        bspc config -d $desktop window_gap 50;
     else
-        bspc config -d $desktop window_gap 5;
+        bspc config -d $desktop window_gap 10;
     fi
 done
 
 bspc config split_ratio 0.52
-bspc config window_gap 5
+bspc config window_gap 10
 #bspc config -d ^1 window_gap 50
 #bspc config -d ^4 window_gap 25
 #bspc config -d ^6 window_gap 25
@@ -24,11 +24,11 @@ bspc config borderless_monocle true
 bspc config gapless_monocle true
 bspc config focus_by_distance true
 bspc config focus_follows_pointer true
-bspc monitor -d im edit www mail term irc 7 8 9 10 11 12 
+bspc monitor -d comm edit www 4 5 6 7 8 9 10 11 12 
 bspc rule -a Gimp 
 bspc rule -a Firefox desktop=^3
 bspc rule -a gajim desktop=^1
-bspc rule -a mplayer floating=on
-bspc rule -a feh floating=on
+bspc rule -a MPlayer pseudo_tiled=on
+bspc rule -a feh pseudo_tiled=on
 bspc rule -a wine floating=on
 bspc rule -a exefile floating=on
