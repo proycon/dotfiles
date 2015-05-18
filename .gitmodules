@@ -55,3 +55,6 @@
 [submodule "vim/bundle/vim-powerline"]
 	path = vim/bundle/vim-powerline
 	url = https://github.com/Lokaltog/vim-powerline
+[submodule "vim/bundle/ctrlpfunky"]
+	path = vim/bundle/ctrlpfunky
+	url = https://github.com/tacahiroy/ctrlp-funky
