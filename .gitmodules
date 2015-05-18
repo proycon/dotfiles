@@ -40,9 +40,6 @@
 [submodule "vim/bundle/vim-bufferline"]
 	path = vim/bundle/vim-bufferline
 	url = https://github.com/bling/vim-bufferline
-[submodule "vim/bundle/vim-expand-region"]
-	path = vim/bundle/vim-expand-region
-	url = https://github.com/terryma/vim-expand-region
 [submodule "vim/bundle/vim-cython"]
 	path = vim/bundle/vim-cython
 	url = git@github.com:tshirtman/vim-cython.git
