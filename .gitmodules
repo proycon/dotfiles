@@ -4,3 +4,15 @@
 [submodule "vim/bundle/jedi-vim"]
 	path = vim/bundle/jedi-vim
 	url = https://github.com/davidhalter/jedi-vim.git
+[submodule "vim/bundle/nerdcommenter"]
+	path = vim/bundle/nerdcommenter
+	url = https://github.com/scrooloose/nerdcommenter
+[submodule "vim/bundle/goyo.vim"]
+	path = vim/bundle/goyo.vim
+	url = https://github.com/junegunn/goyo.vim
+[submodule "vim/bundle/ctrlp.vim"]
+	path = vim/bundle/ctrlp.vim
+	url = https://github.com/kien/ctrlp.vim
+[submodule "vim/bundle/ctrlp-funky"]
+	path = vim/bundle/ctrlp-funky
+	url = https://github.com/tacahiroy/ctrlp-funky
