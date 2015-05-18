@@ -13,9 +13,6 @@
 [submodule "vim/bundle/ctrlp.vim"]
 	path = vim/bundle/ctrlp.vim
 	url = https://github.com/kien/ctrlp.vim
-[submodule "vim/bundle/ctrlp-funky"]
-	path = vim/bundle/ctrlp-funky
-	url = https://github.com/tacahiroy/ctrlp-funky
 [submodule "vim/bundle/python-mode"]
 	path = vim/bundle/python-mode
 	url = https://github.com/klen/python-mode
