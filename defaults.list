@@ -1,5 +1,5 @@
 [Default Applications]
-application/pdf=evince.desktop;
+application/pdf=zathura.desktop;
 application/xml=org.gnome.gedit.desktop;
 audio/mpeg=mplayer.desktop;
 audio/x-wav=mplayer.desktop;
