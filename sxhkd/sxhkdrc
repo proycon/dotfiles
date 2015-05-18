@@ -61,9 +61,6 @@ super + shift + alt + x
 super + h
     firefox https://home.anaproy.nl
 
-super + i
-    urxvt -cd /home/proycon -T irssi -e /home/proycon/bin/tm irssi 
-
 super + shift + m 
     urxvt -cd /home/proycon -T ncmpcpp -e ncmpcpp
 
