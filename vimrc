@@ -164,18 +164,10 @@ let NERDTreeIgnore=['\~$', '^\.git', '^\.svn', '\.swp$', '\.DS_Store$','\.pyc$',
 let NERDTreeShowHidden=0
 " nmap <Leader>n :NERDTreeToggle<cr>
 
-""""" Settings for taglist.vim
-let Tlist_Use_Right_Window=1
-let Tlist_Auto_Open=0
-let Tlist_Enable_Fold_Column=0
-let Tlist_Compact_Format=0
-let Tlist_WinWidth=28
-let Tlist_Exit_OnlyWindow=1
-let Tlist_File_Fold_Auto_Close = 1
-" nmap <Leader>T :Tlist<cr>
 
 
-
+nmap <Leader>t :TagbarToggle<CR>
+nmap <Leader>T :TagbarOpen fj<CR>
 
 
 set ssop-=options    " do not store global and local values in a session
@@ -274,6 +266,7 @@ let g:jedi#usages_command = "<leader>u"
 let g:jedi#completions_command = "<C-Space>"
 let g:jedi#rename_command = "<leader>r"
 
+set statusline+=%{tagbar#currenttag('%s','-','f')}  
 set statusline+=%#warningmsg#
 set statusline+=%{SyntasticStatuslineFlag()}  
 set statusline+=%* 
@@ -355,13 +348,12 @@ map <leader>48 :b48<CR>
 map <leader>49 :b49<CR>
 
 
- map <leader>E <esc>:bufdo e<CR>
+map <leader>E <esc>:bufdo e<CR>
 map <leader>r :resize<CR>
 
 map <leader>n :NERDTreeToggle<CR>
-map <leader>m :Tlist<CR>
-map <leader>T :tabnew<CR>
-map <leader>o :OpenSession 
+" map <leader>m :Tlist<CR>
+" map <leader>o :OpenSession 
 " Easier linewise reselection
 nnoremap <leader>V V`]
 
