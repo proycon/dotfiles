@@ -55,3 +55,6 @@
 [submodule "vim/bundle/ctrlpfunky"]
 	path = vim/bundle/ctrlpfunky
 	url = https://github.com/tacahiroy/ctrlp-funky
+[submodule "vim/bundle/tagbar"]
+	path = vim/bundle/tagbar
+	url = https://github.com/majutsushi/tagbar
