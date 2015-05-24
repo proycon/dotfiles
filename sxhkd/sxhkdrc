@@ -154,7 +154,7 @@ alt + @F3
     setinput.sh
 
 alt + @F4
-    /home/proycon/homeautomation/notifyclient_autoconnect.sh
+    pkill -f notifyclient.py || /home/proycon/homeautomation/notifyclient_autoconnect.sh
 
 alt + @F5
     mountssh
