@@ -135,7 +135,7 @@ elif [[ $HOST == "roma" ]]; then
 elif [[ $HOST == "applejack" || $HOST == "fluttershy" || $HOST == "rarity" || $HOST == "cheerilee" || $HOST == "fancypants" || $HOST == "pipsqueak" || $HOST == "scootaloo" ]]; then
 
     export LD_LIBRARY_PATH="/scratch/proycon/local/lib:/home/proycon/local/lib:/vol/customopt/uvt-ru/lib:/vol/customopt/machine-translation/lib:/vol/customopt/nlptools/lib/:$LD_LIBRARY_PATH"
-    BASEPATH="/scratch/proycon/local/bin:/home/proycon/bin:/home/proycon/local/bin:/vol/customopt/machine-translation/bin"
+    BASEPATH="/scratch/proycon/local/bin:/home/proycon/bin:/home/proycon/local/bin:/vol/customopt/machine-translation/bin:$PATH"
     #/vol/customopt/uvt-ru/bin:/vol/customopt/alpino/bin:/vol/customopt/uvt-ru/src/colibri/scripts:/vol/customopt/nlptools/bin/:/vol/customopt/nlptools/cmd/:/vol/customopt/cython3/bin/:$PATH"
     export PATH=$BASEPATH
     export CDPATH=.:/scratch/proycon/:/scratch/proycon/local/:/scratch/proycon/local/src/
