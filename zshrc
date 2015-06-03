@@ -143,6 +143,7 @@ elif [[ $HOST == "applejack" || $HOST == "fluttershy" || $HOST == "rarity" || $H
     export FREELINGSHARE="/vol/customopt/nlptools/share/freeling/"
     export PARAMSEARCH_DIR="/vol/customopt/uvt-ru/src/paramsearch"
     export ALPINO_HOME="/vol/customopt/alpino/"
+    export TMPDIR="/scratch/proycon/tmp"
 
     hash -d X=/scratch/proycon/
     hash -d lsrc=/scratch/proycon/local/src
