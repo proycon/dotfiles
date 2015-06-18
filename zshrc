@@ -21,6 +21,9 @@ export DISABLE_AUTO_UPDATE="true"
 # Uncomment following line if you want red dots to be displayed while waiting for completion
 # COMPLETION_WAITING_DOTS="true"
 
+unset CHECKGIT
+export DISABLE_UNTRACKED_FILES_DIRTY="true"
+
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
@@ -61,7 +64,8 @@ alias tlsh='~/todo/todo.sh ls @home'
 alias tlsp='~/todo/todo.sh projectview @work'
 alias tgl='cd ~/todo && git pull && cd -'
 alias tgp='cd ~/todo && ((git commit -a -m "todo update" && git push && cd -) || cd - )'
-alias ve='. env/bin/activate'
+alias ve='. ~/lamachine/bin/activate'
+alias lm='. ~/lamachine/bin/activate'
 alias ve2='. env2/bin/activate'
 alias a='tmux attach'
 alias ta='~/todo.sh add'
@@ -103,7 +107,7 @@ man() {
 alias dis='export $(tmux showenv | grep DISPLAY)'
 
 #PATHS
-if [[ $HOST == "galactica" || $HOST == "mhysa" || $HOST == "drasha" ]]; then
+if [[ $HOST == "galactica" || $HOST == "mhysa" || $HOST == "caprica" || $HOST == "drasha" ]]; then
     export PATH="/home/proycon/bin:/home/proycon/local/bin:/usr/local/android-sdk-linux/tools:/usr/local/android-sdk-linux/platform-tools:$PATH"
     export LD_LIBRARY_PATH="$LD_LIBRARY_PATH:/home/proycon/local/lib"
     export CDPATH=.:~/work
@@ -128,17 +132,19 @@ elif [[ $HOST == "roma" ]]; then
     hash -d clb=/home/proycon/work/colibri/
     hash -d cta=/home/proycon/work/colibrita/
     hash -d W=/home/proycon/work
-elif [[ $HOST == "applejack" || $HOST == "fluttershy" || $HOST == "rarity" || $HOST == "cheerilee" || $HOST == "fancypants" || $HOST == "pipsqueak" || $HOST == "scootaloo" ]]; then
+elif [[ $HOST == "applejack" || $HOST == "fluttershy" || $HOST == "rarity" || $HOST == "cheerilee" || $HOST == "fancypants" || $HOST == "pipsqueak" || $HOST == "scootaloo" || $HOST == "blossomforth" || $HOST == "featherweight" ]]; then
 
     export LD_LIBRARY_PATH="/scratch/proycon/local/lib:/home/proycon/local/lib:/vol/customopt/uvt-ru/lib:/vol/customopt/machine-translation/lib:/vol/customopt/nlptools/lib/:$LD_LIBRARY_PATH"
-    BASEPATH="/scratch/proycon/local/bin:/home/proycon/bin:/home/proycon/local/bin:/vol/customopt/machine-translation/bin:/vol/customopt/uvt-ru/bin:/vol/customopt/alpino/bin:/vol/customopt/uvt-ru/src/colibri/scripts:/vol/customopt/nlptools/bin/:/vol/customopt/nlptools/cmd/:/vol/customopt/cython3/bin/:$PATH"
+    BASEPATH="/scratch/proycon/local/bin:/home/proycon/bin:/home/proycon/local/bin:/vol/customopt/machine-translation/bin:/vol/customopt/tmux/bin:$PATH"
+    #/vol/customopt/uvt-ru/bin:/vol/customopt/alpino/bin:/vol/customopt/uvt-ru/src/colibri/scripts:/vol/customopt/nlptools/bin/:/vol/customopt/nlptools/cmd/:/vol/customopt/cython3/bin/:$PATH"
     export PATH=$BASEPATH
     export CDPATH=.:/scratch/proycon/:/scratch/proycon/local/:/scratch/proycon/local/src/
-    export PYTHONPATH="/home/proycon/:/vol/customopt/uvt-ru/lib/python2.7/site-packages/:/vol/customopt/uvt-ru/src/colibri/scripts:/vol/customopt/uvt-ru/lib/python2.7/site-packages/frog/:/vol/customopt/nlptools/stanford-corenlp-python:/vol/customopt/uvt-ru/lib/python3.2/site-packages/:/vol/customopt/python3-packages/lib/python3.2/site-packages/"
+    #export PYTHONPATH="/home/proycon/:/vol/customopt/uvt-ru/lib/python2.7/site-packages/:/vol/customopt/uvt-ru/src/colibri/scripts:/vol/customopt/uvt-ru/lib/python2.7/site-packages/frog/:/vol/customopt/nlptools/stanford-corenlp-python:/vol/customopt/uvt-ru/lib/python3.2/site-packages/:/vol/customopt/python3-packages/lib/python3.2/site-packages/"
     export CLASSPATH="/vol/customopt/nlptools/stanford-corenlp-full/stanford-corenlp-1.3.4.jar:/vol/customopt/nlptools/stanford-corenlp-full/stanford-corenlp-1.3.4-models.jar:/vol/customopt/nlptools/stanford-corenlp-full/xom.jar:/vol/customopt/nlptools/stanford-corenlp-full/joda-time.jar:/vol/customopt/nlptools/stanford-corenlp-full/jollyday.jar:/vol/customopt/nlptools/javalib:."
     export FREELINGSHARE="/vol/customopt/nlptools/share/freeling/"
     export PARAMSEARCH_DIR="/vol/customopt/uvt-ru/src/paramsearch"
     export ALPINO_HOME="/vol/customopt/alpino/"
+    export TMPDIR="/scratch/proycon/tmp"
 
     hash -d X=/scratch/proycon/
     hash -d lsrc=/scratch/proycon/local/src
@@ -176,6 +182,8 @@ alias cl="cheerilee=1 LC_ALL=en_US.UTF-8 LANG=en_US.UTF-8 ssh -Y -A -t applejack
 alias fp="fancypants=1 LC_ALL=en_US.UTF-8 LANG=en_US.UTF-8 ssh -Y -A -t applejack.science.ru.nl ssh -Y -A -t fancypants /home/proycon/bin/tm"
 alias pq="pipsqueak=1 LC_ALL=en_US.UTF-8 LANG=en_US.UTF-8 ssh -Y -A -t applejack.science.ru.nl ssh -Y -A -t pipsqueak /home/proycon/bin/tm"
 alias so="scootaloo=1 LC_ALL=en_US.UTF-8 LANG=en_US.UTF-8 ssh -Y -A -t applejack.science.ru.nl ssh -Y -A -t scootaloo /home/proycon/bin/tm"
+alias fw="featherweight=1 LC_ALL=en_US.UTF-8 LANG=en_US.UTF-8 ssh -Y -A -t applejack.science.ru.nl ssh -Y -A -t featherweight /home/proycon/bin/tm"
+alias bf="blossomforth=1 LC_ALL=en_US.UTF-8 LANG=en_US.UTF-8 ssh -Y -A -t applejack.science.ru.nl ssh -Y -A -t blossomforth /home/proycon/bin/tm"
 alias _aj="LC_ALL=en_US.UTF-8 LANG=en_US.UTF-8 ssh -Y -A -t applejack.science.ru.nl zsh"
 alias _fs="LC_ALL=en_US.UTF-8 LANG=en_US.UTF-8 ssh -Y -A -t applejack.science.ru.nl ssh -Y -A -t fluttershy zsh"
 alias _rr="LC_ALL=en_US.UTF-8 LANG=en_US.UTF-8 ssh -Y -A -t applejack.science.ru.nl ssh -Y -A -t rarity zsh"

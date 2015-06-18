@@ -164,18 +164,10 @@ let NERDTreeIgnore=['\~$', '^\.git', '^\.svn', '\.swp$', '\.DS_Store$','\.pyc$',
 let NERDTreeShowHidden=0
 " nmap <Leader>n :NERDTreeToggle<cr>
 
-""""" Settings for taglist.vim
-let Tlist_Use_Right_Window=1
-let Tlist_Auto_Open=0
-let Tlist_Enable_Fold_Column=0
-let Tlist_Compact_Format=0
-let Tlist_WinWidth=28
-let Tlist_Exit_OnlyWindow=1
-let Tlist_File_Fold_Auto_Close = 1
-" nmap <Leader>T :Tlist<cr>
 
 
-
+nmap <Leader>t :TagbarToggle<CR>
+nmap <Leader>T :TagbarOpen fj<CR>
 
 
 set ssop-=options    " do not store global and local values in a session
@@ -217,6 +209,7 @@ set wildignore+=*.o,*.lo,*.ko,*.so
 set wildignore+=*/.git/*
 set wildignore+=*/.svn/*
 set wildignore+=*_build/*
+set wildignore+=*/build/*
 set wildignore+=*/coverage/*
 set wildignore+=*.jpg,*.png,*.gif
 set wildignore+=*.pdf,*.ps,*.aux,*.bbl,*.docx,*.doc,*.ppt,*.pptx,*.rtf
@@ -225,9 +218,13 @@ set wildignore+=*.mp3,*.ogg,*.mpg,*.mp4,*.wav,*.mov
 " Settings for python-mode
 " cd ~/.vim/bundle
 " git clone https://github.com/klen/python-mode
-map <Leader>g :call RopeGotoDefinition()<CR>
+" map <Leader>g :call RopeGotoDefinition()<CR>
 let ropevim_enable_shortcuts = 1
-let g:pymode_rope_goto_def_newwin = "vnew"
+let g:pymode = 0 "disable pymode
+let g:pymode_python = 'python3'
+let g:pymode_doc = 0 "we use jedi instead
+let g:pymode_rope_completion = 0   "we use jedi instead
+let g:pymode_rope_goto_def_newwin = "new"
 let g:pymode_rope_extended_complete = 1
 let g:pymode_rope_complete_on_dot = 0
 let g:pymode_breakpoint = 0
@@ -240,6 +237,7 @@ let g:pymode_lint_checkers = ['pyflakes']
 let g:pymode_lint_checker = 'pylint'
 " let g:pymode_lint_ignore = "C0103,C0111,E1101,W0141,W0142,W0221,W0232,W0401,W0613,W0631"
 let g:pymode_lint_ignore = "R0201,R0922,C0111,E1103,C0301,C0302,C0321,C0322,C0323,C0324,R0201,R0901,R0902,R0903,R0904,R0912,R0913,R0914,R0915,R0922,R0923,C0103,C0111,E1101,W0141,W0142,W0221,W0232,W0401,W0613,W0631"
+let g:pymode_virtualenv = 1
 
 " Load show documentation plugin
 let g:pymode_doc = 1
@@ -257,6 +255,34 @@ let g:pymode_run_key = '<leader>r'
 let g:pymode_motion = 1
 
 let g:pymode_syntax_space_errors = 0
+
+let g:jedi#use_tabs_not_buffers = 0
+let g:jedi#popup_on_dot = 1
+let g:jedi#goto_command = "<leader>d"
+let g:jedi#goto_assignments_command = "<leader>g"
+let g:jedi#goto_definitions_command = "<leader>G"
+let g:jedi#documentation_command = "K"
+let g:jedi#usages_command = "<leader>u"
+let g:jedi#completions_command = "<C-Space>"
+let g:jedi#rename_command = "<leader>r"
+
+set statusline+=%{tagbar#currenttag('%s','-','f')}  
+set statusline+=%#warningmsg#
+set statusline+=%{SyntasticStatuslineFlag()}  
+set statusline+=%* 
+let g:syntastic_always_populate_loc_list = 1                                                                                                                                                                                                             
+let g:syntastic_auto_loc_list = 1                                                                                                                                                                                                                        
+let g:syntastic_check_on_wq = 0
+let g:syntastic_check_on_open = 1
+let g:syntastic_python_python_exec = "/usr/bin/python3"
+let g:syntastic_python_checkers = ['python', 'pylint']
+let g:syntastic_python_flake8_args = "--ignore=E501,E225 --max-complexity 10"
+let g:syntastic_javascript_checkers = ['jshint']
+let g:syntastic_error_symbol = "E>"
+let g:syntastic_warning_symbol = "W>"
+let g:syntastic_auto_jump = 3
+let g:syntastic_loc_list_height = 5
+
 
 let g:airline_powerline_fonts = 1
 let g:airline_theme = 'powerlineish'
@@ -323,13 +349,12 @@ map <leader>48 :b48<CR>
 map <leader>49 :b49<CR>
 
 
- map <leader>E <esc>:bufdo e<CR>
+map <leader>E <esc>:bufdo e<CR>
 map <leader>r :resize<CR>
 
 map <leader>n :NERDTreeToggle<CR>
-map <leader>m :Tlist<CR>
-map <leader>T :tabnew<CR>
-map <leader>o :OpenSession 
+" map <leader>m :Tlist<CR>
+" map <leader>o :OpenSession 
 " Easier linewise reselection
 nnoremap <leader>V V`]
 
@@ -397,7 +422,7 @@ endfun
 " nmap <leader>gr call PullAndRefresh()
 function! s:MakeWhite()
     set background=light
-    colorscheme github
+    colorscheme lucius
 endfunction
 
 function! s:MakeDark()

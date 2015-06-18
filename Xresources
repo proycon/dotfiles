@@ -6,8 +6,9 @@ Xft.hintstyle:  hintfull
 Xft.hinting: 1
 Xft.antialias: 1
 Xft.rgba: rgb
+Xft.dpi: 180
 urxvt*depth: 32
-urxvt*background: rgba:2f00/2f00/2f00/c800
+urxvt*background: rgba:2f00/2f00/2f00/e800
 
 urxvt*scrollBar: false
 urxvt*font: xft:Source Code Pro for Powerline:size=10:antialias=true:hinting=true,xft:Ubuntu Mono derivative Powerline:size=11:antialias=true:hinting=true,xft:WenQuanYi Micro Hei Mono,xft:DejaVu Sans Mono,xft:Gargi,xft:Khmer OS System,xft:Lohit Tamil,xft:Lohit Gujarati,xft:Lohit Bengali,xft:Lohit Oriya,xft:Lohit Kannada,xft:Lohit Konkani,xft:Lohit Malayam,xft:Lohit Telugu,xft:Lohit Nepali,xft:Lohit Assamese,xft:Lohit Punjabi
@@ -71,3 +72,56 @@ urxvt*color14: #8AD7C2
 !! white dark/light
 urxvt*color7: #D3D7CF
 urxvt*color15: #EEEEEC
+
+urxvtwhite*depth: 32
+urxvtwhite.background: #f1eee9
+urxvtwhite.foreground: #111111
+
+!Black
+urxvtwhite.color0:     #111111
+urxvtwhite.color8:     #000000
+!!Red
+urxvtwhite.color1:     #936a6f
+urxvtwhite.color9:     #d76572
+!!Green
+urxvtwhite.color2:     #668462
+urxvtwhite.color10:    #4fae42
+!!Yellow
+urxvtwhite.color3:     #7f7b62
+urxvtwhite.color11:    #a8981f
+!!Blue
+urxvtwhite.color4:     #6e7291
+urxvtwhite.color12:    #7782cf
+!!Magenta
+urxvtwhite.color5:     #846887
+urxvtwhite.color13:    #b754c4
+!!Cyan
+urxvtwhite.color6:     #637e7b
+urxvtwhite.color14:    #2ea89a
+!!White
+urxvtwhite.color7:     #9a9a9a
+urxvtwhite.color15:    #a4a4a4
+
+
+urxvtwhite*scrollBar: false
+urxvtwhite*font: xft:Source Code Pro for Powerline:size=10:antialias=true:hinting=true,xft:Ubuntu Mono derivative Powerline:size=11:antialias=true:hinting=true,xft:WenQuanYi Micro Hei Mono,xft:DejaVu Sans Mono,xft:Gargi,xft:Khmer OS System,xft:Lohit Tamil,xft:Lohit Gujarati,xft:Lohit Bengali,xft:Lohit Oriya,xft:Lohit Kannada,xft:Lohit Konkani,xft:Lohit Malayam,xft:Lohit Telugu,xft:Lohit Nepali,xft:Lohit Assamese,xft:Lohit Punjabi
+urxvtwhite*italicFont: xft:Source Code Pro for Powerline:size=10:italic:antialias=true:hinting=true,xft:Ubuntu Mono derivative Powerline:size=11:italic:antialias=true:hinting=true,xft:WenQuanYi Micro Hei Mono:italic
+urxvtwhite*boldFont: xft:Source Code Pro for Powerline:size=10:bold:antialias=true:hinting=true,xft:Ubuntu Mono derivative Powerline:size=10:bold:antialias=true:hinting=true,xft:WenQuanYi Micro Hei Mono:bold
+urxvtwhite*boldItalicFont: xft:Source Code Pro for Powerline:size=10:bold:italic:antialias=true:hinting=true,xft:Ubuntu Mono derivative Powerline:size=10:bold:italic:antialias=true:hinting=true,xft:WenQuanYi Micro Hei Mono:bold:italic
+!urxvtwhite*boldFont: xft:Ubuntu Mono derivative Powerline:bold:antialias=true:hinting=true
+!urxvtwhite*italicFont: xft:Ubuntu Mono derivative Powerline:italic:antialias=true:hinting=true
+!urxvtwhite*boldItalicFont: xft:Ubuntu Mono derivative Powerline:bold:italic:antialias=true:hinting=true
+urxvtwhite*letterSpace: -1
+
+urxvtwhite*perl-ext: default,matcher
+urxvtwhite*url-launcher: /usr/bin/firefox
+urxvtwhite*matcher.button: 1
+
+urxvtwhite*keysym.Home: \033[1
+urxvtwhite*keysym.End: \033[4
+
+urxvtwhite*cursorColor: #ff0000
+urxvtwhite*colorIT: #000000
+urxvtwhite*colorUL: #000000
+urxvtwhite*colorBD: #000000
+

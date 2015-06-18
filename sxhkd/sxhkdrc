@@ -8,7 +8,10 @@ super + w
     bspc window -c
 
 super + t
-    urxvt
+    urxvt -cd /home/proycon
+
+super + y
+    urxvt -name urxvtwhite
 
 super + u
     pcmanfm
@@ -16,8 +19,14 @@ super + u
 super + q
     bspc desktop -B
 
-super + {s,f}
-    bspc window -t {floating,fullscreen}
+super + {s,f,S}
+    bspc window -t {floating,fullscreen,pseudo_tiled}
+
+super + alt + s
+    bspc window -t sticky
+
+super + ctrl + s
+    bspc window -t sticky
 
 super + {grave,Tab}
     bspc {window,desktop} -f last
@@ -52,25 +61,19 @@ super + shift + alt + x
 super + h
     firefox https://home.anaproy.nl
 
-super + i
-    urxvt -T irssi -e /home/proycon/bin/tm irssi 
-
 super + shift + m 
-    urxvt -T ncmpcpp -e ncmpcpp
+    urxvt -cd /home/proycon -T ncmpcpp -e ncmpcpp
 
 super + m
-    urxvt -T mail -e ssh -Y -A -t anaproy.nl /home/proycon/bin/tm_alot
+    urxvt -cd /home/proycon -T mail -e ssh -Y -A -t anaproy.nl /home/proycon/bin/tm_alot
 
 super + v
-    urxvt -T vim -e /home/proycon/bin/tm vim
+    urxvt -cd /home/proycon -T vim -e /home/proycon/bin/tm vim
 
 super + {p,n}
     bspc control --record-history off; \
     bspc window {older,newer} -f; \
     bspc control --record-history on
-
-super + y
-    bspc window -w last.manual
 
 super + b
     bspc window -s biggest
@@ -111,8 +114,20 @@ super + alt + shift + {h,j,k,l}
 super + ctrl + {1-9}
     bspc window -r 0.{1-9}
 
+super + g
+    feh --bg-scale /home/proycon/Pictures/Local/wallpapers/03529_marronbells_5120x2880.jpg && compton -cC -z -r 3 -l 2 -t 2 -f -b 
+
+super + alt + g
+    xsetroot -solid "#333"  && killall compton
+
 super + {_,shift + }{1-9,0,minus,equal}
     bspc {desktop -f,window -d} ^{1-9,10,11,12}
+
+super + alt + minus
+    xrandr --output eDP1 --scale 0.5x0.5
+
+super + alt + equal
+    xrandr --output eDP1 --scale 1x1
 
 super + {Left,Right}
     bspc desktop -f {prev,next}
@@ -138,6 +153,9 @@ alt + @F2
 alt + @F3
     setinput.sh
 
+alt + @F4
+    pkill -f notifyclient.py 
+
 alt + @F5
     mountssh
     
@@ -156,7 +174,7 @@ alt + @F12
 # wm independent hotkeys
 #
 super + Return
-    urxvt
+    urxvt -cd /home/proycon
 
 super + space
     dmenu_run -fn "Ubuntu Mono-10"
