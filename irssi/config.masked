@@ -294,7 +294,7 @@ settings = {
   };
   "fe-text" = { actlist_sort = "refnum"; };
   "fe-common/core" = {
-    theme = "agon";
+    theme = "proyagon";
     bell_beeps = "yes";
     beep_msg_level = "HILIGHT";
   };
