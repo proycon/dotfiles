@@ -3,6 +3,10 @@ export LANG=en_GB.UTF-8
 export LANGUAGE=en_GB.UTF-8
 export LC_ALL=en_GB.UTF-8
 
+export GTK_IM_MODULE=fcitx
+export QT_IM_MODULE=fcitx
+export XMODIFIERS=@im=fcitx
+
 cd $HOME
 
 xrdb -merge /home/proycon/.Xresources
@@ -10,6 +14,7 @@ xsetroot -cursor_name left_ptr
 amixer sset Master unmute
 pulseaudio --start &
 compton -cC -z -r 3 -l 2 -t 2 -f -b
+fcitx
 sleep 0.2
 #dbus-launch /usr/lib/policykit-1-gnome/polkit-gnome-authentication-agent-1 
 dbus-launch gnome-keyring-daemon -s --components=pkcs11,secrets,ssh,gpg  &
@@ -34,7 +39,6 @@ xss-lock -- xscreensaver-command -lock &
 udiskie &
 volumeicon &
 tint2 &
-#ibus-daemon -d -x
 setxkbmap proylatin
 /home/proycon/homeautomation/notifyclient_autoconnect.sh &
 play ~/cylontune_low.ogg &
