@@ -53,6 +53,8 @@ alias km="setxkbmap proylatin"
 alias mk='LANGUAGE="en_GB.UTF-8" make'
 alias mi='LANGUAGE="en_GB.UTF-8" make install; if (( $? == 0 )); then; play -q /usr/share/sounds/KDE-Sys-App-Positive.ogg 2> /dev/null &!; else; play -q /usr/share/sounds/KDE-K3B-Finish-Error.ogg 2> /dev/null &!; fi; hr'
 alias glmi='git pull && LANGUAGE="en_GB.UTF-8" make install; if (( $? == 0 )); then; play -q /usr/share/sounds/KDE-Sys-App-Positive.ogg 2> /dev/null &!; else; play -q /usr/share/sounds/KDE-K3B-Finish-Error.ogg 2> /dev/null &!; fi; hr'
+alias glsi='git pyll && python setup.py install'
+alias si='python setup.py install'
 alias gl='git pull; if (( $? == 0 )); then; play -q /usr/share/sounds/KDE-Window-Minimize.ogg 2> /dev/null &!; fi'
 alias gp='git push; if (( $? == 0 )); then; play -q /usr/share/sounds/KDE-Window-Maximize.ogg 2> /dev/null &!; fi'
 alias pg='git push; if (( $? == 0 )); then; play -q /usr/share/sounds/KDE-Window-Maximize.ogg 2> /dev/null &!; fi'
