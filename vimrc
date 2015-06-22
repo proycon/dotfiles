@@ -85,10 +85,10 @@ nmap <Leader>y :.w! ~/.vbuf<CR>
 nmap <Leader>p :r ~/.vbuf<CR>       
 nmap <Leader>P :-1r ~/.vbuf<CR>       
 
-command! Caj !scp proycon@applejack.science.ru.nl:~/.vbuf ~/<CR>
-command! C2aj !scp ~/.vbuf proycon@applejack.science.ru.nl:~/.vbuf<CR>
-command! Cap !scp proycon@anaproy.nl:~/.vbuf ~/<CR>
-command! C2ap !scp ~/.vbuf proycon@anaproy.nl:~/<CR>
+command! Caj !scp proycon@applejack.science.ru.nl:~/.vbuf ~/
+command! C2aj !scp ~/.vbuf proycon@applejack.science.ru.nl:~/
+command! Cap !scp proycon@anaproy.nl:~/.vbuf ~/
+command! C2ap !scp ~/.vbuf proycon@anaproy.nl:~/
 
 vnoremap <Leader>s :sort<CR>
 map <Leader>S :r ~/sru<CR>
