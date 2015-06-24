@@ -85,10 +85,10 @@ nmap <Leader>y :.w! ~/.vbuf<CR>
 nmap <Leader>p :r ~/.vbuf<CR>       
 nmap <Leader>P :-1r ~/.vbuf<CR>       
 
-command! Caj !scp proycon@applejack.science.ru.nl:~/.vbuf ~/<CR>
-command! C2aj !scp ~/.vbuf proycon@applejack.science.ru.nl:~/.vbuf<CR>
-command! Cap !scp proycon@anaproy.nl:~/.vbuf ~/<CR>
-command! C2ap !scp ~/.vbuf proycon@anaproy.nl:~/<CR>
+command! Caj !scp proycon@applejack.science.ru.nl:~/.vbuf ~/
+command! C2aj !scp ~/.vbuf proycon@applejack.science.ru.nl:~/
+command! Cap !scp proycon@anaproy.nl:~/.vbuf ~/
+command! C2ap !scp ~/.vbuf proycon@anaproy.nl:~/
 
 vnoremap <Leader>s :sort<CR>
 map <Leader>S :r ~/sru<CR>
@@ -274,7 +274,7 @@ let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_auto_loc_list = 1                                                                                                                                                                                                                        
 let g:syntastic_check_on_wq = 0
 let g:syntastic_check_on_open = 1
-let g:syntastic_python_python_exec = "/usr/bin/python3"
+let g:syntastic_python_python_exec = "/home/proycon/lamachine/bin/python3"
 let g:syntastic_python_checkers = ['python', 'pylint']
 let g:syntastic_python_flake8_args = "--ignore=E501,E225 --max-complexity 10"
 let g:syntastic_javascript_checkers = ['jshint']
