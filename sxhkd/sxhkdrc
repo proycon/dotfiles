@@ -184,7 +184,7 @@ super + ctrl + Escape
     pkill -USR1 -x sxhkd
 
 super + Escape
-    /usr/bin/xscreensaver-command --lock 
+    /home/proycon/dotfiles/lock.sh
 
 super + shift + Escape
     systemctl suspend
