@@ -146,18 +146,23 @@ elif [[ $HOST == "applejack" || $HOST == "fluttershy" || $HOST == "rarity" || $H
     export FREELINGSHARE="/vol/customopt/nlptools/share/freeling/"
     export PARAMSEARCH_DIR="/vol/customopt/uvt-ru/src/paramsearch"
     export ALPINO_HOME="/vol/customopt/alpino/"
-    export TMPDIR="/scratch/proycon/tmp"
-
+    if [ -d /scratch/proycon/tmp ]; then
+        export TMPDIR="/scratch/proycon/tmp"
+    fi
     hash -d X=/scratch/proycon/
     hash -d lsrc=/scratch/proycon/local/src
     hash -d corpora=/vol/bigdata/corpora/
     hash -d ur=/vol/customopt/uvt-ru/
-    hash -d clb=/vol/customopt/uvt-ru/src/colibri/
-    hash -d cta=/vol/customopt/uvt-ru/src/colibrita/
+    hash -d lm=/vol/customopt/lamachine/
+    hash -d lm14=/vol/customopt/lamachine14/
+    hash -d lmsrc=/vol/customopt/lamachine/src/
     hash -d mt=/vol/customopt/machine-translation/
     hash -d corp=/vol/bigdata/corpora/
     hash -d bd=/vol/bigdata/users/proycon/
+    hash -d tu=/vol/tensusers/proycon/
     hash -d ws=/scratch2/www/webservices-lst/live
+
+    alias lm14='. /vol/customopt/lamachine14/bin/activate'
 
     umask u=rwx,g=rx,o=rx
 fi

@@ -34,8 +34,8 @@ pidof nm-applet
 if [[ "$?" == "1" ]]; then
     nm-applet &
 fi
-xscreensaver -no-splash &
-xss-lock -- xscreensaver-command -lock &
+#xscreensaver -no-splash &
+xss-lock -- /home/proycon/dotfiles/lock.sh 
 udiskie &
 volumeicon &
 tint2 &
