@@ -35,7 +35,7 @@ if [[ "$?" == "1" ]]; then
     nm-applet &
 fi
 #xscreensaver -no-splash &
-xss-lock -- /home/proycon/dotfiles/lock.sh 
+xss-lock --ignore-sleep -- /home/proycon/dotfiles/lock.sh 
 udiskie &
 volumeicon &
 tint2 &

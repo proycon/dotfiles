@@ -187,7 +187,7 @@ super + Escape
     /home/proycon/dotfiles/lock.sh
 
 super + shift + Escape
-    systemctl suspend
+    /home/proycon/dotfiles/suspend.sh
 
 XF86Audio{Raise,Lower}Volume
     amixer sset Master {665+,655-} unmute
