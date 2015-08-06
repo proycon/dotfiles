@@ -5,6 +5,8 @@ HOMEDIR=`pwd`
 mkdir bin
 mkdir .ncmpcpp
 mkdir .config
+mkdir .local
+mkdir .local/share
 cd dotfiles
 DOTDIR=`pwd`
 
@@ -26,6 +28,7 @@ ln -sfn $DOTDIR/bspwm $HOMEDIR/.config/bspwm
 ln -sfn $DOTDIR/sxhkd $HOMEDIR/.config/sxhkd
 ln -sfn $DOTDIR/tilda $HOMEDIR/.config/tilda
 ln -sfn $DOTDIR/konsolerc $HOMEDIR/.config/konsolerc
+ln -sfn $DOTDIR/konsole $HOMEDIR/.local/share/konsole
 ln -sfn $DOTDIR/ipython $HOMEDIR/.config/ipython
 ln -sfn $DOTDIR/irssi $HOMEDIR/.irssi
 ln -sfn $DOTDIR/tmux.conf $HOMEDIR/.tmux.conf
