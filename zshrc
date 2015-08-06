@@ -70,6 +70,7 @@ alias ve='. ~/lamachine/bin/activate'
 alias lm='. ~/lamachine/bin/activate'
 alias ve2='. env2/bin/activate'
 alias a='tmux attach'
+alias tmux='tmux -2' #force 256 colour support regardless of terminal
 alias ta='~/todo.sh add'
 alias ka='killall'
 alias gpp='git push origin gh-pages'

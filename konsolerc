@@ -1,0 +1,25 @@
+[Desktop Entry]
+DefaultProfile=Shell.profile
+
+[Favorite Profiles]
+Favorites=Shell.profile
+
+[KonsoleWindow]
+SaveGeometryOnExit=false
+ShowAppNameOnTitleBar=false
+ShowMenuBarByDefault=false
+
+[MainWindow]
+Height 1800=1736
+MenuBar=Disabled
+State=AAAA/wAAAAD9AAAAAAAABVAAAAbIAAAABAAAAAQAAAAIAAAACPwAAAAA
+ToolBarsMovable=Disabled
+Width 2880=1360
+
+[Profile Shortcuts]
+Ctrl+Q, Q=Shell.profile
+
+[TabBar]
+NewTabBehavior=PutNewTabAfterCurrentTab
+TabBarPosition=Top
+TabBarVisibility=ShowTabBarWhenNeeded

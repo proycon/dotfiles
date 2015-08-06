@@ -25,6 +25,7 @@ ln -sfn $DOTDIR/terminator $HOMEDIR/.config/terminator
 ln -sfn $DOTDIR/bspwm $HOMEDIR/.config/bspwm
 ln -sfn $DOTDIR/sxhkd $HOMEDIR/.config/sxhkd
 ln -sfn $DOTDIR/tilda $HOMEDIR/.config/tilda
+ln -sfn $DOTDIR/konsolerc $HOMEDIR/.config/konsolerc
 ln -sfn $DOTDIR/ipython $HOMEDIR/.config/ipython
 ln -sfn $DOTDIR/irssi $HOMEDIR/.irssi
 ln -sfn $DOTDIR/tmux.conf $HOMEDIR/.tmux.conf
@@ -38,7 +39,6 @@ ln -sfn $DOTDIR/pentadactylrc $HOMEDIR/.pentadactylrc
 ln -sfn $DOTDIR/pentadactyl $HOMEDIR/.pentadactyl
 ln -sfn $DOTDIR/inputrc $HOMEDIR/.inputrc
 ln -sfn $DOTDIR/Xresources $HOMEDIR/.Xresources
-ln -sfn $DOTDIR/Xresources $HOMEDIR/Xresources
 NICKSERVPASS=`cat ~/.nickserv`
 BOUNCERPASS=`cat ~/.anaproy`
 cat $HOMEDIR/.irssi/config.masked | sed -e "s/NICKSERVPASS/$NICKSERVPASS/" -e "s/BOUNCERPASS/$BOUNCERPASS/" > $HOMEDIR/.irssi/config
