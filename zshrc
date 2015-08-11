@@ -323,9 +323,14 @@ bindkey '^r' history-incremental-search-backward
 #    RPS1="${${KEYMAP/vicmd/$VIM_PROMPT}/(main|viins)/}$RPROMPT $EPS1"
 #    zle reset-prompt
 #}
+#
 
 #zle -N zle-line-init
 #zle -N zle-keymap-select
+zle-line-init() { echoti smkx; }  
+zle-line-finish() { echoti rmkx; }
+zle -N zle-line-init
+zle -N zle-line-finish
 export KEYTIMEOUT=1
 
 source $HOME/dotfiles/opp.zsh/opp.zsh
@@ -334,6 +339,8 @@ source $HOME/dotfiles/opp.zsh/opp/*.zsh
 
 #bindkey -M viins 'jj' vi-cmd-mode
 
+bindkey $terminfo[khome] beginning-of-line
+bindkey $terminfo[kend] end-of-line
 bindkey '\e[1' beginning-of-line
 bindkey '\e[4' end-of-line
 bindkey '\e[A' history-substring-search-up
