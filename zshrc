@@ -93,6 +93,7 @@ export MPD_HOST="proycon@anaproy.nl"
 
 
 export EDITOR="vim"
+export BROWSER="firefox"
 
 #coloured man pages
 export GROFF_NO_SGR=1
