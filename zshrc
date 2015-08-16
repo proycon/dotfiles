@@ -136,7 +136,7 @@ elif [[ $HOST == "roma" ]]; then
     hash -d clb=/home/proycon/work/colibri/
     hash -d cta=/home/proycon/work/colibrita/
     hash -d W=/home/proycon/work
-elif [[ $HOST == "applejack" || $HOST == "fluttershy" || $HOST == "rarity" || $HOST == "cheerilee" || $HOST == "fancypants" || $HOST == "pipsqueak" || $HOST == "scootaloo" || $HOST == "blossomforth" || $HOST == "featherweight" ]]; then
+elif [[ $HOST == "applejack" || $HOST == "fluttershy" || $HOST == "rarity" || $HOST == "cheerilee" || $HOST == "fancypants" || $HOST == "pipsqueak" || $HOST == "scootaloo" || $HOST == "blossomforth" || $HOST == "featherweight" || $HOST == "twist" ]]; then
 
     export LD_LIBRARY_PATH="/vol/customopt/machine-translation/lib:/vol/customopt/nlptools/lib/:$LD_LIBRARY_PATH"
     BASEPATH="/home/proycon/bin:/home/proycon/local/bin:/vol/customopt/machine-translation/bin:$PATH"
