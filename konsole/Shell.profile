@@ -11,6 +11,7 @@ UseCustomCursorColor=true
 [General]
 Name=Shell
 Parent=FALLBACK/
+RemoteTabTitleFormat=%w
 ShowTerminalSizeHint=false
 
 [Interaction Options]
