@@ -193,6 +193,8 @@ alias pq="pipsqueak=1 LC_ALL=en_US.UTF-8 LANG=en_US.UTF-8 ssh -Y -A -t applejack
 alias so="scootaloo=1 LC_ALL=en_US.UTF-8 LANG=en_US.UTF-8 ssh -Y -A -t applejack.science.ru.nl ssh -Y -A -t scootaloo /home/proycon/bin/tm"
 alias fw="featherweight=1 LC_ALL=en_US.UTF-8 LANG=en_US.UTF-8 ssh -Y -A -t applejack.science.ru.nl ssh -Y -A -t featherweight /home/proycon/bin/tm"
 alias bf="blossomforth=1 LC_ALL=en_US.UTF-8 LANG=en_US.UTF-8 ssh -Y -A -t applejack.science.ru.nl ssh -Y -A -t blossomforth /home/proycon/bin/tm"
+alias tl="thunderlane=1 LC_ALL=en_US.UTF-8 LANG=en_US.UTF-8 ssh -Y -A -t applejack.science.ru.nl ssh -Y -A -t thunderlane /home/proycon/bin/tm"
+alias tw="twist=1 LC_ALL=en_US.UTF-8 LANG=en_US.UTF-8 ssh -Y -A -t applejack.science.ru.nl ssh -Y -A -t twist /home/proycon/bin/tm"
 alias _aj="LC_ALL=en_US.UTF-8 LANG=en_US.UTF-8 ssh -Y -A -t applejack.science.ru.nl zsh"
 alias _fs="LC_ALL=en_US.UTF-8 LANG=en_US.UTF-8 ssh -Y -A -t applejack.science.ru.nl ssh -Y -A -t fluttershy zsh"
 alias _rr="LC_ALL=en_US.UTF-8 LANG=en_US.UTF-8 ssh -Y -A -t applejack.science.ru.nl ssh -Y -A -t rarity zsh"
@@ -210,19 +212,11 @@ alias gpga="killall gpg-agent; gpg-agent --daemon --enable-ssh-support --write-e
 alias lq="source ~/.sgesh"
 
 
-if [[ $HOST == "applejack" || $HOST == "fluttershy" || $HOST == "rarity" || $HOST == "cheerilee" || $HOST == "fancypants" || $HOST == "pipsqueak" || $HOST == "scootaloo" ]]; then
-    alias expy2="export PYTHONPATH=/home/proycon/:/vol/customopt/uvt-ru/src/colibri/scripts:/vol/customopt/nlptools/stanford-corenlp-python:/vol/customopt/uvt-ru/lib/python2.7/site-packages/:/vol/customopt/python2-packages/lib/python2.7/site-packages:/vol/customopt/cython2/lib/python2.7/site-packages/:/vol/customopt/clam/lib/python2.7/site-packages"
-    alias expy3="export PYTHONPATH=/home/proycon/:/vol/customopt/uvt-ru/src/colibri/scripts:/vol/customopt/nlptools/stanford-corenlp-python:/vol/customopt/uvt-ru/lib/python3.2/site-packages/:/vol/customopt/cython3/lib/python3.2/site-packages/:/vol/customopt/twisted3/lib/python3.2/site-packages/:/vol/customopt/python3-packages/lib/python3.2/site-packages/ PATH=/vol/customopt/python3-packages/bin:$BASEPATH"
+if [[ $HOST == "applejack" || $HOST == "fluttershy" || $HOST == "rarity" || $HOST == "cheerilee" || $HOST == "fancypants" || $HOST == "pipsqueak" || $HOST == "scootaloo" || $HOST == "blossomforth" || $HOST == "featherweight" || $HOST == "twist" || $HOST == "thunderlane" ]]; then
+    alias expy2="export PYTHONPATH=/vol/customopt/nlptools/stanford-corenlp-python:/vol/customopt/python2-packages/lib/python2.7/site-packages"
+    alias expy3="export PYTHONPATH=/vol/customopt/nlptools/stanford-corenlp-python:/vol/customopt/python3-packages/lib/python3.4/site-packages/ PATH=/vol/customopt/python3-packages/bin:$BASEPATH"
 
-    alias ipy3="expy3 && /vol/customopt/python3-packages/bin/ipython3"
-    alias ipy="expy3 && /vol/customopt/python3-packages/bin/ipython3"
 
-    alias py="expy3 && python3"
-    alias py2="expy2 && python"
-    alias py3="expy3 && python3"
-    alias ipy2="expy2 && ipython"
-    alias ipyq="expy3 && ipython qtconsole"
-    alias ipyq3="expy3 && ipython3 qtconsole"
 
     ipynb() {
         expy3 
@@ -233,16 +227,16 @@ if [[ $HOST == "applejack" || $HOST == "fluttershy" || $HOST == "rarity" || $HOS
         fi
     }
 
-else
-    alias py="python3"
-    alias py2="python"
-    alias py3="python3"
-    alias ipy="ipython3"
-    alias ipy2="ipython"
-    alias ipyq="ipython qtconsole"
-    alias ipyq3="ipython3 qtconsole"
-    alias ipynb="ipython3 notebook"
 fi
+
+alias py="python3"
+alias py2="python2"
+alias py3="python3"
+alias ipy="ipython3"
+alias ipy2="ipython"
+alias ipyq="ipython qtconsole"
+alias ipyq3="ipython3 qtconsole"
+alias ipynb="ipython3 notebook"
 
 sshtunnel() {
     ssh -N -f -L localhost:${2}:localhost:${2} $1
