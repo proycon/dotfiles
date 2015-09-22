@@ -351,6 +351,7 @@ map <leader>49 :b49<CR>
 
 map <leader>E <esc>:bufdo e<CR>
 map <leader>r :resize<CR>
+map <leader>S :SyntasticToggleMode<CR>
 
 map <leader>n :NERDTreeToggle<CR>
 " map <leader>m :Tlist<CR>
