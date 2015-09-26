@@ -73,6 +73,7 @@ alias a='tmux attach'
 alias tmux='tmux -2' #force 256 colour support regardless of terminal
 alias ta='~/todo.sh add'
 alias ka='killall'
+alias za='zathura'
 alias gpp='git push origin gh-pages'
 alias r='ranger'
 #colours
@@ -136,8 +137,7 @@ elif [[ $HOST == "roma" ]]; then
     hash -d clb=/home/proycon/work/colibri/
     hash -d cta=/home/proycon/work/colibrita/
     hash -d W=/home/proycon/work
-elif [[ $HOST == "applejack" || $HOST == "fluttershy" || $HOST == "rarity" || $HOST == "cheerilee" || $HOST == "fancypants" || $HOST == "pipsqueak" || $HOST == "scootaloo" || $HOST == "blossomforth" || $HOST == "featherweight" || $HOST == "twist" ]]; then
-
+elif [[ $HOST == "applejack" || $HOST == "fluttershy" || $HOST == "rarity" || $HOST == "cheerilee" || $HOST == "fancypants" || $HOST == "pipsqueak" || $HOST == "scootaloo" || $HOST == "blossomforth" || $HOST == "featherweight" || $HOST == "twist" || $HOST == "thunderlane" ]]; then
     export LD_LIBRARY_PATH="/vol/customopt/machine-translation/lib:/vol/customopt/nlptools/lib/:$LD_LIBRARY_PATH"
     BASEPATH="/home/proycon/bin:/home/proycon/local/bin:/vol/customopt/machine-translation/bin:$PATH"
     #/vol/customopt/uvt-ru/bin:/vol/customopt/alpino/bin:/vol/customopt/uvt-ru/src/colibri/scripts:/vol/customopt/nlptools/bin/:/vol/customopt/nlptools/cmd/:/vol/customopt/cython3/bin/:$PATH"
