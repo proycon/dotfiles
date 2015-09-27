@@ -156,6 +156,7 @@ call pathogen#helptags()
 filetype plugin indent on
 syntax on
 
+autocmd FileType python,c,cpp,java,javascript,perl,awk,bash,haskell syn match ops /[(){}\[\]=\+\-%!\*:\,\.<>\|\&]/ | hi ops ctermfg=117
 
 
 """"" Settings for NERDTree
