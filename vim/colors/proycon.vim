@@ -16,7 +16,7 @@ if version > 580
 	endif
 endif
 
-let colors_name = "wombat256mod"
+let colors_name = "proycon"
 
 
 " General colors
@@ -81,6 +81,7 @@ hi Constant		ctermfg=173		cterm=none		guifg=#e5786d	gui=none
 hi PreProc		ctermfg=173		cterm=none		guifg=#e5786d	gui=none
 hi Function		ctermfg=212		cterm=none		guifg=#ff87d7	gui=none
 hi Identifier	ctermfg=192		cterm=none		guifg=#d7ff87	gui=none
+hi Structure	ctermfg=192		cterm=none		guifg=#d7ff87	gui=none
 hi Type			ctermfg=186		cterm=none		guifg=#d4d987	gui=none
 hi Special		ctermfg=229		cterm=none		guifg=#eadead	gui=none
 hi String		ctermfg=113		cterm=none		guifg=#95e454	gui=italic

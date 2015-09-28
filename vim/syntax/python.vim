@@ -102,6 +102,13 @@ endif
 command! -buffer Python2Syntax let b:python_version_2 = 1 | let &syntax=&syntax
 command! -buffer Python3Syntax let b:python_version_2 = 0 | let &syntax=&syntax
 
+
+let python_highlight_builtins=1 
+let python_highlight_builtin_objs=1 
+let python_highlight_builtin_funcs=1 
+let python_highlight_exceptions=1 
+let python_highlight_all=1 
+
 " Enable option if it's not defined
 function! s:EnableByDefault(name)
   if !exists(a:name)
@@ -171,9 +178,9 @@ if s:Python2Syntax()
   syn keyword pythonImport      as
   syn match   pythonFunction    "[a-zA-Z_][a-zA-Z0-9_]*" display contained
 else
-  syn keyword pythonStatement   as nonlocal None
+  syn keyword pythonStatement   as nonlocal
   syn match   pythonStatement   "\<yield\s\+from\>" display
-  syn keyword pythonBoolean     True False
+  syn keyword pythonBoolean     True False None
   syn match   pythonFunction    "\%([^[:cntrl:][:space:][:punct:][:digit:]]\|_\)\%([^[:cntrl:][:punct:][:space:]]\|_\)*" display contained
   syn keyword pythonStatement   await
   syn match   pythonStatement   "\<async\s\+def\>" display
@@ -553,10 +560,10 @@ if version >= 508 || !exists("did_python_syn_inits")
 
   HiLink pythonBoolean          Boolean
 
-  HiLink pythonBuiltinObj       Structure
-  HiLink pythonBuiltinFunc      Function
+  HiLink pythonBuiltinObj       Identifier
+  HiLink pythonBuiltinFunc      Identifier
 
-  HiLink pythonExClass          Structure
+  HiLink pythonExClass          Identifier
 
   delcommand HiLink
 endif

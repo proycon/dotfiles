@@ -94,7 +94,7 @@ vnoremap <Leader>s :sort<CR>
 map <Leader>S :r ~/sru<CR>
 
 set t_Co=256
-color wombat256mod
+color proycon
 
 
 " Showing line numbers and length
