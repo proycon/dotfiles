@@ -264,7 +264,7 @@ let g:jedi#goto_assignments_command = "<leader>g"
 let g:jedi#goto_definitions_command = "<leader>G"
 let g:jedi#documentation_command = "K"
 let g:jedi#usages_command = "<leader>u"
-let g:jedi#completions_command = "<C-Space>"
+let g:jedi#completions_command = "<leader>x"
 let g:jedi#rename_command = "<leader>r"
 
 set statusline+=%{tagbar#currenttag('%s','-','f')}  
@@ -281,7 +281,7 @@ let g:syntastic_python_flake8_args = "--ignore=E501,E225 --max-complexity 10"
 let g:syntastic_javascript_checkers = ['jshint']
 let g:syntastic_error_symbol = "E>"
 let g:syntastic_warning_symbol = "W>"
-let g:syntastic_auto_jump = 3
+let g:syntastic_auto_jump = 0
 let g:syntastic_loc_list_height = 5
 
 
@@ -352,7 +352,7 @@ map <leader>49 :b49<CR>
 
 map <leader>E <esc>:bufdo e<CR>
 map <leader>r :resize<CR>
-map <leader>S :SyntasticToggleMode<CR>
+map <leader>X :SyntasticToggleMode<CR>
 
 map <leader>n :NERDTreeToggle<CR>
 " map <leader>m :Tlist<CR>
