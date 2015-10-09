@@ -165,6 +165,7 @@ elif [[ $HOST == "applejack" || $HOST == "fluttershy" || $HOST == "rarity" || $H
     hash -d ws=/scratch2/www/webservices-lst/live
 
     alias lm14='. /vol/customopt/lamachine14/bin/activate'
+    alias lmt='. /vol/customopt/lamachinetest/bin/activate'
 
     umask u=rwx,g=rx,o=rx
 fi
