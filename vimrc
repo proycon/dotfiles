@@ -257,15 +257,10 @@ let g:pymode_motion = 1
 
 let g:pymode_syntax_space_errors = 0
 
-let g:jedi#use_tabs_not_buffers = 0
-let g:jedi#popup_on_dot = 1
-let g:jedi#goto_command = "<leader>d"
-let g:jedi#goto_assignments_command = "<leader>g"
-let g:jedi#goto_definitions_command = "<leader>G"
-let g:jedi#documentation_command = "K"
-let g:jedi#usages_command = "<leader>u"
-let g:jedi#completions_command = "<leader>x"
-let g:jedi#rename_command = "<leader>r"
+
+
+
+
 
 set statusline+=%{tagbar#currenttag('%s','-','f')}  
 set statusline+=%#warningmsg#
@@ -284,6 +279,17 @@ let g:syntastic_warning_symbol = "W>"
 let g:syntastic_auto_jump = 0
 let g:syntastic_loc_list_height = 5
 
+set noshowmode
+let g:jedi#use_tabs_not_buffers = 0
+let g:jedi#popup_on_dot = 1
+let g:jedi#goto_command = "<leader>d"
+let g:jedi#goto_assignments_command = "<leader>g"
+let g:jedi#goto_definitions_command = "<leader>G"
+let g:jedi#show_call_signatures = 2
+let g:jedi#documentation_command = "K"
+let g:jedi#usages_command = "<leader>u"
+let g:jedi#completions_command = "<leader>x"
+let g:jedi#rename_command = "<leader>r"
 
 let g:airline_powerline_fonts = 1
 let g:airline_theme = 'powerlineish'
