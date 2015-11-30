@@ -120,6 +120,9 @@ super + g
 super + alt + g
     xsetroot -solid "#333"  && killall compton
 
+super + k 
+    killall klauncher
+
 super + {_,shift + }{1-9,0,minus,equal}
     bspc {desktop -f,window -d} ^{1-9,10,11,12}
 
