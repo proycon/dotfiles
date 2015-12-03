@@ -61,6 +61,3 @@
 [submodule "vim/bundle/bundle/vim-surround"]
 	path = vim/bundle/bundle/vim-surround
 	url = https://github.com/tpope/vim-surround
-[submodule "vim/bundle/quick-scope"]
-	path = vim/bundle/quick-scope
-	url = https://github.com/unblevable/quick-scope
