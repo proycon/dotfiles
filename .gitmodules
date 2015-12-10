@@ -61,3 +61,6 @@
 [submodule "vim/bundle/bundle/vim-surround"]
 	path = vim/bundle/bundle/vim-surround
 	url = https://github.com/tpope/vim-surround
+[submodule "vim/bundle/limelight.vim"]
+	path = vim/bundle/limelight.vim
+	url = https://github.com/junegunn/limelight.vim.git
