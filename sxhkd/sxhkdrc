@@ -173,6 +173,13 @@ alt + @F11
 
 alt + @F12
     setxkbmap proyar
+
+super + @F5
+    kbdlight down 10
+
+super + @F6
+    kbdlight up 10
+
 #
 # wm independent hotkeys
 #
