@@ -5,7 +5,7 @@ super + alt + Escape
     bspc quit
 
 super + w
-    bspc window -c
+    bspc node -c
 
 super + t
     konsole --workdir /home/proycon
@@ -20,25 +20,25 @@ super + q
     bspc desktop -B
 
 super + {s,f,S}
-    bspc window -t {floating,fullscreen,pseudo_tiled}
+    bspc node -t {floating,fullscreen,pseudo_tiled}
 
 super + alt + s
-    bspc window -t sticky
+    bspc node -t sticky
 
 super + ctrl + s
-    bspc window -t sticky
+    bspc node -t sticky
 
 super + {grave,Tab}
-    bspc {window,desktop} -f last
+    bspc {node,desktop} -f last
 
 super + apostrophe
-    bspc window -s last
+    bspc node -s last
 
 super + e
     /home/proycon/bin/emptywindow
 
 super + alt + w
-    bspc window -k  
+    bspc node -k  
 
 super + z
     /home/proycon/bin/house.sh "office light on"
@@ -72,17 +72,17 @@ super + v
 
 super + {p,n}
     bspc control --record-history off; \
-    bspc window {older,newer} -f; \
+    bspc node {older,newer} -f; \
     bspc control --record-history on
 
 super + b
-    bspc window -s biggest
+    bspc node -s biggest
 
 super + {_,shift + }{h,j,k,l}
-    bspc window -{f,s} {left,down,up,right}
+    bspc node -{f,s} {left,down,up,right}
 
 super + {_,shift + }c
-    bspc window -f {next,prev}
+    bspc node -f {next,prev}
 
 super + {_,shift + }slash
     bspc desktop -C {forward,backward}
@@ -100,19 +100,19 @@ super + alt + {comma,period,slash}
      bspc config -d focused window_gap {5,25,50}
 
 super + ctrl + {h,j,k,l}
-    bspc window -p {left,down,up,right}
+    bspc node -p {left,down,up,right}
 
 super + ctrl + {_,shift + }space
-    bspc {window -p cancel,desktop -c}
+    bspc {node -p cancel,desktop -c}
 
 super + alt + {h,j,k,l}
-    bspc window -e {left -10,down +10,up -10,right +10}
+    bspc node -e {left -10,down +10,up -10,right +10}
 
 super + alt + shift + {h,j,k,l}
-    bspc window -e {right -10,up +10,down -10,left +10}
+    bspc node -e {right -10,up +10,down -10,left +10}
 
 super + ctrl + {1-9}
-    bspc window -r 0.{1-9}
+    bspc node -r 0.{1-9}
 
 super + g
     feh --bg-scale /home/proycon/Pictures/Local/wallpapers/03529_marronbells_5120x2880.jpg && compton -cC -z -r 3 -l 2 -t 2 -f -b 
@@ -124,7 +124,7 @@ super + k
     killall klauncher
 
 super + {_,shift + }{1-9,0,minus,equal}
-    bspc {desktop -f,window -d} ^{1-9,10,11,12}
+    bspc {desktop -f,node -d} ^{1-9,10,11,12}
 
 super + alt + minus
     xrandr --output eDP1 --scale 0.5x0.5
