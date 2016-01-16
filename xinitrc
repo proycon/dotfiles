@@ -14,7 +14,7 @@ xsetroot -cursor_name left_ptr
 amixer sset Master unmute
 pulseaudio --start &
 compton -cC -z -r 3 -l 2 -t 2 -f -b
-fcitx
+#fcitx
 sleep 0.2
 #dbus-launch /usr/lib/policykit-1-gnome/polkit-gnome-authentication-agent-1 
 dbus-launch gnome-keyring-daemon -s --components=pkcs11,secrets,ssh,gpg  &
@@ -24,10 +24,6 @@ feh --bg-scale /home/proycon/Pictures/Local/wallpapers/archplains.jpg &  #03529_
 #setlayout 0 3 3 0
 if [[ $HOST == "mhysa" ]]; then
     mountssh &
-fi
-LINES=`ps aux | grep tilda | wc -l`
-if [[ $LINES -lt 2 ]]; then
-    tilda &
 fi
 #thunar-volman &
 pidof nm-applet
