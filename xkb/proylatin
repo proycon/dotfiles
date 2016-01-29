@@ -33,7 +33,7 @@ xkb_symbols "basic" {
     key <AD02> {        [         w,    W ,odiaeresis,Odiaeresis              ]       };
     key <AD03> {        [         e,    E   ,ae, AE            ]       };
     key <AD04> {        [         r,    R               ]       };
-    key <AD05> {        [         t,    T               ]       };
+    key <AD05> {        [         t,    T  ,thorn,Thorn             ]       };
     key <AD06> {        [         y,    Y               ]       };
     key <AD07> {        [         u,    U ,udiaeresis,Udiaeresis      ]       };
     key <AD08> {        [         i,    I , idotless , Iabovedot     ]       };
@@ -49,7 +49,7 @@ xkb_symbols "basic" {
 
     key <AC01> {        [         a,    A , aring, Aring              ]       };
     key <AC02> {        [         s,    S , scedilla, Scedilla              ]       };
-    key <AC03> {        [         d,    D               ]       };
+    key <AC03> {        [         d,    D, eth, Eth            ]       };
     key <AC04> {        [         f,    F               ]       };
     key <AC05> {        [         g,    G , gbreve, Gbreve              ]       };
     key <AC06> {        [         h,    H               ]       };
