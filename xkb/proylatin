@@ -29,13 +29,13 @@ xkb_symbols "basic" {
     key <AE11>	{ [minus,   underscore,    bracketleft, braceleft ]	};
     key <AE12>	{ [equal, plus, bracketright,   braceright ]	};
 
-    key <AD01> {        [         q,    Q               ]       };
-    key <AD02> {        [         w,    W               ]       };
+    key <AD01> {        [         q,    Q ,adiaeresis,Adiaeresis               ]       };
+    key <AD02> {        [         w,    W ,odiaeresis,Odiaeresis              ]       };
     key <AD03> {        [         e,    E   ,ae, AE            ]       };
     key <AD04> {        [         r,    R               ]       };
     key <AD05> {        [         t,    T               ]       };
     key <AD06> {        [         y,    Y               ]       };
-    key <AD07> {        [         u,    U               ]       };
+    key <AD07> {        [         u,    U ,udiaeresis,Udiaeresis      ]       };
     key <AD08> {        [         i,    I , idotless , Iabovedot     ]       };
     key <AD09> {        [         o,    O ,oslash , oe              ]       };
     key <AD10> {        [         p,    P              ]       };
