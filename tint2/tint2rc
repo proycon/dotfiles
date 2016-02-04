@@ -36,9 +36,9 @@ border_color = #ffffff 68
 #-------------------------------------
 # Panel
 panel_items = LTSBC
-panel_size = 100% 36
+panel_size = 100% 30
 panel_margin = 0 0
-panel_padding = 14 0 14
+panel_padding = 7 0 7
 panel_background_id = 1
 wm_menu = 1
 panel_dock = 0
@@ -57,7 +57,7 @@ font_shadow = 0
 #-------------------------------------
 # Taskbar
 taskbar_mode = multi_desktop
-taskbar_padding = 8 6 10
+taskbar_padding = 4 3 5
 taskbar_background_id = 0
 taskbar_active_background_id = 5
 taskbar_name = 1
@@ -80,8 +80,8 @@ task_icon = 1
 task_centered = 1
 urgent_nb_of_blink = 8
 task_maximum_size = 280 70
-task_padding = 12 4 12
-task_font = sans 14
+task_padding = 6 2 6
+task_font = sans 9
 task_tooltip = 0
 task_font_color = #ffffff 65
 task_active_font_color = #ffffff 80
@@ -105,7 +105,7 @@ mouse_scroll_down = iconify
 systray_padding = 0 8 10
 systray_background_id = 0
 systray_sort = ascending
-systray_icon_size = 64
+systray_icon_size = 24
 systray_icon_asb = 70 0 0
 systray_monitor = 1
 
