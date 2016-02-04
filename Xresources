@@ -6,7 +6,7 @@ Xft.hintstyle:  hintfull
 Xft.hinting: 1
 Xft.antialias: 1
 Xft.rgba: rgb
-Xft.dpi: 180
+Xft.dpi: 100
 urxvt*depth: 32
 urxvt*background: rgba:2f00/2f00/2f00/e800
 
