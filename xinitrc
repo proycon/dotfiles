@@ -13,7 +13,6 @@ xrdb -merge /home/proycon/.Xresources
 xsetroot -cursor_name left_ptr
 amixer sset Master unmute
 pulseaudio --start &
-compton -cC -z -r 3 -l 2 -t 2 -f -b
 #fcitx
 sleep 0.2
 #dbus-launch /usr/lib/policykit-1-gnome/polkit-gnome-authentication-agent-1 
@@ -38,6 +37,7 @@ tint2 &
 setxkbmap proylatin
 /home/proycon/homeautomation/notifyclient_autoconnect.sh &
 play ~/cylontune_low.ogg &
+compton -cC -z -r 3 -l 2 -t 2 -f & 
 
 which bspwm > /dev/null 2>/dev/null
 if [ $? -eq 0 ]; then
