@@ -31,8 +31,8 @@ super + ctrl + s
 super + {grave,Tab}
     bspc {node,desktop} -f last
 
-super + apostrophe
-    bspc node -s last
+#super + apostrophe
+#    bspc node -s last
 
 super + e
     /home/proycon/bin/emptywindow
