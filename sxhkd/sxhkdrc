@@ -62,13 +62,16 @@ super + h
     firefox https://home.anaproy.nl
 
 super + shift + m 
-    konsole --workdir /home/proycon -e ncmpcpp
+    urxvt -cd /home/proycon -T ncmpcpp -e ncmpcpp
+    #konsole --workdir /home/proycon -e ncmpcpp
 
 super + m
-    konsole --workdir /home/proycon -e ssh -Y -A -t anaproy.nl /home/proycon/bin/tm_alot
+    urxvt -cd /home/proycon -T mail -e ssh -Y -A -t anaproy.nl /home/proycon/bin/tm_alot
+    #konsole --workdir /home/proycon -e ssh -Y -A -t anaproy.nl /home/proycon/bin/tm_alot
 
 super + v
-    konsole --workdir /home/proycon -e /home/proycon/bin/tm vim
+    urxvt -cd /home/proycon -T vim -e /home/proycon/bin/tm vim
+    #konsole --workdir /home/proycon -e /home/proycon/bin/tm vim
 
 super + {p,n}
     bspc control --record-history off; \
@@ -184,7 +187,8 @@ super + @F6
 # wm independent hotkeys
 #
 super + Return
-    konsole --workdir /home/proycon
+    urxvt -cd /home/proycon
+    #konsole --workdir /home/proycon
 
 super + space
     dmenu_run -fn "Ubuntu Mono-10"
