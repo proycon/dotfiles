@@ -11,11 +11,15 @@ set bell-style none
 #  "\C-p": history-search-backward
 #  "\C-l": clear-screen
 
-"\e[1~": beginning-of-line
-"\e[4~": end-of-line
-"\e[7~": beginning-of-line
-"\e[8~": end-of-line
+"\e[1": beginning-of-line
+"\e[4": end-of-line
+"\e[7": beginning-of-line
+"\e[8": end-of-line
 "\eOH": beginning-of-line
 "\eOF": end-of-line
 "\e[H": beginning-of-line
 "\e[F": end-of-line
+"\e[1~": beginning-of-line
+"\e[4~": end-of-line
+"\e[7~": beginning-of-line
+"\e[8~": end-of-line

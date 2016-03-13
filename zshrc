@@ -334,6 +334,8 @@ bindkey $terminfo[khome] beginning-of-line
 bindkey $terminfo[kend] end-of-line
 bindkey '\e[1' beginning-of-line
 bindkey '\e[4' end-of-line
+bindkey '\e[[1' beginning-of-line
+bindkey '\e[[4' end-of-line
 bindkey '\e[A' history-substring-search-up
 bindkey '\e[B' history-substring-search-down
 bindkey '^H' history-substring-search-up

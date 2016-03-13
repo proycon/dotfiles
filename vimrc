@@ -476,4 +476,14 @@ vnoremap <expr> <silent> F Quick_scope_selective('F')
 vnoremap <expr> <silent> t Quick_scope_selective('t')
 vnoremap <expr> <silent> T Quick_scope_selective('T')
 
+map <ESC>[4    <End>
+map <ESC>[1    <Home>
+imap <ESC>[4    <End>
+imap <ESC>[1    <Home>
+
+map <ESC>[4~    <End>
+map <ESC>[1~    <Home>
+imap <ESC>[4~    <End>
+imap <ESC>[1~    <Home>
+
 " source /home/proycon/.vim/bundle/vim-ipython/ftplugin/python/ipy.vim 
