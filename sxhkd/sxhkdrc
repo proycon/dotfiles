@@ -8,7 +8,8 @@ super + w
     bspc node -c
 
 super + t
-    konsole --workdir /home/proycon
+    urxvt -cd /home/proycon
+    #konsole --workdir /home/proycon
 
 super + y
     urxvt -name urxvtwhite
