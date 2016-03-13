@@ -91,6 +91,8 @@ command! Cap !scp proycon@anaproy.nl:~/.vbuf ~/
 command! C2ap !scp ~/.vbuf proycon@anaproy.nl:~/
 
 vnoremap <Leader>s :sort<CR>
+
+"mail signature
 map <Leader>S :r ~/sru<CR>
 
 set t_Co=256
@@ -204,6 +206,8 @@ set laststatus=2
 " git clone https://github.com/kien/ctrlp.vim.git
 let g:ctrlp_max_height = 30
 let g:ctrlp_extensions = ['funky']
+" ignore .git folders to speed up searches
+let g:ctrlp_user_command = ['.git/', 'git --git-dir=%s/.git ls-files -oc --exclude-standard']
 set wildignore+=*.pyc
 set wildignore+=*.bak,*~,*.swp,*.lock
 set wildignore+=*.o,*.lo,*.ko,*.so
@@ -405,19 +409,7 @@ let g:Tex_SmartKeyQuote = 0
 au BufRead *.tex set textwidth=79 formatoptions=cqt wrapmargin=0
 
 
-" set fuoptions=maxvert
  
-function! ToggleFullScreen()
-  if exists("s:old_columns")
-    set columns=s:old_columns
-    unlet s:old_columns
-  else
-    let s:old_columns=&columns
-    set columns=84
-  endif
-endfunction
- 
-map <Leader>fu :call ToggleFullScreen()<CR>
 
 
 fun! PullAndRefresh()
