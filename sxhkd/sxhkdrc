@@ -115,7 +115,7 @@ super + ctrl + {1-9}
     bspc node -r 0.{1-9}
 
 super + g
-    feh --bg-scale /home/proycon/Pictures/Local/wallpapers/03529_marronbells_5120x2880.jpg && compton -cC -z -r 3 -l 2 -t 2 -f -b 
+    compton -cC -z -r 3 -l 2 -t 2 -f -b 
 
 super + alt + g
     killall compton
