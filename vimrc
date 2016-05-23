@@ -202,12 +202,10 @@ set laststatus=2
 
 
 " Settings for ctrlp
-" cd ~/.vim/bundle
-" git clone https://github.com/ctrlpvim/ctrlp.vim.git
 let g:ctrlp_max_height = 30
 let g:ctrlp_extensions = ['funky']
 " ignore .git folders to speed up searches
-let g:ctrlp_user_command = ['.git/', 'git --git-dir=%s/.git ls-files -oc --exclude-standard']
+" let g:ctrlp_user_command = ['.git/', 'git --git-dir=%s/.git ls-files -oc --exclude-standard']
 set wildignore+=*.pyc
 set wildignore+=*.bak,*~,*.swp,*.lock
 set wildignore+=*.o,*.lo,*.ko,*.so
@@ -217,6 +215,7 @@ set wildignore+=*_build/*
 set wildignore+=*build/*
 set wildignore+=*coverage/*
 set wildignore+=*.egg
+set wildignore+=*.egg-info
 set wildignore+=*.jpg,*.png,*.gif
 set wildignore+=*.pdf,*.ps,*.aux,*.bbl,*.docx,*.doc,*.ppt,*.pptx,*.rtf
 set wildignore+=*.mp3,*.ogg,*.mpg,*.mp4,*.wav,*.mov
