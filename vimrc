@@ -163,7 +163,7 @@ autocmd FileType python,c,cpp,java,javascript,perl,awk,bash,haskell syn match op
 
 """"" Settings for NERDTree
 
-let NERDTreeIgnore=['\~$', '^\.git', '^\.svn', '\.swp$', '\.DS_Store$','\.pyc$','\.jpg$','\.png$','\.gif$','\.bak$','\.o$','\.lo$','\.in$','\.so$','\.aux$','\.pdf$','\.bbl$' ]
+let NERDTreeIgnore=['\~$', '^\.git', '^\.svn', '\.swp$', '\.DS_Store$','\.pyc$','\.jpg$','\.png$','\.gif$','\.bak$','\.o$','\.lo$','\.in$','\.so$','\.aux$','\.pdf$','\.bbl$','^build','^dist' ]
 let NERDTreeShowHidden=0
 " nmap <Leader>n :NERDTreeToggle<cr>
 
@@ -203,7 +203,7 @@ set laststatus=2
 
 " Settings for ctrlp
 " cd ~/.vim/bundle
-" git clone https://github.com/kien/ctrlp.vim.git
+" git clone https://github.com/ctrlpvim/ctrlp.vim.git
 let g:ctrlp_max_height = 30
 let g:ctrlp_extensions = ['funky']
 " ignore .git folders to speed up searches
@@ -220,6 +220,10 @@ set wildignore+=*.egg
 set wildignore+=*.jpg,*.png,*.gif
 set wildignore+=*.pdf,*.ps,*.aux,*.bbl,*.docx,*.doc,*.ppt,*.pptx,*.rtf
 set wildignore+=*.mp3,*.ogg,*.mpg,*.mp4,*.wav,*.mov
+let g:ctrlp_custom_ignore = {
+  \ 'dir':  '\v[\/](\.(git|hg|svn)|build|dist)$',
+  \ 'file': '\v\.(exe|so|dll)$',
+  \ }
 
 " Settings for python-mode
 " cd ~/.vim/bundle
