@@ -211,11 +211,12 @@ let g:ctrlp_user_command = ['.git/', 'git --git-dir=%s/.git ls-files -oc --exclu
 set wildignore+=*.pyc
 set wildignore+=*.bak,*~,*.swp,*.lock
 set wildignore+=*.o,*.lo,*.ko,*.so
-set wildignore+=*/.git/*
-set wildignore+=*/.svn/*
+set wildignore+=*.git/*
+set wildignore+=*.svn/*
 set wildignore+=*_build/*
-set wildignore+=*/build/*
-set wildignore+=*/coverage/*
+set wildignore+=*build/*
+set wildignore+=*coverage/*
+set wildignore+=*.egg
 set wildignore+=*.jpg,*.png,*.gif
 set wildignore+=*.pdf,*.ps,*.aux,*.bbl,*.docx,*.doc,*.ppt,*.pptx,*.rtf
 set wildignore+=*.mp3,*.ogg,*.mpg,*.mp4,*.wav,*.mov
@@ -285,11 +286,11 @@ let g:syntastic_loc_list_height = 5
 
 set noshowmode
 let g:jedi#use_tabs_not_buffers = 0
-let g:jedi#popup_on_dot = 1
+let g:jedi#popup_on_dot = 0
 let g:jedi#goto_command = "<leader>d"
 let g:jedi#goto_assignments_command = "<leader>g"
 let g:jedi#goto_definitions_command = "<leader>G"
-let g:jedi#show_call_signatures = 2
+let g:jedi#show_call_signatures = 0
 let g:jedi#documentation_command = "K"
 let g:jedi#usages_command = "<leader>u"
 let g:jedi#completions_command = "<leader>x"
@@ -358,6 +359,16 @@ map <leader>46 :b46<CR>
 map <leader>47 :b47<CR>
 map <leader>48 :b48<CR>
 map <leader>49 :b49<CR>
+map <leader>50 :b50<CR>
+map <leader>51 :b51<CR>
+map <leader>52 :b52<CR>
+map <leader>53 :b53<CR>
+map <leader>54 :b54<CR>
+map <leader>55 :b55<CR>
+map <leader>56 :b56<CR>
+map <leader>57 :b57<CR>
+map <leader>58 :b58<CR>
+map <leader>59 :b59<CR>
 
 
 map <leader>E <esc>:bufdo e<CR>
@@ -444,6 +455,8 @@ command! Spbr setlocal spell spelllang=pt_br
 command! Sppt setlocal spell spelllang=pt
 command! Spes setlocal spell spelllang=es
 command! Spit setlocal spell spelllang=it
+command! Spde setlocal spell spelllang=de
+command! Spfr setlocal spell spelllang=fr
 
 " Insert into your .vimrc after quick-scope is loaded.
 " Obviously depends on <https://github.com/unblevable/quick-scope> being installed.
@@ -466,15 +479,6 @@ function! Quick_scope_selective(movement)
 endfunction
 
 let g:qs_enable = 0
-
-nnoremap <expr> <silent> f Quick_scope_selective('f')
-nnoremap <expr> <silent> F Quick_scope_selective('F')
-nnoremap <expr> <silent> t Quick_scope_selective('t')
-nnoremap <expr> <silent> T Quick_scope_selective('T')
-vnoremap <expr> <silent> f Quick_scope_selective('f')
-vnoremap <expr> <silent> F Quick_scope_selective('F')
-vnoremap <expr> <silent> t Quick_scope_selective('t')
-vnoremap <expr> <silent> T Quick_scope_selective('T')
 
 map <ESC>[4    <End>
 map <ESC>[1    <Home>
