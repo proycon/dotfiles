@@ -91,6 +91,8 @@ command! Cap !scp proycon@anaproy.nl:~/.vbuf ~/
 command! C2ap !scp ~/.vbuf proycon@anaproy.nl:~/
 
 vnoremap <Leader>s :sort<CR>
+
+"mail signature
 map <Leader>S :r ~/sru<CR>
 
 set t_Co=256
@@ -161,7 +163,7 @@ autocmd FileType python,c,cpp,java,javascript,perl,awk,bash,haskell syn match op
 
 """"" Settings for NERDTree
 
-let NERDTreeIgnore=['\~$', '^\.git', '^\.svn', '\.swp$', '\.DS_Store$','\.pyc$','\.jpg$','\.png$','\.gif$','\.bak$','\.o$','\.lo$','\.in$','\.so$','\.aux$','\.pdf$','\.bbl$' ]
+let NERDTreeIgnore=['\~$', '^\.git', '^\.svn', '\.swp$', '\.DS_Store$','\.pyc$','\.jpg$','\.png$','\.gif$','\.bak$','\.o$','\.lo$','\.in$','\.so$','\.aux$','\.pdf$','\.bbl$','^build','^dist' ]
 let NERDTreeShowHidden=0
 " nmap <Leader>n :NERDTreeToggle<cr>
 
@@ -200,21 +202,27 @@ set laststatus=2
 
 
 " Settings for ctrlp
-" cd ~/.vim/bundle
-" git clone https://github.com/kien/ctrlp.vim.git
 let g:ctrlp_max_height = 30
 let g:ctrlp_extensions = ['funky']
+" ignore .git folders to speed up searches
+" let g:ctrlp_user_command = ['.git/', 'git --git-dir=%s/.git ls-files -oc --exclude-standard']
 set wildignore+=*.pyc
 set wildignore+=*.bak,*~,*.swp,*.lock
 set wildignore+=*.o,*.lo,*.ko,*.so
-set wildignore+=*/.git/*
-set wildignore+=*/.svn/*
+set wildignore+=*.git/*
+set wildignore+=*.svn/*
 set wildignore+=*_build/*
-set wildignore+=*/build/*
-set wildignore+=*/coverage/*
+set wildignore+=*build/*
+set wildignore+=*coverage/*
+set wildignore+=*.egg
+set wildignore+=*.egg-info
 set wildignore+=*.jpg,*.png,*.gif
 set wildignore+=*.pdf,*.ps,*.aux,*.bbl,*.docx,*.doc,*.ppt,*.pptx,*.rtf
 set wildignore+=*.mp3,*.ogg,*.mpg,*.mp4,*.wav,*.mov
+let g:ctrlp_custom_ignore = {
+  \ 'dir':  '\v[\/](\.(git|hg|svn)|build|dist)$',
+  \ 'file': '\v\.(exe|so|dll)$',
+  \ }
 
 " Settings for python-mode
 " cd ~/.vim/bundle
@@ -281,11 +289,11 @@ let g:syntastic_loc_list_height = 5
 
 set noshowmode
 let g:jedi#use_tabs_not_buffers = 0
-let g:jedi#popup_on_dot = 1
+let g:jedi#popup_on_dot = 0
 let g:jedi#goto_command = "<leader>d"
 let g:jedi#goto_assignments_command = "<leader>g"
 let g:jedi#goto_definitions_command = "<leader>G"
-let g:jedi#show_call_signatures = 2
+let g:jedi#show_call_signatures = 0
 let g:jedi#documentation_command = "K"
 let g:jedi#usages_command = "<leader>u"
 let g:jedi#completions_command = "<leader>x"
@@ -354,6 +362,16 @@ map <leader>46 :b46<CR>
 map <leader>47 :b47<CR>
 map <leader>48 :b48<CR>
 map <leader>49 :b49<CR>
+map <leader>50 :b50<CR>
+map <leader>51 :b51<CR>
+map <leader>52 :b52<CR>
+map <leader>53 :b53<CR>
+map <leader>54 :b54<CR>
+map <leader>55 :b55<CR>
+map <leader>56 :b56<CR>
+map <leader>57 :b57<CR>
+map <leader>58 :b58<CR>
+map <leader>59 :b59<CR>
 
 
 map <leader>E <esc>:bufdo e<CR>
@@ -405,19 +423,7 @@ let g:Tex_SmartKeyQuote = 0
 au BufRead *.tex set textwidth=79 formatoptions=cqt wrapmargin=0
 
 
-" set fuoptions=maxvert
  
-function! ToggleFullScreen()
-  if exists("s:old_columns")
-    set columns=s:old_columns
-    unlet s:old_columns
-  else
-    let s:old_columns=&columns
-    set columns=84
-  endif
-endfunction
- 
-map <Leader>fu :call ToggleFullScreen()<CR>
 
 
 fun! PullAndRefresh()
@@ -452,6 +458,8 @@ command! Spbr setlocal spell spelllang=pt_br
 command! Sppt setlocal spell spelllang=pt
 command! Spes setlocal spell spelllang=es
 command! Spit setlocal spell spelllang=it
+command! Spde setlocal spell spelllang=de
+command! Spfr setlocal spell spelllang=fr
 
 " Insert into your .vimrc after quick-scope is loaded.
 " Obviously depends on <https://github.com/unblevable/quick-scope> being installed.
@@ -475,13 +483,14 @@ endfunction
 
 let g:qs_enable = 0
 
-nnoremap <expr> <silent> f Quick_scope_selective('f')
-nnoremap <expr> <silent> F Quick_scope_selective('F')
-nnoremap <expr> <silent> t Quick_scope_selective('t')
-nnoremap <expr> <silent> T Quick_scope_selective('T')
-vnoremap <expr> <silent> f Quick_scope_selective('f')
-vnoremap <expr> <silent> F Quick_scope_selective('F')
-vnoremap <expr> <silent> t Quick_scope_selective('t')
-vnoremap <expr> <silent> T Quick_scope_selective('T')
+map <ESC>[4    <End>
+map <ESC>[1    <Home>
+imap <ESC>[4    <End>
+imap <ESC>[1    <Home>
+
+map <ESC>[4~    <End>
+map <ESC>[1~    <Home>
+imap <ESC>[4~    <End>
+imap <ESC>[1~    <Home>
 
 " source /home/proycon/.vim/bundle/vim-ipython/ftplugin/python/ipy.vim 

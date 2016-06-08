@@ -29,12 +29,6 @@ export DISABLE_UNTRACKED_FILES_DIRTY="true"
 # Example format: plugins=(rails git textmate ruby lighthouse)
 plugins=(vi-mode history history-substring-search git svn python django command-not-found debian pip github git-flow )
 
-
-if [ -f ~/.sgesh ]; then
-    source ~/.sgesh
-    rm ~/.sgesh
-fi
-
 source $ZSH/oh-my-zsh.sh
 
 setopt cshnullglob
@@ -68,6 +62,7 @@ alias tgl='cd ~/todo && git pull && cd -'
 alias tgp='cd ~/todo && ((git commit -a -m "todo update" && git push && cd -) || cd - )'
 alias ve='. ~/lamachine/bin/activate'
 alias lm='. ~/lamachine/bin/activate'
+alias lmws='. /scratch2/www/lamachine/bin/activate'
 alias ve2='. env2/bin/activate'
 alias a='tmux attach'
 alias tmux='tmux -2' #force 256 colour support regardless of terminal
@@ -317,8 +312,8 @@ bindkey '^r' history-incremental-search-backward
 
 #zle -N zle-line-init
 #zle -N zle-keymap-select
-zle-line-init() { echoti smkx; }  
-zle-line-finish() { echoti rmkx; }
+zle-line-init() { echoti smkx 2>/dev/null; }  
+zle-line-finish() { echoti rmkx 2>/dev/null; }
 zle -N zle-line-init
 zle -N zle-line-finish
 export KEYTIMEOUT=1
@@ -331,15 +326,17 @@ source $HOME/dotfiles/opp.zsh/opp/*.zsh
 
 bindkey $terminfo[khome] beginning-of-line
 bindkey $terminfo[kend] end-of-line
-bindkey '\e[1' beginning-of-line
-bindkey '\e[4' end-of-line
-bindkey '\e[A' history-substring-search-up
-bindkey '\e[B' history-substring-search-down
-bindkey '^H' history-substring-search-up
-bindkey '^[[A' history-substring-search-up
-bindkey '^[[B' history-substring-search-down
-bindkey '[C' forward-word
-bindkey '[D' backward-word
+#bindkey '\e[1' beginning-of-line
+#bindkey '\e[4' end-of-line
+#bindkey '\e[[1' beginning-of-line
+#bindkey '\e[[4' end-of-line
+#bindkey '\e[A' history-substring-search-up
+#bindkey '\e[B' history-substring-search-down
+#bindkey '^H' history-substring-search-up
+#bindkey '^[[A' history-substring-search-up
+#bindkey '^[[B' history-substring-search-down
+#bindkey '[C' forward-word
+#bindkey '[D' backward-word
 
 
 case $TERM in

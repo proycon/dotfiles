@@ -16,6 +16,9 @@ State=AAAA/wAAAAD9AAAAAAAADuQAAAgwAAAABAAAAAQAAAAIAAAACPwAAAAA
 ToolBarsMovable=Disabled
 Width 2880[$d]
 
+[Notification Messages]
+CloseAllTabs=true
+
 [Profile Shortcuts]
 Ctrl+Q, Q=Shell.profile
 

@@ -10,9 +10,6 @@
 [submodule "vim/bundle/goyo.vim"]
 	path = vim/bundle/goyo.vim
 	url = https://github.com/junegunn/goyo.vim
-[submodule "vim/bundle/ctrlp.vim"]
-	path = vim/bundle/ctrlp.vim
-	url = https://github.com/kien/ctrlp.vim
 [submodule "vim/bundle/python-mode"]
 	path = vim/bundle/python-mode
 	url = https://github.com/klen/python-mode
@@ -43,12 +40,6 @@
 [submodule "vim/bundle/vim-cython"]
 	path = vim/bundle/vim-cython
 	url = git@github.com:tshirtman/vim-cython.git
-[submodule "vim/bundle/ctrlp.vi"]
-	path = vim/bundle/ctrlp.vi
-	url = https://github.com/kien/ctrlp.vim
-[submodule "vim/bundle/vim-cytho"]
-	path = vim/bundle/vim-cytho
-	url = git@github.com:tshirtman/vim-cython.git
 [submodule "vim/bundle/vim-powerline"]
 	path = vim/bundle/vim-powerline
 	url = https://github.com/Lokaltog/vim-powerline
@@ -64,3 +55,12 @@
 [submodule "vim/bundle/limelight.vim"]
 	path = vim/bundle/limelight.vim
 	url = https://github.com/junegunn/limelight.vim.git
+[submodule "vim/bundle/splitjoin.vim"]
+	path = vim/bundle/splitjoin.vim
+	url = https://github.com/AndrewRadev/splitjoin.vim
+[submodule "vim/bundle/vim-visual-star-search"]
+	path = vim/bundle/vim-visual-star-search
+	url = https://github.com/bronson/vim-visual-star-search.git
+[submodule "vim/bundle/ctrlp.vim"]
+	path = vim/bundle/ctrlp.vim
+	url = https://github.com/ctrlpvim/ctrlp.vim.git
