@@ -57,7 +57,7 @@ set maxitems=35
 set focuscontent
 
 " use a different color scheme
-" colorscheme simple
+colorscheme darkness
 
 " set a stupid title
 set titlestring="firefox"
