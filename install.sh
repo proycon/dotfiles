@@ -41,6 +41,8 @@ ln -sfn $DOTDIR/pylintrc $HOMEDIR/.pylintrc
 ln -sfn $DOTDIR/vimperatorrc $HOMEDIR/.vimperatorrc
 ln -sfn $DOTDIR/pentadactylrc $HOMEDIR/.pentadactylrc
 ln -sfn $DOTDIR/pentadactyl $HOMEDIR/.pentadactyl
+ln -sfn $DOTDIR/vimperator $HOMEDIR/.vimperator
+ln -sfn $DOTDIR/vimperatorrc $HOMEDIR/.vimperatorrc
 ln -sfn $DOTDIR/inputrc $HOMEDIR/.inputrc
 ln -sfn $DOTDIR/Xresources $HOMEDIR/.Xresources
 ln -sfn $DOTDIR/Proycon.colorscheme  $HOMEDIR/.kde/share/apps/konsole/Proycon.colorscheme
