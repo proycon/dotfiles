@@ -4,20 +4,20 @@
 " ==Darkness_Colorscheme_Settings==
 
 "StatusLine settings
-hi StatusLine           color: #ffffff; background: #000000; "font-size: 8pt;
+hi StatusLine           color: #ffffff; background: #000000; "font-size: 16px;
 " hi StatusLineBroken     color: #000000; background: #afafff; "font-size: 8pt;
 " hi StatusLineSecure     color: #000000; background: #afffaf; "font-size: 8pt;
 
 "CmdLine settings excluding Gradient
 hi Normal               color: #afafaf; background: #222222;
-hi CmdLine              background: #222222; color: #afafaf; font-size: 9pt;
-hi CompDesc             color: #c6c6c6; width: 50%; font-size: 9pt;
+hi CmdLine              background: #222222; color: #afafaf; font-size: 12pt;
+hi CompDesc             color: #c6c6c6; width: 50%; font-size: 12pt;
 hi CompIcon             width: 16px; min-width: 16px; display: inline-block; margin-right: .5ex;
 hi CompItem[selected]   background: #666666; color: #afafaf; 
 " hi CompLess             text-align: center; height: 0; line-height: .5ex; padding-top: 1ex;
 " hi CompMore             text-align: center; height: .5ex; line-height: .5ex; margin-bottom: -.5ex;
 hi CompMsg              font-style: italic; margin-left: 16px;
-hi CompResult           width: 45%; overflow: hidden;font-size: 10pt; font-family: monospace; font-weight: normal;
+hi CompResult           width: 45%; overflow: hidden;font-size: 12pt; font-family: monospace; font-weight: normal;
 hi CompTitle            color: #afafaf; background: #222222; font-weight: bold;
 hi CompTitle>*          padding: 0 .5ex;
 hi Filter               font-weight: bold;color: #afafaf;
@@ -36,7 +36,7 @@ hi ErrorMsg             color: #ffffff; background: red; font-weight: bold;
 
 "Hint section
 "hi Hint                 font-family: Sans; font-size: 10px; font-weight: bold; color: #f6e9e9; background-color: red; border-color: ButtonShadow; border-width: 0px; border-style: solid; padding 0px 1px 0px 1px;
-hi Hint               	font-family: Sans; font-size: 10px; font-weight: bold; color: white; background-color: rgba(0, 0, 0, 0.5); border: solid 1px LightGray;
+hi Hint               	font-family: Sans; font-size: 12px; font-weight: bold; color: white; background-color: rgba(0, 0, 0, 0.5); border: solid 1px LightGray;
 hi Hint::after          content: attr(number);
 hi HintActive           background: blue; color: #f6e9e9;
 hi HintElem             background-color: #222222; color: #f6e9e9;
