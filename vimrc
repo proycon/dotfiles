@@ -156,6 +156,8 @@ call pathogen#infect()
 call pathogen#helptags()
 
 filetype plugin indent on
+au! BufNewFile,BufRead *.ttl,*.nt,*.nq  set filetype=turtle
+au! BufNewFile,BufRead *.n3 set filetype=n3
 syntax on
 
 autocmd FileType python,c,cpp,java,javascript,perl,awk,bash,haskell syn match ops /[(){}\[\]=\+\-%!\*:\,\.<>\|\&]/ | hi ops ctermfg=117
