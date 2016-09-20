@@ -296,7 +296,7 @@ let g:jedi#goto_definitions_command = "<leader>G"
 let g:jedi#show_call_signatures = 0
 let g:jedi#documentation_command = "K"
 let g:jedi#usages_command = "<leader>u"
-let g:jedi#completions_command = "<leader>x"
+let g:jedi#completions_command = "<leader>q"
 let g:jedi#rename_command = "<leader>r"
 
 let g:airline_powerline_fonts = 1
