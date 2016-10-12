@@ -19,7 +19,7 @@ sleep 0.2
 dbus-launch gnome-keyring-daemon -s --components=pkcs11,secrets,ssh,gpg  &
 #dbus-launch /usr/lib/gnome-settings-daemon/gnome-settings-daemon & 
 xrdb -merge /home/proycon/.Xresources
-feh --bg-scale /home/proycon/Pictures/Local/wallpapers/archplains.jpg &  #03529_marronbells_5120x2880.jpg &  #~/Pictures/Local/wallpapers/thomascolliers.png &
+feh --bg-scale ~/dotfiles/media/ArchDarkFloral.png #/home/proycon/Pictures/Local/wallpapers/archplains.jpg &  #03529_marronbells_5120x2880.jpg &  #~/Pictures/Local/wallpapers/thomascolliers.png &
 #setlayout 0 3 3 0
 if [[ $HOST == "mhysa" ]]; then
     mountssh &
