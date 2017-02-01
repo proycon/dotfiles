@@ -172,8 +172,14 @@ alt + @F9
 alt + @F10
     setxkbmap proyeo
 
+alt + shift + @F10
+    setxkbmap proyel
+
 alt + @F11
     setxkbmap proyru
+
+alt + shift + @F11
+    setxkbmap proysr
 
 alt + @F12
     setxkbmap proyar
