@@ -20,8 +20,8 @@ super + u
 super + q
     bspc desktop -B
 
-super + {s,f,S}
-    bspc node -t {floating,fullscreen,pseudo_tiled}
+super + {s,f,S,d}
+    bspc node -t {floating,fullscreen,pseudo_tiled,tiled}
 
 super + alt + s
     bspc node -t sticky
