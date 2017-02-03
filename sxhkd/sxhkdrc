@@ -18,7 +18,7 @@ super + u
     pcmanfm
 
 super + p
-    pkill -f evewatch.sh
+    evewatch.sh
 
 super + o
     recorddesktop.sh
