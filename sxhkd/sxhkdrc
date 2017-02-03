@@ -17,6 +17,12 @@ super + y
 super + u
     pcmanfm
 
+super + p
+    pkill -f evewatch.sh
+
+super + o
+    recorddesktop.sh
+
 super + q
     bspc desktop -B
 
