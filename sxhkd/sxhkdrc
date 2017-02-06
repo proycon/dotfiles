@@ -175,6 +175,9 @@ alt + @F5
 alt + @F9
     setxkbmap proylatin
 
+alt + shift + @F9
+    setxkbmap proyhr
+
 alt + @F10
     setxkbmap proyeo
 
