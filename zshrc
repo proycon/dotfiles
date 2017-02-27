@@ -350,3 +350,5 @@ case $TERM in
       export PROMPT_COMMAND
         ;;
 esac
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh

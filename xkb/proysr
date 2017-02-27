@@ -29,7 +29,7 @@ xkb_symbols "basic" {
     key <AE12>	{ [Cyrillic_yu, Cyrillic_YU , equal, plus ]	};
 
     key <AD01> { [  Cyrillic_ya,  Cyrillic_YA,  q,    Q   ] };
-    key <AD02> { [  Cyrillic_tse,  Cyrillic_TSE,  U045B,    U040B   ] };
+    key <AD02> { [  Cyrillic_tse,  Cyrillic_TSE,  Cyrillic_dzhe,  Cyrillic_DZHE   ] };
     key <AD03> { [  Cyrillic_ie,  Cyrillic_IE,  e,    E   ]  };
     key <AD04> { [  Cyrillic_er,  Cyrillic_ER, r,    R   ] };
     key <AD05> { [  Cyrillic_te, Cyrillic_TE,   t,    T   ] };
@@ -60,7 +60,7 @@ xkb_symbols "basic" {
 
     key <AB01> { [    Cyrillic_ze,  Cyrillic_ZE, z,   Z   ] };
     key <AB02> { [    Cyrillic_softsign,  Cyrillic_SOFTSIGN, x,    X   ] };
-    key <AB03> { [    Cyrillic_che,  Cyrillic_CHE,  Cyrillic_dzhe,  Cyrillic_DZHE ] };
+    key <AB03> { [    Cyrillic_che,  Cyrillic_CHE, U045B,    U040B  ] };
     key <AB04> { [   Cyrillic_ve,  Cyrillic_VE, v,    V   ] };
     key <AB05> { [    Cyrillic_be,  Cyrillic_BE, b,    B ] };
     key <AB06> { [   Cyrillic_en,  Cyrillic_EN, Cyrillic_nje,    Cyrillic_NJE  ] };
