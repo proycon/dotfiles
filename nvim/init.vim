@@ -196,7 +196,20 @@ command! Spde setlocal spell spelllang=de
 command! Spfr setlocal spell spelllang=fr
 
 " wildignoresettings
-set wildignore+=.git,*.swp,*pyc,*pyo,*.png,*.jpg,*.gif,*.ai,*.jpeg,*.psd,*.jar,*.zip,*.gem,log/**,tmp/**,coverage/**,rdoc/**,output_*,*.xpi,doc/**
+set wildignore+=*.pyc
+set wildignore+=*.gem
+set wildignore+=*.bak,*~,*.swp,*.lock
+set wildignore+=*.o,*.lo,*.ko,*.so
+set wildignore+=*.git/*
+set wildignore+=*.svn/*
+set wildignore+=*_build/*
+set wildignore+=*build/*
+set wildignore+=*coverage/*
+set wildignore+=*.egg
+set wildignore+=*.egg-info
+set wildignore+=*.jpg,*.png,*.gif
+set wildignore+=*.pdf,*.ps,*.aux,*.bbl,*.docx,*.doc,*.ppt,*.pptx,*.rtf
+set wildignore+=*.mp3,*.ogg,*.mpg,*.mp4,*.wav,*.mov
 
 " python special settings
 au BufNewFile,BufRead *.py set
@@ -249,6 +262,7 @@ let g:airline_powerline_fonts = 1
 
 " themes and colors
 let NVIM_TUI_ENABLE_CURSOR_SHAPE=1
+set t_Co=256
 set termguicolors
 set background=dark
 colorscheme proycon
