@@ -80,9 +80,16 @@ alias vless='vim -R -u /usr/share/vim/vim72/macros/less.vim'
 alias l='ls'
 alias z='less -rN'
 alias myip="dig +short myip.opendns.com @resolver1.opendns.com"
-which vim > /dev/null 2>/dev/null
+which nvim > /dev/null 2>/dev/null
 if (( $? == 0 )); then
-    alias vi="vim"
+    export EDITOR="nvim"
+    alias vi="nvim"
+else
+    which vim > /dev/null 2>/dev/null
+    if (( $? == 0 )); then
+        export EDITOR="vim"
+        alias vi="vim"
+    fi
 fi
 
 export MPD_HOST="proycon@anaproy.nl"
@@ -91,7 +98,6 @@ export DEBEMAIL="proycon@anaproy.nl"
 export DEBFULLNAME="Maarten van Gompel"
 
 
-export EDITOR="vim"
 export BROWSER="firefox"
 
 #coloured man pages
