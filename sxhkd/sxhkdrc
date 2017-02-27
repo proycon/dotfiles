@@ -65,6 +65,9 @@ super + shift + x
 super + shift + alt + x
     /home/proycon/bin/house.sh "lights off"
 
+super + c
+    /home/proycon/bin/house.sh "mute tv"
+
 super + h
     firefox https://home.anaproy.nl
 
@@ -77,7 +80,7 @@ super + m
     #konsole --workdir /home/proycon -e ssh -Y -A -t anaproy.nl /home/proycon/bin/tm_alot
 
 super + v
-    urxvt -cd /home/proycon -T vim -e /home/proycon/bin/tm vim
+    urxvt -cd /home/proycon -T vim -e /home/proycon/bin/tm nvim
     #konsole --workdir /home/proycon -e /home/proycon/bin/tm vim
 
 super + {p,n}
