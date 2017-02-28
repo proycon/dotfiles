@@ -41,7 +41,7 @@ Plug 'majutsushi/tagbar' "tag (class/function) browser
 Plug 'indentpython.vim'
 Plug 'tpope/vim-vividchalk'
 Plug 'vim-airline/vim-airline' | Plug 'vim-airline/vim-airline-themes'
-Plug 'tmhedberg/SimpylFold' "folding for python
+"Plug 'tmhedberg/SimpylFold' "folding for python
 Plug 'Konfekt/FastFold'
 Plug 'airblade/vim-gitgutter' "git diff in gutter
 Plug 'miyakogi/seiya.vim' "transparent background

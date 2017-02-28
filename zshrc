@@ -82,8 +82,17 @@ alias z='less -rN'
 alias myip="dig +short myip.opendns.com @resolver1.opendns.com"
 which nvim > /dev/null 2>/dev/null
 if (( $? == 0 )); then
-    export EDITOR="nvim"
-    alias vi="nvim"
+    if [[ "$TERM" == "screen-256color" ]]; then
+        export EDITOR="nvim"
+        alias vi="nvim"
+        alias vim="nvim"
+    else
+        export EDITOR="nvim_tmux"
+        alias vi="nvim_tmux"
+        alias vim="nvim_tmux"
+        alias nvim="nvim_tmux"
+        alias nvim_tmux="tmux -2u new nvim"
+    fi
 else
     which vim > /dev/null 2>/dev/null
     if (( $? == 0 )); then
@@ -123,7 +132,7 @@ if [[ $HOST == "galactica" || $HOST == "mhysa" || $HOST == "caprica" || $HOST ==
     export PYTHONPATH="/home/proycon/work/"
     export ALPINO_HOME="/usr/local/Alpino"
     export ANDROID_SDK="/usr/local/android-sdk-linux"
-    
+
     hash -d X=/home/proycon/exp
     hash -d lsrc=/home/proycon/local/src/
     hash -d clb=/home/proycon/work/colibri/
@@ -135,7 +144,7 @@ elif [[ $HOST == "roma" ]]; then
     export PYTHONPATH="/home/proycon/work/"
     export ALPINO_HOME="/usr/local/Alpino"
     export CDPATH=.:~/work
-    
+
     hash -d X=/home/proycon/exp
     hash -d lsrc=/home/proycon/local/src/
     hash -d clb=/home/proycon/work/colibri/
@@ -224,7 +233,7 @@ if [[ $HOST == "applejack" || $HOST == "fluttershy" || $HOST == "rarity" || $HOS
 
 
     ipynb() {
-        expy3 
+        expy3
         if [ ! -z "$1" ]; then
             ipy3 notebook --no-browser --port=$1
         else
@@ -318,7 +327,7 @@ bindkey '^r' history-incremental-search-backward
 
 #zle -N zle-line-init
 #zle -N zle-keymap-select
-zle-line-init() { echoti smkx 2>/dev/null; }  
+zle-line-init() { echoti smkx 2>/dev/null; }
 zle-line-finish() { echoti rmkx 2>/dev/null; }
 zle -N zle-line-init
 zle -N zle-line-finish
@@ -351,8 +360,8 @@ case $TERM in
         export PROMPT_COMMAND
         ;;
     screen*|screen)
-      TITLE=$(hostname -s)                                                      
-      PROMPT_COMMAND='/bin/echo -ne "\033k${TITLE}\033\\"'                      
+      TITLE=$(hostname -s)
+      PROMPT_COMMAND='/bin/echo -ne "\033k${TITLE}\033\\"'
       export PROMPT_COMMAND
         ;;
 esac
