@@ -44,6 +44,10 @@ Plug 'vim-airline/vim-airline' | Plug 'vim-airline/vim-airline-themes'
 Plug 'tmhedberg/SimpylFold' "folding for python
 Plug 'Konfekt/FastFold'
 Plug 'airblade/vim-gitgutter' "git diff in gutter
+Plug 'lervag/vimtex'
+
+" Misc
+Plug 'junegunn/goyo.vim' "distraction free writing
 Plug 'miyakogi/seiya.vim' "transparent background
 
 " Syntax helpers
@@ -216,7 +220,7 @@ au BufNewFile,BufRead *.py set
     \ tabstop=4
     \ softtabstop=4
     \ shiftwidth=4
-    \ textwidth=79
+    \ textwidth=120
 
 nnoremap <silent> <A-right> :bn<CR>
 nnoremap <silent> <A-left> :bp<CR>
@@ -225,9 +229,9 @@ nnoremap <silent> <A-left> :bp<CR>
 tnoremap <Esc> <C-\><C-n>
 
 " conceal markers
-"if has('conceal')
-"  set conceallevel=2
-"endif
+if has('conceal')
+  set conceallevel=2
+endif
 
 " NERDTree things
 let NERDTreeWinPos='left'
@@ -285,12 +289,20 @@ let g:AutoPairsMapCR=0
 let g:deoplete#auto_complete_start_length = 1
 let g:deoplete#enable_at_startup = 1
 let g:deoplete#enable_smart_case = 1
-imap <expr><TAB> pumvisible() ? "\<C-n>" : (neosnippet#expandable_or_jumpable() ? "\<Plug>(neosnippet_expand_or_jump)" : "\<TAB>")
-imap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<S-TAB>"
-" imap <expr><CR> pumvisible() ? deoplete#mappings#close_popup() : "\<CR>\<Plug>AutoPairsReturn"
-
+"imap <expr><TAB> pumvisible() ? "\<C-n>" : (neosnippet#expandable_or_jumpable() ? "\<Plug>(neosnippet_expand_or_jump)" : "\<TAB>")
+"imap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<S-TAB>"
+"imap <expr><CR> pumvisible() ? deoplete#mappings#close_popup() : ",<CR>,<Plug>AutoPairsReturn"
+imap <expr><TAB> neosnippet#expandable_or_jumpable() ? "\<Plug>(neosnippet_expand_or_jump)" : pumvisible() ? "\<C-n>" : "\<TAB>"
+smap <expr><TAB> neosnippet#expandable_or_jumpable() ? "\<Plug>(neosnippet_expand_or_jump)" : "\<TAB>"
 " show quicklist with errors
 let g:neomake_open_list = 2
+
+let g:neosnippet#snippets_directory = "/home/proycon/dotfiles/nvim/snippets"
+let g:neosnippet#enable_snipmate_compatibility = 1
+let g:neosnippet#expand_word_boundary = 1
+imap <C-k> <Plug>(neosnippet_expand_or_jump)
+smap <C-k> <Plug>(neosnippet_expand_or_jump)
+xmap <C-k> <Plug>(neosnippet_expand_target)
 
 " neomake
 nmap <Leader><Space>o :lopen<CR>      " open location window
