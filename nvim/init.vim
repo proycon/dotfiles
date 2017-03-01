@@ -288,8 +288,12 @@ let g:unite_source_grep_default_opts ='-i --no-heading --no-color -k -H'
 let g:unite_source_grep_recursive_opt = ''
 
 " fzf.vim
-nnoremap <C-p> :Files<cr>
+nnoremap <C-p> :GitFiles<cr>
+nnoremap <C-f> :Files<cr>
 nnoremap <C-b> :Buffers<cr>
+nnoremap <C-l> :Lines<cr>
+nnoremap <C-g> :Commits<cr>
+nnoremap <C-m> :Marks<cr>
 
 " session management
 let g:session_autosave = 'no'
