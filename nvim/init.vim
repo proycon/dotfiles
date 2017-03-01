@@ -313,6 +313,14 @@ nmap <Leader><Space>, :ll<CR>         " go to current error/warning
 nmap <Leader><Space>n :lnext<CR>      " next error/warning
 nmap <Leader><Space>p :lprev<CR>      " previous error/warning
 
+"markology
+let g:markology_include = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789."
+let g:markology_ignore_type = "hmpq"
+let g:markology_hlline_lower = 1
+let g:markology_hlline_upper = 1
+let g:markology_textlower = "\t"
+highlight MarkologyHLl guifg=cyan guibg=black
+
 augroup neovim
   autocmd!
   autocmd FileType vimfiler set nonumber | set norelativenumber
