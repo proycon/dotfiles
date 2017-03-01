@@ -95,6 +95,8 @@ set whichwrap+=<,>,h,l
 let mapleader=","
 noremap \ ,
 
+map <Leader>. <esc>:bn<CR>
+map <Leader>/ <esc>:bp<CR>
 map <Leader>= <esc>:bn<CR>
 map <Leader>- <esc>:bp<CR>
 
@@ -291,7 +293,7 @@ let g:unite_source_grep_recursive_opt = ''
 nnoremap <C-p> :GitFiles<cr>
 nnoremap <C-f> :Files<cr>
 nnoremap <C-b> :Buffers<cr>
-nnoremap <C-l> :Lines<cr>
+nnoremap <C-l> :BLines<cr>
 nnoremap <C-g> :Commits<cr>
 nnoremap <C-m> :Marks<cr>
 
