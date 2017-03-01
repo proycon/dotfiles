@@ -261,6 +261,13 @@ nmap <C-t> :TagbarToggle<CR>
 nmap <Leader>t :TagbarToggle<CR>
 nmap <Leader>T :TagbarOpen fj<CR>
 
+" Buffer switching
+nnoremap <F9> :buffers<CR>:buffer<Space>
+map <esc>[1;0D <C-Left>
+map <esc>[1;0C <C-Right>
+map <C-Right> :bn<CR>
+map <C-Left> :bp<CR>
+
 " vim-airline settings
 let g:airline#extensions#tabline#enabled = 1
 let g:airline_theme = 'dark'
@@ -282,9 +289,12 @@ let g:unite_source_grep_recursive_opt = ''
 
 " fzf.vim
 nnoremap <C-p> :Files<cr>
+nnoremap <C-b> :Buffers<cr>
 
 " session management
 let g:session_autosave = 'no'
+
+let g:airline#extensions#tabline#buffer_nr_show = 1
 
 " deoplete + neosnippet + autopairs changes
 let g:AutoPairsMapCR=0
@@ -312,6 +322,11 @@ nmap <Leader><Space>c :lclose<CR>     " close location window
 nmap <Leader><Space>, :ll<CR>         " go to current error/warning
 nmap <Leader><Space>n :lnext<CR>      " next error/warning
 nmap <Leader><Space>p :lprev<CR>      " previous error/warning
+
+" bind Ctrl+<movement> keys to move around the windows, instead of using Ctrl+w + <movement>
+" Every unnecessary keystroke that can be saved is good for your health :)
+map <C-l> <c-w>l
+map <C-h> <c-w>h
 
 "markology
 let g:markology_include = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789."
