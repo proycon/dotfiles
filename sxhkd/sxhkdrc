@@ -38,6 +38,12 @@ super + ctrl + s
 super + {grave,Tab}
     bspc {node,desktop} -f last
 
+alt + Tab
+    bspc node -f next
+
+alt + shift + Tab
+    bspc node -f prev
+
 #super + apostrophe
 #    bspc node -s last
 
@@ -45,7 +51,7 @@ super + e
     /home/proycon/bin/emptywindow
 
 super + alt + w
-    bspc node -k  
+    bspc node -k
 
 super + z
     /home/proycon/bin/house.sh "office light on"
@@ -71,7 +77,7 @@ super + c
 super + h
     firefox https://home.anaproy.nl
 
-super + shift + m 
+super + shift + m
     urxvt -cd /home/proycon -T ncmpcpp -e ncmpcpp
     #konsole --workdir /home/proycon -e ncmpcpp
 
@@ -128,12 +134,12 @@ super + ctrl + {1-9}
     bspc node -r 0.{1-9}
 
 super + g
-    compton -cC -z -r 3 -l 2 -t 2 -f -b 
+    compton -cC -z -r 3 -l 2 -t 2 -f -b
 
 super + alt + g
     killall compton
 
-super + k 
+super + k
     killall klauncher
 
 super + {_,shift + }{1-9,0,minus,equal}
@@ -170,11 +176,11 @@ alt + @F3
     setinput.sh
 
 alt + @F4
-    pkill -f notifyclient.py 
+    pkill -f notifyclient.py
 
 alt + @F5
     mountssh
-    
+
 alt + @F9
     setxkbmap proylatin
 
