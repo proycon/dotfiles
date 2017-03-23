@@ -219,12 +219,14 @@ set wildignore+=*.jpg,*.png,*.gif
 set wildignore+=*.pdf,*.ps,*.aux,*.bbl,*.docx,*.doc,*.ppt,*.pptx,*.rtf
 set wildignore+=*.mp3,*.ogg,*.mpg,*.mp4,*.wav,*.mov
 
+set formatoptions-=t   " don't automatically wrap text when typing
+set formatoptions+=jq   " join comments if it makes sense, when joining lines, allow formatting of comments with gq
+
+
 " python special settings
-au BufNewFile,BufRead *.py set
-    \ tabstop=4
-    \ softtabstop=4
-    \ shiftwidth=4
-    \ textwidth=120
+au BufNewFile,BufRead *.py set tabstop=4 softtabstop=4 shiftwidth=4 textwidth=120
+au BufRead *.tex set textwidth=120 formatoptions=cqt wrapmargin=0
+au BufRead *.txt,*.md,*.rst set textwidth=120 formatoptions+=t wrapmargin=0
 
 nnoremap <silent> <A-right> :bn<CR>
 nnoremap <silent> <A-left> :bp<CR>
