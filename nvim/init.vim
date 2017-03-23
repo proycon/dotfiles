@@ -347,9 +347,12 @@ let g:markology_hlline_upper = 1
 let g:markology_textlower = "\t"
 highlight MarkologyHLl guifg=cyan guibg=black
 
-" Indentguides
-hi IndentGuidesOdd  ctermbg=black
-hi IndentGuidesEven ctermbg=darkgrey
+" Indentguides (toggle with <leader>ig)
+let g:indent_guides_auto_colors = 0
+let g:indent_guides_guide_size = 1
+let g:indent_guides_start_level = 2
+hi IndentGuidesEven  guibg=#3a3a3a ctermbg=darkgrey
+hi IndentGuidesOdd guibg=#1a1a1a ctermbg=black
 
 
 augroup neovim
