@@ -44,6 +44,7 @@ Plug 'indentpython.vim'
 Plug 'tpope/vim-vividchalk'
 Plug 'vim-airline/vim-airline' | Plug 'vim-airline/vim-airline-themes'
 "Plug 'tmhedberg/SimpylFold' "folding for python
+Plug 'leafgarland/typescript-vim' "Typescript syntax highlighting (and more?)
 Plug 'Konfekt/FastFold'
 Plug 'airblade/vim-gitgutter' "git diff in gutter
 Plug 'lervag/vimtex'
