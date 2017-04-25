@@ -13,6 +13,7 @@ call plug#begin('~/.config/nvim/plugged')
 " Completions and snippets
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' } "autocompletion
 Plug 'zchee/deoplete-jedi', { 'for': 'python' }
+Plug 'davidhalter/jedi-vim', { 'for': 'python' } "we will only use part of it, completions are already handled by deoplete-jedi
 Plug 'Shougo/neco-vim', { 'for': 'vim' }
 Plug 'Shougo/neosnippet' | Plug 'Shougo/neosnippet-snippets'
 
@@ -22,7 +23,7 @@ Plug 'Shougo/vimproc.vim', { 'do': 'make' }
 Plug 'haya14busa/incsearch.vim'
 Plug 'tpope/vim-surround'
 Plug 'matchit.zip'
-Plug 'easymotion/vim-easymotion'
+Plug 'easymotion/vim-easymotion' "highlights possible movement choices
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
 Plug 'kassio/neoterm'
@@ -41,13 +42,13 @@ Plug 'gregsexton/gitv' "gitk for vim
 Plug 'gitignore'
 Plug 'majutsushi/tagbar' "tag (class/function) browser
 Plug 'indentpython.vim'
-Plug 'tpope/vim-vividchalk'
 Plug 'vim-airline/vim-airline' | Plug 'vim-airline/vim-airline-themes'
 "Plug 'tmhedberg/SimpylFold' "folding for python
 Plug 'leafgarland/typescript-vim' "Typescript syntax highlighting (and more?)
 Plug 'Konfekt/FastFold'
 Plug 'airblade/vim-gitgutter' "git diff in gutter
 Plug 'lervag/vimtex'
+Plug 'nathanaelkane/vim-indent-guides', { 'for': 'python' }
 
 " Misc
 Plug 'junegunn/goyo.vim' "distraction free writing
@@ -72,7 +73,7 @@ set ruler
 set ignorecase
 set smartcase
 set magic
-set showmatch
+set noshowmatch
 set nobackup
 set nowb
 set noswapfile
@@ -220,12 +221,14 @@ set wildignore+=*.jpg,*.png,*.gif
 set wildignore+=*.pdf,*.ps,*.aux,*.bbl,*.docx,*.doc,*.ppt,*.pptx,*.rtf
 set wildignore+=*.mp3,*.ogg,*.mpg,*.mp4,*.wav,*.mov
 
+set formatoptions-=t   " don't automatically wrap text when typing
+set formatoptions+=jq   " join comments if it makes sense, when joining lines, allow formatting of comments with gq
+
+
 " python special settings
-au BufNewFile,BufRead *.py set
-    \ tabstop=4
-    \ softtabstop=4
-    \ shiftwidth=4
-    \ textwidth=120
+au BufNewFile,BufRead *.py set tabstop=4 softtabstop=4 shiftwidth=4 textwidth=120
+au BufRead *.tex set textwidth=120 formatoptions=cqt wrapmargin=0
+au BufRead *.txt,*.md,*.rst set textwidth=120 formatoptions+=t wrapmargin=0
 
 nnoremap <silent> <A-right> :bn<CR>
 nnoremap <silent> <A-left> :bp<CR>
@@ -304,13 +307,30 @@ let g:session_autosave = 'no'
 let g:airline#extensions#tabline#buffer_nr_show = 1
 
 " deoplete + neosnippet + autopairs changes
-let g:AutoPairsMapCR=0
 let g:deoplete#auto_complete_start_length = 1
 let g:deoplete#enable_at_startup = 1
 let g:deoplete#enable_smart_case = 1
+let g:deoplete#sources#jedi#show_docstring = 1
 "imap <expr><TAB> pumvisible() ? "\<C-n>" : (neosnippet#expandable_or_jumpable() ? "\<Plug>(neosnippet_expand_or_jump)" : "\<TAB>")
 "imap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<S-TAB>"
-"imap <expr><CR> pumvisible() ? deoplete#mappings#close_popup() : ",<CR>,<Plug>AutoPairsReturn"
+"imap <expr><CR> pumvisible() ? deoplete#mappings#close_popup() : "<CR>"
+" Let <Tab> also do completion
+inoremap <silent><expr> <Tab> pumvisible() ? "\<C-n>" : deoplete#mappings#manual_complete()
+
+let g:jedi#auto_vim_configuration = 0
+let g:jedi#goto_assignments_command = '<Leader>ga'  " dynamically done for ft=python.
+let g:jedi#goto_definitions_command = '<Leader>gd'  " dynamically done for ft=python.
+let g:jedi#use_tabs_not_buffers = 0  " current default is 1.
+let g:jedi#rename_command = '<Leader>gR'
+let g:jedi#usages_command = '<Leader>gu'
+let g:jedi#completions_enabled = 0
+let g:jedi#smart_auto_mappings = 1
+
+" Unite/ref and pydoc are more useful.
+let g:jedi#documentation_command = '<Leader>_K'
+let g:jedi#auto_close_doc = 1
+
+"
 imap <expr><TAB> neosnippet#expandable_or_jumpable() ? "\<Plug>(neosnippet_expand_or_jump)" : pumvisible() ? "\<C-n>" : "\<TAB>"
 smap <expr><TAB> neosnippet#expandable_or_jumpable() ? "\<Plug>(neosnippet_expand_or_jump)" : "\<TAB>"
 " show quicklist with errors
@@ -343,11 +363,19 @@ let g:markology_hlline_upper = 1
 let g:markology_textlower = "\t"
 highlight MarkologyHLl guifg=cyan guibg=black
 
+" Indentguides (toggle with <leader>ig)
+let g:indent_guides_auto_colors = 0
+let g:indent_guides_guide_size = 1
+let g:indent_guides_start_level = 2
+hi IndentGuidesEven  guibg=#3a3a3a ctermbg=darkgrey
+hi IndentGuidesOdd guibg=#1a1a1a ctermbg=black
+
+
 augroup neovim
   autocmd!
   autocmd FileType vimfiler set nonumber | set norelativenumber
   autocmd Filetype * if &ft!='vimfiler' | set number | endif
-  autocmd InsertLeave,CompleteDone * if pumvisible() == 0 | pclose | endif
+  "autocmd InsertLeave,CompleteDone * if pumvisible() == 0 | pclose | endif
   autocmd StdinReadPre * let s:std_in=1
   autocmd BufWritePre * %s/\s\+$//e
   autocmd BufWritePost * Neomake
