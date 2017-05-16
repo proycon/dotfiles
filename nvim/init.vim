@@ -32,6 +32,7 @@ Plug 'xolox/vim-misc' | Plug 'xolox/vim-session'
 Plug 'benmills/vimux' "vim/tmux integration
 Plug 'julienr/vim-cellmode' "sends codeblocks to ipython in tmux pane
 Plug 'jeetsukumaran/vim-markology'
+Plug 'frioux/vim-lost'
 
 
 " IDE
