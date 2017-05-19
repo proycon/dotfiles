@@ -193,6 +193,9 @@ command! C2ap !scp ~/.vbuf proycon@anaproy.nl:~/
 
 vnoremap <Leader>s :sort<CR>
 
+xnoremap < <gv
+xnoremap > >gv
+
 "mail signature
 map <Leader>S :r ~/sru<CR>
 
