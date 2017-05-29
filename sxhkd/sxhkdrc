@@ -181,26 +181,29 @@ alt + @F4
 alt + @F5
     mountssh
 
+alt + @F8
+    fcitx
+
 alt + @F9
-    setxkbmap proylatin
+    killall fcitx || setxkbmap proylatin
 
 alt + shift + @F9
-    setxkbmap proyhr
+    killall fcitx || setxkbmap proyhr
 
 alt + @F10
-    setxkbmap proyeo
+    killall fcitx || setxkbmap proyeo
 
 alt + shift + @F10
-    setxkbmap proyel
+    killall fcitx || setxkbmap proyel
 
 alt + @F11
-    setxkbmap proyru
+    killall fcitx || setxkbmap proyru
 
 alt + shift + @F11
-    setxkbmap proysr
+    killall fcitx || setxkbmap proysr
 
 alt + @F12
-    setxkbmap proyar
+    killall fcitx || setxkbmap proyar
 
 super + @F5
     kbdlight down 10
