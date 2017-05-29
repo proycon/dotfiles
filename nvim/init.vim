@@ -32,6 +32,7 @@ Plug 'xolox/vim-misc' | Plug 'xolox/vim-session'
 Plug 'benmills/vimux' "vim/tmux integration
 Plug 'julienr/vim-cellmode' "sends codeblocks to ipython in tmux pane
 Plug 'jeetsukumaran/vim-markology'
+Plug 'frioux/vim-lost'
 
 
 " IDE
@@ -44,6 +45,7 @@ Plug 'majutsushi/tagbar' "tag (class/function) browser
 Plug 'indentpython.vim'
 Plug 'vim-airline/vim-airline' | Plug 'vim-airline/vim-airline-themes'
 "Plug 'tmhedberg/SimpylFold' "folding for python
+Plug 'leafgarland/typescript-vim' "Typescript syntax highlighting (and more?)
 Plug 'Konfekt/FastFold'
 Plug 'airblade/vim-gitgutter' "git diff in gutter
 Plug 'lervag/vimtex'
@@ -190,6 +192,9 @@ command! Cap !scp proycon@anaproy.nl:~/.vbuf ~/
 command! C2ap !scp ~/.vbuf proycon@anaproy.nl:~/
 
 vnoremap <Leader>s :sort<CR>
+
+xnoremap < <gv
+xnoremap > >gv
 
 "mail signature
 map <Leader>S :r ~/sru<CR>
