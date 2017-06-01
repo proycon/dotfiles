@@ -8,7 +8,7 @@ Xft.antialias: 1
 Xft.rgba: rgb
 Xft.dpi: 180
 urxvt*depth: 32
-urxvt*background: rgba:2f00/2f00/2f00/e800
+urxvt*background: rgba:2f00/2f00/2f00/f900
 
 urxvt*scrollBar: false
 urxvt*font: xft:Source Code Pro for Powerline:size=10:antialias=true:hinting=true,xft:Ubuntu Mono derivative Powerline:size=11:antialias=true:hinting=true,xft:WenQuanYi Micro Hei Mono:size=11,xft:DejaVu Sans Mono:size=11,xft:Symbola:size=8,xft:Gargi,xft:Khmer OS System,xft:Lohit Devanagari:size=11,xft:Lohit Tamil,xft:Lohit Gujarati,xft:Lohit Bengali,xft:Lohit Oriya,xft:Lohit Kannada,xft:Lohit Konkani,xft:Lohit Malayam,xft:Lohit Telugu,xft:Lohit Nepali,xft:Lohit Assamese,xft:Lohit Punjabi
