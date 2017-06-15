@@ -20,7 +20,7 @@ Plug 'Shougo/neosnippet' | Plug 'Shougo/neosnippet-snippets'
 " Helpers
 Plug 'Shougo/denite.nvim' "ctrl-p like behaviour
 Plug 'Shougo/vimproc.vim', { 'do': 'make' }
-Plug 'haya14busa/incsearch.vim'
+"Plug 'haya14busa/incsearch.vim'
 Plug 'tpope/vim-surround'
 Plug 'matchit.zip'
 Plug 'easymotion/vim-easymotion' "highlights possible movement choices
@@ -280,7 +280,7 @@ map <C-Left> :bp<CR>
 
 " vim-airline settings
 let g:airline#extensions#tabline#enabled = 1
-let g:airline_theme = 'dark'
+let g:airline_theme = 'badwolf'
 let g:airline_powerline_fonts = 1
 
 " themes and colors
@@ -389,11 +389,13 @@ augroup END
 function! s:MakeWhite()
     set background=light
     colorscheme proyconwhite
+    AirlineTheme aurora
 endfunction
 
 function! s:MakeDark()
     set background=dark
     colorscheme proycon
+    AirlineTheme badwolf
 endfunction
 
 command! White call s:MakeWhite()
