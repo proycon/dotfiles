@@ -385,3 +385,17 @@ augroup neovim
   autocmd BufWritePost * Neomake
   autocmd BufWritePost $MYVIMRC nested source $MYVIMRC
 augroup END
+
+function! s:MakeWhite()
+    set background=light
+    colorscheme proyconwhite
+endfunction
+
+function! s:MakeDark()
+    set background=dark
+    colorscheme proycon
+endfunction
+
+command! White call s:MakeWhite()
+command! Dark call s:MakeDark()
+command! W w

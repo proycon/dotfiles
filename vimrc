@@ -67,23 +67,23 @@ map <C-b> <esc>:CtrlPBuffer<Cr>
 " close quickfix window
 " map <leader>E <esc>:ccl<CR>
 " open
-map <Leader>e <esc>:cw<CR> 
+map <Leader>e <esc>:cw<CR>
 
 
 map <Leader>O <esc>:on<CR>
 "map <Leader>P <esc>:hide<CR>
-map <Leader>b <esc>:buffers<CR>:b 
+map <Leader>b <esc>:buffers<CR>:b
 map <Leader>B <esc>:MiniBufExplorer<CR>
 
 "custom copy'n'paste
 "
 "copy the current visual selection to ~/.vbuf
-vmap <Leader>y :w! ~/.vbuf<CR>     
+vmap <Leader>y :w! ~/.vbuf<CR>
 "copy the current line to the buffer file if no visual selection
-nmap <Leader>y :.w! ~/.vbuf<CR>    
+nmap <Leader>y :.w! ~/.vbuf<CR>
 "paste the contents of the buffer file
-nmap <Leader>p :r ~/.vbuf<CR>       
-nmap <Leader>P :-1r ~/.vbuf<CR>       
+nmap <Leader>p :r ~/.vbuf<CR>
+nmap <Leader>P :-1r ~/.vbuf<CR>
 
 command! Caj !scp proycon@applejack.science.ru.nl:~/.vbuf ~/
 command! C2aj !scp ~/.vbuf proycon@applejack.science.ru.nl:~/
@@ -111,7 +111,7 @@ set wrap
 
 
 "transparent background
-"hi NonText ctermfg=250 ctermbg=none 
+"hi NonText ctermfg=250 ctermbg=none
 
 
 " easier moving of code blocks
@@ -272,12 +272,12 @@ let g:pymode_syntax_space_errors = 0
 
 
 
-set statusline+=%{tagbar#currenttag('%s','-','f')}  
+set statusline+=%{tagbar#currenttag('%s','-','f')}
 set statusline+=%#warningmsg#
-set statusline+=%{SyntasticStatuslineFlag()}  
-set statusline+=%* 
-let g:syntastic_always_populate_loc_list = 1                                                                                                                                                                                                             
-let g:syntastic_auto_loc_list = 1                                                                                                                                                                                                                        
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%*
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_auto_loc_list = 1
 let g:syntastic_check_on_wq = 0
 let g:syntastic_check_on_open = 1
 let g:syntastic_python_python_exec = "/home/proycon/lamachine/bin/python3"
@@ -307,7 +307,7 @@ let g:airline#extensions#bufferline#enabled = 0
 let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tabline#show_buffers = 1
 let g:airline#extensions#tabline#buffer_nr_show = 1
-let g:bufferline_echo = 1  
+let g:bufferline_echo = 1
 
 map <leader>_ :%s=\s\+$==<CR>
 
@@ -382,7 +382,7 @@ map <leader>X :SyntasticToggleMode<CR>
 
 map <leader>n :NERDTreeToggle<CR>
 " map <leader>m :Tlist<CR>
-" map <leader>o :OpenSession 
+" map <leader>o :OpenSession
 " Easier linewise reselection
 nnoremap <leader>V V`]
 
@@ -425,7 +425,7 @@ let g:Tex_SmartKeyQuote = 0
 au BufRead *.tex set textwidth=79 formatoptions=cqt wrapmargin=0
 
 
- 
+
 
 
 fun! PullAndRefresh()
@@ -495,4 +495,4 @@ map <ESC>[1~    <Home>
 imap <ESC>[4~    <End>
 imap <ESC>[1~    <Home>
 
-" source /home/proycon/.vim/bundle/vim-ipython/ftplugin/python/ipy.vim 
+" source /home/proycon/.vim/bundle/vim-ipython/ftplugin/python/ipy.vim

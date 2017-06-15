@@ -74,7 +74,7 @@ urxvt*color7: #D3D7CF
 urxvt*color15: #EEEEEC
 
 urxvtwhite*depth: 32
-urxvtwhite.background: #f1eee9
+urxvtwhite*background: rgba:f100/ee00/e900/f500
 urxvtwhite.foreground: #111111
 
 !Black
