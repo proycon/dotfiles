@@ -27,7 +27,7 @@ export DISABLE_UNTRACKED_FILES_DIRTY="true"
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
-plugins=(vi-mode history history-substring-search git svn python django debian pip github git-flow )
+plugins=(vi-mode history history-substring-search git svn python django debian pip github git-flow)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -283,6 +283,14 @@ function git_prompt_info() {
   ref=$(git symbolic-ref HEAD 2> /dev/null) || return
   echo "$ZSH_THEME_GIT_PROMPT_PREFIX${ref#refs/heads/}$ZSH_THEME_GIT_PROMPT_SUFFIX"
 }
+
+
+function virtualenv_prompt_info(){
+  [[ -n ${VIRTUAL_ENV} ]] || return
+  echo "${ZSH_THEME_VIRTUALENV_PREFIX:=[}(${VIRTUAL_ENV:t})${ZSH_THEME_VIRTUALENV_SUFFIX:=]}"
+}
+
+export VIRTUAL_ENV_DISABLE_PROMPT=1
 
 
 #if [[ $TERM == "xterm" ]] && [[ $COLORTERM == "gnome-terminal" ]]; then
