@@ -63,7 +63,7 @@ call plug#end()
 
 let g:python_host_prog = '/usr/bin/python'
 let g:python2_host_prog = '/usr/bin/python2'
-let g:python3_host_prog = '/usr/bin/python'
+let g:python3_host_prog = '/usr/bin/python3'
 
 set clipboard+=unnamedplus
 set completeopt-=preview
