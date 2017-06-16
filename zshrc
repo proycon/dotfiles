@@ -72,10 +72,10 @@ alias za='zathura'
 alias gpp='git push origin gh-pages'
 alias r='ranger'
 #colours
-which colorgcc > /dev/null 2> /dev/null
-if (( $? == 0 )); then
-    export CC="colorgcc"
-fi
+#which colorgcc > /dev/null 2> /dev/null
+#if (( $? == 0 )); then
+#    export CC="colorgcc"
+#fi
 alias vless='vim -R -u /usr/share/vim/vim72/macros/less.vim'
 alias l='ls'
 alias z='less -rN'
