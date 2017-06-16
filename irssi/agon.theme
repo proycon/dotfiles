@@ -240,5 +240,8 @@ abstracts = {
   sb_act_hilight_color = "$0$1-%n";
 };
 formats = {
-  "fe-common/core" = { timestamp = "{timestamp %%H:%%M:%%S} "; };
+  "fe-common/core" = {
+    timestamp = "{timestamp %%H:%%M:%%S} ";
+    pubmsg = "%b<%w$2\00306$[-11]0%b>%K|%n $1";
+  };
 };

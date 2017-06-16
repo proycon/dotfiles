@@ -27,7 +27,7 @@ export DISABLE_UNTRACKED_FILES_DIRTY="true"
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
-plugins=(vi-mode history history-substring-search git svn python django command-not-found debian pip github git-flow )
+plugins=(vi-mode history history-substring-search git svn python django debian pip github git-flow)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -63,6 +63,7 @@ alias tgp='cd ~/todo && ((git commit -a -m "todo update" && git push && cd -) ||
 alias ve='. ~/lamachine/bin/activate'
 alias lm='. ~/lamachine/bin/activate'
 alias lmws='. /scratch2/www/lamachine/bin/activate'
+alias lmdev='. ~/lamachine.dev/bin/activate'
 alias ve2='. env2/bin/activate'
 alias a='tmux attach'
 alias tmux='tmux -2' #force 256 colour support regardless of terminal
@@ -80,9 +81,25 @@ alias vless='vim -R -u /usr/share/vim/vim72/macros/less.vim'
 alias l='ls'
 alias z='less -rN'
 alias myip="dig +short myip.opendns.com @resolver1.opendns.com"
-which vim > /dev/null 2>/dev/null
+which nvim > /dev/null 2>/dev/null
 if (( $? == 0 )); then
-    alias vi="vim"
+    if [[ "$TERM" == "screen-256color" ]]; then
+        export EDITOR="nvim"
+        alias vi="nvim"
+        alias vim="nvim"
+    else
+        export EDITOR="nvim_tmux"
+        alias vi="nvim_tmux"
+        alias vim="nvim_tmux"
+        alias nvim="nvim_tmux"
+        alias nvim_tmux="tmux -2u new nvim"
+    fi
+else
+    which vim > /dev/null 2>/dev/null
+    if (( $? == 0 )); then
+        export EDITOR="vim"
+        alias vi="vim"
+    fi
 fi
 
 export MPD_HOST="proycon@anaproy.nl"
@@ -91,7 +108,6 @@ export DEBEMAIL="proycon@anaproy.nl"
 export DEBFULLNAME="Maarten van Gompel"
 
 
-export EDITOR="vim"
 export BROWSER="firefox"
 
 #coloured man pages
@@ -101,7 +117,7 @@ man() {
     LESS_TERMCAP_md=$'\E[01;38;5;74m'  \
     LESS_TERMCAP_me=$'\E[0m'           \
     LESS_TERMCAP_se=$'\E[0m'           \
-    LESS_TERMCAP_so=$'\E[38;5;246m'    \
+    LESS_TERMCAP_so=$'\E[37;45m'       \
     LESS_TERMCAP_ue=$'\E[0m'           \
     LESS_TERMCAP_us=$'\E[04;38;5;146m' \
     man "$@"
@@ -117,7 +133,7 @@ if [[ $HOST == "galactica" || $HOST == "mhysa" || $HOST == "caprica" || $HOST ==
     export PYTHONPATH="/home/proycon/work/"
     export ALPINO_HOME="/usr/local/Alpino"
     export ANDROID_SDK="/usr/local/android-sdk-linux"
-    
+
     hash -d X=/home/proycon/exp
     hash -d lsrc=/home/proycon/local/src/
     hash -d clb=/home/proycon/work/colibri/
@@ -129,7 +145,7 @@ elif [[ $HOST == "roma" ]]; then
     export PYTHONPATH="/home/proycon/work/"
     export ALPINO_HOME="/usr/local/Alpino"
     export CDPATH=.:~/work
-    
+
     hash -d X=/home/proycon/exp
     hash -d lsrc=/home/proycon/local/src/
     hash -d clb=/home/proycon/work/colibri/
@@ -181,7 +197,7 @@ alias ssha='ssh -Y -A anaproy.nl'
 alias sshat='ssh -Y -A anaproy.nl /home/proycon/bin/tm'
 alias e='ssh -Y -A -t anaproy.nl /home/proycon/bin/tm_vi'
 alias m="ssh -Y -A -t anaproy.nl /home/proycon/bin/tm_alot"
-alias sshilk='ssh mvgompel@radium.uvt.nl'
+alias sshilk='ssh u232231@radium.uvt.nl'
 alias lo="lilo=1 LC_ALL=en_US.UTF-8 LANG=en_US.UTF-8 ssh -Y -A -t lilo3.science.ru.nl zsh"
 alias aj="applejack=1 LC_ALL=en_US.UTF-8 LANG=en_US.UTF-8 ssh -Y -A -t applejack.science.ru.nl /home/proycon/bin/tm"
 alias fs="fluttershy=1 LC_ALL=en_US.UTF-8 LANG=en_US.UTF-8 ssh -Y -A -t applejack.science.ru.nl ssh -Y -A -t fluttershy /home/proycon/bin/tm"
@@ -218,7 +234,7 @@ if [[ $HOST == "applejack" || $HOST == "fluttershy" || $HOST == "rarity" || $HOS
 
 
     ipynb() {
-        expy3 
+        expy3
         if [ ! -z "$1" ]; then
             ipy3 notebook --no-browser --port=$1
         else
@@ -269,6 +285,14 @@ function git_prompt_info() {
 }
 
 
+function virtualenv_prompt_info(){
+  [[ -n ${VIRTUAL_ENV} ]] || return
+  echo "${ZSH_THEME_VIRTUALENV_PREFIX:=[}(${VIRTUAL_ENV:t})${ZSH_THEME_VIRTUALENV_SUFFIX:=]}"
+}
+
+export VIRTUAL_ENV_DISABLE_PROMPT=1
+
+
 #if [[ $TERM == "xterm" ]] && [[ $COLORTERM == "gnome-terminal" ]]; then
 #    export TERM="xterm-256color"
 #fi
@@ -312,7 +336,7 @@ bindkey '^r' history-incremental-search-backward
 
 #zle -N zle-line-init
 #zle -N zle-keymap-select
-zle-line-init() { echoti smkx 2>/dev/null; }  
+zle-line-init() { echoti smkx 2>/dev/null; }
 zle-line-finish() { echoti rmkx 2>/dev/null; }
 zle -N zle-line-init
 zle -N zle-line-finish
@@ -338,6 +362,7 @@ bindkey $terminfo[kend] end-of-line
 #bindkey '[C' forward-word
 #bindkey '[D' backward-word
 
+export LESS_TERMCAP_so=$'\E[37;45m'
 
 case $TERM in
     xterm*|rxvt)
@@ -345,8 +370,10 @@ case $TERM in
         export PROMPT_COMMAND
         ;;
     screen*|screen)
-      TITLE=$(hostname -s)                                                      
-      PROMPT_COMMAND='/bin/echo -ne "\033k${TITLE}\033\\"'                      
+      TITLE=$(hostname -s)
+      PROMPT_COMMAND='/bin/echo -ne "\033k${TITLE}\033\\"'
       export PROMPT_COMMAND
         ;;
 esac
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh

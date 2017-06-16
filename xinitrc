@@ -15,11 +15,11 @@ amixer sset Master unmute
 pulseaudio --start &
 #fcitx
 sleep 0.2
-#dbus-launch /usr/lib/policykit-1-gnome/polkit-gnome-authentication-agent-1 
+#dbus-launch /usr/lib/policykit-1-gnome/polkit-gnome-authentication-agent-1
 dbus-launch gnome-keyring-daemon -s --components=pkcs11,secrets,ssh,gpg  &
-#dbus-launch /usr/lib/gnome-settings-daemon/gnome-settings-daemon & 
+#dbus-launch /usr/lib/gnome-settings-daemon/gnome-settings-daemon &
 xrdb -merge /home/proycon/.Xresources
-feh --bg-scale /home/proycon/Pictures/Local/wallpapers/archplains.jpg &  #03529_marronbells_5120x2880.jpg &  #~/Pictures/Local/wallpapers/thomascolliers.png &
+feh --bg-scale ~/dotfiles/media/Landscape-Iceland-Arch-4K.jpg #ArchDarkFloral.png #/home/proycon/Pictures/Local/wallpapers/archplains.jpg &  #03529_marronbells_5120x2880.jpg &  #~/Pictures/Local/wallpapers/thomascolliers.png &
 #setlayout 0 3 3 0
 if [[ $HOST == "mhysa" ]]; then
     mountssh &
@@ -37,7 +37,7 @@ tint2 &
 setxkbmap proylatin
 /home/proycon/homeautomation/notifyclient_autoconnect.sh &
 play ~/cylontune_low.ogg &
-compton -cC -z -r 3 -l 2 -t 2 -f & 
+compton -cC -z -r 3 -l 2 -t 2 -f &
 
 which bspwm > /dev/null 2>/dev/null
 if [ $? -eq 0 ]; then
@@ -62,9 +62,9 @@ if [ $HAVE_BSPWM -eq 1 ]; then
     dbus-launch sxhkd &
     exec dbus-launch bspwm
 elif [ $HAVE_OPENBOX -eq 1 ]; then
-    exec dbus-launch openbox 
+    exec dbus-launch openbox
 elif [ $HAVE_XFCE4 -eq 1 ]; then
-    exec dbus-launch --exit-with-session startxfce4 
+    exec dbus-launch --exit-with-session startxfce4
 else
     exec xterm
 fi

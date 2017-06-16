@@ -67,23 +67,23 @@ map <C-b> <esc>:CtrlPBuffer<Cr>
 " close quickfix window
 " map <leader>E <esc>:ccl<CR>
 " open
-map <Leader>e <esc>:cw<CR> 
+map <Leader>e <esc>:cw<CR>
 
 
 map <Leader>O <esc>:on<CR>
 "map <Leader>P <esc>:hide<CR>
-map <Leader>b <esc>:buffers<CR>:b 
+map <Leader>b <esc>:buffers<CR>:b
 map <Leader>B <esc>:MiniBufExplorer<CR>
 
 "custom copy'n'paste
 "
 "copy the current visual selection to ~/.vbuf
-vmap <Leader>y :w! ~/.vbuf<CR>     
+vmap <Leader>y :w! ~/.vbuf<CR>
 "copy the current line to the buffer file if no visual selection
-nmap <Leader>y :.w! ~/.vbuf<CR>    
+nmap <Leader>y :.w! ~/.vbuf<CR>
 "paste the contents of the buffer file
-nmap <Leader>p :r ~/.vbuf<CR>       
-nmap <Leader>P :-1r ~/.vbuf<CR>       
+nmap <Leader>p :r ~/.vbuf<CR>
+nmap <Leader>P :-1r ~/.vbuf<CR>
 
 command! Caj !scp proycon@applejack.science.ru.nl:~/.vbuf ~/
 command! C2aj !scp ~/.vbuf proycon@applejack.science.ru.nl:~/
@@ -111,7 +111,7 @@ set wrap
 
 
 "transparent background
-"hi NonText ctermfg=250 ctermbg=none 
+"hi NonText ctermfg=250 ctermbg=none
 
 
 " easier moving of code blocks
@@ -156,6 +156,8 @@ call pathogen#infect()
 call pathogen#helptags()
 
 filetype plugin indent on
+au! BufNewFile,BufRead *.ttl,*.nt,*.nq  set filetype=turtle
+au! BufNewFile,BufRead *.n3 set filetype=n3
 syntax on
 
 autocmd FileType python,c,cpp,java,javascript,perl,awk,bash,haskell syn match ops /[(){}\[\]=\+\-%!\*:\,\.<>\|\&]/ | hi ops ctermfg=117
@@ -163,7 +165,7 @@ autocmd FileType python,c,cpp,java,javascript,perl,awk,bash,haskell syn match op
 
 """"" Settings for NERDTree
 
-let NERDTreeIgnore=['\~$', '^\.git', '^\.svn', '\.swp$', '\.DS_Store$','\.pyc$','\.jpg$','\.png$','\.gif$','\.bak$','\.o$','\.lo$','\.in$','\.so$','\.aux$','\.pdf$','\.bbl$' ]
+let NERDTreeIgnore=['\~$', '^\.git', '^\.svn', '\.swp$', '\.DS_Store$','\.pyc$','\.jpg$','\.png$','\.gif$','\.bak$','\.o$','\.lo$','\.in$','\.so$','\.aux$','\.pdf$','\.bbl$','^build','^dist' ]
 let NERDTreeShowHidden=0
 " nmap <Leader>n :NERDTreeToggle<cr>
 
@@ -202,23 +204,27 @@ set laststatus=2
 
 
 " Settings for ctrlp
-" cd ~/.vim/bundle
-" git clone https://github.com/kien/ctrlp.vim.git
 let g:ctrlp_max_height = 30
 let g:ctrlp_extensions = ['funky']
 " ignore .git folders to speed up searches
-let g:ctrlp_user_command = ['.git/', 'git --git-dir=%s/.git ls-files -oc --exclude-standard']
+" let g:ctrlp_user_command = ['.git/', 'git --git-dir=%s/.git ls-files -oc --exclude-standard']
 set wildignore+=*.pyc
 set wildignore+=*.bak,*~,*.swp,*.lock
 set wildignore+=*.o,*.lo,*.ko,*.so
-set wildignore+=*/.git/*
-set wildignore+=*/.svn/*
+set wildignore+=*.git/*
+set wildignore+=*.svn/*
 set wildignore+=*_build/*
-set wildignore+=*/build/*
-set wildignore+=*/coverage/*
+set wildignore+=*build/*
+set wildignore+=*coverage/*
+set wildignore+=*.egg
+set wildignore+=*.egg-info
 set wildignore+=*.jpg,*.png,*.gif
 set wildignore+=*.pdf,*.ps,*.aux,*.bbl,*.docx,*.doc,*.ppt,*.pptx,*.rtf
 set wildignore+=*.mp3,*.ogg,*.mpg,*.mp4,*.wav,*.mov
+let g:ctrlp_custom_ignore = {
+  \ 'dir':  '\v[\/](\.(git|hg|svn)|build|dist)$',
+  \ 'file': '\v\.(exe|so|dll)$',
+  \ }
 
 " Settings for python-mode
 " cd ~/.vim/bundle
@@ -266,12 +272,12 @@ let g:pymode_syntax_space_errors = 0
 
 
 
-set statusline+=%{tagbar#currenttag('%s','-','f')}  
+set statusline+=%{tagbar#currenttag('%s','-','f')}
 set statusline+=%#warningmsg#
-set statusline+=%{SyntasticStatuslineFlag()}  
-set statusline+=%* 
-let g:syntastic_always_populate_loc_list = 1                                                                                                                                                                                                             
-let g:syntastic_auto_loc_list = 1                                                                                                                                                                                                                        
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%*
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_auto_loc_list = 1
 let g:syntastic_check_on_wq = 0
 let g:syntastic_check_on_open = 1
 let g:syntastic_python_python_exec = "/home/proycon/lamachine/bin/python3"
@@ -285,14 +291,14 @@ let g:syntastic_loc_list_height = 5
 
 set noshowmode
 let g:jedi#use_tabs_not_buffers = 0
-let g:jedi#popup_on_dot = 1
+let g:jedi#popup_on_dot = 0
 let g:jedi#goto_command = "<leader>d"
 let g:jedi#goto_assignments_command = "<leader>g"
 let g:jedi#goto_definitions_command = "<leader>G"
-let g:jedi#show_call_signatures = 2
+let g:jedi#show_call_signatures = 0
 let g:jedi#documentation_command = "K"
 let g:jedi#usages_command = "<leader>u"
-let g:jedi#completions_command = "<leader>x"
+let g:jedi#completions_command = "<leader>q"
 let g:jedi#rename_command = "<leader>r"
 
 let g:airline_powerline_fonts = 1
@@ -301,7 +307,7 @@ let g:airline#extensions#bufferline#enabled = 0
 let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tabline#show_buffers = 1
 let g:airline#extensions#tabline#buffer_nr_show = 1
-let g:bufferline_echo = 1  
+let g:bufferline_echo = 1
 
 map <leader>_ :%s=\s\+$==<CR>
 
@@ -358,6 +364,16 @@ map <leader>46 :b46<CR>
 map <leader>47 :b47<CR>
 map <leader>48 :b48<CR>
 map <leader>49 :b49<CR>
+map <leader>50 :b50<CR>
+map <leader>51 :b51<CR>
+map <leader>52 :b52<CR>
+map <leader>53 :b53<CR>
+map <leader>54 :b54<CR>
+map <leader>55 :b55<CR>
+map <leader>56 :b56<CR>
+map <leader>57 :b57<CR>
+map <leader>58 :b58<CR>
+map <leader>59 :b59<CR>
 
 
 map <leader>E <esc>:bufdo e<CR>
@@ -366,7 +382,7 @@ map <leader>X :SyntasticToggleMode<CR>
 
 map <leader>n :NERDTreeToggle<CR>
 " map <leader>m :Tlist<CR>
-" map <leader>o :OpenSession 
+" map <leader>o :OpenSession
 " Easier linewise reselection
 nnoremap <leader>V V`]
 
@@ -409,7 +425,7 @@ let g:Tex_SmartKeyQuote = 0
 au BufRead *.tex set textwidth=79 formatoptions=cqt wrapmargin=0
 
 
- 
+
 
 
 fun! PullAndRefresh()
@@ -444,6 +460,8 @@ command! Spbr setlocal spell spelllang=pt_br
 command! Sppt setlocal spell spelllang=pt
 command! Spes setlocal spell spelllang=es
 command! Spit setlocal spell spelllang=it
+command! Spde setlocal spell spelllang=de
+command! Spfr setlocal spell spelllang=fr
 
 " Insert into your .vimrc after quick-scope is loaded.
 " Obviously depends on <https://github.com/unblevable/quick-scope> being installed.
@@ -467,15 +485,6 @@ endfunction
 
 let g:qs_enable = 0
 
-nnoremap <expr> <silent> f Quick_scope_selective('f')
-nnoremap <expr> <silent> F Quick_scope_selective('F')
-nnoremap <expr> <silent> t Quick_scope_selective('t')
-nnoremap <expr> <silent> T Quick_scope_selective('T')
-vnoremap <expr> <silent> f Quick_scope_selective('f')
-vnoremap <expr> <silent> F Quick_scope_selective('F')
-vnoremap <expr> <silent> t Quick_scope_selective('t')
-vnoremap <expr> <silent> T Quick_scope_selective('T')
-
 map <ESC>[4    <End>
 map <ESC>[1    <Home>
 imap <ESC>[4    <End>
@@ -486,4 +495,4 @@ map <ESC>[1~    <Home>
 imap <ESC>[4~    <End>
 imap <ESC>[1~    <Home>
 
-" source /home/proycon/.vim/bundle/vim-ipython/ftplugin/python/ipy.vim 
+" source /home/proycon/.vim/bundle/vim-ipython/ftplugin/python/ipy.vim

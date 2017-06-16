@@ -17,11 +17,17 @@ super + y
 super + u
     pcmanfm
 
+super + p
+    evewatch.sh
+
+super + o
+    recorddesktop.sh
+
 super + q
     bspc desktop -B
 
-super + {s,f,S}
-    bspc node -t {floating,fullscreen,pseudo_tiled}
+super + {s,f,S,d}
+    bspc node -t {floating,fullscreen,pseudo_tiled,tiled}
 
 super + alt + s
     bspc node -t sticky
@@ -32,6 +38,12 @@ super + ctrl + s
 super + {grave,Tab}
     bspc {node,desktop} -f last
 
+alt + Tab
+    bspc node -f next
+
+alt + shift + Tab
+    bspc node -f prev
+
 #super + apostrophe
 #    bspc node -s last
 
@@ -39,7 +51,7 @@ super + e
     /home/proycon/bin/emptywindow
 
 super + alt + w
-    bspc node -k  
+    bspc node -k
 
 super + z
     /home/proycon/bin/house.sh "office light on"
@@ -59,10 +71,13 @@ super + shift + x
 super + shift + alt + x
     /home/proycon/bin/house.sh "lights off"
 
+super + c
+    /home/proycon/bin/house.sh "mute tv"
+
 super + h
     firefox https://home.anaproy.nl
 
-super + shift + m 
+super + shift + m
     urxvt -cd /home/proycon -T ncmpcpp -e ncmpcpp
     #konsole --workdir /home/proycon -e ncmpcpp
 
@@ -71,7 +86,7 @@ super + m
     #konsole --workdir /home/proycon -e ssh -Y -A -t anaproy.nl /home/proycon/bin/tm_alot
 
 super + v
-    urxvt -cd /home/proycon -T vim -e /home/proycon/bin/tm vim
+    urxvt -cd /home/proycon -T vim -e /home/proycon/bin/tm nvim
     #konsole --workdir /home/proycon -e /home/proycon/bin/tm vim
 
 super + {p,n}
@@ -119,12 +134,12 @@ super + ctrl + {1-9}
     bspc node -r 0.{1-9}
 
 super + g
-    compton -cC -z -r 3 -l 2 -t 2 -f -b 
+    compton -cC -z -r 3 -l 2 -t 2 -f -b
 
 super + alt + g
     killall compton
 
-super + k 
+super + k
     killall klauncher
 
 super + {_,shift + }{1-9,0,minus,equal}
@@ -161,22 +176,34 @@ alt + @F3
     setinput.sh
 
 alt + @F4
-    pkill -f notifyclient.py 
+    pkill -f notifyclient.py
 
 alt + @F5
     mountssh
-    
+
+alt + @F8
+    fcitx
+
 alt + @F9
-    setxkbmap proylatin
+    killall fcitx || setxkbmap proylatin
+
+alt + shift + @F9
+    killall fcitx || setxkbmap proyhr
 
 alt + @F10
-    setxkbmap proyeo
+    killall fcitx || setxkbmap proyeo
+
+alt + shift + @F10
+    killall fcitx || setxkbmap proyel
 
 alt + @F11
-    setxkbmap proyru
+    killall fcitx || setxkbmap proyru
+
+alt + shift + @F11
+    killall fcitx || setxkbmap proysr
 
 alt + @F12
-    setxkbmap proyar
+    killall fcitx || setxkbmap proyar
 
 super + @F5
     kbdlight down 10
