@@ -28,6 +28,7 @@ ln -sfn $DOTDIR/terminator $HOMEDIR/.config/terminator
 ln -sfn $DOTDIR/bspwm $HOMEDIR/.config/bspwm
 ln -sfn $DOTDIR/sxhkd $HOMEDIR/.config/sxhkd
 ln -sfn $DOTDIR/tilda $HOMEDIR/.config/tilda
+ln -sfn $DOTDIR/ranger $HOMEDIR/.config/ranger
 ln -sfn $DOTDIR/konsolerc $HOMEDIR/.config/konsolerc
 ln -sfn $DOTDIR/konsole $HOMEDIR/.local/share/konsole
 ln -sfn $DOTDIR/ipython $HOMEDIR/.config/ipython
