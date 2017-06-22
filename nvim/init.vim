@@ -22,7 +22,7 @@ Plug 'Shougo/denite.nvim' "ctrl-p like behaviour
 Plug 'Shougo/vimproc.vim', { 'do': 'make' }
 "Plug 'haya14busa/incsearch.vim'
 Plug 'tpope/vim-surround'
-Plug 'matchit.zip'
+Plug 'vim-scripts/matchit.zip'
 Plug 'easymotion/vim-easymotion' "highlights possible movement choices
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
@@ -40,9 +40,9 @@ Plug 'scrooloose/nerdtree', { 'on':  ['NERDTreeToggle', 'NERDTree'] }
 Plug 'neomake/neomake'
 Plug 'tpope/vim-fugitive'
 Plug 'gregsexton/gitv' "gitk for vim
-Plug 'gitignore'
+Plug 'vim-scripts/gitignore'
 Plug 'majutsushi/tagbar' "tag (class/function) browser
-Plug 'indentpython.vim'
+Plug 'vim-scripts/indentpython.vim'
 Plug 'vim-airline/vim-airline' | Plug 'vim-airline/vim-airline-themes'
 "Plug 'tmhedberg/SimpylFold' "folding for python
 Plug 'leafgarland/typescript-vim' "Typescript syntax highlighting (and more?)
@@ -63,7 +63,7 @@ call plug#end()
 
 let g:python_host_prog = '/usr/bin/python'
 let g:python2_host_prog = '/usr/bin/python2'
-let g:python3_host_prog = '/usr/bin/python'
+let g:python3_host_prog = '/usr/bin/python3'
 
 set clipboard+=unnamedplus
 set completeopt-=preview
