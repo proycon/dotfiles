@@ -127,7 +127,7 @@ alias dis='export $(tmux showenv | grep DISPLAY)'
 
 #PATHS
 if [[ $HOST == "galactica" || $HOST == "mhysa" || $HOST == "caprica" || $HOST == "drasha" ]]; then
-    export PATH="/home/proycon/bin:/home/proycon/local/bin:/usr/local/android-sdk-linux/tools:/usr/local/android-sdk-linux/platform-tools:$PATH"
+    export PATH="/home/proycon/bin:/home/proycon/.cargo/bin:/home/proycon/local/bin:/usr/local/android-sdk-linux/tools:/usr/local/android-sdk-linux/platform-tools:$PATH"
     export LD_LIBRARY_PATH="$LD_LIBRARY_PATH:/home/proycon/local/lib"
     export CDPATH=.:~/work
     export PYTHONPATH="/home/proycon/work/"
@@ -140,7 +140,7 @@ if [[ $HOST == "galactica" || $HOST == "mhysa" || $HOST == "caprica" || $HOST ==
     hash -d cta=/home/proycon/work/colibrita/
     hash -d W=/home/proycon/work
 elif [[ $HOST == "roma" ]]; then
-    export PATH="/home/proycon/bin:/home/proycon/local/bin:$PATH"
+    export PATH="/home/proycon/bin:/home/proycon/.cargo/bin:/home/proycon/local/bin:$PATH"
     export LD_LIBRARY_PATH="$LD_LIBRARY_PATH:/home/proycon/local/lib"
     export PYTHONPATH="/home/proycon/work/"
     export ALPINO_HOME="/usr/local/Alpino"

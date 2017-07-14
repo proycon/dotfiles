@@ -50,6 +50,8 @@ Plug 'Konfekt/FastFold'
 Plug 'airblade/vim-gitgutter' "git diff in gutter
 Plug 'lervag/vimtex'
 Plug 'nathanaelkane/vim-indent-guides', { 'for': 'python' }
+Plug 'rust-lang/rust.vim'
+Plug 'racer-rust/vim-racer'
 
 " Misc
 Plug 'junegunn/goyo.vim' "distraction free writing
@@ -61,8 +63,7 @@ Plug 'freitass/todo.txt-vim', { 'for': 'todo.txt' }
 
 call plug#end()
 
-let g:python_host_prog = '/usr/bin/python'
-let g:python2_host_prog = '/usr/bin/python2'
+let g:python_host_prog = '/usr/bin/python2'
 let g:python3_host_prog = '/usr/bin/python3'
 
 set clipboard+=unnamedplus
