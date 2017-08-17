@@ -289,7 +289,7 @@ let NVIM_TUI_ENABLE_CURSOR_SHAPE=1
 set t_Co=256
 set termguicolors
 set background=dark
-colorscheme proycon
+colorscheme gruvbox "proycon
 let g:seiya_auto_enable=1
 let g:seiya_target_groups = ['guibg']
 
