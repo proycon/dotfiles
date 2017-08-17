@@ -96,7 +96,7 @@ vnoremap <Leader>s :sort<CR>
 map <Leader>S :r ~/sru<CR>
 
 set t_Co=256
-color proycon
+color gruvbox
 
 
 " Showing line numbers and length
