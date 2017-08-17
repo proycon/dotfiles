@@ -33,7 +33,8 @@ fi
 xss-lock --ignore-sleep -- /home/proycon/dotfiles/lock.sh &
 udiskie &
 volumeicon &
-tint2 &
+# tint2 &
+polybar -c ~/dotfiles/polybar/config simple
 setxkbmap proylatin
 /home/proycon/homeautomation/notifyclient_autoconnect.sh &
 play ~/cylontune_low.ogg &
