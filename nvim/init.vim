@@ -393,13 +393,11 @@ augroup END
 function! s:MakeWhite()
     set background=light
     colorscheme gruvbox
-    AirlineTheme aurora
 endfunction
 
 function! s:MakeDark()
     set background=dark
     colorscheme gruvbox
-    AirlineTheme badwolf
 endfunction
 
 command! White call s:MakeWhite()
