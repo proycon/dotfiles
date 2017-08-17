@@ -49,6 +49,7 @@ ln -sfn $DOTDIR/inputrc $HOMEDIR/.inputrc
 ln -sfn $DOTDIR/Xresources $HOMEDIR/.Xresources
 ln -sfn $DOTDIR/Proycon.colorscheme  $HOMEDIR/.kde/share/apps/konsole/Proycon.colorscheme
 ln -sfn $DOTDIR/Shell.profile  $HOMEDIR/.kde/share/apps/konsole/Shell.profile
+ln -sfn $DOTDIR/rofi $HOMEDIR/rofi/config
 #NICKSERVPASS=`cat ~/.nickserv`
 #BOUNCERPASS=`cat ~/.anaproy`
 #cat $HOMEDIR/.irssi/config.masked | sed -e "s/NICKSERVPASS/$NICKSERVPASS/" -e "s/BOUNCERPASS/$BOUNCERPASS/" > $HOMEDIR/.irssi/config
