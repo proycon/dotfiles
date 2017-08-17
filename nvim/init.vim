@@ -389,13 +389,13 @@ augroup END
 
 function! s:MakeWhite()
     set background=light
-    colorscheme proyconwhite
+    colorscheme gruvbox
     AirlineTheme aurora
 endfunction
 
 function! s:MakeDark()
     set background=dark
-    colorscheme proycon
+    colorscheme gruvbox
     AirlineTheme badwolf
 endfunction
 

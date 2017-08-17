@@ -68,33 +68,33 @@ urxvt*keysym.End: \033[4~
 
 
 urxvtwhite*depth: 32
-urxvtwhite*background: rgba:f100/ee00/e900/f500
-urxvtwhite.foreground: #111111
+urxvtwhite*background: rgba:fb00/f100/c700/f500
+urxvtwhite.foreground: #3c3836
 
 !Black
-urxvtwhite.color0:     #111111
-urxvtwhite.color8:     #000000
+urxvtwhite.color0:     #fbf1c7
+urxvtwhite.color8:     #928374
 !!Red
-urxvtwhite.color1:     #936a6f
-urxvtwhite.color9:     #d76572
+urxvtwhite.color1:     #cc241d
+urxvtwhite.color9:     #9d0006
 !!Green
-urxvtwhite.color2:     #668462
-urxvtwhite.color10:    #4fae42
+urxvtwhite.color2:     #98971a
+urxvtwhite.color10:    #79740e
 !!Yellow
-urxvtwhite.color3:     #7f7b62
-urxvtwhite.color11:    #a8981f
+urxvtwhite.color3:     #d79921
+urxvtwhite.color11:    #b57614
 !!Blue
-urxvtwhite.color4:     #6e7291
-urxvtwhite.color12:    #7782cf
+urxvtwhite.color4:     #458588
+urxvtwhite.color12:    #076678
 !!Magenta
-urxvtwhite.color5:     #846887
-urxvtwhite.color13:    #b754c4
+urxvtwhite.color5:     #b16286
+urxvtwhite.color13:    #8f3f71
 !!Cyan
-urxvtwhite.color6:     #637e7b
-urxvtwhite.color14:    #2ea89a
+urxvtwhite.color6:     #899d6a
+urxvtwhite.color14:    #427b58
 !!White
-urxvtwhite.color7:     #9a9a9a
-urxvtwhite.color15:    #a4a4a4
+urxvtwhite.color7:     #7c6f64
+urxvtwhite.color15:    #3c3836
 
 
 urxvtwhite*scrollBar: false
