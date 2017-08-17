@@ -377,3 +377,4 @@ case $TERM in
 esac
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+[ -f ~/dotfiles/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh ] && source ~/dotfiles/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
