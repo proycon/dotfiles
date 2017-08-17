@@ -219,10 +219,7 @@ super + Return
     #konsole --workdir /home/proycon
 
 super + space
-    rofi -show run -font "Source Code Pro for Powerline 16" #dmenu_run -fn "Ubuntu Mono-10"
-
-super + alt + space
-    rofi -show -font "Source Code Pro for Powerline 16" #dmenu_run -fn "Ubuntu Mono-10"
+    rofi -font "Source Code Pro for Powerline 16" -combi-modi window,drun,run -show combi -modi combi
 
 # make sxhkd reload its configuration files:
 super + ctrl + Escape
