@@ -61,6 +61,9 @@ Plug 'miyakogi/seiya.vim' "transparent background
 " Plug 'pearofducks/ansible-vim', { 'for': 'ansible' }
 Plug 'freitass/todo.txt-vim', { 'for': 'todo.txt' }
 
+"Themes
+Plug 'morhetz/gruvbox'
+
 call plug#end()
 
 let g:python_host_prog = '/usr/bin/python2'
@@ -281,7 +284,7 @@ map <C-Left> :bp<CR>
 
 " vim-airline settings
 let g:airline#extensions#tabline#enabled = 1
-let g:airline_theme = 'badwolf'
+"let g:airline_theme = 'gruvbox'
 let g:airline_powerline_fonts = 1
 
 " themes and colors
