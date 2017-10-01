@@ -23,7 +23,8 @@ bspc config borderless_monocle true
 bspc config gapless_monocle true
 bspc config focus_by_distance true
 bspc config focus_follows_pointer true
-bspc monitor -d 一 二 三 四 五 六 七 八 九 十 - =
+bspc monitor DisplayPort-1 -d 一 二 三 四 五 六 七 八 九 十 - =
+bspc monitor DP1 -d "~"
 bspc config -d 三 window_gap 10
 bspc rule -a Gimp
 bspc rule -a Firefox desktop=^3

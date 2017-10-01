@@ -42,7 +42,7 @@ font-2 = "Material Design Icons:size=16;2"
 ; font-1 = FontAwesome:size=10;2
 ; font-2 = xos4terminus:size=18:weight=bold;2
 
-modules-left = i3
+modules-left = bspwm
 modules-center = title
 modules-right = keyboard wireless cpu memory volume battery date
 
@@ -50,11 +50,10 @@ tray-position = right
 tray-detached = false
 tray-padding = 2
 
-[module/i3]
-type = internal/i3
+[module/bspwm]
+type = internal/bspwm
 
-strip-wsnumbers = true
-; pin-workspaces = true
+pin-workspaces = true
 index-sort = true
 enable-click = true
 enable-scroll = true
@@ -115,16 +114,16 @@ label-urgent-padding = 2
 label-occupied-underline = #665c54
 label-occupied-padding = 2
 
-;ws-icon-0 = 一;
-;ws-icon-1 = 二;
-;ws-icon-2 = 三;
-;ws-icon-3 = 四;
-;ws-icon-4 = 五;
-;ws-icon-5 = 六;
-;ws-icon-6 = 七;
-;ws-icon-7 = 八;
-;ws-icon-8 = 九;
-;ws-icon-9 = 十;
+ws-icon-0 = 一;
+ws-icon-1 = 二;
+ws-icon-2 = 三;
+ws-icon-3 = 四;
+ws-icon-4 = 五;
+ws-icon-5 = 六;
+ws-icon-6 = 七;
+ws-icon-7 = 八;
+ws-icon-8 = 九;
+ws-icon-9 = 十;
 
 [module/wired]
 type = internal/network

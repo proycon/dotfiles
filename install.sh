@@ -30,6 +30,8 @@ ln -sfn $DOTDIR/sxhkd $HOMEDIR/.config/sxhkd
 ln -sfn $DOTDIR/nvim $HOMEDIR/.config/nvim
 ln -sfn $DOTDIR/tilda $HOMEDIR/.config/tilda
 ln -sfn $DOTDIR/ranger $HOMEDIR/.config/ranger
+ln -sfn $DOTDIR/polybar $HOMEDIR/.config/polybar
+ln -sfn $DOTDIR/i3 $HOMEDIR/.config/i3
 ln -sfn $DOTDIR/konsolerc $HOMEDIR/.config/konsolerc
 ln -sfn $DOTDIR/konsole $HOMEDIR/.local/share/konsole
 ln -sfn $DOTDIR/ipython $HOMEDIR/.config/ipython

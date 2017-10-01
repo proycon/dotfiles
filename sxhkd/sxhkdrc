@@ -142,8 +142,8 @@ super + alt + g
 super + k
     killall klauncher
 
-super + {_,shift + }{1-9,0,minus,equal}
-    bspc {desktop -f,node -d} ^{1-9,10,11,12}
+super + {_,shift + }{1-9,0,minus,equal,~}
+    bspc {desktop -f,node -d} ^{1-9,10,11,12,13}
 
 super + alt + minus
     xrandr --output eDP1 --scale 0.5x0.5
