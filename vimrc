@@ -97,6 +97,7 @@ map <Leader>S :r ~/sru<CR>
 
 set t_Co=256
 color gruvbox
+set background=dark
 
 
 " Showing line numbers and length
