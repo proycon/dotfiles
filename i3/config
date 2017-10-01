@@ -174,7 +174,7 @@ mode "resize" {
 
 mode "exec" {
         bindsym m exec --no-startup-id urxvt -cd /home/proycon -T mail -e ssh -Y -A -t anaproy.nl /home/proycon/bin/tm_alot
-        bindsym v exec --no-startup-id urxvt -cd /home/proycon -T vim /home/proycon/bin/tm nvim
+        bindsym v exec --no-startup-id urxvt -cd /home/proycon -T vim -e /home/proycon/bin/tm nvim
         bindsym Shift+m exec urxvt -cd /home/proycon -T ncmpcpp -e ncmpcpp
         bindsym w exec firefox
         bindsym f exec pcmanfm
