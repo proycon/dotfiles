@@ -92,9 +92,10 @@ bindsym $mod+a focus parent
 #bindsym $mod+d focus child
 
 # customize workspace name
-set $WS01   "1: 话"
-set $WS02   "2: 工"
-set $WS03   "3: 看"
+set $WS00   "0: 〇"
+set $WS01   "1: 一"
+set $WS02   "2: 二"
+set $WS03   "3: 三"
 set $WS04   "4: 四"
 set $WS05   "5: 五"
 set $WS06   "6: 六"
@@ -102,14 +103,30 @@ set $WS07   "7: 七"
 set $WS08   "8: 八"
 set $WS09   "9: 九"
 set $WS10   "10: 十"
-set $WS11   "11: 玩B"
-set $WS12   "12: 玩P"
+set $WS11   "11: 《"
+set $WS12   "12: 》"
 
-bindsym $mod+F1 exec /home/proycon/bin/selectscreen.sh :0.1
-bindsym $mod+F5 exec /home/proycon/bin/selectscreen.sh :0.0
-bindsym $mod+F9 exec /home/proycon/bin/selectscreen.sh :0.0
+workspace $WS00 output DisplayPort-1 #MULTIHEAD
+workspace $WS01 output DP-1-1 #MULTIHEAD
+workspace $WS02 output DisplayPort-1 #MULTIHEAD
+workspace $WS03 output DP-1-1 #MULTIHEAD
+workspace $WS04 output DisplayPort-1 #MULTIHEAD
+workspace $WS05 output DP-1-1 #MULTIHEAD
+workspace $WS06 output DisplayPort-1 #MULTIHEAD
+workspace $WS07 output DP-1-1 #MULTIHEAD
+workspace $WS08 output DisplayPort-1 #MULTIHEAD
+workspace $WS09 output DP-1-1 #MULTIHEAD
+workspace $WS10 output DisplayPort-1 #MULTIHEAD
+workspace $WS11 output DP-1-1 #MULTIHEAD
+workspace $WS12 output DisplayPort-1 #MULTIHEAD
+
+
+#bindsym $mod+F1 exec /home/proycon/bin/selectscreen.sh :0.1
+#bindsym $mod+F5 exec /home/proycon/bin/selectscreen.sh :0.0
+#bindsym $mod+F9 exec /home/proycon/bin/selectscreen.sh :0.0
 
 # switch to workspace
+bindsym $mod+apostrophe workspace $WS00
 bindsym $mod+1 workspace $WS01
 bindsym $mod+2 workspace $WS02
 bindsym $mod+3 workspace $WS03
@@ -173,21 +190,21 @@ mode "resize" {
 }
 
 mode "exec" {
-        bindsym m exec --no-startup-id urxvt -cd /home/proycon -T mail -e ssh -Y -A -t anaproy.nl /home/proycon/bin/tm_alot
-        bindsym v exec --no-startup-id urxvt -cd /home/proycon -T vim -e /home/proycon/bin/tm nvim
-        bindsym Shift+m exec urxvt -cd /home/proycon -T ncmpcpp -e ncmpcpp
-        bindsym w exec firefox
-        bindsym f exec pcmanfm
-        bindsym g exec geeqie
-        bindsym F2 exec --no-startup-id /home/proycon/bin/lala
-        bindsym F8 exec --no-startup-id fcitx
-        bindsym F9 exec killall fcitx || setxkbmap proylatin
-        bindsym Shift+F9 exec killall fcitx || setxkbmap proyhr
-        bindsym F10 exec killall fcitx || setxkbmap proyeo
-        bindsym Shift+F10 exec killall fcitx || setxkbmap proyel
-        bindsym F11 exec killall fcitx || setxkbmap proyru
-        bindsym Shift+F11 exec killall fcitx || setxkbmap proysr
-        bindsym F12 exec killall fcitx || setxkbmap proyar
+        bindsym m exec --no-startup-id urxvt -cd /home/proycon -T mail -e ssh -Y -A -t anaproy.nl /home/proycon/bin/tm_alot; mode "default"
+        bindsym v exec --no-startup-id urxvt -cd /home/proycon -T vim -e /home/proycon/bin/tm nvim; mode "default"
+        bindsym Shift+m exec urxvt -cd /home/proycon -T ncmpcpp -e ncmpcpp; mode "default"
+        bindsym w exec firefox; mode "default"
+        bindsym f exec pcmanfm; mode "default"
+        bindsym g exec geeqie; mode "default"
+        bindsym F2 exec --no-startup-id /home/proycon/bin/lala; mode "default"
+        bindsym F8 exec --no-startup-id fcitx; mode "default"
+        bindsym F9 exec killall fcitx || setxkbmap proylatin; mode "default"
+        bindsym Shift+F9 exec killall fcitx || setxkbmap proyhr; mode "default"
+        bindsym F10 exec killall fcitx || setxkbmap proyeo; mode "default"
+        bindsym Shift+F10 exec killall fcitx || setxkbmap proyel; mode "default"
+        bindsym F11 exec killall fcitx || setxkbmap proyru; mode "default"
+        bindsym Shift+F11 exec killall fcitx || setxkbmap proysr; mode "default"
+        bindsym F12 exec killall fcitx || setxkbmap proyar; mode "default"
 
         # back to normal: Enter or Escape
         bindsym Return mode "default"
@@ -248,6 +265,7 @@ set $purple #b16286
 set $aqua #689d68
 set $gray #a89984
 set $darkgray #1d2021
+set $white #ffffff
 
 # green gruvbox
 # class                 border|backgr|text|indicator|child_border
