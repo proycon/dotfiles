@@ -204,6 +204,7 @@ bindsym $mod+Escape exec /home/proycon/dotfiles/lock.sh
 bindsym $mod+Shift+Escape exec /home/proycon/dotfiles/suspend.sh
 
 bindsym $alt+F2 exec /home/proycon/bin/lala
+bindsym $alt+F4 exec pkill -f notifyclient.py
 bindsym $alt+F8 exec fcitx
 bindsym $alt+F9 exec killall fcitx || setxkbmap proylatin
 bindsym $alt+Shift+F9 exec killall fcitx || setxkbmap proyhr
@@ -236,6 +237,25 @@ for_window [title="Preferences$"]       floating enable
 smart_gaps on
 gaps inner 16
 gaps outer 4
+
+#gruvbox colorscheme
+set $bg #282828
+set $red #cc241d
+set $green #98971a
+set $yellow #d79921
+set $blue #458588
+set $purple #b16286
+set $aqua #689d68
+set $gray #a89984
+set $darkgray #1d2021
+
+# green gruvbox
+# class                 border|backgr|text|indicator|child_border
+client.focused          $green $green $darkgray $purple $darkgray
+client.focused_inactive $bg $darkgray $yellow $purple $darkgray
+client.unfocused        $bg $darkgray $yellow $purple $darkgray
+client.urgent           $red $red $white $red $red
+
 
 exec_always --no-startup-id /home/proycon/dotfiles/startpolybari3.sh
 
