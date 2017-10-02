@@ -148,10 +148,11 @@ label-mode-underline = ${colors.underline}
 ;   %output%
 ; Default: %icon%  %name%
 label-focused = %icon% %name%
-label-focused-foreground = #ffffff
+label-focused-foreground = ${colors.underline}
 ; label-focused-background = #3f3f3f
 label-focused-underline = ${colors.underline}
 label-focused-padding = 2
+
 
 ; Available tokens:
 ;   %name%
@@ -176,7 +177,7 @@ label-visible-padding = 2
 ;   %index%
 ; Default: %icon%  %name%
 label-urgent = %icon% %name%
-label-urgent-foreground = #000000
+label-urgent-foreground = #cc241d
 label-urgent-background = ${colors.underline}
 label-urgent-underline = #cc241d
 label-urgent-padding = 2
@@ -184,16 +185,23 @@ label-urgent-padding = 2
 label-occupied-underline = #665c54
 label-occupied-padding = 2
 
-;ws-icon-0 = 一;
-;ws-icon-1 = 二;
-;ws-icon-2 = 三;
-;ws-icon-3 = 四;
-;ws-icon-4 = 五;
-;ws-icon-5 = 六;
-;ws-icon-6 = 七;
-;ws-icon-7 = 八;
-;ws-icon-8 = 九;
-;ws-icon-9 = 十;
+ws-icon-0 = "0: 〇;"
+ws-icon-1 = "1: 一;"
+ws-icon-2 = "2: 二;"
+ws-icon-3 = "3: 三;"
+ws-icon-4 = "4: 四;"
+ws-icon-5 = "5: 五;"
+ws-icon-6 = "6: 六;"
+ws-icon-7 = "7: 七;"
+ws-icon-8 = "8: 八;"
+ws-icon-9 = "9: 九;"
+ws-icon-10 = "10: 十;"
+ws-icon-11 = "11: 《;"
+ws-icon-12 = "12: 》;"
+
+icon-focused-foreground = ${colors.underline}
+icon-unfocused-foreground = #458588
+icon-urgent-foreground = #cc241d
 
 [module/wired]
 type = internal/network
