@@ -142,6 +142,8 @@ bindsym $mod+equal workspace $WS12
 
 bindsym $mod+Left workspace prev
 bindsym $mod+Right workspace next
+bindsym $mod+Up focus left
+bindsym $mod+Down focus right
 bindsym $mod+Tab workspace back_and_forth
 
 # move focused container to workspace
