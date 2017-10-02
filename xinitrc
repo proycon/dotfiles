@@ -19,6 +19,7 @@ sleep 0.2
 #dbus-launch /usr/lib/policykit-1-gnome/polkit-gnome-authentication-agent-1
 dbus-launch gnome-keyring-daemon -s --components=pkcs11,secrets,ssh,gpg  &
 #dbus-launch /usr/lib/gnome-settings-daemon/gnome-settings-daemon &
+bash ~/dotfiles/i3/makeconfig.sh
 xrdb -all -merge /home/proycon/.Xresources
 if [[ "$HOSTNAME" == "mhysa" ]]; then
     mountssh &
