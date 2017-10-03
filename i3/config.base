@@ -120,9 +120,9 @@ workspace $WS11 output DP-1-1 #MULTIHEAD
 workspace $WS12 output DisplayPort-1 #MULTIHEAD
 
 
-#bindsym $mod+F1 exec /home/proycon/bin/selectscreen.sh :0.1
-#bindsym $mod+F5 exec /home/proycon/bin/selectscreen.sh :0.0
-#bindsym $mod+F9 exec /home/proycon/bin/selectscreen.sh :0.0
+bindsym $mod+F1 workspace $WS11
+bindsym $mod+F5 workspace $WS10
+bindsym $mod+F9 workspace $WS12
 
 # switch to workspace
 bindsym $mod+apostrophe workspace $WS00
