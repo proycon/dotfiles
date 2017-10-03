@@ -120,9 +120,6 @@ workspace $WS11 output DP-1-1 #MULTIHEAD
 workspace $WS12 output DisplayPort-1 #MULTIHEAD
 
 
-bindsym $mod+F1 workspace $WS11
-bindsym $mod+F5 workspace $WS10
-bindsym $mod+F9 workspace $WS12
 
 # switch to workspace
 bindsym $mod+apostrophe workspace $WS00
@@ -138,6 +135,10 @@ bindsym $mod+9 workspace $WS09
 bindsym $mod+0 workspace $WS10
 bindsym $mod+minus workspace $WS11
 bindsym $mod+equal workspace $WS12
+
+bindsym $mod+F1 workspace $WS11
+bindsym $mod+F5 workspace $WS10
+bindsym $mod+F9 workspace $WS12
 
 bindsym $mod+Left focus left
 bindsym $mod+Right focus right
