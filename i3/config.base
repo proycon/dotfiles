@@ -139,10 +139,10 @@ bindsym $mod+0 workspace $WS10
 bindsym $mod+minus workspace $WS11
 bindsym $mod+equal workspace $WS12
 
-bindsym $mod+Left workspace prev
-bindsym $mod+Right workspace next
-bindsym $mod+Up focus left
-bindsym $mod+Down focus right
+bindsym $mod+Left focus left
+bindsym $mod+Right focus right
+bindsym $mod+Up focus up
+bindsym $mod+Down focus down
 bindsym $mod+Tab workspace back_and_forth
 
 # move focused container to workspace
@@ -160,9 +160,9 @@ bindsym $mod+Shift+minus move container to workspace $WS11
 bindsym $mod+Shift+equal move container to workspace $WS12
 
 # reload the configuration file
-bindsym $mod+Shift+c exec ~/dotfiles/i3/makeconfig.sh; reload
+bindsym $mod+Shift+c exec ~/dotfiles/i3/makeconfig.sh; reload; exec "i3-nagbar -t warning -m 'Reloaded'"
 # restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
-bindsym $mod+Shift+r exec ~/dotfiles/i3/makeconfig.sh; restart
+bindsym $mod+Shift+r exec ~/dotfiles/i3/makeconfig.sh; restar; exec "i3-nagbar -t warning -m 'Restarted'"
 # exit i3 (logs you out of your X session)
 bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -b 'Yes, exit i3' 'i3-msg exit'"
 
