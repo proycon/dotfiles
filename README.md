@@ -71,9 +71,20 @@ Key bindings
         * ``,`` - Rename window
         * ``/`` - Flip/swap
         * ``x`` - Kill pane
+        * ``z`` - zoom pane
+        * ``!`` - Break pane (to its own window)
         * ``r`` - reload
         * ``v`` - copy mode
 * **weechat**
+    * ``ctrl+s`` or ``ctrl+u`` - Set unread marker on all windows
+    * ``ctrl+n``  - Switch to next buffer
+    * ``ctrl+p``  - Switch to previous buffer
+    * ``alt+a`` - Switch to buffer with activity
+    * ``alt+0..9`` - Switch to buffer
+    * ``F9/F10``  - Scroll buffer title
+    * ``F11/F12``  - Scroll nick list
+    * ``ctrl+r`` - Search
+        * Enter, ``ctrl+j``, ``ctrl+m``  - Stop search
 * **alot**
 
 
