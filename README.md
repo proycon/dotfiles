@@ -1,6 +1,8 @@
 My dotfiles
 ================
 
+![](screenshot.jpg?raw=true)
+
 Software
 ------------
 
