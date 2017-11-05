@@ -20,9 +20,16 @@ urxvt*boldItalicFont: xft:Source Code Pro for Powerline:size=10:bold:italic:anti
 !urxvt*boldItalicFont: xft:Ubuntu Mono derivative Powerline:bold:italic:antialias=true:hinting=true
 urxvt*letterSpace: -1
 
-urxvt*perl-ext: default,matcher
+urxvt*perl-ext: default,matcher,font-size
 urxvt*url-launcher: /usr/bin/firefox
 urxvt*matcher.button: 1
+
+URxvt.keysym.C-Up:     font-size:increase
+URxvt.keysym.C-Down:   font-size:decrease
+URxvt.keysym.C-S-Up:   font-size:incglobal
+URxvt.keysym.C-S-Down: font-size:decglobal
+URxvt.keysym.C-equal:  font-size:reset
+URxvt.keysym.C-slash:  font-size:show
 
 urxvt*keysym.Home: \033[1~
 urxvt*keysym.End: \033[4~

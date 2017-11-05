@@ -15,6 +15,7 @@ ln -sfn $DOTDIR/vim $HOMEDIR/.vim
 ln -sfn $DOTDIR/vimrc $HOMEDIR/.vimrc
 ln -sfn $DOTDIR/zshrc $HOMEDIR/.zshrc
 ln -sfn $DOTDIR/muttrc $HOMEDIR/.muttrc
+ln -sfn $DOTDIR/urxvt $HOMEDIR/.urxvt
 ln -sfn $DOTDIR/gdbinit $HOMEDIR/.gdbinit
 ln -sfn $DOTDIR/mutt-compose.sh $HOMEDIR/bin/mutt-compose.sh
 ln -sfn $DOTDIR/mutt-compose $HOMEDIR/.mutt-compose
