@@ -32,7 +32,7 @@ killall xss-lock
 xss-lock --ignore-sleep -- /home/proycon/dotfiles/lock.sh &
 udiskie &
 setxkbmap proylatin
-/home/proycon/homeautomation/notifyclient_autoconnect.sh &
+/home/proycon/projects/homeautomation/notifyclient_autoconnect.sh &
 play ~/cylontune_low.ogg &
 compton -cC -z -r 3 -l 2 -t 2 -f &
 
