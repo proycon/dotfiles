@@ -65,6 +65,9 @@ Plug 'freitass/todo.txt-vim', { 'for': 'todo.txt' }
 "Themes
 Plug 'morhetz/gruvbox'
 
+"On-the-fly GnuPG
+Plug 'jamessan/vim-gnupg'
+
 call plug#end()
 
 let g:python_host_prog = '/usr/bin/python2'
