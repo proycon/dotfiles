@@ -222,7 +222,7 @@ alias ct="LC_ALL=en_US.UTF-8 LANG=en_US.UTF-8 ssh -Y -A -t mvgompel@radium.uvt.n
 alias rv="LC_ALL=en_US.UTF-8 LANG=en_US.UTF-8 ssh -Y -A -t applejack.science.ru.nl ssh -Y -A -t applejack /home/proycon/bin/tm_vi"
 alias homsar="ssh -Y -A -t homsar.uvt.nl zsh"
 alias luon="ssh -Y -A -t maartenvg@void.luon.net"
-alias gpga="killall gpg-agent; gpg-agent --daemon --enable-ssh-support --write-env-file /home/proycon/.gpg-agent-info"
+#alias gpga="killall gpg-agent; gpg-agent --daemon --enable-ssh-support --write-env-file /home/proycon/.gpg-agent-info"
 
 alias lq="source ~/.sgesh"
 
@@ -300,11 +300,11 @@ export PS1="$PS1"'$([ -n "$TMUX" ] && tmux setenv TMUXPWD_$(tmux display -p "#D"
 
 
 export GPGKEY="1A31555C"
-if [ -f "${HOME}/.gpg-agent-info" ]; then
-    . "${HOME}/.gpg-agent-info"
-    export GPG_AGENT_INFO
-    export SSH_AUTH_SOCK
-fi
+#if [ -f "${HOME}/.gpg-agent-info" ]; then
+#    . "${HOME}/.gpg-agent-info"
+#    export GPG_AGENT_INFO
+#    #export SSH_AUTH_SOCK
+#fi
 GPG_TTY=$(tty)
 export GPG_TTY
 

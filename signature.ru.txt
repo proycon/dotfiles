@@ -9,7 +9,7 @@ proycon@anaproy.nl
 https://proycon.anaproy.nl
 https://github.com/proycon
 
-GnuPG key:  0x1A31555C
+GnuPG key:  0x39FE11201A31555C
 XMPP: proycon@anaproy.nl  Matrix: @proycon:anaproy.nl
 Telegram:   proycon       IRC: proycon (freenode)
 Twitter:    https://twitter.com/proycon
