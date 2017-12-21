@@ -506,8 +506,8 @@ map <C-l> fzf_locate
 
 #Work folder
 
-map WK shell mkdir ~/Work -p && cd ~/Work
-map WAD shell rm -rf ~/Work
+map WK shell cd ~/work
+#map WAD shell rm -rf ~/Work
 
 #Printing
 

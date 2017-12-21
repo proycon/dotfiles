@@ -20,9 +20,15 @@ urxvt*boldItalicFont: xft:Source Code Pro for Powerline:size=10:bold:italic:anti
 !urxvt*boldItalicFont: xft:Ubuntu Mono derivative Powerline:bold:italic:antialias=true:hinting=true
 urxvt*letterSpace: -1
 
-urxvt*perl-ext: default,matcher,font-size
+urxvt*perl-ext: default,matcher,font-size,url-select,clipboard
 urxvt*url-launcher: /usr/bin/firefox
 urxvt*matcher.button: 1
+
+URxvt.clipboard.autocopy: true
+URxvt.clipboard.copycmd: xclip -i -selection clipboard
+URxvt.clipboard.pastecmd: xclip -o -selection clipboard
+URxvt.keysym.M-y: perl:clipboard:copy
+URxvt.keysym.M-p: perl:clipboard:paste﻿
 
 !URxvt.keysym.C-Up:     font-size:increase
 !URxvt.keysym.C-Down:   font-size:decrease
@@ -30,6 +36,8 @@ URxvt.keysym.C-S-Up:   font-size:incglobal
 URxvt.keysym.C-S-Down: font-size:decglobal
 URxvt.keysym.C-equal:  font-size:reset
 URxvt.keysym.C-slash:  font-size:show
+
+URxvt.keysym.M-u: perl:url-select:select_next
 
 urxvt*keysym.Home: \033[1~
 urxvt*keysym.End: \033[4~
