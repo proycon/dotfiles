@@ -88,11 +88,10 @@ if (( $? == 0 )); then
         alias vi="nvim"
         alias vim="nvim"
     else
-        export EDITOR="nvim_tmux"
-        alias vi="nvim_tmux"
-        alias vim="nvim_tmux"
-        alias nvim="nvim_tmux"
-        alias nvim_tmux="tmux -2u new nvim"
+        export EDITOR="nvim"
+        alias vi="nvim"
+        alias vim="nvim"
+        alias nvim="nvim"
     fi
 else
     which vim > /dev/null 2>/dev/null
@@ -210,6 +209,8 @@ alias fw="featherweight=1 LC_ALL=en_US.UTF-8 LANG=en_US.UTF-8 ssh -Y -A -t apple
 alias bf="blossomforth=1 LC_ALL=en_US.UTF-8 LANG=en_US.UTF-8 ssh -Y -A -t applejack.science.ru.nl ssh -Y -A -t blossomforth /home/proycon/bin/tm"
 alias tl="thunderlane=1 LC_ALL=en_US.UTF-8 LANG=en_US.UTF-8 ssh -Y -A -t applejack.science.ru.nl ssh -Y -A -t thunderlane /home/proycon/bin/tm"
 alias tw="twist=1 LC_ALL=en_US.UTF-8 LANG=en_US.UTF-8 ssh -Y -A -t applejack.science.ru.nl ssh -Y -A -t twist /home/proycon/bin/tm"
+alias mlp1="mlp1=1 LC_ALL=en_US.UTF-8 LANG=en_US.UTF-8 ssh -Y -A -t applejack.science.ru.nl ssh -Y -A -t mlp01 /home/proycon/bin/tm"
+alias mlp01="mlp1=1 LC_ALL=en_US.UTF-8 LANG=en_US.UTF-8 ssh -Y -A -t applejack.science.ru.nl ssh -Y -A -t mlp01 /home/proycon/bin/tm"
 alias _aj="LC_ALL=en_US.UTF-8 LANG=en_US.UTF-8 ssh -Y -A -t applejack.science.ru.nl zsh"
 alias _fs="LC_ALL=en_US.UTF-8 LANG=en_US.UTF-8 ssh -Y -A -t applejack.science.ru.nl ssh -Y -A -t fluttershy zsh"
 alias _rr="LC_ALL=en_US.UTF-8 LANG=en_US.UTF-8 ssh -Y -A -t applejack.science.ru.nl ssh -Y -A -t rarity zsh"
@@ -218,8 +219,6 @@ alias _fp="LC_ALL=en_US.UTF-8 LANG=en_US.UTF-8 ssh -Y -A -t applejack.science.ru
 alias _pq="LC_ALL=en_US.UTF-8 LANG=en_US.UTF-8 ssh -Y -A -t applejack.science.ru.nl ssh -Y -A -t pipsqueak zsh"
 alias _so="LC_ALL=en_US.UTF-8 LANG=en_US.UTF-8 ssh -Y -A -t applejack.science.ru.nl ssh -Y -A -t scootaloo zsh"
 alias _sc="LC_ALL=en_US.UTF-8 LANG=en_US.UTF-8 ssh -Y -A -t mvgompel@radium.uvt.nl ssh -Y -A -t scylla zsh"
-alias ct="LC_ALL=en_US.UTF-8 LANG=en_US.UTF-8 ssh -Y -A -t mvgompel@radium.uvt.nl ssh -Y -A -t ceto zsh"
-alias rv="LC_ALL=en_US.UTF-8 LANG=en_US.UTF-8 ssh -Y -A -t applejack.science.ru.nl ssh -Y -A -t applejack /home/proycon/bin/tm_vi"
 alias homsar="ssh -Y -A -t homsar.uvt.nl zsh"
 alias luon="ssh -Y -A -t maartenvg@void.luon.net"
 #alias gpga="killall gpg-agent; gpg-agent --daemon --enable-ssh-support --write-env-file /home/proycon/.gpg-agent-info"
