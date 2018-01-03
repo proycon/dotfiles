@@ -9,6 +9,7 @@ if [[ $HOST == "caprica" ]] {
 } elif [[ $HOST == 'applejack' ]] || [[ $HOST == 'mlp01' ]]   {
 	host="{$fg_bold[red]%}@%m%{$reset_color%}"
 } elif [[ -f /etc/profile.d/mlp.sh ]] {
+    HOSTNAME=$HOST
     source /etc/profile.d/mlp.sh
 	host="{$fg_bold[magenta]%}@{$PONY}>%m%{$reset_color%}"
 } else {
