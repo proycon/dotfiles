@@ -11,7 +11,7 @@ if [[ $HOST == "caprica" ]] {
 } elif [[ -f /etc/profile.d/mlp.sh ]] {
     HOSTNAME=$HOST
     source /etc/profile.d/mlp.sh
-    host="{$fg_bold[cyan]%}@$PONY(%m)%{$reset_color%}"
+    host="{%F{172}%}@$PONY %m%k%f"
 } else {
 	host="{$fg_bold[white]%}@%m%{$reset_color%}"
 }
