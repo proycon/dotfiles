@@ -1,16 +1,16 @@
+#!/bin/zsh
 
-if [[ $HOST == "galactica" || $HOST == "pegasus" ]] {
-	host="{$fg_bold[green]%}@%m%{$reset_color%}"
+if [[ $HOST == "caprica" ]] {
+	host="{$fg[cyan]%}@%m%{$reset_color%}"
 } elif [[ $HOST == "mhysa" || $HOST == "drasha" ]] {
 	host="{$fg_bold[blue]%}@%m%{$reset_color%}"
 } elif [[ $HOST == "roma" ]] {
 	host="{$fg_bold[yellow]%}@%m%{$reset_color%}"
-} elif [[ $HOST == 'charon' ]] || [[ $HOST == 'cerberus' ]] || [[ $HOST == 'zeus' ]] || [[ $HOST == 'applejack' ]] || [[ $HOST == 'pipsqueak' ]]   {
+} elif [[ $HOST == 'applejack' ]] || [[ $HOST == 'mlp01' ]]   {
 	host="{$fg_bold[red]%}@%m%{$reset_color%}"
-} elif [[ $HOST == 'ceto' ]] || [[ $HOST == 'scylla' ]] || [[ $HOST == 'charybdis' ]] || [[ $HOST == 'rarity' ]]  || [[ $HOST == 'scootaloo' ]] {
-	host="{$fg_bold[cyan]%}@%m%{$reset_color%}"
-} elif [[ $HOST == 'stheno' ]] || [[ $HOST == 'cheerilee' ]] || [[ $HOST == 'fancypants' ]] || [[ $HOST == 'fluttershy' ]] {
-	host="{$fg_bold[magenta]%}@%m%{$reset_color%}"
+} elif [[ -f /etc/profile.d/mlp.sh ]] {
+    source /etc/profile.d/mlp.sh
+	host="{$fg_bold[magenta]%}$PONY|@%m%{$reset_color%}"
 } else {
 	host="{$fg_bold[white]%}@%m%{$reset_color%}"
 }
