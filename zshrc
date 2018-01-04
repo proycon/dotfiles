@@ -150,7 +150,7 @@ elif [[ $HOST == "roma" ]]; then
     hash -d clb=/home/proycon/work/colibri/
     hash -d cta=/home/proycon/work/colibrita/
     hash -d W=/home/proycon/work
-elif [[ $HOST == "applejack" || $HOST == "fluttershy" || $HOST == "rarity" || $HOST == "cheerilee" || $HOST == "fancypants" || $HOST == "pipsqueak" || $HOST == "scootaloo" || $HOST == "blossomforth" || $HOST == "featherweight" || $HOST == "twist" || $HOST == "thunderlane" ]]; then
+elif [[ $HOST == "applejack" || $HOST == "fluttershy" || $HOST == "rarity" || $HOST == "cheerilee" || $HOST == "fancypants" || $HOST == "pipsqueak" || $HOST == "scootaloo" || $HOST == "blossomforth" || $HOST == "featherweight" || $HOST == "twist" || $HOST == "thunderlane" || ${HOST:0:3} == "mlp" ]]; then
     export LD_LIBRARY_PATH="/vol/customopt/machine-translation/lib:/vol/customopt/nlptools/lib/:$LD_LIBRARY_PATH"
     BASEPATH="/home/proycon/bin:/home/proycon/local/bin:/vol/customopt/machine-translation/bin:$PATH"
     #/vol/customopt/uvt-ru/bin:/vol/customopt/alpino/bin:/vol/customopt/uvt-ru/src/colibri/scripts:/vol/customopt/nlptools/bin/:/vol/customopt/nlptools/cmd/:/vol/customopt/cython3/bin/:$PATH"
@@ -165,20 +165,15 @@ elif [[ $HOST == "applejack" || $HOST == "fluttershy" || $HOST == "rarity" || $H
         export TMPDIR="/scratch/proycon/tmp"
     fi
     hash -d X=/scratch/proycon/
-    hash -d lsrc=/scratch/proycon/local/src
     hash -d corpora=/vol/bigdata/corpora/
-    hash -d ur=/vol/customopt/uvt-ru/
     hash -d lm=/vol/customopt/lamachine/
-    hash -d lm14=/vol/customopt/lamachine14/
+    hash -d lmdev=/vol/customopt/lamachine.dev/
     hash -d lmsrc=/vol/customopt/lamachine/src/
     hash -d mt=/vol/customopt/machine-translation/
     hash -d corp=/vol/bigdata/corpora/
     hash -d bd=/vol/bigdata/users/proycon/
     hash -d tu=/vol/tensusers/proycon/
-    hash -d ws=/scratch2/www/webservices-lst/live
-
-    alias lm14='. /vol/customopt/lamachine14/bin/activate'
-    alias lmt='. /vol/customopt/lamachinetest/bin/activate'
+    hash -d ws=/var/www/webservices-lst/live
 
     umask u=rwx,g=rx,o=rx
 fi
