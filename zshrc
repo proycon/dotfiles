@@ -130,14 +130,12 @@ if [[ $HOST == "galactica" || $HOST == "mhysa" || $HOST == "caprica" || $HOST ==
     export LD_LIBRARY_PATH="$LD_LIBRARY_PATH:/home/proycon/local/lib"
     export CDPATH=.:~/work
     export PYTHONPATH="/home/proycon/work/"
-    export ALPINO_HOME="/usr/local/Alpino"
     export ANDROID_SDK="/usr/local/android-sdk-linux"
 
     hash -d X=/home/proycon/exp
     hash -d lsrc=/home/proycon/local/src/
-    hash -d clb=/home/proycon/work/colibri/
-    hash -d cta=/home/proycon/work/colibrita/
     hash -d W=/home/proycon/work
+    hash -d P=/home/proycon/projects
 elif [[ $HOST == "roma" ]]; then
     export PATH="/home/proycon/bin:/home/proycon/.cargo/bin:/home/proycon/local/bin:$PATH"
     export LD_LIBRARY_PATH="$LD_LIBRARY_PATH:/home/proycon/local/lib"
@@ -147,9 +145,8 @@ elif [[ $HOST == "roma" ]]; then
 
     hash -d X=/home/proycon/exp
     hash -d lsrc=/home/proycon/local/src/
-    hash -d clb=/home/proycon/work/colibri/
-    hash -d cta=/home/proycon/work/colibrita/
     hash -d W=/home/proycon/work
+    hash -d P=/home/proycon/projects
 elif [[ $HOST == "applejack" || $HOST == "fluttershy" || $HOST == "rarity" || $HOST == "cheerilee" || $HOST == "fancypants" || $HOST == "pipsqueak" || $HOST == "scootaloo" || $HOST == "blossomforth" || $HOST == "featherweight" || $HOST == "twist" || $HOST == "thunderlane" || ${HOST:0:3} == "mlp" ]]; then
     export LD_LIBRARY_PATH="/vol/customopt/machine-translation/lib:/vol/customopt/nlptools/lib/:$LD_LIBRARY_PATH"
     BASEPATH="/home/proycon/bin:/home/proycon/local/bin:/vol/customopt/machine-translation/bin:$PATH"
@@ -159,8 +156,6 @@ elif [[ $HOST == "applejack" || $HOST == "fluttershy" || $HOST == "rarity" || $H
     #export PYTHONPATH="/home/proycon/:/vol/customopt/uvt-ru/lib/python2.7/site-packages/:/vol/customopt/uvt-ru/src/colibri/scripts:/vol/customopt/uvt-ru/lib/python2.7/site-packages/frog/:/vol/customopt/nlptools/stanford-corenlp-python:/vol/customopt/uvt-ru/lib/python3.2/site-packages/:/vol/customopt/python3-packages/lib/python3.2/site-packages/"
     export CLASSPATH="/vol/customopt/nlptools/stanford-corenlp-full/stanford-corenlp-1.3.4.jar:/vol/customopt/nlptools/stanford-corenlp-full/stanford-corenlp-1.3.4-models.jar:/vol/customopt/nlptools/stanford-corenlp-full/xom.jar:/vol/customopt/nlptools/stanford-corenlp-full/joda-time.jar:/vol/customopt/nlptools/stanford-corenlp-full/jollyday.jar:/vol/customopt/nlptools/javalib:."
     export FREELINGSHARE="/vol/customopt/nlptools/share/freeling/"
-    export PARAMSEARCH_DIR="/vol/customopt/uvt-ru/src/paramsearch"
-    export ALPINO_HOME="/vol/customopt/alpino/"
     if [ -d /scratch/proycon/tmp ]; then
         export TMPDIR="/scratch/proycon/tmp"
     fi
