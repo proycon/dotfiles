@@ -187,7 +187,6 @@ alias sshat='ssh -Y -A anaproy.nl /home/proycon/bin/tm'
 alias e='ssh -Y -A -t anaproy.nl /home/proycon/bin/tm_vi'
 alias m="ssh -Y -A -t anaproy.nl /home/proycon/bin/tm_alot"
 alias sshilk='ssh u232231@radium.uvt.nl'
-alias lo="ssh -Y -A -t lilo3.science.ru.nl zsh"
 alias aj="ssh -Y -A -t applejack.science.ru.nl /home/proycon/bin/tm"
 alias fs="ssh -Y -A -t applejack.science.ru.nl ssh -Y -A -t fluttershy /home/proycon/bin/tm"
 alias rr="ssh -Y -A -t applejack.science.ru.nl ssh -Y -A -t rarity /home/proycon/bin/tm"
