@@ -14,6 +14,7 @@ DOTDIR=`pwd`
 ln -sfn $DOTDIR/vim $HOMEDIR/.vim
 ln -sfn $DOTDIR/vimrc $HOMEDIR/.vimrc
 ln -sfn $DOTDIR/zshrc $HOMEDIR/.zshrc
+ln -sfn $DOTDIR/urlview $HOMEDIR/.urlview
 ln -sfn $DOTDIR/muttrc $HOMEDIR/.muttrc
 ln -sfn $DOTDIR/urxvt $HOMEDIR/.urxvt
 ln -sfn $DOTDIR/gdbinit $HOMEDIR/.gdbinit
