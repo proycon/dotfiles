@@ -275,7 +275,7 @@ map <Leader>f :NERDTreeToggle<CR>
 " map g# <Plug>(incsearch-nohl-g#)
 "
 " urlview
-noremap <leader>L :w<Home>silent <End> !urlview<CR>
+:noremap <leader>L :w<Home>silent <End> !urlview<CR>
 
 " TagBar
 nmap <C-t> :TagbarToggle<CR>
