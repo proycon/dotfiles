@@ -71,6 +71,7 @@ alias ta='~/todo.sh add'
 alias ka='killall'
 alias za='zathura'
 alias gpp='git push origin gh-pages'
+alias mp="ncmpcpp -b ~/dotfiles/ncmpcpp.bindings"
 alias r='ranger'
 #colours
 #which colorgcc > /dev/null 2> /dev/null
