@@ -41,6 +41,7 @@ ln -sfn $DOTDIR/irssi $HOMEDIR/.irssi
 ln -sfn $DOTDIR/tmux.conf $HOMEDIR/.tmux.conf
 ln -sfn $DOTDIR/tmux-powerlinerc $HOMEDIR/.tmux-powerlinerc
 ln -sfn $DOTDIR/tm $HOMEDIR/bin/tm
+ln -sfn $DOTDIR/screencash.sh $HOMEDIR/bin/screencast.sh
 ln -sfn $DOTDIR/ncmpcpp.config $HOMEDIR/.ncmpcpp/config
 ln -sfn $DOTDIR/pdbrc.py $HOMEDIR/.pdbrc.py
 ln -sfn $DOTDIR/pylintrc $HOMEDIR/.pylintrc
