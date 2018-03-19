@@ -59,8 +59,9 @@ Plug 'junegunn/goyo.vim' "distraction free writing
 Plug 'miyakogi/seiya.vim' "transparent background
 
 " Syntax helpers
-" Plug 'pearofducks/ansible-vim', { 'for': 'ansible' }
+Plug 'pearofducks/ansible-vim', { 'for': 'ansible' } "highlighting
 Plug 'freitass/todo.txt-vim', { 'for': 'todo.txt' }
+
 
 "Themes
 Plug 'morhetz/gruvbox'
@@ -390,6 +391,9 @@ autocmd Filetype markdown map <F5> :!pandoc<space><C-r>%<space>-o<space><C-r>%.p
 autocmd Filetype rmd map <F5> :!echo<space>"require(rmarkdown);<space>render('<c-r>%')"<space>\|<space>R<space>--vanilla<enter><Paste>
 autocmd FileType tex inoremap <F5> <Esc>:!pdflatex<spacE><c-r>%<Enter>a
 autocmd FileType tex nnoremap <F5> :!pdflatex<spacE><c-r>%<Enter>
+
+"ansible-vim
+let g:ansible_name_highlight = 'b'
 
 
 augroup neovim

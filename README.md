@@ -87,6 +87,8 @@ Key bindings
     * ``F11/F12``  - Scroll nick list
     * ``ctrl+r`` - Search
         * Enter, ``ctrl+j``, ``ctrl+m``  - Stop search
+    * ``alt+=`` -  Disabled filters (hide/join) (``alt+-`` for current buffer)
+        * ``/filter add irc_smart * irc_smart_filter *``  - Smart hide/join/filter
 * **alot**
 
 
