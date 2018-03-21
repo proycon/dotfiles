@@ -8,99 +8,108 @@ Xft.antialias: 1
 Xft.rgba: rgb
 Xft.dpi: 100
 urxvt*depth: 32
-urxvt*background: rgba:2f00/2f00/2f00/e800
+urxvt*background: rgba:2f00/2f00/2f00/f900
 
 urxvt*scrollBar: false
-urxvt*font: xft:Source Code Pro for Powerline:size=10:antialias=true:hinting=true,xft:Ubuntu Mono derivative Powerline:size=11:antialias=true:hinting=true,xft:WenQuanYi Micro Hei Mono:size=11,xft:DejaVu Sans Mono:size=11,xft:Symbola:size=8,xft:Gargi,xft:Khmer OS System,xft:Lohit Devanagari:size=11,xft:Lohit Tamil,xft:Lohit Gujarati,xft:Lohit Bengali,xft:Lohit Oriya,xft:Lohit Kannada,xft:Lohit Konkani,xft:Lohit Malayam,xft:Lohit Telugu,xft:Lohit Nepali,xft:Lohit Assamese,xft:Lohit Punjabi
-urxvt*italicFont: xft:Source Code Pro for Powerline:size=10:italic:antialias=true:hinting=true,xft:Ubuntu Mono derivative Powerline:size=11:italic:antialias=true:hinting=true,xft:WenQuanYi Micro Hei Mono:italic,xft:Symbola:size=8
-urxvt*boldFont: xft:Source Code Pro for Powerline:size=10:bold:antialias=true:hinting=true,xft:Ubuntu Mono derivative Powerline:size=11:bold:antialias=true:hinting=true,xft:WenQuanYi Micro Hei Mono:bold:size=11,xft:Symbola:size=8
-urxvt*boldItalicFont: xft:Source Code Pro for Powerline:size=10:bold:italic:antialias=true:hinting=true,xft:Ubuntu Mono derivative Powerline:size=10:bold:italic:antialias=true:hinting=true,xft:WenQuanYi Micro Hei Mono:bold:italic,xft:Symbola:size=8
+urxvt*font: xft:Source Code Pro for Powerline:size=10:antialias=true:hinting=true,xft:Ubuntu Mono derivative Powerline:size=11:antialias=true:hinting=true,xft:WenQuanYi Micro Hei Mono:size=11,xft:DejaVu Sans Mono:size=11,xft:Symbola:size=8,xft:Gargi,xft:Khmer OS System,xft:Lohit Devanagari:size=11,xft:Lohit Tamil,xft:Lohit Gujarati,xft:Lohit Bengali,xft:Lohit Oriya,xft:Lohit Kannada,xft:Lohit Konkani,xft:Lohit Malayam,xft:Lohit Telugu,xft:Lohit Nepali,xft:Lohit Assamese,xft:Lohit Punjabi,xft:Material Design Icons:size=10
+urxvt*italicFont: xft:Source Code Pro for Powerline:size=10:italic:antialias=true:hinting=true,xft:Ubuntu Mono derivative Powerline:size=11:italic:antialias=true:hinting=true,xft:WenQuanYi Micro Hei Mono:italic,xft:Symbola:size=8,xft:Material Design Icons:size=10
+urxvt*boldFont: xft:Source Code Pro for Powerline:size=10:bold:antialias=true:hinting=true,xft:Ubuntu Mono derivative Powerline:size=11:bold:antialias=true:hinting=true,xft:WenQuanYi Micro Hei Mono:bold:size=11,xft:Symbola:size=8,xft:Material Design Icons:size=10
+urxvt*boldItalicFont: xft:Source Code Pro for Powerline:size=10:bold:italic:antialias=true:hinting=true,xft:Ubuntu Mono derivative Powerline:size=10:bold:italic:antialias=true:hinting=true,xft:WenQuanYi Micro Hei Mono:bold:italic,xft:Symbola:size=8,xft:Material Design Icons:size=10
 !urxvt*boldFont: xft:Ubuntu Mono derivative Powerline:bold:antialias=true:hinting=true
 !urxvt*italicFont: xft:Ubuntu Mono derivative Powerline:italic:antialias=true:hinting=true
 !urxvt*boldItalicFont: xft:Ubuntu Mono derivative Powerline:bold:italic:antialias=true:hinting=true
 urxvt*letterSpace: -1
 
-urxvt*perl-ext: default,matcher
+urxvt*perl-ext: default,matcher,font-size,url-select,clipboard
 urxvt*url-launcher: /usr/bin/firefox
 urxvt*matcher.button: 1
 
+URxvt.clipboard.autocopy: true
+URxvt.clipboard.copycmd: xclip -i -selection clipboard
+URxvt.clipboard.pastecmd: xclip -o -selection clipboard
+URxvt.keysym.M-y: perl:clipboard:copy
+URxvt.keysym.M-p: perl:clipboard:paste﻿
+
+!URxvt.keysym.C-Up:     font-size:increase
+!URxvt.keysym.C-Down:   font-size:decrease
+URxvt.keysym.C-S-Up:   font-size:incglobal
+URxvt.keysym.C-S-Down: font-size:decglobal
+URxvt.keysym.C-equal:  font-size:reset
+URxvt.keysym.C-slash:  font-size:show
+
+URxvt.keysym.M-u: perl:url-select:select_next
+
 urxvt*keysym.Home: \033[1~
 urxvt*keysym.End: \033[4~
+! -----------------------------------------------------------------------------
+! File: gruvbox-dark.xresources
+! Description: Retro groove colorscheme generalized
+! Author: morhetz <morhetz@gmail.com>
+! Source: https://github.com/morhetz/gruvbox-generalized
+! Last Modified: 6 Sep 2014
+! -----------------------------------------------------------------------------
 
-!!urxvt*foreground: #D6C3B6
-urxvt*foreground: #d4d4d4
-urxvt*cursorColor: #f8b7b7
-urxvt*colorIT: #8c644c
-urxvt*colorUL: #4682B4
-urxvt*colorBD: #ffffff
+*background: #1d2021
+! *background: #282828
+! soft contrast: *background: #32302f
+*foreground: #ebdbb2
+! Black + DarkGrey
+*color0:  #282828
+*color8:  #928374
+! DarkRed + Red
+*color1:  #cc241d
+*color9:  #fb4934
+! DarkGreen + Green
+! *color2:  #98971a
+! *color10: #b8bb26
+! Less toxic Green
+*color2:  #b5bd68
+*color10: #4D6E4E
+! DarkYellow + Yellow
+*color3:  #d79921
+*color11: #fabd2f
+! DarkBlue + Blue
+*color4:  #458588
+*color12: #83a598
+! DarkMagenta + Magenta
+*color5:  #b16286
+*color13: #d3869b
+! DarkCyan + Cyan
+*color6:  #689d6a
+*color14: #8ec07c
+! LightGrey + White
+*color7:  #a89984
+*color15: #ebdbb2
 
-!! black dark/light
-urxvt*color0: #000000
-urxvt*color8: #555753
-
-!! red dark/light
-urxvt*color1: #9F0000
-urxvt*color9: #FB8080
-
-!! green dark/light
-urxvt*color2:  #3C5B31
-urxvt*color10:  #659438
-
-!! yellow dark/light
-urxvt*color3:  #908A66
-urxvt*color11:   #DBDC7A
-!!urxvt*color11: #E0DAAC
-
-!! blue dark/light
-urxvt*color4: #3465A4
-urxvt*color12: #729FCF
-
-!! magenta dark/light
-!!urxvt*color5: #656565
-!!urxvt*color13: #706D70
-!!urxvt*color5: #463c3b
-urxvt*color5: #8A4762
-urxvt*color13: #AD7FA8
-
-!! cyan dark/light
-!!urxvt*color6: #3b484a
-!!urxvt*color14: #444d4e
-urxvt*color6: #4B5C5E
-urxvt*color14: #8AD7C2
-
-
-!! white dark/light
-urxvt*color7: #D3D7CF
-urxvt*color15: #EEEEEC
 
 urxvtwhite*depth: 32
-urxvtwhite.background: #f1eee9
-urxvtwhite.foreground: #111111
+urxvtwhite*background: rgba:fb00/f100/c700/f500
+urxvtwhite.foreground: #3c3836
 
 !Black
-urxvtwhite.color0:     #111111
-urxvtwhite.color8:     #000000
+urxvtwhite.color0:     #fbf1c7
+urxvtwhite.color8:     #928374
 !!Red
-urxvtwhite.color1:     #936a6f
-urxvtwhite.color9:     #d76572
+urxvtwhite.color1:     #cc241d
+urxvtwhite.color9:     #9d0006
 !!Green
-urxvtwhite.color2:     #668462
-urxvtwhite.color10:    #4fae42
+urxvtwhite.color2:     #98971a
+urxvtwhite.color10:    #79740e
 !!Yellow
-urxvtwhite.color3:     #7f7b62
-urxvtwhite.color11:    #a8981f
+urxvtwhite.color3:     #d79921
+urxvtwhite.color11:    #b57614
 !!Blue
-urxvtwhite.color4:     #6e7291
-urxvtwhite.color12:    #7782cf
+urxvtwhite.color4:     #458588
+urxvtwhite.color12:    #076678
 !!Magenta
-urxvtwhite.color5:     #846887
-urxvtwhite.color13:    #b754c4
+urxvtwhite.color5:     #b16286
+urxvtwhite.color13:    #8f3f71
 !!Cyan
-urxvtwhite.color6:     #637e7b
-urxvtwhite.color14:    #2ea89a
+urxvtwhite.color6:     #899d6a
+urxvtwhite.color14:    #427b58
 !!White
-urxvtwhite.color7:     #9a9a9a
-urxvtwhite.color15:    #a4a4a4
+urxvtwhite.color7:     #7c6f64
+urxvtwhite.color15:    #3c3836
 
 
 urxvtwhite*scrollBar: false
@@ -125,3 +134,21 @@ urxvtwhite*colorIT: #000000
 urxvtwhite*colorUL: #000000
 urxvtwhite*colorBD: #000000
 
+scratchpad*depth: 32
+!scratchpad*background: rgba:2f00/2f00/2f00/f900
+scratchpad*background: rgba:0000/2b00/3600/e100
+!scratchpad*foreground: #657b83
+
+scratchpad*scrollBar: false
+scratchpad*font: xft:Source Code Pro for Powerline:size=10:antialias=true:hinting=true,xft:Ubuntu Mono derivative Powerline:size=11:antialias=true:hinting=true,xft:WenQuanYi Micro Hei Mono:size=11,xft:DejaVu Sans Mono:size=11,xft:Symbola:size=8,xft:Gargi,xft:Khmer OS System,xft:Lohit Devanagari:size=11,xft:Lohit Tamil,xft:Lohit Gujarati,xft:Lohit Bengali,xft:Lohit Oriya,xft:Lohit Kannada,xft:Lohit Konkani,xft:Lohit Malayam,xft:Lohit Telugu,xft:Lohit Nepali,xft:Lohit Assamese,xft:Lohit Punjabi,xft:Material Design Icons:size=10
+scratchpad*italicFont: xft:Source Code Pro for Powerline:size=10:italic:antialias=true:hinting=true,xft:Ubuntu Mono derivative Powerline:size=11:italic:antialias=true:hinting=true,xft:WenQuanYi Micro Hei Mono:italic,xft:Symbola:size=8,xft:Material Design Icons:size=10
+scratchpad*boldFont: xft:Source Code Pro for Powerline:size=10:bold:antialias=true:hinting=true,xft:Ubuntu Mono derivative Powerline:size=11:bold:antialias=true:hinting=true,xft:WenQuanYi Micro Hei Mono:bold:size=11,xft:Symbola:size=8,xft:Material Design Icons:size=10
+scratchpad*boldItalicFont: xft:Source Code Pro for Powerline:size=10:bold:italic:antialias=true:hinting=true,xft:Ubuntu Mono derivative Powerline:size=10:bold:italic:antialias=true:hinting=true,xft:WenQuanYi Micro Hei Mono:bold:italic,xft:Symbola:size=8,xft:Material Design Icons:size=10
+!scratchpad*boldFont: xft:Ubuntu Mono derivative Powerline:bold:antialias=true:hinting=true
+!scratchpad*italicFont: xft:Ubuntu Mono derivative Powerline:italic:antialias=true:hinting=true
+!scratchpad*boldItalicFont: xft:Ubuntu Mono derivative Powerline:bold:italic:antialias=true:hinting=true
+scratchpad*letterSpace: -1
+
+scratchpad*perl-ext: default,matcher,font-size,url-select,clipboard
+scratchpad*url-launcher: /usr/bin/firefox
+scratchpad*matcher.button: 1

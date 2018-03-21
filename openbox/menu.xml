@@ -6,32 +6,20 @@
                 file:///usr/share/openbox/menu.xsd">
 
 <menu id="root-menu" label="Openbox 3">
-    <item label="Terminal emulator (default)" icon="/usr/share/icons/Faenza/apps/16/terminal.png">
-    <action name="Execute"><execute>x-terminal-emulator</execute></action>
-  </item>
-  <item label="Windowed terminal" icon="/usr/share/icons/Faenza/apps/16/terminal.png">
-    <action name="Execute"><execute>gnome-terminal</execute></action>
+  <item label="Terminal" icon="/usr/share/icons/Faenza/apps/16/terminal.png">
+    <action name="Execute"><execute>urxvt</execute></action>
   </item>
   <item label="File manager" icon="/usr/share/icons/Faenza/apps/16/file-manager.png">
     <action name="Execute"><execute>pcmanfm</execute></action>
   </item>
-  <item label="Web browser" icon="/usr/share/icons/Faenza/apps/16/chromium.png">
-    <action name="Execute"><execute>x-www-browser</execute></action>
-  </item>
-  <item label="IM (Pidgin)" icon="/usr/share/icons/Faenza/apps/16/pidgin.png">
-    <action name="Execute"><execute>pidgin</execute></action>
+  <item label="Web browser" icon="/usr/share/icons/Faenza/apps/16/firefox.png">
+    <action name="Execute"><execute>firefox</execute></action>
   </item>
   <item label="Editor (vim)" icon="/usr/share/icons/Faenza/apps/16/vim.png">
-    <action name="Execute"><execute>terminator -e "tm vim"</execute></action>
+    <action name="Execute"><execute>urxvt -cd /home/proycon -T vim -e /home/proycon/bin/tm nvim</execute></action>
   </item>
-  <item label="Mail (mutt)" icon="/usr/share/icons/Faenza/apps/16/claws-mail.png">
-    <action name="Execute"><execute>terminator -e "tm mutt"</execute></action>
-  </item>
-  <item label="IRC (irssi)" icon="/usr/share/icons/Faenza/apps/16/xchat.png">
-    <action name="Execute"><execute>terminator -e "tm irssi"</execute></action>
-  </item>
-  <item label="Music" icon="/usr/share/icons/Faenza/apps/16/minitunes.png">
-    <action name="Execute"><execute>terminator -e ncmpcpp</execute></action>
+  <item label="Mail/chat" icon="/usr/share/icons/Faenza/apps/16/claws-mail.png">
+      <action name="Execute"><execute>urxvt -cd /home/proycon -T mail -e ssh -Y -A -t anaproy.nl /home/proycon/bin/tm_alot</execute></action>
   </item>
   <item label="Gimp" icon="/usr/share/icons/Faenza/apps/16/gimp.png">
     <action name="Execute"><execute>gimp</execute></action>
@@ -95,13 +83,13 @@
   </menu>
   <separator />
   <!-- This requires the presence of the 'menu' package to work -->
-  
+
   <menu id="/Debian" label="Full Menu" />
-  
+
   <separator />
 
   <menu id="client-list-menu" />
-			
+
   <separator />
 
   <menu id="config" label="Configuration" icon="/usr/share/icons/Faenza/apps/16/paprefs.png">
@@ -136,10 +124,10 @@
   <separator />
   <item label="Lock Screen" icon="/usr/share/icons/Faenza/apps/16/gdm.png">
 	<action name="Execute"> <execute>gnome-screensaver-command -a</execute></action>
-  </item>    
+  </item>
   <item label="Suspend" icon="/usr/share/icons/Faenza/apps/16/xscreensaver.png">
 	<action name="Execute"> <execute>suspend.sh</execute></action>
-  </item> 
+  </item>
   <menu id="system" label="Shutdown &amp; Reboot">
   <item label="Reboot" icon="/usr/share/icons/Faenza/apps/16/gnome-session-reboot.png">
 	<action name="Execute"> <execute>sudo shutdown -r now</execute></action>
