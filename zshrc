@@ -377,3 +377,8 @@ esac
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 [ -f ~/dotfiles/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh ] && source ~/dotfiles/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+# BEGIN LAMACHINE MANAGED BLOCK - path
+if [[ "$PATH" != *"/home/proycon/bin"* ]]; then
+    export PATH=~/bin:$PATH #add ~/bin to $PATH, that is where the activation scripts are
+fi
+# END LAMACHINE MANAGED BLOCK - path
