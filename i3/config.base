@@ -32,6 +32,7 @@ floating_modifier $mod
 # start a terminal
 bindsym $mod+Return exec urxvt -cd /home/proycon
 bindsym $mod+t exec urxvt -cd /home/proycon
+bindsym $mod+y exec urxvt -name urxvtwhite -cd /home/proycon
 
 # kill focused window
 bindsym $mod+Shift+q kill
