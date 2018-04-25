@@ -53,6 +53,7 @@ Plug 'nathanaelkane/vim-indent-guides', { 'for': 'python' }
 Plug 'rust-lang/rust.vim'
 Plug 'racer-rust/vim-racer'
 Plug 'cespare/vim-toml'
+Plug 'posva/vim-vue'
 
 " Misc
 Plug 'junegunn/goyo.vim' "distraction free writing
