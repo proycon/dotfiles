@@ -244,6 +244,10 @@ au BufNewFile,BufRead *.py set tabstop=4 softtabstop=4 shiftwidth=4 textwidth=12
 au BufRead *.tex set textwidth=120 formatoptions=cqt wrapmargin=0
 au BufRead *.txt,*.md,*.rst set textwidth=120 formatoptions+=t wrapmargin=0
 au BufRead,BufNewFile */roles/*.yml set filetype=yaml.ansible
+au BufRead,BufNewFile *.nginx set ft=nginx
+au BufRead,BufNewFile */etc/nginx/* set ft=nginx
+au BufRead,BufNewFile */nginx/conf/* set ft=nginx
+au BufRead,BufNewFile nginx.conf set ft=nginx
 
 nnoremap <silent> <A-right> :bn<CR>
 nnoremap <silent> <A-left> :bp<CR>
