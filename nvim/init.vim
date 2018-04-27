@@ -60,7 +60,7 @@ Plug 'junegunn/goyo.vim' "distraction free writing
 Plug 'miyakogi/seiya.vim' "transparent background
 
 " Syntax helpers
-Plug 'pearofducks/ansible-vim', { 'for': 'ansible' } "highlighting
+Plug 'pearofducks/ansible-vim' "highlighting
 Plug 'freitass/todo.txt-vim', { 'for': 'todo.txt' }
 
 
@@ -243,6 +243,7 @@ set formatoptions+=jq   " join comments if it makes sense, when joining lines, a
 au BufNewFile,BufRead *.py set tabstop=4 softtabstop=4 shiftwidth=4 textwidth=120
 au BufRead *.tex set textwidth=120 formatoptions=cqt wrapmargin=0
 au BufRead *.txt,*.md,*.rst set textwidth=120 formatoptions+=t wrapmargin=0
+au BufRead,BufNewFile */roles/*.yml set filetype=yaml.ansible
 
 nnoremap <silent> <A-right> :bn<CR>
 nnoremap <silent> <A-left> :bp<CR>
@@ -395,6 +396,7 @@ autocmd FileType tex nnoremap <F5> :!pdflatex<spacE><c-r>%<Enter>
 
 "ansible-vim
 let g:ansible_name_highlight = 'b'
+let g:ansible_extra_keywords_highlight = 1
 
 
 augroup neovim
