@@ -38,7 +38,10 @@ unset GREP_OPTIONS #deprecated
 
 
 #apps
-alias hr="echo '_____________________________________________________________________________________'"
+menu () {
+    whiptail --menu "Menu" 25 80 15 atop "Apache top (root)" glances "Interactive process viewer" htop "Interactive process viewer" iftop "Network interface monitoring" iostat "I/O Statistics" iotop "I/O monitor (root)" lshw "List hardware" lsmod "List kernel modules" lsof "List open files" lspci "List PCI devices" lsusb "List USB devices" netcat "Read/write network data" netstat "Print network connections" top "Interactive process viewer" vmstat "Report virtual memory statistics" 2> ~/.menuchoice
+    eval $(cat ~/.menuchoice)
+}
 alias en='LANGUAGE="en_US.UTF-8" zsh'
 alias km="setxkbmap proylatin"
 alias mk='LANGUAGE="en_GB.UTF-8" make'
