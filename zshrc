@@ -39,8 +39,16 @@ unset GREP_OPTIONS #deprecated
 
 #apps
 menu () {
-    whiptail --menu "Menu" 25 80 15 atop "Apache top (root)" glances "Interactive process viewer" htop "Interactive process viewer" iftop "Network interface monitoring" iostat "I/O Statistics" iotop "I/O monitor (root)" lshw "List hardware" lsmod "List kernel modules" lsof "List open files" lspci "List PCI devices" lsusb "List USB devices" netcat "Read/write network data" netstat "Print network connections" top "Interactive process viewer" vmstat "Report virtual memory statistics" 2> ~/.menuchoice
-    eval $(cat ~/.menuchoice)
+    whiptail --menu "Menu" 25 80 15 sysadmin "Sysadmin tools" data "Data tools" tldr "tldr" 2> ~/.menuchoice
+    choice=$(cat ~/.menuchoice)
+    if [[ "$choice " == "sysadmin"* ]]; then
+        whiptail --menu "Menu" 25 80 15 atop "Apache top (root)" glances "Interactive process viewer" htop "Interactive process viewer" iftop "Network interface monitoring" iostat "I/O Statistics" iotop "I/O monitor (root)" lshw "List hardware" lsmod "List kernel modules" lsof "List open files" lspci "List PCI devices" lsusb "List USB devices" netcat "Read/write network data" netstat "Print network connections" top "Interactive process viewer" vmstat "Report virtual memory statistics" 2> ~/.menuchoice
+        eval $(cat ~/.menuchoice)
+    elif [[ "$choice " == "data"* ]]; then
+        whiptail --menu "Menu" 25 80 15 ack "Grep-like text finder" bat "Fancy cat viewer" fd "Find replacement" jq "JSON-processor"  2> ~/.menuchoice
+    else
+        eval $(cat ~/.menuchoice)
+    fi
 }
 alias en='LANGUAGE="en_US.UTF-8" zsh'
 alias km="setxkbmap proylatin"
