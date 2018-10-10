@@ -38,10 +38,18 @@ unset GREP_OPTIONS #deprecated
 
 
 #apps
-alias x='wrexp'
-alias xh='wrexp history'
-alias exp='wrexp'
-alias hr="echo '_____________________________________________________________________________________'"
+menu () {
+    whiptail --menu "Menu" 25 80 15 sysadmin "Sysadmin tools" data "Data tools" tldr "tldr" 2> ~/.menuchoice
+    choice=$(cat ~/.menuchoice)
+    if [[ "$choice " == "sysadmin"* ]]; then
+        whiptail --menu "Menu" 25 80 15 atop "Apache top (root)" glances "Interactive process viewer" htop "Interactive process viewer" iftop "Network interface monitoring" iostat "I/O Statistics" iotop "I/O monitor (root)" lshw "List hardware" lsmod "List kernel modules" lsof "List open files" lspci "List PCI devices" lsusb "List USB devices" netcat "Read/write network data" netstat "Print network connections" top "Interactive process viewer" vmstat "Report virtual memory statistics" 2> ~/.menuchoice
+        eval $(cat ~/.menuchoice)
+    elif [[ "$choice " == "data"* ]]; then
+        whiptail --menu "Menu" 25 80 15 ack "Grep-like text finder" bat "Fancy cat viewer" fd "Find replacement" jq "JSON-processor"  2> ~/.menuchoice
+    else
+        eval $(cat ~/.menuchoice)
+    fi
+}
 alias en='LANGUAGE="en_US.UTF-8" zsh'
 alias km="setxkbmap proylatin"
 alias mk='LANGUAGE="en_GB.UTF-8" make'
@@ -53,18 +61,6 @@ alias gl='git pull; if (( $? == 0 )); then; play -q /usr/share/sounds/KDE-Window
 alias gp='git push; if (( $? == 0 )); then; play -q /usr/share/sounds/KDE-Window-Maximize.ogg 2> /dev/null &!; fi'
 alias pg='git push; if (( $? == 0 )); then; play -q /usr/share/sounds/KDE-Window-Maximize.ogg 2> /dev/null &!; fi'
 alias cf='LANGUAGE="en_GB.UTF-8" ./configure'
-alias t='~/todo/todo.sh'
-alias tls='~/todo/todo.sh ls'
-alias tlsw='~/todo/todo.sh ls @work'
-alias tlsh='~/todo/todo.sh ls @home'
-alias tlsp='~/todo/todo.sh projectview @work'
-alias tgl='cd ~/todo && git pull && cd -'
-alias tgp='cd ~/todo && ((git commit -a -m "todo update" && git push && cd -) || cd - )'
-alias ve='. ~/lamachine/bin/activate'
-alias lm='. ~/lamachine/bin/activate'
-alias lmws='. /scratch2/www/lamachine/bin/activate'
-alias lmdev='. ~/lamachine.dev/bin/activate'
-alias ve2='. env2/bin/activate'
 alias a='tmux attach'
 alias tmux='tmux -2' #force 256 colour support regardless of terminal
 alias ta='~/todo.sh add'
@@ -137,6 +133,9 @@ if [[ $HOST == "galactica" || $HOST == "mhysa" || $HOST == "caprica" || $HOST ==
     hash -d lsrc=/home/proycon/local/src/
     hash -d W=/home/proycon/work
     hash -d P=/home/proycon/projects
+
+    alias lm='source ~/bin/lamachine-main-activate'
+    alias lmdev='source ~/bin/lamachine-dev-activate'
 elif [[ $HOST == "roma" ]]; then
     export PATH="/home/proycon/bin:/home/proycon/.cargo/bin:/home/proycon/local/bin:$PATH"
     export LD_LIBRARY_PATH="$LD_LIBRARY_PATH:/home/proycon/local/lib"
@@ -149,14 +148,17 @@ elif [[ $HOST == "roma" ]]; then
     hash -d W=/home/proycon/work
     hash -d P=/home/proycon/projects
 elif [[ $HOST == "applejack" || $HOST == "fluttershy" || $HOST == "rarity" || $HOST == "cheerilee" || $HOST == "fancypants" || $HOST == "pipsqueak" || $HOST == "scootaloo" || $HOST == "blossomforth" || $HOST == "featherweight" || $HOST == "twist" || $HOST == "thunderlane" || ${HOST:0:3} == "mlp" ]]; then
-    export LD_LIBRARY_PATH="/vol/customopt/machine-translation/lib:/vol/customopt/nlptools/lib/:$LD_LIBRARY_PATH"
+    alias lmws='source /var/www/lamachine/bin/activate'
+    alias lm='source /vol/customopt/bin/lamachine-activate'
+    alias lmdev='source /vol/customopt/bin/lamachine-dev-activate'
+    #export LD_LIBRARY_PATH="/vol/customopt/machine-translation/lib:/vol/customopt/nlptools/lib/:$LD_LIBRARY_PATH"
     BASEPATH="/home/proycon/bin:/home/proycon/local/bin:/vol/customopt/machine-translation/bin:$PATH"
     #/vol/customopt/uvt-ru/bin:/vol/customopt/alpino/bin:/vol/customopt/uvt-ru/src/colibri/scripts:/vol/customopt/nlptools/bin/:/vol/customopt/nlptools/cmd/:/vol/customopt/cython3/bin/:$PATH"
     export PATH=$BASEPATH
     export CDPATH=.:/scratch/proycon/:/scratch/proycon/local/:/scratch/proycon/local/src/
     #export PYTHONPATH="/home/proycon/:/vol/customopt/uvt-ru/lib/python2.7/site-packages/:/vol/customopt/uvt-ru/src/colibri/scripts:/vol/customopt/uvt-ru/lib/python2.7/site-packages/frog/:/vol/customopt/nlptools/stanford-corenlp-python:/vol/customopt/uvt-ru/lib/python3.2/site-packages/:/vol/customopt/python3-packages/lib/python3.2/site-packages/"
-    export CLASSPATH="/vol/customopt/nlptools/stanford-corenlp-full/stanford-corenlp-1.3.4.jar:/vol/customopt/nlptools/stanford-corenlp-full/stanford-corenlp-1.3.4-models.jar:/vol/customopt/nlptools/stanford-corenlp-full/xom.jar:/vol/customopt/nlptools/stanford-corenlp-full/joda-time.jar:/vol/customopt/nlptools/stanford-corenlp-full/jollyday.jar:/vol/customopt/nlptools/javalib:."
-    export FREELINGSHARE="/vol/customopt/nlptools/share/freeling/"
+    #export CLASSPATH="/vol/customopt/nlptools/stanford-corenlp-full/stanford-corenlp-1.3.4.jar:/vol/customopt/nlptools/stanford-corenlp-full/stanford-corenlp-1.3.4-models.jar:/vol/customopt/nlptools/stanford-corenlp-full/xom.jar:/vol/customopt/nlptools/stanford-corenlp-full/joda-time.jar:/vol/customopt/nlptools/stanford-corenlp-full/jollyday.jar:/vol/customopt/nlptools/javalib:."
+    #export FREELINGSHARE="/vol/customopt/nlptools/share/freeling/"
     if [ -d /scratch/proycon/tmp ]; then
         export TMPDIR="/scratch/proycon/tmp"
     fi
@@ -227,13 +229,8 @@ alias lq="source ~/.sgesh"
 
 
 if [[ $HOST == "applejack" || $HOST == "fluttershy" || $HOST == "rarity" || $HOST == "cheerilee" || $HOST == "fancypants" || $HOST == "pipsqueak" || $HOST == "scootaloo" || $HOST == "blossomforth" || $HOST == "featherweight" || $HOST == "twist" || $HOST == "thunderlane" ]]; then
-    alias expy2="export PYTHONPATH=/vol/customopt/nlptools/stanford-corenlp-python:/vol/customopt/python2-packages/lib/python2.7/site-packages"
-    alias expy3="export PYTHONPATH=/vol/customopt/nlptools/stanford-corenlp-python:/vol/customopt/python3-packages/lib/python3.4/site-packages/ PATH=/vol/customopt/python3-packages/bin:$BASEPATH"
-
-
 
     ipynb() {
-        expy3
         if [ ! -z "$1" ]; then
             ipy3 notebook --no-browser --port=$1
         else
@@ -377,3 +374,8 @@ esac
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 [ -f ~/dotfiles/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh ] && source ~/dotfiles/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+# BEGIN LAMACHINE MANAGED BLOCK - path
+if [[ "$PATH" != *"/home/proycon/bin"* ]]; then
+    export PATH=~/bin:$PATH #add ~/bin to $PATH, that is where the activation scripts are
+fi
+# END LAMACHINE MANAGED BLOCK - path

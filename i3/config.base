@@ -32,6 +32,7 @@ floating_modifier $mod
 # start a terminal
 bindsym $mod+Return exec urxvt -cd /home/proycon
 bindsym $mod+t exec urxvt -cd /home/proycon
+bindsym $mod+y exec urxvt -name urxvtwhite -cd /home/proycon
 
 # kill focused window
 bindsym $mod+Shift+q kill
@@ -77,6 +78,10 @@ bindsym $mod+f fullscreen toggle
 bindsym $mod+s layout stacking
 bindsym $mod+w layout tabbed
 bindsym $mod+e layout toggle split
+bindsym $mod+d floating toggle
+
+bindsym $mod+v split v
+bindsym $mod+c split h
 
 # toggle tiling / floating
 bindsym $mod+Shift+space floating toggle
@@ -85,7 +90,7 @@ bindsym $mod+Shift+space floating toggle
 bindsym $mod+slash focus mode_toggle
 
 # focus the parent container
-bindsym $mod+a focus parent
+bindsym $mod+period focus parent
 
 # focus the child container
 #bindsym $mod+d focus child
@@ -222,6 +227,11 @@ mode "exec" {
         bindsym Escape mode "default"
 }
 
+
+bindsym $mod+a [instance="scratchpad"] scratchpad show; [instance="scratchpad"] move position center
+bindsym $mod+Shift+a resize shrink height 10 px or 10 ppt
+
+
 bindsym $mod+r mode "resize"
 bindsym $mod+x mode "exec"
 
@@ -261,6 +271,15 @@ for_window [class="^.*"]                border pixel 0
 for_window [window_role="pop-up"]       floating enable
 for_window [window_role="task_dialog"]  floating enable
 for_window [title="Preferences$"]       floating enable
+
+# #---Dropdown/Scratchpad Windows---# #
+# First I have a tmux window used for background scripts.
+# I'll later bind this to mod+u.
+for_window [instance="scratchpad"] floating enable
+for_window [instance="scratchpad"] resize set 1600 1200
+for_window [instance="scratchpad"] move scratchpad
+for_window [instance="scratchpad"] border pixel 10
+exec --no-startup-id urxvt -name scratchpad -e /home/proycon/bin/tm scratchpad
 
 smart_gaps on
 gaps inner 16

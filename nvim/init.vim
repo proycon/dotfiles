@@ -53,14 +53,17 @@ Plug 'nathanaelkane/vim-indent-guides', { 'for': 'python' }
 Plug 'rust-lang/rust.vim'
 Plug 'racer-rust/vim-racer'
 Plug 'cespare/vim-toml'
+Plug 'posva/vim-vue'
 
 " Misc
 Plug 'junegunn/goyo.vim' "distraction free writing
 Plug 'miyakogi/seiya.vim' "transparent background
 
 " Syntax helpers
-" Plug 'pearofducks/ansible-vim', { 'for': 'ansible' }
+Plug 'pearofducks/ansible-vim' "highlighting
 Plug 'freitass/todo.txt-vim', { 'for': 'todo.txt' }
+Plug 'plasticboy/vim-markdown'
+
 
 "Themes
 Plug 'morhetz/gruvbox'
@@ -241,6 +244,11 @@ set formatoptions+=jq   " join comments if it makes sense, when joining lines, a
 au BufNewFile,BufRead *.py set tabstop=4 softtabstop=4 shiftwidth=4 textwidth=120
 au BufRead *.tex set textwidth=120 formatoptions=cqt wrapmargin=0
 au BufRead *.txt,*.md,*.rst set textwidth=120 formatoptions+=t wrapmargin=0
+au BufRead,BufNewFile */roles/*.yml set filetype=yaml.ansible
+au BufRead,BufNewFile *.nginx set ft=nginx
+au BufRead,BufNewFile */etc/nginx/* set ft=nginx
+au BufRead,BufNewFile */nginx/conf/* set ft=nginx
+au BufRead,BufNewFile nginx.conf set ft=nginx
 
 nnoremap <silent> <A-right> :bn<CR>
 nnoremap <silent> <A-left> :bp<CR>
@@ -390,6 +398,10 @@ autocmd Filetype markdown map <F5> :!pandoc<space><C-r>%<space>-o<space><C-r>%.p
 autocmd Filetype rmd map <F5> :!echo<space>"require(rmarkdown);<space>render('<c-r>%')"<space>\|<space>R<space>--vanilla<enter><Paste>
 autocmd FileType tex inoremap <F5> <Esc>:!pdflatex<spacE><c-r>%<Enter>a
 autocmd FileType tex nnoremap <F5> :!pdflatex<spacE><c-r>%<Enter>
+
+"ansible-vim
+let g:ansible_name_highlight = 'b'
+let g:ansible_extra_keywords_highlight = 1
 
 
 augroup neovim

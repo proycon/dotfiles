@@ -134,3 +134,21 @@ urxvtwhite*colorIT: #000000
 urxvtwhite*colorUL: #000000
 urxvtwhite*colorBD: #000000
 
+scratchpad*depth: 32
+!scratchpad*background: rgba:2f00/2f00/2f00/f900
+scratchpad*background: rgba:0000/2b00/3600/e100
+!scratchpad*foreground: #657b83
+
+scratchpad*scrollBar: false
+scratchpad*font: xft:Source Code Pro for Powerline:size=10:antialias=true:hinting=true,xft:Ubuntu Mono derivative Powerline:size=11:antialias=true:hinting=true,xft:WenQuanYi Micro Hei Mono:size=11,xft:DejaVu Sans Mono:size=11,xft:Symbola:size=8,xft:Gargi,xft:Khmer OS System,xft:Lohit Devanagari:size=11,xft:Lohit Tamil,xft:Lohit Gujarati,xft:Lohit Bengali,xft:Lohit Oriya,xft:Lohit Kannada,xft:Lohit Konkani,xft:Lohit Malayam,xft:Lohit Telugu,xft:Lohit Nepali,xft:Lohit Assamese,xft:Lohit Punjabi,xft:Material Design Icons:size=10
+scratchpad*italicFont: xft:Source Code Pro for Powerline:size=10:italic:antialias=true:hinting=true,xft:Ubuntu Mono derivative Powerline:size=11:italic:antialias=true:hinting=true,xft:WenQuanYi Micro Hei Mono:italic,xft:Symbola:size=8,xft:Material Design Icons:size=10
+scratchpad*boldFont: xft:Source Code Pro for Powerline:size=10:bold:antialias=true:hinting=true,xft:Ubuntu Mono derivative Powerline:size=11:bold:antialias=true:hinting=true,xft:WenQuanYi Micro Hei Mono:bold:size=11,xft:Symbola:size=8,xft:Material Design Icons:size=10
+scratchpad*boldItalicFont: xft:Source Code Pro for Powerline:size=10:bold:italic:antialias=true:hinting=true,xft:Ubuntu Mono derivative Powerline:size=10:bold:italic:antialias=true:hinting=true,xft:WenQuanYi Micro Hei Mono:bold:italic,xft:Symbola:size=8,xft:Material Design Icons:size=10
+!scratchpad*boldFont: xft:Ubuntu Mono derivative Powerline:bold:antialias=true:hinting=true
+!scratchpad*italicFont: xft:Ubuntu Mono derivative Powerline:italic:antialias=true:hinting=true
+!scratchpad*boldItalicFont: xft:Ubuntu Mono derivative Powerline:bold:italic:antialias=true:hinting=true
+scratchpad*letterSpace: -1
+
+scratchpad*perl-ext: default,matcher,font-size,url-select,clipboard
+scratchpad*url-launcher: /usr/bin/firefox
+scratchpad*matcher.button: 1
