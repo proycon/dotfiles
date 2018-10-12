@@ -26,10 +26,12 @@ set smtp_authenticators = 'gssapi:login'
 set wait_key = no
 set pager_index_lines = 7
 set pager_context = 10
+set recall = ask-no
 auto_view text/html
 auto_view application/pgp-encrypted
 alternative_order text/plain text/enriched text/html
 set rfc2047_parameters = yes
+set send_charset = "utf-8"
 
 
 set to_chars = " »›-‹L"
@@ -155,6 +157,7 @@ bind index,pager .l modify-labels
 # modify (notmuch/imap) tag non-interactively.
 macro index,pager .a "<modify-labels>!inbox\n"
 macro index,pager .t "<modify-labels>!todo\n"
+macro index,pager .y "<modify-labels>!reply\n"
 macro index,pager .r "<modify-labels>!reply\n"
 macro index,pager .w "<modify-labels>!waiting\n"
 macro index,pager .W "<modify-labels>!work\n"
@@ -162,6 +165,7 @@ macro index,pager .p "<modify-labels>!personal\n"
 macro index,pager .i "<modify-labels>!interesting\n"
 macro index,pager .0 "<modify-labels>!lowpriority\n"
 
+macro index,pager ,0 "<vfolder-from-query>tag:inbox and tag:unread\n<collapse-all>\n"
 macro index,pager ,1 "<change-vfolder>INBOX\n<collapse-all>\n"
 macro index,pager ,i "<change-vfolder>INBOX\n<collapse-all>\n"
 macro index,pager ,s "<change-vfolder>sent\n<collapse-all>\n"

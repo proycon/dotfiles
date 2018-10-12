@@ -1,9 +1,11 @@
 # vim: filetype=neomuttrc
 
-# Default index colors:
-color index blue default '.*'
+# Default index colours, coloured by age:
+color index blue default ~r>1d
+color index color23 default ~r>14d
+color index cyan   default    ~r<1d
+
 color index_author green default '.*'
-color index_number blue default
 color index_subject white default '.*'
 color index_date white default
 
@@ -11,7 +13,9 @@ color index_date white default
 color index brightblue black "~N"
 color index_author yellow black "~N"
 color index_subject brightwhite black "~N"
+color index_subject brightwhite black "~(~N)"
 
+color index_author cyan default '~fproycon@anaproy.nl'
 
 color index_tag magenta default "work"
 color index_tag cyan default "unilang"
@@ -23,7 +27,7 @@ color index_tag brightwhite brightred "reply"
 color index_tag blue default "not"
 color index_tag brightwhite blue "waiting"
 color index_tag black white "lowpriority"
-color index_tag white green "interesting"
+color index_tag black green "interesting"
 
 # Header colors:
 color header cyan default ".*"
@@ -36,7 +40,7 @@ mono underline underline
 mono indicator reverse
 mono error bold
 color normal default default
-color indicator brightblack white
+color indicator brightwhite blue
 color sidebar_highlight red default
 color sidebar_divider brightblack black
 color sidebar_flagged red black
@@ -71,7 +75,7 @@ color status black brightyellow "todo"
 color status brightwhite brightred "reply"
 color status brightwhite blue "waiting"
 color status black white "lowpriority"
-color status white green "interesting"
+color status black green "interesting"
 #
 # Color if the attachment is autoviewed
 color   attach_headers     brightgreen     default    "Autoview"

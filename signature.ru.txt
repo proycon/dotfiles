@@ -1,4 +1,3 @@
---
 
 Maarten van Gompel
     Language Machines research group
@@ -14,6 +13,6 @@ XMPP: proycon@anaproy.nl  Matrix: @proycon:matrix.org
 Telegram:   proycon       IRC: proycon (freenode)
 Discord:    proycon#8272
 Twitter:    https://twitter.com/proycon
-ORCIRD:     https://orcid.org/0000-0002-1046-0006
+ORCID:      https://orcid.org/0000-0002-1046-0006
 Keybase:    https://keybase.io/proycon
 Bitcoin:    1BRptZsKQtqRGSZ5qKbX2azbfiygHxJPsd
