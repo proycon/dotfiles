@@ -1,0 +1,214 @@
+# vim: filetype=muttrc
+# This is the general mutt config which has the settings that all accounts use.
+bind index,pager i noop
+bind index,pager g noop
+bind index,pager , noop #for switching mailboxes
+bind index,pager . noop #for tags
+bind index \Cf noop
+source ~/dotfiles/muttcol
+set alias_file = ~/dotfiles/muttaliases
+source ~/dotfiles/muttaliases
+source ~/dotfiles/personal.muttrc
+set sleep_time = 0
+set sort = threads
+set sort_aux = 'reverse-date'
+set editor = $EDITOR
+#set copy = no
+set timeout = "5"
+set mail_check = "10"
+set mailcap_path = ~/dotfiles/mailcap
+set date_format="!%y-%m-%d %I:%M"
+#set index_format="%2C %zs %?X?A& ? %D %-15.15F %s (%-4.4c)"
+set markers = no
+set mark_old = no
+set mime_forward = yes
+set smtp_authenticators = 'gssapi:login'
+set wait_key = no
+set pager_index_lines = 7
+set pager_context = 10
+set recall = ask-no
+auto_view text/html
+auto_view application/pgp-encrypted
+alternative_order text/plain text/enriched text/html
+set rfc2047_parameters = yes
+set send_charset = "utf-8"
+
+
+set to_chars = " »›-‹L"
+set sidebar_format = '%B%?F? [%F]?%* %?N?%N/? %?S?%S?'
+set index_format='%4C %Z %<[y?%<[m?%<[d?%[%H:%M ]&%[%a %d]>&%[%b %d]>&%[%m/%y ]> %-25.25L %?E?%2.e/%2.E&     ? %?Gi?%Gi &?%?Gl?%Gl &?%?Gn?%Gn &?%?Gg?%Gg &?%?Gw ?%Gw &?%?GI?%GI &?%?GL?%GL &?%?Gf?%Gf &?%?Gp?%Gp &?%?Gu?%Gu &?%?Gt?%Gt &?%?Gr?%Gr &?%?GW?%GW &? %s'
+set pager_format = '-%Z- %e/%E: %-20.20n  %25.25s%* %g (%P)'
+#
+# The default index_format is:
+#       '%4C %Z %{%b %d} %-15.15L (%?l?%4l&%4c?) %s'
+#
+# We replace the date field '%{%b %d}', giving:
+#set index_format='%4C %Z %<[y?%<[m?%<[d?%[%H:%M ]&%[%a %d]>&%[%b %d]>&%[%m/%y ]> %-25.25L (%e/%E) %?Gi?%Gi &?%?Gw ?%Gw &?%?Gf?%Gf &?%?Gp?%Gp &?%?Gu?%Gu & ? %s'
+# Test  Date Range  Format String  Example
+# --------------------------------------------
+# %[d   Today       %[%H:%M ]      12:34
+# %[m   This month  %[%a %d]       Thu 12
+# %[y   This year   %[%b %d]       Dec 10
+#  —    Older       %[%m/%y ]      06/15
+#
+#
+#
+set crypt_use_gpgme = yes
+set crypt_verify_sig = ask-yes
+set pgp_auto_decode = yes
+
+
+# General remappings
+bind editor <space> noop
+bind index G last-entry
+bind index gg first-entry
+bind pager j next-line
+bind pager k previous-line
+bind pager gg top
+bind pager G bottom
+bind index d half-down
+bind index u half-up
+bind index D delete-message
+bind index U undelete-message
+bind index F search
+bind index,pager R group-reply
+bind index,pager \031 previous-undeleted # Mouse wheel
+bind index,pager \005 next-undeleted # Mouse wheel
+macro index,pager S <sync-mailbox>
+macro index,pager \Cu |urlscan\n
+macro index,pager ,, |urlscan\n
+
+# neomutt with notmuch
+# open a different virtual folder
+bind index,pager X change-vfolder
+# read entire thread of the current message
+bind index,pager + entire-thread
+# generate virtual folder from query
+bind index,pager \eX vfolder-from-query
+# generate virtual folder from query with time window
+bind index < vfolder-window-backward
+bind index > vfolder-window-forward
+
+# View attachments properly.
+bind attach <return> view-mailcap
+set fast_reply           # skip to compose when replying
+set fcc_attach           # save attachments with the body
+unset mime_forward       # forward attachments as part of body
+set forward_format = "Fwd: %s"       # format of subject when forwarding
+set forward_decode                   # decode when forwarding
+set forward_quote                    # include message in forwards
+set reverse_name                     # reply as whomever it was to
+set include                          # include message in replies
+
+#Ctrl-R to mark all as read
+macro index \Cr "T~U<enter><tag-prefix><clear-flag>N<untag-pattern>.<enter>" "mark all messages as read"
+
+#sync email
+#macro index O "<shell-escape>$HOME/.config/mutt/etc/mailsync.sh<enter>" "run offlineimap to sync all mail"
+#macro index o "<shell-escape>$HOME/.config/mutt/etc/mailsync.sh -qf INBOX<enter>" "run offlineimap to sync inbox"
+
+#copy/move dialogs
+macro index C "<copy-message>?<toggle-mailboxes>" "copy a message to a mailbox"
+macro index M "<save-message>?<toggle-mailboxes>" "move a message to a mailbox"
+
+# Notmuch searching
+macro index \Cf "<enter-command>unset wait_key<enter><shell-escape>read -p 'notmuch query: ' x; echo \$x >~/.cache/mutt_terms<enter><limit>~i \"\`notmuch search --output=messages \$(cat ~/.cache/mutt_terms) | head -n 600 | perl -le '@a=<>;chomp@a;s/\^id:// for@a;$,=\"|\";print@a'\`\"<enter>" "show only messages matching a notmuch pattern"
+macro index A "<limit>all\n" "show all messages (undo limit)"
+
+# Sidebar mappings
+set sidebar_visible = no
+set sidebar_width = 20
+set sidebar_short_path = yes
+set sidebar_next_new_wrap = yes
+set mail_check_stats
+bind index,pager \Ck sidebar-prev
+bind index,pager \Cj sidebar-next
+bind index,pager \Co sidebar-open
+bind index,pager \Cp sidebar-prev-new
+bind index,pager \Cn sidebar-next-new
+bind index,pager B sidebar-toggle-visible
+#
+# Store message headers locally to speed things up.
+# If hcache is a folder, Mutt will create sub cache folders for each account which may speeds things even more up.
+set header_cache = ~/.cache/mutt
+
+bind index <esc>L limit-current-thread
+
+# This variable specifies private notmuch tags which should not be printed
+# on screen (index, pager).
+#set nm_hidden_tags = "unread,draft,flagged,passed,replied,attachment"
+set nm_record = "yes"
+set nm_record_tags = "-inbox,sent"
+set nm_unread_tag = "unread"
+
+set abort_noattach = ask-yes
+# Search for the following regular expression in the body of the email
+set abort_noattach_regex = "\\<attachments?|attached|bijlagen?|bijgevoegd)\\>"
+
+macro index \\ "<vfolder-from-query>"
+macro index,pager \ea "<shell-escape>$HOME/bin/updatemail.sh<enter>"
+macro index \eg "<shell-escape>$HOME/bin/updatemail-quick.sh<enter>"
+bind index,pager \eA create-alias
+bind index,pager a noop
+macro index,pager a "<modify-labels-then-hide>-inbox,-unread\n"
+
+# modify (notmuch/imap) tags
+bind index,pager .l modify-labels
+# modify (notmuch/imap) tag non-interactively.
+macro index,pager .a "<modify-labels>!inbox\n"
+macro index,pager .t "<modify-labels>!todo\n"
+macro index,pager .y "<modify-labels>!reply\n"
+macro index,pager .r "<modify-labels>!reply\n"
+macro index,pager .w "<modify-labels>!waiting\n"
+macro index,pager .W "<modify-labels>!work\n"
+macro index,pager .p "<modify-labels>!personal\n"
+macro index,pager .i "<modify-labels>!interesting\n"
+macro index,pager .0 "<modify-labels>!lowpriority\n"
+
+macro index,pager ,0 "<vfolder-from-query>tag:inbox and tag:unread\n<collapse-all>\n"
+macro index,pager ,1 "<change-vfolder>INBOX\n<collapse-all>\n"
+macro index,pager ,i "<change-vfolder>INBOX\n<collapse-all>\n"
+macro index,pager ,s "<change-vfolder>sent\n<collapse-all>\n"
+macro index,pager ,2 "<change-vfolder>work\n<collapse-all>\n"
+macro index,pager ,3 "<change-vfolder>notwork\n<collapse-all>\n"
+macro index,pager ,4 "<change-vfolder>sent<collapse-all>\n\n"
+macro index,pager ,r "<vfolder-from-query>tag:inbox AND tag:reply\n"
+macro index,pager ,t "<vfolder-from-query>tag:inbox AND tag:todo\n"
+macro index,pager ,t "<vfolder-from-query>tag:inbox AND tag:waiting\n"
+
+# Replace some tags with icons
+# tag-transforms tag transformed-string { tag transformed-string ...}
+tag-transforms "inbox"   "●"   \
+               "unread"  "📨"   \
+               "replied" "↻ "  \
+               "sent"    "➥ "  \
+               "deleted" "DEL" \
+               "invites" "CAL" \
+               "signed" "🔑" \
+               "encrypted" "☑" \
+               "not" "N" \
+               "work" "W" \
+               "lists" "📃" \
+               "github" "git"
+
+#The formats must start with 'G' and the entire sequence is case sensitive.
+#tag-formats tag format-string { tag format-string ...}
+tag-formats "inbox"   "Gi" \
+            "sent"    "GS" \
+            "todo"    "Gt" \
+            "reply"    "Gr" \
+            "interesting"    "GI" \
+            "lowpriority"    "GL" \
+            "lists"    "Gl" \
+            "waiting"    "GW" \
+            "deleted" "GD" \
+            "invites" "Gc" \
+            "signed"  "Gs" \
+            "encrypted"  "Ge" \
+            "personal"  "Gp" \
+            "work"  "Gw" \
+            "familie"  "Gf"  \
+            "not"  "Gn"  \
+            "unilang"  "Gu" \
+            "github"  "Gg"
+
