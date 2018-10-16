@@ -113,7 +113,7 @@ man() {
     LESS_TERMCAP_md=$'\E[01;38;5;74m'  \
     LESS_TERMCAP_me=$'\E[0m'           \
     LESS_TERMCAP_se=$'\E[0m'           \
-    LESS_TERMCAP_so=$'\E[37;45m'       \
+    LESS_TERMCAP_so=$'\E[30;42m'       \
     LESS_TERMCAP_ue=$'\E[0m'           \
     LESS_TERMCAP_us=$'\E[04;38;5;146m' \
     man "$@"
@@ -358,7 +358,7 @@ bindkey $terminfo[kend] end-of-line
 #bindkey '[C' forward-word
 #bindkey '[D' backward-word
 
-export LESS_TERMCAP_so=$'\E[37;45m'
+export LESS_TERMCAP_so=$'\E[30;42m'
 
 case $TERM in
     xterm*|rxvt)
