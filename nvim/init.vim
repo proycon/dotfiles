@@ -428,3 +428,7 @@ endfunction
 command! White call s:MakeWhite()
 command! Dark call s:MakeDark()
 command! W w
+
+" Override cursorline color
+hi CursorLine					ctermbg=236		cterm=none						guibg=#000000
+
