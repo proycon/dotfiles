@@ -168,7 +168,7 @@ label-unfocused-padding = 2
 ;   %index%
 ; Default: %icon%  %name%
 label-visible = %icon% %name%
-label-visible-underline = #555555
+label-visible-underline = #cc241d
 label-visible-padding = 2
 
 ; Available tokens:
