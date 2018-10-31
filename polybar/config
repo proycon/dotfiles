@@ -78,7 +78,7 @@ font-2 = "Material Design Icons:size=16;2"
 
 modules-left = i3
 modules-center = title
-modules-right = keyboard wireless cpu memory volume battery date
+modules-right = keyboard volume wireless cpu memory battery date
 
 tray-position = right
 tray-detached = false
@@ -112,7 +112,7 @@ font-2 = "Material Design Icons:size=16;2"
 
 modules-left = i3
 modules-center = title
-modules-right = keyboard wireless cpu memory volume battery date
+modules-right = keyboard volume wireless cpu memory battery date
 
 ; no tray
 tray-position =
@@ -368,6 +368,7 @@ format = <ramp-load> <label>
 ;   %percentage-cores% - load percentage for each core
 ;   %percentage-core[1-9]% - load percentage for specific core
 label = CPU %percentage%%
+label-foreground = #b16286
 
 ramp-load-0 = ▁
 ramp-load-1 = ▂
@@ -415,6 +416,7 @@ format = <label>
 ;   %mb_free%
 ;   %mb_total%
 label = %gb_used%
+label-foreground = #b16286
 
 ; Only applies if <bar-used> is used
 bar-used-indicator =
