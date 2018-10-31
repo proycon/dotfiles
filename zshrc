@@ -113,7 +113,7 @@ man() {
     LESS_TERMCAP_md=$'\E[01;38;5;74m'  \
     LESS_TERMCAP_me=$'\E[0m'           \
     LESS_TERMCAP_se=$'\E[0m'           \
-    LESS_TERMCAP_so=$'\E[37;45m'       \
+    LESS_TERMCAP_so=$'\E[30;42m'       \
     LESS_TERMCAP_ue=$'\E[0m'           \
     LESS_TERMCAP_us=$'\E[04;38;5;146m' \
     man "$@"
@@ -323,6 +323,33 @@ bindkey '^h' backward-delete-char
 bindkey '^w' backward-kill-word
 bindkey '^r' history-incremental-search-backward
 
+set_cursor() {
+    local style
+    case $1 in
+        reset) style=0;; # The terminal emulator's default
+        blink-block) style=1;;
+        block) style=2;;
+        blink-underline) style=3;;
+        underline) style=4;;
+        blink-vertical-line) style=5;;
+        vertical-line) style=6;;
+    esac
+
+    [ $style -ge 0 ] && print -n -- "\e[${style} q"
+}
+
+function zle-line-init zle-keymap-select {
+    case $KEYMAP in
+        vicmd)
+          set_cursor block
+          echo -ne "\033]12;Red\007"
+          ;;
+         *)
+          set_cursor block
+          echo -ne "\033]12;Grey\007"
+          ;;
+    esac
+}
 #function zle-line-init zle-keymap-select {
 #    VIM_PROMPT="%{$fg_bold[yellow]%} [% NORMAL]%  %{$reset_color%}"
 #    RPS1="${${KEYMAP/vicmd/$VIM_PROMPT}/(main|viins)/}$RPROMPT $EPS1"
@@ -330,13 +357,17 @@ bindkey '^r' history-incremental-search-backward
 #}
 #
 
-#zle -N zle-line-init
-#zle -N zle-keymap-select
+zle -N zle-line-init
+zle -N zle-keymap-select
 zle-line-init() { echoti smkx 2>/dev/null; }
 zle-line-finish() { echoti rmkx 2>/dev/null; }
 zle -N zle-line-init
 zle -N zle-line-finish
 export KEYTIMEOUT=1
+
+
+
+
 
 source $HOME/dotfiles/opp.zsh/opp.zsh
 source $HOME/dotfiles/opp.zsh/opp/*.zsh
@@ -358,7 +389,7 @@ bindkey $terminfo[kend] end-of-line
 #bindkey '[C' forward-word
 #bindkey '[D' backward-word
 
-export LESS_TERMCAP_so=$'\E[37;45m'
+export LESS_TERMCAP_so=$'\E[30;42m'
 
 case $TERM in
     xterm*|rxvt)
