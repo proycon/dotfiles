@@ -44,7 +44,7 @@ font-2 = "Material Design Icons:size=16;2"
 
 modules-left = i3
 modules-center = title
-modules-right = keyboard wireless cpu memory volume battery date
+modules-right = keyboard volume wireless cpu memory battery date
 
 tray-position = right
 tray-detached = false
@@ -78,7 +78,7 @@ font-2 = "Material Design Icons:size=16;2"
 
 modules-left = i3
 modules-center = title
-modules-right = keyboard wireless cpu memory volume battery date
+modules-right = keyboard volume wireless cpu memory battery date
 
 tray-position = right
 tray-detached = false
@@ -112,7 +112,7 @@ font-2 = "Material Design Icons:size=16;2"
 
 modules-left = i3
 modules-center = title
-modules-right = keyboard wireless cpu memory volume battery date
+modules-right = keyboard volume wireless cpu memory battery date
 
 ; no tray
 tray-position =
@@ -168,7 +168,7 @@ label-unfocused-padding = 2
 ;   %index%
 ; Default: %icon%  %name%
 label-visible = %icon% %name%
-label-visible-underline = #555555
+label-visible-underline = #cc241d
 label-visible-padding = 2
 
 ; Available tokens:
@@ -210,16 +210,20 @@ format-connected = <label-connected>
 format-connected-underline = ${colors.underline}
 format-disconnected = <label-disconnected>
 label-connected = 
-label-disconnected =  NO CONNECTION
+label-disconnected =  NO-LAN
 
 [module/wireless]
 type = internal/network
 interface = wlp2s0
 format-connected = <label-connected>
-format-connected-underline = ${colors.underline}
+;format-connected-underline = ${colors.underline}
 format-disconnected = <label-disconnected>
 label-connected =  %essid%
-label-disconnected = 
+label-connected-foreground = #98971a
+label-disconnected =  NO-WIFI
+label-disconnected-foreground = #cc241d
+double-click-left = nm-connection-editor
+click-right = nm-connection-editor
 
 [module/battery]
 type = internal/battery
@@ -232,13 +236,14 @@ full-at = 99
 battery = BAT0
 adapter = AC
 
-format-charging =  <label-charging>
+
+format-charging = <label-charging>
 format-discharging = <ramp-capacity> <label-discharging>
 format-full = <label-full>
 
-label-charging = %percentage%%
-label-discharging = %percentage%%
-label-full =  %percentage%%
+label-charging = BAT>%percentage%%
+label-discharging = BAT<%percentage%%
+label-full = BAT FULL
 
 format-discharging-underline = #d79921
 format-full-underline = ${colors.underline}
@@ -269,22 +274,64 @@ time = %H:%M
 label = %date% %time%
 
 ; label-underline = ${colors.underline}
+;
+;
+[module/pulseaudio]
+type = internal/pulseaudio
+
+; Sink to be used, if it exists (find using `pacmd list-sinks`, name field)
+; If not, uses default sink
+; sink = alsa_output.pci-0000_12_00.3.analog-stereo
+
+; Use PA_VOLUME_UI_MAX (~153%) if true, or PA_VOLUME_NORM (100%) if false
+; Default: true
+use-ui-max = true
+
+; Available tags:
+;   <label-volume> (default)
+;   <ramp-volume>
+;   <bar-volume>
+format-volume = <ramp-volume> <label-volume>
+
+; Available tags:
+;   <label-muted> (default)
+;   <ramp-volume>
+;   <bar-volume>
+;format-muted = <label-muted>
+
+; Available tokens:
+;   %percentage% (default)
+label-volume = VOL %percentage%%
+label-volume-foreground = #98971a
+
+; Available tokens:
+;   %percentage% (default)
+label-muted = 🔇 MUTED
+label-muted-foreground = #cc241d
+
+; Interval for volume increase/decrease (in percent points) (unreleased)
+; Default: 5
+interval = 5
 
 [module/volume]
 type = internal/volume
 
 format-volume = <ramp-volume> <label-volume>
-format-volume-underline = ${colors.underline}
+; format-volume-underline = ${colors.underline}
 
 format-muted = <label-muted>
 
-label-volume = %percentage%%
-label-muted =  %percentage%%
+label-volume = VOL %percentage%%
+label-volume-foreground = #689d6a
+label-muted = 🔇 MUTED
+label-muted-foreground = #cc241d
 
 ramp-volume-0 = 
 ramp-volume-1 = 
 ramp-volume-2 = 
 ramp-volume-3 = 
+
+click-right = pavucontrol
 
 ;[module/xbacklight]
 ;type = internal/xbacklight
@@ -299,9 +346,10 @@ type = internal/xkeyboard
 ; List of indicators to ignore
 blacklist-0 = num lock
 blacklist-1 = scroll lock
-blacklist-2 = caps lock
 label-layout = %layout%
+label-layout-foreground = #458588
 label-layout-font = 2
+click-left = setxkbmap proylatin
 
 [module/cpu]
 type = internal/cpu
@@ -319,7 +367,8 @@ format = <ramp-load> <label>
 ;   %percentage% (default) - total cpu load
 ;   %percentage-cores% - load percentage for each core
 ;   %percentage-core[1-9]% - load percentage for specific core
-label = %percentage%%
+label = CPU %percentage%%
+label-foreground = #b16286
 
 ramp-load-0 = ▁
 ramp-load-1 = ▂
@@ -367,6 +416,7 @@ format = <label>
 ;   %mb_free%
 ;   %mb_total%
 label = %gb_used%
+label-foreground = #b16286
 
 ; Only applies if <bar-used> is used
 bar-used-indicator =
