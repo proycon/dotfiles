@@ -186,6 +186,7 @@ fi
 alias ap='ssh -Y -A -t anaproy.nl /home/proycon/bin/tm'
 alias rap='ssh -Y -A -t root@anaproy.nl /home/proycon/bin/tm'
 alias ssha='ssh -Y -A anaproy.nl'
+alias sshm='ssh -Y -A mhysa.anaproy.nl'
 alias sshat='ssh -Y -A anaproy.nl /home/proycon/bin/tm'
 alias e='ssh -Y -A -t anaproy.nl /home/proycon/bin/tm_vi'
 alias m="ssh -Y -A -t anaproy.nl /home/proycon/bin/tm_alot"
