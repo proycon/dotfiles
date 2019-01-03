@@ -207,13 +207,14 @@ mode "resize" {
 mode "exec" {
         bindsym m exec --no-startup-id urxvt -cd /home/proycon -T mail -e ssh -Y -A -t anaproy.nl /home/proycon/bin/tm_alot; mode "default"
         bindsym v exec --no-startup-id urxvt -cd /home/proycon -T vim -e /home/proycon/bin/tm nvim; mode "default"
+        bindsym t exec --no-startup-id urxvt -cd /home/proycon -e tmux new; mode "default"
         bindsym Shift+m exec urxvt -cd /home/proycon -T ncmpcpp -e ncmpcpp; mode "default"
         bindsym w exec firefox; mode "default"
         bindsym f exec pcmanfm; mode "default"
-        bindsym g exec geeqie; mode "default"
+        bindsym g exec ~/dotfiles/opensxiv.sh; mode "default"
         bindsym n exec networkmanager_dmenu -fn "Sans"; mode "default"
         bindsym p exec pavucontrol; mode "default"
-        bindsym s exec urxvt -name scratchpad -e /home/proycon/bin/tm scratchpad
+        bindsym s exec urxvt -name scratchpad -e /home/proycon/bin/tm scratchpad; mode "default"
         bindsym F2 exec --no-startup-id /home/proycon/bin/lala; mode "default"
         bindsym F8 exec --no-startup-id fcitx; mode "default"
         bindsym F9 exec killall fcitx || setxkbmap proylatin; mode "default"
