@@ -1,3 +1,3 @@
 #!/bin/bash
 dir=$(ls -d ~/Pictures/*/  | sed "s|$HOME/Pictures/||g" | dmenu -fn Sans -l 20 -i -p "Open Folder?")
-sxiv -t "$HOME/Pictures/$dir"
+sxiv -rt "$HOME/Pictures/$dir"
