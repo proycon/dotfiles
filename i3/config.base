@@ -209,6 +209,7 @@ mode "exec" {
         bindsym v exec --no-startup-id urxvt -cd /home/proycon -T vim -e /home/proycon/bin/tm nvim; mode "default"
         bindsym t exec --no-startup-id urxvt -cd /home/proycon -e tmux new; mode "default"
         bindsym Shift+m exec urxvt -cd /home/proycon -T ncmpcpp -e ncmpcpp; mode "default"
+        bindsym r exec urxvt -cd /home/proycon -T newsboat -e newsboat; mode "default"
         bindsym w exec firefox; mode "default"
         bindsym f exec pcmanfm; mode "default"
         bindsym g exec ~/dotfiles/opensxiv.sh; mode "default"
@@ -278,7 +279,7 @@ for_window [class="mpv"]       floating enable
 for_window [class="mpv"]       resize set 800 600
 for_window [class="mpv"]       border pixel 3
 for_window [class="mpv"]       sticky enable
-for_window [class="mpv"]       move absolute position center
+for_window [class="mpv"]       move absolute position 2080 1200
 
 # #---Dropdown/Scratchpad Windows---# #
 # First I have a tmux window used for background scripts.

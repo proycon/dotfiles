@@ -392,6 +392,7 @@ bindkey $terminfo[kend] end-of-line
 
 export LESS_TERMCAP_so=$'\E[30;42m'
 
+export TERMINAL=urxvt
 case $TERM in
     xterm*|rxvt)
         PROMPT_COMMAND='echo -ne "\033]0;${USER}@${HOSTNAME}\007"'

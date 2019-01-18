@@ -1,3 +1,5 @@
+https://www.nu.nl/rss/Algemeen "news"
+https://www.volkskrant.nl/voorpagina/rss.xml "news"
 https://www.theguardian.com/world/rss "news"
 https://www.lemonde.fr/rss/une.xml "news"
 https://www.spiegel.de/index.rss "news"
@@ -28,3 +30,4 @@ https://www.reddit.com/r/LanguageTechnology/.rss "nlp" "reddit" "~r/LanguageTech
 https://www.reddit.com/r/python/.rss "nlp" "reddit" "~r/python"
 https://www.reddit.com/r/vim/.rss "nlp" "reddit" "~r/vim"
 https://www.reddit.com/r/rust/.rss "nlp" "reddit" "~r/rust"
+https://www.reddit.com/r/privacy/.rss "nlp" "reddit" "~r/privacy"

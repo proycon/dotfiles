@@ -18,7 +18,7 @@ case "$1" in
 	*png|*jpg|*jpe|*jpeg|*gif)
 		setsid sxiv -a "$1" >/dev/null 2>&1 & ;;
 	*mp3|*flac|*opus|*mp3?source*)
-		setsid tsp curl -LO "$1" >/dev/null 2>&1 & ;;
+		setsid mpv curl -LO "$1" >/dev/null 2>&1 & ;;
 	*springer.com*)
 		setsid curl -sO "$(curl -s "$scihub$*" | grep -Po "(?<=location.href=').+.pdf")" >/dev/null 2>&1 & ;;
 	*)
