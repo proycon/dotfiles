@@ -6,6 +6,7 @@ export LC_ALL=en_GB.UTF-8
 export GTK_IM_MODULE=fcitx
 export QT_IM_MODULE=fcitx
 export XMODIFIERS=@im=fcitx
+export QT_AUTO_SCREEN_SCALE_FACTOR=1
 
 cd $HOME
 
