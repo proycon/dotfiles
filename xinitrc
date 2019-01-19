@@ -51,7 +51,7 @@ if [ "$HOSTNAME" == "mhysa" ]; then
     #feh --bg-tile --no-xinerama ~/dotfiles/media/hummingbird_twin.jpg
     feh --bg-center ~/dotfiles/media/centerpiece.png --image-bg '#191919'
 else
-    feh --bg-center ~/dotfiles/media/centerpiece.png --image-bg '#191919'
+    feh --bg-center ~/dotfiles/media/floral.jpg --image-bg '#191919'
     #feh --bg-scale ~/dotfiles/media/hummingbird.jpg #Landscape-Iceland-Arch-4K.jpg #ArchDarkFloral.png #/home/proycon/Pictures/Local/wallpapers/archplains.jpg &  #03529_marronbells_5120x2880.jpg &  #~/Pictures/Local/wallpapers/thomascolliers.png &
 fi
 
