@@ -32,6 +32,7 @@ Plug 'benmills/vimux' "vim/tmux integration
 Plug 'julienr/vim-cellmode' "sends codeblocks to ipython in tmux pane
 Plug 'jeetsukumaran/vim-markology'
 Plug 'frioux/vim-lost'
+Plug 'skywind3000/asyncrun.vim' "Run shell commands asynchronously
 
 
 " IDE
@@ -393,7 +394,8 @@ hi IndentGuidesEven  guibg=#3a3a3a ctermbg=darkgrey
 hi IndentGuidesOdd guibg=#1a1a1a ctermbg=black
 
 " Markdown
-autocmd Filetype markdown map <F5> :!pandoc<space><C-r>%<space>-o<space><C-r>%.pdf<Enter><Enter>
+"autocmd Filetype markdown map <F5> :!pandoc<space><C-r>%<space>-o<space><C-r>%.pdf<Enter>zathura<space>&<Enter>
+autocmd Filetype markdown map <F5> :AsyncRun<space>export<space>F="<C-r>%"<space>&&<space>pandoc<space>-s<space>-f<space>gfm<space>-H<space>~/dotfiles/header.sty<space>-o<space>${F\%.md}.pdf<space><C-r>%<space>&&<space>DISPLAY=:0.0<space>zathura<space>${F\%.md}.pdf<Enter>
 autocmd Filetype rmd map <F5> :!echo<space>"require(rmarkdown);<space>render('<c-r>%')"<space>\|<space>R<space>--vanilla<enter><Paste>
 autocmd FileType tex inoremap <F5> <Esc>:!pdflatex<spacE><c-r>%<Enter>a
 autocmd FileType tex nnoremap <F5> :!pdflatex<spacE><c-r>%<Enter>
