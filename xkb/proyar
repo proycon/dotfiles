@@ -70,6 +70,7 @@ xkb_symbols "basic" {
     key <AB10> {        [     slash,    Arabic_question_mark,  question , questiondown     ]       };
 
     //key <RWIN> {        [       ISO_Level3_Shift ]       };
+    replace key <PRSC> { [ ISO_Level3_Shift ] };
 
     include "level3(ralt_switch)"
     include "level3(rwin_switch)"

@@ -7,7 +7,7 @@
 
 partial default alphanumeric_keys
 xkb_symbols "basic" {
-    
+
     #include "pc(common)"
 
     name[Group1]="Math and Logic (Proycon)";
@@ -70,7 +70,8 @@ xkb_symbols "basic" {
     key <AB09> {        [    period,    greater, U2192, U21D2        ]       };
     key <AB10> {        [     slash,    question , U21A6, U225F       ]       };
 
-   
+
+    replace key <PRSC> { [ ISO_Level3_Shift ] };
 
     include "level3(ralt_switch)"
     include "level3(rwin_switch)"
