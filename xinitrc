@@ -33,6 +33,9 @@ killall xss-lock
 xss-lock --ignore-sleep -- /home/proycon/dotfiles/lock.sh &
 udiskie &
 setxkbmap proylatin
+if [[ "$HOSTNAME" == "rocinante" ]]; then
+    setxkbmap -option "altwin:swap_lalt_lwin"
+fi
 /home/proycon/projects/homeautomation/notifyclient_autoconnect.sh &
 play ~/cylontune_low.ogg &
 compton -cC -z -r 3 -l 2 -t 2 -f &

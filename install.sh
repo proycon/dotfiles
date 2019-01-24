@@ -76,19 +76,26 @@ ROOTNAMES=("vim" "vimrc" "zshrc" "urlview" "muttrc" "urxvt" "gdbinit"  "mailcap"
 
 CONFIGNAMES=("openbox" "bspwm" "sxhkd" "nvim" "ranger" "polybar" "sxiv" "i3" "ipython" "tm" "ncmpcpp.config")
 
+SCRIPTS=("suspend.sh" "linkhander" "lock.sh" "screencast.sh")
+
 for NAME in ${ROOTNAMES[*]}; do
-    echo "$DOTDIR/$NAME"
     if [ -e "$DOTDIR/$NAME" ]; then
-	echo "Linking $NAME"
+    	echo "Linking $NAME"
         ln -sfn "$DOTDIR/$NAME" "$HOMEDIR/.$NAME"
     fi
 done
 
 for NAME in ${CONFIGNAMES[*]}; do
-    echo "$DOTDIR/$NAME"
     if [ -e "$DOTDIR/$NAME" ]; then
-	echo "Linking $NAME"
+    	echo "Linking $NAME"
         ln -sfn "$DOTDIR/$NAME" "$HOMEDIR/.config/$NAME"
+    fi
+done
+
+for NAME in ${SCRIPTS[*]}; do
+    if [ -e "$DOTDIR/$NAME" ]; then
+    	echo "Linking $NAME"
+        ln -sfn "$DOTDIR/$NAME" "$HOMEDIR/bin/$NAME"
     fi
 done
 
