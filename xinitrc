@@ -37,7 +37,7 @@ if [[ "$HOSTNAME" == "rocinante" ]]; then
     setxkbmap -option "altwin:swap_lalt_lwin"
 fi
 /home/proycon/projects/homeautomation/notifyclient_autoconnect.sh &
-play ~/cylontune_low.ogg &
+play ~/dotfiles/media/cylontune_low.ogg &
 compton -cC -z -r 3 -l 2 -t 2 -f &
 
 #if [ $MULTI -eq 1 ]; then
@@ -52,7 +52,8 @@ if [ "$HOSTNAME" == "mhysa" ]; then
     echo "Multi screen enabled">&2
     xrandr --setprovideroutputsource 1 0 && xrandr --output DP-1-1 --auto --left-of DisplayPort-1 --rotate left
     #feh --bg-tile --no-xinerama ~/dotfiles/media/hummingbird_twin.jpg
-    feh --bg-center ~/dotfiles/media/centerpiece.png --image-bg '#191919'
+    #feh --bg-center ~/dotfiles/media/centerpiece.png --image-bg '#191919'
+    feh --bg-center ~/dotfiles/media/floral.jpg --image-bg '#191919'
 else
     feh --bg-center ~/dotfiles/media/floral.jpg --image-bg '#191919'
     #feh --bg-scale ~/dotfiles/media/hummingbird.jpg #Landscape-Iceland-Arch-4K.jpg #ArchDarkFloral.png #/home/proycon/Pictures/Local/wallpapers/archplains.jpg &  #03529_marronbells_5120x2880.jpg &  #~/Pictures/Local/wallpapers/thomascolliers.png &
