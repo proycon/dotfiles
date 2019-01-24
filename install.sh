@@ -58,7 +58,19 @@ if [ $SUDO -eq 1 ]; then
     elif [[ "$OS" == "arch" ]]; then
         sudo pacman -Syyu --needed sudo openssh aspell aspell-de aspell-en aspell-es aspell-fr aspell-it aspell-nl aspell-ru audacity autoconf autoconf-archive bat bzip2 calibre cheese chromium cmake compton debootstrap deluge docker doxygen e2fsprogs encfs eslint evince fcitx fcitx-gtk3 fcitx-gtk2 fcitx-qt4 fcitx-qt4 feh ffmpeg firefox gawk gcc gdb geeqie gedit gimp git gitg glances gmp gnome-desktop gnome-common gnupg gnu-netcat gnome-settings-daemon gnome-keyring go gnutls gnuplot grep gpgme gpm groovy graphviz gstreamer gst-plugins-good gst-plugins-base gst-plugins-bad gst-plugins-ugly gzip htop hdparm hunspell i3-gaps icu ipython imagemagick iotop iperf jupyter keybase lm_sensors lsb-release lsof lua make mailcap m4 maven mesa mplayer mpv nano nautilus ncdu mosquitto mpc networkmanager newsboat ncmpcpp nmap nnn ranger okular openssl perl poppler powerline procps-ng psmisc python python-cherrypy python-lxml python-django python-setuptools python-jinja python-flask python-matplotlib python-numpy python-oauth2client python-oauthlib python-jupyter_core python-jupyter_client python-pandas python-pip python-pillow python-psutil python-requests python-seaborn python-setuptools python-virtualenv python2 python2-lxml python2-numpy python2-scipy python-yaml python2-yaml python2-virtualenv riot-desktop riot-web rofi rsync readline ruby rust rxvt-unicode rxvt-unicode-terminfo scrot semver slim smbclient sqlite tar sxiv subversion bzr mercurial telegram-desktop texlive-bin texlive-core texlive-humanities texlive-langextra texlive-latexextra texlive-pstricks texlive-pictures texlive-publishers texlive-formatsextra texlive-fontsextra texlive-bibtexextra texlive-science thunar thunderbird tig tk ttf-dejavu ttf-droid ttf-fira-code ttf-gentium ttf-khmer ttf-ubuntu-font-family ttf-tibetan-machine ttf-roboto ttf-opensans ttf-font-awesome ttf-fira-mono ttf-fira-sans ttf-linux-libertine traceroute udiskie unrar unzip urxvt-perls virtualbox vagrant usbutils v4l-utils vlc w3m wget whois wine wine-mono wine_gecko wireshark-cli xorg-server xorg-fonts-100dpi xorg-xkbutils xorg-xev xorg-xrandr xorg-xrdb xorg-xset xorg-xauth xorg-server-common xorg-setxkbmap xss-lock youtube-dl zathura zathura-pdf-poppler zip zsh tmux cups cups-filters foomatic-db antiword
         sudo pacman -Syyu --needed rxvt-unicode tmux compton i3-gaps neovim tig i3lock ncdu ranger curl wget rofi dmenu openbox ipython pcmanfm gcc mpv autoconf-archive pandoc htop glances iotop netcat sxiv newsboat mplayer fcitx firefox pavucontrol ncmpcpp git fzf zathura zathura-pdf-poppler gimp inkscape ack bat jq fd sed sox ctags alsa-utils python-neovim archlinux-themes-slim wqy-zenhei wqy-microhei wqy-bitmapfont network-manager-applet nm-connection-editor sshfs autoconf automake pkg-config
-        yaourt -S polybar powerline-fonts-git ttf-material-design-icons-git ttf-symbola || echo "WARNING: Yaourt is not installed yet, do so yourself!">&2
+        YAOURT=0
+        while true; do
+            echo -n "Install AUR packages? (requires yaourt!) [yn] "
+            read yn
+            case $yn in
+                [Yy]* ) YAOURT=1; break;;
+                [Nn]* ) YAOURT=0; break;;
+                * ) echo "Please answer yes or no.";;
+            esac
+        done
+        if [ $YAOURT -eq 1 ]; then
+            yaourt -S polybar powerline-fonts-git ttf-material-design-icons-git ttf-symbola || echo "WARNING: Yaourt is not installed yet, do so yourself!">&2
+        fi
     else
         echo "Distribution not supported!">&2
         sleep 10
@@ -72,6 +84,10 @@ mkdir .config
 mkdir .local
 mkdir .local/share
 cd dotfiles
+git submodule init
+git submodule sync
+git submodule update
+
 DOTDIR=`pwd`
 
 ROOTNAMES=("vim" "vimrc" "zshrc" "urlview" "muttrc" "urxvt" "gdbinit"  "mailcap" "signature" "signature.ru.txt" "signature.unilang" "xinitrc" "tmux.conf" "tmux-powerlinerc" "inputrc" "Xresources" "pylintrc" "pdbrc.py")
@@ -105,6 +121,8 @@ mkdir .ncmpcpp
 ln -sfn $DOTDIR/ncmpcpp.config $HOMEDIR/.ncmpcpp/config
 ln -sfn $DOTDIR/tm $HOMEDIR/bin/tm
 ln -sfn $DOTDIR/screencast.sh $HOMEDIR/bin/screencast.sh
+ln -sfn $DOTDIR/xinitrc $HOMEDIR/.xsession
+mkdir $HOMEDIR/rofi
 ln -sfn $DOTDIR/rofi $HOMEDIR/rofi/config
 cd $HOMEDIR
 
