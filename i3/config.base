@@ -279,7 +279,7 @@ for_window [class="mpv"]       floating enable
 for_window [class="mpv"]       resize set 800 600
 for_window [class="mpv"]       border pixel 3
 for_window [class="mpv"]       sticky enable
-for_window [class="mpv"]       move absolute position 2080 1200
+for_window [class="mpv"]       move absolute position 1760 840
 
 # #---Dropdown/Scratchpad Windows---# #
 # First I have a tmux window used for background scripts.
