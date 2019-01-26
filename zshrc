@@ -80,16 +80,9 @@ alias z='less -rN'
 alias myip="dig +short myip.opendns.com @resolver1.opendns.com"
 which nvim > /dev/null 2>/dev/null
 if (( $? == 0 )); then
-    if [[ "$TERM" == "screen-256color" ]]; then
-        export EDITOR="nvim"
-        alias vi="nvim"
-        alias vim="nvim"
-    else
-        export EDITOR="nvim"
-        alias vi="nvim"
-        alias vim="nvim"
-        alias nvim="nvim"
-    fi
+    export EDITOR="nvim"
+    alias vi="nvim"
+    alias vim="nvim"
 else
     which vim > /dev/null 2>/dev/null
     if (( $? == 0 )); then

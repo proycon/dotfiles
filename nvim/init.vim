@@ -305,7 +305,9 @@ let g:airline_powerline_fonts = 1
 " themes and colors
 let NVIM_TUI_ENABLE_CURSOR_SHAPE=1
 set t_Co=256
-set termguicolors
+if (!empty($TMUX))
+    set termguicolors
+endif
 set background=dark
 colorscheme gruvbox "proycon
 let g:seiya_auto_enable=1
