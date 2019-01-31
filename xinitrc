@@ -47,7 +47,7 @@ compton -cC -z -r 3 -l 2 -t 2 -f &
 #    DISPLAY=$DISPLAY0
 #fi
 #
-if [ "$HOSTNAME" == "mhysa" ]; then
+if [[ "$HOSTNAME" == "mhysa" ]]; then
     #multi screen
     echo "Multi screen enabled">&2
     xrandr --setprovideroutputsource 1 0 && xrandr --output DP-1-1 --auto --left-of DisplayPort-1 --rotate left
@@ -56,7 +56,7 @@ if [ "$HOSTNAME" == "mhysa" ]; then
 else
     #feh --bg-scale ~/dotfiles/media/hummingbird.jpg #Landscape-Iceland-Arch-4K.jpg #ArchDarkFloral.png #/home/proycon/Pictures/Local/wallpapers/archplains.jpg &  #03529_marronbells_5120x2880.jpg &  #~/Pictures/Local/wallpapers/thomascolliers.png &
 fi
-feh --bg-center ~/dotfiles/media/floral.jpg --image-bg '#2e3440'
+feh --bg-center ~/dotfiles/media/floral.jpg --image-bg '#2e3440' &
 
 which i3 > /dev/null 2>/dev/null
 if [ $? -eq 0 ]; then
@@ -82,6 +82,8 @@ if [ $? -eq 0 ]; then
 else
     HAVE_XFCE4=0
 fi
+
+echo $HAVE_I3 > /tmp/Xlaunch
 
 if [ $HAVE_I3 -eq 1 ]; then
     exec dbus-launch i3 -d all 2> ~/.xsession-errors$DISPLAY
