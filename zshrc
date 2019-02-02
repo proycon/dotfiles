@@ -221,6 +221,8 @@ alias luon="ssh -Y -A -t maartenvg@void.luon.net"
 
 alias lq="source ~/.sgesh"
 
+alias wtr="curl http://wttr.in"
+
 
 if [[ $HOST == "applejack" || $HOST == "fluttershy" || $HOST == "rarity" || $HOST == "cheerilee" || $HOST == "fancypants" || $HOST == "pipsqueak" || $HOST == "scootaloo" || $HOST == "blossomforth" || $HOST == "featherweight" || $HOST == "twist" || $HOST == "thunderlane" ]]; then
 
