@@ -63,6 +63,7 @@ Plug 'miyakogi/seiya.vim' "transparent background
 Plug 'pearofducks/ansible-vim' "highlighting
 Plug 'freitass/todo.txt-vim', { 'for': 'todo.txt' }
 Plug 'plasticboy/vim-markdown'
+Plug 'chrisbra/csv.vim'
 
 
 "Themes
