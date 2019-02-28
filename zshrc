@@ -115,21 +115,28 @@ man() {
 
 alias dis='export $(tmux showenv | grep DISPLAY)'
 
+if [ -f ~/bin/lamachine-main-activate ]; then
+    alias lm='source ~/bin/lamachine-main-activate'
+elif [ -f ~/bin/lamachine-stable-activate ]; then
+    alias lm='source ~/bin/lamachine-main-activate'
+fi
+if [ -f ~/bin/lamachine-dev-activate ]; then
+    alias lmdev='source ~/bin/lamachine-dev-activate'
+fi
+
 #PATHS
-if [[ $HOST == "galactica" || $HOST == "mhysa" || $HOST == "caprica" || $HOST == "drasha" ]]; then
-    export PATH="/home/proycon/bin:/home/proycon/.cargo/bin:/home/proycon/local/bin:/usr/local/android-sdk-linux/tools:/usr/local/android-sdk-linux/platform-tools:$PATH"
-    export LD_LIBRARY_PATH="$LD_LIBRARY_PATH:/home/proycon/local/lib"
+if [[ $HOST == "rocinante" || $HOST == "mhysa" || $HOST == "drasha" ]]; then
+    #export PATH="/home/proycon/bin:/home/proycon/.cargo/bin:/home/proycon/local/bin:/usr/local/android-sdk-linux/tools:/usr/local/android-sdk-linux/platform-tools:$PATH"
+    #export LD_LIBRARY_PATH="$LD_LIBRARY_PATH:/home/proycon/local/lib"
     export CDPATH=.:~/work
-    export PYTHONPATH="/home/proycon/work/"
-    export ANDROID_SDK="/usr/local/android-sdk-linux"
+    #export PYTHONPATH="/home/proycon/work/"
+    #export ANDROID_SDK="/usr/local/android-sdk-linux"
 
     hash -d X=/home/proycon/exp
-    hash -d lsrc=/home/proycon/local/src/
+    #hash -d lsrc=/home/proycon/local/src/
     hash -d W=/home/proycon/work
     hash -d P=/home/proycon/projects
 
-    alias lm='source ~/bin/lamachine-main-activate'
-    alias lmdev='source ~/bin/lamachine-dev-activate'
 elif [[ $HOST == "roma" ]]; then
     export PATH="/home/proycon/bin:/home/proycon/.cargo/bin:/home/proycon/local/bin:$PATH"
     export LD_LIBRARY_PATH="$LD_LIBRARY_PATH:/home/proycon/local/lib"
