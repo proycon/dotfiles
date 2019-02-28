@@ -118,7 +118,7 @@ alias dis='export $(tmux showenv | grep DISPLAY)'
 if [ -f ~/bin/lamachine-main-activate ]; then
     alias lm='source ~/bin/lamachine-main-activate'
 elif [ -f ~/bin/lamachine-stable-activate ]; then
-    alias lm='source ~/bin/lamachine-main-activate'
+    alias lm='source ~/bin/lamachine-stable-activate'
 fi
 if [ -f ~/bin/lamachine-dev-activate ]; then
     alias lmdev='source ~/bin/lamachine-dev-activate'
