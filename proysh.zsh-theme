@@ -1,11 +1,12 @@
 #!/bin/zsh
-
-if [[ $HOST == "caprica" ]] {
+#
+DOMAIN=$(hostname -d)
+if [[ $HOST == "rocinante" ]] {
 	host="{%F{106}%}@%m%k%f"
 } elif [[ $HOST == "mhysa" || $HOST == "drasha" ]] {
 	host="{$fg_bold[blue]%}@%m%{$reset_color%}"
-} elif [[ $HOST == "roma" ]] {
-	host="{$fg_bold[yellow]%}@%m%{$reset_color%}"
+} elif [[ $HOST == "roma" || $DOMAIN == "anaproy.nl" || $DOMAIN == "anaproy.lxd" ]] {
+	host="{$fg_bold[yellow]%}@%m.$DOMAIN%{$reset_color%}"
 } elif [[ $HOST == 'applejack' ]] || [[ $HOST == 'mlp01' ]]   {
 	host="{$fg_bold[red]%}@%m%{$reset_color%}"
 } elif [[ -f /etc/profile.d/mlp.sh ]] {
