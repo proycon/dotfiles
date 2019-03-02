@@ -71,7 +71,8 @@ xkb_symbols "basic" {
     key <AB09> {        [    period,    greater         ]       };
     key <AB10> {        [     slash,    question , questiondown, questiondown       ]       };
 
-    
+    replace key <PRSC> { [ ISO_Level3_Shift ] };
+
     include "level3(ralt_switch)"
     include "level3(rwin_switch)"
     include "ctrl(nocaps)"

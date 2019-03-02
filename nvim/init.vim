@@ -2,8 +2,7 @@
 
 " vim-plug autoconfig if not already installed
 if empty(glob('~/.config/nvim/autoload/plug.vim'))
-  silent !curl -fLo ~/.config/nvim/autoload/plug.vim --create-dirs
-    \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+  silent !curl -fLo ~/.config/nvim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
   autocmd VimEnter * PlugInstall | nested source $MYVIMRC
 endif
 
@@ -33,6 +32,7 @@ Plug 'benmills/vimux' "vim/tmux integration
 Plug 'julienr/vim-cellmode' "sends codeblocks to ipython in tmux pane
 Plug 'jeetsukumaran/vim-markology'
 Plug 'frioux/vim-lost'
+Plug 'skywind3000/asyncrun.vim' "Run shell commands asynchronously
 
 
 " IDE
@@ -63,6 +63,7 @@ Plug 'miyakogi/seiya.vim' "transparent background
 Plug 'pearofducks/ansible-vim' "highlighting
 Plug 'freitass/todo.txt-vim', { 'for': 'todo.txt' }
 Plug 'plasticboy/vim-markdown'
+Plug 'chrisbra/csv.vim'
 
 
 "Themes
@@ -305,7 +306,9 @@ let g:airline_powerline_fonts = 1
 " themes and colors
 let NVIM_TUI_ENABLE_CURSOR_SHAPE=1
 set t_Co=256
-set termguicolors
+if (!empty($TMUX))
+    set termguicolors
+endif
 set background=dark
 colorscheme gruvbox "proycon
 let g:seiya_auto_enable=1
@@ -394,10 +397,11 @@ hi IndentGuidesEven  guibg=#3a3a3a ctermbg=darkgrey
 hi IndentGuidesOdd guibg=#1a1a1a ctermbg=black
 
 " Markdown
-autocmd Filetype markdown map <F5> :!pandoc<space><C-r>%<space>-o<space><C-r>%.pdf<Enter><Enter>
-autocmd Filetype rmd map <F5> :!echo<space>"require(rmarkdown);<space>render('<c-r>%')"<space>\|<space>R<space>--vanilla<enter><Paste>
-autocmd FileType tex inoremap <F5> <Esc>:!pdflatex<spacE><c-r>%<Enter>a
-autocmd FileType tex nnoremap <F5> :!pdflatex<spacE><c-r>%<Enter>
+"autocmd Filetype markdown map <F5> :!pandoc<space><C-r>%<space>-o<space><C-r>%.pdf<Enter>zathura<space>&<Enter>
+autocmd Filetype markdown map <F4> :!<space>export<space>F="<C-r>%"<space>&&<space>pandoc<space>-s<space>-f<space>gfm<space>-H<space>~/dotfiles/header.sty<space>-o<space>${F\%.md}.pdf<space><C-r>%<space>&&<space>DISPLAY=:0.0<space>zathura<space>${F\%.md}.pdf<Enter>
+autocmd Filetype markdown map <F5> :AsyncRun<space>export<space>F="<C-r>%"<space>&&<space>pandoc<space>-s<space>-f<space>gfm<space>-H<space>~/dotfiles/header.sty<space>-o<space>${F\%.md}.pdf<space><C-r>%<space>&&<space>DISPLAY=:0.0<space>zathura<space>${F\%.md}.pdf<Enter>
+autocmd Filetype tex map <F5> :AsyncRun<space>export<space>F="<C-r>%"<space>&&<space>pdflatex<space><C-r>%<space>&&<space>DISPLAY=:0.0<space>zathura<space>${F\%.tex}.pdf<Enter>
+autocmd Filetype tex map <F4> :!export<space>F="<C-r>%"<space>&&<space>pdflatex<space><C-r>%<space>&&<space>DISPLAY=:0.0<space>zathura<space>${F\%.tex}.pdf<Enter>
 
 "ansible-vim
 let g:ansible_name_highlight = 'b'

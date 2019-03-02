@@ -207,13 +207,15 @@ mode "resize" {
 mode "exec" {
         bindsym m exec --no-startup-id urxvt -cd /home/proycon -T mail -e ssh -Y -A -t anaproy.nl /home/proycon/bin/tm_alot; mode "default"
         bindsym v exec --no-startup-id urxvt -cd /home/proycon -T vim -e /home/proycon/bin/tm nvim; mode "default"
+        bindsym t exec --no-startup-id urxvt -cd /home/proycon -e tmux new; mode "default"
         bindsym Shift+m exec urxvt -cd /home/proycon -T ncmpcpp -e ncmpcpp; mode "default"
+        bindsym r exec urxvt -cd /home/proycon -T newsboat -e newsboat; mode "default"
         bindsym w exec firefox; mode "default"
         bindsym f exec pcmanfm; mode "default"
-        bindsym g exec geeqie; mode "default"
+        bindsym g exec ~/dotfiles/opensxiv.sh; mode "default"
         bindsym n exec networkmanager_dmenu -fn "Sans"; mode "default"
         bindsym p exec pavucontrol; mode "default"
-        bindsym s exec urxvt -name scratchpad -e /home/proycon/bin/tm scratchpad
+        bindsym s exec urxvt -name scratchpad -e /home/proycon/bin/tm scratchpad; mode "default"
         bindsym F2 exec --no-startup-id /home/proycon/bin/lala; mode "default"
         bindsym F8 exec --no-startup-id fcitx; mode "default"
         bindsym F9 exec killall fcitx || setxkbmap proylatin; mode "default"
@@ -266,7 +268,6 @@ bindsym $alt+F12 exec killall fcitx || /bin/true; exec setxkbmap proyar
 for_window [class="Lightdm-gtk-greeter-settings"]   floating enable
 for_window [class="Lxappearance"]                   floating enable
 for_window [class="Menu"]                           floating enable
-for_window [class="Software-properties-gtk"]        floating enable
 
 
 # i3-gaps
@@ -274,6 +275,11 @@ for_window [class="^.*"]                border pixel 0
 for_window [window_role="pop-up"]       floating enable
 for_window [window_role="task_dialog"]  floating enable
 for_window [title="Preferences$"]       floating enable
+for_window [class="mpv"]       floating enable
+for_window [class="mpv"]       resize set 800 600
+for_window [class="mpv"]       border pixel 3
+for_window [class="mpv"]       sticky enable
+for_window [class="mpv"]       move absolute position 1760 840
 
 # #---Dropdown/Scratchpad Windows---# #
 # First I have a tmux window used for background scripts.

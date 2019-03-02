@@ -80,16 +80,9 @@ alias z='less -rN'
 alias myip="dig +short myip.opendns.com @resolver1.opendns.com"
 which nvim > /dev/null 2>/dev/null
 if (( $? == 0 )); then
-    if [[ "$TERM" == "screen-256color" ]]; then
-        export EDITOR="nvim"
-        alias vi="nvim"
-        alias vim="nvim"
-    else
-        export EDITOR="nvim"
-        alias vi="nvim"
-        alias vim="nvim"
-        alias nvim="nvim"
-    fi
+    export EDITOR="nvim"
+    alias vi="nvim"
+    alias vim="nvim"
 else
     which vim > /dev/null 2>/dev/null
     if (( $? == 0 )); then
@@ -97,6 +90,7 @@ else
         alias vi="vim"
     fi
 fi
+
 
 export MPD_HOST="proycon@anaproy.nl"
 
@@ -121,21 +115,28 @@ man() {
 
 alias dis='export $(tmux showenv | grep DISPLAY)'
 
+if [ -f ~/bin/lamachine-main-activate ]; then
+    alias lm='source ~/bin/lamachine-main-activate'
+elif [ -f ~/bin/lamachine-stable-activate ]; then
+    alias lm='source ~/bin/lamachine-stable-activate'
+fi
+if [ -f ~/bin/lamachine-dev-activate ]; then
+    alias lmdev='source ~/bin/lamachine-dev-activate'
+fi
+
 #PATHS
-if [[ $HOST == "galactica" || $HOST == "mhysa" || $HOST == "caprica" || $HOST == "drasha" ]]; then
-    export PATH="/home/proycon/bin:/home/proycon/.cargo/bin:/home/proycon/local/bin:/usr/local/android-sdk-linux/tools:/usr/local/android-sdk-linux/platform-tools:$PATH"
-    export LD_LIBRARY_PATH="$LD_LIBRARY_PATH:/home/proycon/local/lib"
+if [[ $HOST == "rocinante" || $HOST == "mhysa" || $HOST == "drasha" ]]; then
+    #export PATH="/home/proycon/bin:/home/proycon/.cargo/bin:/home/proycon/local/bin:/usr/local/android-sdk-linux/tools:/usr/local/android-sdk-linux/platform-tools:$PATH"
+    #export LD_LIBRARY_PATH="$LD_LIBRARY_PATH:/home/proycon/local/lib"
     export CDPATH=.:~/work
-    export PYTHONPATH="/home/proycon/work/"
-    export ANDROID_SDK="/usr/local/android-sdk-linux"
+    #export PYTHONPATH="/home/proycon/work/"
+    #export ANDROID_SDK="/usr/local/android-sdk-linux"
 
     hash -d X=/home/proycon/exp
-    hash -d lsrc=/home/proycon/local/src/
+    #hash -d lsrc=/home/proycon/local/src/
     hash -d W=/home/proycon/work
     hash -d P=/home/proycon/projects
 
-    alias lm='source ~/bin/lamachine-main-activate'
-    alias lmdev='source ~/bin/lamachine-dev-activate'
 elif [[ $HOST == "roma" ]]; then
     export PATH="/home/proycon/bin:/home/proycon/.cargo/bin:/home/proycon/local/bin:$PATH"
     export LD_LIBRARY_PATH="$LD_LIBRARY_PATH:/home/proycon/local/lib"
@@ -186,6 +187,7 @@ fi
 alias ap='ssh -Y -A -t anaproy.nl /home/proycon/bin/tm'
 alias rap='ssh -Y -A -t root@anaproy.nl /home/proycon/bin/tm'
 alias ssha='ssh -Y -A anaproy.nl'
+alias sshm='ssh -Y -A mhysa.anaproy.nl'
 alias sshat='ssh -Y -A anaproy.nl /home/proycon/bin/tm'
 alias e='ssh -Y -A -t anaproy.nl /home/proycon/bin/tm_vi'
 alias m="ssh -Y -A -t anaproy.nl /home/proycon/bin/tm_alot"
@@ -226,6 +228,8 @@ alias luon="ssh -Y -A -t maartenvg@void.luon.net"
 #alias gpga="killall gpg-agent; gpg-agent --daemon --enable-ssh-support --write-env-file /home/proycon/.gpg-agent-info"
 
 alias lq="source ~/.sgesh"
+
+alias wtr="curl http://wttr.in"
 
 
 if [[ $HOST == "applejack" || $HOST == "fluttershy" || $HOST == "rarity" || $HOST == "cheerilee" || $HOST == "fancypants" || $HOST == "pipsqueak" || $HOST == "scootaloo" || $HOST == "blossomforth" || $HOST == "featherweight" || $HOST == "twist" || $HOST == "thunderlane" ]]; then
@@ -391,6 +395,7 @@ bindkey $terminfo[kend] end-of-line
 
 export LESS_TERMCAP_so=$'\E[30;42m'
 
+export TERMINAL=urxvt
 case $TERM in
     xterm*|rxvt)
         PROMPT_COMMAND='echo -ne "\033]0;${USER}@${HOSTNAME}\007"'
