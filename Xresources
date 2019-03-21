@@ -11,10 +11,10 @@ urxvt*depth: 32
 urxvt*background: rgba:2f00/2f00/2f00/f900
 
 urxvt*scrollBar: false
-urxvt*font: xft:Source Code Pro for Powerline:size=10:antialias=true:hinting=true,xft:Ubuntu Mono derivative Powerline:size=11:antialias=true:hinting=true,xft:WenQuanYi Micro Hei Mono:size=11,xft:DejaVu Sans Mono:size=11,xft:Symbola:size=8,xft:Gargi,xft:Khmer OS System,xft:Lohit Devanagari:size=11,xft:Lohit Tamil,xft:Lohit Gujarati,xft:Lohit Bengali,xft:Lohit Oriya,xft:Lohit Kannada,xft:Lohit Konkani,xft:Lohit Malayam,xft:Lohit Telugu,xft:Lohit Nepali,xft:Lohit Assamese,xft:Lohit Punjabi,xft:Material Design Icons:size=10
-urxvt*italicFont: xft:Source Code Pro for Powerline:size=10:italic:antialias=true:hinting=true,xft:Ubuntu Mono derivative Powerline:size=11:italic:antialias=true:hinting=true,xft:WenQuanYi Micro Hei Mono:italic,xft:Symbola:size=8,xft:Material Design Icons:size=10
-urxvt*boldFont: xft:Source Code Pro for Powerline:size=10:bold:antialias=true:hinting=true,xft:Ubuntu Mono derivative Powerline:size=11:bold:antialias=true:hinting=true,xft:WenQuanYi Micro Hei Mono:bold:size=11,xft:Symbola:size=8,xft:Material Design Icons:size=10
-urxvt*boldItalicFont: xft:Source Code Pro for Powerline:size=10:bold:italic:antialias=true:hinting=true,xft:Ubuntu Mono derivative Powerline:size=10:bold:italic:antialias=true:hinting=true,xft:WenQuanYi Micro Hei Mono:bold:italic,xft:Symbola:size=8,xft:Material Design Icons:size=10
+urxvt*font: xft:SauceCodePro Nerd Font:size=10:antialias=true:hinting=true,xft:Ubuntu Mono derivative Powerline:size=11:antialias=true:hinting=true,xft:WenQuanYi Micro Hei Mono:size=11,xft:DejaVu Sans Mono:size=11,xft:Symbola:size=8,xft:Gargi,xft:Khmer OS System,xft:Lohit Devanagari:size=11,xft:Lohit Tamil,xft:Lohit Gujarati,xft:Lohit Bengali,xft:Lohit Oriya,xft:Lohit Kannada,xft:Lohit Konkani,xft:Lohit Malayam,xft:Lohit Telugu,xft:Lohit Nepali,xft:Lohit Assamese,xft:Lohit Punjabi,xft:Material Design Icons:size=10
+urxvt*italicFont: xft:SauceCodePro Nerd Font:size=10:italic:antialias=true:hinting=true,xft:Ubuntu Mono derivative Powerline:size=11:italic:antialias=true:hinting=true,xft:WenQuanYi Micro Hei Mono:italic,xft:Symbola:size=8,xft:Material Design Icons:size=10
+urxvt*boldFont: xft:SauceCodePro Nerd Font:size=10:bold:antialias=true:hinting=true,xft:Ubuntu Mono derivative Powerline:size=11:bold:antialias=true:hinting=true,xft:WenQuanYi Micro Hei Mono:bold:size=11,xft:Symbola:size=8,xft:Material Design Icons:size=10
+urxvt*boldItalicFont: xft:SauceCodePro Nerd Font:size=10:bold:italic:antialias=true:hinting=true,xft:Ubuntu Mono derivative Powerline:size=10:bold:italic:antialias=true:hinting=true,xft:WenQuanYi Micro Hei Mono:bold:italic,xft:Symbola:size=8,xft:Material Design Icons:size=10
 !urxvt*boldFont: xft:Ubuntu Mono derivative Powerline:bold:antialias=true:hinting=true
 !urxvt*italicFont: xft:Ubuntu Mono derivative Powerline:italic:antialias=true:hinting=true
 !urxvt*boldItalicFont: xft:Ubuntu Mono derivative Powerline:bold:italic:antialias=true:hinting=true
@@ -113,10 +113,10 @@ urxvtwhite.color15:    #3c3836
 
 
 urxvtwhite*scrollBar: false
-urxvtwhite*font: xft:Source Code Pro for Powerline:size=10:antialias=true:hinting=true,xft:Ubuntu Mono derivative Powerline:size=11:antialias=true:hinting=true,xft:WenQuanYi Micro Hei Mono,xft:DejaVu Sans Mono,xft:Gargi,xft:Khmer OS System,xft:Lohit Tamil,xft:Lohit Gujarati,xft:Lohit Bengali,xft:Lohit Oriya,xft:Lohit Kannada,xft:Lohit Konkani,xft:Lohit Malayam,xft:Lohit Telugu,xft:Lohit Nepali,xft:Lohit Assamese,xft:Lohit Punjabi
-urxvtwhite*italicFont: xft:Source Code Pro for Powerline:size=10:italic:antialias=true:hinting=true,xft:Ubuntu Mono derivative Powerline:size=11:italic:antialias=true:hinting=true,xft:WenQuanYi Micro Hei Mono:italic
-urxvtwhite*boldFont: xft:Source Code Pro for Powerline:size=10:bold:antialias=true:hinting=true,xft:Ubuntu Mono derivative Powerline:size=10:bold:antialias=true:hinting=true,xft:WenQuanYi Micro Hei Mono:bold
-urxvtwhite*boldItalicFont: xft:Source Code Pro for Powerline:size=10:bold:italic:antialias=true:hinting=true,xft:Ubuntu Mono derivative Powerline:size=10:bold:italic:antialias=true:hinting=true,xft:WenQuanYi Micro Hei Mono:bold:italic
+urxvtwhite*font: xft:SauceCodePro Nerd Font:size=10:antialias=true:hinting=true,xft:Ubuntu Mono derivative Powerline:size=11:antialias=true:hinting=true,xft:WenQuanYi Micro Hei Mono,xft:DejaVu Sans Mono,xft:Gargi,xft:Khmer OS System,xft:Lohit Tamil,xft:Lohit Gujarati,xft:Lohit Bengali,xft:Lohit Oriya,xft:Lohit Kannada,xft:Lohit Konkani,xft:Lohit Malayam,xft:Lohit Telugu,xft:Lohit Nepali,xft:Lohit Assamese,xft:Lohit Punjabi
+urxvtwhite*italicFont: xft:SauceCodePro Nerd Font:size=10:italic:antialias=true:hinting=true,xft:Ubuntu Mono derivative Powerline:size=11:italic:antialias=true:hinting=true,xft:WenQuanYi Micro Hei Mono:italic
+urxvtwhite*boldFont: xft:SauceCodePro Nerd Font:size=10:bold:antialias=true:hinting=true,xft:Ubuntu Mono derivative Powerline:size=10:bold:antialias=true:hinting=true,xft:WenQuanYi Micro Hei Mono:bold
+urxvtwhite*boldItalicFont: xft:SauceCodePro Nerd Font:size=10:bold:italic:antialias=true:hinting=true,xft:Ubuntu Mono derivative Powerline:size=10:bold:italic:antialias=true:hinting=true,xft:WenQuanYi Micro Hei Mono:bold:italic
 !urxvtwhite*boldFont: xft:Ubuntu Mono derivative Powerline:bold:antialias=true:hinting=true
 !urxvtwhite*italicFont: xft:Ubuntu Mono derivative Powerline:italic:antialias=true:hinting=true
 !urxvtwhite*boldItalicFont: xft:Ubuntu Mono derivative Powerline:bold:italic:antialias=true:hinting=true
@@ -140,10 +140,10 @@ scratchpad*background: rgba:0000/2b00/3600/e100
 !scratchpad*foreground: #657b83
 
 scratchpad*scrollBar: false
-scratchpad*font: xft:Source Code Pro for Powerline:size=10:antialias=true:hinting=true,xft:Ubuntu Mono derivative Powerline:size=11:antialias=true:hinting=true,xft:WenQuanYi Micro Hei Mono:size=11,xft:DejaVu Sans Mono:size=11,xft:Symbola:size=8,xft:Gargi,xft:Khmer OS System,xft:Lohit Devanagari:size=11,xft:Lohit Tamil,xft:Lohit Gujarati,xft:Lohit Bengali,xft:Lohit Oriya,xft:Lohit Kannada,xft:Lohit Konkani,xft:Lohit Malayam,xft:Lohit Telugu,xft:Lohit Nepali,xft:Lohit Assamese,xft:Lohit Punjabi,xft:Material Design Icons:size=10
-scratchpad*italicFont: xft:Source Code Pro for Powerline:size=10:italic:antialias=true:hinting=true,xft:Ubuntu Mono derivative Powerline:size=11:italic:antialias=true:hinting=true,xft:WenQuanYi Micro Hei Mono:italic,xft:Symbola:size=8,xft:Material Design Icons:size=10
-scratchpad*boldFont: xft:Source Code Pro for Powerline:size=10:bold:antialias=true:hinting=true,xft:Ubuntu Mono derivative Powerline:size=11:bold:antialias=true:hinting=true,xft:WenQuanYi Micro Hei Mono:bold:size=11,xft:Symbola:size=8,xft:Material Design Icons:size=10
-scratchpad*boldItalicFont: xft:Source Code Pro for Powerline:size=10:bold:italic:antialias=true:hinting=true,xft:Ubuntu Mono derivative Powerline:size=10:bold:italic:antialias=true:hinting=true,xft:WenQuanYi Micro Hei Mono:bold:italic,xft:Symbola:size=8,xft:Material Design Icons:size=10
+scratchpad*font: xft:SauceCodePro Nerd Font:size=10:antialias=true:hinting=true,xft:Ubuntu Mono derivative Powerline:size=11:antialias=true:hinting=true,xft:WenQuanYi Micro Hei Mono:size=11,xft:DejaVu Sans Mono:size=11,xft:Symbola:size=8,xft:Gargi,xft:Khmer OS System,xft:Lohit Devanagari:size=11,xft:Lohit Tamil,xft:Lohit Gujarati,xft:Lohit Bengali,xft:Lohit Oriya,xft:Lohit Kannada,xft:Lohit Konkani,xft:Lohit Malayam,xft:Lohit Telugu,xft:Lohit Nepali,xft:Lohit Assamese,xft:Lohit Punjabi,xft:Material Design Icons:size=10
+scratchpad*italicFont: xft:SauceCodePro Nerd Font:size=10:italic:antialias=true:hinting=true,xft:Ubuntu Mono derivative Powerline:size=11:italic:antialias=true:hinting=true,xft:WenQuanYi Micro Hei Mono:italic,xft:Symbola:size=8,xft:Material Design Icons:size=10
+scratchpad*boldFont: xft:SauceCodePro Nerd Font:size=10:bold:antialias=true:hinting=true,xft:Ubuntu Mono derivative Powerline:size=11:bold:antialias=true:hinting=true,xft:WenQuanYi Micro Hei Mono:bold:size=11,xft:Symbola:size=8,xft:Material Design Icons:size=10
+scratchpad*boldItalicFont: xft:SauceCodePro Nerd Font:size=10:bold:italic:antialias=true:hinting=true,xft:Ubuntu Mono derivative Powerline:size=10:bold:italic:antialias=true:hinting=true,xft:WenQuanYi Micro Hei Mono:bold:italic,xft:Symbola:size=8,xft:Material Design Icons:size=10
 !scratchpad*boldFont: xft:Ubuntu Mono derivative Powerline:bold:antialias=true:hinting=true
 !scratchpad*italicFont: xft:Ubuntu Mono derivative Powerline:italic:antialias=true:hinting=true
 !scratchpad*boldItalicFont: xft:Ubuntu Mono derivative Powerline:bold:italic:antialias=true:hinting=true
