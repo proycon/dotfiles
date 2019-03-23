@@ -401,6 +401,7 @@ autocmd Filetype markdown map <F4> :!<space>export<space>F="<C-r>%"<space>&&<spa
 autocmd Filetype markdown map <F5> :AsyncRun<space>export<space>F="<C-r>%"<space>&&<space>pandoc<space>-s<space>-f<space>gfm<space>-H<space>~/dotfiles/header.sty<space>-o<space>${F\%.md}.pdf<space><C-r>%<space>&&<space>DISPLAY=:0.0<space>zathura<space>${F\%.md}.pdf<Enter>
 autocmd Filetype tex map <F5> :AsyncRun<space>export<space>F="<C-r>%"<space>&&<space>pdflatex<space><C-r>%<space>&&<space>DISPLAY=:0.0<space>zathura<space>${F\%.tex}.pdf<Enter>
 autocmd Filetype tex map <F4> :!export<space>F="<C-r>%"<space>&&<space>pdflatex<space><C-r>%<space>&&<space>DISPLAY=:0.0<space>zathura<space>${F\%.tex}.pdf<Enter>
+autocmd Filetype python map <F5> :!cd $(git<space>rev-parse<space>--show-toplevel)<space>&&<space>python<space>setup.py<space>install<Enter>
 
 "ansible-vim
 let g:ansible_name_highlight = 'b'
