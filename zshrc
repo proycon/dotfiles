@@ -232,6 +232,9 @@ alias lq="source ~/.sgesh"
 
 alias wtr="curl http://wttr.in"
 
+cheat() {
+    curl https://cheat.sh/$1
+}
 
 if [[ $HOST == "applejack" || $HOST == "fluttershy" || $HOST == "rarity" || $HOST == "cheerilee" || $HOST == "fancypants" || $HOST == "pipsqueak" || $HOST == "scootaloo" || $HOST == "blossomforth" || $HOST == "featherweight" || $HOST == "twist" || $HOST == "thunderlane" ]]; then
 
