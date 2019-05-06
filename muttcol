@@ -13,9 +13,11 @@ color index_date white default
 color index brightblue black "~N"
 color index_author yellow black "~N"
 color index_subject brightwhite black "~N"
-color index_subject brightwhite black "~(~N)"
+color index_subject brightred black "~v~(~F)" #flagged messages in collapsed thread
+color index_subject brightwhite black "~v~(~N)" #new messages in collapsed thread
+color index_subject brightred black "~F" #flagged messaged
 
-color index_author cyan default '~fproycon@anaproy.nl'
+color index_author cyan default '~P' #messages from me
 
 color index_tag magenta default "work"
 color index_tag cyan default "unilang"
