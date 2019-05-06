@@ -55,8 +55,9 @@ alias km="setxkbmap proylatin"
 alias mk='LANGUAGE="en_GB.UTF-8" make'
 alias mi='LANGUAGE="en_GB.UTF-8" make install; if (( $? == 0 )); then; play -q /usr/share/sounds/KDE-Sys-App-Positive.ogg 2> /dev/null &!; else; play -q /usr/share/sounds/KDE-K3B-Finish-Error.ogg 2> /dev/null &!; fi; hr'
 alias glmi='git pull && LANGUAGE="en_GB.UTF-8" make install; if (( $? == 0 )); then; play -q /usr/share/sounds/KDE-Sys-App-Positive.ogg 2> /dev/null &!; else; play -q /usr/share/sounds/KDE-K3B-Finish-Error.ogg 2> /dev/null &!; fi; hr'
-alias glsi='git pull && python setup.py install'
-alias psi='python setup.py install'
+alias glsi='git pull && pip install .'
+alias psi='pip install .'
+alias pi='pip install .'
 alias gl='git pull; if (( $? == 0 )); then; play -q /usr/share/sounds/KDE-Window-Minimize.ogg 2> /dev/null &!; fi'
 alias gp='git push; if (( $? == 0 )); then; play -q /usr/share/sounds/KDE-Window-Maximize.ogg 2> /dev/null &!; fi'
 alias pg='git push; if (( $? == 0 )); then; play -q /usr/share/sounds/KDE-Window-Maximize.ogg 2> /dev/null &!; fi'
@@ -231,6 +232,9 @@ alias lq="source ~/.sgesh"
 
 alias wtr="curl http://wttr.in"
 
+cheat() {
+    curl https://cheat.sh/$1
+}
 
 if [[ $HOST == "applejack" || $HOST == "fluttershy" || $HOST == "rarity" || $HOST == "cheerilee" || $HOST == "fancypants" || $HOST == "pipsqueak" || $HOST == "scootaloo" || $HOST == "blossomforth" || $HOST == "featherweight" || $HOST == "twist" || $HOST == "thunderlane" ]]; then
 
