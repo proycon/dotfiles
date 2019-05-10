@@ -64,8 +64,8 @@ Key bindings
     * ``ctrl+a`` (prefix)
         * ``(number)`` - Switch window
         * ``c`` - New window
-        * ``a`` or ``"`` - New pane (horizontal split)
-        * ``e`` or ``%`` - New pane (vertical split)
+        * ``"`` - New pane (horizontal split)
+        * ``%`` - New pane (vertical split)
         * ``ctrl+a`` - Switch to last window (and back)
         * ``;`` - Switch to last pane (and back)
         * ``space`` - Switch pane layout (cycles through a few), good for turning vertical panes horizontal and vice
@@ -75,6 +75,7 @@ Key bindings
         * ``x`` - Kill pane
         * ``z`` - zoom pane
         * ``!`` - Break pane (to its own window)
+        * ``l`` - Clear history
         * ``r`` - reload
         * ``v`` - copy mode
             * VI bindings (v,y,w,/,hjkl etc..)
