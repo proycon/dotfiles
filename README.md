@@ -77,6 +77,17 @@ Key bindings
         * ``!`` - Break pane (to its own window)
         * ``r`` - reload
         * ``v`` - copy mode
+            * VI bindings (v,y,w,/,hjkl etc..)
+        * ``P`` - paste buffer
+        * ``Y`` - copy existing buffer to X clipboard and ``~/.vbuf``
+        * ``I`` - Paste from ``~/.vbuf`` (mnemonic: Insert from vim)
+        * ``O`` - Paste from X clipboard
+* urxvt
+    * ``alt+v`` - keyboard select (like tmux copy mode)
+            * VI bindings (v,y,w,/,hjkl etc..)
+    * ``alt+s`` - backward search (like tmux copy mode)
+    * ``alt+u`` - URL selector (press again for next match)
+    * ``alt+p`` - Paste
 * **weechat**
     * ``ctrl+s`` or ``ctrl+u`` - Set unread marker on all windows
     * ``ctrl+n``  - Switch to next buffer
