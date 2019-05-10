@@ -78,9 +78,9 @@ map <Leader>B <esc>:MiniBufExplorer<CR>
 "custom copy'n'paste
 "
 "copy the current visual selection to ~/.vbuf
-vmap <Leader>y :w! ~/.vbuf<CR>
+vmap <Leader>y :w! ~/.vbuf<CR>:!xsel -i -b < ~/.vbuf<CR>
 "copy the current line to the buffer file if no visual selection
-nmap <Leader>y :.w! ~/.vbuf<CR>
+nmap <Leader>y :.w! ~/.vbuf<CR>:!xsel -i -b < ~/.vbuf<CR>
 "paste the contents of the buffer file
 nmap <Leader>p :r ~/.vbuf<CR>
 nmap <Leader>P :-1r ~/.vbuf<CR>
