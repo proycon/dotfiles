@@ -137,3 +137,13 @@ fi
 cd .oh-my-zsh/themes
 ln -sfn $HOMEDIR/dotfiles/proysh.zsh-theme
 cd -
+
+#cd $DOTDIR
+#git clone https://github.com/proycon/st
+#cd st
+#if [ $SUDO -eq 1 ]; then
+#    sudo make install
+#else
+#    make install
+#fi
+#cd -
