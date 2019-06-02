@@ -32,9 +32,9 @@ line-color = #f00
 ; border-color = #00000000
 
 padding-left = 0
-padding-right = 5
+padding-right = 1
 
-module-margin = 1
+module-margin-right = 1
 
 font-0 = "Source Code Pro for Powerline:size=16;2"
 font-1 = "WenQuanYi Micro Hei Mono:size=16;2"
@@ -44,11 +44,11 @@ font-2 = "Material Design Icons:size=16;2"
 
 modules-left = i3
 modules-center = title
-modules-right = keyboard volume wireless cpu memory battery date
+modules-right = keyboard volume wireless battery date cpu memory
 
 tray-position = right
 tray-detached = false
-tray-padding = 2
+tray-padding = 1
 
 [bar/primary]
 monitor = DisplayPort-1
@@ -66,7 +66,7 @@ line-size = 3
 line-color = #f00
 
 padding-left = 0
-padding-right = 0
+padding-right = 1
 
 module-margin = 1
 
@@ -78,7 +78,7 @@ font-2 = "Material Design Icons:size=16;2"
 
 modules-left = i3
 modules-center = title
-modules-right = keyboard volume wireless cpu memory battery date
+modules-right = keyboard volume wireless battery date cpu memory
 
 tray-position = right
 tray-detached = false
@@ -100,9 +100,9 @@ line-size = 3
 line-color = #f00
 
 padding-left = 0
-padding-right = 0
+padding-right = 1
 
-module-margin = 1
+module-margin-right = 1
 
 font-0 = "Source Code Pro for Powerline:size=16;2"
 font-1 = "WenQuanYi Micro Hei Mono:size=16;2"
@@ -112,7 +112,7 @@ font-2 = "Material Design Icons:size=16;2"
 
 modules-left = i3
 modules-center = title
-modules-right = keyboard volume wireless cpu memory battery date
+modules-right = keyboard volume wireless battery date cpu memory
 
 ; no tray
 tray-position =
@@ -301,7 +301,7 @@ format-volume = <ramp-volume> <label-volume>
 
 ; Available tokens:
 ;   %percentage% (default)
-label-volume = VOL %percentage%%
+label-volume = %percentage%%
 label-volume-foreground = #98971a
 
 ; Available tokens:
@@ -321,7 +321,7 @@ format-volume = <ramp-volume> <label-volume>
 
 format-muted = <label-muted>
 
-label-volume = VOL %percentage%%
+label-volume = %percentage%%
 label-volume-foreground = #689d6a
 label-muted = 🔇 MUTED
 label-muted-foreground = #cc241d
@@ -355,13 +355,13 @@ click-left = setxkbmap proylatin
 type = internal/cpu
 
 interval = 1
-
+;
 ; Available tags:
 ;   <label> (default)
 ;   <bar-load>
 ;   <ramp-load>
 ;   <ramp-coreload>
-format = <ramp-load> <label>
+format = <ramp-load>
 
 ; Available tokens:
 ;   %percentage% (default) - total cpu load
@@ -370,6 +370,14 @@ format = <ramp-load> <label>
 label = CPU %percentage%%
 label-foreground = #b16286
 
+ramp-load-0-foreground = #55aa55
+ramp-load-1-foreground = #55aa55
+ramp-load-2-foreground = #55aa55
+ramp-load-3-foreground = #55aa55
+ramp-load-4-foreground = #557755
+ramp-load-5-foreground = #557755
+ramp-load-6-foreground = #f5a70a
+ramp-load-7-foreground = #ff5555
 ramp-load-0 = ▁
 ramp-load-1 = ▂
 ramp-load-2 = ▃
@@ -404,7 +412,7 @@ interval = 3
 ;   <label> (default)
 ;   <bar-used>
 ;   <bar-free>
-format = <label>
+format = <ramp-used>
 
 ; Available tokens:
 ;   %percentage_used% (default)
@@ -415,7 +423,7 @@ format = <label>
 ;   %mb_used%
 ;   %mb_free%
 ;   %mb_total%
-label = %gb_used%
+label = %percentage_used%%
 label-foreground = #b16286
 
 ; Only applies if <bar-used> is used
@@ -428,6 +436,24 @@ bar-used-foreground-3 = #ff5555
 bar-used-fill = ▐
 bar-used-empty = ▐
 bar-used-empty-foreground = #444444
+
+; Only applies if <ramp-used> is used
+ramp-used-0-foreground = #55aa55
+ramp-used-1-foreground = #55aa55
+ramp-used-2-foreground = #55aa55
+ramp-used-3-foreground = #55aa55
+ramp-used-4-foreground = #557755
+ramp-used-5-foreground = #557755
+ramp-used-6-foreground = #f5a70a
+ramp-used-7-foreground = #ff5555
+ramp-used-0 = ▁
+ramp-used-1 = ▂
+ramp-used-2 = ▃
+ramp-used-3 = ▄
+ramp-used-4 = ▅
+ramp-used-5 = ▆
+ramp-used-6 = ▇
+ramp-used-7 = █
 
 
 [settings]
