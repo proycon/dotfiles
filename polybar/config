@@ -237,22 +237,30 @@ battery = BAT0
 adapter = AC
 
 
-format-charging = <label-charging>
+format-charging = <ramp-capacity> <label-charging>
 format-discharging = <ramp-capacity> <label-discharging>
-format-full = <label-full>
+format-full = <ramp-capacity> <label-full>
 
-label-charging = BAT>%percentage%%
-label-discharging = BAT<%percentage%%
+label-charging = >%percentage%%
+label-discharging = <%percentage%%
 label-full = BAT FULL
 
-format-discharging-underline = #d79921
+label-charging-foreground = #b16286
+label-discharging-foreground = #d79921
+label-full-foreground = #55aa55
+;format-discharging-underline = #d79921
 format-full-underline = ${colors.underline}
 
-ramp-capacity-0 = 
-ramp-capacity-1 = 
-ramp-capacity-2 = 
-ramp-capacity-3 = 
-ramp-capacity-4 = 
+ramp-capacity-0-foreground = #ff0000
+ramp-capacity-1-foreground = #ffff00
+ramp-capacity-2-foreground = #55aa55
+ramp-capacity-3-foreground = #55aa55
+ramp-capacity-4-foreground = #55aa55
+ramp-capacity-0 = ▁
+ramp-capacity-1 = ▃
+ramp-capacity-2 = ▅
+ramp-capacity-3 = ▇
+ramp-capacity-4 = █
 
 ; Only applies if <animation-charging> is used
 animation-charging-0 = 
