@@ -58,6 +58,7 @@ Plug 'posva/vim-vue'
 " Misc
 Plug 'junegunn/goyo.vim' "distraction free writing
 Plug 'miyakogi/seiya.vim' "transparent background
+Plug 'tpope/vim-characterize' "unicode information on 'ga' character inspection
 
 " Syntax helpers
 Plug 'pearofducks/ansible-vim' "highlighting
