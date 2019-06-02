@@ -32,7 +32,7 @@ line-color = #f00
 ; border-color = #00000000
 
 padding-left = 0
-padding-right = 0
+padding-right = 5
 
 module-margin = 1
 
@@ -385,13 +385,13 @@ type = internal/xwindow
 ;   <label> (default)
 ; format-background = #f00
 format-foreground = #8ec07c
-format-padding = 4
+format-padding = 3
 
 ; Available tokens:
 ;   %title%
 ; Default: %title%
 label = %title%
-label-maxlen = 50
+label-maxlen = 35
 
 [module/memory]
 type = internal/memory
