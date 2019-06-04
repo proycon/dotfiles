@@ -1,4 +1,4 @@
-" init.vim (c) monedasperdidas 2016
+" init.vim (c) monedasperdidas 2016 , python 2017+
 
 " vim-plug autoconfig if not already installed
 if empty(glob('~/.config/nvim/autoload/plug.vim'))
@@ -46,15 +46,15 @@ Plug 'majutsushi/tagbar' "tag (class/function) browser
 Plug 'vim-scripts/indentpython.vim'
 Plug 'vim-airline/vim-airline' | Plug 'vim-airline/vim-airline-themes'
 "Plug 'tmhedberg/SimpylFold' "folding for python
-Plug 'leafgarland/typescript-vim' "Typescript syntax highlighting (and more?)
 Plug 'Konfekt/FastFold'
 Plug 'airblade/vim-gitgutter' "git diff in gutter
 Plug 'lervag/vimtex'
 Plug 'nathanaelkane/vim-indent-guides', { 'for': 'python' }
-Plug 'rust-lang/rust.vim'
+Plug 'rust-lang/rust.vim' "for Rust
 Plug 'racer-rust/vim-racer'
-Plug 'cespare/vim-toml'
-Plug 'posva/vim-vue'
+Plug 'cespare/vim-toml' "for toml files
+Plug 'posva/vim-vue' "for vue.js
+Plug 'leafgarland/typescript-vim' "Typescript syntax highlighting (and more?)
 
 " Misc
 Plug 'junegunn/goyo.vim' "distraction free writing
@@ -62,7 +62,7 @@ Plug 'miyakogi/seiya.vim' "transparent background
 Plug 'tpope/vim-characterize' "unicode information on 'ga' character inspection
 
 " Syntax helpers
-Plug 'pearofducks/ansible-vim' "highlighting
+Plug 'pearofducks/ansible-vim' "highlighting for ansible
 Plug 'freitass/todo.txt-vim', { 'for': 'todo.txt' }
 Plug 'plasticboy/vim-markdown'
 Plug 'chrisbra/csv.vim'
@@ -96,6 +96,8 @@ set noerrorbells
 set expandtab
 set updatetime=250
 set cursorline
+
+set nofoldenable "don't automatically fold stuff
 
 set tabstop=4
 set softtabstop=4
