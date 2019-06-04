@@ -17,21 +17,21 @@ Plug 'Shougo/neco-vim', { 'for': 'vim' }
 Plug 'Shougo/neosnippet' | Plug 'Shougo/neosnippet-snippets'
 
 " Helpers
-Plug 'Shougo/denite.nvim' "ctrl-p like behaviour
+"Plug 'Shougo/denite.nvim' "ctrl-p like behaviour
 Plug 'Shougo/vimproc.vim', { 'do': 'make' }
 "Plug 'haya14busa/incsearch.vim'
-Plug 'tpope/vim-surround'
+Plug 'tpope/vim-surround' "change surround tags (cs'NEW)
 Plug 'vim-scripts/matchit.zip'
 Plug 'easymotion/vim-easymotion' "highlights possible movement choices
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
-Plug 'kassio/neoterm'
-Plug 'edkolev/promptline.vim'
-Plug 'xolox/vim-misc' | Plug 'xolox/vim-session'
+"Plug 'kassio/neoterm'
+"Plug 'edkolev/promptline.vim'
+"Plug 'xolox/vim-misc' | Plug 'xolox/vim-session'
 Plug 'benmills/vimux' "vim/tmux integration
 Plug 'julienr/vim-cellmode' "sends codeblocks to ipython in tmux pane
-Plug 'jeetsukumaran/vim-markology'
-Plug 'frioux/vim-lost'
+Plug 'jeetsukumaran/vim-markology' "mark visualisation/navigation/management
+Plug 'frioux/vim-lost' "provides a :Lost command to find where you are
 Plug 'skywind3000/asyncrun.vim' "Run shell commands asynchronously
 
 
@@ -39,7 +39,8 @@ Plug 'skywind3000/asyncrun.vim' "Run shell commands asynchronously
 Plug 'scrooloose/nerdtree', { 'on':  ['NERDTreeToggle', 'NERDTree'] }
 Plug 'neomake/neomake'
 Plug 'tpope/vim-fugitive'
-Plug 'gregsexton/gitv' "gitk for vim
+"Plug 'tpope/rhubarb'
+"Plug 'gregsexton/gitv' "gitk for vim
 Plug 'vim-scripts/gitignore'
 Plug 'majutsushi/tagbar' "tag (class/function) browser
 Plug 'vim-scripts/indentpython.vim'
@@ -115,6 +116,7 @@ map <Leader>. <esc>:bn<CR>
 map <Leader>/ <esc>:bp<CR>
 map <Leader>= <esc>:bn<CR>
 map <Leader>- <esc>:bp<CR>
+map <Leader>; <esc>:e#<CR>
 
 map <Leader>j <c-w>j
 map <Leader>k <c-w>k
@@ -268,7 +270,6 @@ let NERDTreeWinPos='left'
 let NERDTreeQuitOnOpen=1
 let NERDTreeMinimalUI=1
 let NERDTreeRespectWildIgnore=1
-map <C-f> :NERDTreeToggle<CR>
 map <Leader>f :NERDTreeToggle<CR>
 
 " incsearch.vim
@@ -285,7 +286,8 @@ map <Leader>f :NERDTreeToggle<CR>
 " map g# <Plug>(incsearch-nohl-g#)
 "
 " urlview
-:noremap <leader>L :w<Home>silent <End> !urlview<CR>
+:noremap <leader>U :w<Home>silent <End> !urlview<CR>
+:noremap <leader>L :Lost<CR>
 
 " TagBar
 nmap <C-t> :TagbarToggle<CR>
@@ -298,6 +300,7 @@ map <esc>[1;0D <C-Left>
 map <esc>[1;0C <C-Right>
 map <C-Right> :bn<CR>
 map <C-Left> :bp<CR>
+
 
 " vim-airline settings
 let g:airline#extensions#tabline#enabled = 1
@@ -382,7 +385,7 @@ nmap <Leader><Space>p :lprev<CR>      " previous error/warning
 map <C-l> <c-w>l
 map <C-h> <c-w>h
 
-"markology
+"markology (mark visualisation/navigation/management
 let g:markology_include = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789."
 let g:markology_ignore_type = "hmpq"
 let g:markology_hlline_lower = 1

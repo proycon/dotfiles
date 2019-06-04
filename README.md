@@ -89,6 +89,35 @@ Key bindings
     * ``alt+s`` - backward search (like tmux copy mode)
     * ``alt+u`` - URL selector (press again for next match)
     * ``alt+p`` - Paste
+* vim
+    * fzf - fuzzy matcher
+        * ``ctrl-p`` - git files
+        * ``ctrl-f`` - all files
+        * ``ctrl-m`` - marks
+        * ``ctrl-b`` - buffers
+        * ``ctrl-g`` - git commits
+    * buffers
+        * ``,=`` or ``ctrl-right`` - next
+        * ``,-`` or ``ctrl-left`` - previous
+        * ``,1`` - buffer 1, etc..
+        * ``,;`` - last buffer
+        * ``,e`` - reload current buffer
+        * ``,E`` - reload all buffers
+    * editing
+        * ``,_`` - strip trailing whitespace
+        * tpope/surround.vim
+            * ``cs``XY - change surround tag X to Y (understand XML tags too)
+            * ``ds``X - delete surround tag X
+    * copy/paste
+        * ``,y`` - yank selection (to ~/.vbuf and X clipboard)
+        * ``,p`` - paste
+    * toggle plugins
+        * ``,t`` - Toggle tagbar
+        * ``,f`` - Toggle file browser (nerdTree)
+        * ``,ig`` - Toggle Indentation Guides
+        * ``ga`` - show (unicode) character information
+    * miscellaneous
+        * ``,L`` - Lost where you are in a file? Show a context clue
 * **weechat**
     * ``ctrl+s`` or ``ctrl+u`` - Set unread marker on all windows
     * ``ctrl+n``  - Switch to next buffer
@@ -101,7 +130,6 @@ Key bindings
         * Enter, ``ctrl+j``, ``ctrl+m``  - Stop search
     * ``alt+=`` -  Disabled filters (hide/join) (``alt+-`` for current buffer)
         * ``/filter add irc_smart * irc_smart_filter *``  - Smart hide/join/filter
-* **alot**
 
 
 
