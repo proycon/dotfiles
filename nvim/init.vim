@@ -9,16 +9,30 @@ endif
 " startup for vim-plug
 call plug#begin('~/.config/nvim/plugged')
 
-" Completions and snippets
-Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' } "autocompletion
-Plug 'zchee/deoplete-jedi', { 'for': 'python' }
+" Completions
+if has('nvim')
+  Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' } "autocompletion
+else "vim8
+  Plug 'Shougo/deoplete.nvim'
+  Plug 'roxma/nvim-yarp'
+  Plug 'roxma/vim-hug-neovim-rpc'
+endif
+Plug 'zchee/deoplete-jedi', { 'for': 'python' } "deoplete completion for python (through jedi)
 Plug 'davidhalter/jedi-vim', { 'for': 'python' } "we will only use part of it, completions are already handled by deoplete-jedi
-Plug 'Shougo/neco-vim', { 'for': 'vim' }
-Plug 'Shougo/neosnippet' | Plug 'Shougo/neosnippet-snippets'
+Plug 'Shougo/neco-vim', { 'for': 'vim' } "provides deoplete completion for vim commands
+Plug 'sebastianmarkow/deoplete-rust', { 'for': 'rust' } "deoplete completion for rust
+Plug 'lvht/phpcd.vim', { 'for': 'php', 'do': 'composer install' }
+Plug 'carlitux/deoplete-ternjs', { 'do': 'npm install -g tern' } "deoplete completion for javascript
+Plug 'Shougu/deoplete-clangx' "deoplete completion for C++
+Plug 'Shougu/neoinclude.vim' "Include completion framework for neocomplete/deoplete
+
+"
+" Snippets
+Plug 'Shougo/neosnippet' | Plug 'Shougo/neosnippet-snippets' "snippets, depends on deoplete
 
 " Helpers
 "Plug 'Shougo/denite.nvim' "ctrl-p like behaviour
-Plug 'Shougo/vimproc.vim', { 'do': 'make' }
+Plug 'Shougo/vimproc.vim', { 'do': 'make' } "asynchronous execution library for Vim
 "Plug 'haya14busa/incsearch.vim'
 Plug 'tpope/vim-surround' "change surround tags (cs'NEW)
 Plug 'vim-scripts/matchit.zip'
