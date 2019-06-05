@@ -23,8 +23,8 @@ Plug 'Shougo/neco-vim', { 'for': 'vim' } "provides deoplete completion for vim c
 Plug 'sebastianmarkow/deoplete-rust', { 'for': 'rust' } "deoplete completion for rust
 Plug 'lvht/phpcd.vim', { 'for': 'php', 'do': 'composer install' }
 Plug 'carlitux/deoplete-ternjs', { 'do': 'npm install -g tern' } "deoplete completion for javascript
-Plug 'Shougu/deoplete-clangx' "deoplete completion for C++
-Plug 'Shougu/neoinclude.vim' "Include completion framework for neocomplete/deoplete
+Plug 'Shougo/deoplete-clangx' "deoplete completion for C++
+Plug 'Shougo/neoinclude.vim' "Include completion framework for neocomplete/deoplete
 
 "
 " Snippets
@@ -51,7 +51,7 @@ Plug 'skywind3000/asyncrun.vim' "Run shell commands asynchronously
 
 " IDE
 Plug 'scrooloose/nerdtree', { 'on':  ['NERDTreeToggle', 'NERDTree'] }
-Plug 'neomake/neomake'
+Plug 'neomake/neomake' "Asynchronous linting and make framework for Neovim/Vim
 Plug 'tpope/vim-fugitive'
 "Plug 'tpope/rhubarb'
 "Plug 'gregsexton/gitv' "gitk for vim
@@ -228,7 +228,7 @@ xnoremap < <gv
 xnoremap > >gv
 
 "mail signature
-map <Leader>S :r ~/sru<CR>
+map <Leader>S :r ~/.signature.ru<CR>
 
 command! Spen setlocal spell spelllang=en_gb
 command! Spus setlocal spell spelllang=en_us
@@ -363,13 +363,19 @@ let g:deoplete#sources#jedi#show_docstring = 1
 " Let <Tab> also do completion
 inoremap <silent><expr> <Tab> pumvisible() ? "\<C-n>" : deoplete#mappings#manual_complete()
 
+let g:deoplete#ignore_sources = get(g:, 'deoplete#ignore_sources', {})
+let g:deoplete#ignore_sources.php = ['omni']
+let g:deoplete#sources#ternjs#case_insensitive = 1
+"Add extra filetypes for javascript
+let g:deoplete#sources#ternjs#filetypes = [ 'jsx', 'javascript.jsx',  'vue' ]
+
 let g:jedi#auto_vim_configuration = 0
 let g:jedi#goto_assignments_command = '<Leader>ga'  " dynamically done for ft=python.
 let g:jedi#goto_definitions_command = '<Leader>gd'  " dynamically done for ft=python.
 let g:jedi#use_tabs_not_buffers = 0  " current default is 1.
 let g:jedi#rename_command = '<Leader>gR'
 let g:jedi#usages_command = '<Leader>gu'
-let g:jedi#completions_enabled = 0
+let g:jedi#completions_enabled = 0 "deoplete handles this already
 let g:jedi#smart_auto_mappings = 1
 
 " Unite/ref and pydoc are more useful.
@@ -379,8 +385,6 @@ let g:jedi#auto_close_doc = 1
 "
 imap <expr><TAB> neosnippet#expandable_or_jumpable() ? "\<Plug>(neosnippet_expand_or_jump)" : pumvisible() ? "\<C-n>" : "\<TAB>"
 smap <expr><TAB> neosnippet#expandable_or_jumpable() ? "\<Plug>(neosnippet_expand_or_jump)" : "\<TAB>"
-" show quicklist with errors
-let g:neomake_open_list = 2
 
 let g:neosnippet#snippets_directory = "/home/proycon/dotfiles/nvim/snippets"
 let g:neosnippet#enable_snipmate_compatibility = 1
@@ -395,6 +399,8 @@ nmap <Leader><Space>c :lclose<CR>     " close location window
 nmap <Leader><Space>, :ll<CR>         " go to current error/warning
 nmap <Leader><Space>n :lnext<CR>      " next error/warning
 nmap <Leader><Space>p :lprev<CR>      " previous error/warning
+" show quicklist with errors
+let g:neomake_open_list = 2
 
 " bind Ctrl+<movement> keys to move around the windows, instead of using Ctrl+w + <movement>
 " Every unnecessary keystroke that can be saved is good for your health :)
@@ -422,6 +428,7 @@ autocmd Filetype markdown map <F4> :!<space>export<space>F="<C-r>%"<space>&&<spa
 autocmd Filetype markdown map <F5> :AsyncRun<space>export<space>F="<C-r>%"<space>&&<space>pandoc<space>-s<space>-f<space>gfm<space>-H<space>~/dotfiles/header.sty<space>-o<space>${F\%.md}.pdf<space><C-r>%<space>&&<space>DISPLAY=:0.0<space>zathura<space>${F\%.md}.pdf<Enter>
 autocmd Filetype tex map <F5> :AsyncRun<space>export<space>F="<C-r>%"<space>&&<space>pdflatex<space><C-r>%<space>&&<space>DISPLAY=:0.0<space>zathura<space>${F\%.tex}.pdf<Enter>
 autocmd Filetype tex map <F4> :!export<space>F="<C-r>%"<space>&&<space>pdflatex<space><C-r>%<space>&&<space>DISPLAY=:0.0<space>zathura<space>${F\%.tex}.pdf<Enter>
+autocmd Filetype python map <F4> :!cd $(git<space>rev-parse<space>--show-toplevel)<space>&&<space>pip<space>install<space>.<Enter>
 autocmd Filetype python map <F5> :!cd $(git<space>rev-parse<space>--show-toplevel)<space>&&<space>pip<space>install<space>.<Enter>
 
 "ansible-vim

@@ -103,14 +103,31 @@ Key bindings
         * ``,;`` - last buffer
         * ``,e`` - reload current buffer
         * ``,E`` - reload all buffers
+    * error/quickfix window (neomake)
+        * ``, o`` - open
+        * ``, c`` - close
+        * ``, n`` - next error
+        * ``, p`` - previous error
+        * ``, ,`` - current error
+    * building
+        * ``F4`` - Build and preview (syncronously) (tex, markdown); pip install . (python)
+        * ``F5`` - Build and preview (asyncronously) (tex, markdown); pip install . (python)
+    * documentation/navigation
+        * ``,K`` - keyword documentation
+        * ``,ga`` - Goto assignment (jedi/python)
+        * ``,gd`` - Goto definition (jedi/python)
+        * ``,gu`` - Show usages (places where it is used) (jedi/python)
     * editing
         * ``,_`` - strip trailing whitespace
         * tpope/surround.vim
             * ``cs``XY - change surround tag X to Y (understand XML tags too)
             * ``ds``X - delete surround tag X
+        * visual mode
+            * ``,s`` - sort
     * copy/paste
         * ``,y`` - yank selection (to ~/.vbuf and X clipboard)
         * ``,p`` - paste
+        * ``,P`` - paste before
     * toggle plugins
         * ``,t`` - Toggle tagbar
         * ``,f`` - Toggle file browser (nerdTree)
