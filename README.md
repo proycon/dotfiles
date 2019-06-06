@@ -91,6 +91,7 @@ Key bindings
     * ``alt+p`` - Paste
 * vim
     * fzf - fuzzy matcher
+        * type ``:Maps`` to see all custom keymaps and serach
         * ``ctrl-p`` - git files
         * ``ctrl-f`` - all files
         * ``ctrl-m`` - marks
@@ -100,8 +101,10 @@ Key bindings
         * ``,=`` or ``ctrl-right`` - next
         * ``,-`` or ``ctrl-left`` - previous
         * ``,1`` - buffer 1, etc..
-        * ``,;`` - last buffer
+        * ``,,`` - last buffer
+        * ``<space><space>`` - last buffer
         * ``,e`` - reload current buffer
+        * ``,x`` - close current buffer
         * ``,E`` - reload all buffers
     * error/quickfix window (neomake)
         * ``, o`` - open

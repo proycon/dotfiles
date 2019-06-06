@@ -1,4 +1,4 @@
-" init.vim (c) monedasperdidas 2016 , python 2017+
+" init.vim (c) monedasperdidas 2016 , proycon 2017+
 
 " vim-plug autoconfig if not already installed
 if empty(glob('~/.config/nvim/autoload/plug.vim'))
@@ -126,14 +126,17 @@ set listchars=tab:▸\ ,eol:¬,extends:❯,precedes:❮
 
 set whichwrap+=<,>,h,l
 
-let mapleader=","
+let mapleader="\<Space>"
+map , <leader>
 noremap \ ,
 
 map <Leader>. <esc>:bn<CR>
 map <Leader>/ <esc>:bp<CR>
 map <Leader>= <esc>:bn<CR>
 map <Leader>- <esc>:bp<CR>
-map <Leader>; <esc>:e#<CR>
+map <Leader>, <esc>:e#<CR>
+map <Leader>x <esc>:bd<CR>
+map <Leader><Space> <esc>:e#<CR>
 
 map <Leader>j <c-w>j
 map <Leader>k <c-w>k
@@ -344,9 +347,17 @@ let g:unite_source_grep_recursive_opt = ''
 nnoremap <C-p> :GitFiles<cr>
 nnoremap <C-f> :Files<cr>
 nnoremap <C-b> :Buffers<cr>
-nnoremap <C-l> :BLines<cr>
+nnoremap <C-n> :BLines<cr>
+nnoremap <C-N> :Lines<cr>
 nnoremap <C-g> :Commits<cr>
 nnoremap <C-m> :Marks<cr>
+
+nnoremap <leader>o :GitFiles<cr>
+nnoremap <leader>O :Files<cr>
+nnoremap <leader>b :Buffers<cr>
+nnoremap <leader>n :BLines<cr>
+nnoremap <leader>N :Lines<cr>
+nnoremap <leader>r :Tags<cr>
 
 " session management
 let g:session_autosave = 'no'
@@ -431,6 +442,7 @@ autocmd Filetype tex map <F5> :AsyncRun<space>export<space>F="<C-r>%"<space>&&<s
 autocmd Filetype tex map <F4> :!export<space>F="<C-r>%"<space>&&<space>pdflatex<space><C-r>%<space>&&<space>DISPLAY=:0.0<space>zathura<space>${F\%.tex}.pdf<Enter>
 autocmd Filetype python map <F4> :!cd $(git<space>rev-parse<space>--show-toplevel)<space>&&<space>pip<space>install<space>.<Enter>
 autocmd Filetype python map <F5> :!cd $(git<space>rev-parse<space>--show-toplevel)<space>&&<space>pip<space>install<space>.<Enter>
+map <F8> :Gcommit -a<Enter>
 
 "ansible-vim
 let g:ansible_name_highlight = 'b'
@@ -447,6 +459,16 @@ augroup neovim
   autocmd BufWritePost * Neomake
   autocmd BufWritePost $MYVIMRC nested source $MYVIMRC
 augroup END
+
+" from http://sheerun.net/2014/03/21/how-to-boost-your-vim-productivity/
+if executable('ag')
+	set grepprg=ag\ --nogroup\ --nocolor
+endif
+if executable('rg') "pacman -Syu ripgrep
+	set grepprg=rg\ --no-heading\ --vimgrep
+	set grepformat=%f:%l:%c:%m
+endif
+
 
 function! s:MakeWhite()
     set background=light
