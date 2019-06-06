@@ -315,7 +315,7 @@ nmap <Leader>t :TagbarToggle<CR>
 nmap <Leader>T :TagbarOpen fj<CR>
 
 " Buffer switching
-nnoremap <F9> :buffers<CR>:buffer<Space>
+nnoremap <F12> :buffers<CR>:buffer<Space>
 map <esc>[1;0D <C-Left>
 map <esc>[1;0C <C-Right>
 map <C-Right> :bn<CR>
