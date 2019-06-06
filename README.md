@@ -83,6 +83,9 @@ Key bindings
         * ``Y`` - copy existing buffer to X clipboard and ``~/.vbuf``
         * ``I`` - Paste from ``~/.vbuf`` (mnemonic: Insert from vim)
         * ``O`` - Paste from X clipboard
+        * ``W`` - Swap window
+        * ``Q`` - Swap pane
+        * ``M`` - Move pane (to another window or tmux)
 * urxvt
     * ``alt+v`` - keyboard select (like tmux copy mode)
             * VI bindings (v,y,w,/,hjkl etc..)
