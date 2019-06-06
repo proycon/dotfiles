@@ -297,6 +297,11 @@ function virtualenv_prompt_info(){
   echo "${ZSH_THEME_VIRTUALENV_PREFIX:=[}(${VIRTUAL_ENV:t})${ZSH_THEME_VIRTUALENV_SUFFIX:=]}"
 }
 
+function rmd () {
+  pandoc -s -f gfm -H ~/dotfiles/header.sty -o /tmp/rmd.pdf $1
+  DISPLAY=:0.0 zathura /tmp/rmd.pdf
+}
+
 export VIRTUAL_ENV_DISABLE_PROMPT=1
 
 

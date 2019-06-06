@@ -37,6 +37,7 @@ Plug 'Shougo/vimproc.vim', { 'do': 'make' } "asynchronous execution library for 
 Plug 'tpope/vim-surround' "change surround tags (cs'NEW)
 Plug 'vim-scripts/matchit.zip'
 Plug 'easymotion/vim-easymotion' "highlights possible movement choices
+Plug 'airblade/vim-rooter' "open relative to git repo
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
 "Plug 'kassio/neoterm'
