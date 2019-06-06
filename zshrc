@@ -76,7 +76,12 @@ alias r='ranger'
 #    export CC="colorgcc"
 #fi
 alias vless='vim -R -u /usr/share/vim/vim72/macros/less.vim'
-alias l='ls'
+which exa > /dev/null 2>/dev/null
+if (( $? == 0 )); then
+    alias l='exa'
+else
+    alias l='ls'
+fi
 alias z='less -rN'
 alias myip="dig +short myip.opendns.com @resolver1.opendns.com"
 which nvim > /dev/null 2>/dev/null
