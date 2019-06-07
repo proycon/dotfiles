@@ -538,8 +538,8 @@ autocmd Filetype tex map <F5> :AsyncRun<space>export<space>F="<C-r>%"<space>&&<s
 autocmd Filetype tex map <F4> :!export<space>F="<C-r>%"<space>&&<space>pdflatex<space><C-r>%<space>&&<space>DISPLAY=:0.0<space>zathura<space>${F\%.tex}.pdf<Enter>
 autocmd Filetype python map <F4> :!cd $(git<space>rev-parse<space>--show-toplevel)<space>&&<space>pip<space>install<space>.<Enter>
 autocmd Filetype python map <F5> :!cd $(git<space>rev-parse<space>--show-toplevel)<space>&&<space>pip<space>install<space>.<Enter>
-map <F9> :Gcommit -a<Enter>
-map <F10> :Gpush<Enter>
+map <F9> :Gcommit -a<CR>
+map <F10> :Gpush<CR>
 
 "ansible-vim
 let g:ansible_name_highlight = 'b'
