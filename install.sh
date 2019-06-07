@@ -69,7 +69,7 @@ if [ $SUDO -eq 1 ]; then
             esac
         done
         if [ $YAOURT -eq 1 ]; then
-            yaourt -S polybar powerline-fonts-git ttf-material-design-icons-git ttf-symbola || echo "WARNING: Yaourt is not installed yet, do so yourself!">&2
+            yaourt -S polybar powerline-fonts-git ttf-material-design-icons-git ttf-symbola ccls javascript-typescript-langserver || echo "WARNING: Yaourt is not installed yet, do so yourself!">&2
         fi
     else
         echo "Distribution not supported!">&2
