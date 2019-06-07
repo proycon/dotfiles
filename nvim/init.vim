@@ -10,23 +10,38 @@ endif
 call plug#begin('~/.config/nvim/plugged')
 
 " Completions
+"if has('nvim')
+"  Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' } "autocompletion
+"else "vim8
+"  Plug 'Shougo/deoplete.nvim'
+"  Plug 'roxma/nvim-yarp'
+"  Plug 'roxma/vim-hug-neovim-rpc'
+"endif
+"Plug 'zchee/deoplete-jedi', { 'for': 'python' } "deoplete completion for python (through jedi)
+"Plug 'davidhalter/jedi-vim', { 'for': 'python' } "we will only use part of it, completions are already handled by deoplete-jedi
+"Plug 'Shougo/neco-vim', { 'for': 'vim' } "provides deoplete completion for vim commands
+"Plug 'sebastianmarkow/deoplete-rust', { 'for': 'rust' } "deoplete completion for rust
+"Plug 'lvht/phpcd.vim', { 'for': 'php', 'do': 'composer install' }
+"Plug 'carlitux/deoplete-ternjs', { 'do': 'npm install -g tern' } "deoplete completion for javascript
+"Plug 'Shougo/deoplete-clangx' "deoplete completion for C++
+"Plug 'Shougo/neoinclude.vim' "Include completion framework for neocomplete/deoplete
+"if has('nvim')
+"    Plug 'autozimu/LanguageClient-neovim', { 'branch': 'next', 'do': 'bash install.sh' }
+"endif
+"
+"
+"
+"Completions and more using Coc
 if has('nvim')
-  Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' } "autocompletion
-else "vim8
-  Plug 'Shougo/deoplete.nvim'
-  Plug 'roxma/nvim-yarp'
-  Plug 'roxma/vim-hug-neovim-rpc'
-endif
-Plug 'zchee/deoplete-jedi', { 'for': 'python' } "deoplete completion for python (through jedi)
-Plug 'davidhalter/jedi-vim', { 'for': 'python' } "we will only use part of it, completions are already handled by deoplete-jedi
-Plug 'Shougo/neco-vim', { 'for': 'vim' } "provides deoplete completion for vim commands
-Plug 'sebastianmarkow/deoplete-rust', { 'for': 'rust' } "deoplete completion for rust
-Plug 'lvht/phpcd.vim', { 'for': 'php', 'do': 'composer install' }
-Plug 'carlitux/deoplete-ternjs', { 'do': 'npm install -g tern' } "deoplete completion for javascript
-Plug 'Shougo/deoplete-clangx' "deoplete completion for C++
-Plug 'Shougo/neoinclude.vim' "Include completion framework for neocomplete/deoplete
-if has('nvim')
-    Plug 'autozimu/LanguageClient-neovim', { 'branch': 'next', 'do': 'bash install.sh' }
+    Plug 'neoclide/coc.nvim', {'tag': '*', 'do': './install.sh'}
+    Plug 'neoclide/coc-python', {'do': 'yarn install --frozen-lockfile'}
+    Plug 'neoclide/coc-eslint', {'do': 'yarn install --frozen-lockfile'}
+    Plug 'neoclide/coc-rls', {'do': 'yarn install --frozen-lockfile'}
+    Plug 'neoclide/coc-css', {'do': 'yarn install --frozen-lockfile'}
+    Plug 'neoclide/coc-json', {'do': 'yarn install --frozen-lockfile'}
+    Plug 'neoclide/coc-html', {'do': 'yarn install --frozen-lockfile'}
+    Plug 'neoclide/coc-yaml', {'do': 'yarn install --frozen-lockfile'}
+    Plug 'neoclide/coc-vimtex', {'do': 'yarn install --frozen-lockfile'}
 endif
 
 "
@@ -69,7 +84,7 @@ Plug 'airblade/vim-gitgutter' "git diff in gutter
 Plug 'lervag/vimtex'
 Plug 'nathanaelkane/vim-indent-guides', { 'for': 'python' }
 Plug 'rust-lang/rust.vim' "for Rust
-Plug 'racer-rust/vim-racer'
+"Plug 'racer-rust/vim-racer'
 Plug 'cespare/vim-toml' "for toml files
 Plug 'posva/vim-vue' "for vue.js
 Plug 'leafgarland/typescript-vim' "Typescript syntax highlighting (and more?)
@@ -330,6 +345,7 @@ map <C-Left> :bp<CR>
 let g:airline#extensions#tabline#enabled = 1
 "let g:airline_theme = 'gruvbox'
 let g:airline_powerline_fonts = 1
+let g:airline#extensions#coc#enabled = 1
 
 " themes and colors
 let NVIM_TUI_ENABLE_CURSOR_SHAPE=1
@@ -368,7 +384,7 @@ let g:session_autosave = 'no'
 
 let g:airline#extensions#tabline#buffer_nr_show = 1
 
-" deoplete + neosnippet + autopairs changes
+" deoplete + neosnippet + autopairs changes (DEOPLETE IS DISABLED!)
 let g:deoplete#auto_complete_start_length = 1
 let g:deoplete#enable_at_startup = 1
 let g:deoplete#enable_smart_case = 1
@@ -385,6 +401,7 @@ let g:deoplete#sources#ternjs#case_insensitive = 1
 "Add extra filetypes for javascript
 let g:deoplete#sources#ternjs#filetypes = [ 'jsx', 'javascript.jsx',  'vue' ]
 
+" JEDI IS NOT USED!
 let g:jedi#auto_vim_configuration = 0
 let g:jedi#goto_assignments_command = '<Leader>ga'  " dynamically done for ft=python.
 let g:jedi#goto_definitions_command = '<Leader>gd'  " dynamically done for ft=python.
@@ -398,7 +415,75 @@ let g:jedi#smart_auto_mappings = 1
 let g:jedi#documentation_command = '<Leader>_K'
 let g:jedi#auto_close_doc = 1
 
+"Rust
+"let g:deoplete#sources#rust#racer_binary = "/home/proycon/.cargo/bin/racer" "for deoplete-rust
+"let g:deoplete#sources#rust#rust_source_path = "/home/proycon/rust/src"
+
+"Rust (vim-racer) (NOT USED!)
+let g:racer_cmd = "/home/proycon/.cargo/bin/racer" "for vim-racer
+let g:racer_experimental_completer = 0
+"au FileType rust nmap gd <Plug>(rust-def)
+"au FileType rust nmap <leader>gd <Plug>(rust-def)
+"au FileType rust nmap K <Plug>(rust-doc)
 "
+"i
+
+" ----------- COC.NVIM ---------------
+" don't give |ins-completion-menu| messages.
+set shortmess+=c
+set signcolumn=yes
+
+" Use tab for trigger completion with characters ahead and navigate.
+" Use command ':verbose imap <tab>' to make sure tab is not mapped by other plugin.
+inoremap <silent><expr> <TAB>
+      \ pumvisible() ? "\<C-n>" :
+      \ <SID>check_back_space() ? "\<TAB>" :
+      \ coc#refresh()
+inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
+
+function! s:check_back_space() abort
+  let col = col('.') - 1
+  return !col || getline('.')[col - 1]  =~# '\s'
+endfunction
+
+" Use <c-space> to trigger completion.
+inoremap <silent><expr> <c-space> coc#refresh()
+
+" Use <cr> to confirm completion, `<C-g>u` means break undo chain at current position.
+" Coc only does snippet and additional edit on confirm.
+inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
+
+" Use `[c` and `]c` to navigate diagnostics
+nmap <silent> [c <Plug>(coc-diagnostic-prev)
+nmap <silent> ]c <Plug>(coc-diagnostic-next)
+
+" Remap keys for gotos
+nmap <silent> gd <Plug>(coc-definition)
+nmap <silent> gy <Plug>(coc-type-definition)
+nmap <silent> gi <Plug>(coc-implementation)
+nmap <silent> gr <Plug>(coc-references)
+
+" Use K to show documentation in preview window
+nnoremap <silent> K :call <SID>show_documentation()<CR>
+
+function! s:show_documentation()
+  if (index(['vim','help'], &filetype) >= 0)
+    execute 'h '.expand('<cword>')
+  else
+    call CocAction('doHover')
+  endif
+endfunction
+
+set cmdheight=2
+" Highlight symbol under cursor on CursorHold
+autocmd CursorHold * silent call CocActionAsync('highlight')
+
+" Remap for rename current word
+"nmap <leader>rn <Plug>(coc-rename)
+
+
+"/----------- COC.NVIM ---------------
+
 imap <expr><TAB> neosnippet#expandable_or_jumpable() ? "\<Plug>(neosnippet_expand_or_jump)" : pumvisible() ? "\<C-n>" : "\<TAB>"
 smap <expr><TAB> neosnippet#expandable_or_jumpable() ? "\<Plug>(neosnippet_expand_or_jump)" : "\<TAB>"
 
@@ -474,20 +559,9 @@ if executable('rg') "pacman -Syu ripgrep
 	set grepformat=%f:%l:%c:%m
 endif
 
-"LanguageClient
-set hidden " Required for operations modifying multiple buffers like rename.
+noremap <silent><expr> <c-space> coc#refresh()
 
-let g:LanguageClient_serverCommands = {
-    \ 'rust': ['rustup', 'run', 'stable', 'rls'],
-    \ 'javascript': ['/usr/bin/javascript-typescript-stdio'],
-    \ 'javascript.jsx': ['tcp://127.0.0.1:2089'],
-    \ 'cpp': ['/usr/bin/ccls'],
-    \ 'python': ['/usr/bin/pyls'],
-    \ }
 
-nnoremap <silent> K :call LanguageClient#textDocument_hover()<CR>
-nnoremap <silent> gd :call LanguageClient#textDocument_definition()<CR>
-nnoremap <silent> <F2> :call LanguageClient#textDocument_rename()<CR>
 
 function! s:MakeWhite()
     set background=light
