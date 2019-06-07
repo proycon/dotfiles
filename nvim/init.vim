@@ -73,6 +73,7 @@ Plug 'racer-rust/vim-racer'
 Plug 'cespare/vim-toml' "for toml files
 Plug 'posva/vim-vue' "for vue.js
 Plug 'leafgarland/typescript-vim' "Typescript syntax highlighting (and more?)
+Plug 'fatih/vim-go' "Go
 
 " Misc
 Plug 'junegunn/goyo.vim' "distraction free writing
@@ -477,7 +478,7 @@ endif
 set hidden " Required for operations modifying multiple buffers like rename.
 
 let g:LanguageClient_serverCommands = {
-    \ 'rust': ['~/.cargo/bin/rustup', 'run', 'stable', 'rls'],
+    \ 'rust': ['rustup', 'run', 'stable', 'rls'],
     \ 'javascript': ['/usr/bin/javascript-typescript-stdio'],
     \ 'javascript.jsx': ['tcp://127.0.0.1:2089'],
     \ 'cpp': ['/usr/bin/ccls'],
