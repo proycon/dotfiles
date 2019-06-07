@@ -93,13 +93,17 @@ Key bindings
     * ``alt+u`` - URL selector (press again for next match)
     * ``alt+p`` - Paste
 * vim
+    * leader is space or comma
     * fzf - fuzzy matcher
-        * type ``:Maps`` to see all custom keymaps and serach
-        * ``ctrl-p`` - git files
-        * ``ctrl-f`` - all files
+        * type ``:Maps`` to see all custom keymaps and search
+        * ``ctrl-p`` or ``,o`` - git files
+        * ``ctrl-f`` or ``,O`` - all files
         * ``ctrl-m`` - marks
-        * ``ctrl-b`` - buffers
+        * ``ctrl-b`` or ``,b`` - buffers
         * ``ctrl-g`` - git commits
+        * ``,n`` - lines (buffer)
+        * ``,N`` - lines (all)
+        * ``,r`` - tags
     * buffers
         * ``,=`` or ``ctrl-right`` - next
         * ``,-`` or ``ctrl-left`` - previous
@@ -118,6 +122,9 @@ Key bindings
     * building
         * ``F4`` - Build and preview (syncronously) (tex, markdown); pip install . (python)
         * ``F5`` - Build and preview (asyncronously) (tex, markdown); pip install . (python)
+    * git (tpope/fugitive)
+        * ``F9`` - Commit
+        * ``F10`` - Push
     * documentation/navigation
         * ``,K`` - keyword documentation
         * ``,ga`` - Goto assignment (jedi/python)
