@@ -25,6 +25,9 @@ Plug 'lvht/phpcd.vim', { 'for': 'php', 'do': 'composer install' }
 Plug 'carlitux/deoplete-ternjs', { 'do': 'npm install -g tern' } "deoplete completion for javascript
 Plug 'Shougo/deoplete-clangx' "deoplete completion for C++
 Plug 'Shougo/neoinclude.vim' "Include completion framework for neocomplete/deoplete
+if has('nvim')
+    Plug 'autozimu/LanguageClient-neovim', { 'branch': 'next', 'do': 'bash install.sh' }
+endif
 
 "
 " Snippets
@@ -470,6 +473,20 @@ if executable('rg') "pacman -Syu ripgrep
 	set grepformat=%f:%l:%c:%m
 endif
 
+"LanguageClient
+set hidden " Required for operations modifying multiple buffers like rename.
+
+let g:LanguageClient_serverCommands = {
+    \ 'rust': ['~/.cargo/bin/rustup', 'run', 'stable', 'rls'],
+    \ 'javascript': ['/usr/local/bin/javascript-typescript-stdio'],
+    \ 'javascript.jsx': ['tcp://127.0.0.1:2089'],
+    \ 'cpp': ['/usr/bin/ccls'],
+    \ 'python': ['/usr/bin/pyls'],
+    \ }
+
+nnoremap <silent> K :call LanguageClient#textDocument_hover()<CR>
+nnoremap <silent> gd :call LanguageClient#textDocument_definition()<CR>
+nnoremap <silent> <F2> :call LanguageClient#textDocument_rename()<CR>
 
 function! s:MakeWhite()
     set background=light
