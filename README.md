@@ -146,6 +146,16 @@ Key bindings
         * ``,f`` - Toggle file browser (nerdTree)
         * ``,ig`` - Toggle Indentation Guides
         * ``ga`` - show (unicode) character information
+    * coc.nvim
+        * ``K`` - documentation
+        * ``,c`` - next error/warning
+        * ``,C`` - previous error/warning
+        * ``gd`` - goto definition
+        * ``gy`` - goto type definition
+        * ``gi`` - goto implementation
+        * ``gr`` - goto references
+        * ``,a`` - codeaction on selection
+        * ``,F`` - (re)format
     * miscellaneous
         * ``,L`` - Lost where you are in a file? Show a context clue
 * **weechat**
