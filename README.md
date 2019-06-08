@@ -113,12 +113,6 @@ Key bindings
         * ``,e`` - reload current buffer
         * ``,x`` - close current buffer
         * ``,E`` - reload all buffers
-    * error/quickfix window (neomake)
-        * ``, o`` - open
-        * ``, c`` - close
-        * ``, n`` - next error
-        * ``, p`` - previous error
-        * ``, ,`` - current error
     * building
         * ``F4`` - Build and preview (syncronously) (tex, markdown); pip install . (python)
         * ``F5`` - Build and preview (asyncronously) (tex, markdown); pip install . (python)
@@ -148,8 +142,9 @@ Key bindings
         * ``ga`` - show (unicode) character information
     * coc.nvim
         * ``K`` - documentation
-        * ``,c`` - next error/warning
-        * ``,C`` - previous error/warning
+        * ``,d`` - open diagnostic window
+        * ``,c`` - next diagnostic
+        * ``,C`` - previous diagnostic
         * ``gd`` - goto definition
         * ``gy`` - goto type definition
         * ``gi`` - goto implementation

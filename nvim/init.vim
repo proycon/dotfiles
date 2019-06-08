@@ -42,6 +42,7 @@ if has('nvim')
     Plug 'neoclide/coc-html', {'do': 'yarn install --frozen-lockfile'}
     Plug 'neoclide/coc-yaml', {'do': 'yarn install --frozen-lockfile'}
     Plug 'neoclide/coc-vimtex', {'do': 'yarn install --frozen-lockfile'}
+    Plug 'neoclide/coc-vetur', {'do': 'yarn install --frozen-lockfile'} "for Vue.js
 endif
 
 "
@@ -70,7 +71,7 @@ Plug 'skywind3000/asyncrun.vim' "Run shell commands asynchronously
 
 " IDE
 Plug 'scrooloose/nerdtree', { 'on':  ['NERDTreeToggle', 'NERDTree'] }
-Plug 'neomake/neomake' "Asynchronous linting and make framework for Neovim/Vim
+"Plug 'neomake/neomake' "Asynchronous linting and make framework for Neovim/Vim
 Plug 'tpope/vim-fugitive'
 "Plug 'tpope/rhubarb'
 "Plug 'gregsexton/gitv' "gitk for vim
@@ -481,6 +482,8 @@ nmap <leader>F  <Plug>(coc-format-selected)
 " Map for rename current word
 nmap <silent>rn <Plug>(coc-rename)
 
+nmap <Leader>d :CocList diagnostics<CR>      " open location window
+
 set cmdheight=2
 " Highlight symbol under cursor on CursorHold
 autocmd CursorHold * silent call CocActionAsync('highlight')
@@ -501,14 +504,15 @@ imap <C-k> <Plug>(neosnippet_expand_or_jump)
 smap <C-k> <Plug>(neosnippet_expand_or_jump)
 xmap <C-k> <Plug>(neosnippet_expand_target)
 
-" neomake
-nmap <Leader><Space>o :lopen<CR>      " open location window
-nmap <Leader><Space>c :lclose<CR>     " close location window
-nmap <Leader><Space>, :ll<CR>         " go to current error/warning
-nmap <Leader><Space>n :lnext<CR>      " next error/warning
-nmap <Leader><Space>p :lprev<CR>      " previous error/warning
+
+" neomake (DISABLED)
+"nmap <Leader><Space>o :lopen<CR>      " open location window
+"nmap <Leader><Space>c :lclose<CR>     " close location window
+"nmap <Leader><Space>, :ll<CR>         " go to current error/warning
+"nmap <Leader><Space>n :lnext<CR>      " next error/warning
+"nmap <Leader><Space>p :lprev<CR>      " previous error/warning
 " show quicklist with errors
-let g:neomake_open_list = 2
+"let g:neomake_open_list = 2
 
 " bind Ctrl+<movement> keys to move around the windows, instead of using Ctrl+w + <movement>
 " Every unnecessary keystroke that can be saved is good for your health :)
@@ -553,7 +557,7 @@ augroup neovim
   "autocmd InsertLeave,CompleteDone * if pumvisible() == 0 | pclose | endif
   autocmd StdinReadPre * let s:std_in=1
   autocmd BufWritePre * %s/\s\+$//e
-  autocmd BufWritePost * Neomake
+  "autocmd BufWritePost * Neomake
   autocmd BufWritePost $MYVIMRC nested source $MYVIMRC
 augroup END
 
