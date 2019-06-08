@@ -9,7 +9,7 @@ endif
 " startup for vim-plug
 call plug#begin('~/.config/nvim/plugged')
 
-" Completions
+" Completions using deoplete (disabled)
 "if has('nvim')
 "  Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' } "autocompletion
 "else "vim8
@@ -25,9 +25,6 @@ call plug#begin('~/.config/nvim/plugged')
 "Plug 'carlitux/deoplete-ternjs', { 'do': 'npm install -g tern' } "deoplete completion for javascript
 "Plug 'Shougo/deoplete-clangx' "deoplete completion for C++
 "Plug 'Shougo/neoinclude.vim' "Include completion framework for neocomplete/deoplete
-"if has('nvim')
-"    Plug 'autozimu/LanguageClient-neovim', { 'branch': 'next', 'do': 'bash install.sh' }
-"endif
 "
 "
 "
@@ -85,7 +82,7 @@ Plug 'airblade/vim-gitgutter' "git diff in gutter
 Plug 'lervag/vimtex'
 Plug 'nathanaelkane/vim-indent-guides', { 'for': 'python' }
 Plug 'rust-lang/rust.vim' "for Rust
-"Plug 'racer-rust/vim-racer'
+"Plug 'racer-rust/vim-racer' "(disabled in favour of coc-rls)
 Plug 'cespare/vim-toml' "for toml files
 Plug 'posva/vim-vue' "for vue.js
 Plug 'leafgarland/typescript-vim' "Typescript syntax highlighting (and more?)
@@ -386,43 +383,43 @@ let g:session_autosave = 'no'
 let g:airline#extensions#tabline#buffer_nr_show = 1
 
 " deoplete + neosnippet + autopairs changes (DEOPLETE IS DISABLED!)
-let g:deoplete#auto_complete_start_length = 1
-let g:deoplete#enable_at_startup = 1
-let g:deoplete#enable_smart_case = 1
-let g:deoplete#sources#jedi#show_docstring = 1
+"let g:deoplete#auto_complete_start_length = 1
+"let g:deoplete#enable_at_startup = 1
+"let g:deoplete#enable_smart_case = 1
+"let g:deoplete#sources#jedi#show_docstring = 1
 "imap <expr><TAB> pumvisible() ? "\<C-n>" : (neosnippet#expandable_or_jumpable() ? "\<Plug>(neosnippet_expand_or_jump)" : "\<TAB>")
 "imap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<S-TAB>"
 "imap <expr><CR> pumvisible() ? deoplete#mappings#close_popup() : "<CR>"
 " Let <Tab> also do completion
-inoremap <silent><expr> <Tab> pumvisible() ? "\<C-n>" : deoplete#mappings#manual_complete()
+"inoremap <silent><expr> <Tab> pumvisible() ? "\<C-n>" : deoplete#mappings#manual_complete()
 
-let g:deoplete#ignore_sources = get(g:, 'deoplete#ignore_sources', {})
-let g:deoplete#ignore_sources.php = ['omni']
-let g:deoplete#sources#ternjs#case_insensitive = 1
+"let g:deoplete#ignore_sources = get(g:, 'deoplete#ignore_sources', {})
+"let g:deoplete#ignore_sources.php = ['omni']
+"let g:deoplete#sources#ternjs#case_insensitive = 1
 "Add extra filetypes for javascript
-let g:deoplete#sources#ternjs#filetypes = [ 'jsx', 'javascript.jsx',  'vue' ]
+"let g:deoplete#sources#ternjs#filetypes = [ 'jsx', 'javascript.jsx',  'vue' ]
 
 " JEDI IS NOT USED!
-let g:jedi#auto_vim_configuration = 0
-let g:jedi#goto_assignments_command = '<Leader>ga'  " dynamically done for ft=python.
-let g:jedi#goto_definitions_command = '<Leader>gd'  " dynamically done for ft=python.
-let g:jedi#use_tabs_not_buffers = 0  " current default is 1.
-let g:jedi#rename_command = '<Leader>gR'
-let g:jedi#usages_command = '<Leader>gu'
-let g:jedi#completions_enabled = 0 "deoplete handles this already
-let g:jedi#smart_auto_mappings = 1
+"let g:jedi#auto_vim_configuration = 0
+"let g:jedi#goto_assignments_command = '<Leader>ga'  " dynamically done for ft=python.
+"let g:jedi#goto_definitions_command = '<Leader>gd'  " dynamically done for ft=python.
+"let g:jedi#use_tabs_not_buffers = 0  " current default is 1.
+"let g:jedi#rename_command = '<Leader>gR'
+"let g:jedi#usages_command = '<Leader>gu'
+"let g:jedi#completions_enabled = 0 "deoplete handles this already
+"let g:jedi#smart_auto_mappings = 1
 
 " Unite/ref and pydoc are more useful.
-let g:jedi#documentation_command = '<Leader>_K'
-let g:jedi#auto_close_doc = 1
+"let g:jedi#documentation_command = '<Leader>_K'
+"let g:jedi#auto_close_doc = 1
 
 "Rust
 "let g:deoplete#sources#rust#racer_binary = "/home/proycon/.cargo/bin/racer" "for deoplete-rust
 "let g:deoplete#sources#rust#rust_source_path = "/home/proycon/rust/src"
 
 "Rust (vim-racer) (NOT USED!)
-let g:racer_cmd = "/home/proycon/.cargo/bin/racer" "for vim-racer
-let g:racer_experimental_completer = 0
+"let g:racer_cmd = "/home/proycon/.cargo/bin/racer" "for vim-racer
+"let g:racer_experimental_completer = 0
 "au FileType rust nmap gd <Plug>(rust-def)
 "au FileType rust nmap <leader>gd <Plug>(rust-def)
 "au FileType rust nmap K <Plug>(rust-doc)
