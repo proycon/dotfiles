@@ -36,8 +36,10 @@ Key bindings
         * ``v`` - Connect to editor tmux
         * ``g`` - Image viewer (geeqie)
         * ``f`` - File manager (pcmanfm)
+        * ``n`` - Network menu
         * ``w`` - Web browser (firefox)
         * ``M`` - Music player (ncmpcpp)
+        * ``P`` - Presentation mode (HDMI clone)
     * ``cmd+r`` - Resize mode
     * ``cmd+shift+c`` - Reload configuration
     * ``cmd+shift+q`` - Close window
@@ -49,6 +51,11 @@ Key bindings
         * ``cmd+f`` - Fullscreen
         * ``cmd+Shift+space`` - Toggle floating
         * ``cmd+/`` - Toggle tiling/floating
+    * Gaps
+        * ``cmd+,`` - increase outer gap
+        * ``cmd+Shift+,`` - decrease outer gap
+        * ``cmd+;`` - increase inner gap
+        * ``cmd+Shift+;`` - decrease inner gap
     * Keyboard input methods:
         * ``alt+F8`` - Simplified Chinese (fcitx)
         * ``alt+F9`` - Latin (default)
