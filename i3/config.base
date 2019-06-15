@@ -303,7 +303,7 @@ gaps outer 0
 
 workspace $WS01 gaps inner 0
 workspace $WS02 gaps inner 0
-workspace $WS03 gaps inner 0
+workspace $WS04 gaps inner 0
 workspace $WS08 gaps inner 0
 
 #gruvbox colorscheme
