@@ -83,6 +83,7 @@ bindsym $mod+d floating toggle
 bindsym $mod+v split v
 bindsym $mod+c split h
 
+
 # toggle tiling / floating
 bindsym $mod+Shift+space floating toggle
 
@@ -244,6 +245,11 @@ bindsym $mod+x mode "exec"
 bindsym $mod+g exec compton -cC -z -r 3 -l 2 -t 2 -f -b
 bindsym $mod+$alt+g exec killall compton
 
+bindsym $mod+comma gaps outer current plus 32
+bindsym $mod+Shift+comma gaps outer current minus 32
+bindsym $mod+semicolon gaps inner current plus 16
+bindsym $mod+Shift+semicolon gaps inner current minus 16
+
 bindsym $mod+Escape exec /home/proycon/dotfiles/lock.sh
 bindsym $mod+Shift+Escape exec /home/proycon/dotfiles/suspend.sh
 
@@ -291,9 +297,14 @@ for_window [instance="scratchpad"] move scratchpad
 for_window [instance="scratchpad"] border pixel 10
 exec --no-startup-id urxvt -name scratchpad -e /home/proycon/bin/tm scratchpad
 
-smart_gaps on
+#smart_gaps off
 gaps inner 16
-gaps outer 4
+gaps outer 0
+
+workspace $WS01 gaps inner 0
+workspace $WS02 gaps inner 0
+workspace $WS03 gaps inner 0
+workspace $WS08 gaps inner 0
 
 #gruvbox colorscheme
 set $bg #282828
@@ -306,6 +317,7 @@ set $aqua #689d68
 set $gray #a89984
 set $darkgray #1d2021
 set $white #ffffff
+
 
 # green gruvbox
 # class                 border|backgr|text|indicator|child_border
