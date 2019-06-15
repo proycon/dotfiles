@@ -54,7 +54,7 @@ if [[ "$HOSTNAME" == "mhysa" ]]; then
     #feh --bg-tile --no-xinerama ~/dotfiles/media/hummingbird_twin.jpg
     #feh --bg-center ~/dotfiles/media/centerpiece.png --image-bg '#191919'
 fi
-feh --bg-center ~/dotfiles/media/conifier.jpg --image-bg '#2e3440'
+feh --bg-center ~/dotfiles/media/conifer.jpg --image-bg '#2e3440'
 
 which i3 > /dev/null 2>/dev/null
 if [ $? -eq 0 ]; then
