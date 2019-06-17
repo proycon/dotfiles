@@ -39,7 +39,7 @@ if [[ $HOST == "rocinante" ]] {
 } elif [[ -f /etc/profile.d/mlp.sh ]] {
     HOSTNAME=$HOST
     source /etc/profile.d/mlp.sh
-    PR_HOST="%F{173}${PONY}%m%f"
+    PR_HOST="%F{173}${PONY} %m%f"
 } else {
 	PR_HOST="%F{white}%m%f"
 }
