@@ -55,9 +55,9 @@ local datetime="%F{white}%*%f"
 local seqnr="%F{white}#%i%f"
 local promptsign="%{$fg_bold[yellow]%}\$%{$reset_color%} "
 
-PROMPT="╭─ ${user_host} ${current_dir} ${venv_prompt} ${git_branch} ─── ${datetime} ─── ${seqnr}
+PROMPT="╭─ ${user_host} ${current_dir} ${venv_prompt} ${git_branch} ─── ${datetime} ─── ${seqnr} ${return_code}
 ╰─$PR_PROMPT${promptsign}"
-RPROMPT="${return_code}"
+#RPROMPT="${return_code}"
 
 ZSH_THEME_GIT_PROMPT_PREFIX="%F{yellow}‹"
 ZSH_THEME_GIT_PROMPT_SUFFIX="› %f"
