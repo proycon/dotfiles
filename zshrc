@@ -134,7 +134,7 @@ fi
 if [[ $HOST == "rocinante" || $HOST == "mhysa" || $HOST == "drasha" ]]; then
     #export PATH="/home/proycon/bin:/home/proycon/.cargo/bin:/home/proycon/local/bin:/usr/local/android-sdk-linux/tools:/usr/local/android-sdk-linux/platform-tools:$PATH"
     #export LD_LIBRARY_PATH="$LD_LIBRARY_PATH:/home/proycon/local/lib"
-    export CDPATH=.:~/work
+    export CDPATH=.:~/work:~/projects
     #export PYTHONPATH="/home/proycon/work/"
     #export ANDROID_SDK="/usr/local/android-sdk-linux"
 
@@ -147,8 +147,7 @@ elif [[ $HOST == "roma" ]]; then
     export PATH="/home/proycon/bin:/home/proycon/.cargo/bin:/home/proycon/local/bin:$PATH"
     export LD_LIBRARY_PATH="$LD_LIBRARY_PATH:/home/proycon/local/lib"
     export PYTHONPATH="/home/proycon/work/"
-    export ALPINO_HOME="/usr/local/Alpino"
-    export CDPATH=.:~/work
+    export CDPATH=.:~/work:~/projects
 
     hash -d X=/home/proycon/exp
     hash -d lsrc=/home/proycon/local/src/
