@@ -154,7 +154,8 @@ elif [[ $HOST == "roma" ]]; then
     hash -d W=/home/proycon/work
     hash -d P=/home/proycon/projects
 elif [[ $HOST == "applejack" || $HOST == "fluttershy" || $HOST == "rarity" || $HOST == "cheerilee" || $HOST == "fancypants" || $HOST == "pipsqueak" || $HOST == "scootaloo" || $HOST == "blossomforth" || $HOST == "featherweight" || $HOST == "twist" || $HOST == "thunderlane" || ${HOST:0:3} == "mlp" ]]; then
-    alias lmws='source /var/www/lamachine/bin/activate'
+    alias lmws='source lamachine-weblamachine-activate'
+    alias lmws1='source /var/www/lamachine/bin/activate'
     alias lm='source /vol/customopt/bin/lamachine-activate'
     alias lmdev='source /vol/customopt/bin/lamachine-dev-activate'
     #export LD_LIBRARY_PATH="/vol/customopt/machine-translation/lib:/vol/customopt/nlptools/lib/:$LD_LIBRARY_PATH"
