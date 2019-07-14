@@ -210,6 +210,7 @@ mode "exec" {
         bindsym v exec --no-startup-id urxvt -cd /home/proycon -T vim -e /home/proycon/bin/tm nvim; mode "default"
         bindsym t exec --no-startup-id urxvt -cd /home/proycon -e tmux new; mode "default"
         bindsym Shift+m exec urxvt -cd /home/proycon -T ncmpcpp -e ncmpcpp; mode "default"
+        bindsym Shift+r exec urxvt -cd /home/proycon -T rtv -e rtv; mode "default"
         bindsym r exec urxvt -cd /home/proycon -T newsboat -e newsboat; mode "default"
         bindsym w exec firefox; mode "default"
         bindsym f exec pcmanfm; mode "default"
