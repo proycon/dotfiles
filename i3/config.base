@@ -108,22 +108,22 @@ set $WS07   "7: 七"
 set $WS08   "8: 八"
 set $WS09   "9: 九"
 set $WS10   "10: 十"
-set $WS11   "11: 《"
-set $WS12   "12: 》"
+set $WS11   "11: 〢"
 
-workspace $WS00 output DisplayPort-1 #MULTIHEAD
-workspace $WS01 output DP-1-1 #MULTIHEAD
-workspace $WS02 output DisplayPort-1 #MULTIHEAD
-workspace $WS03 output DP-1-1 #MULTIHEAD
-workspace $WS04 output DisplayPort-1 #MULTIHEAD
-workspace $WS05 output DP-1-1 #MULTIHEAD
-workspace $WS06 output DisplayPort-1 #MULTIHEAD
-workspace $WS07 output DP-1-1 #MULTIHEAD
-workspace $WS08 output DisplayPort-1 #MULTIHEAD
-workspace $WS09 output DP-1-1 #MULTIHEAD
-workspace $WS10 output DisplayPort-1 #MULTIHEAD
-workspace $WS11 output DP-1-1 #MULTIHEAD
-workspace $WS12 output DisplayPort-1 #MULTIHEAD
+#DP-1-1 = left portrait
+#DisplayPort-1 = right landscapee
+workspace $WS00 output DP-1-1 #MULTIHEAD
+workspace $WS01 output DisplayPort-1 #MULTIHEAD
+workspace $WS02 output DP-1-1 #MULTIHEAD
+workspace $WS03 output DisplayPort-1 #MULTIHEAD
+workspace $WS04 output DP-1-1 #MULTIHEAD
+workspace $WS05 output DisplayPort-1 #MULTIHEAD
+workspace $WS06 output DP-1-1 #MULTIHEAD
+workspace $WS07 output DisplayPort-1 #MULTIHEAD
+workspace $WS08 output DP-1-1 #MULTIHEAD
+workspace $WS09 output DisplayPort-1 #MULTIHEAD
+workspace $WS10 output DP-1-1 #MULTIHEAD
+workspace $WS11 output DisplayPort-1 #MULTIHEAD
 
 
 
@@ -140,11 +140,7 @@ bindsym $mod+8 workspace $WS08
 bindsym $mod+9 workspace $WS09
 bindsym $mod+0 workspace $WS10
 bindsym $mod+minus workspace $WS11
-bindsym $mod+equal workspace $WS12
-
-bindsym $mod+F1 workspace $WS11
-bindsym $mod+F5 workspace $WS10
-bindsym $mod+F9 workspace $WS12
+bindsym $mod+equal workspace $WS11
 
 bindsym $mod+Left focus left
 bindsym $mod+Right focus right
@@ -153,6 +149,7 @@ bindsym $mod+Down focus down
 bindsym $mod+Tab workspace back_and_forth
 
 # move focused container to workspace
+bindsym $mod+Shift+apostrophe move container to workspace $WS00
 bindsym $mod+Shift+1 move container to workspace $WS01
 bindsym $mod+Shift+2 move container to workspace $WS02
 bindsym $mod+Shift+3 move container to workspace $WS03
@@ -164,7 +161,7 @@ bindsym $mod+Shift+8 move container to workspace $WS08
 bindsym $mod+Shift+9 move container to workspace $WS09
 bindsym $mod+Shift+0 move container to workspace $WS10
 bindsym $mod+Shift+minus move container to workspace $WS11
-bindsym $mod+Shift+equal move container to workspace $WS12
+bindsym $mod+Shift+equal move container to workspace $WS11
 
 # reload the configuration file
 bindsym $mod+Shift+c exec ~/dotfiles/i3/makeconfig.sh; reload; exec "i3-nagbar -t warning -m 'Reloaded'"

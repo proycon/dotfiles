@@ -147,7 +147,7 @@ label-mode-underline = ${colors.underline}
 ;   %index%
 ;   %output%
 ; Default: %icon%  %name%
-label-focused = %icon% %name%
+label-focused = %{T3}%icon%%{T-} %name%
 label-focused-foreground = ${colors.underline}
 ; label-focused-background = #3f3f3f
 label-focused-underline = ${colors.underline}
@@ -159,7 +159,7 @@ label-focused-padding = 2
 ;   %icon%
 ;   %index%
 ; Default: %icon%  %name%
-label-unfocused = %icon% %name%
+label-unfocused = %{T3}%icon%%{T-} %name%
 label-unfocused-padding = 2
 
 ; Available tokens:
@@ -167,7 +167,7 @@ label-unfocused-padding = 2
 ;   %icon%
 ;   %index%
 ; Default: %icon%  %name%
-label-visible = %icon% %name%
+label-visible = %{T3}%icon%%{T-} %name%
 label-visible-underline = #cc241d
 label-visible-padding = 2
 
@@ -176,7 +176,7 @@ label-visible-padding = 2
 ;   %icon%
 ;   %index%
 ; Default: %icon%  %name%
-label-urgent = %icon% %name%
+label-urgent = %{T3}%icon%%{T-} %name%
 label-urgent-foreground = #cc241d
 label-urgent-background = ${colors.underline}
 label-urgent-underline = #cc241d
@@ -185,19 +185,19 @@ label-urgent-padding = 2
 label-occupied-underline = #665c54
 label-occupied-padding = 2
 
-ws-icon-0 = "0: 〇;"
-ws-icon-1 = "1: 一;"
-ws-icon-2 = "2: 二;"
-ws-icon-3 = "3: 三;"
-ws-icon-4 = "4: 四;"
-ws-icon-5 = "5: 五;"
+; right column contains material design icons in private use area (may not correspond to what you see in editor!)
+ws-icon-0 = "0: 〇;"
+ws-icon-1 = "1: 一;"
+ws-icon-2 = "2: 二;"
+ws-icon-3 = "3: 三;"
+ws-icon-4 = "4: 四;"
+ws-icon-5 = "5: 五;"
 ws-icon-6 = "6: 六;"
-ws-icon-7 = "7: 七;"
-ws-icon-8 = "8: 八;"
-ws-icon-9 = "9: 九;"
-ws-icon-10 = "10: 十;"
-ws-icon-11 = "11: 《;"
-ws-icon-12 = "12: 》;"
+ws-icon-7 = "7: 七;"
+ws-icon-8 = "8: 八;"
+ws-icon-9 = "9: 九;"
+ws-icon-10 = "10: 十;"
+ws-icon-11 = "11: 〢;"
 
 icon-focused-foreground = ${colors.underline}
 icon-unfocused-foreground = #458588
