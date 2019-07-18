@@ -134,7 +134,7 @@ fi
 if [[ $HOST == "rocinante" || $HOST == "mhysa" || $HOST == "drasha" ]]; then
     #export PATH="/home/proycon/bin:/home/proycon/.cargo/bin:/home/proycon/local/bin:/usr/local/android-sdk-linux/tools:/usr/local/android-sdk-linux/platform-tools:$PATH"
     #export LD_LIBRARY_PATH="$LD_LIBRARY_PATH:/home/proycon/local/lib"
-    export CDPATH=.:~/work
+    export CDPATH=.:~/work:~/projects
     #export PYTHONPATH="/home/proycon/work/"
     #export ANDROID_SDK="/usr/local/android-sdk-linux"
 
@@ -147,15 +147,15 @@ elif [[ $HOST == "roma" ]]; then
     export PATH="/home/proycon/bin:/home/proycon/.cargo/bin:/home/proycon/local/bin:$PATH"
     export LD_LIBRARY_PATH="$LD_LIBRARY_PATH:/home/proycon/local/lib"
     export PYTHONPATH="/home/proycon/work/"
-    export ALPINO_HOME="/usr/local/Alpino"
-    export CDPATH=.:~/work
+    export CDPATH=.:~/work:~/projects
 
     hash -d X=/home/proycon/exp
     hash -d lsrc=/home/proycon/local/src/
     hash -d W=/home/proycon/work
     hash -d P=/home/proycon/projects
 elif [[ $HOST == "applejack" || $HOST == "fluttershy" || $HOST == "rarity" || $HOST == "cheerilee" || $HOST == "fancypants" || $HOST == "pipsqueak" || $HOST == "scootaloo" || $HOST == "blossomforth" || $HOST == "featherweight" || $HOST == "twist" || $HOST == "thunderlane" || ${HOST:0:3} == "mlp" ]]; then
-    alias lmws='source /var/www/lamachine/bin/activate'
+    alias lmws='source lamachine-weblamachine-activate'
+    alias lmws1='source /var/www/lamachine/bin/activate'
     alias lm='source /vol/customopt/bin/lamachine-activate'
     alias lmdev='source /vol/customopt/bin/lamachine-dev-activate'
     #export LD_LIBRARY_PATH="/vol/customopt/machine-translation/lib:/vol/customopt/nlptools/lib/:$LD_LIBRARY_PATH"
