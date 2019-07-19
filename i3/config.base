@@ -298,10 +298,12 @@ exec --no-startup-id urxvt -name scratchpad -e /home/proycon/bin/tm scratchpad
 gaps inner 16
 gaps outer 0
 
+workspace $WS00 gaps inner 0
 workspace $WS01 gaps inner 0
 workspace $WS02 gaps inner 0
-workspace $WS04 gaps inner 0
+workspace $WS03 gaps inner 0
 workspace $WS08 gaps inner 0
+workspace $WS09 gaps inner 0
 
 #gruvbox colorscheme
 set $bg #282828
