@@ -168,15 +168,28 @@ map <leader>E <esc>:bufdo e<CR>
 map <leader>v :vsplit<CR>
 map <leader>H :split<CR>
 map <leader>w :w<CR>
-map <leader>1 :b1<CR>
-map <leader>2 :b2<CR>
-map <leader>3 :b3<CR>
-map <leader>4 :b4<CR>
-map <leader>5 :b5<CR>
-map <leader>6 :b6<CR>
-map <leader>7 :b7<CR>
-map <leader>8 :b8<CR>
-map <leader>9 :b9<CR>
+"map <leader>1 :b1<CR>
+"map <leader>2 :b2<CR>
+"map <leader>3 :b3<CR>
+"map <leader>4 :b4<CR>
+"map <leader>5 :b5<CR>
+"map <leader>6 :b6<CR>
+"map <leader>7 :b7<CR>
+"map <leader>8 :b8<CR>
+"map <leader>9 :b9<CR>
+nmap <leader>1 <Plug>AirlineSelectTab1<CR>
+nmap <leader>2 <Plug>AirlineSelectTab2<CR>
+nmap <leader>3 <Plug>AirlineSelectTab3<CR>
+nmap <leader>4 <Plug>AirlineSelectTab4<CR>
+nmap <leader>5 <Plug>AirlineSelectTab5<CR>
+nmap <leader>6 <Plug>AirlineSelectTab6<CR>
+nmap <leader>7 <Plug>AirlineSelectTab7<CR>
+nmap <leader>8 <Plug>AirlineSelectTab8<CR>
+nmap <leader>9 <Plug>AirlineSelectTab9<CR>
+"nmap <leader>- <Plug>AirlineSelectPrevTab
+"nmap <leader>+ <Plug>AirlineSelectNextTab
+
+
 map <leader>10 :b10<CR>
 map <leader>11 :b11<CR>
 map <leader>12 :b12<CR>
@@ -342,7 +355,17 @@ map <C-Left> :bp<CR>
 
 " vim-airline settings
 let g:airline#extensions#tabline#enabled = 1
-"let g:airline_theme = 'gruvbox'
+let g:airline#extensions#tabline#tab_nr_type = 1
+let g:airline#extensions#tabline#tabnr_formatter = 'tabnr'
+"let g:airline#extensions#tabline#tabs_label = 't'
+let g:airline#extensions#tabline#buffers_label = 'b'
+let g:airline#extensions#tabline#show_tab_nr = 1
+let g:airline#extensions#tabline#formatter = 'default'
+let g:airline#extensions#tabline#buffer_nr_show = 0
+"let g:airline#extensions#tabline#fnametruncate = 16
+"let g:airline#extensions#tabline#fnamecollapse = 2
+let g:airline#extensions#tabline#buffer_idx_mode = 1 "adds the small numbers
+let g:airline_theme = 'gruvbox'
 let g:airline_powerline_fonts = 1
 let g:airline#extensions#coc#enabled = 1
 
@@ -381,7 +404,6 @@ nnoremap <leader>r :Tags<cr>
 " session management
 let g:session_autosave = 'no'
 
-let g:airline#extensions#tabline#buffer_nr_show = 1
 
 " deoplete + neosnippet + autopairs changes (DEOPLETE IS DISABLED!)
 "let g:deoplete#auto_complete_start_length = 1
