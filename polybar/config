@@ -197,7 +197,8 @@ ws-icon-7 = "7: 七;"
 ws-icon-8 = "8: 八;"
 ws-icon-9 = "9: 九;"
 ws-icon-10 = "10: 十;"
-ws-icon-11 = "11: 〢;"
+ws-icon-11 = "11: 〡;"
+ws-icon-12 = "12: 〢;"
 
 icon-focused-foreground = ${colors.underline}
 icon-unfocused-foreground = #458588
