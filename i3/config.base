@@ -108,7 +108,8 @@ set $WS07   "7: 七"
 set $WS08   "8: 八"
 set $WS09   "9: 九"
 set $WS10   "10: 十"
-set $WS11   "11: 〢"
+set $WS11   "11: 〡"
+set $WS12   "12: 〢"
 
 #DP-1-1 = left portrait
 #DisplayPort-1 = right landscapee
@@ -124,6 +125,7 @@ workspace $WS08 output DP-1-1 #MULTIHEAD
 workspace $WS09 output DisplayPort-1 #MULTIHEAD
 workspace $WS10 output DP-1-1 #MULTIHEAD
 workspace $WS11 output DisplayPort-1 #MULTIHEAD
+workspace $WS12 output DisplayPort-1 #MULTIHEAD
 
 
 
@@ -140,7 +142,7 @@ bindsym $mod+8 workspace $WS08
 bindsym $mod+9 workspace $WS09
 bindsym $mod+0 workspace $WS10
 bindsym $mod+minus workspace $WS11
-bindsym $mod+equal workspace $WS11
+bindsym $mod+equal workspace $WS12
 
 bindsym $mod+Left focus left
 bindsym $mod+Right focus right
