@@ -19,5 +19,7 @@
   },
   "python.linting.pylintArgs": [
         "--extension-pkg-whitelist=numpy,lxml,scipy"
-  ]
+  ],
+  "eslint.filetypes": ["javascript", "typescript", "typescriptreact", "javascriptreact"],
+  "eslint.enable": true
 }
