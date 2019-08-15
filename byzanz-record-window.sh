@@ -5,7 +5,7 @@ DELAY=10
 
 # Sound notification to let one know when recording is about to start (and ends)
 beep() {
-    paplay /usr/share/sounds/freedesktop/camera-shutter.oga &
+    paplay /usr/share/sounds/freedesktop/stereo/camera-shutter.oga &
 }
 
 # Duration and output file
