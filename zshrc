@@ -69,6 +69,7 @@ alias ka='killall'
 alias za='zathura'
 alias gpp='git push origin gh-pages'
 alias mp="ncmpcpp -b ~/dotfiles/ncmpcpp.bindings"
+alias tlms="tmux list-windows -a -F \"#S.#I: #W (#{window_panes}) -- #{t:window_activity} #{?window_active,(active),} \""
 alias r='ranger'
 #colours
 #which colorgcc > /dev/null 2> /dev/null
@@ -233,6 +234,8 @@ alias _sc="ssh -Y -A -t mvgompel@radium.uvt.nl ssh -Y -A -t scylla zsh"
 alias homsar="ssh -Y -A -t homsar.uvt.nl zsh"
 alias luon="ssh -Y -A -t maartenvg@void.luon.net"
 #alias gpga="killall gpg-agent; gpg-agent --daemon --enable-ssh-support --write-env-file /home/proycon/.gpg-agent-info"
+#
+
 
 alias lq="source ~/.sgesh"
 
