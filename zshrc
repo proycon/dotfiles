@@ -69,7 +69,6 @@ alias ka='killall'
 alias za='zathura'
 alias gpp='git push origin gh-pages'
 alias mp="ncmpcpp -b ~/dotfiles/ncmpcpp.bindings"
-alias tlms="tmux list-windows -a -F \"#S.#I: #W (#{window_panes}) -- #{t:window_activity} #{?window_active,(active),} \""
 alias r='ranger'
 #colours
 #which colorgcc > /dev/null 2> /dev/null
@@ -118,6 +117,11 @@ man() {
     LESS_TERMCAP_ue=$'\E[0m'           \
     LESS_TERMCAP_us=$'\E[04;38;5;146m' \
     man "$@"
+}
+
+
+tlms() {
+    tmux list-windows -a -F "#S.#I: #W (#{window_panes}) -- #{pane_current_command} @ #{pane_current_path} -- #{t:window_activity} #{?window_activity_flag,(changed),} #{?window_active,(active),} " | while read line; do if [[ $line =~ "(changed)" ]]; then clr='\e[1;31m'; elif [[ $line =~ "(active)" ]]; then clr='\e[0;32m'; else clr='\e[0;37m'; fi; echo -e $clr "  " "$line"; done
 }
 
 alias dis='export $(tmux showenv | grep DISPLAY)'
