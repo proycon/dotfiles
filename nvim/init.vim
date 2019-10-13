@@ -177,15 +177,15 @@ map <leader>w :w<CR>
 "map <leader>7 :b7<CR>
 "map <leader>8 :b8<CR>
 "map <leader>9 :b9<CR>
-nmap <leader>1 <Plug>AirlineSelectTab1<CR>
-nmap <leader>2 <Plug>AirlineSelectTab2<CR>
-nmap <leader>3 <Plug>AirlineSelectTab3<CR>
-nmap <leader>4 <Plug>AirlineSelectTab4<CR>
-nmap <leader>5 <Plug>AirlineSelectTab5<CR>
-nmap <leader>6 <Plug>AirlineSelectTab6<CR>
-nmap <leader>7 <Plug>AirlineSelectTab7<CR>
-nmap <leader>8 <Plug>AirlineSelectTab8<CR>
-nmap <leader>9 <Plug>AirlineSelectTab9<CR>
+nmap <leader>1 <Plug>AirlineSelectTab1
+nmap <leader>2 <Plug>AirlineSelectTab2
+nmap <leader>3 <Plug>AirlineSelectTab3
+nmap <leader>4 <Plug>AirlineSelectTab4
+nmap <leader>5 <Plug>AirlineSelectTab5
+nmap <leader>6 <Plug>AirlineSelectTab6
+nmap <leader>7 <Plug>AirlineSelectTab7
+nmap <leader>8 <Plug>AirlineSelectTab8
+nmap <leader>9 <Plug>AirlineSelectTab9
 "nmap <leader>- <Plug>AirlineSelectPrevTab
 "nmap <leader>+ <Plug>AirlineSelectNextTab
 
