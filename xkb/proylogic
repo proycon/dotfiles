@@ -40,7 +40,7 @@ xkb_symbols "basic" {
     key <AD10> {        [         p,    P  ,U03C8, U220F            ]       };
 
 
-    key <AD11>	{ [U02C6, U02C7, U25A1, U25C7 ] };
+    key <AD11>	{ [U02C6, dead_circumflex, U25A1, U25C7 ] };
     key <AD12>	{ [dead_macron, dead_tilde, dead_macron, dead_abovedot       ]	};
 
     key <AC01> {        [         a,    A , U03B1, U2200              ]       };
@@ -48,7 +48,7 @@ xkb_symbols "basic" {
     key <AC03> {        [         d,    D , U2202, U2206               ]       };
     key <AC04> {        [         f,    F , U0192, U03C6            ]       };
     key <AC05> {        [         g,    G , U03B3, U0393             ]       };
-    key <AC06> {        [         h,    H , h, U220E            ]       };
+    key <AC06> {        [         h,    H , U2207, U220E            ]       };
     key <AC07> {        [         j,    J , U2264, U226A             ]       };
     key <AC08> {        [         k,    K , U2265, U226B             ]       };
     key <AC09> {        [         l,    L , U03BB, U2285         ]       };
