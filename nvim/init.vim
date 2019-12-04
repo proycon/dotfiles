@@ -582,6 +582,11 @@ map <F10> :Gpush<CR>
 let g:ansible_name_highlight = 'b'
 let g:ansible_extra_keywords_highlight = 1
 
+"vimpyter
+autocmd Filetype ipynb nmap <silent><Leader>b :VimpyterInsertPythonBlock<CR>
+autocmd Filetype ipynb nmap <silent><Leader>j :VimpyterStartJupyter<CR>
+autocmd Filetype ipynb nmap <silent><Leader>n :VimpyterStartNteract<CR>
+
 
 augroup neovim
   autocmd!
