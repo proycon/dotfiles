@@ -83,6 +83,7 @@ bindsym $mod+d floating toggle
 bindsym $mod+v split v
 bindsym $mod+c split h
 
+bindsym $mod+Shift+s sticky toggle
 
 # toggle tiling / floating
 bindsym $mod+Shift+space floating toggle

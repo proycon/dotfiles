@@ -88,6 +88,7 @@ Plug 'cespare/vim-toml' "for toml files
 Plug 'posva/vim-vue' "for vue.js
 Plug 'leafgarland/typescript-vim' "Typescript syntax highlighting (and more?)
 Plug 'fatih/vim-go' "Go
+Plug 'szymonmaszke/vimpyter' "vim-plug
 
 " Misc
 Plug 'junegunn/goyo.vim' "distraction free writing
@@ -177,15 +178,15 @@ map <leader>w :w<CR>
 "map <leader>7 :b7<CR>
 "map <leader>8 :b8<CR>
 "map <leader>9 :b9<CR>
-nmap <leader>1 <Plug>AirlineSelectTab1<CR>
-nmap <leader>2 <Plug>AirlineSelectTab2<CR>
-nmap <leader>3 <Plug>AirlineSelectTab3<CR>
-nmap <leader>4 <Plug>AirlineSelectTab4<CR>
-nmap <leader>5 <Plug>AirlineSelectTab5<CR>
-nmap <leader>6 <Plug>AirlineSelectTab6<CR>
-nmap <leader>7 <Plug>AirlineSelectTab7<CR>
-nmap <leader>8 <Plug>AirlineSelectTab8<CR>
-nmap <leader>9 <Plug>AirlineSelectTab9<CR>
+nmap <leader>1 <Plug>AirlineSelectTab1
+nmap <leader>2 <Plug>AirlineSelectTab2
+nmap <leader>3 <Plug>AirlineSelectTab3
+nmap <leader>4 <Plug>AirlineSelectTab4
+nmap <leader>5 <Plug>AirlineSelectTab5
+nmap <leader>6 <Plug>AirlineSelectTab6
+nmap <leader>7 <Plug>AirlineSelectTab7
+nmap <leader>8 <Plug>AirlineSelectTab8
+nmap <leader>9 <Plug>AirlineSelectTab9
 "nmap <leader>- <Plug>AirlineSelectPrevTab
 "nmap <leader>+ <Plug>AirlineSelectNextTab
 
@@ -562,9 +563,14 @@ hi IndentGuidesEven  guibg=#3a3a3a ctermbg=darkgrey
 hi IndentGuidesOdd guibg=#1a1a1a ctermbg=black
 
 " Markdown
+let g:vim_markdown_math = 1
+let g:vim_markdown_frontmatter = 1
+let g:vim_markdown_toml_frontmatter = 1
+let g:vim_markdown_json_frontmatter = 1
 "autocmd Filetype markdown map <F5> :!pandoc<space><C-r>%<space>-o<space><C-r>%.pdf<Enter>zathura<space>&<Enter>
 autocmd Filetype markdown map <F4> :!<space>export<space>F="<C-r>%"<space>&&<space>pandoc<space>-s<space>-f<space>gfm<space>-H<space>~/dotfiles/header.sty<space>-o<space>${F\%.md}.pdf<space><C-r>%<space>&&<space>DISPLAY=:0.0<space>zathura<space>${F\%.md}.pdf<Enter>
 autocmd Filetype markdown map <F5> :AsyncRun<space>export<space>F="<C-r>%"<space>&&<space>pandoc<space>-s<space>-f<space>gfm<space>-H<space>~/dotfiles/header.sty<space>-o<space>${F\%.md}.pdf<space><C-r>%<space>&&<space>DISPLAY=:0.0<space>zathura<space>${F\%.md}.pdf<Enter>
+autocmd Filetype markdown map <F6> :!<space>export<space>F="<C-r>%"<space>&&<space>pandoc<space>-s<space>-f<space>markdown<space>-H<space>~/dotfiles/header.sty<space>-o<space>${F\%.md}.pdf<space><C-r>%<space>&&<space>DISPLAY=:0.0<space>zathura<space>${F\%.md}.pdf<Enter>
 autocmd Filetype tex map <F5> :AsyncRun<space>export<space>F="<C-r>%"<space>&&<space>pdflatex<space><C-r>%<space>&&<space>DISPLAY=:0.0<space>zathura<space>${F\%.tex}.pdf<Enter>
 autocmd Filetype tex map <F4> :!export<space>F="<C-r>%"<space>&&<space>pdflatex<space><C-r>%<space>&&<space>DISPLAY=:0.0<space>zathura<space>${F\%.tex}.pdf<Enter>
 autocmd Filetype python map <F4> :!cd $(git<space>rev-parse<space>--show-toplevel)<space>&&<space>pip<space>install<space>.<Enter>
@@ -575,6 +581,11 @@ map <F10> :Gpush<CR>
 "ansible-vim
 let g:ansible_name_highlight = 'b'
 let g:ansible_extra_keywords_highlight = 1
+
+"vimpyter
+autocmd Filetype ipynb nmap <silent><Leader>b :VimpyterInsertPythonBlock<CR>
+autocmd Filetype ipynb nmap <silent><Leader>j :VimpyterStartJupyter<CR>
+autocmd Filetype ipynb nmap <silent><Leader>n :VimpyterStartNteract<CR>
 
 
 augroup neovim

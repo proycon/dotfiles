@@ -38,7 +38,12 @@ if [[ "$HOSTNAME" == "rocinante" ]]; then
 fi
 /home/proycon/projects/homeautomation/notifyclient_autoconnect.sh &
 play ~/dotfiles/media/cylontune_low.ogg &
-compton -cC -z -r 3 -l 2 -t 2 -f &
+which picom > /dev/null 2>/dev/null
+if [ $? -eq 0 ]; then
+    picom -cC -z -r 3 -l 2 -t 2 -f &
+else
+    compton -cC -z -r 3 -l 2 -t 2 -f &
+fi
 
 #if [ $MULTI -eq 1 ]; then
 #    DISPLAY=$DISPLAY1 i3 -d all 2> ~/.xsession-errors$DISPLAY1 &
