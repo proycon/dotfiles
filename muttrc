@@ -36,7 +36,7 @@ set send_charset = "utf-8"
 
 set to_chars = " »›-‹L"
 set sidebar_format = '%B%?F? [%F]?%* %?N?%N/? %?S?%S?'
-set index_format='%4C %Z %<[y?%<[m?%<[d?%[%H:%M ]&%[%a %d]>&%[%b %d]>&%[%m/%y ]> %-25.25L %?E?%2.e/%2.E&     ? %?Gi?%Gi &?%?Gl?%Gl &?%?Gn?%Gn &?%?Gg?%Gg &?%?Gw ?%Gw &?%?GI?%GI &?%?GL?%GL &?%?Gf?%Gf &?%?Gp?%Gp &?%?Gu?%Gu &?%?Gt?%Gt &?%?Gr?%Gr &?%?GW?%GW &? %s'
+set index_format='%4C %Z %<[y?%<[m?%<[d?%[%H:%M       ]&%[%a %b %d  ]>&%[%b %d]>&%[%b %d, %Y]> %-25.25L %?E?%2.e/%2.E&     ? %?Gi?%Gi &?%?Gl?%Gl &?%?Gn?%Gn &?%?Gg?%Gg &?%?Gw ?%Gw &?%?GI?%GI &?%?GL?%GL &?%?Gf?%Gf &?%?Gp?%Gp &?%?Gu?%Gu &?%?Gt?%Gt &?%?Gr?%Gr &?%?GW?%GW &? %s'
 set pager_format = '-%Z- %e/%E: %-20.20n  %25.25s%* %g (%P)'
 #
 # The default index_format is:
@@ -54,7 +54,7 @@ set pager_format = '-%Z- %e/%E: %-20.20n  %25.25s%* %g (%P)'
 #
 #
 set crypt_use_gpgme = yes
-set crypt_verify_sig = ask-yes
+set crypt_verify_sig = no
 set pgp_auto_decode = yes
 
 
@@ -97,7 +97,6 @@ unset mime_forward       # forward attachments as part of body
 set forward_format = "Fwd: %s"       # format of subject when forwarding
 set forward_decode                   # decode when forwarding
 set forward_quote                    # include message in forwards
-set reverse_name                     # reply as whomever it was to
 set include                          # include message in replies
 
 #Ctrl-R to mark all as read
@@ -150,7 +149,10 @@ macro index,pager \ea "<shell-escape>$HOME/bin/updatemail.sh<enter>"
 macro index \eg "<shell-escape>$HOME/bin/updatemail-quick.sh<enter>"
 bind index,pager \eA create-alias
 bind index,pager a noop
+bind index y noop
 macro index,pager a "<modify-labels-then-hide>-inbox,-unread\n"
+macro index,pager A ";<modify-labels-then-hide>-inbox,-unread\n<sync-mailbox>"
+macro index,pager S ";<modify-labels-then-hide>-inbox,-unread,+spam,+killed\n<sync-mailbox>"
 
 # modify (notmuch/imap) tags
 bind index,pager .l modify-labels
@@ -164,32 +166,40 @@ macro index,pager .W "<modify-labels>!work\n"
 macro index,pager .p "<modify-labels>!personal\n"
 macro index,pager .i "<modify-labels>!interesting\n"
 macro index,pager .0 "<modify-labels>!lowpriority\n"
+macro index,pager .j "<modify-labels>-inbox,-unread,+spam,+killed\n"
 
-macro index,pager ,0 "<vfolder-from-query>tag:inbox and tag:unread\n<collapse-all>\n"
+macro index,pager ,0 "<vfolder-from-query>date:2M.. and tag:unread and NOT tag:killed and NOT tag:spam\n<collapse-all>\n"
+macro index,pager ,\' "<vfolder-from-query>date:2M.. and tag:unread and NOT tag:killed and NOT tag:spam\n<collapse-all>\n"
 macro index,pager ,1 "<change-vfolder>INBOX\n<collapse-all>\n"
+macro index,pager ,2 "<vfolder-from-query>NOT tag:killed\n<collapse-all>\n"
+macro index,pager ,a "<vfolder-from-query>NOT tag:killed\n<collapse-all>\n"
 macro index,pager ,i "<change-vfolder>INBOX\n<collapse-all>\n"
 macro index,pager ,s "<change-vfolder>sent\n<collapse-all>\n"
-macro index,pager ,2 "<change-vfolder>work\n<collapse-all>\n"
-macro index,pager ,3 "<change-vfolder>notwork\n<collapse-all>\n"
-macro index,pager ,4 "<change-vfolder>sent<collapse-all>\n\n"
+macro index,pager ,3 "<change-vfolder>work\n<collapse-all>\n"
+macro index,pager ,4 "<change-vfolder>notwork\n<collapse-all>\n"
+macro index,pager ,5 "<change-vfolder>sent<collapse-all>\n\n"
 macro index,pager ,r "<vfolder-from-query>tag:inbox AND tag:reply\n"
 macro index,pager ,t "<vfolder-from-query>tag:inbox AND tag:todo\n"
-macro index,pager ,t "<vfolder-from-query>tag:inbox AND tag:waiting\n"
+macro index,pager ,w "<vfolder-from-query>tag:inbox AND tag:waiting\n"
+macro index,pager ,6 "<vfolder-from-query>tag:spam\n"
 
 # Replace some tags with icons
 # tag-transforms tag transformed-string { tag transformed-string ...}
-tag-transforms "inbox"   "●"   \
-               "unread"  "📨"   \
-               "replied" "↻ "  \
-               "sent"    "➥ "  \
-               "deleted" "DEL" \
-               "invites" "CAL" \
+tag-transforms "inbox"   "📩"   \
+               "unread"  "📧"   \
+               "replied" "🔁"  \
+               "sent"    "➥"  \
+               "deleted" "🗴" \
+               "invites" "📆" \
                "signed" "🔑" \
                "encrypted" "☑" \
-               "not" "N" \
-               "work" "W" \
-               "lists" "📃" \
-               "github" "git"
+               "not" "📣" \
+               "work" "工" \
+               "personal" "👤" \
+               "familie" "👪" \
+               "lists" "📜" \
+               "github" "" \
+               "debian" ""
 
 #The formats must start with 'G' and the entire sequence is case sensitive.
 #tag-formats tag format-string { tag format-string ...}
