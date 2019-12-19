@@ -520,6 +520,26 @@ augroup mygroup
   autocmd User CocJumpPlaceholder call CocActionAsync('showSignatureHelp')
 augroup end
 
+" Cyrillic in normal mode, map some minimal cyrillic so I don't have to switch
+" keymaps:
+
+nmap и i
+nmap ы y
+nmap ч c
+nmap п p
+nmap о o
+nmap х h
+nmap й j
+nmap к k
+nmap л l
+nmap Ж :
+nmap д d
+nmap в v
+nmap б b
+nmap н n
+nmap м m
+
+
 "/----------- COC.NVIM ---------------
 
 imap <expr><TAB> neosnippet#expandable_or_jumpable() ? "\<Plug>(neosnippet_expand_or_jump)" : pumvisible() ? "\<C-n>" : "\<TAB>"
