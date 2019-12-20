@@ -2,6 +2,7 @@
 if [[ ! -f /tmp/locked ]]; then
     touch /tmp/locked
     play ~/dotfiles/media/lock.wav >/dev/null 2>/dev/null &!
+    setxkbmap proylatin
     #scrot -e "convert \$f -fill '#282828' -colorize 50% -scale 10% -scale 1000% ~/lockbg.png" "lockbg.png"
     #convert -gravity center -composite ~/lockbg.png ~/dotfiles/media/locked.png ~/lockfinal.png
     i3lock -c '#220000'
