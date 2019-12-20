@@ -215,6 +215,7 @@ mode "exec" {
         bindsym w exec firefox; mode "default"
         bindsym f exec pcmanfm; mode "default"
         bindsym g exec ~/dotfiles/opensxiv.sh; mode "default"
+        bindsym i exec ~/dotfiles/openinstagram.sh; mode "default"
         bindsym n exec networkmanager_dmenu -fn "Sans"; mode "default"
         bindsym P exec xrandr --output HDMI-1 --auto
         bindsym p exec pavucontrol; mode "default"
