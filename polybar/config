@@ -18,7 +18,7 @@ alert = #bd2c40
 height = 32
 ; offset-x = 55%
 offset-y = 0
-bottom = false
+bottom = true
 fixed-center = true
 
 background = ${colors.background}
@@ -56,7 +56,7 @@ monitor = DisplayPort-1
 height = 32
 ; offset-x = 55%
 offset-y = 0
-bottom = false
+bottom = true
 fixed-center = true
 
 background = ${colors.background}
@@ -90,7 +90,7 @@ monitor = DP-1-1
 height = 32
 ; offset-x = 55%
 offset-y = 0
-bottom = false
+bottom = true
 fixed-center = true
 
 background = ${colors.background}
@@ -123,7 +123,7 @@ tray-position =
 type = internal/i3
 
 strip-wsnumbers = true
-; pin-workspaces = true
+pin-workspaces = true
 index-sort = true
 enable-click = true
 enable-scroll = true
