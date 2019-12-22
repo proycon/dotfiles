@@ -31,6 +31,6 @@ color listfocus_unread yellow default bold
 color info magenta black bold
 color article white default
 
-browser linkhandler
+browser /home/proycon/dotfiles/linkhandler
 #macro , open-in-browser
-macro . set browser "setsid nohup mpv"; open-in-browser ; set browser linkhandler
+#macro . set browser "setsid nohup mpv"; open-in-browser ; set browser linkhandler
