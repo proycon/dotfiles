@@ -22,6 +22,7 @@ bind-key D pb-download
 bind-key U show-urls
 bind-key x pb-delete
 bind-key ^t next-unread
+bind-key V view-dialogs
 
 color listnormal blue default
 color listfocus black yellow standout bold
@@ -31,5 +32,5 @@ color info magenta black bold
 color article white default
 
 browser linkhandler
-macro , open-in-browser
-macro v set browser "setsid nohup mpv"; open-in-browser ; set browser linkhandler
+#macro , open-in-browser
+macro . set browser "setsid nohup mpv"; open-in-browser ; set browser linkhandler
