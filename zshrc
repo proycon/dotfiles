@@ -274,7 +274,9 @@ alias ipyq3="ipython3 qtconsole"
 alias ipynb="ipython3 notebook"
 
 sshtunnel() {
-    ssh -N -f -L localhost:${2}:localhost:${2} $1
+    TARGETHOST=$1
+    PORT=$2
+    ssh -N -f -L localhost:${PORT}:localhost:${PORT} $TARGETHOST
 }
 
 alias dps="dirpersiststore"
