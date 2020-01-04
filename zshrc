@@ -67,6 +67,7 @@ alias tmux='tmux -2' #force 256 colour support regardless of terminal
 alias ta='~/todo.sh add'
 alias ka='killall'
 alias za='zathura'
+alias sx='sxiv -t .'
 alias gpp='git push origin gh-pages'
 alias mp="ncmpcpp -b ~/dotfiles/ncmpcpp.bindings"
 alias r='ranger'
