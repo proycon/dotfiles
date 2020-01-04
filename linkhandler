@@ -9,8 +9,20 @@
 # Sci-Hub's domain occasionally changes due to shutdowns:
 scihub="http://sci-hub.tw/"
 
+if [ -z "$BROWSER" ]; then
+    BROWSER=firefox
+fi
+if [ -z "$TERMINAL" ]; then
+    TERMINAL=urxvt
+fi
+if [ -z "$EDIT" ]; then
+    EDITOR=vim
+fi
+
 # If no url given. Opens browser. For using script as $BROWSER.
 [ -z "$1" ] && { "$BROWSER"; exit; }
+
+play ~/dotfiles/media/glass.ogg > /dev/null 2>/dev/null &
 
 case "$1" in
 	*mkv|*webm|*mp4|*youtube.com*|*youtu.be*|*hooktube.com*|*bitchute.com*)
@@ -25,3 +37,4 @@ case "$1" in
 		if [ -f "$1" ]; then "$TERMINAL" -e "$EDITOR $1"
 		else setsid "$BROWSER" "$1" >/dev/null 2>&1 & fi ;;
 esac
+
