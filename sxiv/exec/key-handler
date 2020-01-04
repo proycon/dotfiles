@@ -10,6 +10,9 @@ do
             cp "$file" "/nettmp" && notify-send -i "$fullpath" "$file copied to /nettmp." &
             ;;
         "t")
+            cp "$file" "/home/proycon/shared/transfer" && notify-send -i "$fullpath" "$file copied to ~/shared/transfer." &
+            ;;
+        "T")
             cp "$file" "/tmp" && notify-send -i "$fullpath" "$file copied to /tmp." &
             ;;
         "c")
