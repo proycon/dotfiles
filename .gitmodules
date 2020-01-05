@@ -73,3 +73,9 @@
 [submodule "gruvbox-rofi"]
 	path = gruvbox-rofi
 	url = https://github.com/bardisty/gruvbox-rofi
+[submodule "tmux/tpm"]
+	path = tmux/tpm
+	url = https://github.com/tmux-plugins/tpm
+[submodule "tmux/plugins/tpm"]
+	path = tmux/plugins/tpm
+	url = https://github.com/tmux-plugins/tpm
