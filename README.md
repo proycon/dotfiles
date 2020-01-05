@@ -93,6 +93,7 @@ Key bindings
         * ``W`` - Swap window
         * ``Q`` - Swap pane
         * ``M`` - Move pane (to another window or tmux)
+        * ``F`` - Fingers mode
 * urxvt
     * ``alt+v`` - keyboard select (like tmux copy mode)
             * VI bindings (v,y,w,/,hjkl etc..)
