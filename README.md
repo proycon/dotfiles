@@ -173,12 +173,13 @@ Key bindings
     * ``alt+=`` -  Disabled filters (hide/join) (``alt+-`` for current buffer)
         * ``/filter add irc_smart * irc_smart_filter *``  - Smart hide/join/filter
 * **sxiv**
-    * ``e`` - Edit in the Gimp
-    * ``r`` - Rotate 90 degrees clockwise
-    * ``R`` - Rotate 90 degrees clockwise
-    * ``d`` - Delete (asks confirmation)
-    * ``n`` - Copy to nettmp
-    * ``t`` - Copy to shared/transfer
-    * ``T`` - Copy to /tmp
+    * ``ctrl+x`` and:
+        * ``e`` - Edit in the Gimp
+        * ``r`` - Rotate 90 degrees clockwise
+        * ``R`` - Rotate 90 degrees clockwise
+        * ``d`` - Delete (asks confirmation)
+        * ``n`` - Copy to nettmp
+        * ``t`` - Copy to shared/transfer
+        * ``T`` - Copy to /tmp
 
 
