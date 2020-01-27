@@ -1,8 +1,10 @@
 text/html;                      firefox %s; nametemplate=%s.html
 text/html;                      links -dump %s; nametemplate=%s.html; copiousoutput
-image/*; feh %s
-application/x-pdf; zathura %s
-application/pdf; zathura %s
+text/calendar; mutt-ics; copiousoutput
+application/ics; mutt-ics; copiousoutput
+image/*; feh '%s'; edit=gimp '%s'; test=test -n "$DISPLAY"
+application/x-pdf; zathura '%s'; test=test -n "$DISPLAY"
+application/pdf; zathura '%s'; test=test -n "$DISPLAY"
 application/vnd.openxmlformats-officedocument.wordprocessingml.document; soffice -no-oosplash --writer '%s'; edit=soffice -no-oosplash --writer '%s'; test=test -n "$DISPLAY"; description="Office Open XML Document"; nametemplate=%s.docx
 application/msword; soffice -no-oosplash --writer '%s'; edit=soffice -no-oosplash --writer '%s'; test=test -n "$DISPLAY"; description="Microsoft Word Document"; nametemplate=%s.doc
 application/vnd.openxmlformats-officedocument.presentationml.presentation; soffice -no-oosplash --impress '%s'; edit=soffice -no-oosplash --impress '%s'; test=test -n "$DISPLAY"; description="Office Open XML Presentation"; nametemplate=%s.pptx
