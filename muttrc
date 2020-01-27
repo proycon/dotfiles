@@ -29,6 +29,7 @@ set pager_context = 10
 set recall = ask-no
 auto_view text/html
 auto_view application/pgp-encrypted
+auto_view text/calendar application/ics
 alternative_order text/plain text/enriched text/html
 set rfc2047_parameters = yes
 set send_charset = "utf-8"
