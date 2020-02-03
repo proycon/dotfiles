@@ -1,6 +1,9 @@
 #show-read-feeds no
 auto-reload yes
 
+confirm-exit yes
+reload-only-visible-feeds yes
+
 external-url-viewer "urlscan -dc -r 'linkhandler {}'"
 
 bind-key j down
@@ -30,6 +33,7 @@ color listnormal_unread cyan default
 color listfocus_unread yellow default bold
 color info magenta black bold
 color article white default
+
 
 browser /home/proycon/dotfiles/linkhandler
 #macro , open-in-browser
