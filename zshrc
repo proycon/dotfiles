@@ -449,3 +449,6 @@ fi
 # END LAMACHINE MANAGED BLOCK - path
 
 export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
+
+# Created by `userpath` on 2020-01-24 08:51:59
+export PATH="$PATH:/home/proycon/.local/bin"
