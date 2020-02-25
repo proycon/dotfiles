@@ -30,8 +30,8 @@ font pango:Source Code Pro for Powerline 10
 floating_modifier $mod
 
 # start a terminal
-bindsym $mod+Return exec urxvt -cd /home/proycon
-bindsym $mod+t exec urxvt -cd /home/proycon
+bindsym $mod+Return exec alacritty --working-directory /home/proycon
+bindsym $mod+t exec alacritty --working-directory /home/proycon
 bindsym $mod+y exec urxvt -name urxvtwhite -cd /home/proycon
 
 # kill focused window
@@ -206,12 +206,12 @@ mode "resize" {
 }
 
 mode "exec" {
-        bindsym m exec --no-startup-id urxvt -cd /home/proycon -T mail -e ssh -Y -A -t anaproy.nl /home/proycon/bin/tm_alot; mode "default"
-        bindsym v exec --no-startup-id urxvt -cd /home/proycon -T vim -e /home/proycon/bin/tm nvim; mode "default"
-        bindsym t exec --no-startup-id urxvt -cd /home/proycon -e tmux new; mode "default"
-        bindsym Shift+m exec urxvt -cd /home/proycon -T ncmpcpp -e ncmpcpp; mode "default"
-        bindsym Shift+r exec urxvt -cd /home/proycon -T rtv -e rtv; mode "default"
-        bindsym r exec urxvt -cd /home/proycon -T newsboat -e newsboat; mode "default"
+        bindsym m exec --no-startup-id alacritty --working-directory /home/proycon -t mail -e ssh -Y -A -t anaproy.nl /home/proycon/bin/tm_alot; mode "default"
+        bindsym v exec --no-startup-id alacritty --working-directory /home/proycon -t vim -e /home/proycon/bin/tm nvim; mode "default"
+        bindsym t exec --no-startup-id alacritty --working-directory /home/proycon -e tmux new; mode "default"
+        bindsym Shift+m exec alacritty --working-directory /home/proycon -t ncmpcpp -e ncmpcpp; mode "default"
+        bindsym Shift+r exec alacritty --working-directory /home/proycon -t rtv -e rtv; mode "default"
+        bindsym r exec alacritty --working-directory /home/proycon -t newsboat -e newsboat; mode "default"
         bindsym w exec firefox; mode "default"
         bindsym f exec pcmanfm; mode "default"
         bindsym g exec ~/dotfiles/opensxiv.sh; mode "default"

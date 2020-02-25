@@ -39,13 +39,15 @@ unset GREP_OPTIONS #deprecated
 
 #apps
 menu () {
-    whiptail --menu "Menu" 25 80 15 sysadmin "Sysadmin tools" data "Data tools" tldr "tldr" 2> ~/.menuchoice
+    whiptail --menu "Menu" 25 80 15 sysadmin "Sysadmin tools" file "File management" data "Data tools" tldr "tldr" 2> ~/.menuchoice
     choice=$(cat ~/.menuchoice)
     if [[ "$choice " == "sysadmin"* ]]; then
-        whiptail --menu "Menu" 25 80 15 atop "Apache top (root)" glances "Interactive process viewer" htop "Interactive process viewer" iftop "Network interface monitoring" iostat "I/O Statistics" iotop "I/O monitor (root)" lshw "List hardware" lsmod "List kernel modules" lsof "List open files" lspci "List PCI devices" lsusb "List USB devices" netcat "Read/write network data" netstat "Print network connections" top "Interactive process viewer" vmstat "Report virtual memory statistics" 2> ~/.menuchoice
+        whiptail --menu "Menu" 25 80 15 atop "Apache top (root)" bmon "Bandwidth Monitor" glances "Interactive process viewer" htop "Interactive process viewer" iftop "Network interface monitoring" iostat "I/O Statistics" iotop "I/O monitor (root)" lshw "List hardware" lsmod "List kernel modules" lsof "List open files" lspci "List PCI devices" lsusb "List USB devices" netcat "Read/write network data" netstat "Print network connections" top "Interactive process viewer" vmstat "Report virtual memory statistics" wavemon "Wireless monitor" 2> ~/.menuchoice
         eval $(cat ~/.menuchoice)
+    elif [[ "$choice " == "file"* ]]; then
+        whiptail --menu "Menu" 25 80 15 ranger "ranger: Terminal file manager" br "Broot Tree Navigation" lf "lf: Terminal file manager"  2> ~/.menuchoice
     elif [[ "$choice " == "data"* ]]; then
-        whiptail --menu "Menu" 25 80 15 ack "Grep-like text finder" bat "Fancy cat viewer" fd "Find replacement" jq "JSON-processor"  2> ~/.menuchoice
+        whiptail --menu "Menu" 25 80 15 ack "Grep-like text finder" bat "Fancy cat viewer" glow "Fancy markdown viewer" fd "Find replacement" jq "JSON-processor"  2> ~/.menuchoice
     else
         eval $(cat ~/.menuchoice)
     fi
@@ -326,7 +328,10 @@ export VIRTUAL_ENV_DISABLE_PROMPT=1
 
 
 #if [[ $TERM == "xterm" ]] && [[ $COLORTERM == "gnome-terminal" ]]; then
-#    export TERM="xterm-256color"
+if [[ "$TERM" == "alacritty" ]]; then
+    #not well enough supported yet
+    export TERM="xterm-256color"
+fi
 #fi
 export PS1="$PS1"'$([ -n "$TMUX" ] && tmux setenv TMUXPWD_$(tmux display -p "#D" | tr -d %) "$PWD")' #tmux-powerline support
 
@@ -448,7 +453,8 @@ if [[ "$PATH" != *"/home/proycon/bin"* ]]; then
 fi
 # END LAMACHINE MANAGED BLOCK - path
 
-export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
+export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH:$HOME/.local/bin"
 
-# Created by `userpath` on 2020-01-24 08:51:59
-export PATH="$PATH:/home/proycon/.local/bin"
+if [ -e /home/proycon/.config/broot/launcher/bash/br ]; then
+    source /home/proycon/.config/broot/launcher/bash/br
+fi
