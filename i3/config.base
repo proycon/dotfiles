@@ -244,8 +244,8 @@ bindsym $mod+Shift+a resize shrink height 10 px or 10 ppt
 bindsym $mod+r mode "resize"
 bindsym $mod+x mode "exec"
 
-bindsym $mod+g exec compton -cC -z -r 3 -l 2 -t 2 -f -b
-bindsym $mod+$alt+g exec killall compton
+bindsym $mod+g exec picom -cC -z -r 3 -l 2 -t 2 -f
+bindsym $mod+$alt+g exec killall picom
 
 bindsym $mod+comma gaps outer current plus 32
 bindsym $mod+Shift+comma gaps outer current minus 32
