@@ -55,6 +55,7 @@ fi
 if [[ "$HOSTNAME" == "mhysa" ]]; then
     #multi screen
     echo "Multi screen enabled">&2
+    sleep 2
     xrandr --setprovideroutputsource 1 0 && xrandr --output DP-1-1 --auto --left-of DisplayPort-1 --rotate left
     #feh --bg-tile --no-xinerama ~/dotfiles/media/hummingbird_twin.jpg
     #feh --bg-center ~/dotfiles/media/centerpiece.png --image-bg '#191919'
