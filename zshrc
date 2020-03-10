@@ -82,8 +82,10 @@ alias vless='vim -R -u /usr/share/vim/vim72/macros/less.vim'
 which exa > /dev/null 2>/dev/null
 if (( $? == 0 )); then
     alias l='exa'
+    alias ll='exa -l'
 else
     alias l='ls'
+    alias ll='ls -l'
 fi
 alias z='less -rN'
 alias myip="dig +short myip.opendns.com @resolver1.opendns.com"
