@@ -22,7 +22,8 @@ options head
 	# ${1:Title}
 	#	by Maarten van Gompel (proycon)
 	#	proycon AT anaproy DOT nl
-	#	Centre for Language Studies Radboud University Nijmegen
+	#	Centre for Language and Speech Technology
+    #   Radboud University Nijmegen
 	#
 	# ${2:Description}
 	#
@@ -41,13 +42,61 @@ options head
 	args = parser.parse_args()
 	#args.storeconst, args.dataset, args.num, args.bar
 
+snippet addargb
+options head
+	parser.add_argument('--${0:long}','-{${0:short}),help="${1:help}", action='store_true', required=False)
+
+snippet addargs
+options head
+	parser.add_argument('--${0:long}','-{${0:short}),type=str, help="${1:help}", action='store', required=False)
+
+snippet addargi
+options head
+	parser.add_argument('--${0:long}','-{${0:short}),type=int, help="${1:help}", action='store', required=False)
+
+snippet addargf
+options head
+	parser.add_argument('--${0:long}','-{${0:short}),type=float, help="${1:help}", action='store', required=False)
+
 snippet importfuture
 options head
 	from __future__ import print_function, unicode_literals, division, absolute_import
 
 snippet stripaccents
 options head
-	unicodedata.normalize('NFKD',${1}).encode('ascii','ignore')
+	unicodedata.normalize('NFKD',${1:s}).encode('ascii','ignore')
+
+snippet logging
+alias logger
+options head
+	logger.error(${0:msg})
+	import logging
+	logger = logging.getLogger(${0:__name__})
+snippet logerr
+alias le
+options head
+	logger.error(${0:msg})
+# conflict with lambda=ld, therefor we change into Logger.debuG
+snippet logdebug
+alias lg debug
+options head
+	logger.error(${0:msg})
+	logger.debug(${0:msg})
+snippet logwarn
+alias lw warn
+options head
+	logger.error(${0:msg})
+	logger.warning(${0:msg})
+snippet logcrit
+alias lc
+options head
+	logger.error(${0:msg})
+	logger.critical(${0:msg})
+snippet loginfo
+alias log li
+options head
+	logger.error(${0:msg})
+	logger.info(${0:msg})
 
 snippet readxml
 options head
@@ -154,6 +203,22 @@ options head
 		writer = csv.writer(f, delimiter=',',quotechar='"')
 		writer.writerows(${2:someiterable})
 
+snippet pd
+options head
+    import pandas as pd
+
+snippet np
+options head
+    import numpy as np
+
+snippet pdreadcsv
+    pd.read_csv(${1:filename})
+
+snippet pdreadtsv
+    df = pd.read_table(${1:filename}, sep="\t", index_col=0) #index_col is index or col name string
+
+
+
 snippet plotfunc
 options head
 	import pylab
@@ -231,7 +296,7 @@ options head
 
 snippet httpescape
 options head
-	import urllib.parse.quote  #Python 3, use urllib.quote in Python 2
+	import urllib.parse.quote
 	s = urllib.parse.quote(s)
 
 snippet htmlunescape
@@ -287,6 +352,36 @@ options head
 	links = re.findall('"((http|ftp)s?://.*?)"', html)
 
 	print(links)
+
+snippet try Try/Except
+	try:
+		${1:${VISUAL}}
+	except ${2:Exception} as ${3:e}:
+		${0:raise $3}
+snippet trye Try/Except/Else
+	try:
+		${1:${VISUAL}}
+	except ${2:Exception} as ${3:e}:
+		${4:raise $3}
+	else:
+		${0}
+snippet tryf Try/Except/Finally
+	try:
+		${1:${VISUAL}}
+	except ${2:Exception} as ${3:e}:
+		${4:raise $3}
+	finally:
+		${0}
+snippet tryef Try/Except/Else/Finally
+	try:
+		${1:${VISUAL}}
+	except ${2:Exception} as ${3:e}:
+		${4:raise $3}
+	else:
+		${5}
+	finally:
+		${0}
+
 
 snippet numericmethods
 options head
@@ -359,7 +454,8 @@ options head
 	def __contains__(self, item):
 		${7:pass}
 
-snippet test
+snippet testcase
+alias test
 options head
 	class Test${1:Class}(unittest.TestCase):
 		def setUp(self):
@@ -464,10 +560,9 @@ options head
 			f.write( lxml.etree.tostring(transformed, pretty_print=True, encoding=encoding) )
 
 snippet printxml
+alias xmlprint
 	print(lxml.etree.tostring(${1:xml}, pretty_print=True, encoding='utf-8'))
 
-snippet xmlprint
-	print(lxml.etree.tostring(${1:xml}, pretty_print=True, encoding='utf-8'))
 
 snippet newxml
 options head
@@ -529,6 +624,7 @@ options head
 
 
 snippet mp
+alias process
 options head
     """Simple multiprocessing with Process"""
 	from multiprocessing import Process
@@ -542,6 +638,7 @@ options head
 	    p.join()
 
 snippet mppool
+alias pool
 options head
     """Simple multiprocessing with a Pool""
 	from multiprocessing import Pool
@@ -630,6 +727,7 @@ snippet enc
 	encoding='utf-8'
 
 snippet mail
+alias smtp
 options head
 	import smtplib
 	from email.mime.text import MIMEText
@@ -650,8 +748,17 @@ snippet opb
 snippet opd
 	os.path.dirname(${1})
 
-snippet dtdt
-	datetime.datetime.${1:now()}
+snippet datetime
+    from datetime import datetime
+
+snippet now
+	datetime.now()
+
+snippet strftime
+    .strftime("%Y-%m-%d %H:%M:%S")
+
+snippet fromtimestamp
+    datetime.fromtimestamp(${1:timestamp})
 
 snippet ix
 	import lxml.etree
@@ -690,23 +797,6 @@ snippet stripext
 snippet super
 	super(${1}, self).${2:__init__}()}
 
-snippet webpy
-options head
-	import web
-
-	urls = (
-		'/(.*)', 'hello'
-	)
-	app = web.application(urls, globals())
-
-	class hello:
-		def GET(self, name):
-			if not name:
-				name = 'World'
-			return 'Hello, ' + name + '!'
-
-	if __name__ == "__main__":
-		app.run()
 
 snippet pairwise
 options head
@@ -725,6 +815,7 @@ options head
 		return zip(a,a)
 
 snippet httpserver Twisted-based HTTP Server
+alias httpd
 options head
 	from twisted.web import server, resource
 	from twisted.internet import reactor
@@ -818,7 +909,14 @@ snippet isa
 snippet sf
 	self.${1} = $1
 
+snippet kwg
+	self.${1:var_name} = kwargs.get('$1', ${2:None})
+
+snippet lkwg
+	${1:var_name} = kwargs.get('$1', ${2:None})
+
 snippet savefile
+alias save
 options head
 	with open(${1:filename},'w',encoding='utf-8') as f:
 		f.write(${2})
