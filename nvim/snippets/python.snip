@@ -655,58 +655,6 @@ options head
 			print(result.get(timeout=1))       # prints "100" unless your computer is *very* slow
 			print(pool.map(f, range(10)))      # prints "[0, 1, 4,..., 81]"
 
-
-snippet defruncmd
-options head
-	def execheader(name,*outputfiles, **kwargs):
-		print("----------------------------------------------------",file=sys.stderr)
-		if outputfiles:
-			skip = True
-			for outputfile in outputfiles:
-				if not os.path.exists(outputfile):
-					skip = False
-					break
-			if skip:
-				print(colorf('bold')colorf('yellow")("Skipping " + name), file=sys.stderr)
-				return False
-		if 'cmd' in kwargs:
-			print("Calling " + name + " " + datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S'), file=sys.stderr)
-			print("Command "+ ": " + kwargs['cmd'], file=sys.stderr)
-		else:
-			print(colorf('bold')colorf('white')("Calling " + name + " " + datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S')),file=sys.stderr)
-		return True
-
-	def execfooter(name, r, *outputfiles, **kwargs):
-		if 'successcodes' in kwargs:
-			successcodes = kwargs['successcodes']
-		else:
-			successcodes = [0]
-		if r in successcodes:
-			print(colorf('bold')colorf('green')("Finished " + name + " " + datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S')),file=sys.stderr)
-		else:
-			print(colorf('bold')colorf('red')("Runtime error from " + name + ' (return code ' + str(r) + ') ' +datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S')),file=sys.stderr)
-			return False
-		if outputfiles:
-			error = False
-			for outputfile in outputfiles:
-				if os.path.exists(outputfile):
-					print("Produced output file " + outputfile,file=sys.stderr)
-				else:
-					print("Expected output file " + outputfile+ ", not produced!",file=sys.stderr)
-					error = True
-			if error:
-				return False
-		return True
-
-	def runcmd(cmd, name, *outputfiles, **kwargs):
-		if not execheader(name,*outputfiles, cmd=cmd): return True
-		r = subprocess.call(cmd, shell=True)
-		return execfooter(name, r, *outputfiles,**kwargs)
-
-snippet runcmd
-options head
-	r = runcmd(${1:cmd},${2:name},${3:*outputfiles})
-
 snippet mysql
 options head
 	import pymysql
@@ -724,6 +672,7 @@ options head
 	x = linalg.solve(a,b)
 
 snippet mat
+alias matrix
 	np.mat([${1:[1,0,0],[0,1,0],[0,0,1]}])
 
 snippet enc
@@ -952,9 +901,77 @@ alias loadjson
 snippet writejson
 alias savejson
     with open(${1:filename},"w", encoding="utf-8") as f:
-        json.dump(${2:data}, ensure_ascii=False, indent=4)
+        json.dump(${2:data}, f, ensure_ascii=False, indent=4)
 
 snippet printjson
     print(json.dumps(${1:data}, ensure_ascii=False, indent=4))
+
+snippet pyyaml
+    import yaml
+
+snippet folia
+    import folia.main as folia
+
+snippet loadfolia
+alias readfolia
+    doc = folia.Document(file="${1:filename})
+
+snippet readyaml
+alias readyml loadyaml loadyml
+    with open("${1:filename}",'r', encoding="utf-8") as f:
+        yaml.load(f, loader=yaml.FullLoader)
+
+snippet writeyaml
+alias writeyml saveyaml saveyml
+    with open("${1:filename}",'r', encoding="utf-8") as f:
+        yaml.dump(${2:data},f)
+
+
+snippet tqdm "Import progress bar"
+options head
+    from tqdm import tqdm
+
+snippet walk
+options head
+    for root, dirs, ffiles in os.walk(${1:dir}):
+        for filename in files:
+            filepath = os.path.join(root, filename)
+
+snippet opj
+    os.path.join($1,$2)
+
+snippet threading
+alias thread
+    import threading
+
+    class MyThread(threading.Thread):
+       def __init__(self, *args,**kwargs):
+          threading.Thread.__init__(self)
+
+       def run(self):
+            pass
+
+    lock = threading.Lock() #lock with lock.acquire(), release with lock.release()
+
+    threads = []
+    threads.append( MyTread() , MyThread())
+
+    for thread in threads:
+        thread.start()
+
+
+    #wait for all threads to complete
+    for t in threads:
+        t.join()
+
+
+snippet threadclass
+alias newthread
+    class MyThread(threading.Thread):
+       def __init__(self, *args,**kwargs):
+          threading.Thread.__init__(self)
+
+       def run(self):
+          pass
 
 
