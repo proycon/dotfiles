@@ -76,7 +76,7 @@ snippet logerr
 alias le
 options head
 	logger.error(${0:msg})
-# conflict with lambda=ld, therefor we change into Logger.debuG
+
 snippet logdebug
 alias lg debug
 options head
@@ -115,7 +115,8 @@ options head
 		#element.tag, element.attrib['blah'], element.text
 		${2:pass}
 
-snippet readtab
+snippet readtsv
+alias readtab
 options head
 	with open(${1:filename},'r',encoding='utf-8') as f:
 		for line in f:
@@ -218,6 +219,8 @@ snippet pdreadtsv
     df = pd.read_table(${1:filename}, sep="\t", index_col=0) #index_col is index or col name string
 
 
+snippet pdfilter
+    df[df.column_y == "needle"].column_z #filter by one column, output by other column
 
 snippet plotfunc
 options head
@@ -815,7 +818,7 @@ options head
 		return zip(a,a)
 
 snippet httpserver Twisted-based HTTP Server
-alias httpd
+alias httpd twisted
 options head
 	from twisted.web import server, resource
 	from twisted.internet import reactor
@@ -851,6 +854,7 @@ options head
 			reactor.run()
 
 snippet server
+alias tcpserver tcplisten
 options head
 	from twisted.internet import protocol, reactor
 	from twisted.protocols import basic
@@ -873,6 +877,7 @@ options head
 			reactor.run()
 
 snippet client
+alias tcpclient
 options head
 	import socket
 
@@ -900,6 +905,13 @@ snippet isfloat
 snippet islist
 	isinstance($1,list)
 
+snippet istuple
+alias istup
+	isinstance($1,tuple)
+
+snippet isseries
+    isinstance($1, (list,set,tuple))
+
 snippet isdict
 	isinstance($1,dict)
 
@@ -910,9 +922,12 @@ snippet sf
 	self.${1} = $1
 
 snippet kwg
+    kwargs.get('$1',${2:None})
+
+snippet initkwg
 	self.${1:var_name} = kwargs.get('$1', ${2:None})
 
-snippet lkwg
+snippet kwgl
 	${1:var_name} = kwargs.get('$1', ${2:None})
 
 snippet savefile
@@ -928,3 +943,18 @@ options head
 	print(e)
 	print(e.confusionmatrix())
 	#e.accuracy(cls), fscore, recall, precision etc
+
+snippet readjson
+alias loadjson
+    with open(${1:filename},"r", encoding="utf-8") as f:
+        ${2:data} = json.load(f)
+
+snippet writejson
+alias savejson
+    with open(${1:filename},"w", encoding="utf-8") as f:
+        json.dump(${2:data}, ensure_ascii=False, indent=4)
+
+snippet printjson
+    print(json.dumps(${1:data}, ensure_ascii=False, indent=4))
+
+
