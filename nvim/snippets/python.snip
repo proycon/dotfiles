@@ -944,7 +944,7 @@ snippet threading
 alias thread
     import threading
 
-    class MyThread(threading.Thread):
+    class ${1:MyThread}(threading.Thread):
        def __init__(self, *args,**kwargs):
           threading.Thread.__init__(self)
 
@@ -954,7 +954,7 @@ alias thread
     lock = threading.Lock() #lock with lock.acquire(), release with lock.release()
 
     threads = []
-    threads.append( MyTread() , MyThread())
+    threads.append( $1() , $1())
 
     for thread in threads:
         thread.start()
@@ -967,11 +967,38 @@ alias thread
 
 snippet threadclass
 alias newthread
-    class MyThread(threading.Thread):
+options head
+    class ${1:MyThread}(threading.Thread):
        def __init__(self, *args,**kwargs):
           threading.Thread.__init__(self)
 
        def run(self):
           pass
+
+snippet flask
+alias webservice restservice
+options head
+    from flask import Flask, abort, redirect, render_template, request
+
+    app = Flask(__name__)
+
+    @app.route("/")
+    def index():
+        return render_template("index.html")
+
+    @app.route("/example/<name>", methods=["GET","POST"])
+    def example(name=None):
+        data = None
+        if request.method == 'POST' and 'data' in request.form:
+            data = request.form["data"] #use request.files for file uploads and invoke the save() mtehods)
+        return render_template("index.html", name=name, data=data)
+
+    @app.route("/redirect")
+    def redirect():
+        return redirect(flask.url_for("index"))
+
+    @app.route("/nonexistant")
+    def page_not_found():
+        abort(404)
 
 
