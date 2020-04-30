@@ -35,28 +35,30 @@ snippet argparse
 options head
 	import argparse
 	parser = argparse.ArgumentParser(description="${1}", formatter_class=argparse.ArgumentDefaultsHelpFormatter)
-	parser.add_argument('--storeconst',dest='settype',help="", action='store_const',const='somevalue')
-	parser.add_argument('-f','--dataset', type=str,help="", action='store',default="",required=False)
-	parser.add_argument('-i','--number',dest="num", type=int,help="", action='store',default="",required=False)
-	parser.add_argument('bar', nargs='+', help='bar help')
-	args = parser.parse_args()
-	#args.storeconst, args.dataset, args.num, args.bar
+    #snippet hints --> addargb,addargs,addargi,addargf, addarglist
+	args = parser.parse_args() #parsed arguments can be accessed as attributes
 
 snippet addargb
+alias addarg
 options head
-	parser.add_argument('--${0:long}','-{${0:short}),help="${1:help}", action='store_true', required=False)
+	parser.add_argument('--${0:long}','-${0:short}',help="${1:help}", action='store_true', required=False)
 
 snippet addargs
+alias addargv
 options head
-	parser.add_argument('--${0:long}','-{${0:short}),type=str, help="${1:help}", action='store', required=False)
+	parser.add_argument('--${0:long}','-${0:short}',type=str, help="${1:help}", action='store', required=False)
 
 snippet addargi
 options head
-	parser.add_argument('--${0:long}','-{${0:short}),type=int, help="${1:help}", action='store', required=False)
+	parser.add_argument('--${0:long}','-${0:short}',type=int, help="${1:help}", action='store', required=False)
 
 snippet addargf
 options head
-	parser.add_argument('--${0:long}','-{${0:short}),type=float, help="${1:help}", action='store', required=False)
+	parser.add_argument('--${0:long}','-${0:short}',type=float, help="${1:help}", action='store', required=False)
+
+snippet addarglist
+options head
+    parser.add_argument(${0:files}, nargs='*', help="${1:help}")
 
 snippet importfuture
 options head
