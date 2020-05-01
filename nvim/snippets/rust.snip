@@ -255,6 +255,7 @@ options head
 
 snippet useall "Some common uses"
 options head
+options head
     use std::fs::File;
     use std::io::Read;
     use std::fs;
@@ -267,6 +268,35 @@ options head
     use std::path::{Path,PathBuf};
     use std::iter::FromIterator;
     use std::str::{FromStr};
+
+
+snippet usefile
+options head
+    use std::fs::File;
+    use std::io::{Write,Read,BufReader,BufRead,Error};
+
+snippet usefmt
+options head
+    use std::fmt;
+
+snippet usehashmap
+alias usehash usehm
+options head
+    use std::collections::{HashMap,HashSet};
+
+snippet usetime
+alias usedate usedatetime
+options head
+    use std::time::{SystemTime, UNIX_EPOCH};
+
+snippet useiter
+options head
+    use std::iter::{Iterator,FromIterator};
+
+snippet usepath
+alias usepathbuf
+options head
+
 
 snippet display
 alias impldisplay
@@ -337,6 +367,11 @@ options head
     extern crate serde_json;
     #[macro_use]
     extern crate serde_derive;
+
+snippet usereqwest
+alias userequest
+options head
+    extern crate reqwest;
 
 snippet userand
 alias userng
@@ -434,3 +469,101 @@ snippet arc "Arc::new()"
 	Arc::new(${0:${VISUAL}})
 snippet unim "unimplemented!()"
 	unimplemented!()
+
+snippet httpget
+alias requestget reqwestget
+options head
+    let mut res = reqwest::get(${1:url})?;
+    let mut body = String::new();
+    res.read_to_string(&mut body)?;
+    //hints: res.status(), res.headers()
+
+snippet usewalkdir
+alias usewalk
+options head
+    extern crate walkdir;
+    use walkdir::Walkdir;
+
+snippet walk
+alias walkdir
+options head
+    for entry in WalkDir::new(".")
+            .follow_links(true)
+            .into_iter()
+            .filter_map(|e| e.ok()) {
+        let filename = entry.file_name().to_string_lossy();
+        //let sec = entry.metadata()?.modified()?; //get some metadata,
+
+        if filename.ends_with(".json") { // && sec.elapsed()?.as_secs() < 86400 {
+            println!("{}", filename);
+        }
+    }
+
+snippet useglob
+options head
+    extern crate glob;
+    use glob::{glob_with, MatchOptions};
+
+snippet glob
+options head
+    let options = MatchOptions {
+        case_sensitive: false,
+        ..Default::default()
+    };
+
+    for entry in glob_with(${1:pattern}, &options)? {
+        println!("{}", entry?.display());
+    }
+
+snippet writefile
+alias openwrite
+options head
+    let mut ${1:f} = File::create(${2:filename})?;
+    write!($1, ${3:data})?;
+
+snippet readfile
+alias openread
+options head
+    let ${1:f} = File::open(${2:filename})?;
+    let $1_buffer = BufReader::new($1);
+    for line in $1_buffer.lines() {
+        println!("{}", line?);
+    }
+
+snippet usecommand
+options head
+    use std::process::Command;
+
+snippet command
+alias system exec
+options head
+    let output = Command::new(${1:tool}).arg(${2:arg}).output()?;
+    if output.status.success () {
+        //hints: handle output.stdout , output.stderr, etc
+    }
+
+snippet usendarray
+alias usenda
+options head
+    extern crate ndarray;
+
+snippet usenalgebra
+alias usenalg
+options head
+    extern crate nalgebra;
+
+snippet ndarray
+    Array::from(${1:vec});
+
+snippet useunicode
+options head
+    #[macro_use]
+    extern crate unicode_segmentation;
+    use unicode_segmentation::UnicodeSegmentation;
+
+snippet splitstring
+alias graphemes
+    UnicodeSegmentation::graphemes(${1:s}, true).collect::<Vec<&str>>()
+
+
+
