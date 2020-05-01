@@ -22,11 +22,20 @@ options     head
     }
 
 snippet     test
+alias   testfn
 options     head
     #[test]
     fn ${1:#:test_function_name}() {
         ${0:TARGET}
     }
+
+snippet testmod "Test module"
+	#[cfg(test)]
+	mod tests {
+		use super::${1:*};
+
+		test${0}
+	}
 
 snippet     pubnew
 abbr        pub fn new() {}
@@ -69,6 +78,11 @@ alias p
 abbr        println!
     println!(${1:"\{\}"}, ${0:TARGET});
 
+snippet     epln plne
+alias p pe printerr
+abbr        eprintln!
+    eprintln!(${1:"\{\}"}, ${0:TARGET});
+
 snippet     fm
 abbr        format!
     format!("${1:\{\}}", ${0:TARGET});
@@ -91,8 +105,12 @@ options     head
     #![crate_name=${1:#:crate_name}]
 
 snippet     derive
+alias       der
 options     head
     #[derive(${1:TARGET})]${2}
+
+snippet feat "feature attribute"
+	#![feature(${1:plugin})]
 
 # statements
 
@@ -132,7 +150,7 @@ abbr        if () {} else {}
 snippet     forin
 abbr        forin  {}
     for ${1} in ${2} {
-        ${0:TARGET}
+        $0
     }
 
 snippet     match
@@ -165,6 +183,13 @@ options     head
         ${0:TARGET}
     }
 
+snippet     penum
+alias       pubenum
+options     head
+    pub enum ${1} {
+        ${0:TARGET}
+    }
+
 snippet     opt
 abbr        Option<A>
     Option<${1:()}>${2}
@@ -185,29 +210,31 @@ alias argparse
                           .author("Maarten van Gompel (proycon) <proycon@anaproy.nl>")
                           .about("${2:Description})
                           //snippet hints --> addargb,addargs,addargi,addargf,addargpos
-                          .get_matches()
+                          .get_matches();
+
+    //hints: matches.is_present() , matches.value_of()
 
 snippet addargb
                           .arg(Arg::with_name("${1:name}")
-                            .long("${2:long}"})
-                            .short("${3:s}"})
-                            .help("${4:description}"})
+                            .long("${2:long}")
+                            .short("${3:s}")
+                            .help("${4:description}")
                             .required(${5:false}))
 
 
 snippet addargs
 alias addarg addargi addargf
                           .arg(Arg::with_name("${1:name}")
-                            .long("${2:long}"})
-                            .short("${3:s}"})
-                            .help("${4:description}"})
+                            .long("${2:long}")
+                            .short("${3:s}")
+                            .help("${4:description}")
                             .takes_value(true)
                             .value_name(${5:STRING}")
                             .required(${6:false}))
 
 snippet addargpos
                           .arg(Arg::with_name("${1:name}")
-                            .help("${2:description}"})
+                            .help("${2:description}")
                             .takes_value(true)
                             .index(${3:1})
                             .required(${4:true}))
@@ -239,6 +266,7 @@ options head
     use std::time::{SystemTime, UNIX_EPOCH};
     use std::path::{Path,PathBuf};
     use std::iter::FromIterator;
+    use std::str::{FromStr};
 
 snippet display
 alias impldisplay
@@ -246,18 +274,57 @@ options head
     impl fmt::Display for ${1:MyStruct} {
         fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
             write!(f,"{}",self.data)
+            $0
         }
     }
 
-snippet default
+snippet default "Default trait implementation"
 alias impldefault
 options head
     impl Default for ${1:MyStruct} {
         fn default() -> $1 {
             $1 {
+                $0
             }
         }
     }
+
+snippet fromstr "FromStr trait implementation"
+alias implfromstr
+options head
+    impl FromStr for ${1:MyStruct} {
+        fn from_str(s: &str) -> Result<$1,Err> {
+            $0
+        }
+    }
+
+snippet drop "Drop trait implementation (destructor)"
+alias impldrop
+options head
+	impl Drop for ${1:Name} {
+		fn drop(&mut self) {
+			${0}
+		}
+	}
+
+snippet asref "AsRef trait implementation"
+alias implasref
+options head
+	impl AsRef<${1:Ref}> for ${2:Type} {
+		fn as_ref(&self) -> &${3:$1} {
+			&self.${0:field}
+		}
+	}
+
+snippet asmut "AsMut trait implementation"
+alias implasmut
+options head
+	impl AsMut<${1:Ref}> for ${2:Type} {
+		fn as_mut(&mut self) -> &mut ${3:$1} {
+			&mut self.${0:field}
+		}
+	}
+
 
 snippet useregex
 options head
@@ -329,6 +396,7 @@ alias findregex findallregex
 options head
     for candidate in Regex::new(${1:regex}).unwrap().find_iter(${2:reference}) {
         let candidate = candidate.as_str().to_lowercase();
+        $0
     }
 
 snippet stdin
@@ -350,3 +418,19 @@ alias fex
 snippet pathjoin
 alias pj
     PathBuf::from(${1:base}).join(${2:part})
+
+snippet spawn "spawn a thread"
+alias thread
+	thread::spawn(${1:move }|| {
+		${0}
+	});
+
+
+snippet box "Box::new()"
+	Box::new(${0:${VISUAL}})
+snippet rc "Rc::new()"
+	Rc::new(${0:${VISUAL}})
+snippet arc "Arc::new()"
+	Arc::new(${0:${VISUAL}})
+snippet unim "unimplemented!()"
+	unimplemented!()
