@@ -716,6 +716,10 @@ snippet strftime
 snippet fromtimestamp
     datetime.fromtimestamp(${1:timestamp})
 
+snippet timestamp
+alias unixtime
+    time.time()
+
 snippet ix
 	import lxml.etree
 
@@ -884,10 +888,16 @@ snippet kwgl
 	${1:var_name} = kwargs.get('$1', ${2:None})
 
 snippet savefile
-alias save
+alias save writefile openwrite
 options head
 	with open(${1:filename},'w',encoding='utf-8') as f:
 		f.write(${2})
+
+snippet readfile
+alias loadfile openread
+options head
+	with open(${1:filename},'r',encoding='utf-8') as f:
+        f.read()
 
 snippet classeval
 options head
@@ -941,8 +951,13 @@ options head
         for filename in files:
             filepath = os.path.join(root, filename)
 
-snippet opj
+snippet pathjoin
+alias pj
     os.path.join($1,$2)
+
+snippet fileexists
+alias fex
+    os.path.exists($1)
 
 snippet threading
 alias thread
@@ -1005,4 +1020,14 @@ options head
     def page_not_found():
         abort(404)
 
+snippet regex
+alias findregex findallregex
+options head
+    for match in re.findall(${1:pattern},${2:string}):
+        #(hint: match will be a tuple if the regex contains groups)
 
+snippet exit
+    sys.exit(${1:1})
+
+snippet mkdir
+    os.mkdir(${1:dir})
