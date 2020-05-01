@@ -22,12 +22,10 @@ options head
 	# ${1:Title}
 	#	by Maarten van Gompel (proycon)
 	#	proycon AT anaproy DOT nl
-	#	Centre for Language and Speech Technology
-    #   Radboud University Nijmegen
 	#
 	# ${2:Description}
 	#
-	# Licensed under GNU Public License v3
+	# Licensed under the GNU General Public License v3
 	#
 	################################################
 
@@ -35,7 +33,7 @@ snippet argparse
 options head
 	import argparse
 	parser = argparse.ArgumentParser(description="${1}", formatter_class=argparse.ArgumentDefaultsHelpFormatter)
-    #snippet hints --> addargb,addargs,addargi,addargf, addarglist
+    #snippet hints --> addargb,addargs,addargi,addargf, addargpos, addarglist
 	args = parser.parse_args() #parsed arguments can be accessed as attributes
 
 snippet addargb
@@ -55,6 +53,10 @@ options head
 snippet addargf
 options head
 	parser.add_argument('--${0:long}','-${0:short}',type=float, help="${1:help}", action='store', required=False)
+
+snippet addargpos
+options head
+    parser.add_argument(${0:files}, nargs=1, help="${1:help}")
 
 snippet addarglist
 options head
