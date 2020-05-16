@@ -214,6 +214,7 @@ mode "exec" {
         bindsym r exec alacritty --working-directory /home/proycon -t newsboat -e newsboat; mode "default"
         bindsym w exec firefox; mode "default"
         bindsym f exec pcmanfm; mode "default"
+        bindsym e exec ~/dotfiles/emojiselect; mode "default"
         bindsym g exec ~/dotfiles/opensxiv.sh; mode "default"
         bindsym i exec ~/dotfiles/openinstagram.sh; mode "default"
         bindsym n exec networkmanager_dmenu -fn "Sans"; mode "default"
