@@ -94,7 +94,7 @@ ROOTNAMES=("vim" "vimrc" "zshrc" "urlview" "muttrc" "urxvt" "gdbinit"  "mailcap"
 
 CONFIGNAMES=("alacritty" "openbox" "bspwm" "sxhkd" "nvim" "ranger" "polybar" "sxiv" "i3" "ipython" "tm" "ncmpcpp.config" "vifm")
 
-SCRIPTS=("suspend.sh" "linkhander" "lock.sh" "screencast.sh" "dmenuunicode")
+SCRIPTS=("suspend.sh" "linkhander" "lock.sh" "screencast.sh" "emojiselect" "wtime")
 
 for NAME in ${ROOTNAMES[*]}; do
     if [ -e "$DOTDIR/$NAME" ]; then
