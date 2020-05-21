@@ -1,4 +1,5 @@
 #!/bin/bash
+cd
 HOSTNAME=$(hostname)
 if [ "$HOSTNAME" == "mhysa" ]; then
     polybar -c ~/dotfiles/polybar/config primary > ~/.polybar$DISPLAY.out 2> ~/.polybar$DISPLAY.log &

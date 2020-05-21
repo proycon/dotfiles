@@ -72,7 +72,7 @@ alias za='zathura'
 alias sx='sxiv -t .'
 alias gpp='git push origin gh-pages'
 alias mp="ncmpcpp -b ~/dotfiles/ncmpcpp.bindings"
-alias r='ranger'
+alias f='cd $(cat ${XDG_CONFIG_HOME:-$HOME/.config}/directories | fzf)'
 #colours
 #which colorgcc > /dev/null 2> /dev/null
 #if (( $? == 0 )); then
@@ -82,8 +82,10 @@ alias vless='vim -R -u /usr/share/vim/vim72/macros/less.vim'
 which exa > /dev/null 2>/dev/null
 if (( $? == 0 )); then
     alias l='exa'
+    alias ll='exa -l'
 else
     alias l='ls'
+    alias ll='ls -l'
 fi
 alias z='less -rN'
 alias myip="dig +short myip.opendns.com @resolver1.opendns.com"
@@ -98,6 +100,13 @@ else
         export EDITOR="vim"
         alias vi="vim"
     fi
+fi
+which bat > /dev/null 2>/dev/null
+if (( $? == 0 )); then
+    export PAGER="bat"
+    export BAT_PAGER="less"
+else
+    export PAGER="less"
 fi
 
 

@@ -22,11 +22,10 @@ options head
 	# ${1:Title}
 	#	by Maarten van Gompel (proycon)
 	#	proycon AT anaproy DOT nl
-	#	Centre for Language Studies Radboud University Nijmegen
 	#
 	# ${2:Description}
 	#
-	# Licensed under GNU Public License v3
+	# Licensed under the GNU General Public License v3
 	#
 	################################################
 
@@ -34,12 +33,34 @@ snippet argparse
 options head
 	import argparse
 	parser = argparse.ArgumentParser(description="${1}", formatter_class=argparse.ArgumentDefaultsHelpFormatter)
-	parser.add_argument('--storeconst',dest='settype',help="", action='store_const',const='somevalue')
-	parser.add_argument('-f','--dataset', type=str,help="", action='store',default="",required=False)
-	parser.add_argument('-i','--number',dest="num", type=int,help="", action='store',default="",required=False)
-	parser.add_argument('bar', nargs='+', help='bar help')
-	args = parser.parse_args()
-	#args.storeconst, args.dataset, args.num, args.bar
+    #snippet hints --> addargb,addargs,addargi,addargf, addargpos, addarglist
+	args = parser.parse_args() #parsed arguments can be accessed as attributes
+
+snippet addargb
+alias addarg
+options head
+	parser.add_argument('--${0:long}','-${0:short}',help="${1:help}", action='store_true', required=False)
+
+snippet addargs
+alias addargv
+options head
+	parser.add_argument('--${0:long}','-${0:short}',type=str, help="${1:help}", action='store', required=False)
+
+snippet addargi
+options head
+	parser.add_argument('--${0:long}','-${0:short}',type=int, help="${1:help}", action='store', required=False)
+
+snippet addargf
+options head
+	parser.add_argument('--${0:long}','-${0:short}',type=float, help="${1:help}", action='store', required=False)
+
+snippet addargpos
+options head
+    parser.add_argument(${0:files}, nargs=1, help="${1:help}")
+
+snippet addarglist
+options head
+    parser.add_argument(${0:files}, nargs='*', help="${1:help}")
 
 snippet importfuture
 options head
@@ -47,7 +68,39 @@ options head
 
 snippet stripaccents
 options head
-	unicodedata.normalize('NFKD',${1}).encode('ascii','ignore')
+	unicodedata.normalize('NFKD',${1:s}).encode('ascii','ignore')
+
+snippet logging
+alias logger
+options head
+	logger.error(${0:msg})
+	import logging
+	logger = logging.getLogger(${0:__name__})
+snippet logerr
+alias le
+options head
+	logger.error(${0:msg})
+
+snippet logdebug
+alias lg debug
+options head
+	logger.error(${0:msg})
+	logger.debug(${0:msg})
+snippet logwarn
+alias lw warn
+options head
+	logger.error(${0:msg})
+	logger.warning(${0:msg})
+snippet logcrit
+alias lc
+options head
+	logger.error(${0:msg})
+	logger.critical(${0:msg})
+snippet loginfo
+alias log li
+options head
+	logger.error(${0:msg})
+	logger.info(${0:msg})
 
 snippet readxml
 options head
@@ -66,7 +119,8 @@ options head
 		#element.tag, element.attrib['blah'], element.text
 		${2:pass}
 
-snippet readtab
+snippet readtsv
+alias readtab
 options head
 	with open(${1:filename},'r',encoding='utf-8') as f:
 		for line in f:
@@ -154,6 +208,24 @@ options head
 		writer = csv.writer(f, delimiter=',',quotechar='"')
 		writer.writerows(${2:someiterable})
 
+snippet pd
+options head
+    import pandas as pd
+
+snippet np
+options head
+    import numpy as np
+
+snippet pdreadcsv
+    pd.read_csv(${1:filename})
+
+snippet pdreadtsv
+    df = pd.read_table(${1:filename}, sep="\t", index_col=0) #index_col is index or col name string
+
+
+snippet pdfilter
+    df[df.column_y == "needle"].column_z #filter by one column, output by other column
+
 snippet plotfunc
 options head
 	import pylab
@@ -231,7 +303,7 @@ options head
 
 snippet httpescape
 options head
-	import urllib.parse.quote  #Python 3, use urllib.quote in Python 2
+	import urllib.parse.quote
 	s = urllib.parse.quote(s)
 
 snippet htmlunescape
@@ -287,6 +359,36 @@ options head
 	links = re.findall('"((http|ftp)s?://.*?)"', html)
 
 	print(links)
+
+snippet try Try/Except
+	try:
+		${1:${VISUAL}}
+	except ${2:Exception} as ${3:e}:
+		${0:raise $3}
+snippet trye Try/Except/Else
+	try:
+		${1:${VISUAL}}
+	except ${2:Exception} as ${3:e}:
+		${4:raise $3}
+	else:
+		${0}
+snippet tryf Try/Except/Finally
+	try:
+		${1:${VISUAL}}
+	except ${2:Exception} as ${3:e}:
+		${4:raise $3}
+	finally:
+		${0}
+snippet tryef Try/Except/Else/Finally
+	try:
+		${1:${VISUAL}}
+	except ${2:Exception} as ${3:e}:
+		${4:raise $3}
+	else:
+		${5}
+	finally:
+		${0}
+
 
 snippet numericmethods
 options head
@@ -359,7 +461,8 @@ options head
 	def __contains__(self, item):
 		${7:pass}
 
-snippet test
+snippet testcase
+alias test
 options head
 	class Test${1:Class}(unittest.TestCase):
 		def setUp(self):
@@ -464,10 +567,9 @@ options head
 			f.write( lxml.etree.tostring(transformed, pretty_print=True, encoding=encoding) )
 
 snippet printxml
+alias xmlprint
 	print(lxml.etree.tostring(${1:xml}, pretty_print=True, encoding='utf-8'))
 
-snippet xmlprint
-	print(lxml.etree.tostring(${1:xml}, pretty_print=True, encoding='utf-8'))
 
 snippet newxml
 options head
@@ -529,6 +631,7 @@ options head
 
 
 snippet mp
+alias process
 options head
     """Simple multiprocessing with Process"""
 	from multiprocessing import Process
@@ -542,6 +645,7 @@ options head
 	    p.join()
 
 snippet mppool
+alias pool
 options head
     """Simple multiprocessing with a Pool""
 	from multiprocessing import Pool
@@ -554,58 +658,6 @@ options head
 			result = pool.apply_async(f, [10]) # evaluate "f(10)" asynchronously
 			print(result.get(timeout=1))       # prints "100" unless your computer is *very* slow
 			print(pool.map(f, range(10)))      # prints "[0, 1, 4,..., 81]"
-
-
-snippet defruncmd
-options head
-	def execheader(name,*outputfiles, **kwargs):
-		print("----------------------------------------------------",file=sys.stderr)
-		if outputfiles:
-			skip = True
-			for outputfile in outputfiles:
-				if not os.path.exists(outputfile):
-					skip = False
-					break
-			if skip:
-				print(colorf('bold')colorf('yellow")("Skipping " + name), file=sys.stderr)
-				return False
-		if 'cmd' in kwargs:
-			print("Calling " + name + " " + datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S'), file=sys.stderr)
-			print("Command "+ ": " + kwargs['cmd'], file=sys.stderr)
-		else:
-			print(colorf('bold')colorf('white')("Calling " + name + " " + datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S')),file=sys.stderr)
-		return True
-
-	def execfooter(name, r, *outputfiles, **kwargs):
-		if 'successcodes' in kwargs:
-			successcodes = kwargs['successcodes']
-		else:
-			successcodes = [0]
-		if r in successcodes:
-			print(colorf('bold')colorf('green')("Finished " + name + " " + datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S')),file=sys.stderr)
-		else:
-			print(colorf('bold')colorf('red')("Runtime error from " + name + ' (return code ' + str(r) + ') ' +datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S')),file=sys.stderr)
-			return False
-		if outputfiles:
-			error = False
-			for outputfile in outputfiles:
-				if os.path.exists(outputfile):
-					print("Produced output file " + outputfile,file=sys.stderr)
-				else:
-					print("Expected output file " + outputfile+ ", not produced!",file=sys.stderr)
-					error = True
-			if error:
-				return False
-		return True
-
-	def runcmd(cmd, name, *outputfiles, **kwargs):
-		if not execheader(name,*outputfiles, cmd=cmd): return True
-		r = subprocess.call(cmd, shell=True)
-		return execfooter(name, r, *outputfiles,**kwargs)
-
-snippet runcmd
-options head
-	r = runcmd(${1:cmd},${2:name},${3:*outputfiles})
 
 snippet mysql
 options head
@@ -624,12 +676,14 @@ options head
 	x = linalg.solve(a,b)
 
 snippet mat
+alias matrix
 	np.mat([${1:[1,0,0],[0,1,0],[0,0,1]}])
 
 snippet enc
 	encoding='utf-8'
 
 snippet mail
+alias smtp
 options head
 	import smtplib
 	from email.mime.text import MIMEText
@@ -650,8 +704,21 @@ snippet opb
 snippet opd
 	os.path.dirname(${1})
 
-snippet dtdt
-	datetime.datetime.${1:now()}
+snippet datetime
+    from datetime import datetime
+
+snippet now
+	datetime.now()
+
+snippet strftime
+    .strftime("%Y-%m-%d %H:%M:%S")
+
+snippet fromtimestamp
+    datetime.fromtimestamp(${1:timestamp})
+
+snippet timestamp
+alias unixtime
+    time.time()
 
 snippet ix
 	import lxml.etree
@@ -690,23 +757,6 @@ snippet stripext
 snippet super
 	super(${1}, self).${2:__init__}()}
 
-snippet webpy
-options head
-	import web
-
-	urls = (
-		'/(.*)', 'hello'
-	)
-	app = web.application(urls, globals())
-
-	class hello:
-		def GET(self, name):
-			if not name:
-				name = 'World'
-			return 'Hello, ' + name + '!'
-
-	if __name__ == "__main__":
-		app.run()
 
 snippet pairwise
 options head
@@ -725,6 +775,7 @@ options head
 		return zip(a,a)
 
 snippet httpserver Twisted-based HTTP Server
+alias httpd twisted
 options head
 	from twisted.web import server, resource
 	from twisted.internet import reactor
@@ -760,6 +811,7 @@ options head
 			reactor.run()
 
 snippet server
+alias tcpserver tcplisten
 options head
 	from twisted.internet import protocol, reactor
 	from twisted.protocols import basic
@@ -782,6 +834,7 @@ options head
 			reactor.run()
 
 snippet client
+alias tcpclient
 options head
 	import socket
 
@@ -809,6 +862,13 @@ snippet isfloat
 snippet islist
 	isinstance($1,list)
 
+snippet istuple
+alias istup
+	isinstance($1,tuple)
+
+snippet isseries
+    isinstance($1, (list,set,tuple))
+
 snippet isdict
 	isinstance($1,dict)
 
@@ -818,10 +878,26 @@ snippet isa
 snippet sf
 	self.${1} = $1
 
+snippet kwg
+    kwargs.get('$1',${2:None})
+
+snippet initkwg
+	self.${1:var_name} = kwargs.get('$1', ${2:None})
+
+snippet kwgl
+	${1:var_name} = kwargs.get('$1', ${2:None})
+
 snippet savefile
+alias save writefile openwrite
 options head
 	with open(${1:filename},'w',encoding='utf-8') as f:
 		f.write(${2})
+
+snippet readfile
+alias loadfile openread
+options head
+	with open(${1:filename},'r',encoding='utf-8') as f:
+        f.read()
 
 snippet classeval
 options head
@@ -830,3 +906,128 @@ options head
 	print(e)
 	print(e.confusionmatrix())
 	#e.accuracy(cls), fscore, recall, precision etc
+
+snippet readjson
+alias loadjson
+    with open(${1:filename},"r", encoding="utf-8") as f:
+        ${2:data} = json.load(f)
+
+snippet writejson
+alias savejson
+    with open(${1:filename},"w", encoding="utf-8") as f:
+        json.dump(${2:data}, f, ensure_ascii=False, indent=4)
+
+snippet printjson
+    print(json.dumps(${1:data}, ensure_ascii=False, indent=4))
+
+snippet pyyaml
+    import yaml
+
+snippet folia
+    import folia.main as folia
+
+snippet loadfolia
+alias readfolia
+    doc = folia.Document(file="${1:filename})
+
+snippet readyaml
+alias readyml loadyaml loadyml
+    with open("${1:filename}",'r', encoding="utf-8") as f:
+        yaml.load(f, loader=yaml.FullLoader)
+
+snippet writeyaml
+alias writeyml saveyaml saveyml
+    with open("${1:filename}",'r', encoding="utf-8") as f:
+        yaml.dump(${2:data},f)
+
+
+snippet tqdm "Import progress bar"
+options head
+    from tqdm import tqdm
+
+snippet walk
+options head
+    for root, dirs, ffiles in os.walk(${1:dir}):
+        for filename in files:
+            filepath = os.path.join(root, filename)
+
+snippet pathjoin
+alias pj
+    os.path.join($1,$2)
+
+snippet fileexists
+alias fex
+    os.path.exists($1)
+
+snippet threading
+alias thread
+    import threading
+
+    class ${1:MyThread}(threading.Thread):
+       def __init__(self, *args,**kwargs):
+          threading.Thread.__init__(self)
+
+       def run(self):
+            pass
+
+    lock = threading.Lock() #lock with lock.acquire(), release with lock.release()
+
+    threads = []
+    threads.append( $1() , $1())
+
+    for thread in threads:
+        thread.start()
+
+
+    #wait for all threads to complete
+    for t in threads:
+        t.join()
+
+
+snippet threadclass
+alias newthread
+options head
+    class ${1:MyThread}(threading.Thread):
+       def __init__(self, *args,**kwargs):
+          threading.Thread.__init__(self)
+
+       def run(self):
+          pass
+
+snippet flask
+alias webservice restservice
+options head
+    from flask import Flask, abort, redirect, render_template, request
+
+    app = Flask(__name__)
+
+    @app.route("/")
+    def index():
+        return render_template("index.html")
+
+    @app.route("/example/<name>", methods=["GET","POST"])
+    def example(name=None):
+        data = None
+        if request.method == 'POST' and 'data' in request.form:
+            data = request.form["data"] #use request.files for file uploads and invoke the save() mtehods)
+        return render_template("index.html", name=name, data=data)
+
+    @app.route("/redirect")
+    def redirect():
+        return redirect(flask.url_for("index"))
+
+    @app.route("/nonexistant")
+    def page_not_found():
+        abort(404)
+
+snippet regex
+alias findregex findallregex
+options head
+    for match in re.findall(${1:pattern},${2:string}):
+        #(hint: match will be a tuple if the regex contains groups)
+
+snippet exit
+    sys.exit(${1:1})
+
+snippet mkdir
+    os.mkdir(${1:dir})

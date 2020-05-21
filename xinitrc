@@ -55,11 +55,12 @@ fi
 if [[ "$HOSTNAME" == "mhysa" ]]; then
     #multi screen
     echo "Multi screen enabled">&2
+    sleep 2
     xrandr --setprovideroutputsource 1 0 && xrandr --output DP-1-1 --auto --left-of DisplayPort-1 --rotate left
     #feh --bg-tile --no-xinerama ~/dotfiles/media/hummingbird_twin.jpg
     #feh --bg-center ~/dotfiles/media/centerpiece.png --image-bg '#191919'
 fi
-feh --bg-fill ~/dotfiles/media/conifer.jpg --image-bg '#2e3440'
+feh --bg-fill ~/dotfiles/media/mountain.jpg --image-bg '#2e3440'
 
 which i3 > /dev/null 2>/dev/null
 if [ $? -eq 0 ]; then

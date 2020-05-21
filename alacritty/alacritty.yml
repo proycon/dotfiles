@@ -532,7 +532,7 @@ dynamic_title: true
 # binding with the same triggers is defined. To unset a default binding, it can
 # be mapped to the `ReceiveChar` action. Alternatively, you can use `None` for
 # a no-op if you do not wish to receive input characters for that binding.
-#key_bindings:
+key_bindings:
   # (Windows, Linux, and BSD only)
   #- { key: V,        mods: Control|Shift, action: Paste            }
   #- { key: C,        mods: Control|Shift, action: Copy             }
@@ -542,6 +542,7 @@ dynamic_title: true
   #- { key: Add,      mods: Control,       action: IncreaseFontSize }
   #- { key: Subtract, mods: Control,       action: DecreaseFontSize }
   #- { key: Minus,    mods: Control,       action: DecreaseFontSize }
+  - { key: V,        mods: Super, action: Paste            }
 
   # (Windows only)
   #- { key: Return,   mods: Alt,           action: ToggleFullscreen }

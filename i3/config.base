@@ -214,6 +214,7 @@ mode "exec" {
         bindsym r exec alacritty --working-directory /home/proycon -t newsboat -e newsboat; mode "default"
         bindsym w exec firefox; mode "default"
         bindsym f exec pcmanfm; mode "default"
+        bindsym e exec ~/dotfiles/emojiselect; mode "default"
         bindsym g exec ~/dotfiles/opensxiv.sh; mode "default"
         bindsym i exec ~/dotfiles/openinstagram.sh; mode "default"
         bindsym n exec networkmanager_dmenu -fn "Sans"; mode "default"
@@ -229,7 +230,6 @@ mode "exec" {
         bindsym F11 exec killall fcitx || setxkbmap proyru; mode "default"
         bindsym Shift+F11 exec killall fcitx || setxkbmap proysr; mode "default"
         bindsym F12 exec killall fcitx || setxkbmap proyar; mode "default"
-        bindsym e exec evewatch.sh; mode "default"
 
         # back to normal: Enter or Escape
         bindsym Return mode "default"
@@ -244,8 +244,8 @@ bindsym $mod+Shift+a resize shrink height 10 px or 10 ppt
 bindsym $mod+r mode "resize"
 bindsym $mod+x mode "exec"
 
-bindsym $mod+g exec compton -cC -z -r 3 -l 2 -t 2 -f -b
-bindsym $mod+$alt+g exec killall compton
+bindsym $mod+g exec picom -cC -z -r 3 -l 2 -t 2 -f
+bindsym $mod+$alt+g exec killall picom
 
 bindsym $mod+comma gaps outer current plus 32
 bindsym $mod+Shift+comma gaps outer current minus 32
