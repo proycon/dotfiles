@@ -101,6 +101,13 @@ else
         alias vi="vim"
     fi
 fi
+which bat > /dev/null 2>/dev/null
+if (( $? == 0 )); then
+    export PAGER="bat"
+    export BAT_PAGER="less"
+else
+    export PAGER="less"
+fi
 
 
 export MPD_HOST="proycon@anaproy.nl"

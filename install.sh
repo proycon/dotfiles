@@ -92,7 +92,7 @@ DOTDIR=`pwd`
 
 ROOTNAMES=("vim" "vimrc" "zshrc" "urlview" "muttrc" "urxvt" "gdbinit"  "mailcap" "signature" "signature.ru.txt" "signature.unilang" "xinitrc" "tmux.conf" "tmux-powerlinerc" "inputrc" "Xresources" "pylintrc" "pdbrc.py" "tmux")
 
-CONFIGNAMES=("alacritty" "openbox" "bspwm" "sxhkd" "nvim" "ranger" "polybar" "sxiv" "i3" "ipython" "tm" "ncmpcpp.config" "vifm" "lf")
+CONFIGNAMES=("alacritty" "openbox" "bspwm" "sxhkd" "nvim" "ranger" "polybar" "sxiv" "i3" "ipython" "tm" "ncmpcpp.config" "vifm" "lf" "broot")
 
 SCRIPTS=("suspend.sh" "linkhander" "lock.sh" "screencast.sh" "emojiselect" "wtime" "rotdir" "lf-select")
 
