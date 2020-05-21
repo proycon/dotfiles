@@ -72,7 +72,7 @@ alias za='zathura'
 alias sx='sxiv -t .'
 alias gpp='git push origin gh-pages'
 alias mp="ncmpcpp -b ~/dotfiles/ncmpcpp.bindings"
-alias r='ranger'
+alias f='cd $(cat ${XDG_CONFIG_HOME:-$HOME/.config}/directories | fzf)'
 #colours
 #which colorgcc > /dev/null 2> /dev/null
 #if (( $? == 0 )); then

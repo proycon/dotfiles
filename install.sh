@@ -126,6 +126,9 @@ mkdir $HOMEDIR/rofi
 ln -sfn $DOTDIR/rofi $HOMEDIR/rofi/config
 cd $HOMEDIR
 
+$DOTDIR/cache-dirs.sh
+
+
 if [ ! -e oh-my-zsh ]; then
     git clone git://github.com/robbyrussell/oh-my-zsh.git
     ln -sfn oh-my-zsh .oh-my-zsh
