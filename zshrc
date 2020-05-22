@@ -47,7 +47,7 @@ menu () {
     elif [[ "$choice " == "file"* ]]; then
         whiptail --menu "Menu" 25 80 15 ranger "ranger: Terminal file manager" br "Broot Tree Navigation" lf "lf: Terminal file manager"  2> ~/.menuchoice
     elif [[ "$choice " == "data"* ]]; then
-        whiptail --menu "Menu" 25 80 15 ack "Grep-like text finder" bat "Fancy cat viewer" glow "Fancy markdown viewer" fd "Find replacement" jq "JSON-processor"  2> ~/.menuchoice
+        whiptail --menu "Menu" 25 80 15 ack "Grep-like text finder" bat "Fancy cat viewer" glow "Fancy markdown viewer" fd "Find replacement" jq "JSON-processor" vd "Tabular data viewer"  2> ~/.menuchoice
     else
         eval $(cat ~/.menuchoice)
     fi

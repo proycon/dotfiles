@@ -2,7 +2,8 @@
 
 ls -d /tmp > ~/.config/directories
 ls -d /nettmp >> ~/.config/directories
-ls -d ~/shared/ >> ~/.config/directories
+ls -d ~/dotfiles >> ~/.config/directories
+ls -d ~/shared/*/ >> ~/.config/directories
 ls -d ~/projects/*/ >> ~/.config/directories
 ls -d ~/work/*/ >> ~/.config/directories
 ls -d ~/Pictures/*/ >> ~/.config/directories
