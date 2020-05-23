@@ -9,11 +9,8 @@ https://proycon.anaproy.nl
 https://github.com/proycon
 
 GnuPG key:  0x39FE11201A31555C
-XMPP:       proycon@anaproy.nl       Matrix: @proycon:matrix.org
+XMPP:       proycon@anaproy.nl       Matrix: @proycon:social.anaproy.nl
 Telegram:   proycon                  IRC: proycon (freenode)
-Discord:    proycon#8272
-Mastodon:   https://mastodon.social/@proycon   (@proycon@mastodon.social)
+Mastodon:   https://social.anaproy.nl/@proycon   (@proycon@social.anaproy.nl)
 Twitter:    https://twitter.com/proycon
 ORCID:      https://orcid.org/0000-0002-1046-0006
-Keybase:    https://keybase.io/proycon
-Bitcoin:    1BRptZsKQtqRGSZ5qKbX2azbfiygHxJPsd
