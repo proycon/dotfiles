@@ -39,7 +39,7 @@ unset GREP_OPTIONS #deprecated
 
 #apps
 menu () {
-    whiptail --menu "Menu" 25 80 15 sysadmin "Sysadmin tools" file "File management" data "Data tools" tldr "tldr" 2> ~/.menuchoice
+    whiptail --menu "Menu" 25 80 15 sysadmin "Sysadmin tools" file "File management" data "Data tools" tldr "tldr" cheat "cheat"  2> ~/.menuchoice
     choice=$(cat ~/.menuchoice)
     if [[ "$choice " == "sysadmin"* ]]; then
         whiptail --menu "Menu" 25 80 15 atop "Apache top (root)" bmon "Bandwidth Monitor" glances "Interactive process viewer" htop "Interactive process viewer" iftop "Network interface monitoring" iostat "I/O Statistics" iotop "I/O monitor (root)" lshw "List hardware" lsmod "List kernel modules" lsof "List open files" lspci "List PCI devices" lsusb "List USB devices" netcat "Read/write network data" netstat "Print network connections" top "Interactive process viewer" vmstat "Report virtual memory statistics" wavemon "Wireless monitor" 2> ~/.menuchoice
@@ -260,6 +260,8 @@ alias luon="ssh -Y -A -t maartenvg@void.luon.net"
 alias lq="source ~/.sgesh"
 
 alias wtr="curl http://wttr.in"
+alias weather="curl http://wttr.in"
+alias btc="curl eur.rate.sx/btc@60d"
 
 cheat() {
     curl https://cheat.sh/$1
