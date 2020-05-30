@@ -12,7 +12,7 @@ urxvt*background: rgba:2f00/2f00/2f00/f900
 
 st*font: Source Code Pro for Powerline:size=10
 st*alpha: 0.8
-st*color0: #2f2f2f
+st*color0: #002b36
 
 !main font is in AUR package nerd-fonts-complete-mono-glyphs
 urxvt*scrollBar: false
