@@ -27,7 +27,7 @@ export DISABLE_UNTRACKED_FILES_DIRTY="true"
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
-plugins=(vi-mode history history-substring-search git svn python django debian pip github git-flow)
+plugins=(vi-mode history history-substring-search git python django debian pip github git-flow cargo ripgrep fd lxd rust ufw zsh-autosuggestions)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -413,13 +413,6 @@ zle-line-finish() { echoti rmkx 2>/dev/null; }
 zle -N zle-line-init
 zle -N zle-line-finish
 export KEYTIMEOUT=1
-
-
-
-
-
-source $HOME/dotfiles/opp.zsh/opp.zsh
-source $HOME/dotfiles/opp.zsh/opp/*.zsh
 
 
 #bindkey -M viins 'jj' vi-cmd-mode
