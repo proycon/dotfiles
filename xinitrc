@@ -62,7 +62,7 @@ if [[ "$HOSTNAME" == "mhysa" ]]; then
     #feh --bg-tile --no-xinerama ~/dotfiles/media/hummingbird_twin.jpg
     #feh --bg-center ~/dotfiles/media/centerpiece.png --image-bg '#191919'
 fi
-feh --bg-fill ~/dotfiles/media/mountain.jpg --image-bg '#2e3440'
+feh --bg-fill ~/dotfiles/media/green-tree-plant-leaves-40896.jpg --image-bg '#2e3440'
 
 
 
