@@ -27,7 +27,7 @@ export DISABLE_UNTRACKED_FILES_DIRTY="true"
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
-plugins=(vi-mode history history-substring-search git svn python django debian pip github git-flow)
+plugins=(vi-mode history history-substring-search git python django debian pip github git-flow cargo ripgrep fd lxd rust ufw zsh-autosuggestions)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -39,7 +39,7 @@ unset GREP_OPTIONS #deprecated
 
 #apps
 menu () {
-    whiptail --menu "Menu" 25 80 15 sysadmin "Sysadmin tools" file "File management" data "Data tools" tldr "tldr" 2> ~/.menuchoice
+    whiptail --menu "Menu" 25 80 15 sysadmin "Sysadmin tools" file "File management" data "Data tools" tldr "tldr" cheat "cheat"  2> ~/.menuchoice
     choice=$(cat ~/.menuchoice)
     if [[ "$choice " == "sysadmin"* ]]; then
         whiptail --menu "Menu" 25 80 15 atop "Apache top (root)" bmon "Bandwidth Monitor" glances "Interactive process viewer" htop "Interactive process viewer" iftop "Network interface monitoring" iostat "I/O Statistics" iotop "I/O monitor (root)" lshw "List hardware" lsmod "List kernel modules" lsof "List open files" lspci "List PCI devices" lsusb "List USB devices" netcat "Read/write network data" netstat "Print network connections" top "Interactive process viewer" vmstat "Report virtual memory statistics" wavemon "Wireless monitor" 2> ~/.menuchoice
@@ -211,14 +211,11 @@ fi
 
 
 
-alias ap='ssh -Y -A -t anaproy.nl /home/proycon/bin/tm'
-alias rap='ssh -Y -A -t root@anaproy.nl /home/proycon/bin/tm'
 alias ssha='ssh -Y -A anaproy.nl'
 alias sshm='ssh -Y -A mhysa.anaproy.nl'
 alias sshat='ssh -Y -A anaproy.nl /home/proycon/bin/tm'
 alias e='ssh -Y -A -t anaproy.nl /home/proycon/bin/tm_vi'
 alias m="ssh -Y -A -t anaproy.nl /home/proycon/bin/tm_alot"
-alias sshilk='ssh u232231@radium.uvt.nl'
 alias aj="ssh -Y -A -t applejack.science.ru.nl /home/proycon/bin/tm"
 alias fs="ssh -Y -A -t applejack.science.ru.nl ssh -Y -A -t fluttershy /home/proycon/bin/tm"
 alias rr="ssh -Y -A -t applejack.science.ru.nl ssh -Y -A -t rarity /home/proycon/bin/tm"
@@ -260,6 +257,8 @@ alias luon="ssh -Y -A -t maartenvg@void.luon.net"
 alias lq="source ~/.sgesh"
 
 alias wtr="curl http://wttr.in"
+alias weather="curl http://wttr.in"
+alias btc="curl eur.rate.sx/btc@60d"
 
 cheat() {
     curl https://cheat.sh/$1
@@ -414,13 +413,6 @@ zle-line-finish() { echoti rmkx 2>/dev/null; }
 zle -N zle-line-init
 zle -N zle-line-finish
 export KEYTIMEOUT=1
-
-
-
-
-
-source $HOME/dotfiles/opp.zsh/opp.zsh
-source $HOME/dotfiles/opp.zsh/opp/*.zsh
 
 
 #bindkey -M viins 'jj' vi-cmd-mode

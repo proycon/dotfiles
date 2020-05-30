@@ -8,8 +8,11 @@ export QT_IM_MODULE=fcitx
 export XMODIFIERS=@im=fcitx
 export QT_AUTO_SCREEN_SCALE_FACTOR=1
 
+export PATH=~/bin:$PATH
+
 cd $HOME
 
+xset r rate 300 50
 xrdb -all -merge /home/proycon/.Xresources
 xsetroot -cursor_name left_ptr
 amixer sset Master unmute
@@ -32,6 +35,7 @@ fi
 killall xss-lock
 xss-lock --ignore-sleep -- /home/proycon/dotfiles/lock.sh &
 udiskie &
+slstatus &
 setxkbmap proylatin
 if [[ "$HOSTNAME" == "rocinante" ]]; then
     setxkbmap -option "altwin:swap_lalt_lwin"
@@ -55,13 +59,21 @@ fi
 if [[ "$HOSTNAME" == "mhysa" ]]; then
     #multi screen
     echo "Multi screen enabled">&2
-    sleep 2
+    sleep 1
     xrandr --setprovideroutputsource 1 0 && xrandr --output DP-1-1 --auto --left-of DisplayPort-1 --rotate left
     #feh --bg-tile --no-xinerama ~/dotfiles/media/hummingbird_twin.jpg
     #feh --bg-center ~/dotfiles/media/centerpiece.png --image-bg '#191919'
 fi
-feh --bg-fill ~/dotfiles/media/mountain.jpg --image-bg '#2e3440'
+feh --bg-fill ~/dotfiles/media/green-tree-plant-leaves-40896.jpg --image-bg '#2e3440'
 
+
+
+which dwm > /dev/null 2>/dev/null
+if [ $? -eq 0 ]; then
+    HAVE_DWM=1
+else
+    HAVE_DWM=0
+fi
 which i3 > /dev/null 2>/dev/null
 if [ $? -eq 0 ]; then
     HAVE_I3=1
@@ -87,9 +99,11 @@ else
     HAVE_XFCE4=0
 fi
 
-echo $HAVE_I3 > /tmp/Xlaunch
-
 if [ $HAVE_I3 -eq 1 ]; then
+    while true; do
+        dwm 2> ~/.xsession-errors$DISPLAY
+    done
+elif [ $HAVE_I3 -eq 1 ]; then
     exec dbus-launch i3 -d all 2> ~/.xsession-errors$DISPLAY
 elif [ $HAVE_BSPWM -eq 1 ]; then
     dbus-launch sxhkd &
