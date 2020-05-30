@@ -8,6 +8,8 @@ export QT_IM_MODULE=fcitx
 export XMODIFIERS=@im=fcitx
 export QT_AUTO_SCREEN_SCALE_FACTOR=1
 
+export PATH=~/bin:$PATH
+
 cd $HOME
 
 xset r rate 300 50
@@ -33,7 +35,7 @@ fi
 killall xss-lock
 xss-lock --ignore-sleep -- /home/proycon/dotfiles/lock.sh &
 udiskie &
-~/bin/slstatus &
+slstatus &
 setxkbmap proylatin
 if [[ "$HOSTNAME" == "rocinante" ]]; then
     setxkbmap -option "altwin:swap_lalt_lwin"
