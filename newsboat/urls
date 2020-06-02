@@ -8,6 +8,7 @@
 "query:All Podcasts:tags # \"podcast\""
 https://www.nu.nl/rss/Algemeen "news" "nl"
 https://www.volkskrant.nl/voorpagina/rss.xml "news" "nl"
+https://decorrespondent.nl/feed/v1/publications "news" "nl"
 https://www.theguardian.com/world/rss "news" "en" "~The Guardian"
 https://feeds.bbci.co.uk/news/world/rss.xml "news" "en"
 https://www.lemonde.fr/rss/une.xml "news" "fr"
