@@ -59,6 +59,8 @@ highlight articlelist "(Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec) [0-9]+"
 highlight articlelist "\\|[^\\|]+\\|" cyan default
 highlight articlelist "\\(YouTube\\)" magenta default
 highlight articlelist "\\|r/" red default
+highlight feedlist "\\(YouTube\\)" magenta default
+highlight feedlist " r/" red default
 highlight feedlist "\\([0-9]+/[0-9]+\\)" white default
 
 articlelist-format  "%4i %f %D   %?T?|%-30T|  ?%t"
