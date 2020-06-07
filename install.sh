@@ -137,6 +137,12 @@ else
     git pull
 fi
 
+if [ ! -e ~/.oh-my-zsh/custom/plugins/zsh-autosuggestions ]; then
+    cd ~/.oh-my-zsh/custom/plugins/zsh-autosuggestions
+    ln -s ~/dotfiles/zsh-autosuggestions
+    cd -
+fi
+
 cd .oh-my-zsh/themes
 ln -sfn $HOMEDIR/dotfiles/proysh.zsh-theme
 cd -
