@@ -305,11 +305,11 @@ alias -s bib=vim
 alias -s js=vim
 alias -s css=vim
 
-alias -s pdf=evince
-alias -s jpg=gqview
-alias -s png=gqview
-alias -s eps=gqview
-alias -s gif=gqview
+alias -s pdf=zathura
+alias -s jpg=feh
+alias -s png=feh
+alias -s eps=feh
+alias -s gif=feh
 alias -s mp3=mpg321
 alias -s ogg=play
 
