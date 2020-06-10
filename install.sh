@@ -167,10 +167,6 @@ cd .oh-my-zsh/themes
 ln -sfn $HOMEDIR/dotfiles/proysh.zsh-theme
 cd -
 
-# List of plugins
-set -g @plugin 'tmux-plugins/tpm'
-set -g @plugin 'tmux-plugins/tmux-sensible'
-set -g @plugin 'Morantron/tmux-fingers'
 
 # Other examples:
 # set -g @plugin 'github_username/plugin_name'
