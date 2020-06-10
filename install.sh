@@ -54,8 +54,8 @@ if [ -z "$NO_DESKTOP" ]; then
     echo -n "Do you want to configure a desktop environment? [yn] "
     read yn
     case $yn in
-        [Yy]* ) NO_DESKTOP=1; break;;
-        [Nn]* ) NO_DESKTOP=""; break;;
+        [Yy]* ) NO_DESKTOP=""; break;;
+        [Nn]* ) NO_DESKTOP=1; break;;
         * ) echo "Please answer yes or no.";;
     esac
 fi
