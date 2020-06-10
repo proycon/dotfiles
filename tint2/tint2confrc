@@ -1,7 +1,0 @@
-#---------------------------------------------
-# TINT2CONF CONFIG FILE
-default_theme = /home/proycon/.config/tint2/default.tint2rc
-cmd_property = /usr/bin/env python /usr/bin/tintwizard.py
-width = 735
-height = 860
-
