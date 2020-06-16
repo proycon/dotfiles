@@ -9,7 +9,7 @@ fi
 # Exit if none chosen.
 [ -z "$chosen" ] && exit
 
-if [ -z "$1" ]; then
+if [ -z "$1" ] || [ "$1" = "0" ]; then
     D=$(date "+%Y-%m-%d %a %H:%M")
 else
     T=$(date "+%s")
