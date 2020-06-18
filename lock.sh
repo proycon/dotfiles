@@ -10,6 +10,7 @@ if [[ ! -f /tmp/locked ]]; then
     i3lock -n -c '#220000'
     #i3lock -e -b -i ~/lockfinal.png
     #rm ~/lockfinal.png ~/lockbg.png /tmp/locked
+    play ~/dotfiles/media/unlock.wav >/dev/null 2>/dev/null &!
     rm /tmp/locked
     ~/dotfiles/timetracker.sh 0 "$lasttask"
 fi
