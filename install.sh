@@ -243,6 +243,7 @@ if [ "$SXMO" -eq 0 ]; then
             git pull
         fi
         cd sxmo-svkbd
+        cp -f config.def.h config.h
         make && sudo cp svkbd-sxmo /usr/bin/
 
     fi
