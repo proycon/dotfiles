@@ -11,6 +11,7 @@ elif [ -e /etc/lsb-release ]; then
     . /etc/lsb-release
 fi
 DISTRIB_ID=$(echo "$DISTRIB_ID" | tr '[:upper:]' '[:lower:]')
+SXMO=0
 if [ "$OS" = "unknown" ]; then
     if [ "$DISTRIB_ID" = "arch" ] || [ "$DISTRIB_ID" = "debian" ] || [ "$DISTRIB_ID" = "redhat" ]; then #first class
         OS=$DISTRIB_ID
@@ -18,6 +19,9 @@ if [ "$OS" = "unknown" ]; then
         OS="debian"
     elif [ "$DISTRIB_ID" = "centos" ] || [ "$DISTRIB_ID" = "fedora" ] || [ "$DISTRIB_ID" = "rhel" ]; then
         OS="redhat"
+    elif [ "$DISTRIB_ID" = "postmarketos" ]; then
+        OS="postmarketos"
+        SXMO=1
     fi
 fi
 if [ "$OS" = "unknown" ]; then
@@ -50,14 +54,16 @@ while true; do
     esac
 done
 
-if [ -z "$NO_DESKTOP" ]; then
-    echo -n "Do you want to configure a desktop environment? [yn] "
-    read yn
-    case $yn in
-        [Yy]* ) NO_DESKTOP=""; break;;
-        [Nn]* ) NO_DESKTOP=1; break;;
-        * ) echo "Please answer yes or no.";;
-    esac
+if [ $SXMO -eq 0 ] && [ -z "$NO_DESKTOP" ]; then
+    while true; do
+        echo -n "Do you want to configure a desktop environment? [yn] "
+        read yn
+        case $yn in
+            [Yy]* ) NO_DESKTOP=""; break;;
+            [Nn]* ) NO_DESKTOP=1; break;;
+            * ) echo "Please answer yes or no.";;
+        esac
+    done
 fi
 
 if [ $SUDO -eq 1 ]; then
@@ -85,6 +91,10 @@ if [ $SUDO -eq 1 ]; then
         if [ $YAY -eq 1 ]; then
             yay -S polybar powerline-fonts-git ttf-material-design-icons-git ttf-symbola ccls javascript-typescript-langserver ttf-nerd-fonts-input libxft-bgra.git || echo "WARNING: yay is not installed yet, do so yourself!">&2
         fi
+    elif [[ "$OS" == "postmarketos" ]]; then
+        sudo apk update
+        sudo apk upgrade
+        sudo apk add openssh vim zsh bash tmux htop bat feh newsboat weechat zathura-pdf-mupdf git tig mpv lf python3 fzf tuir espeak sxiv ncdu mpc make gcc libx11-dev libxcb-dev libxtst-dev freetype-dev || exit 2
     else
         echo "Distribution not supported!">&2
         sleep 10
@@ -104,9 +114,15 @@ git submodule update
 
 DOTDIR=`pwd`
 
-ROOTNAMES=("vim" "vimrc" "zshrc" "urlview" "muttrc" "urxvt" "gdbinit"  "mailcap" "signature" "signature.ru.txt" "signature.unilang" "xinitrc" "tmux.conf" "tmux-powerlinerc" "inputrc" "Xresources" "pylintrc" "pdbrc.py" "tmux")
+if [ $SXMO -eq 1 ]; then
+    ROOTNAMES=("vim" "vimrc" "zshrc" "urlview" "muttrc" "mailcap" "signature" "signature.ru.txt" "signature.unilang" "tmux.conf" "tmux-powerlinerc" "tmux")
+else
+    ROOTNAMES=("vim" "vimrc" "zshrc" "urlview" "muttrc" "urxvt" "gdbinit"  "mailcap" "signature" "signature.ru.txt" "signature.unilang" "xinitrc" "tmux.conf" "tmux-powerlinerc" "inputrc" "Xresources" "pylintrc" "pdbrc.py" "tmux")
+fi
 
-if [ -z "$NO_DESKTOP" ]; then
+if [ $SXMO -eq 1 ]; then
+    CONFIGNAMES=("sxiv" "tm" "ncmpcpp.config" "lf" "sxmo")
+elif [ -z "$NO_DESKTOP" ]; then
     CONFIGNAMES=("alacritty" "openbox" "nvim" "ranger" "polybar" "sxiv" "i3" "ipython" "tm" "ncmpcpp.config" "vifm" "lf" "broot" "zathura")
 else
     CONFIGNAMES=("nvim" "ranger" "ipython" "tm" "vifm" "lf" "broot")
@@ -173,9 +189,6 @@ cd -
 # set -g @plugin 'git@github.com/user/plugin'
 # set -g @plugin 'git@bitbucket.com/user/plugin'
 
-# Initialize TMUX plugin manager (keep this line at the very bottom of tmux.conf)
-run -b '~/.tmux/plugins/tpm/tpm'
-
 if [ -z "$NO_DESKTOP" ]; then
     cd $DOTDIR
     if [ ! -e st ]; then
@@ -192,3 +205,46 @@ if [ -z "$NO_DESKTOP" ]; then
     fi
     cd -
 fi
+
+if [ "$SXMO" -eq 0 ]; then
+    while true; do
+        echo -n "Rebuild sxmo [yn] "
+        read yn
+        case $yn in
+            [Yy]* ) REBUILD=1; break;;
+            [Nn]* ) REBUILD=0; break;;
+            * ) echo "Please answer yes or no.";;
+        esac
+    done
+
+    if [ $REBUILD -eq 1 ]; then
+        mkdir ~/src
+        cd ~/src
+        if [ ! -d "sxmo-dwm" ]; then
+            git clone https://github.com/proycon/sxmo-dwm
+        fi
+        cd sxmo-dwm
+        cp -f config.def.h config.h
+        make && sudo rm /usr/bin/dwm && sudo cp dwm /usr/bin
+
+        cd -
+        if [ ! -d "sxmo-utils" ]; then
+            git clone https://github.com/proycon/sxmo-utils
+        else
+            git pull
+        fi
+        cd sxmo-utils
+        sudo make install
+
+        cd -
+        if [ ! -d "sxmo-svkbd" ]; then
+            git clone https://github.com/proycon/sxmo-svkbd
+        else
+            git pull
+        fi
+        cd sxmo-svkbd
+        make && sudo cp svkbd* /usr/bin/
+
+    fi
+fi
+
