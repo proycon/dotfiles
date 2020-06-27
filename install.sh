@@ -243,7 +243,7 @@ if [ "$SXMO" -eq 0 ]; then
             git pull
         fi
         cd sxmo-svkbd
-        make && sudo cp svkbd* /usr/bin/
+        make && sudo cp svkbd-sxmo /usr/bin/
 
     fi
 
