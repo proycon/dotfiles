@@ -32,7 +32,7 @@ if [ "$OS" = "unknown" ]; then
     elif [ -e "$REDHAT" ]; then
         OS='redhat'
     else
-        echo "Unable to detect a supported OS! Perhaps your distribution is not yet supported by LaMachine? Please contact us!">&2
+        echo "Unable to detect a supported OS!">&2
         exit 2
     fi
 fi
