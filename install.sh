@@ -246,5 +246,7 @@ if [ "$SXMO" -eq 0 ]; then
         make && sudo cp svkbd* /usr/bin/
 
     fi
+
+    cd $DOTDIR
 fi
 
