@@ -1,0 +1,3 @@
+#!/usr/bin/env sh
+feh --bg-fill -z ~/dotfiles/media/pine.jpg
+mpv --quiet --no-video ~/dotfiles/media/cylontune_low.ogg &
