@@ -94,7 +94,7 @@ if [ $SUDO -eq 1 ]; then
     elif [[ "$OS" == "postmarketos" ]]; then
         sudo apk update
         sudo apk upgrade
-        sudo apk add openssh vim zsh bash tmux htop bat feh newsboat weechat zathura-pdf-mupdf git tig mpv lf python3 fzf tuir espeak sxiv ncdu mpc make gcc libx11-dev libxcb-dev libxtst-dev freetype-dev || exit 2
+        sudo apk add openssh vim zsh bash tmux htop bat feh newsboat weechat zathura-pdf-mupdf git tig mpv lf python3 fzf tuir espeak sxiv ncdu mpc make gcc libx11-dev libxcb-dev libxtst-dev freetype-dev libxinerama-dev || exit 2
     else
         echo "Distribution not supported!">&2
         sleep 10
@@ -179,7 +179,7 @@ if [ ! -e ~/.oh-my-zsh/custom/plugins/zsh-autosuggestions ]; then
     cd -
 fi
 
-cd .oh-my-zsh/themes
+cd ~/.oh-my-zsh/themes
 ln -sfn $HOMEDIR/dotfiles/proysh.zsh-theme
 cd -
 
@@ -189,7 +189,7 @@ cd -
 # set -g @plugin 'git@github.com/user/plugin'
 # set -g @plugin 'git@bitbucket.com/user/plugin'
 
-if [ -z "$NO_DESKTOP" ]; then
+if [ $SXMO -eq 0 ] && [ -z "$NO_DESKTOP" ]; then
     cd $DOTDIR
     if [ ! -e st ]; then
         git clone https://github.com/proycon/st
@@ -206,7 +206,8 @@ if [ -z "$NO_DESKTOP" ]; then
     cd -
 fi
 
-if [ "$SXMO" -eq 0 ]; then
+
+if [ $SXMO -eq 1 ]; then
     while true; do
         echo -n "Rebuild sxmo [yn] "
         read yn
@@ -216,38 +217,9 @@ if [ "$SXMO" -eq 0 ]; then
             * ) echo "Please answer yes or no.";;
         esac
     done
-
     if [ $REBUILD -eq 1 ]; then
-        mkdir ~/src
-        cd ~/src
-        if [ ! -d "sxmo-dwm" ]; then
-            git clone https://github.com/proycon/sxmo-dwm
-        fi
-        cd sxmo-dwm
-        cp -f config.def.h config.h
-        make && sudo rm /usr/bin/dwm && sudo cp dwm /usr/bin
-
-        cd -
-        if [ ! -d "sxmo-utils" ]; then
-            git clone https://github.com/proycon/sxmo-utils
-        else
-            git pull
-        fi
-        cd sxmo-utils
-        sudo make install
-
-        cd -
-        if [ ! -d "sxmo-svkbd" ]; then
-            git clone https://github.com/proycon/sxmo-svkbd
-        else
-            git pull
-        fi
-        cd sxmo-svkbd
-        cp -f config.def.h config.h
-        make && sudo cp svkbd-sxmo /usr/bin/
-
+        source ~/dotfiles/build-sxmo.sh
     fi
-
     cd $DOTDIR
 fi
 
