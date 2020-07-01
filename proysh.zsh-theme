@@ -57,11 +57,11 @@ local datetime="%F{white}%* - %D{%a %f %b}%f"
 local seqnr="%F{white}#%i%f"
 local promptsign="%{$fg_bold[yellow]%}\$%{$reset_color%} "
 
-if [[ $HOST == "proyphone" ]]; then
-PROMPT="╭─ ${user_host} ${current_dir} ${venv_prompt} ${git_branch} ─── ${datetime} ─── ${seqnr} ${return_code}
+if [[ $HOST != "proyphone" ]]; then
+    PROMPT="╭─ ${user_host} ${current_dir} ${venv_prompt} ${git_branch} ─── ${datetime} ─── ${seqnr} ${return_code}
 ╰─$PR_PROMPT${promptsign}"
 else
-PROMPT="╭─ ${user_host} ${current_dir} ${venv_prompt} ${git_branch} ─ ${return_code}
+    PROMPT="╭─ ${user_host} ${current_dir} ${venv_prompt} ${git_branch}  ${return_code}
 ╰─$PR_PROMPT${promptsign}"
 fi
 #RPROMPT="${return_code}"
