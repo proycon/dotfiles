@@ -149,6 +149,8 @@ if [[ $HOST == "rocinante" || $HOST == "mhysa" || $HOST == "drasha" ]]; then
     #hash -d lsrc=/home/proycon/local/src/
     hash -d W=/home/proycon/work
     hash -d P=/home/proycon/projects
+elif [[ $HOST == "proyphone" ]]; then
+    export PATH="/home/proycon/bin:/home/proycon/.cargo/bin:$PATH"
 
 elif [[ $HOST == "applejack" || $HOST == "fluttershy" || $HOST == "rarity" || $HOST == "cheerilee" || $HOST == "fancypants" || $HOST == "pipsqueak" || $HOST == "scootaloo" || $HOST == "blossomforth" || $HOST == "featherweight" || $HOST == "twist" || $HOST == "thunderlane" || ${HOST:0:3} == "mlp" ]]; then
     alias lmws='source lamachine-weblamachine-activate'
@@ -179,7 +181,7 @@ elif [[ $HOST == "applejack" || $HOST == "fluttershy" || $HOST == "rarity" || $H
 
     umask u=rwx,g=rx,o=rx
 else
-    DOMAIN=$(hostname --domain | tr -d "\n")
+    DOMAIN=$(hostname -d | tr -d "\n")
     if [[ $DOMAIN == "anaproy.lxd" || $HOST == "anaproy" || $HOST == "anaproy2" ]]; then
         export PATH="/home/proycon/bin:/home/proycon/.cargo/bin:/home/proycon/local/bin:$PATH"
         export LD_LIBRARY_PATH="$LD_LIBRARY_PATH:/home/proycon/local/lib"
