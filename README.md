@@ -23,6 +23,32 @@ Current setup:
 Key bindings
 --------------
 
+* **dwm**
+    * ``cmd+1,2,3,4,5,6,7,8,9`` - switch tags/workspace
+    * ``cmd+Shift+1,2,3,4,5,6,7,8,9`` - move window to selected workspaces
+    * ``cmd+tab`` - Switch to last used workspace (and back)
+    * ``cmd+period`` - switch to right monitor
+    * ``cmd+comma`` - switch to left monitor
+    * ``cmd+Shift+period`` - switch to right monitor
+    * ``cmd+Shift+comma`` - switch to left monitor
+    * ``cmd+space`` - Launcher (rofi)
+    * ``cmd+enter`` - Put window in focus/master area
+    * ``cmd+Shift+enter`` - New terminal
+    * ``cmd+j|k`` - cycle window focus
+    * ``cmd+l|h`` - resize master window
+    * ``cmd+s`` - toggle sticky
+    * ``cmd+Shift+backspace`` - Quit dwm (auto restarts)
+    * ``cmd+Escape`` - Lock
+    * ``cmd+Shift+Escape`` - Suspend
+    * Layouts:
+        * ``cmd+t`` - Switch to tiling layout
+        * ``cmd+m`` - Monocle layout
+        * ``cmd+apostrophe`` - cycle layouts
+        * ``cmd+Shift+apostrophe`` - toggle floating
+    * Timetracker:
+        * ``cmd+slash`` - Timetracker
+        * ``cmd+Shift+slash`` - Timetracker 15 minutes back
+        * ``cmd+Ctrl+Shift+slash`` - Timetracker 60 minutes back
 * **i3**
     * ``cmd+',1,2,3,4,5,6,7,8,9,0,-,=`` - switch workspaces *(entire top key row, 13 workspaces)*
         * On multihead setups, odd numbers are left monitor, even numbers right monitor
@@ -173,6 +199,8 @@ Key bindings
         * Enter, ``ctrl+j``, ``ctrl+m``  - Stop search
     * ``alt+=`` -  Disabled filters (hide/join) (``alt+-`` for current buffer)
         * ``/filter add irc_smart * irc_smart_filter *``  - Smart hide/join/filter
+    * ``alt+t`` -  Toggle nick list
+        * ``/key bind meta-t /bar toggle nicklist``
 * **sxiv**
     * ``ctrl+x`` and:
         * ``e`` - Edit in the Gimp

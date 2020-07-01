@@ -1,5 +1,0 @@
-#!zsh
-
-source ../opp.zsh
-
-echo $0 sourced.

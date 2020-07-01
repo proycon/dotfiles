@@ -79,14 +79,6 @@ alias f='cd $(cat ${XDG_CONFIG_HOME:-$HOME/.config}/directories | fzf)'
 #    export CC="colorgcc"
 #fi
 alias vless='vim -R -u /usr/share/vim/vim72/macros/less.vim'
-which exa > /dev/null 2>/dev/null
-if (( $? == 0 )); then
-    alias l='exa'
-    alias ll='exa -l'
-else
-    alias l='ls'
-    alias ll='ls -l'
-fi
 alias z='less -rN'
 alias myip="dig +short myip.opendns.com @resolver1.opendns.com"
 which nvim > /dev/null 2>/dev/null
@@ -100,13 +92,6 @@ else
         export EDITOR="vim"
         alias vi="vim"
     fi
-fi
-which bat > /dev/null 2>/dev/null
-if (( $? == 0 )); then
-    export PAGER="bat"
-    export BAT_PAGER="less"
-else
-    export PAGER="less"
 fi
 
 
@@ -213,6 +198,21 @@ fi
 #    export LESSOPEN="| /usr/share/source-highlight/src-hilite-lesspipe.sh %s"
 #fi
 
+which exa > /dev/null 2>/dev/null
+if (( $? == 0 )); then
+    alias l='exa'
+    alias ll='exa -l'
+else
+    alias l='ls'
+    alias ll='ls -l'
+fi
+which bat > /dev/null 2>/dev/null
+if (( $? == 0 )); then
+    export PAGER="bat"
+    export BAT_PAGER="less"
+else
+    export PAGER="less"
+fi
 
 
 alias ssha='ssh -Y -A anaproy.nl'
@@ -309,11 +309,11 @@ alias -s bib=vim
 alias -s js=vim
 alias -s css=vim
 
-alias -s pdf=evince
-alias -s jpg=gqview
-alias -s png=gqview
-alias -s eps=gqview
-alias -s gif=gqview
+alias -s pdf=zathura
+alias -s jpg=feh
+alias -s png=feh
+alias -s eps=feh
+alias -s gif=feh
 alias -s mp3=mpg321
 alias -s ogg=play
 

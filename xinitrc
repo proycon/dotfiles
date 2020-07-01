@@ -80,12 +80,6 @@ if [ $? -eq 0 ]; then
 else
     HAVE_I3=0
 fi
-which bspwm > /dev/null 2>/dev/null
-if [ $? -eq 0 ]; then
-    HAVE_BSPWM=1
-else
-    HAVE_BSPWM=0
-fi
 which openbox > /dev/null 2>/dev/null
 if [ $? -eq 0 ]; then
     HAVE_OPENBOX=1
@@ -99,7 +93,7 @@ else
     HAVE_XFCE4=0
 fi
 
-if [ $HAVE_I3 -eq 1 ]; then
+if [ $HAVE_DWM -eq 1 ]; then
     while true; do
         dwm 2> ~/.xsession-errors$DISPLAY
     done
