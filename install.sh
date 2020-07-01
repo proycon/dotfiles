@@ -94,7 +94,7 @@ if [ $SUDO -eq 1 ]; then
     elif [[ "$OS" == "postmarketos" ]]; then
         sudo apk update
         sudo apk upgrade
-        sudo apk add openssh vim zsh bash tmux htop bat feh newsboat weechat zathura-pdf-mupdf git tig mpv lf python3 fzf tuir espeak sxiv ncdu mpc make gcc libx11-dev libxcb-dev libxtst-dev freetype-dev libxinerama-dev || exit 2
+        sudo apk add openssh vim zsh bash tmux htop bat feh newsboat weechat zathura-pdf-mupdf git tig mpv lf python3 fzf tuir espeak sxiv ncdu mpc make gcc libc-dev linux-headers libx11-dev libxft-dev libxcb-dev libxtst-dev freetype-dev libxinerama-dev || exit 2
     else
         echo "Distribution not supported!">&2
         sleep 10
