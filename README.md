@@ -49,48 +49,6 @@ Key bindings
         * ``cmd+slash`` - Timetracker
         * ``cmd+Shift+slash`` - Timetracker 15 minutes back
         * ``cmd+Ctrl+Shift+slash`` - Timetracker 60 minutes back
-* **i3**
-    * ``cmd+',1,2,3,4,5,6,7,8,9,0,-,=`` - switch workspaces *(entire top key row, 13 workspaces)*
-        * On multihead setups, odd numbers are left monitor, even numbers right monitor
-    * ``cmd+Shift+',1,2,3,4,5,6,7,8,9,0,-,=`` - move window to selected workspaces
-    * ``cmd+tab`` - Switch to last used workspace (and back)
-    * ``cmd+left/right/up/down`` or ``cmd+h/j/k/l``- Switch window focus
-    * ``cmd+enter`` or ``cmd+t`` - New terminal (urxvt)
-    * ``cmd+space`` - Launcher (rofi)
-    * ``cmd+x`` - Execution mode
-        * ``m`` - Connect to mail and chat (remote tmux)
-        * ``v`` - Connect to editor tmux
-        * ``g`` - Image viewer (geeqie)
-        * ``f`` - File manager (pcmanfm)
-        * ``n`` - Network menu
-        * ``w`` - Web browser (firefox)
-        * ``M`` - Music player (ncmpcpp)
-        * ``P`` - Presentation mode (HDMI clone)
-    * ``cmd+r`` - Resize mode
-    * ``cmd+shift+c`` - Reload configuration
-    * ``cmd+shift+q`` - Close window
-    * ``cmd+shift+e`` - Exit
-    * Layouts
-        * ``cmd+w`` - Tabbed layout
-        * ``cmd+s`` - Stacked layout
-        * ``cmd+e`` - Split layout (toggles orientation too)
-        * ``cmd+f`` - Fullscreen
-        * ``cmd+Shift+space`` - Toggle floating
-        * ``cmd+/`` - Toggle tiling/floating
-    * Gaps
-        * ``cmd+,`` - increase outer gap
-        * ``cmd+Shift+,`` - decrease outer gap
-        * ``cmd+;`` - increase inner gap
-        * ``cmd+Shift+;`` - decrease inner gap
-    * Keyboard input methods:
-        * ``alt+F8`` - Simplified Chinese (fcitx)
-        * ``alt+F9`` - Latin (default)
-        * ``alt+F10`` - Esperanto
-        * ``alt+F11`` - Russian
-        * ``alt+F12`` - Arabic
-        * ``alt+Shift+F9`` - Croatian/Serbian (Latin)
-        * ``alt+Shift+F10`` - Greek
-        * ``alt+Shift+F11`` - Serbian (Cyrillic)
 * **tmux**
     * ``alt+left/right/up/down`` - Switch pane
     * ``alt+pageup/pagedown`` - Switch window
@@ -120,12 +78,6 @@ Key bindings
         * ``Q`` - Swap pane
         * ``M`` - Move pane (to another window or tmux)
         * ``F`` - Fingers mode
-* urxvt
-    * ``alt+v`` - keyboard select (like tmux copy mode)
-            * VI bindings (v,y,w,/,hjkl etc..)
-    * ``alt+s`` - backward search (like tmux copy mode)
-    * ``alt+u`` - URL selector (press again for next match)
-    * ``alt+p`` - Paste
 * vim
     * leader is space or comma
     * fzf - fuzzy matcher
@@ -201,6 +153,8 @@ Key bindings
         * ``/filter add irc_smart * irc_smart_filter *``  - Smart hide/join/filter
     * ``alt+t`` -  Toggle nick list
         * ``/key bind meta-t /bar toggle nicklist``
+    * ``/mob`` - Mobile layout
+    * ``/desk`` - Desktop layout
 * **sxiv**
     * ``ctrl+x`` and:
         * ``e`` - Edit in the Gimp
