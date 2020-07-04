@@ -23,8 +23,18 @@ else
     exit 2
 fi
 
-echo "Sending: $TOPIC">&2
+if [ ! -z "$2" ]; then
+    PAYLOAD="$2"
+else
+    PAYLOAD="ON"
+fi
 
-mosquitto_pub -h anaproy.nl -p 8883 -u "$MQTT_USER" -P "$MQTT_PASSWORD" --cafile /etc/ssl/certs/DST_Root_CA_X3.pem -t "$TOPIC" -m "on"
+if [ -z "$HOST" ]; then
+    HOST=$(hostname);
+fi
+
+echo "Sending: $TOPIC - $PAYLOAD">&2
+
+mosquitto_pub -I $HOST -h anaproy.nl -p 8883 -u "$MQTT_USER" -P "$MQTT_PASSWORD" --cafile /etc/ssl/certs/DST_Root_CA_X3.pem -t "$TOPIC" -m "$PAYLOAD"
 exit $?
 
