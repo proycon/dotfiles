@@ -24,7 +24,7 @@ if [ -z "$1" ]; then
     # Exit if none chosen.
     [ -z "$chosen" ] && exit
 
-    TOPIC="/home/command/$chosen"
+    TOPIC="home/command/$chosen"
 else
     TOPIC="$1"
 fi
