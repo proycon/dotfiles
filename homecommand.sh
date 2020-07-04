@@ -26,7 +26,7 @@ if [ -z "$1" ]; then
 
     TOPIC="home/command/$chosen"
 else
-    TOPIC="$1"
+    TOPIC="home/command/$1"
 fi
 
 
