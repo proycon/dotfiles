@@ -2,7 +2,7 @@ text/html;                      firefox %s; nametemplate=%s.html
 text/html;                      links -dump %s; nametemplate=%s.html; copiousoutput
 text/calendar; mutt-ics; copiousoutput
 application/ics; mutt-ics; copiousoutput
-image/*; feh -B black '%s'; edit=gimp '%s'; test=test -n "$DISPLAY"
+image/*; feh --scale-down -B black '%s'; edit=gimp '%s'; test=test -n "$DISPLAY"
 video/*; mpv '%s'
 audio/*; mpv --no-video '%s'
 application/x-pdf; zathura '%s'; test=test -n "$DISPLAY"
