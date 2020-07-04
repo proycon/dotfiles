@@ -6,12 +6,12 @@ PLAY="play"
 
 mkfifo /tmp/notifications
 
-if [ ! -z "$MQTT_USER" ]; then
+if [ -z "$MQTT_USER" ]; then
     echo "No MQTT user defined">&2
     exit 2
 fi
 
-if [ ! -z "$MQTT_PASSWORD" ]; then
+if [ -z "$MQTT_PASSWORD" ]; then
     echo "No MQTT password defined">&2
     exit 2
 fi

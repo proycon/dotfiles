@@ -12,8 +12,14 @@ if [ ! -z "$MQTT_PASSWORD" ]; then
     exit 2
 fi
 
-if [ ! -z "$1" ]; then
-    chosen=$(cut -d ';' -f1 ~/dotfiles/homecommands | dmenu -fn "Sans 16" | sed "s/ .*//")
+
+if [ -z "$1" ]; then
+    which rofi > /dev/null 2> /dev/null
+    if [ $? -eq 0 ]; then
+        chosen=$(cut -d ';' -f1 ~/dotfiles/homecommands | rofi -dmenu -font "Sans 16" | sed "s/ .*//")
+    else
+        chosen=$(cut -d ';' -f1 ~/dotfiles/homecommands | dmenu -fn "Sans 16" | sed "s/ .*//")
+    fi
 
     # Exit if none chosen.
     [ -z "$chosen" ] && exit
