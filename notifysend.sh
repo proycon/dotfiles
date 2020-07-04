@@ -33,8 +33,12 @@ if [ -z "$HOST" ]; then
     HOST=$(hostname);
 fi
 
+if [ -z "$MQTT_HOST" ]; then
+    MQTT_HOST="anaproy.nl"
+fi
+
 echo "Sending: $TOPIC - $PAYLOAD">&2
 
-mosquitto_pub -I $HOST -h anaproy.nl -p 8883 -u "$MQTT_USER" -P "$MQTT_PASSWORD" --cafile /etc/ssl/certs/DST_Root_CA_X3.pem -t "$TOPIC" -m "$PAYLOAD"
+mosquitto_pub -I $HOST -h "$MQTT_HOST" -p 8883 -u "$MQTT_USER" -P "$MQTT_PASSWORD" --cafile /etc/ssl/certs/DST_Root_CA_X3.pem -t "$TOPIC" -m "$PAYLOAD" $MQTT_OPTIONS
 exit $?
 
