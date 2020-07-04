@@ -1,0 +1,27 @@
+home/command/media/tv;Start TV
+home/command/media/music;Start music
+home/command/media/off;Stop all media
+home/command/volup;Volume Up
+home/command/voldown;Volume Down
+home/command/mute;Mute
+home/command/tvdecoder/next;Next TV channel
+home/command/tvdecoder/previous;Previous TV channel
+home/command/music/next;Next music track
+home/command/music/previous;Previous music track
+home/command/music/off;Music Off
+home/command/tv/on;TV power toggle
+home/command/tvdecoder/on;TV Decoder - Power
+home/command/tvdecoder/up;TV Decoder - Up
+home/command/tvdecoder/down;TV Decoder - Down
+home/command/tvdecoder/left;TV Decoder - Left
+home/command/tvdecoder/right;TV Decoder - Right
+home/command/tvdecoder/ok;TV Decoder - OK
+home/command/tvdecoder/back;TV Decoder - Back
+home/command/tv/pause;TV Decoder - Pause
+home/command/music/pauseplay;Music - Pause/Play
+home/command/robot/on;Robot - On
+home/command/robot/off;Robot - Off
+home/command/robot/pause;Robot - Pause
+home/command/jaiko/pee;Jaiko - Peed
+home/command/jaiko/poop;Jaiko - Pooped
+home/command/jaiko/fed;Jaiko - Fed
