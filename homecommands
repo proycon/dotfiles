@@ -1,0 +1,27 @@
+Start TV   =media/tv
+Start Music   =media/music
+Stop all media   =media/off
+Volume Up   =volup
+Volume Down   =voldown
+Mute   =mute
+Next TV channel   =tvdecoder/next
+Previous TV channel   =tvdecoder/previous
+Next music track   =music/next
+Previous music track   =music/previous
+Music Off   =music/off
+TV power toggle   =tv/on
+TV Decoder - Power   =tvdecoder/on
+TV Decoder - Up   =tvdecoder/up
+TV Decoder - Down   =tvdecoder/down
+TV Decoder - Left   =tvdecoder/left
+TV Decoder - Right   =tvdecoder/right
+TV Decoder - OK   =tvdecoder/ok
+TV Decoder - Back   =tvdecoder/back
+TV Decoder - Pause   =tv/pause
+Music - Pause/Play   =music/pauseplay
+Robot - On   =robot/on
+Robot - Off   =robot/off
+Robot - Pause   =robot/pause
+Jaiko - Peed   =jaiko/pee
+Jaiko - Pooped   =jaiko/poop
+   =Jaiko - Fejaiko/fe   =d
