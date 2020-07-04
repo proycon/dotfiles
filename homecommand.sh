@@ -16,18 +16,19 @@ fi
 if [ -z "$1" ]; then
     which rofi > /dev/null 2> /dev/null
     if [ $? -eq 0 ]; then
-        chosen=$(cut -d ';' -f1 ~/dotfiles/homecommands | rofi -dmenu -font "Sans 16" | sed "s/ .*//")
+        chosen=$(cat ~/dotfiles/homecommands | rofi -dmenu -font "Sans 16" | sed "s/.*=//")
     else
-        chosen=$(cut -d ';' -f1 ~/dotfiles/homecommands | dmenu -fn "Sans 16" | sed "s/ .*//")
+        chosen=$(cat ~/dotfiles/homecommands | dmenu -fn "Sans 16" | sed "s/.*=//")
     fi
 
     # Exit if none chosen.
     [ -z "$chosen" ] && exit
 
-    TOPIC="$chosen"
+    TOPIC="/home/command/$chosen"
 else
-    TOPIC="/home/command/$1"
+    TOPIC="$1"
 fi
 
-~/dotfiles/notifysend.sh $TOPIC
 
+~/dotfiles/notifysend.sh $TOPIC
+exit $?

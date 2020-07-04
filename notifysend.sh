@@ -2,6 +2,10 @@
 
 # Receives notifications from MQTT
 
+if [ -f ~/.mqtt_secrets ]; then
+    source ~/.mqtt_secrets
+fi
+
 if [ -z "$MQTT_USER" ]; then
     echo "No MQTT user defined">&2
     exit 2
@@ -19,5 +23,8 @@ else
     exit 2
 fi
 
+echo "Sending: $TOPIC">&2
+
 mosquitto_pub -h anaproy.nl -p 8883 -u "$MQTT_USER" -P "$MQTT_PASSWORD" --cafile /etc/ssl/certs/DST_Root_CA_X3.pem -t "$TOPIC" -m "on"
+exit $?
 
