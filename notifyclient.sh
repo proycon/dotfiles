@@ -18,4 +18,4 @@ if [ -z "$HOST" ]; then
     HOST=$(hostname);
 fi
 
-mosquitto_sub -I $HOST -h anaproy.nl -p 8883 -u "$MQTT_USER" -P "$MQTT_PASSWORD" --cafile /etc/ssl/certs/DST_Root_CA_X3.pem --remove-retained -t '#' -F "@Y@m@d-@H:@M:@S\t%t\t%p" | ~/dotfiles/notifyhandler.sh
+mosquitto_sub -I $HOST -h anaproy.nl -p 8883 -u "$MQTT_USER" -P "$MQTT_PASSWORD" --cafile /etc/ssl/certs/DST_Root_CA_X3.pem --remove-retained -t '#' -F "@Y@m@d-@H:@M:@S|%t|%p" | ~/dotfiles/notifyhandler.sh
