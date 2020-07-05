@@ -210,7 +210,7 @@ else
 fi
 which bat > /dev/null 2>/dev/null
 if (( $? == 0 )); then
-    export PAGER="bat"
+    export PAGER="bat --style=plain"
     export BAT_PAGER="less"
 else
     export PAGER="less"
