@@ -22,4 +22,13 @@ if [ -z "$MQTT_HOST" ]; then
     MQTT_HOST="anaproy.nl"
 fi
 
-mosquitto_sub -I $HOST -h $MQTT_HOST -p 8883 -u "$MQTT_USER" -P "$MQTT_PASSWORD" --cafile /etc/ssl/certs/DST_Root_CA_X3.pem --remove-retained -t '#' -F "@H:@M:@S|%t|%p" $MQTT_OPTIONS | ~/dotfiles/notifyhandler.sh
+if [ -e /etc/ssl/certs/DST_Root_CA_X3.pem ]; then
+    CACERT="/etc/ssl/certs/DST_Root_CA_X3.pem"
+elif [ -e /etc/ssl/certs/ca-cert-DST_Root_CA_X3.pem ]; then
+    CACERT="/etc/ssl/certs/ca-cert-DST_Root_CA_X3.pem"
+else
+    echo "CA Certificate not found">&2
+    exit 2
+fi
+
+mosquitto_sub -I $HOST -h $MQTT_HOST -p 8883 -u "$MQTT_USER" -P "$MQTT_PASSWORD" --cafile $CACERT --remove-retained -t '#' -F "@H:@M:@S|%t|%p" $MQTT_OPTIONS | ~/dotfiles/notifyhandler.sh
