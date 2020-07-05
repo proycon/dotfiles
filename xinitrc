@@ -36,6 +36,7 @@ killall xss-lock
 xss-lock --ignore-sleep -- /home/proycon/dotfiles/lock.sh &
 udiskie &
 slstatus &
+dunst &
 setxkbmap proylatin
 if [[ "$HOSTNAME" == "rocinante" ]]; then
     setxkbmap -option "altwin:swap_lalt_lwin"
