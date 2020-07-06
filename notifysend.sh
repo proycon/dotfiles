@@ -37,8 +37,18 @@ if [ -z "$MQTT_HOST" ]; then
     MQTT_HOST="anaproy.nl"
 fi
 
+if [ -e /etc/ssl/certs/DST_Root_CA_X3.pem ]; then
+    CACERT="/etc/ssl/certs/DST_Root_CA_X3.pem"
+elif [ -e /etc/ssl/certs/ca-cert-DST_Root_CA_X3.pem ]; then
+    CACERT="/etc/ssl/certs/ca-cert-DST_Root_CA_X3.pem"
+else
+    echo "CA Certificate not found">&2
+    exit 2
+fi
+
+
 echo "Sending: $TOPIC - $PAYLOAD">&2
 
-mosquitto_pub -I $HOST -h "$MQTT_HOST" -p 8883 -u "$MQTT_USER" -P "$MQTT_PASSWORD" --cafile /etc/ssl/certs/DST_Root_CA_X3.pem -t "$TOPIC" -m "$PAYLOAD" $MQTT_OPTIONS
+mosquitto_pub -I $HOST -h "$MQTT_HOST" -p 8883 -u "$MQTT_USER" -P "$MQTT_PASSWORD" --cafile $CACERT -t "$TOPIC" -m "$PAYLOAD" $MQTT_OPTIONS
 exit $?
 
