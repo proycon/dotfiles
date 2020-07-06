@@ -1,0 +1,3 @@
+#!/bin/sh
+nmcli dev wifi rescan
+nmcli dev wifi connect anaproy24
