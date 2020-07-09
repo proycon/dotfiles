@@ -54,7 +54,8 @@ do
 			;;
 		"home/notify/alarm")
 			MSG="INTRUDER ALERT, CHECK IMMEDIATELY"
-			$PLAY ~/dotfiles/media/redalert.wav &
+            amixer set Master 100%
+			$PLAY ~/dotfiles/media/home/intruderalert.ogg &
 			;;
 		"home/notify/armed")
 			MSG="System armed"
