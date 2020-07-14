@@ -93,7 +93,7 @@ else
         alias vi="vim"
     fi
 fi
-
+alias icat="kitty +kitten icat"
 
 export MPD_HOST="proycon@anaproy.nl"
 
