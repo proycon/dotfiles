@@ -343,12 +343,9 @@ export VIRTUAL_ENV_DISABLE_PROMPT=1
 
 
 #if [[ $TERM == "xterm" ]] && [[ $COLORTERM == "gnome-terminal" ]]; then
-if [[ "$TERM" == "alacritty" ]]; then
+if [[ "$TERM" == "alacritty" || "$TERM" == "xterm-kitty" ]]; then
     #not well enough supported yet
     export TERM="xterm-256color"
-elif [[ "$TERM" == "xterm-kitty" ]]; then
-    #not well enough supported yet
-    export TERM="screen-256color"
 fi
 #fi
 export PS1="$PS1"'$([ -n "$TMUX" ] && tmux setenv TMUXPWD_$(tmux display -p "#D" | tr -d %) "$PWD")' #tmux-powerline support
