@@ -18,7 +18,7 @@ if [ -z "$1" ]; then
     if [ $? -eq 0 ]; then
         chosen=$(cat ~/dotfiles/homecommands | rofi -dmenu -font "Sans 16" | sed "s/.*=//")
     else
-        chosen=$(cat ~/dotfiles/homecommands | dmenu -fn "Sans 16" | sed "s/.*=//")
+        chosen=$(cat ~/dotfiles/homecommands | dmenu -l 20 -c -p "Home" -fn "Terminus-20" | sed "s/.*=//")
     fi
 
     # Exit if none chosen.
@@ -26,7 +26,7 @@ if [ -z "$1" ]; then
 
     TOPIC="home/command/$chosen"
 else
-    TOPIC="$1"
+    TOPIC="home/command/$1"
 fi
 
 

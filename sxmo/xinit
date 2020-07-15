@@ -1,8 +1,13 @@
 #!/usr/bin/env sh
+sxmo_audioout.sh Speaker
+amixer set "Line Out" 50%
 feh --bg-fill -z ~/dotfiles/media/pine.jpg
 mpv --quiet --no-video ~/dotfiles/media/cylontune_low.ogg &
 
 if [ -e ~/dotfiles/sxmo/initsecrets.sh ]; then
     source ~/dotfiles/sxmo/initsecrets.sh
 fi
+
+sxmo_modemmonitortoggle.sh &
+~/dotfiles/notifyclient_autoconnect.sh &
 

@@ -93,7 +93,7 @@ else
         alias vi="vim"
     fi
 fi
-
+alias icat="kitty +kitten icat"
 
 export MPD_HOST="proycon@anaproy.nl"
 
@@ -210,7 +210,7 @@ else
 fi
 which bat > /dev/null 2>/dev/null
 if (( $? == 0 )); then
-    export PAGER="bat"
+    export PAGER="bat --style=plain"
     export BAT_PAGER="less"
 else
     export PAGER="less"
@@ -246,6 +246,7 @@ alias mlp09="ssh -Y -A -t applejack.science.ru.nl ssh -Y -A -t mlp09 /home/proyc
 alias mlp10="ssh -Y -A -t applejack.science.ru.nl ssh -Y -A -t mlp10 /home/proycon/bin/tm"
 alias mlp11="ssh -Y -A -t applejack.science.ru.nl ssh -Y -A -t mlp11 /home/proycon/bin/tm"
 alias mlp12="ssh -Y -A -t applejack.science.ru.nl ssh -Y -A -t mlp12 /home/proycon/bin/tm"
+alias mlp13="ssh -Y -A -t applejack.science.ru.nl ssh -Y -A -t mlp13 /home/proycon/bin/tm"
 alias _aj="ssh -Y -A -t applejack.science.ru.nl zsh"
 alias _fs="ssh -Y -A -t applejack.science.ru.nl ssh -Y -A -t fluttershy zsh"
 alias _rr="ssh -Y -A -t applejack.science.ru.nl ssh -Y -A -t rarity zsh"

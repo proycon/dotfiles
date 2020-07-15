@@ -10,6 +10,9 @@ fi
 
 declare -a fields
 
+LASTMSG=""
+LASTMSGTIME=0
+
 while IFS= read -r line
 do
 	IFS="|" read -ra fields <<< $line;
@@ -18,6 +21,15 @@ do
 	PAYLOAD="${fields[2]}"
     echo ">$TOPIC" >&2
 
+    if [ "$LASTMSG" != "" ] && [ $LASTMSGTIME -ne 0 ]; then
+        NOW=$(date +%s | tr -d '\n')
+        let $TIMEDELTA=$NOW-$LASTMSGTIME
+        if [ $TIMEDELTA -ge 60 ]; then
+            $LASTMSG="" #reset
+            $LASTMSGTIME = 0
+        fi
+    fi
+
 	MSG=""
 	case $TOPIC in
 		"home/notify/doorbell")
@@ -25,8 +37,12 @@ do
 			$PLAY ~/dotfiles/media/home/doorbell.ogg &
 			;;
 		"notify/$USER/irc"|"notify/$USER/telegram"|"notify/$USER/matrix"|"notify/$USER/sms"|"home/notify/message")
-			MSG="Incoming message: $PAYLOAD"
-			$PLAY ~/dotfiles/media/chime.wav &
+            if [ "$PAYLOAD" != "$LASTMSG" ]; then
+                MSG="Incoming message: $PAYLOAD"
+                $PLAY ~/dotfiles/media/chime.wav &
+                LASTMSG="$PAYLOAD"
+                LASTMSGTIME=$(date +%s | tr -d '\n')
+            fi
 			;;
 		"notify/$USER/mail")
 			MSG="Incoming mail: $PAYLOAD"
@@ -38,7 +54,8 @@ do
 			;;
 		"home/notify/alarm")
 			MSG="INTRUDER ALERT, CHECK IMMEDIATELY"
-			$PLAY ~/dotfiles/media/redalert.wav &
+            amixer set Master 100%
+			$PLAY ~/dotfiles/media/home/intruderalert.ogg &
 			;;
 		"home/notify/armed")
 			MSG="System armed"
