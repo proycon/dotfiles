@@ -93,7 +93,7 @@ else
         alias vi="vim"
     fi
 fi
-alias icat="kitty +kitten icat"
+
 
 export MPD_HOST="proycon@anaproy.nl"
 
@@ -346,6 +346,9 @@ export VIRTUAL_ENV_DISABLE_PROMPT=1
 if [[ "$TERM" == "alacritty" ]]; then
     #not well enough supported yet
     export TERM="xterm-256color"
+if [[ "$TERM" == "xterm-kitty" ]]; then
+    #not well enough supported yet
+    export TERM="screen-256color"
 fi
 #fi
 export PS1="$PS1"'$([ -n "$TMUX" ] && tmux setenv TMUXPWD_$(tmux display -p "#D" | tr -d %) "$PWD")' #tmux-powerline support
@@ -424,8 +427,10 @@ export KEYTIMEOUT=1
 
 #bindkey -M viins 'jj' vi-cmd-mode
 
-bindkey $terminfo[khome] beginning-of-line
-bindkey $terminfo[kend] end-of-line
+if [ $TERM != "xterm-kitty" ]; then
+    bindkey $terminfo[khome] beginning-of-line
+    bindkey $terminfo[kend] end-of-line
+fi
 #bindkey '\e[1' beginning-of-line
 #bindkey '\e[4' end-of-line
 #bindkey '\e[[1' beginning-of-line
