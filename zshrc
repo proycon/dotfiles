@@ -346,7 +346,7 @@ export VIRTUAL_ENV_DISABLE_PROMPT=1
 if [[ "$TERM" == "alacritty" ]]; then
     #not well enough supported yet
     export TERM="xterm-256color"
-if [[ "$TERM" == "xterm-kitty" ]]; then
+elif [[ "$TERM" == "xterm-kitty" ]]; then
     #not well enough supported yet
     export TERM="screen-256color"
 fi
@@ -445,7 +445,6 @@ fi
 
 export LESS_TERMCAP_so=$'\E[30;42m'
 
-export TERMINAL=urxvt
 case $TERM in
     xterm*|rxvt)
         PROMPT_COMMAND='echo -ne "\033]0;${USER}@${HOSTNAME}\007"'
