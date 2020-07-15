@@ -69,7 +69,7 @@
 #SecondThirdCandWordKey=
 # Saving All Config and Input History
 #SaveAllKey=CTRL_ALT_S
-# Switch Embeded Preedit
+# Switch Embedded Preedit
 #SwitchPreedit=CTRL_ALT_P
 # Previous Candidate Word
 #PrevWord=SHIFT_TAB
@@ -84,7 +84,7 @@
 # No
 # All
 # PerProgram
-#ShareStateAmongWindow=No
+ShareStateAmongWindow=All
 # Default Input Method State
 # Available Value:
 # Inactive
