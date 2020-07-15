@@ -462,7 +462,7 @@ if [[ "$PATH" != *"/home/proycon/bin"* ]]; then
 fi
 # END LAMACHINE MANAGED BLOCK - path
 
-export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
+export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH:$HOME/.local/bin"
 
 if [ -e /home/proycon/.config/broot/launcher/bash/br ]; then
     source /home/proycon/.config/broot/launcher/bash/br
