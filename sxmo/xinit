@@ -1,5 +1,6 @@
 #!/usr/bin/env sh
 sxmo_audioout.sh Speaker
+amixer sset 'Line Out Source' 'Mono Differential','Mono Differential'
 amixer set "Line Out" 50%
 feh --bg-fill -z ~/dotfiles/media/pine.jpg
 mpv --quiet --no-video ~/dotfiles/media/cylontune_low.ogg &
