@@ -23,7 +23,7 @@ do
 
     if [ "$LASTMSG" != "" ] && [ $LASTMSGTIME -ne 0 ]; then
         NOW=$(date +%s | tr -d '\n')
-        let "TIMEDELTA = $NOW - $LASTMSGTIME"
+        TIMEDELTA=$(( NOW - LASTMSGTIME ))
         if [ $TIMEDELTA -ge 60 ]; then
             LASTMSG="" #reset
             LASTMSGTIME=0
@@ -80,6 +80,6 @@ do
 	if [ -n "$MSG" ]; then
         MSG="($TIME) $MSG"
 		notify-send "$MSG"
-        echo $MSG
+        echo "$MSG"
 	fi
 done < /dev/stdin
