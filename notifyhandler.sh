@@ -65,6 +65,10 @@ do
 			MSG="System disarmed"
 			$PLAY ~/dotfiles/media/beepout.wav &
 			;;
+		"home/notify/test")
+			MSG="Test notification"
+			$PLAY ~/dotfiles/media/beepout.wav &
+			;;
 		"home/notify/timer"|"notify/$USER/timer")
 			MSG="Timer finished"
 			$PLAY ~/dotfiles/media/bell.wav &
