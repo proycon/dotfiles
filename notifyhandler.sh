@@ -23,10 +23,10 @@ do
 
     if [ "$LASTMSG" != "" ] && [ $LASTMSGTIME -ne 0 ]; then
         NOW=$(date +%s | tr -d '\n')
-        let $TIMEDELTA=$NOW-$LASTMSGTIME
+        let "TIMEDELTA = $NOW - $LASTMSGTIME"
         if [ $TIMEDELTA -ge 60 ]; then
-            $LASTMSG="" #reset
-            $LASTMSGTIME = 0
+            LASTMSG="" #reset
+            LASTMSGTIME=0
         fi
     fi
 
@@ -77,7 +77,7 @@ do
             echo "unhandled topic: $TOPIC">&2
             ;;
 	esac
-	if [ ! -z "$MSG" ]; then
+	if [ -n "$MSG" ]; then
         MSG="($TIME) $MSG"
 		notify-send "$MSG"
         echo $MSG
