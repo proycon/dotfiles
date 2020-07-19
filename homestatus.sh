@@ -46,14 +46,14 @@ cat /tmp/homestatus/presence 2> /dev/null
 echo -en $normal
 echo -en "${bold}alarm${normal}:         "
 cat /tmp/homestatus/alarm 2> /dev/null
+echo -en "${bold}temperature${normal}:   "
+cat /tmp/homestatus/temperature | sed 's/,/\n              /g'  2> /dev/null
+echo -en "${bold}climate${normal}:       "
+cat /tmp/homestatus/climate | sed 's/,/\n              /g' 2> /dev/null
 echo -en "${bold}doors/windows${normal}: ${boldred}"
-cat /tmp/homestatus/doors 2> /dev/null
+cat /tmp/homestatus/doors | sed 's/ /\n               /g' 2> /dev/null
 echo -en $normal
 echo -en "${bold}lights${normal}: ${boldyellow}       "
-cat /tmp/homestatus/lights 2> /dev/null
+cat /tmp/homestatus/lights | sed 's/ /\n               /g' 2> /dev/null
 echo -en $normal
-echo -en "${bold}temperature${normal}:   "
-cat /tmp/homestatus/temperature 2> /dev/null
-echo -en "${bold}climate${normal}:       "
-cat /tmp/homestatus/climate 2> /dev/null
 
