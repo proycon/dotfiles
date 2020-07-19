@@ -7,6 +7,12 @@ if [ "$1" = "conky" ]; then
     boldred="\${color red}"
     boldgreen="\${color green}"
     boldyellow="\${color yellow}"
+elif [ "$1" = "no" ]; then
+    bold=""
+    normal=""
+    boldred=""
+    boldgreen=""
+    boldyellow=""
 elif [ "$1" = "html" ]; then
     bold="<span style=\"font-weight: bold;\">"
     normal="</span>"
