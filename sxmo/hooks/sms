@@ -1,0 +1,3 @@
+#!/usr/bin/env sh
+#the notification will take care of the ringing (everywhere) when it's picked up again
+~/dotfiles/notifysend.sh notify/proycon/sms "$@" &
