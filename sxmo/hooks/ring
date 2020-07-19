@@ -1,0 +1,4 @@
+#!/usr/bin/env sh
+sxmo_vibratepine 2000 & sxmo_setpineled green 1
+#the notification will take care of the ringing (everywhere) when it's picked up again
+~/dotfiles/notifysend.sh notify/proycon/phone &
