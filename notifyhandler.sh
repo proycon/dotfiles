@@ -13,6 +13,9 @@ declare -a fields
 LASTMSG=""
 LASTMSGTIME=0
 
+mkdir /tmp/homestatus
+chmod go-rwx /tmp/homestatus
+
 while IFS= read -r line
 do
 	IFS="|" read -ra fields <<< $line;
@@ -21,13 +24,20 @@ do
 	PAYLOAD="${fields[2]}"
     echo ">$TOPIC" >&2
 
+    NOW=$(date +%s | tr -d '\n')
     if [ "$LASTMSG" != "" ] && [ $LASTMSGTIME -ne 0 ]; then
-        NOW=$(date +%s | tr -d '\n')
         TIMEDELTA=$(( NOW - LASTMSGTIME ))
         if [ $TIMEDELTA -ge 60 ]; then
             LASTMSG="" #reset
             LASTMSGTIME=0
         fi
+    fi
+
+    MSGTIME=$(date +%s --date "$TIME" | tr -d '\n')
+    TIMEDELTA=$(( NOW - MSGTIME ))
+    if [ $TIMEDELTA -ge 600 ]; then
+        echo "Ignoring old message $TOPIC ($TIMEDELTA sec)">&2
+        continue
     fi
 
 	MSG=""
@@ -73,6 +83,10 @@ do
 			MSG="Timer finished"
 			$PLAY ~/dotfiles/media/bell.wav &
 			;;
+		"home/status/"*)
+            STATUSFILE="/tmp/homestatus/${TOPIC/home\/status\//}"
+            echo "$PAYLOAD" | tr -s " " > $STATUSFILE
+            ;;
         *)
             echo "unhandled topic: $TOPIC">&2
             ;;

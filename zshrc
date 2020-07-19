@@ -73,6 +73,7 @@ alias sx='sxiv -t .'
 alias gpp='git push origin gh-pages'
 alias mp="ncmpcpp -b ~/dotfiles/ncmpcpp.bindings"
 alias f='cd $(cat ${XDG_CONFIG_HOME:-$HOME/.config}/directories | fzf)'
+alias hs="~/dotfiles/homestatus.sh"
 #colours
 #which colorgcc > /dev/null 2> /dev/null
 #if (( $? == 0 )); then

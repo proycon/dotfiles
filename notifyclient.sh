@@ -31,4 +31,4 @@ else
     exit 2
 fi
 
-mosquitto_sub -I $HOST -h $MQTT_HOST -p 8883 -u "$MQTT_USER" -P "$MQTT_PASSWORD" --cafile $CACERT --remove-retained -t '#' -F "@H:@M:@S|%t|%p" $MQTT_OPTIONS | ~/dotfiles/notifyhandler.sh
+mosquitto_sub -I $HOST -h $MQTT_HOST -p 8883 -u "$MQTT_USER" -P "$MQTT_PASSWORD" --cafile $CACERT -t '#' -F "@H:@M:@S|%t|%p" $MQTT_OPTIONS | ~/dotfiles/notifyhandler.sh
