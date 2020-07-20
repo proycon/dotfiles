@@ -649,3 +649,8 @@ command! W w
 " Override cursorline color
 hi CursorLine					ctermbg=236		cterm=none						guibg=#000000
 
+" #do italics
+set t_ZH=[3m
+set t_ZR=[23m
+highlight Comment cterm=italic
+
