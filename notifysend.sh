@@ -1,7 +1,5 @@
 #!/bin/bash
 
-# Receives notifications from MQTT
-
 if [ -f ~/.mqtt_secrets ]; then
     source ~/.mqtt_secrets
 fi
