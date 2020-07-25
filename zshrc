@@ -1,4 +1,4 @@
-# Path to your oh-my-zsh configuration.
+#export XDG_CONFIG_HOME="/home/proycon/.config" Path to your oh-my-zsh configuration.
 ZSH=$HOME/.oh-my-zsh
 # Set name of the theme to load.
 # Look in ~/.oh-my-zsh/themes/
@@ -103,6 +103,9 @@ export DEBFULLNAME="Maarten van Gompel"
 
 
 export BROWSER="firefox"
+
+export XDG_CONFIG_HOME="$HOME/.config"
+
 
 #coloured man pages
 export GROFF_NO_SGR=1
