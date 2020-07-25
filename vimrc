@@ -1,8 +1,6 @@
 scriptencoding utf-8
 set encoding=utf-8
 
-set -g default-terminal "tmux-256color"
-
 " Automatic reloading of .vimrc
 autocmd! bufwritepost .vimrc source %
 
