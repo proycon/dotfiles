@@ -10,5 +10,6 @@ if [ -e ~/dotfiles/sxmo/initsecrets.sh ]; then
 fi
 
 sxmo_modemmonitortoggle.sh &
+~/dotfiles/homecommand.sh status &
 ~/dotfiles/notifyclient_autoconnect.sh &
 
