@@ -82,16 +82,21 @@ alias hs="~/dotfiles/homestatus.sh"
 alias vless='vim -R -u /usr/share/vim/vim72/macros/less.vim'
 alias z='less -rN'
 alias myip="dig +short myip.opendns.com @resolver1.opendns.com"
-which nvim > /dev/null 2>/dev/null
-if (( $? == 0 )); then
-    export EDITOR="nvim"
-    alias vi="nvim"
-    alias vim="nvim"
+if [[ "$HOST" == "proyphone" ]]; then
+    alias vi="vis"
+    alias vim="vis"
 else
-    which vim > /dev/null 2>/dev/null
+    which nvim > /dev/null 2>/dev/null
     if (( $? == 0 )); then
-        export EDITOR="vim"
-        alias vi="vim"
+        export EDITOR="nvim"
+        alias vi="nvim"
+        alias vim="nvim"
+    else
+        which vim > /dev/null 2>/dev/null
+        if (( $? == 0 )); then
+            export EDITOR="vim"
+            alias vi="vim"
+        fi
     fi
 fi
 
