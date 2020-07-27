@@ -1,0 +1,15 @@
+#!/usr/bin/env sh
+attempts=0
+touch /tmp/silentreconnect
+#test if the network is back up and functional
+while [ $attempts -le 7 ]; do
+    fping -c1 -t1000 anaproy.nl > /dev/null 2> /dev/null
+    if [ $? -eq 0 ]; then
+        break
+    fi
+    attempts=$(( attempts + 1 ))
+done
+#kill notifyclient, forcing it to reconnect
+killall notifyclient.sh
+sleep 3
+rm /tmp/silentreconnect

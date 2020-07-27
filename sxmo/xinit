@@ -9,6 +9,8 @@ if [ -e ~/dotfiles/sxmo/initsecrets.sh ]; then
     source ~/dotfiles/sxmo/initsecrets.sh
 fi
 
+export SXMO_RTCWAKEINTERVAL=120
+
 sxmo_modemmonitortoggle.sh &
 ~/dotfiles/homecommand.sh status &
 ~/dotfiles/notifyclient_autoconnect.sh &
