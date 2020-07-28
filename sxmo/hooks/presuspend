@@ -1,0 +1,5 @@
+#!/usr/bin/env sh
+
+#touch /tmp/.notifyclient.silent
+#killall -wq notifyhandler.sh notifyclient.sh #kill the one already running
+#sleep 1
