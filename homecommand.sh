@@ -30,5 +30,5 @@ else
 fi
 
 
-~/dotfiles/notifysend.sh $TOPIC
+~/dotfiles/notifysend.sh $TOPIC "ON"
 exit $?

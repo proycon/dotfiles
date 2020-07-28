@@ -31,4 +31,12 @@ else
     exit 2
 fi
 
-mosquitto_sub -I $HOST -h $MQTT_HOST -p 8883 -u "$MQTT_USER" -P "$MQTT_PASSWORD" --cafile $CACERT -t '#' -F "@H:@M:@S|%t|%p" $MQTT_OPTIONS | ~/dotfiles/notifyhandler.sh
+if [ ! -f /tmp/.notifyclient.silent ]; then
+    mpv --no-video --really-quiet ~/dotfiles/media/notifyconnect.wav &
+fi
+
+mosquitto_sub -c -i $HOST.notifyclient -h $MQTT_HOST -p 8883 -u "$MQTT_USER" -P "$MQTT_PASSWORD" --cafile $CACERT -t '#' -F "@H:@M:@S|%t|%p" $MQTT_OPTIONS "$@" | ~/dotfiles/notifyhandler.sh
+
+if [ ! -f /tmp/.notifyclient.silent ]; then
+    mpv --no-video --really-quiet ~/dotfiles/media/error.wav
+fi

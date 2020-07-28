@@ -1,15 +1,20 @@
 #!/bin/bash
+#OBSOLETE!!!!!!!!!!!!!
+
 while true; do
     fping -c1 -t5000 anaproy.nl > /dev/null 2> /dev/null
     if [ "$?" -eq "0" ]; then
         echo "starting notify client"
-        if [ ! -f /tmp/silentreconnect ]; then
+        if [ ! -f /tmp/.notifyclient.silentreconnect ]; then
             mpv --no-video --really-quiet ~/dotfiles/media/notifyconnect.wav
         fi
 
-        ~/dotfiles/notifyclient.sh > ~/.notifications.log 2> ~/.notifications.err
+        ~/dotfiles/notifyclient.sh >> ~/.notifications.log 2>> ~/.notifications.err
         echo  "notify client ended"
-        if [ ! -f /tmp/silentreconnect ]; then
+        if [ ! -f /tmp/.notifyclient.exitautoconnect ]; then
+            exit 0
+        fi
+        if [ ! -f /tmp/.notifyclient.silentreconnect ]; then
             mpv --no-video --really-quiet ~/dotfiles/media/error.wav
         fi
     else

@@ -13,5 +13,5 @@ export SXMO_RTCWAKEINTERVAL=120
 
 sxmo_modemmonitortoggle.sh &
 ~/dotfiles/homecommand.sh status &
-~/dotfiles/notifyclient_autoconnect.sh &
+~/dotfiles/notifyclient.sh &
 

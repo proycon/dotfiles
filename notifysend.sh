@@ -47,6 +47,6 @@ fi
 
 echo "Sending: $TOPIC - $PAYLOAD">&2
 
-mosquitto_pub -I $HOST -h "$MQTT_HOST" -p 8883 -u "$MQTT_USER" -P "$MQTT_PASSWORD" --cafile $CACERT -t "$TOPIC" -m "$PAYLOAD" $MQTT_OPTIONS
+mosquitto_pub -I $HOST.notifysend -h "$MQTT_HOST" -p 8883 -u "$MQTT_USER" -P "$MQTT_PASSWORD" --cafile $CACERT -t "$TOPIC" -m "$PAYLOAD" --qos 1 $MQTT_OPTIONS
 exit $?
 
