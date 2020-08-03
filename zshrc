@@ -276,12 +276,14 @@ alias wtr="curl http://wttr.in"
 alias weather="curl http://wttr.in"
 alias btc="curl eur.rate.sx/btc@60d"
 
+
 cheat() {
     curl https://cheat.sh/$1
 }
 qr() {
     curl -s http://qrenco.de/$1 | cat
 }
+
 
 if [[ $HOST == "applejack" || $HOST == "fluttershy" || $HOST == "rarity" || $HOST == "cheerilee" || $HOST == "fancypants" || $HOST == "pipsqueak" || $HOST == "scootaloo" || $HOST == "blossomforth" || $HOST == "featherweight" || $HOST == "twist" || $HOST == "thunderlane" ]]; then
 
