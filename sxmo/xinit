@@ -10,6 +10,7 @@ if [ -e ~/dotfiles/sxmo/initsecrets.sh ]; then
 fi
 
 export SXMO_RTCWAKEINTERVAL=120
+export SXMO_LOCK_SCREEN_OFF=1
 
 sxmo_modemmonitortoggle.sh &
 ~/dotfiles/homecommand.sh status &
