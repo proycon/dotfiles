@@ -647,7 +647,11 @@ command! Dark call s:MakeDark()
 command! W w
 
 " Override cursorline color
-hi CursorLine					ctermbg=236		cterm=none						guibg=#000000
+hi CursorLine					ctermbg=236		cterm=none						guibg=#333333
+hi CursorLineNr					ctermbg=236		cterm=none						guibg=#ffff00 guifg=#000000
+" Not enabled by default (set cursorcolumn)
+hi CursorColumn					ctermbg=236		cterm=none						guibg=#333333
+
 
 " #do italics
 set t_ZH=[3m
