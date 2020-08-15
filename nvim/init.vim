@@ -42,7 +42,7 @@ if has('nvim')
     Plug 'neoclide/coc-vetur', {'do': 'yarn install --frozen-lockfile'} "for Vue.js
     Plug 'neoclide/coc-ultisnips', {'do': 'yarn install --frozen-lockfile'}
     Plug 'neoclide/coc-java', {'do': 'yarn install --frozen-lockfile'}
-    Plug 'danielwelch/coc-homeassistant', {'do': 'yarn install --frozen-lockfile'}
+    "Plug 'danielwelch/coc-homeassistant', {'do': 'yarn install --frozen-lockfile'}
 endif
 
 "
@@ -671,4 +671,8 @@ hi CursorColumn					ctermbg=236		cterm=none						guibg=#333333
 set t_ZH=[3m
 set t_ZR=[23m
 highlight Comment cterm=italic
+
+"load .vimlocal from current working directory
+"(assumes you open vim from project root)
+silent! so .vimlocal
 
