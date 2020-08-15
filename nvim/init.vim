@@ -41,6 +41,7 @@ if has('nvim')
     Plug 'neoclide/coc-vimtex', {'do': 'yarn install --frozen-lockfile'}
     Plug 'neoclide/coc-vetur', {'do': 'yarn install --frozen-lockfile'} "for Vue.js
     Plug 'neoclide/coc-ultisnips', {'do': 'yarn install --frozen-lockfile'}
+    Plug 'neoclide/coc-java', {'do': 'yarn install --frozen-lockfile'}
     Plug 'danielwelch/coc-homeassistant', {'do': 'yarn install --frozen-lockfile'}
 endif
 
