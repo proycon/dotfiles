@@ -1,0 +1,401 @@
+extends rust
+
+
+snippet useclap "import clap"
+extern crate clap;
+use clap::{Arg, App, SubCommand};
+endsnippet
+
+
+snippet clap "argument parser"
+let matches = App::new("${1:Name}")
+					  .version("0.1")
+					  .author("Maarten van Gompel (proycon) <proycon@anaproy.nl>")
+					  .about("${2:Description})
+					  //snippet hints --> addargb,addargs,addargi,addargf,addargpos
+					  .get_matches();
+
+//hints: matches.is_present() , matches.value_of()
+endsnippet
+
+
+snippet addargb "add boolean argument (clap)"
+				  .arg(Arg::with_name("${1:name}")
+					.long("${2:long}")
+					.short("${3:s}")
+					.help("${4:description}")
+					.required(${5:false}))
+endsnippet
+
+
+snippet addarg "add argument (clap)"
+				  .arg(Arg::with_name("${1:name}")
+					.long("${2:long}")
+					.short("${3:s}")
+					.help("${4:description}")
+					.takes_value(true)
+					.value_name(${5:STRING}")
+					.required(${6:false}))
+endsnippet
+
+
+snippet addargpos "add positional argument (clap)"
+				  .arg(Arg::with_name("${1:name}")
+					.help("${2:description}")
+					.takes_value(true)
+					.index(${3:1})
+					.required(${4:true}))
+endsnippet
+
+
+
+snippet header
+/*
+* ${1:Title}
+*	by Maarten van Gompel (proycon)
+*	proycon AT anaproy DOT nl
+*
+* ${2:Description}
+*
+* Licensed under the GNU General Public License v3
+*
+*/
+endsnippet
+
+
+snippet useall "Some common uses/imports"
+use std::fs::File;
+use std::io::Read;
+use std::fs;
+use std::error::Error;
+use std::fmt;
+use std::io;
+use std::iter::Iterator;
+use std::collections::HashMap;
+use std::time::{SystemTime, UNIX_EPOCH};
+use std::path::{Path,PathBuf};
+use std::iter::FromIterator;
+use std::str::{FromStr};
+endsnippet
+
+
+snippet usefile
+use std::fs::File;
+use std::io::{Write,Read,BufReader,BufRead,Error};
+endsnippet
+
+
+
+snippet usefmt
+use std::fmt;
+endsnippet
+
+
+snippet usehashmap
+use std::collections::{HashMap,HashSet};
+endsnippet
+
+
+snippet usetime
+use std::time::{SystemTime, UNIX_EPOCH};
+endsnippet
+
+
+
+snippet useiter
+use std::iter::{Iterator,FromIterator};
+endsnippet
+
+
+snippet display "implementation of fmt::Display"
+impl fmt::Display for ${1:MyStruct} {
+	fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
+		write!(f,"{}",self.data)
+		$0
+	}
+}
+endsnippet
+
+
+snippet default "Default trait implementation"
+impl Default for ${1:MyStruct} {
+	fn default() -> $1 {
+		$1 {
+			$0
+		}
+	}
+}
+endsnippet
+
+
+snippet fromstr "FromStr trait implementation"
+impl FromStr for ${1:MyStruct} {
+	fn from_str(s: &str) -> Result<$1,Err> {
+		$0
+	}
+}
+endsnippet
+
+
+snippet drop "Drop trait implementation (destructor)"
+impl Drop for ${1:Name} {
+	fn drop(&mut self) {
+		${0}
+	}
+}
+endsnippet
+
+
+snippet asref "AsRef trait implementation"
+impl AsRef<${1:Ref}> for ${2:Type} {
+	fn as_ref(&self) -> &${3:$1} {
+		&self.${0:field}
+	}
+}
+endsnippet
+
+
+snippet asmut "AsMut trait implementation"
+impl AsMut<${1:Ref}> for ${2:Type} {
+	fn as_mut(&mut self) -> &mut ${3:$1} {
+		&mut self.${0:field}
+	}
+}
+endsnippet
+
+
+
+snippet useregex
+extern crate regex;
+use regex::Regex;
+endsnippet
+
+
+snippet useserde
+extern crate serde;
+extern crate serde_json;
+#[macro_use]
+extern crate serde_derive;
+endsnippet
+
+
+snippet usereqwest
+extern crate reqwest;
+endsnippet
+
+
+snippet userand
+extern crate rand;
+use rand::Rng;
+endsnippet
+
+
+snippet serdedef "serde default macro"
+#[serde(default)]
+endsnippet
+
+
+snippet serdedrv "serde derive macro"
+#[derive(Serialize, Deserialize)]
+
+endsnippet
+
+snippet serdestruct "struct skeleton for serde"
+#[derive(Serialize, Deserialize)]
+struct ${1:MyStruct} {
+	#[serde(default)]
+	${2:myfield}: ${3:String},
+}
+endsnippet
+
+
+snippet readjson "read/load json (serde_json)"
+let ${1:data} = fs::read_to_string(${2:filename})?;
+let $1: ${3:serde_json::Value} = serde_json::from_str($1.as_str()).expect("Invalid JSON");
+endsnippet
+
+
+snippet writejson "read/write json (serde_json)"
+fs::write(${1:filename}, serde_json::to_string(self).expect("Unable to serialise JSON"));
+endsnippet
+
+
+snippet timestamp "get unix timestamp (seconds since unix epoch)"
+std::time::SystemTime::now().duration_since(std::time::UNIX_EPOCH).expect("Unable to get time").as_secs()
+endsnippet
+
+
+snippet mkdir
+fs::create_dir_all(${1:&dir}).expect("Unable to create directory");
+endsnippet
+
+
+snippet exit
+std::process::exit(${1:1});
+endsnippet
+
+
+snippet rand
+let mut rng = rand::thread_rng();
+let ${1:randnum}: ${2:u32} = rng.gen_range(${3:0}, ${4:max}); //or use rng.gen() for full range
+endsnippet
+
+
+snippet regex
+for candidate in Regex::new(${1:regex}).unwrap().find_iter(${2:reference}) {
+let candidate = candidate.as_str().to_lowercase();
+$0
+}
+endsnippet
+
+
+snippet stdin "prompt and read one line from stdin"
+print!(">>> ");
+std::io::stdout().flush().unwrap();
+let stdin = std::io::stdin();
+let input = stdin.lock().lines().next().unwrap().unwrap(); //read one line only
+endsnippet
+
+
+snippet pathbuf
+PathBuf::from(${1:filename})
+endsnippet
+
+
+snippet fileexists
+PathBuf::from(${1:filename}).exists()
+endsnippet
+
+
+snippet pathjoin
+PathBuf::from(${1:base}).join(${2:part})
+endsnippet
+
+
+snippet spawn "spawn a thread"
+thread::spawn(${1:move }|| {
+	${0}
+});
+endsnippet
+
+
+
+snippet box "Box::new()"
+Box::new(${0:${VISUAL}})
+endsnippet
+
+
+snippet rc "Rc::new()"
+Rc::new(${0:${VISUAL}})
+endsnippet
+
+
+snippet arc "Arc::new()"
+Arc::new(${0:${VISUAL}})
+endsnippet
+
+
+snippet unimp "unimplemented!()"
+unimplemented!()
+endsnippet
+
+
+snippet httpget "http get request (reqwest)"
+let mut res = reqwest::get(${1:url})?;
+let mut body = String::new();
+res.read_to_string(&mut body)?;
+//hints: res.status(), res.headers()
+endsnippet
+
+
+snippet usewalkdir
+extern crate walkdir;
+use walkdir::Walkdir;
+endsnippet
+
+
+snippet walkdir "walk over files and directories (glob alternative)"
+for entry in WalkDir::new(".")
+	.follow_links(true)
+	.into_iter()
+	.filter_map(|e| e.ok()) {
+let filename = entry.file_name().to_string_lossy();
+//let sec = entry.metadata()?.modified()?; //get some metadata,
+
+if filename.ends_with(".json") { // && sec.elapsed()?.as_secs() < 86400 {
+	println!("{}", filename);
+}
+}
+endsnippet
+
+
+snippet useglob
+extern crate glob;
+use glob::{glob_with, MatchOptions};
+endsnippet
+
+
+snippet glob
+let options = MatchOptions {
+	case_sensitive: false,
+	..Default::default()
+};
+
+for entry in glob_with(${1:pattern}, &options)? {
+	println!("{}", entry?.display());
+}
+
+
+snippet writefile "write/save file"
+let mut ${1:f} = File::create(${2:filename})?;
+write!($1, ${3:data})?;
+
+
+snippet readfile "read/load file"
+let ${1:f} = File::open(${2:filename})?;
+let $1_buffer = BufReader::new($1);
+for line in $1_buffer.lines() {
+	println!("{}", line?);
+}
+endsnippet
+
+
+snippet usecommand
+use std::process::Command;
+endsnippet
+
+
+snippet command "execute system/shell command"
+let output = Command::new(${1:tool}).arg(${2:arg}).output()?;
+if output.status.success () {
+	//hints: handle output.stdout , output.stderr, etc
+}
+endsnippet
+
+
+snippet usendarray
+extern crate ndarray;
+endsnippet
+
+
+snippet usenalgebra
+extern crate nalgebra;
+endsnippet
+
+
+snippet ndarray
+Array::from(${1:vec});
+endsnippet
+
+
+snippet useunicode "(unicode_segmentation)"
+#[macro_use]
+extern crate unicode_segmentation;
+use unicode_segmentation::UnicodeSegmentation;
+endsnippet
+
+
+snippet splitstring "split unicode sting on graphemes (unicode_segmentation)"
+UnicodeSegmentation::graphemes(${1:s}, true).collect::<Vec<&str>>()
+endsnippet
+

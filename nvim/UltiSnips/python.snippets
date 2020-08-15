@@ -1,0 +1,1297 @@
+extends python
+
+snippet py "header"
+#!/usr/bin/env python
+endsnippet
+
+snippet py3 "header"
+#!/usr/bin/env python3
+endsnippet
+
+
+snippet p "print to stdout"
+print(${1})
+endsnippet
+
+
+snippet pe "print to stderr"
+print(${1:s},file=sys.stderr)
+endsnippet
+
+
+snippet printf "print to file"
+print(${1:s},file=f)
+endsnippet
+
+
+snippet header "comment header"
+################################################
+# ${1:Title}
+#	by Maarten van Gompel (proycon)
+#	proycon AT anaproy DOT nl
+#
+# ${2:Description}
+#
+# Licensed under the GNU General Public License v3
+#
+################################################
+endsnippet
+
+
+snippet argparse "argument parser"
+import argparse
+parser = argparse.ArgumentParser(description="${1}", formatter_class=argparse.ArgumentDefaultsHelpFormatter)
+#snippet hints --> addargb,addargs,addargi,addargf, addargpos, addarglist
+args = parser.parse_args() #parsed arguments can be accessed as attributes
+endsnippet
+
+
+
+snippet addargb "argparse - add boolean option"
+parser.add_argument('--${0:long}','-${0:short}',help="${1:help}", action='store_true', required=False)
+endsnippet
+
+
+snippet addargs "argparse - add string option"
+parser.add_argument('--${0:long}','-${0:short}',type=str, help="${1:help}", action='store', required=False)
+endsnippet
+
+
+snippet addargi "argparse - add integer option"
+parser.add_argument('--${0:long}','-${0:short}',type=int, help="${1:help}", action='store', required=False)
+endsnippet
+
+
+
+snippet addargf "argparse - add float option"
+parser.add_argument('--${0:long}','-${0:short}',type=float, help="${1:help}", action='store', required=False)
+endsnippet
+
+
+snippet addargpos "argparse - add positional option"
+parser.add_argument(${0:files}, nargs=1, help="${1:help}")
+endsnippet
+
+
+snippet addarglist "argparse - add list option"
+parser.add_argument(${0:files}, nargs='*', help="${1:help}")
+endsnippet
+
+
+snippet importfuture "import future"
+from __future__ import print_function, unicode_literals, division, absolute_import
+endsnippet
+
+
+snippet stripaccents "normalize unicode, strip accents"
+unicodedata.normalize('NFKD',${1:s}).encode('ascii','ignore')
+endsnippet
+
+
+snippet logging "initialize logging"
+import logging
+logger = logging.getLogger(${0:__name__})
+endsnippet
+
+
+snippet logerr "log error"
+logger.error(${0:msg})
+endsnippet
+
+
+snippet logdebug "log debug"
+logger.debug(${0:msg})
+endsnippet
+
+
+snippet logwarn "log warning"
+logger.warning(${0:msg})
+endsnippet
+
+
+snippet logcrit "log fatal/critical"
+logger.error(${0:msg})
+logger.critical(${0:msg})
+endsnippet
+
+
+snippet loginfo "log info/notices"
+logger.info(${0:msg})
+endsnippet
+
+
+snippet readxml "read xml (lxml)"
+import lxml.etree
+doc = lxml.etree.parse(${1:filename}).getroot()
+for element in doc:
+	#element.tag, element.attrib['blah'], element.text
+	${2:pass}
+for element in doc.xpath("//test"):
+	${3:pass}
+endsnippet
+
+
+snippet xpath "xpath expression (lxml)"
+doc = lxml.etree.parse(${1:filename}).getroot()
+for element in doc.xpath("//test"):
+	#element.tag, element.attrib['blah'], element.text
+	${2:pass}
+endsnippet
+
+
+snippet readtsv "read tab separated file (tsv)"
+with open(${1:filename},'r',encoding='utf-8') as f:
+	for line in f:
+		if line and line[0] != '#':
+			fields = line.split("\t")
+endsnippet
+
+
+snippet readwords_pretok "read words, already tokenised"
+with open(${1:filename},'r',encoding='utf-8') as f:
+	for line in f:
+		if line:
+			words = line.split(" ")
+			for word in words:
+				${2:pass}
+endsnippet
+
+
+snippet readwords_tok "read words and tokenize using pynlpl"
+from pynlpl.textprocessors import Tokenizer
+with open(${1:filename},'r',encoding='utf-8') as f:
+for sentence in Tokenizer(f, ${2:splitsentences_bool},${3:onesentenceperline_bool}):
+	if sentence:
+		words = sentence.split(" ")
+		for word in words:
+			${4:pass}
+endsnippet
+
+
+snippet readngrams_pretok "read ngrams, pretokenised"
+from pynlpl.textprocessors import Windower
+with open(${1:filename},'r',encoding='utf-8') as f:
+for line in f:
+	if line:
+		for ngram in Windower(line.split(" "),${2:n},None,None):
+			${2:pass}
+endsnippet
+
+
+snippet readngrams_pretok "read ngrams, tokenise using pynlpl"
+from pynlpl.textprocessors import Tokenizer, Windower
+with open(${1:filename},'r',encoding='utf-8') as f:
+for sentence in Tokenizer(f, ${2:splitsentences_bool},${3:onesentenceperline_bool}):
+	if sentence:
+		for ngram in Windower(sentence.split(" "),${4:n},None,None):
+			${4:pass}
+endsnippet
+
+
+snippet readcsv "read csv"
+import csv
+with open(${1:filename}, 'r') as f:
+	reader = csv.reader(f, delimiter=',', quotechar='"')
+	for row in reader:
+		print(', '.join(row))
+endsnippet
+
+
+snippet readzip "read zip archive"
+import zipfile
+with zipfile.ZipFile(${1:filename},'r',zipfile.ZIP_DEFLATED) as f:
+	${2:pass}
+endsnippet
+
+
+snippet readgzip "read gzip archive"
+import gzip
+with gzip.open(${1:filename},'r') as f:
+	${2:pass}
+endsnippet
+
+
+snippet readbz2 "read bz2 archive"
+import bz2
+with bz2.open(${1:filename},'r') as f:
+	${2:pass}
+endsnippet
+
+
+snippet readfolia "read folia document"
+import folia.main as folia
+doc = folia.Document(file=${1:filename})
+endsnippet
+
+
+snippet newfolia "create new folia document"
+import folia.main as folia
+doc = folia.Document(id=${1})
+doc.append(folia.Text, id="text.1")
+endsnippet
+
+
+snippet writecsv "write csv file"
+import csv
+with open(${1:filename}, 'w',encoding='utf-8') as f:
+	writer = csv.writer(f, delimiter=',',quotechar='"')
+	writer.writerows(${2:someiterable})
+endsnippet
+
+
+snippet pd "import pandas"
+import pandas as pd
+endsnippet
+
+
+snippet np "import numpy"
+import numpy as np
+endsnippet
+
+
+snippet pdreadcsv "read csv with pandas"
+pd.read_csv(${1:filename})
+endsnippet
+
+
+snippet pdreadtsv "read tsv with pandas"
+df = pd.read_table(${1:filename}, sep="\t", index_col=0) #index_col is index or col name string
+endsnippet
+
+
+
+snippet pdfilter "pandas filter by one column, output by another"
+df[df.column_y == "${1:needle}"].column_z
+endsnippet
+
+
+snippet plotfunc "plot function graph using pylab"
+import pylab
+import numpy as np
+
+pylab.figure(figsize=(8,5), dpi=80)
+pylab.subplot(111)
+
+X = np.linspace(-1, 1, 100,endpoint=True)
+f = X**2
+
+pylab.plot(X, f, color="blue", linewidth=2.5, linestyle="-")
+#pylab.plot(X, S, color="red", linewidth=2.5, linestyle="-")
+
+pylab.xlim(-1, 1)
+pylab.xticks([-1,-0.5,0,0.5,1])
+
+pylab.ylim(f.min()*1.1,f.max()*1.1)
+pylab.yticks([-1, 0, +1])
+
+# pylab.savefig("../figures/exercice_5.png",dpi=72)
+pylab.show()
+endsnippet
+
+
+snippet plotbar "plot bar graph using pylab"
+import pylab
+import numpy as np
+
+n = 12
+X = np.arange(n)
+Y1 = (1-X/float(n)) * np.random.uniform(0.5,1.0,n)
+Y2 = (1-X/float(n)) * np.random.uniform(0.5,1.0,n)
+
+pylab.bar(X, +Y1, facecolor='#9999ff', edgecolor='white')
+pylab.bar(X, -Y2, facecolor='#ff9999', edgecolor='white')
+
+for x,y in zip(X,Y1):
+	pylab.text(x+0.4, y+0.05, '%.2f' % y, ha='center', va= 'bottom')
+
+pylab.ylim(-1.25,+1.25)
+pylab.show()
+endsnippet
+
+
+snippet httpget "http get request (urllib)"
+import urllib.request
+import urllib parse
+#opener = urllib.request.build_opener()
+#opener.addheaders = [('User-agent', 'Mozilla/5.0')]
+params = urllib.parse.urlencode({'foo': 1, 'bar': 2})
+f = urllib.request.urlopen("http://${1}/" % params) #or opener.open()
+for line in f:
+	${2:pass}
+endsnippet
+
+
+snippet httppost "http post request (urllib)"
+import urllib.request
+import urllib parse
+#opener = urllib.request.build_opener()
+#opener.addheaders = [('User-agent', 'Mozilla/5.0')]
+params = urllib.parse.urlencode({'foo': 1, 'bar': 2})
+f = urllib.request.urlopen("http://${1}/", params) #or opener.open()
+for line in f:
+	${2:pass}
+endsnippet
+
+
+snippet httpauth "http basic authentication (urllib)"
+import urllib.request
+auth_handler = urllib.request.HTTPBasicAuthHandler()
+auth_handler.add_password(realm=realm,uri=url,user=user, passwd=password)
+opener = urllib.request.build_opener(auth_handler)
+urllib.request.install_opener(opener)
+f = urllib.request.urlopen(url)
+for line in f:
+	${2:pass}
+endsnippet
+
+
+snippet httpescape "escape quotes for http (urllib)"
+import urllib.parse.quote
+s = urllib.parse.quote(s)
+endsnippet
+
+
+snippet htmlunescape "unescape for html"
+import html.parser
+s = html.parser.HTMLParser().unescape(${1})
+endsnippet
+
+
+snippet htmlescape "escape for html"
+import html
+s = html.escape(${1})
+endsnippet
+
+
+snippet xmlunescape "escape for xml"
+from xml.sax.saxutils import escape, unescape
+unescape(${1})
+endsnippet
+
+
+snippet xmlescape "unescape for xml"
+from xml.sax.saxutils import escape, unescape
+escape(${1})
+endsnippet
+
+
+snippet clamclient "clam client"
+import clam.common.client
+import time
+client = clam.common.client.CLAMClient(url, user, password)
+#client.index()
+client.create(project)
+client.upload(project, inputtemplate, localfilepath, **parameters)
+client.start(project, parameters)
+while data.status == 1:
+	data = client.get()
+	time.sleep(1)
+if data.status == 2:
+	client.download(project, filepath, localtargetfile)
+	client.delete(project)
+else:
+	raise Exception("Error")
+endsnippet
+
+
+snippet scrapelinks "scrape all links from remote html (urllib)"
+from urllib.request import urlopen
+import re
+
+#connect to a URL
+website = urlopen(url)
+
+#read html code
+html = website.read()
+
+#use re.findall to get all the links
+links = re.findall('"((http|ftp)s?://.*?)"', html)
+
+print(links)
+endsnippet
+
+
+snippet try "Try/Except"
+try:
+	${1:${VISUAL}}
+except ${2:Exception} as ${3:e}:
+	${0:raise $3}
+endsnippet
+
+snippet trye "Try/Except/Else"
+try:
+	${1:${VISUAL}}
+except ${2:Exception} as ${3:e}:
+	${4:raise $3}
+else:
+	${0}
+endsnippet
+
+snippet tryf "Try/Except/Finally"
+try:
+	${1:${VISUAL}}
+except ${2:Exception} as ${3:e}:
+	${4:raise $3}
+finally:
+	${0}
+endsnippet
+
+snippet tryef "Try/Except/Else/Finally"
+try:
+	${1:${VISUAL}}
+except ${2:Exception} as ${3:e}:
+	${4:raise $3}
+else:
+	${5}
+finally:
+	${0}
+endsnippet
+
+
+
+snippet numericmethods "skeleton for numeric methods on classes (add,sub,mul,div,pow)"
+def __add__(self, other):
+	${1:pass}
+
+def __sub__(self, other):
+	${2:pass}
+
+def __mul__(self, other):
+	${3:pass}
+
+def __div__(self, other):
+	${4:pass}
+
+def __pow__(self, pow):
+	${4:pass}
+endsnippet
+
+
+snippet boolmethods "skeleton for boolean methods on classes (and,or,neg)"
+def __and__(self, other):
+	${12:pass}
+
+def __neg__(self, other):
+	${13:pass}
+
+def __or__(self, other):
+	${14:pass}
+endsnippet
+
+
+snippet cmpmethods "skeleton for comparison methods on classes (eq,ne,lt,gt,ge)"
+def __eq__(self, other):
+	${1:pass}
+
+def __ne__(self, other):
+	${2:pass}
+
+def __lt__(self, other):
+	${3:pass}
+
+def __le__(self, other):
+	${4:pass}
+
+def __gt__(self, other):
+	${5:pass}
+
+def __ge__(self, other):
+	${6:pass}
+endsnippet
+
+
+snippet containermethods "skeleton for container methods on classes (len,getitem,setitem,delitem,iter)"
+def __len__(self):
+	${1:pass}
+
+def __getitem__(self, key):
+	${2:pass}
+
+def __setitem__(self, key, value):
+	${3:pass}
+
+def __delitem__(self, key):
+	${4:pass}
+
+def __iter__(self):
+	${5:pass}
+
+def __reversed__(self):
+	${6:pass}
+
+def __contains__(self, item):
+	${7:pass}
+endsnippet
+
+
+snippet test "unit test or integration test class"
+class Test${1:Class}(unittest.TestCase):
+	def setUp(self):
+		${2:pass}
+
+	def tearDown(self):
+		${3:pass}
+
+	def test_${4:name}(self):
+		${5:pass}
+endsnippet
+
+
+snippet asserteq "assert equal (for tests)"
+self.assertEqual(${1:first},${2:second})
+endsnippet
+
+
+snippet assert "assert true (for tests)"
+self.assertTrue(${1:first})
+endsnippet
+
+
+snippet assertfalse "assert false (for tests)"
+self.assertFalse(${1:first})
+endsnippet
+
+
+snippet pdb "python debugger (pdb), set trace"
+import pdb; pdb.set_trace()
+endsnippet
+
+
+snippet ipdb "interactive python debugger (ipdb), set trace"
+import ipdb; ipdb.set_trace()
+endsnippet
+
+
+
+snippet npa "numpy array"
+np.array(${1})
+endsnippet
+
+
+
+snippet colorf "color function definition"
+ansicolors = {"red":31,"green":32,"yellow":33,"blue":34,"magenta":35, "bold":1 }
+def colorf(color):
+	return lambda x: "\x1B[" + ansicolors[str(color)] + "m" + x + "\x1B[0m"
+endsnippet
+
+
+
+snippet printc "print color"
+print(colorf(${1:color})(${2}))
+endsnippet
+
+
+
+snippet printce "print in color to stderr"
+print(colorf(${1:color})(${2}), file=sys.stderr)
+endsnippet
+
+
+
+snippet begintime "get current timestamp (unix)"
+begintime = time.time()
+endsnippet
+
+
+
+snippet printtime "print time"
+print(${1:datetime.datetime.now()}.strftime(${2:"%h:%m:%s"})
+endsnippet
+
+
+
+snippet printdate "print date"
+print(${1:datetime.datetime.now()}.strftime(${2:"%Y:%M:%D"})
+endsnippet
+
+
+
+snippet printdatetime "print date and time"
+print(${1:datetime.datetime.now()}.strftime(${2:"%Y:%M:%D %h:%m:%s"})
+endsnippet
+
+
+
+snippet duration
+int(time.time() - begintime)
+endsnippet
+
+
+
+snippet sample "draw a random sample"
+random.sample(${1:iterable},${2:size})
+endsnippet
+
+
+
+snippet windower "ngram windower (pynlpl)"
+from pynlpl.textprocessors import Windower
+for ngram in Windower(${1:iterable},${2:n}, None, None):
+	${2:pass}
+endsnippet
+
+
+
+snippet multiwindower "ngram multiwindower (pynlpl)"
+from pynlpl.textprocessors import MultiWindower
+for ngram in MultiWindower(${1:iterable},${2:1}, ${3:maxn}, None, None):
+	${2:pass}
+endsnippet
+
+
+
+snippet tok "tokenize using pynlpl"
+from pynlpl.textprocessors import Tokenizer
+with open(${1:filename},'r',encoding='utf-8') as f:
+	for sentence in Tokenizer(f, ${2:splitsentences_bool},${3:onesentenceperline_bool}):
+		${4:pass}
+endsnippet
+
+
+
+snippet calcoverlap "calcualte overlap (pynlpl)"
+from pynlpl.textprocessors import calculate_overlap
+for overlap, placement in calculate_overlap(${1:haystack}, ${2:needle},${3:allowpartial_bool}):
+	${4:pass}
+endsnippet
+
+
+
+snippet xslt "xslt transformation (lxml)"
+import lxml.etree
+def xslttransform(xsltfilename, sourcefilename, targetfilename, encoding = 'utf-8'):
+	xsldir = os.path.dirname(__file__)
+	if xsltfilename[0] != '/': xsltfilename = xsldir + '/' + xsltfilename
+	xslt = lxml.etree.parse(xsltfilename)
+	transformer = lxml.etree.XSLT(xslt)
+	parsedsource = lxml.etree.parse(sourcefilename)
+	transformed = transformer(parsedsource)
+	with open(targetfilename,'wb') as f:
+		f.write( lxml.etree.tostring(transformed, pretty_print=True, encoding=encoding) )
+endsnippet
+
+
+
+snippet printxml "print xml (lxml)"
+print(lxml.etree.tostring(${1:xml}, pretty_print=True, encoding='utf-8'))
+endsnippet
+
+
+
+
+snippet newxml "create new xml document (lxml)"
+import lxml.etree
+xml = lxml.etree.Element(${1:"root"})
+c = lxml.etree.Element(${2:"child"})
+c.text = "text"
+xml.append(c)
+lxml.etree.tostring(xml, pretty_print=True, encoding='utf-8')
+endsnippet
+
+
+
+snippet newxmlbuilder "new xml builder (lxml.builder)"
+from lxml.builder import E
+xml = E.root(
+	E.child("text",someattrib="blah")
+)
+endsnippet
+
+
+
+snippet newxmlbuilder "new xml builder with namespace (lxml.builder)"
+from lxml.builder import E
+E = ElementMaker(namespace=${1:"http://my.de/fault/namespace"}, nsmap={'ns' : $1}
+xml = E.root(
+	E.child("text",someattrib="blah")
+)
+endsnippet
+
+
+
+snippet frogclient "frog client (pynlpl)"
+from pynlpl.clients.frogclient import FrogClient
+
+frogclient = FrogClient(${1:'localhost'},${2:port})
+for sentence in sentences:
+	#sentence is a str
+	response = frogclient.process(sentence)
+	words = []
+	for i, (word, lemma, morph, pos) in enumerate(response):
+		if word:
+			words.append(( word,lemma,morph,pos) )
+endsnippet
+
+
+
+snippet timbl "timbl classifier"
+import timbl
+classifier = timbl.TimblClassifier(${1:id}, ${2:timblopts} )
+
+#add some instances
+classifier.append( (1,0,0), 'financial')
+classifier.append( (0,1,0), 'furniture')
+classifier.append( (0,0,1), 'geographic')
+
+classifier.train()
+
+#classifier.save()
+classlabel, distribution, distance = classifier.classify( (1,0,0) )
+
+#or create a test file:
+#classifier.addinstance("testfile", (1,1,0),'geograpic' ) #this one will be wrongly classified as financial & furniture
+#classifier.test("testfile")
+
+print(classifier.getAccuracy())
+endsnippet
+
+
+
+
+snippet mp "multiprocess"
+"""Simple multiprocessing with Process"""
+from multiprocessing import Process
+
+def f(name):
+	print('hello', name)
+
+if __name__ == '__main__':
+	p = Process(target=f, args=('bob',))
+	p.start()
+	p.join()
+endsnippet
+
+
+
+snippet mppool "multiprocess pool"
+"""Simple multiprocessing with a Pool""
+from multiprocessing import Pool
+
+def f(x):
+	return x*x
+
+if __name__ == '__main__':
+	with Pool(processes=4) as pool:        # start 4 worker processes
+		result = pool.apply_async(f, [10]) # evaluate "f(10)" asynchronously
+		print(result.get(timeout=1))       # prints "100" unless your computer is *very* slow
+		print(pool.map(f, range(10)))      # prints "[0, 1, 4,..., 81]"
+endsnippet
+
+
+
+snippet sql "sql query (pymysql)"
+import pymysql
+conn = pymysql.connect(host=${1:'127.0.0.1'}, user=${2:'root'}, passwd=${3:None}, db='mysql')
+cur = conn.cursor()
+cur.execute("SELECT ${4:*} FROM ${5:somedatabase}")
+for r in cur:
+	print(r)
+cur.close()
+conn.close()
+endsnippet
+
+
+
+snippet linalg "linear algebra, solve (scipy)"
+import scipy.linalg
+x = linalg.solve(a,b)
+endsnippet
+
+
+
+snippet matrix "matrix (numpy)"
+np.mat([${1:[1,0,0],[0,1,0],[0,0,1]}])
+endsnippet
+
+
+
+snippet enc "encoding=utf-8"
+encoding='utf-8'
+endsnippet
+
+
+
+snippet mail "send mail via smtp server (smtplib)"
+import smtplib
+from email.mime.text import MIMEText
+
+msg = MIMEText(${1:"message"})
+
+msg['Subject'] = ${2:"subject"}
+from = msg['From'] = ${3:"from"}
+to = msg['To'] = ${4:"to"}
+
+s = smtplib.SMTP(${5:'localhost'})
+s.sendmail(from, [to], msg.as_string())
+s.quit()
+endsnippet
+
+
+
+snippet opb "os.path.basename"
+os.path.basename(${1})
+endsnippet
+
+
+
+snippet opd "os.path.dirname"
+os.path.dirname(${1})
+endsnippet
+
+
+
+snippet datetime "import datetime"
+from datetime import datetime
+endsnippet
+
+
+
+snippet now
+datetime.now()
+endsnippet
+
+
+
+snippet strftime
+.strftime("%Y-%m-%d %H:%M:%S")
+endsnippet
+
+
+
+snippet fromtimestamp "convert timestamp to datetime"
+datetime.fromtimestamp(${1:timestamp})
+endsnippet
+
+
+
+snippet timestamp "get current timestamp (unix epoch)"
+time.time()
+endsnippet
+
+
+
+snippet ix "import lxml"
+import lxml.etree
+endsnippet
+
+
+
+snippet idt "import datetime"
+import datetime.datetime
+endsnippet
+
+
+
+snippet im "import math"
+import math
+endsnippet
+
+
+
+snippet iop "import os.path"
+import os.path
+endsnippet
+
+
+
+snippet ii "common imports (os,sys)"
+import os
+import sys
+endsnippet
+
+
+
+snippet idd "import defaultdict"
+from collections import defaultdict
+endsnippet
+
+
+
+snippet inp "import numpy"
+import numpy as np
+endsnippet
+
+
+
+snippet isp "import scipy"
+import scipy
+endsnippet
+
+
+
+snippet now
+datetime.datetime.now()
+endsnippet
+
+
+
+snippet stripext "strip file extension"
+'.'join(${1:s}.split('.')[:-1])
+endsnippet
+
+
+
+snippet super "call super method"
+super(${1}, self).${2:__init__}()}
+endsnippet
+
+
+
+
+snippet pairwise "pairwise splitter"
+from itertools import tee, izip
+def pairwise(l)
+	"""[1,2,3,4] -> [(1,2),(2,3),(3,4)]"""
+	a, b = tee(l)
+	next(b, None)
+	return izip(a,b)
+endsnippet
+
+
+
+snippet pairwise2
+def pairwise2(l)
+	"""[1,2,3,4] -> [(1,2),(3,4)]"""
+	a = iter(l)
+	return zip(a,a)
+endsnippet
+
+
+
+snippet httpserver "http server (twisted)"
+from twisted.web import server, resource
+from twisted.internet import reactor
+
+class Resource(resource.Resource):
+	isLeaf = True
+	numberRequests = 0
+
+	def __init__(self, settings):
+		self.settings = settings
+
+	def render_GET(self, request):
+		self.numberRequests += 1
+		if b'input' in request.args:
+			request.setHeader(b"content-type", b"application/xml")
+			print("Server input: ", request.args[b'input'][0], file=sys.stderr)
+			return ""
+		else:
+			request.setHeader(b"content-type", b"text/html")
+			return b"""<?xml version="1.0" encoding="utf-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><html>
+<head>
+	<meta http-equiv="content-type" content="application/xhtml+xml; charset=utf-8"/>
+	<title></title>
+</head>
+<body>
+</body>
+</html>"""
+
+class Server:
+	def __init__(self, port, settings):
+		assert isinstance(port, int)
+		reactor.listenTCP(port, server.Site(Resource(settings)))
+		reactor.run()
+endsnippet
+
+
+
+snippet tcpserver "tcp server (twisted)"
+from twisted.internet import protocol, reactor
+from twisted.protocols import basic
+
+class Protocol(basic.LineReceiver):
+	def lineReceived(self, sentence):
+		#self.factory.settings
+		self.sendLine(sentence) #echo back
+
+class Factory(protocol.ServerFactory):
+	protocol = Protocol
+
+	def __init__(self, settings):
+		self.settings = settings #custom thing, just an example
+
+
+class Server:
+	def __init__(self, settings, port=12346):
+		reactor.listenTCP(port, Factory(settings))
+		reactor.run()
+
+
+
+snippet tcpclient "tcp client (socket)"
+import socket
+
+class Client():
+	def __init__(self,host= "localhost",port=12346):
+		self.BUFSIZE = 1024
+		self.socket = socket.socket(socket.AF_INET,socket.SOCK_STREAM) #Create the socket
+		self.socket.settimeout(120)
+		assert isinstance(port,int)
+		self.socket.connect((host, port)) #Connect to server
+
+	def process(self, sentence):
+		self.socket.send(sentence+ "\r\n")
+		return self.socket.recv(self.BUFSIZE).strip()
+endsnippet
+
+
+
+snippet isint
+isinstance($1,int)
+endsnippet
+
+
+
+snippet isstr
+isinstance($1,str)
+endsnippet
+
+
+
+snippet isfloat
+isinstance($1,float)
+endsnippet
+
+
+
+snippet islist
+isinstance($1,list)
+endsnippet
+
+
+
+snippet istuple
+isinstance($1,tuple)
+endsnippet
+
+
+
+snippet isseries
+isinstance($1, (list,set,tuple))
+endsnippet
+
+
+snippet isdict
+isinstance($1,dict)
+endsnippet
+
+
+
+snippet isa
+isinstance($1,${2:type})
+endsnippet
+
+
+
+snippet sf
+self.${1} = $1
+endsnippet
+
+
+
+snippet kwg
+kwargs.get('$1',${2:None})
+endsnippet
+
+
+
+snippet initkwg
+self.${1:var_name} = kwargs.get('$1', ${2:None})
+endsnippet
+
+
+
+snippet kwgl
+${1:var_name} = kwargs.get('$1', ${2:None})
+endsnippet
+
+
+
+snippet writefile "save/write file"
+with open(${1:filename},'w',encoding='utf-8') as f:
+	f.write(${2})
+endsnippet
+
+
+
+snippet readfile "read/load file"
+with open(${1:filename},'r',encoding='utf-8') as f:
+	f.read()
+endsnippet
+
+
+
+snippet classeval "class evaluation (pynlpl)"
+from pynlpl.evaluation import ClassEvaluation
+e = ClassEvaluation(${1:goals}, ${2:observations})
+print(e)
+print(e.confusionmatrix())
+#e.accuracy(cls), fscore, recall, precision etc
+endsnippet
+
+
+
+snippet readjson "read/load json"
+with open(${1:filename},"r", encoding="utf-8") as f:
+	${2:data} = json.load(f)
+endsnippet
+
+
+
+snippet writejson "write/save json"
+with open(${1:filename},"w", encoding="utf-8") as f:
+	json.dump(${2:data}, f, ensure_ascii=False, indent=4)
+endsnippet
+
+
+
+snippet printjson "print json"
+print(json.dumps(${1:data}, ensure_ascii=False, indent=4))
+endsnippet
+
+
+
+snippet pyyaml "import yaml"
+import yaml
+endsnippet
+
+
+
+snippet folia "import folia"
+import folia.main as folia
+endsnippet
+
+
+
+snippet readfolia "read/load folia document"
+doc = folia.Document(file="${1:filename})
+endsnippet
+
+
+
+snippet readyaml "read/load yaml file"
+with open("${1:filename}",'r', encoding="utf-8") as f:
+	yaml.load(f, loader=yaml.FullLoader)
+endsnippet
+
+
+
+snippet writeyaml "write/save yaml file"
+with open("${1:filename}",'r', encoding="utf-8") as f:
+	yaml.dump(${2:data},f)
+endsnippet
+
+
+
+snippet tqdm "Import progress bar (tqdm)"
+from tqdm import tqdm
+endsnippet
+
+
+
+snippet walk "walk over files and directories (os.walk, glob alternative)"
+for root, dirs, ffiles in os.walk(${1:dir}):
+	for filename in files:
+		filepath = os.path.join(root, filename)
+endsnippet
+
+
+
+snippet pathjoin
+alias pj
+os.path.join($1,$2)
+endsnippet
+
+
+
+snippet fileexists
+alias fex
+os.path.exists($1)
+endsnippet
+
+
+
+snippet threading "full threading example (threading)"
+import threading
+
+class ${1:MyThread}(threading.Thread):
+   def __init__(self, *args,**kwargs):
+	  threading.Thread.__init__(self)
+
+   def run(self):
+		pass
+
+lock = threading.Lock() #lock with lock.acquire(), release with lock.release()
+
+threads = []
+threads.append( $1() , $1())
+
+for thread in threads:
+	thread.start()
+
+
+#wait for all threads to complete
+for t in threads:
+	t.join()
+endsnippet
+
+
+
+
+snippet threadclass "thread class (threading)"
+class ${1:MyThread}(threading.Thread):
+   def __init__(self, *args,**kwargs):
+	  threading.Thread.__init__(self)
+
+   def run(self):
+	  pass
+endsnippet
+
+
+
+snippet flask "webservice skeleton (flask)"
+from flask import Flask, abort, redirect, render_template, request
+
+app = Flask(__name__)
+
+@app.route("/")
+def index():
+	return render_template("index.html")
+
+@app.route("/example/<name>", methods=["GET","POST"])
+def example(name=None):
+	data = None
+	if request.method == 'POST' and 'data' in request.form:
+		data = request.form["data"] #use request.files for file uploads and invoke the save() mtehods)
+	return render_template("index.html", name=name, data=data)
+
+@app.route("/redirect")
+def redirect():
+	return redirect(flask.url_for("index"))
+
+@app.route("/nonexistant")
+def page_not_found():
+	abort(404)
+endsnippet
+
+
+
+snippet regex "find regular expression (re)"
+for match in re.findall(${1:pattern},${2:string}):
+	#(hint: match will be a tuple if the regex contains groups)
+endsnippet
+
+
+
+snippet exit
+sys.exit(${1:1})
+endsnippet
+
+
+
+snippet mkdir
+os.mkdir(${1:dir})
+endsnippet
+
+

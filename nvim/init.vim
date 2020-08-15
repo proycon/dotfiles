@@ -45,7 +45,8 @@ endif
 
 "
 " Snippets
-Plug 'Shougo/neosnippet' | Plug 'Shougo/neosnippet-snippets' "snippets, depends on deoplete
+" Plug 'Shougo/neosnippet' | Plug 'Shougo/neosnippet-snippets' "snippets, depends on deoplete
+Plug 'SirVer/ultisnips' | Plug 'honza/vim-snippets' "snippets, depends on deoplete
 
 " Helpers
 "Plug 'Shougo/denite.nvim' "ctrl-p like behaviour
@@ -393,7 +394,8 @@ nnoremap <C-b> :Buffers<cr>
 nnoremap <C-n> :BLines<cr>
 nnoremap <C-N> :Lines<cr>
 nnoremap <C-g> :Commits<cr>
-nnoremap <C-m> :Marks<cr>
+"nnoremap <C-m> :Marks<cr>
+nnoremap <C-s> :Snippets<cr>
 
 nnoremap <leader>o :GitFiles<cr>
 nnoremap <leader>O :Files<cr>
@@ -401,6 +403,8 @@ nnoremap <leader>b :Buffers<cr>
 nnoremap <leader>n :BLines<cr>
 nnoremap <leader>N :Lines<cr>
 nnoremap <leader>r :Tags<cr>
+nnoremap <leader>s :Snippets<cr>
+nnoremap <leader>m :Marks<cr>
 
 " session management
 let g:session_autosave = 'no'
@@ -542,15 +546,21 @@ nmap м m
 
 "/----------- COC.NVIM ---------------
 
-imap <expr><TAB> neosnippet#expandable_or_jumpable() ? "\<Plug>(neosnippet_expand_or_jump)" : pumvisible() ? "\<C-n>" : "\<TAB>"
-smap <expr><TAB> neosnippet#expandable_or_jumpable() ? "\<Plug>(neosnippet_expand_or_jump)" : "\<TAB>"
+let g:UltiSnipsExpandTrigger="<tab>"
+let g:UltiSnipsJumpForwardTrigger="<c-b>"
+let g:UltiSnipsJumpBackwardTrigger="<c-z>"
 
-let g:neosnippet#snippets_directory = "/home/proycon/dotfiles/nvim/snippets"
-let g:neosnippet#enable_snipmate_compatibility = 1
-let g:neosnippet#expand_word_boundary = 1
-imap <C-k> <Plug>(neosnippet_expand_or_jump)
-smap <C-k> <Plug>(neosnippet_expand_or_jump)
-xmap <C-k> <Plug>(neosnippet_expand_target)
+
+"imap <expr><TAB> neosnippet#expandable_or_jumpable() ? "\<Plug>(neosnippet_expand_or_jump)" : pumvisible() ? "\<C-n>" : "\<TAB>"
+"smap <expr><TAB> neosnippet#expandable_or_jumpable() ? "\<Plug>(neosnippet_expand_or_jump)" : "\<TAB>"
+
+let g:UltiSnipsSnippetDirectories=["UltiSnips"]
+"let g:neosnippet#snippets_directory = "/home/proycon/dotfiles/nvim/snippets"
+"let g:neosnippet#enable_snipmate_compatibility = 1
+"let g:neosnippet#expand_word_boundary = 1
+"imap <C-k> <Plug>(neosnippet_expand_or_jump)
+"smap <C-k> <Plug>(neosnippet_expand_or_jump)
+"xmap <C-k> <Plug>(neosnippet_expand_target)
 
 
 " neomake (DISABLED)
@@ -601,6 +611,8 @@ map <F10> :Gpush<CR>
 "ansible-vim
 let g:ansible_name_highlight = 'b'
 let g:ansible_extra_keywords_highlight = 1
+
+let g:tex_flavor = "pdflatex"
 
 "vimpyter
 autocmd Filetype ipynb nmap <silent><Leader>b :VimpyterInsertPythonBlock<CR>
