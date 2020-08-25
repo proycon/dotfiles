@@ -275,7 +275,7 @@ alias lq="source ~/.sgesh"
 alias wtr="curl http://wttr.in"
 alias wttr="curl http://wttr.in"
 alias weather="curl http://wttr.in"
-alias btc="curl eur.rate.sx/btc@60d"
+alias btc="curl eur.rate.sx/btc@30d"
 
 
 cheat() {

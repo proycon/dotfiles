@@ -12,7 +12,9 @@ fi
 export SXMO_RTCWAKEINTERVAL=120
 export SXMO_LOCK_SCREEN_OFF=1
 
-sxmo_modemmonitortoggle.sh &
+if ! pgrep -f sxmo_modemmonitor.sh; then
+    sxmo_modemmonitortoggle.sh &
+fi
 ~/dotfiles/homecommand.sh status &
 ~/dotfiles/notifyclient.sh &
 
