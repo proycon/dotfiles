@@ -208,6 +208,7 @@ fi
 
 
 if [ $SXMO -eq 1 ]; then
+    ln -sf ~/dotfiles/sxmo/profile ~/.profile
     while true; do
         echo -n "Rebuild sxmo [yn] "
         read yn

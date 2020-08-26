@@ -5,12 +5,7 @@ amixer set "Line Out" 50%
 feh --bg-fill -z ~/dotfiles/media/pine.jpg
 mpv --quiet --no-video ~/dotfiles/media/cylontune_low.ogg &
 
-if [ -e ~/dotfiles/sxmo/initsecrets.sh ]; then
-    source ~/dotfiles/sxmo/initsecrets.sh
-fi
-
-export SXMO_RTCWAKEINTERVAL=120
-export SXMO_LOCK_SCREEN_OFF=1
+source ~/.profile
 
 if ! pgrep -f sxmo_modemmonitor.sh; then
     sxmo_modemmonitortoggle.sh &
