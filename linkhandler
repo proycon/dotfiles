@@ -12,6 +12,9 @@ scihub="http://sci-hub.tw/"
 if [ -z "$BROWSER" ]; then
     BROWSER=firefox
 fi
+if [ -z "$DISPLAY" ]; then
+    BROWSER=w3m
+fi
 if [ -z "$TERMINAL" ]; then
     TERMINAL=urxvt
 fi
