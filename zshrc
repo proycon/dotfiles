@@ -74,6 +74,9 @@ alias gpp='git push origin gh-pages'
 alias mp="ncmpcpp -b ~/dotfiles/ncmpcpp.bindings"
 alias f='cd $(cat ${XDG_CONFIG_HOME:-$HOME/.config}/directories | fzf)'
 alias hs="~/dotfiles/homestatus.sh"
+if [ ! -z "$DISPLAY" ]; then
+    alias lf="~/dotfiles/lf/lfrun" #wrapper for ueberzug support
+fi
 #colours
 #which colorgcc > /dev/null 2> /dev/null
 #if (( $? == 0 )); then
