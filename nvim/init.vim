@@ -549,9 +549,11 @@ nmap м m
 
 "/----------- COC.NVIM ---------------
 
-let g:UltiSnipsExpandTrigger="<tab>"
+"let g:UltiSnipsExpandTrigger="<tab>" "interferes with normal autocompletion
+let g:UltiSnipsExpandTrigger= "<Plug>(ultisnips_expand)"
 let g:UltiSnipsJumpForwardTrigger="<c-b>"
 let g:UltiSnipsJumpBackwardTrigger="<c-z>"
+let g:UltiSnipsRemoveSelectModeMappings = 0
 
 
 "imap <expr><TAB> neosnippet#expandable_or_jumpable() ? "\<Plug>(neosnippet_expand_or_jump)" : pumvisible() ? "\<C-n>" : "\<TAB>"
