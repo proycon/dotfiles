@@ -47,24 +47,16 @@ endif
 
 "
 " Snippets
-" Plug 'Shougo/neosnippet' | Plug 'Shougo/neosnippet-snippets' "snippets, depends on deoplete
 Plug 'SirVer/ultisnips' | Plug 'honza/vim-snippets' "snippets, depends on deoplete
 
 " Helpers
-"Plug 'Shougo/denite.nvim' "ctrl-p like behaviour
 Plug 'Shougo/vimproc.vim', { 'do': 'make' } "asynchronous execution library for Vim
-"Plug 'haya14busa/incsearch.vim'
 Plug 'tpope/vim-surround' "change surround tags (cs'NEW)
 Plug 'vim-scripts/matchit.zip'
 Plug 'easymotion/vim-easymotion' "highlights possible movement choices
 Plug 'airblade/vim-rooter' "open relative to git repo
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
-"Plug 'kassio/neoterm'
-"Plug 'edkolev/promptline.vim'
-"Plug 'xolox/vim-misc' | Plug 'xolox/vim-session'
-"Plug 'benmills/vimux' "vim/tmux integration
-"Plug 'julienr/vim-cellmode' "sends codeblocks to ipython in tmux pane
 Plug 'jeetsukumaran/vim-markology' "mark visualisation/navigation/management
 Plug 'frioux/vim-lost' "provides a :Lost command to find where you are
 Plug 'skywind3000/asyncrun.vim' "Run shell commands asynchronously
@@ -72,26 +64,20 @@ Plug 'skywind3000/asyncrun.vim' "Run shell commands asynchronously
 
 " IDE
 Plug 'scrooloose/nerdtree', { 'on':  ['NERDTreeToggle', 'NERDTree'] }
-"Plug 'neomake/neomake' "Asynchronous linting and make framework for Neovim/Vim
 Plug 'tpope/vim-fugitive'
-"Plug 'tpope/rhubarb'
-"Plug 'gregsexton/gitv' "gitk for vim
 Plug 'vim-scripts/gitignore'
 Plug 'majutsushi/tagbar' "tag (class/function) browser
 Plug 'vim-scripts/indentpython.vim'
 Plug 'vim-airline/vim-airline' | Plug 'vim-airline/vim-airline-themes'
-"Plug 'tmhedberg/SimpylFold' "folding for python
 Plug 'Konfekt/FastFold'
 Plug 'airblade/vim-gitgutter' "git diff in gutter
 Plug 'lervag/vimtex'
 Plug 'nathanaelkane/vim-indent-guides', { 'for': 'python' }
 Plug 'rust-lang/rust.vim' "for Rust
-"Plug 'racer-rust/vim-racer' "(disabled in favour of coc-rls)
 Plug 'cespare/vim-toml' "for toml files
 Plug 'posva/vim-vue' "for vue.js
 Plug 'leafgarland/typescript-vim' "Typescript syntax highlighting (and more?)
 Plug 'fatih/vim-go' "Go
-Plug 'szymonmaszke/vimpyter' "vim-plug
 
 " Misc
 Plug 'junegunn/goyo.vim' "distraction free writing
@@ -101,7 +87,6 @@ Plug 'rrethy/vim-hexokinase', { 'do': 'make hexokinase' } "colour hex codes
 
 " Syntax helpers
 Plug 'pearofducks/ansible-vim' "highlighting for ansible
-Plug 'freitass/todo.txt-vim', { 'for': 'todo.txt' }
 Plug 'plasticboy/vim-markdown'
 Plug 'chrisbra/csv.vim'
 
@@ -111,6 +96,7 @@ Plug 'morhetz/gruvbox'
 
 "On-the-fly GnuPG
 Plug 'jamessan/vim-gnupg'
+
 
 call plug#end()
 
@@ -157,9 +143,7 @@ map <Leader>. <esc>:bn<CR>
 map <Leader>/ <esc>:bp<CR>
 map <Leader>= <esc>:bn<CR>
 map <Leader>- <esc>:bp<CR>
-map <Leader>, <esc>:e#<CR>
 map <Leader>x <esc>:bd<CR>
-map <Leader><Space> <esc>:e#<CR>
 
 map <Leader>j <c-w>j
 map <Leader>k <c-w>k
@@ -173,15 +157,6 @@ map <leader>E <esc>:bufdo e<CR>
 map <leader>v :vsplit<CR>
 map <leader>H :split<CR>
 map <leader>w :w<CR>
-"map <leader>1 :b1<CR>
-"map <leader>2 :b2<CR>
-"map <leader>3 :b3<CR>
-"map <leader>4 :b4<CR>
-"map <leader>5 :b5<CR>
-"map <leader>6 :b6<CR>
-"map <leader>7 :b7<CR>
-"map <leader>8 :b8<CR>
-"map <leader>9 :b9<CR>
 nmap <leader>1 <Plug>AirlineSelectTab1
 nmap <leader>2 <Plug>AirlineSelectTab2
 nmap <leader>3 <Plug>AirlineSelectTab3
@@ -191,8 +166,6 @@ nmap <leader>6 <Plug>AirlineSelectTab6
 nmap <leader>7 <Plug>AirlineSelectTab7
 nmap <leader>8 <Plug>AirlineSelectTab8
 nmap <leader>9 <Plug>AirlineSelectTab9
-"nmap <leader>- <Plug>AirlineSelectPrevTab
-"nmap <leader>+ <Plug>AirlineSelectNextTab
 
 
 map <leader>10 :b10<CR>
@@ -257,10 +230,6 @@ nmap <Leader>y :.w! ~/.vbuf<CR>:!xsel -i -b < ~/.vbuf<CR>
 nmap <Leader>p :r ~/.vbuf<CR>
 nmap <Leader>P :-1r ~/.vbuf<CR>
 
-command! Caj !scp proycon@applejack.science.ru.nl:~/.vbuf ~/
-command! C2aj !scp ~/.vbuf proycon@applejack.science.ru.nl:~/
-command! Cap !scp proycon@anaproy.nl:~/.vbuf ~/
-command! C2ap !scp ~/.vbuf proycon@anaproy.nl:~/
 
 vnoremap <Leader>s :sort<CR>
 
@@ -413,50 +382,6 @@ nnoremap <leader>m :Marks<cr>
 let g:session_autosave = 'no'
 
 
-" deoplete + neosnippet + autopairs changes (DEOPLETE IS DISABLED!)
-"let g:deoplete#auto_complete_start_length = 1
-"let g:deoplete#enable_at_startup = 1
-"let g:deoplete#enable_smart_case = 1
-"let g:deoplete#sources#jedi#show_docstring = 1
-"imap <expr><TAB> pumvisible() ? "\<C-n>" : (neosnippet#expandable_or_jumpable() ? "\<Plug>(neosnippet_expand_or_jump)" : "\<TAB>")
-"imap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<S-TAB>"
-"imap <expr><CR> pumvisible() ? deoplete#mappings#close_popup() : "<CR>"
-" Let <Tab> also do completion
-"inoremap <silent><expr> <Tab> pumvisible() ? "\<C-n>" : deoplete#mappings#manual_complete()
-
-"let g:deoplete#ignore_sources = get(g:, 'deoplete#ignore_sources', {})
-"let g:deoplete#ignore_sources.php = ['omni']
-"let g:deoplete#sources#ternjs#case_insensitive = 1
-"Add extra filetypes for javascript
-"let g:deoplete#sources#ternjs#filetypes = [ 'jsx', 'javascript.jsx',  'vue' ]
-
-" JEDI IS NOT USED!
-"let g:jedi#auto_vim_configuration = 0
-"let g:jedi#goto_assignments_command = '<Leader>ga'  " dynamically done for ft=python.
-"let g:jedi#goto_definitions_command = '<Leader>gd'  " dynamically done for ft=python.
-"let g:jedi#use_tabs_not_buffers = 0  " current default is 1.
-"let g:jedi#rename_command = '<Leader>gR'
-"let g:jedi#usages_command = '<Leader>gu'
-"let g:jedi#completions_enabled = 0 "deoplete handles this already
-"let g:jedi#smart_auto_mappings = 1
-
-" Unite/ref and pydoc are more useful.
-"let g:jedi#documentation_command = '<Leader>_K'
-"let g:jedi#auto_close_doc = 1
-
-"Rust
-"let g:deoplete#sources#rust#racer_binary = "/home/proycon/.cargo/bin/racer" "for deoplete-rust
-"let g:deoplete#sources#rust#rust_source_path = "/home/proycon/rust/src"
-
-"Rust (vim-racer) (NOT USED!)
-"let g:racer_cmd = "/home/proycon/.cargo/bin/racer" "for vim-racer
-"let g:racer_experimental_completer = 0
-"au FileType rust nmap gd <Plug>(rust-def)
-"au FileType rust nmap <leader>gd <Plug>(rust-def)
-"au FileType rust nmap K <Plug>(rust-doc)
-"
-"i
-
 " ----------- COC.NVIM ---------------
 " don't give |ins-completion-menu| messages.
 set shortmess+=c
@@ -516,8 +441,6 @@ set cmdheight=2
 " Highlight symbol under cursor on CursorHold
 autocmd CursorHold * silent call CocActionAsync('highlight')
 
-" Remap for rename current word
-"nmap <leader>rn <Plug>(coc-rename)
 
 augroup mygroup
   autocmd!
@@ -619,10 +542,6 @@ let g:ansible_extra_keywords_highlight = 1
 
 let g:tex_flavor = "pdflatex"
 
-"vimpyter
-autocmd Filetype ipynb nmap <silent><Leader>b :VimpyterInsertPythonBlock<CR>
-autocmd Filetype ipynb nmap <silent><Leader>j :VimpyterStartJupyter<CR>
-autocmd Filetype ipynb nmap <silent><Leader>n :VimpyterStartNteract<CR>
 
 
 augroup neovim
