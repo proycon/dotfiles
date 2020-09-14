@@ -47,7 +47,8 @@ endif
 
 "
 " Snippets
-Plug 'SirVer/ultisnips' | Plug 'honza/vim-snippets' "snippets, depends on deoplete
+" (no need for this anymore, coc-snippets handles everything)
+" Plug 'SirVer/ultisnips' | Plug 'honza/vim-snippets' "snippets, depends on deoplete
 
 " Helpers
 Plug 'Shougo/vimproc.vim', { 'do': 'make' } "asynchronous execution library for Vim
