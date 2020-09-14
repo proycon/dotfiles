@@ -30,7 +30,7 @@ call plug#begin('~/.config/nvim/plugged')
 "
 "Completions and more using Coc
 if has('nvim')
-    Plug 'neoclide/coc.nvim', {'tag': '*', 'do': './install.sh'}
+    Plug 'neoclide/coc.nvim', {'branch': 'release'}
     Plug 'neoclide/coc-python', {'do': 'yarn install --frozen-lockfile'}
     Plug 'neoclide/coc-eslint', {'do': 'yarn install --frozen-lockfile'}
     Plug 'neoclide/coc-rls', {'do': 'yarn install --frozen-lockfile'}
@@ -40,8 +40,8 @@ if has('nvim')
     Plug 'neoclide/coc-yaml', {'do': 'yarn install --frozen-lockfile'}
     Plug 'neoclide/coc-vimtex', {'do': 'yarn install --frozen-lockfile'}
     Plug 'neoclide/coc-vetur', {'do': 'yarn install --frozen-lockfile'} "for Vue.js
-    Plug 'neoclide/coc-ultisnips', {'do': 'yarn install --frozen-lockfile'}
     Plug 'neoclide/coc-java', {'do': 'yarn install --frozen-lockfile'}
+    Plug 'neoclide/coc-snippets', {'do': 'yarn install --frozen-lockfile'}
     "Plug 'danielwelch/coc-homeassistant', {'do': 'yarn install --frozen-lockfile'}
 endif
 
