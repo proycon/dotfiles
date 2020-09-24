@@ -5,11 +5,11 @@ source ~/.profile
 sxmo_audioout.sh Speaker
 amixer sset 'Line Out Source' 'Mono Differential','Mono Differential'
 amixer set "Line Out" 50%
-feh --bg-fill -z ~/dotfiles/media/pine.jpg
 mpv --quiet --no-video ~/dotfiles/media/cylontune_low.ogg &
+feh --bg-fill -z ~/dotfiles/media/pine.jpg
 
 if [ -e ~/dotfiles/sxmo/initsecrets.sh ]; then
-    source ~/dotfiles/sxmo/initsecrets.sh
+    ~/dotfiles/sxmo/initsecrets.sh
 fi
 
 if ! pgrep -f sxmo_modemmonitor.sh; then
