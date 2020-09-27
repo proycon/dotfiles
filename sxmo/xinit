@@ -13,7 +13,7 @@ if [ -e ~/dotfiles/sxmo/initsecrets.sh ]; then
 fi
 
 if ! pgrep -f sxmo_modemmonitor.sh; then
-    sxmo_modemmonitortoggle.sh &
+    sleep 30 && sxmo_modemmonitortoggle.sh &
 fi
 ~/dotfiles/homecommand.sh status &
 ~/dotfiles/notifyclient.sh &

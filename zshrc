@@ -482,3 +482,6 @@ export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH:$
 if [ -e /home/proycon/.config/broot/launcher/bash/br ]; then
     source /home/proycon/.config/broot/launcher/bash/br
 fi
+
+# added by travis gem
+[ ! -s /home/proycon/.travis/travis.sh ] || source /home/proycon/.travis/travis.sh
