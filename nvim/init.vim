@@ -85,6 +85,7 @@ Plug 'junegunn/goyo.vim' "distraction free writing
 Plug 'miyakogi/seiya.vim' "transparent background
 Plug 'tpope/vim-characterize' "unicode information on 'ga' character inspection
 Plug 'rrethy/vim-hexokinase', { 'do': 'make hexokinase' } "colour hex codes
+Plug 'qpkorr/vim-renamer' "vim mass file renamer
 
 " Syntax helpers
 Plug 'pearofducks/ansible-vim' "highlighting for ansible
