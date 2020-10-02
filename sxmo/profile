@@ -1,3 +1,4 @@
-export BROWSER="firefox"
+export BROWSER="surf"
 export SXMO_RTCWAKEINTERVAL=120
 export SXMO_LOCK_SCREEN_OFF=1
+export DMENU_WRAP_AROUND=1

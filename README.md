@@ -9,15 +9,14 @@ Software
 Current setup:
 
 * **OS**: Arch Linux
-* **Window Manager**: [i3-gaps](https://github.com/Airblader/i3)
-* **Bar**: [polybar](https://github.com/jaagr/polybar)
+* **Window Manager**: dwm
 * **Shell**: zsh
-* **Terminal:** urxvt
+* **Terminal:** alacritty
 * **Terminal Multiplexer**: tmux
 * **Editor**: neovim
 * **Browser**: firefox
 * **Music player**: ncmpcpp + mopidy
-* **Mail**: alot
+* **Mail**: neomutt
 * **Chat**: weechat + bitblee (IRC+XMPP+Twitter+Telegram+Discord)
 
 Key bindings

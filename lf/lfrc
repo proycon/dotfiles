@@ -22,7 +22,7 @@ cmd open ${{
     case $(file --mime-type $f -b) in
 	image/vnd.djvu|application/pdf|application/octet-stream) setsid zathura $fx >/dev/null 2>&1 & ;;
     text/troff) man ./ $f;;
-    text/*) $EDITOR $fx;;
+    text/*) $PAGER $fx;;
 	image/x-xcf) setsid gimp $f >/dev/null 2>&1 & ;;
 	image/svg+xml) setsid inkscape $f >/dev/null 2>&1 & ;;
 	image/*) rotdir $f | grep -i "\.\(png\|jpg\|jpeg\|gif\|webp\)\(_large\)*$" | setsid sxiv -aio 2>/dev/null | lf-select & ;;
