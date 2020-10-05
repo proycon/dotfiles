@@ -37,7 +37,10 @@ set send_charset = "utf-8"
 
 set to_chars = " »›-‹L"
 set sidebar_format = '%B%?F? [%F]?%* %?N?%N/? %?S?%S?'
-set index_format='%4C %Z %<[y?%<[m?%<[d?%[%H:%M       ]&%[%a %b %d  ]>&%[%b %d]>&%[%b %d, %Y]> %-25.25L %?E?%2.e/%2.E&     ? %?Gi?%Gi &?%?Gl?%Gl &?%?Gn?%Gn &?%?Gg?%Gg &?%?Gw ?%Gw &?%?GI?%GI &?%?GL?%GL &?%?Gf?%Gf &?%?Gp?%Gp &?%?Gu?%Gu &?%?Gt?%Gt &?%?Gr?%Gr &?%?GW?%GW &? %s'
+#set index_format='%4C %Z %<[y?%<[m?%<[d?%[%H:%M       ]&%[%a %b %d  ]>&%[%b %d]>&%[%b %d, %Y]> %-25.25L %?E?%2.e/%2.E&? %g %s'
+set index_format='%4C %Z %<[y?%<[m?%<[d?%10[     %H:%M  ]&%10[%a %b %d  ]>&%12[%b %d  ]>&%10[%b %d, %Y]> %-25.25L %?E?%2.e/%2.E&     ? %g %?GI?%GI &?%?GL?%GL &?%?Gt?%Gt &?%?Gr?%Gr &?%?GW?%GW &? %s'
+#set index_format='%4C %Z %<[y?%<[m?%<[d?%[%H:%M       ]&%[%a %b %d  ]>&%[%b %d]>&%[%b %d, %Y]> %-25.25L %?E?%2.e/%2.E&     ? %?Gi?%Gi &?%?Gl?%Gl &?%?Gn?%Gn &?%?Gg?%Gg &?%?Gw ?%Gw &?%?GI?%GI &?%?GL?%GL &?%?Gf?%Gf &?%?Gp?%Gp &?%?Gu?%Gu &?%?Gt?%Gt &?%?Gr?%Gr &?%?GW?%GW &? %s'
+#set index_format='%4C %Z %<[y?%<[m?%<[d?%[%H:%M       ]&%[%a %b %d  ]>&%[%b %d]>&%[%b %d, %Y]> %-25.25L %?E?%2.e/%2.E&     ? %?Gi?%Gi &?%?Gl?%Gl &?%?Gn?%Gn &?%?Gg?%Gg &?%?Gw ?%Gw &?%?GI?%GI &?%?GL?%GL &?%?Gf?%Gf &?%?Gp?%Gp &?%?Gu?%Gu &?%?Gt?%Gt &?%?Gr?%Gr &?%?GW?%GW &? %s'
 set pager_format = '-%Z- %e/%E: %-20.20n  %25.25s%* %g (%P)'
 #
 # The default index_format is:
@@ -147,9 +150,14 @@ set abort_noattach_regex = "\\<attachments?|attached|bijlagen?|bijgevoegd)\\>"
 
 macro index \\ "<vfolder-from-query>"
 macro index,pager \ea "<shell-escape>$HOME/bin/updatemail.sh<enter>"
+macro index,pager ./ "<shell-escape>$HOME/bin/updatemail.sh<enter>"
 macro index \eg "<shell-escape>$HOME/bin/updatemail-quick.sh<enter>"
 bind index,pager \eA create-alias
 bind index,pager a noop
+bind pager h exit
+bind pager l exit
+bind index - collapse-thread
+bind pager H display-toggle-weed
 bind index y noop
 macro index,pager a "<modify-labels-then-hide>-inbox,-unread\n"
 macro index,pager A ";<modify-labels-then-hide>-inbox,-unread\n<sync-mailbox>"
@@ -180,27 +188,55 @@ macro index,pager ,3 "<change-vfolder>work\n<collapse-all>\n"
 macro index,pager ,4 "<change-vfolder>notwork\n<collapse-all>\n"
 macro index,pager ,5 "<change-vfolder>sent<collapse-all>\n\n"
 macro index,pager ,r "<vfolder-from-query>tag:inbox AND tag:reply\n"
+macro index,pager ,y "<vfolder-from-query>tag:inbox AND tag:reply\n"
 macro index,pager ,t "<vfolder-from-query>tag:inbox AND tag:todo\n"
 macro index,pager ,w "<vfolder-from-query>tag:inbox AND tag:waiting\n"
 macro index,pager ,6 "<vfolder-from-query>tag:spam\n"
 
 # Replace some tags with icons
 # tag-transforms tag transformed-string { tag transformed-string ...}
-tag-transforms "inbox"   "📩"   \
+tag-transforms "inbox"   "📥"   \
                "unread"  "📧"   \
-               "replied" "🔁"  \
-               "sent"    "➥"  \
-               "deleted" "🗴" \
+               "replied" "💬"  \
+               "reply" "🔄reply" \
+               "todo" "📅todo" \
+               "interesting" "💡" \
+               "sent"    "👉"  \
+               "spam"    "🏭"  \
+               "deleted" "❌" \
+               "killed" "❌" \
                "invites" "📆" \
                "signed" "🔑" \
-               "encrypted" "☑" \
-               "not" "📣" \
-               "work" "工" \
+               "encrypted" "🔒" \
+               "attachment" "📎" \
+               "not" "📯" \
+               "errnot" "📣" \
+               "work" "💼" \
                "personal" "👤" \
                "familie" "👪" \
                "lists" "📜" \
                "github" "" \
-               "debian" ""
+               "patch" "" \
+               "debian" "" \
+               "ubuntu" "" \
+               "rust" "🦀" \
+               "frog" "🐸" \
+               "folia" "🥬" \
+               "flat" "🥬" \
+               "travis" "🤖" \
+               "sysadmin" "💻" \
+               "homeautomation" "🏡" \
+               "lamachine" "🦙" \
+               "university" "🎓" \
+               "finances" "💰" \
+               "psi" "🔱" \
+               "administrative" "📊" \
+               "politics" "🕊"\
+               "clam" "🐚" \
+               "sxmo" "📱" \
+               "suckless" ""
+
+
 
 #The formats must start with 'G' and the entire sequence is case sensitive.
 #tag-formats tag format-string { tag format-string ...}
@@ -208,6 +244,7 @@ tag-formats "inbox"   "Gi" \
             "sent"    "GS" \
             "todo"    "Gt" \
             "reply"    "Gr" \
+            "replied"    "Greplied" \
             "interesting"    "GI" \
             "lowpriority"    "GL" \
             "lists"    "Gl" \
@@ -221,5 +258,13 @@ tag-formats "inbox"   "Gi" \
             "familie"  "Gf"  \
             "not"  "Gn"  \
             "unilang"  "Gu" \
-            "github"  "Gg"
+            "github"  "Gg" \
+            "sysadmin"  "Gy" \
+            "patch"  "GP" \
+            "homeautomation"  "Gh" \
+            "frog"  "GF" \
+            "folia"  "GF2" \
+            "travis"  "GT" \
+            "lamachine"  "GM"
+
 
