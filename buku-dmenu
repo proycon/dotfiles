@@ -1,0 +1,32 @@
+# buku-dmenu - a bash script to open buku bookmarks using dmenu
+#
+# Copyright 2018 Ben Oliver
+# ben@bfoliver.com
+#
+# This program is free software: you can redistribute it and/or modify
+# it under the terms of the GNU General Public License as published by
+# the Free Software Foundation, either version 3 of the License, or
+# (at your option) any later version.
+# 
+# This program is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+# GNU General Public License for more details.
+# 
+# You should have received a copy of the GNU General Public License
+# along with this program.  If not, see <https://www.gnu.org/licenses/>.
+
+#!/bin/bash
+version="v0.1.0"
+
+if [ "$1" == "--help" ] ; then
+    echo "Run the script, start typing until the desired bookmark is selected."
+    echo "buku and dmenu must be installed."
+    exit 0
+elif [ "$1" == "--version" ] ; then
+    echo "buku-dmenu $version"
+    exit 0
+fi
+
+#get all bmks | swap tabs for spaces | run dmenu | cut to ID | run buku if not empty
+buku -p -f 5 | sed 's/\t/ /g' | dmenu -i -fn "Monospace:24" -l 10 | cut -d ' ' -f 1 | xargs --no-run-if-empty buku -o
