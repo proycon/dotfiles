@@ -65,6 +65,7 @@ alias gp='git push; if (( $? == 0 )); then; play -q /usr/share/sounds/KDE-Window
 alias pg='git push; if (( $? == 0 )); then; play -q /usr/share/sounds/KDE-Window-Maximize.ogg 2> /dev/null &!; fi'
 alias cf='LANGUAGE="en_GB.UTF-8" ./configure'
 alias a='tmux attach'
+alias b="buku"
 alias tmux='tmux -2' #force 256 colour support regardless of terminal
 alias ta='~/todo.sh add'
 alias ka='killall'
