@@ -79,6 +79,7 @@ Plug 'cespare/vim-toml' "for toml files
 Plug 'posva/vim-vue' "for vue.js
 Plug 'leafgarland/typescript-vim' "Typescript syntax highlighting (and more?)
 Plug 'fatih/vim-go' "Go
+Plug 'numirias/semshi', {'do': ':UpdateRemotePlugins'} "Python semantic highlighting
 
 " Misc
 Plug 'junegunn/goyo.vim' "distraction free writing
