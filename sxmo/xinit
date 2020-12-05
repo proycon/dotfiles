@@ -9,7 +9,7 @@ mpv --quiet --no-video ~/dotfiles/media/cylontune_low.ogg &
 feh --bg-fill -z ~/dotfiles/media/pine.jpg
 
 if [ -e ~/dotfiles/sxmo/initsecrets.sh ]; then
-    ~/dotfiles/sxmo/initsecrets.sh
+    sleep 25 && ~/dotfiles/sxmo/initsecrets.sh &
 fi
 
 if ! pgrep -f sxmo_modemmonitor.sh; then
