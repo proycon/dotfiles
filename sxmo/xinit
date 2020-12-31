@@ -8,12 +8,10 @@ amixer set "Line Out" 50%
 mpv --quiet --no-video ~/dotfiles/media/cylontune_low.ogg &
 feh --bg-fill -z ~/dotfiles/media/pine.jpg
 
-if [ -e ~/dotfiles/sxmo/initsecrets.sh ]; then
-    ~/dotfiles/sxmo/initsecrets.sh
-fi
 
 if ! pgrep -f sxmo_modemmonitor.sh; then
-    sleep 30 && sxmo_modemmonitortoggle.sh &
+    sleep 30 && sxmo_modemmonitortoggle.sh 2> /tmp/modemtoggle.log >&2 &
+    sleep 32 && ~/dotfiles/sxmo/initsecrets.sh &
 fi
 ~/dotfiles/homecommand.sh status &
 ~/dotfiles/notifyclient.sh &

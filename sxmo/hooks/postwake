@@ -1,5 +1,6 @@
 #!/usr/bin/env sh
 
+touch /tmp/postwake
 #rm /tmp/.notifyclient.silent
 #~/dotfiles/notifyclient.sh &
 #disown $!
