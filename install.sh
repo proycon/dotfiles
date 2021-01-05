@@ -42,17 +42,18 @@ if [ "$OS" = "unknown" ]; then
 fi
 
 
-
-SUDO=0
-while true; do
-    echo -n "Do you have administrative access (root/sudo) on the current system and want to install all dependencies? [yn] "
-    read yn
-    case $yn in
-        [Yy]* ) SUDO=1; break;;
-        [Nn]* ) SUDO=0; break;;
-        * ) echo "Please answer yes or no.";;
-    esac
-done
+if [ -z "$SUDO" ]; then
+    SUDO=0
+    while true; do
+        echo -n "Do you have administrative access (root/sudo) on the current system and want to install all dependencies? [yn] "
+        read yn
+        case $yn in
+            [Yy]* ) SUDO=1; break;;
+            [Nn]* ) SUDO=0; break;;
+            * ) echo "Please answer yes or no.";;
+        esac
+    done
+fi
 
 if [ $SXMO -eq 0 ] && [ -z "$NO_DESKTOP" ]; then
     while true; do
