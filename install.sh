@@ -70,9 +70,9 @@ fi
 if [ $SUDO -eq 1 ]; then
     if [[ "$OS" == "debian" ]]; then
         sudo apt update
-        sudo apt install aptitude tmux tig neovim ncdu ranger curl wget jedi ipython ipython3 gcc autoconf-archive pandoc htop glances iotop netcat git whiptail ack jq sed fping highlight chafa
+        sudo apt install aptitude tmux tig neovim ncdu ranger curl wget gcc autoconf-archive pandoc htop glances iotop netcat git whiptail ack jq sed fping highlight chafa gawk
         if [ -z "$NO_DESKTOP" ]; then
-            sudo apt install rxvt-unicode compton rofi dmenu jedi i3-wm i3lock openbox newsboat mpv mplayer fcitx firefox pavucontrol ncmpcpp zathura zathura-pdf-poppler gimp inkscape pamixer dunst
+            sudo apt install rxvt-unicode compton rofi dmenu i3-wm i3lock openbox newsboat mpv mplayer fcitx firefox pavucontrol ncmpcpp zathura zathura-pdf-poppler gimp inkscape pamixer dunst
             sudo apt install cmake cmake-data libcairo2-dev libxcb1-dev libxcb-ewmh-dev libxcb-icccm4-dev libxcb-image0-dev libxcb-randr0-dev libxcb-util0-dev libxcb-xkb-dev pkg-config python-xcbgen xcb-proto libxcb-xrm-dev libasound2-dev libmpdclient-dev libiw-dev libcurl4-openssl-dev libpulse-dev libxcb-composite0-dev xcb libxcb-ewmh2 #for compiling polybar
             sudo apt install rustc cargo #for compiling alacritty and other rust stuff
         fi
