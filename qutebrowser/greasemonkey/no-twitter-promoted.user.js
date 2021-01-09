@@ -52,4 +52,5 @@ function PromoDead()
 }
 
 // Start curing reddit of promted posts.
+PromoDead();
 intervalID = window.top.setInterval( PromoDead, removeDelaySeconds * 1000 );
