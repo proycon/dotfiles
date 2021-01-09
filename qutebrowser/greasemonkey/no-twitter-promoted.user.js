@@ -1,12 +1,11 @@
 // ==UserScript==
-// @name     PromoDead
-// @description Kill reddit PROMOTED posts.
+// @name     PromoDeadTwitter
+// @description Kill twitter PROMOTED posts.
 // @version  1
 // @grant    none
-// @include  https://www.reddit.com
-// @include  https://www.reddit.com/
-// @include  https://www.reddit.com/r/*
-// @author   u/CodeLobe
+// @include  https://twitter.com/*
+// @include  https://www.twitter.com/*
+// @author   u/CodeLobe, u/proycon
 // ==/UserScript==
 
 // ---===] Configuration [===---
@@ -34,7 +33,7 @@ function PromoDead()
 {	var found = 0;
 	var span = document.getElementsByTagName( "span" );
 	for ( var i = 0; i < span.length; ++i )
-	{	if ( span[ i ].innerHTML.match( "promoted" ) )
+	{	if ( span[ i ].innerHTML.match( "Promoted" ) )
 		{	// Found the PROMOTED span, get div 7 nested parents higher:
 			var p = span[ i ];
 			for ( var j = 0; j < 7; ++j ) p = p.parentElement;
