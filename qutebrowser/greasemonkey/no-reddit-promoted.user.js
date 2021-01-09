@@ -22,7 +22,7 @@ var consoleRemovalLogs = true;
 
 // When set true, the offending post will be bordered by red instead of removed.
 // Useful when reddit changes its layout and this script needs an update.
-var debugging = false;
+var debugging = true;
 
 // ---===] End of Config [===---
 
@@ -39,6 +39,7 @@ function PromoDead()
 			var p = span[ i ];
 			for ( var j = 0; j < 7; ++j ) p = p.parentElement;
 			// Remove or set border red if in debug mode.
+            p.style.visibility = "hidden";
 			if ( debugging ) p.style.border = "2px solid red";
 			else p.parentElement.removeChild( p );
 			found++;
