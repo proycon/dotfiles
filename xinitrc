@@ -13,9 +13,7 @@ export XMODIFIERS=@im=fcitx
 export QT_AUTO_SCREEN_SCALE_FACTOR=1
 
 export PATH=~/bin:$PATH
-if command -v qutebrowser > /dev/null; then
-    export BROWSER=qutebrowser
-fi
+export BROWSER=firefox
 
 cd $HOME
 

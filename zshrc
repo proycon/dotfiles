@@ -110,11 +110,7 @@ export MPD_HOST="proycon@anaproy.nl"
 export DEBEMAIL="proycon@anaproy.nl"
 export DEBFULLNAME="Maarten van Gompel"
 
-if command -v qutebrowser >/dev/null; then
-    export BROWSER="qutebrowser"
-else
-    export BROWSER="firefox"
-fi
+export BROWSER="firefox"
 
 export XDG_CONFIG_HOME="$HOME/.config"
 
