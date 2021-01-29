@@ -92,6 +92,7 @@ Plug 'qpkorr/vim-renamer' "vim mass file renamer
 Plug 'pearofducks/ansible-vim' "highlighting for ansible
 Plug 'plasticboy/vim-markdown'
 Plug 'chrisbra/csv.vim'
+Plug 'nblock/vim-dokuwiki'
 
 
 "Themes
