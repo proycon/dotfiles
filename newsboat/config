@@ -1,5 +1,7 @@
 #show-read-feeds no
 auto-reload yes
+reload-time 360
+max-items 500
 
 confirm-exit yes
 reload-only-visible-feeds yes
@@ -63,4 +65,4 @@ highlight feedlist "\\(YouTube\\)" magenta default
 highlight feedlist " r/" red default
 highlight feedlist "\\([0-9]+/[0-9]+\\)" white default
 
-articlelist-format  "%4i %f %D   %?T?|%-30T|  ?%t"
+articlelist-format  "%4i %f %D   %?T?|%-20T|  ?%t"

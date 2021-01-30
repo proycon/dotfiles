@@ -1,6 +1,6 @@
 text/plain; bat --paging=always '%s'
 text/x-diff; bat --paging=always '%s'
-text/html;                      firefox %s; nametemplate=%s.html
+text/html;                      qutebrowser %s; nametemplate=%s.html
 text/html;                      links -dump %s; nametemplate=%s.html; copiousoutput
 text/calendar; mutt-ics; copiousoutput
 text/*; bat --paging=always '%s'

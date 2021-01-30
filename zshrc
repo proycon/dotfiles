@@ -110,7 +110,6 @@ export MPD_HOST="proycon@anaproy.nl"
 export DEBEMAIL="proycon@anaproy.nl"
 export DEBFULLNAME="Maarten van Gompel"
 
-
 export BROWSER="firefox"
 
 export XDG_CONFIG_HOME="$HOME/.config"
