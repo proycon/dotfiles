@@ -1,4 +1,6 @@
 #!/bin/sh
-codepoint=$(printf '%x' "\'$1")
-fc-list ":charset=$codepoint"
+codepoint=$(printf '%x' \'$1)
+if [ -n "$codepoint" ]; then
+    fc-list ":charset=$codepoint"
+fi
 
