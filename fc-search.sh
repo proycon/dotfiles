@@ -1,3 +1,4 @@
 #!/bin/sh
-printf '%x' \'$1 | xargs -I{} fc-list ":charset={}"
+codepoint=$(printf '%x' "\'$1")
+fc-list ":charset=$codepoint"
 
