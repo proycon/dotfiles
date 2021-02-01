@@ -101,6 +101,9 @@ Plug 'morhetz/gruvbox'
 "On-the-fly GnuPG
 Plug 'jamessan/vim-gnupg'
 
+" firenvim
+Plug 'glacambre/firenvim', { 'do': { _ -> firenvim#install(0) } }
+
 
 call plug#end()
 
