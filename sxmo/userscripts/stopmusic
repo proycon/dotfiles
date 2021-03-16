@@ -1,0 +1,3 @@
+#!/usr/bin/env sh
+killall snapclient
+mpc stop
