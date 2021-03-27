@@ -74,13 +74,10 @@ bind index d half-down
 bind index u half-up
 bind index D delete-message
 bind index U undelete-message
-bind index F search
 bind index,pager R group-reply
 bind index,pager \031 previous-undeleted # Mouse wheel
 bind index,pager \005 next-undeleted # Mouse wheel
 macro index,pager S <sync-mailbox>
-macro index,pager \Cu |urlscan\n
-macro index,pager ,, |urlscan\n
 
 # neomutt with notmuch
 # open a different virtual folder
@@ -102,6 +99,7 @@ set forward_format = "Fwd: %s"       # format of subject when forwarding
 set forward_decode                   # decode when forwarding
 set forward_quote                    # include message in forwards
 set include                          # include message in replies
+set attach_save_dir = "/nettmp"
 
 #Ctrl-R to mark all as read
 macro index \Cr "T~U<enter><tag-prefix><clear-flag>N<untag-pattern>.<enter>" "mark all messages as read"
@@ -113,6 +111,10 @@ macro index \Cr "T~U<enter><tag-prefix><clear-flag>N<untag-pattern>.<enter>" "ma
 #copy/move dialogs
 macro index C "<copy-message>?<toggle-mailboxes>" "copy a message to a mailbox"
 macro index M "<save-message>?<toggle-mailboxes>" "move a message to a mailbox"
+
+macro index,pager,attach ,p "|cat > /nettmp/patch\n" "copy a message as patch"
+macro index,pager,attach ,v "|cat > ~/.vbuf\n" "copy to ~/.vbuf"
+macro index,pager,attach ,h "|cat > /nettmp/mail.html" "copy to /nettmp/mail.html"
 
 # Notmuch searching
 macro index \Cf "<enter-command>unset wait_key<enter><shell-escape>read -p 'notmuch query: ' x; echo \$x >~/.cache/mutt_terms<enter><limit>~i \"\`notmuch search --output=messages \$(cat ~/.cache/mutt_terms) | head -n 600 | perl -le '@a=<>;chomp@a;s/\^id:// for@a;$,=\"|\";print@a'\`\"<enter>" "show only messages matching a notmuch pattern"
@@ -192,6 +194,7 @@ macro index,pager ,y "<vfolder-from-query>tag:inbox AND tag:reply\n"
 macro index,pager ,t "<vfolder-from-query>tag:inbox AND tag:todo\n"
 macro index,pager ,w "<vfolder-from-query>tag:inbox AND tag:waiting\n"
 macro index,pager ,6 "<vfolder-from-query>tag:spam\n"
+
 
 # Replace some tags with icons
 # tag-transforms tag transformed-string { tag transformed-string ...}
