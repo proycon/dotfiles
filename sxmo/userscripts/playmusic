@@ -1,0 +1,3 @@
+#!/usr/bin/env sh
+mpc play
+snapclient -h mediaserver.anaproy.lxd
