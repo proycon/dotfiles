@@ -127,6 +127,9 @@ color body brightblue default "</?[a-z0-9+-:]+>?"
 color body magenta default "[a-z0-9+-:]+=\"[^\"]*\""
 color body brightblue default "/>"
 
+#highlight text between square brackets
+color body blue default "\[[a-z0-9+-_: ]+\]"
+
 
 # Patch syntax highlighting
 color   body    brightyellow    default         "^(diff)[[:space:]].*"
@@ -136,9 +139,32 @@ color   body    cyan           default         "^\-\-\-.*"
 color   body    cyan           default         "^[\+][\+][\+].*"
 
 color   body    brightblue      default         "^@@.*"
-color   body    brightwhite     default         "^(\s).*"
 color   body    brightcyan    default         "^(Signed-off-by).*"
 color   body    brightwhite     default         "^(Cc)"
 
+color   body    brightblue    default         ".*files? changed(.*insertions?|.*deletions?).*$"
+color   body    green    default         "\|.*[0-9]+ [\+]+"
+color   body    red    default         "\|.*[0-9]+ -+"
 
 
+#Quoted headers
+color   body    cyan           default         "^(From|Van|To|Aan|Subject|Cc|CC|Sent|Verzonden|Onderwerp):.*"
+
+
+#Other kind of lists
+color   body    magenta           default         "^(Topic|Time|Meeting ID|Passcode):.*"
+
+#Status messages
+color   body    black          default         "^©.*"
+color   body    green          default         "^.*✓.*"
+color   body    red          default         "^.*✗.*"
+color   body    red          default         "^Status:.*(Failed|Broken|Failing|Errored).*"
+color   body    green          default         "^Status:.*(Fixed|OK|Success).*"
+color   body    green          default         "^Ticket resolved:.*fixed"
+
+color   body    brightyellow          default         "@(Maarten|Proycon|proycon)"
+color   body    cyan          default         "^On.*wrote:$"
+color   body    cyan          default         "^Op.*schreef.*:$"
+color   body    cyan          default         "^@.*pushed.*[0-9]+ commit.*$"
+color   body    cyan          default         "^Merged #[0-9]+ into.*$"
+color   body    cyan          default         "^Closed #[0-9]+.*$"
