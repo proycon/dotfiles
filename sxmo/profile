@@ -1,4 +1,6 @@
-export BROWSER="surf"
+export BROWSER="firefox"
 export SXMO_RTCWAKEINTERVAL=120
 export SXMO_LOCK_SCREEN_OFF=1
 export DMENU_WRAP_AROUND=1
+export KEYBOARD_ARGS="-o | clickclack -f /home/proycon/keypress.wav"
+
