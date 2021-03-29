@@ -102,6 +102,7 @@ color   attach_headers     brightmagenta   default    "invalid node with packet 
 color body yellow default "[\-\.+_a-zA-Z0-9]+@[\-\.a-zA-Z0-9]+" # Email addresses
 color body yellow default "(https?|ftp)://[\-\.,/%~_:?&=\#a-zA-Z0-9]+" # URL
 color body green default "\`[^\`]*\`" # Green text between ` and `
+color body brightwhite black "\\*\\*[^\\*]+\\*\\*" # Bold
 color body brightyellow default "^# \.*" # Headings
 color body brightcyan default "^## \.*" # Subheadings
 color body brightblue default "^### \.*" # Subsubheadings
@@ -148,8 +149,10 @@ color   body    red    default         "\|.*[0-9]+ -+"
 
 
 #Quoted headers
-color   body    cyan           default         "^(From|Van|To|Aan|Subject|Cc|CC|Sent|Verzonden|Onderwerp):.*"
+color   body    cyan           default         "^(From|Van|To|Aan|An|Para|Subject|Cc|CC|Sent|Verzonden|Onderwerp|Asunto):.*"
 
+#Terminal
+color   body   blue   default  "^\\$ .*"
 
 #Other kind of lists
 color   body    magenta           default         "^(Topic|Time|Meeting ID|Passcode):.*"
