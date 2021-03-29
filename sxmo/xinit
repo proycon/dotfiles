@@ -8,6 +8,8 @@ amixer set "Line Out" 50%
 mpv --quiet --no-video ~/dotfiles/media/cylontune_low.ogg &
 feh --bg-fill -z ~/dotfiles/media/pine.jpg
 
+conky ~/.config/sxmo/conky.conf -d
+
 if [ -e ~/dotfiles/sxmo/initsecrets.sh ]; then
     sleep 25 && ~/dotfiles/sxmo/initsecrets.sh &
 fi
