@@ -455,6 +455,16 @@ fi
 #bindkey '[C' forward-word
 #bindkey '[D' backward-word
 
+function lesscsv {
+    sed 's/,/ ,/g' | column -t -s, "$@" | less -F -S -X -K
+}
+
+
+function lesstsv {
+    sed 's/,/ ,/g' | column -t -s $'\t' "$@" | less -F -S -X -K
+}
+
+
 export LESS_TERMCAP_so=$'\E[30;42m'
 
 case $TERM in

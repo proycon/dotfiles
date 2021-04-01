@@ -80,6 +80,7 @@ Plug 'posva/vim-vue' "for vue.js
 Plug 'leafgarland/typescript-vim' "Typescript syntax highlighting (and more?)
 Plug 'fatih/vim-go' "Go
 Plug 'numirias/semshi', {'do': ':UpdateRemotePlugins'} "Python semantic highlighting
+Plug 'editorconfig/editorconfig-vim' "maintain consistent coding styles
 
 " Misc
 Plug 'junegunn/goyo.vim' "distraction free writing
