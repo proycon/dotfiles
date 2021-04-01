@@ -4,7 +4,11 @@ if [ -n "$PICKED" ]; then
     if [ -d "$1/$PICKED" ]; then
         ~/dotfiles/dmenu-files.sh "$1/$PICKED" $2
     else
-        xdg-open "$1/$PICKED" &
+        if file --mime-type "$1/$PICKED" | grep "text/"; then
+            alacritty -e vim "$1/$PICKED" &
+        else
+            xdg-open "$1/$PICKED" &
+        fi
     fi
 fi
 
