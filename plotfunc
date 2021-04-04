@@ -83,6 +83,9 @@ elif data is not None:
 if args.exec:
     exec(args.exec)
 
+if data is not None and not args.functions:
+    args.functions.append("@1")
+
 if args.names:
     names = [ n.strip() for n in args.names.split(";") ]
 else:
@@ -92,8 +95,6 @@ if args.style:
     args.style = [ s.strip() for s in args.style.split(";") ]
     if len(args.style) < len(names): args.style += [args.style[-1]] * (len(names) - len(args.style))
 
-if data is not None and not args.functions:
-    args.functions.append("@1")
 
 for i, f in enumerate(args.functions):
     if f[0] == '@':
@@ -108,7 +109,7 @@ for i, f in enumerate(args.functions):
                 y = data[col]
     else:
         y = eval(f)
-        plt.plot(x, y, args.style[i], linewidth=args.linewidth, markersize=args.markersize, label=names[i])
+    plt.plot(x, y, args.style[i], linewidth=args.linewidth, markersize=args.markersize, label=names[i])
 
 plt.minorticks_on()
 
