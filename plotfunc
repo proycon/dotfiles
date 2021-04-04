@@ -4,14 +4,15 @@ import sys
 import argparse
 import numpy as np
 import matplotlib.pyplot as plt
-from numpy import sin, abs, cos, tan, exp, log
+import math
+from numpy import sin, abs, cos, tan, exp, log, ceil, floor
 
 parser = argparse.ArgumentParser(description="Plot functions", formatter_class=argparse.ArgumentDefaultsHelpFormatter)
 parser.add_argument('--minx',type=float, help="Min X", action='store', default=-1.0, required=False)
 parser.add_argument('--maxx',type=float, help="Max X", action='store', default=1.0, required=False)
 parser.add_argument('--miny',type=float, help="Min Y", action='store', required=False)
 parser.add_argument('--maxy',type=float, help="Max Y", action='store', required=False)
-parser.add_argument('--datares',type=int, help="Number of data points to compute", action='store', default=100)
+parser.add_argument('--steps',type=int, help="Number of data points to compute", action='store', default=100)
 parser.add_argument('--width',type=int, help="Figure width", action='store', default=1200)
 parser.add_argument('--height',type=int, help="Figure height", action='store', default=1200)
 parser.add_argument('--dpi',type=int, help="DPI", action='store', default=96)
@@ -20,6 +21,7 @@ parser.add_argument('--xlabel',type=str, help="X Axis Label", action='store',def
 parser.add_argument('--ylabel',type=str, help="Y Axis Label", action='store',default='y')
 parser.add_argument("--names", type=str, help="Names for the functions (semicolon separated)")
 parser.add_argument("--format", type=str, help="Format", default="png")
+parser.add_argument("--exec", type=str, help="Set variables (normal python expressions)")
 parser.add_argument("--nolegend",help="Disable legend", action='store_true', required=False)
 parser.add_argument('functions', nargs='*', help="Functions")
 args = parser.parse_args() #parsed arguments can be accessed as attributes
@@ -39,7 +41,10 @@ if args.maxy is not None and not args.miny:
 if args.miny is not None and args.maxy is not None:
     plt.ylim(args.miny, args.maxy)
 
-x = np.linspace(args.minx, args.maxx, args.datares)
+x = np.linspace(args.minx, args.maxx, args.steps)
+
+if args.exec:
+    exec(args.exec)
 
 if args.names:
     names = [ x.strip() for x in args.names.split(";") ]
