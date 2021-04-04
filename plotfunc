@@ -1,0 +1,63 @@
+#!/usr/bin/python3
+
+import sys
+import argparse
+import numpy as np
+import matplotlib.pyplot as plt
+from math import *
+
+parser = argparse.ArgumentParser(description="Plot functions", formatter_class=argparse.ArgumentDefaultsHelpFormatter)
+parser.add_argument('--minx',type=float, help="Min X", action='store', default=-1.0, required=False)
+parser.add_argument('--maxx',type=float, help="Max X", action='store', default=1.0, required=False)
+parser.add_argument('--miny',type=float, help="Min Y", action='store', required=False)
+parser.add_argument('--maxy',type=float, help="Max Y", action='store', required=False)
+parser.add_argument('--datares',type=int, help="Number of data points to compute", action='store', default=100)
+parser.add_argument('--width',type=int, help="Figure width", action='store', default=1200)
+parser.add_argument('--height',type=int, help="Figure height", action='store', default=1200)
+parser.add_argument('--dpi',type=int, help="DPI", action='store', default=96)
+parser.add_argument('--title',type=str, help="Title", action='store')
+parser.add_argument('--xlabel',type=str, help="X Axis Label", action='store',default='x')
+parser.add_argument('--ylabel',type=str, help="Y Axis Label", action='store',default='y')
+parser.add_argument("--names", type=str, help="Names for the functions (semicolon separated)")
+parser.add_argument("--format", type=str, help="Format", default="png")
+parser.add_argument("--nolegend",help="Disable legend", action='store_true', required=False)
+parser.add_argument('functions', nargs='*', help="Functions")
+args = parser.parse_args() #parsed arguments can be accessed as attributes
+
+
+fig = plt.figure(figsize=(args.width/args.dpi,args.height/args.dpi))
+if args.title:
+    plt.title(args.title)
+if args.xlabel:
+    plt.xlabel(args.xlabel)
+if args.ylabel:
+    plt.ylabel(args.ylabel)
+
+plt.xlim(args.minx, args.maxx)
+if args.maxy is not None and not args.miny:
+    args.miny = 0
+if args.miny is not None and args.maxy is not None:
+    plt.ylim(args.miny, args.maxy)
+
+x = np.linspace(args.minx, args.maxx, args.datares)
+
+if args.names:
+    names = [ x.strip() for x in args.names.split(";") ]
+else:
+    names = [ x.strip() for x in args.functions ]
+
+for i, f in enumerate(args.functions):
+    y = eval(f)
+    plt.plot(x, y, "-", linewidth=2,label=names[i])
+
+plt.minorticks_on()
+
+if not args.nolegend:
+    plt.legend(loc="upper left")
+
+plt.axhline(0, color='black')
+plt.axvline(0, color='black')
+
+plt.grid(which='both', color='#bbbbbb')
+plt.savefig(sys.stdout.buffer, format=args.format)
+
