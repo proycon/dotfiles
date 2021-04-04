@@ -4,7 +4,7 @@ import sys
 import argparse
 import numpy as np
 import matplotlib.pyplot as plt
-from math import *
+from numpy import sin, abs, cos, tan, exp, log
 
 parser = argparse.ArgumentParser(description="Plot functions", formatter_class=argparse.ArgumentDefaultsHelpFormatter)
 parser.add_argument('--minx',type=float, help="Min X", action='store', default=-1.0, required=False)
