@@ -19,9 +19,13 @@ parser.add_argument('--dpi',type=int, help="DPI", action='store', default=96)
 parser.add_argument('--title',type=str, help="Title", action='store')
 parser.add_argument('--xlabel',type=str, help="X Axis Label", action='store',default='x')
 parser.add_argument('--ylabel',type=str, help="Y Axis Label", action='store',default='y')
+parser.add_argument('--xvalues',type=str, help="Specify all X values explicitly (comma separated)", action='store')
 parser.add_argument("--names", type=str, help="Names for the functions (semicolon separated)")
 parser.add_argument("--format", type=str, help="Format", default="png")
+parser.add_argument("--linewidth", type=int, help="Linewidth", default=2)
+parser.add_argument("--markersize", type=int, help="Markersize", default=5)
 parser.add_argument("--exec", type=str, help="Set variables (normal python expressions)")
+parser.add_argument("--style", type=str, help="Plot style (see pyplot format strings), example: - for line plot, . for pointer marker, o for circle marker. Multiple styles (for multiple functions may be separated by a semicolon)", default="-")
 parser.add_argument("--nolegend",help="Disable legend", action='store_true', required=False)
 parser.add_argument('functions', nargs='*', help="Functions")
 args = parser.parse_args() #parsed arguments can be accessed as attributes
@@ -35,25 +39,33 @@ if args.xlabel:
 if args.ylabel:
     plt.ylabel(args.ylabel)
 
-plt.xlim(args.minx, args.maxx)
 if args.maxy is not None and not args.miny:
     args.miny = 0
 if args.miny is not None and args.maxy is not None:
     plt.ylim(args.miny, args.maxy)
 
-x = np.linspace(args.minx, args.maxx, args.steps)
+if args.xvalues:
+    x = np.array( sorted( float(x) for x in args.xvalues.split(",") ))
+    plt.xlim(min(x), max(x))
+else:
+    plt.xlim(args.minx, args.maxx)
+    x = np.linspace(args.minx, args.maxx, args.steps)
 
 if args.exec:
     exec(args.exec)
 
 if args.names:
-    names = [ x.strip() for x in args.names.split(";") ]
+    names = [ n.strip() for n in args.names.split(";") ]
 else:
-    names = [ x.strip() for x in args.functions ]
+    names = [ n.strip() for n in args.functions ]
+
+if args.style:
+    args.style = [ s.strip() for s in args.style.split(";") ]
+    if len(args.style) < len(names): args.style += [args.style[-1]] * (len(names) - len(args.style))
 
 for i, f in enumerate(args.functions):
     y = eval(f)
-    plt.plot(x, y, "-", linewidth=2,label=names[i])
+    plt.plot(x, y, args.style[i], linewidth=args.linewidth, markersize=args.markersize, label=names[i])
 
 plt.minorticks_on()
 
