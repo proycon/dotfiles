@@ -336,19 +336,16 @@ endsnippet
 
 
 snippet glob
-let options = MatchOptions {
-	case_sensitive: false,
-	..Default::default()
-};
-
 for entry in glob_with(${1:pattern}, &options)? {
 	println!("{}", entry?.display());
 }
+endsnippet
 
 
 snippet writefile "write/save file"
 let mut ${1:f} = File::create(${2:filename})?;
 write!($1, ${3:data})?;
+endsnippet
 
 
 snippet readfile "read/load file"
