@@ -75,6 +75,11 @@ alias gpp='git push origin gh-pages'
 alias mp="ncmpcpp -b ~/dotfiles/ncmpcpp.bindings"
 alias f='cd $(cat ${XDG_CONFIG_HOME:-$HOME/.config}/directories | fzf)'
 alias hs="~/dotfiles/homestatus.sh"
+alias ghils="gh issue list"
+alias ghls="gh issue list"
+alias ghic="gh issue create"
+alias ghiv="gh issue view"
+alias ghicm="gh issue comment"
 if [ ! -z "$DISPLAY" ]; then
     alias lf="~/dotfiles/lf/lfrun" #wrapper for ueberzug support
 fi
