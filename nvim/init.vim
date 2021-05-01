@@ -266,6 +266,7 @@ set wildignore+=*.git/*
 set wildignore+=*.svn/*
 set wildignore+=*_build/*
 set wildignore+=*build/*
+set wildignore+=*target/*
 set wildignore+=*coverage/*
 set wildignore+=*.egg
 set wildignore+=*.egg-info
@@ -573,8 +574,8 @@ autocmd Filetype tex map <F5> :AsyncRun<space>export<space>F="<C-r>%"<space>&&<s
 autocmd Filetype tex map <F4> :!export<space>F="<C-r>%"<space>&&<space>pdflatex<space><C-r>%<space>&&<space>DISPLAY=:0.0<space>zathura<space>${F\%.tex}.pdf<Enter>
 autocmd Filetype python map <F4> :!cd $(git<space>rev-parse<space>--show-toplevel)<space>&&<space>pip<space>install<space>.<Enter>
 autocmd Filetype python map <F5> :!cd $(git<space>rev-parse<space>--show-toplevel)<space>&&<space>pip<space>install<space>.<Enter>
-map <F9> :Gcommit -a<CR>
-map <F10> :Gpush<CR>
+map <F9> :Git commit -a<CR>
+map <F10> :Git push<CR>
 
 "ansible-vim
 let g:ansible_name_highlight = 'b'
