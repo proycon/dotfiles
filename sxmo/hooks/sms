@@ -1,3 +1,12 @@
 #!/usr/bin/env sh
-#the notification will take care of the ringing (everywhere) when it's picked up again
+
+# This script is executed after you received a text
+#You can use it to play a notification sound or forward the sms elsewhere
+
+#The following parameters are provided:
+#CONTACTNAME="$1"
+#TEXT="$2"
+
 ~/dotfiles/notifysend.sh notify/proycon/sms "$@" &
+
+mpv --quiet --no-video /usr/share/sxmo/notify.ogg
