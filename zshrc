@@ -47,7 +47,7 @@ menu () {
     elif [[ "$choice " == "file"* ]]; then
         whiptail --menu "Menu" 25 80 15 ranger "ranger: Terminal file manager" br "Broot Tree Navigation" lf "lf: Terminal file manager"  2> ~/.menuchoice
     elif [[ "$choice " == "data"* ]]; then
-        whiptail --menu "Menu" 25 80 15 ack "Grep-like text finder" bat "Fancy cat viewer" glow "Fancy markdown viewer" fd "Find replacement" jq "JSON-processor" vd "Tabular data viewer"  2> ~/.menuchoice
+        whiptail --menu "Menu" 25 80 15 ack "Grep-like text finder" bat "Fancy cat viewer" glow "Fancy markdown viewer" fd "Find replacement" jq "JSON-processor" rg "Ripgrep" vd "Tabular data viewer" xsv "CSV processor" 2> ~/.menuchoice
     else
         eval $(cat ~/.menuchoice)
     fi
@@ -75,6 +75,11 @@ alias gpp='git push origin gh-pages'
 alias mp="ncmpcpp -b ~/dotfiles/ncmpcpp.bindings"
 alias f='cd $(cat ${XDG_CONFIG_HOME:-$HOME/.config}/directories | fzf)'
 alias hs="~/dotfiles/homestatus.sh"
+alias ghils="gh issue list"
+alias ghls="gh issue list"
+alias ghic="gh issue create"
+alias ghiv="gh issue view"
+alias ghicm="gh issue comment"
 if [ ! -z "$DISPLAY" ]; then
     alias lf="~/dotfiles/lf/lfrun" #wrapper for ueberzug support
 fi
@@ -275,9 +280,9 @@ alias luon="ssh -Y -A -t maartenvg@void.luon.net"
 
 alias lq="source ~/.sgesh"
 
-alias wtr="curl http://wttr.in"
-alias wttr="curl http://wttr.in"
-alias weather="curl http://wttr.in"
+alias wtr="curl http://wttr.in/Eindhoven"
+alias wttr="curl http://wttr.in/Eindhoven"
+alias weather="curl http://wttr.in/Eindhoven"
 alias btc="curl eur.rate.sx/btc@30d"
 
 
@@ -454,6 +459,16 @@ fi
 #bindkey '^[[B' history-substring-search-down
 #bindkey '[C' forward-word
 #bindkey '[D' backward-word
+
+function lesscsv {
+    sed 's/,/ ,/g' | column -t -s, "$@" | less -F -S -X -K
+}
+
+
+function lesstsv {
+    sed 's/,/ ,/g' | column -t -s $'\t' "$@" | less -F -S -X -K
+}
+
 
 export LESS_TERMCAP_so=$'\E[30;42m'
 
