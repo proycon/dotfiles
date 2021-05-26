@@ -1,6 +1,5 @@
 
 Maarten van Gompel
-    Language Machines research group
     Centre for Language and Speech Technology
     Radboud Universiteit Nijmegen
 
@@ -10,7 +9,7 @@ https://github.com/proycon
 
 GnuPG key:  0x39FE11201A31555C
 XMPP:       proycon@anaproy.nl       Matrix: @proycon:matrix.anaproy.nl
-Telegram:   proycon                  IRC: proycon (freenode)
+Telegram:   proycon                  IRC: proycon (libera.chat + oftc)
 Mastodon:   https://social.anaproy.nl/@proycon   (@proycon@social.anaproy.nl)
 Twitter:    https://twitter.com/proycon
 ORCID:      https://orcid.org/0000-0002-1046-0006
