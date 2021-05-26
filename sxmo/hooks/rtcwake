@@ -1,15 +1,40 @@
 #!/usr/bin/env sh
 
-#attempts=0
-#test if the network is back up and functional
-#while [ $attempts -le 7 ]; do
-#    fping -c1 -t1000 anaproy.nl > /dev/null 2> /dev/null
-#    if [ $? -eq 0 ]; then
-#        break
-#    fi
-#    attempts=$(( attempts + 1 ))
-#done
-#disconnect after 6 seconds (3 from script, 3 from screenlock's SuspendPending state, 1 leverage)
-#~/dotfiles/notifyclient.sh -W 6 >> ~/.notifications.log 2>> ~/.notifications.err
+. "$(which sxmo_common.sh)"
 
-sleep 3 #give it a few second to process notifications
+REDLED_PATH="/sys/class/leds/red:indicator/brightness"
+BLUELED_PATH="/sys/class/leds/blue:indicator/brightness"
+
+finish() {
+       kill $BLINKPID
+
+       echo 0 > "$REDLED_PATH"
+       echo 0 > "$BLUELED_PATH"
+
+       # Going back to crust
+       if [ "$(sxmo_screenlock.sh getCurState)" != "unlock" ]; then
+               sxmo_screenlock.sh unlock
+               sxmo_screenlock.sh rtc "$SXMO_RTCWAKEINTERVAL"
+       fi
+
+       exit 0
+}
+
+trap 'finish' TERM INT EXIT
+
+blink() {
+       while [ "$(sxmo_screenlock.sh getCurState)" != "unlock" ]; do
+               echo 1 > "$REDLED_PATH"
+               echo 0 > "$BLUELED_PATH"
+               sleep 0.5
+               echo 0 > "$REDLED_PATH"
+               echo 1 > "$BLUELED_PATH"
+               sleep 0.5
+       done
+}
+
+sxmo_screenlock.sh off
+blink &
+BLINKPID=$!
+
+sleep 3
