@@ -32,7 +32,7 @@ if [[ $HOST == "rocinante" ]] {
 	PR_HOST="%F{green}%m%f"
 } elif [[ $HOST == "mhysa" || $HOST == "drasha" ]] {
 	PR_HOST="%F{blue}%m%f"
-} elif [[ $HOST == "proyphone" ]] {
+} elif [[ $HOST == *"phone"* ]] {
 	PR_HOST="%F{cyan}%m%f"
 } elif [[ $HOST == "roma" || $DOMAIN == "anaproy.nl" || $DOMAIN == "anaproy.lxd" ]] {
 	PR_HOST="%F{yellow}%M%f"
