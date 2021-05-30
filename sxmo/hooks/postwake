@@ -1,6 +1,7 @@
 #!/usr/bin/env sh
 
-touch /tmp/postwake
-#rm /tmp/.notifyclient.silent
-#~/dotfiles/notifyclient.sh &
-#disown $!
+
+#restart notify client
+killall -wq notifyhandler.sh notifyclient.sh #kill the one already running
+~/dotfiles/notifyclient.sh &
+disown $!
