@@ -34,7 +34,6 @@ blink() {
 }
 
 sxmo_screenlock.sh off
-blink &
 BLINKPID=$!
 
 sleep 3
