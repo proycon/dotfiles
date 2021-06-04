@@ -13,7 +13,6 @@ finish() {
 
        # Going back to crust
        if [ "$(sxmo_screenlock.sh getCurState)" != "unlock" ]; then
-               sxmo_screenlock.sh unlock
                sxmo_screenlock.sh rtc "$SXMO_RTCWAKEINTERVAL"
        fi
 
