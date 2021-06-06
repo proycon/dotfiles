@@ -3,7 +3,7 @@
 
 #restart notify client
 touch /tmp/.notifyclient.silent
-killall notifyhandler.sh notifyclient.sh #kill the one already running
+killall notifyhandler.sh notifyclient.sh mosquitto_sub #kill the one already running
 rm /tmp/.notifyclient.silent
 
 #wait for connection
