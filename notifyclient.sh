@@ -4,6 +4,8 @@ if [ -f ~/.mqtt_secrets ]; then
     source ~/.mqtt_secrets
 fi
 
+pidof mosquito_sub && exit 1 #already running
+
 if [ -z "$MQTT_USER" ]; then
     echo "No MQTT user defined">&2
     exit 2
