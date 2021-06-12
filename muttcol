@@ -9,15 +9,30 @@ color index_author green default '.*'
 color index_subject white default '.*'
 color index_date white default
 
+color index_subject magenta default "~l"
+color index_subject magenta default "~h List-Unsubscribe"
+color index_subject magenta default "~f basecamp"
+
 # For new mail:
 color index brightblue black "~N"
 color index_author yellow black "~N"
 color index_subject brightwhite black "~N"
 color index_subject brightred black "~v~(~F)" #flagged messages in collapsed thread
 color index_subject brightwhite black "~v~(~N)" #new messages in collapsed thread
-color index_subject brightred black "~F" #flagged messaged
+color index_subject brightred black "~F" #flagged messages
+color index_subject color204 default "~s PATCH"
 
-color index_author cyan default '~P' #messages from me
+#semi-spam:
+color index_author color242 default "~f \"(servicedesk@knaw.nl|communicatie@bb.huc.knaw.nl|Microsoft365@ru.nl|c.spijkman@let.ru.nl|cls@let.ru.nl|builds.sr.ht|dependabot)\"" #grey
+color index_subject color242 default "~f \"(servicedesk@knaw.nl|communicatie@bb.huc.knaw.nl|Microsoft365@ru.nl|c.spijkman@let.ru.nl|cls@let.ru.nl|builds.sr.ht|dependabot)\"" #grey
+color index_subject color242 default "~s \"(automatisch antwoord|automatic reply)\"" #grey
+color index_subject color88 default "~h \"Tag:.*(killed|spam)\"" #grey
+color index_author brightblack color220 "~T"
+
+color index_flags green default "~(~Q)"
+color index_subject green default "~Q"
+color index_subject green default "~P"
+color index_author blue default "~P"
 
 color index_tag magenta default "work"
 color index_tag cyan default "unilang"
