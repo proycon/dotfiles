@@ -1,0 +1,5 @@
+#!/usr/bin/env sh
+
+#stop notify client
+killall mosquitto_sub notifyhandler.sh notifyclient.sh #kill the one already running
+

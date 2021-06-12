@@ -1,6 +1,5 @@
 #!/usr/bin/env sh
 
-
 #restart notify client
 touch /tmp/.notifyclient.silent
 killall notifyhandler.sh notifyclient.sh mosquitto_sub #kill the one already running

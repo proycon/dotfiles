@@ -4,6 +4,8 @@ if [ -f ~/.mqtt_secrets ]; then
     source ~/.mqtt_secrets
 fi
 
+pidof mosquito_sub && exit 1 #already running
+
 if [ -z "$MQTT_USER" ]; then
     echo "No MQTT user defined">&2
     exit 2
@@ -35,6 +37,7 @@ if [ ! -f /tmp/.notifyclient.silent ]; then
     mpv --no-video --really-quiet ~/dotfiles/media/notifyconnect.wav &
 fi
 
+echo "Starting notifyclient">&2
 mosquitto_sub -c -q 1 -i $HOST.notifyclient -h $MQTT_HOST -p 8883 -u "$MQTT_USER" -P "$MQTT_PASSWORD" --cafile $CACERT -t '#' -F "@H:@M:@S|%t|%p" $MQTT_OPTIONS "$@" | ~/dotfiles/notifyhandler.sh >> ~/.notifications.log 2>> ~/.notifications.err
 
 if [ ! -f /tmp/.notifyclient.silent ]; then
