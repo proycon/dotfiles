@@ -95,7 +95,7 @@ if [[ "$HOST" == "proyphone" ]]; then
     alias vim="vis"
 else
     if which nvim > /dev/null 2> /dev/null; then
-        export EDITOR="LD_LIBRARY_PATH= nvim"
+        export EDITOR="nvim"
         alias vi="LD_LIBRARY_PATH= nvim"
         alias vim="LD_LIBRARY_PATH= nvim"
     else
