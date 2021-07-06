@@ -27,6 +27,7 @@ set wait_key = no
 set pager_index_lines = 7
 set pager_context = 10
 set recall = ask-no
+set narrow_tree
 auto_view text/html
 auto_view application/pgp-encrypted
 auto_view text/calendar application/ics
@@ -109,8 +110,8 @@ macro index \Cr "T~U<enter><tag-prefix><clear-flag>N<untag-pattern>.<enter>" "ma
 #macro index o "<shell-escape>$HOME/.config/mutt/etc/mailsync.sh -qf INBOX<enter>" "run offlineimap to sync inbox"
 
 #copy/move dialogs
-macro index C "<copy-message>?<toggle-mailboxes>" "copy a message to a mailbox"
-macro index M "<save-message>?<toggle-mailboxes>" "move a message to a mailbox"
+#macro index C "<copy-message>?<toggle-mailboxes>" "copy a message to a mailbox"
+#macro index M "<save-message>?<toggle-mailboxes>" "move a message to a mailbox"
 
 macro index,pager,attach ,p "|cat > /nettmp/patch\n" "copy a message as patch"
 macro index,pager,attach ,v "|cat > ~/.vbuf\n" "copy to ~/.vbuf"
@@ -118,7 +119,7 @@ macro index,pager,attach ,h "|cat > /nettmp/mail.html" "copy to /nettmp/mail.htm
 
 # Notmuch searching
 macro index \Cf "<enter-command>unset wait_key<enter><shell-escape>read -p 'notmuch query: ' x; echo \$x >~/.cache/mutt_terms<enter><limit>~i \"\`notmuch search --output=messages \$(cat ~/.cache/mutt_terms) | head -n 600 | perl -le '@a=<>;chomp@a;s/\^id:// for@a;$,=\"|\";print@a'\`\"<enter>" "show only messages matching a notmuch pattern"
-macro index A "<limit>all\n" "show all messages (undo limit)"
+macro index ,A "<limit>all\n" "show all messages (undo limit)"
 
 # Sidebar mappings
 set sidebar_visible = no
@@ -161,12 +162,15 @@ bind pager l exit
 bind index - collapse-thread
 bind pager H display-toggle-weed
 bind index y noop
-macro index,pager a "<modify-labels-then-hide>-inbox,-unread\n"
+bind pager <Up> previous-line
+bind pager <Down> next-line
+macro index,pager a "<modify-labels-then-hide>-inbox,-unread\n<sync-mailbox>"
 macro index,pager A ";<modify-labels-then-hide>-inbox,-unread\n<sync-mailbox>"
 macro index,pager S ";<modify-labels-then-hide>-inbox,-unread,+spam,+killed\n<sync-mailbox>"
 
 # modify (notmuch/imap) tags
 bind index,pager .l modify-labels
+macro index,pager .L ";<modify-labels>"
 # modify (notmuch/imap) tag non-interactively.
 macro index,pager .a "<modify-labels>!inbox\n"
 macro index,pager .t "<modify-labels>!todo\n"
@@ -227,6 +231,7 @@ tag-transforms "inbox"   "📥"   \
                "folia" "🥬" \
                "flat" "🥬" \
                "travis" "🤖" \
+               "ci" "🤖" \
                "sysadmin" "💻" \
                "homeautomation" "🏡" \
                "lamachine" "🦙" \
@@ -268,6 +273,7 @@ tag-formats "inbox"   "Gi" \
             "frog"  "GF" \
             "folia"  "GF2" \
             "travis"  "GT" \
+            "ci"  "GT" \
             "lamachine"  "GM"
 
 
