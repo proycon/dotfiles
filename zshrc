@@ -88,21 +88,18 @@ fi
 #if (( $? == 0 )); then
 #    export CC="colorgcc"
 #fi
-alias vless='vim -R -u /usr/share/vim/vim72/macros/less.vim'
 alias z='less -rN'
 alias myip="dig +short myip.opendns.com @resolver1.opendns.com"
 if [[ "$HOST" == "proyphone" ]]; then
     alias vi="vis"
     alias vim="vis"
 else
-    which nvim > /dev/null 2>/dev/null
-    if (( $? == 0 )); then
-        export EDITOR="nvim"
-        alias vi="nvim"
-        alias vim="nvim"
+    if which nvim > /dev/null 2> /dev/null; then
+        export EDITOR="LD_LIBRARY_PATH= nvim"
+        alias vi="LD_LIBRARY_PATH= nvim"
+        alias vim="LD_LIBRARY_PATH= nvim"
     else
-        which vim > /dev/null 2>/dev/null
-        if (( $? == 0 )); then
+        if which vim > /dev/null 2>/dev/null; then
             export EDITOR="vim"
             alias vi="vim"
         fi
