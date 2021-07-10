@@ -34,7 +34,7 @@ else
 fi
 
 if [ ! -f /tmp/.notifyclient.silent ]; then
-    mpv --no-video --really-quiet ~/dotfiles/media/notifyconnect.wav &
+    $(sleep 2 && pidof mosquitto_sub && mpv --no-video --really-quiet ~/dotfiles/media/notifyconnect.wav) &
 fi
 
 echo "Starting notifyclient">&2
