@@ -1,5 +1,45 @@
 #!/usr/bin/env sh
 
+. "$(which sxmo_common.sh)"
+
+if [ "$1" = "modem" ]; then
+	# Modem wakeup will be handled by the modemmonitor loops
+	# We should not manage the phone lock state here
+	exit 0
+fi
+
+REDLED_PATH="/sys/class/leds/red:indicator/brightness"
+BLUELED_PATH="/sys/class/leds/blue:indicator/brightness"
+
+finish() {
+	kill $BLINKPID
+
+	echo 0 > "$REDLED_PATH"
+	echo 0 > "$BLUELED_PATH"
+
+	# Going back to crust
+	if [ "$(sxmo_screenlock.sh getCurState)" != "unlock" ]; then
+		sxmo_screenlock.sh crust
+	fi
+
+	exit 0
+}
+
+trap 'finish' TERM INT EXIT
+
+blink() {
+	while [ "$(sxmo_screenlock.sh getCurState)" != "unlock" ]; do
+		echo 1 > "$REDLED_PATH"
+		echo 0 > "$BLUELED_PATH"
+		sleep 0.25
+		echo 0 > "$REDLED_PATH"
+		echo 1 > "$BLUELED_PATH"
+		sleep 0.25
+	done
+}
+
+blink &
+BLINKPID=$!
 
 #restart notify client
 touch /tmp/.notifyclient.silent
