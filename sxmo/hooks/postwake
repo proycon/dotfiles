@@ -19,6 +19,7 @@ finish() {
 
 	# Going back to crust
 	if [ "$(sxmo_screenlock.sh getCurState)" != "unlock" ]; then
+        pkill -STOP conky
 		sxmo_screenlock.sh crust
 	fi
 
@@ -50,4 +51,6 @@ rm /tmp/.notifyclient.silent
 (
     (ping -c 1 -W 15 anaproy.nl >/dev/null 2>/dev/null && ~/dotfiles/notifyclient.sh) || mpv --no-video --really-quiet ~/dotfiles/media/error.wav
 ) &
+
+pkill -CONT conky
 
