@@ -3,3 +3,9 @@
 pkill -CONT conky
 
 pidof mosquito_sub || sxmo_hooks.sh postwake
+
+#request status update from home automation
+~/dotfiles/notifysend.sh "/home/command/status" "ON"
+
+#force a conky update (assuming we got the response)
+sleep 2 && pkill -USR2 conky
