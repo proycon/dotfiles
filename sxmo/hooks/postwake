@@ -11,7 +11,9 @@ if [ "$1" != "rtc" ]; then
     #kill the one already running (if any)
     killall notifyhandler.sh notifyclient.sh mosquitto_sub
 
-    nmcli con up ifname wlan0 || nmcli con up ifname cdc-wdm0
+    if ! nmcli dev show | grep -q "(connected)"; then
+        nmcli con up ifname wlan0 || nmcli con up ifname cdc-wdm0
+    fi
 
     #wait for connection (max 15s) and restart notification handler in background
     (

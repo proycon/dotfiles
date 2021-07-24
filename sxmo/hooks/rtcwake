@@ -5,7 +5,9 @@ date >> /tmp/rtc
 if pidof mosquitto_sub; then
        sleep 4
 else
-       nmcli con up ifname wlan0 || nmcli con up ifname cdc-wdm0
+       if ! nmcli dev show | grep -q "(connected)"; then
+           nmcli con up ifname wlan0 || nmcli con up ifname cdc-wdm0
+       fi
        #wait for connection (max 15 s) and process three seconds of notifications before disconnecting
        ping -c 1 -W 15 anaproy.nl >/dev/null 2>/dev/null && \
        MQTT_SILENT_START=1 MQTT_SILENT_END=1 MQTT_OPTIONS="-W 3" ~/dotfiles/notifyclient.sh
