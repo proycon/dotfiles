@@ -1,0 +1,5 @@
+#!/usr/bin/env sh
+
+pkill -CONT conky
+
+pidof mosquito_sub || sxmo_hooks.sh postwake
