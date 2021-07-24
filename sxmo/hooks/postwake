@@ -1,11 +1,12 @@
 #!/usr/bin/env sh
 
+pkill -CONT conky
+
 if [ "$1" != "rtc" ]; then
     #only run when not woken up by rtc
 
     echo "[$(date)] Postwake hook (reason=$1)" >&2
 
-    pkill -CONT conky
 
     #kill the one already running (if any)
     killall notifyhandler.sh notifyclient.sh mosquitto_sub
