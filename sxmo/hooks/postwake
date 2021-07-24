@@ -1,56 +1,18 @@
 #!/usr/bin/env sh
 
-. "$(which sxmo_common.sh)"
+if [ "$1" != "rtc" ]; then
+    #only run when not woken up by rtc
 
-if [ "$1" = "modem" ]; then
-	# Modem wakeup will be handled by the modemmonitor loops
-	# We should not manage the phone lock state here
-	exit 0
+    echo "[$(date)] Postwake hook (reason=$1)" >&2
+
+    pkill -CONT conky
+
+    #kill the one already running (if any)
+    killall notifyhandler.sh notifyclient.sh mosquitto_sub
+
+    #wait for connection (max 15s) and restart notification handler in background
+    (
+        (ping -c 1 -W 15 anaproy.nl >/dev/null 2>/dev/null && MQTT_SILENT_END=1 ~/dotfiles/notifyclient.sh) || mpv --no-video --really-quiet ~/dotfiles/media/error.wav
+    ) &
+
 fi
-
-REDLED_PATH="/sys/class/leds/red:indicator/brightness"
-BLUELED_PATH="/sys/class/leds/blue:indicator/brightness"
-
-finish() {
-	kill $BLINKPID
-
-	echo 0 > "$REDLED_PATH"
-	echo 0 > "$BLUELED_PATH"
-
-	# Going back to crust
-	if [ "$(sxmo_screenlock.sh getCurState)" != "unlock" ]; then
-        pkill -STOP conky
-		sxmo_screenlock.sh crust
-	fi
-
-	exit 0
-}
-
-trap 'finish' TERM INT EXIT
-
-blink() {
-	while [ "$(sxmo_screenlock.sh getCurState)" != "unlock" ]; do
-		echo 1 > "$REDLED_PATH"
-		echo 0 > "$BLUELED_PATH"
-		sleep 0.25
-		echo 0 > "$REDLED_PATH"
-		echo 1 > "$BLUELED_PATH"
-		sleep 0.25
-	done
-}
-
-blink &
-BLINKPID=$!
-
-#restart notify client
-touch /tmp/.notifyclient.silent
-killall notifyhandler.sh notifyclient.sh mosquitto_sub #kill the one already running
-rm /tmp/.notifyclient.silent
-
-#wait for connection
-(
-    (ping -c 1 -W 15 anaproy.nl >/dev/null 2>/dev/null && ~/dotfiles/notifyclient.sh) || mpv --no-video --really-quiet ~/dotfiles/media/error.wav
-) &
-
-pkill -CONT conky
-

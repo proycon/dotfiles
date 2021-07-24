@@ -13,7 +13,6 @@ mpv --quiet --no-video ~/dotfiles/media/cylontune_low.ogg &
 feh --bg-fill /usr/share/sxmo/background.jpg
 
 conky -c ~/.config/sxmo/conky.conf -d
-#conky -c /usr/share/sxmo/appcfg/conky24h.conf -d
 
 
 if ! pgrep -f sxmo_modemmonitor.sh; then
