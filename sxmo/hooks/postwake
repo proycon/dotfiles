@@ -11,6 +11,8 @@ if [ "$1" != "rtc" ]; then
     #kill the one already running (if any)
     killall notifyhandler.sh notifyclient.sh mosquitto_sub
 
+    nmcli con up ifname wlan0 || nmcli con up ifname cdc-wdm0
+
     #wait for connection (max 15s) and restart notification handler in background
     (
         (ping -c 1 -W 15 anaproy.nl >/dev/null 2>/dev/null && MQTT_SILENT_END=1 ~/dotfiles/notifyclient.sh) || mpv --no-video --really-quiet ~/dotfiles/media/error.wav
