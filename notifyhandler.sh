@@ -73,7 +73,7 @@ do
 			;;
 		"home/notify/disarmed")
 			MSG="System disarmed"
-			$PLAY ~/dotfiles/media/beepout.wav &
+			$PLAY ~/dotfiles/media/authaccept.wav &
 			;;
 		"home/notify/test")
 			MSG="Test notification"
