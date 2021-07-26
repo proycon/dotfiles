@@ -2,7 +2,7 @@
 
 pkill -CONT conky
 
-pidof mosquito_sub || sxmo_hooks.sh postwake
+pidof mosquitto_sub || sxmo_hooks.sh postwake
 
 #request status update from home automation
 ~/dotfiles/notifysend.sh "/home/command/status" "ON"
