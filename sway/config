@@ -60,7 +60,6 @@ bindsym $mod+Shift+Right move workspace next
 #bindsym $mod+Shift+Right move right
 
 # split in horizontal orientation
-#bindsym $mod+Shift+h split h
 
 # split in vertical orientation
 bindsym $mod+Shift+v split v
@@ -79,29 +78,28 @@ bindsym $mod+c split h
 
 bindsym $mod+Shift+s sticky toggle
 
-# toggle tiling / floating
-bindsym $mod+Shift+space floating toggle
 
 # change focus between tiling / floating windows
 bindsym $mod+Shift+d focus mode_toggle
 
 # focus the parent container
 bindsym $mod+period focus parent
+bindsym $mod+Shift+period focus parent
 
 # focus the child container
 #bindsym $mod+d focus child
 
 # customize workspace name
-set $WS01 "一"
-set $WS02 "二"
-set $WS03 "三"
-set $WS04 "四"
-set $WS05 "五"
-set $WS06 "六"
-set $WS07 "七"
-set $WS08 "八"
-set $WS09 "九"
-set $WS10 "十"
+set $WS01 "1"
+set $WS02 "2"
+set $WS03 "3"
+set $WS04 "4"
+set $WS05 "5"
+set $WS06 "6"
+set $WS07 "7"
+set $WS08 "8"
+set $WS09 "9"
+set $WS10 "0"
 
 # Move the focused workspace to output
 bindsym $mod+Shift+Ctrl+Left move workspace output left
@@ -173,19 +171,25 @@ mode "resize" {
         bindsym Return mode "default"
         bindsym Escape mode "default"
 }
+mode "exec" {
+        # back to normal: Enter or Escape
+        bindsym Return mode "default"
+        bindsym Escape mode "default"
+}
 
 
-bindsym $mod+a scratchpad show; [instance="scratchpad"] move position center
+
 bindsym $mod+Shift+a resize shrink height 10 px or 10 ppt
 
 
 bindsym $mod+r mode "resize"
-#bindsym $mod+x mode "exec"
+bindsym $mod+x mode "exec"
+bindsym $mod+a scratchpad show
 
-#bindsym $mod+comma gaps outer current plus 32
-#bindsym $mod+Shift+comma gaps outer current minus 32
-#bindsym $mod+semicolon gaps inner current plus 16
-#bindsym $mod+Shift+semicolon gaps inner current minus 16
+bindsym $mod+comma gaps outer current plus 32
+bindsym $mod+Shift+comma gaps outer current minus 32
+bindsym $mod+semicolon gaps inner current plus 16
+bindsym $mod+Shift+semicolon gaps inner current minus 16
 
 bindsym $mod+Escape exec /home/proycon/dotfiles/lock.sh
 bindsym $mod+Shift+Escape exec /home/proycon/dotfiles/suspend.sh
@@ -194,9 +198,11 @@ bindsym $mod+F1 exec alacritty --working-directory ~ -t mail -e ssh -Y -A -t ana
 bindsym $mod+F2 exec alacritty --working-directory ~ -t vim -e ~/bin/tm nvim
 bindsym $alt+F2 exec /home/proycon/bin/lala
 bindsym $alt+Shift+F2 exec killall snapclient; exec mpc stop
-bindsym $alt+F3 exec /home/proycon/dotfiles/homecommand.sh
-bindsym $alt+Shift+F3 exec /home/proycon/dotfiles/homecommand.sh mute
+bindsym $mod+F3 exec /home/proycon/dotfiles/homecommand.sh
+bindsym $alt+F3 exec /home/proycon/dotfiles/homecommand.sh mute
 bindsym $alt+F5 exec /home/proycon/dotfiles/emojiselect
+bindsym $mod+F4 exec grim "/home/proycon/$(date +%Y-%m-%d-%H%M%S)_screenshot.png"; exec notify-send "Screenshot ready"
+bindsym $mod+Shift+F4 exec grim -g "$(slurp)" "/home/proycon/$(date +%Y-%m-%d-%H%M%S)_screenshot.png"; exec notify-send "Screenshot ready"
 bindsym $mod+F5 exec /home/proycon/dotfiles/opensxiv.sh
 bindsym $mod+F6 exec $term -t newsboat -e newsboat
 bindsym $mod+F7 exec $term -t ncmpcpp -e ncmpcpp
@@ -211,8 +217,9 @@ bindsym $mod+slash exec /home/proycon/dotfiles/timetracker.sh
 bindsym $mod+Shift+slash exec /home/proycon/dotfiles/timetracker.sh 15
 bindsym $mod+Ctrl+Shift+slash exec /home/proycon/dotfiles/timetracker.sh 60
 bindsym $mod+Shift+w exec /home/proycon/dotfiles/buku-dmenu
-bindsym $mod+u exec /home/proycon/dotfiles/dmenus-files.sh /nettmp -t
-bindsym $mod+o exec /home/proycon/dotfiles/dmenus-files.sh /home/proycon -t
+bindsym $mod+u exec /home/proycon/dotfiles/dmenu-files.sh /nettmp -t
+bindsym $mod+o exec /home/proycon/dotfiles/dmenu-files.sh /home/proycon -t
+bindsym $mod+g exec sh -c "printf '1.0\n1.4\n1.6\n2.0' | $menu -p scaling | xargs swaymsg -- output "$(slurp -f %o -or)" scale"
 
 bindsym $alt+F8 exec fcitx
 bindsym $alt+F9 exec swaymsg input type:keyboard xkb_layout proylatin && play ~/dotfiles/media/key.wav
@@ -248,10 +255,11 @@ for_window [class="mpv"]       move absolute position 1760 840
 # #---Dropdown/Scratchpad Windows---# #
 # First I have a tmux window used for background scripts.
 # I'll later bind this to mod+a.
-for_window [instance="scratchpad"] floating enable
-for_window [instance="scratchpad"] resize set 1600 1200
-for_window [instance="scratchpad"] move scratchpad
-for_window [instance="scratchpad"] border pixel 10
+for_window [title="scratchpad"] floating enable
+for_window [title="scratchpad"] move scratchpad
+for_window [title="scratchpad"] resize set 800 600
+for_window [title="scratchpad"] border pixel 10
+for_window [title="scratchpad"] move position center
 
 exec swayidle -w \
      timeout 300 '/home/proycon/dotfiles/lock.sh' \
@@ -332,7 +340,8 @@ exec_always --no-startup-id pulseaudio --start
 exec_always --no-startup-id killall mosquitto_sub
 exec_always --no-startup-id /home/proycon/dotfiles/notifyclient.sh
 exec_always --no-startup-id /home/proycon/dotfiles/media/cylontune_low.ogg
-exec --no-startup-id $term --title scratchpad -e /home/proycon/bin/tm scratchpad
+exec_always --no-startup-id nm-applet
+exec_always $term --title scratchpad -e /home/proycon/bin/tm scratchpad
 exec --no-startup-id udiskie
 
 include /etc/sway/config.d/*

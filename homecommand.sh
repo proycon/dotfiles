@@ -15,7 +15,7 @@ fi
 
 if [ -z "$1" ]; then
     if [ -n "$WAYLAND_DISPLAY" ]; then
-        chosen=$(cat ~/dotfiles/homecommands | bemenu -l 20 -b -p "Home" | sed "s/.*=//")
+        chosen=$(cat ~/dotfiles/homecommands | bemenu -l 20 -p "Home" | sed "s/.*=//")
     else
         which rofi > /dev/null 2> /dev/null
         if [ $? -eq 0 ]; then
