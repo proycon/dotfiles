@@ -1,5 +1,10 @@
 #!/usr/bin/env sh
-PICKED=$(ls $2 "$1" | dmenu -i -l 20)
+if [ -n "$WAYLAND_DISPLAY" ]; then
+    MENUTOOL="bemenu"
+else
+    MENUTOOL="dmenu"
+fi
+PICKED=$(ls $2 "$1" | "$MENUTOOL" -i -l 20)
 if [ -n "$PICKED" ]; then
     if [ -d "$1/$PICKED" ]; then
         ~/dotfiles/dmenu-files.sh "$1/$PICKED" $2

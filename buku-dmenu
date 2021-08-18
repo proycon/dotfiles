@@ -7,12 +7,12 @@
 # it under the terms of the GNU General Public License as published by
 # the Free Software Foundation, either version 3 of the License, or
 # (at your option) any later version.
-# 
+#
 # This program is distributed in the hope that it will be useful,
 # but WITHOUT ANY WARRANTY; without even the implied warranty of
 # MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 # GNU General Public License for more details.
-# 
+#
 # You should have received a copy of the GNU General Public License
 # along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
@@ -29,4 +29,8 @@ elif [ "$1" == "--version" ] ; then
 fi
 
 #get all bmks | swap tabs for spaces | run dmenu | cut to ID | run buku if not empty
-buku -p -f 5 | sed 's/\t/ /g' | dmenu -i -fn "Monospace:24" -l 10 | cut -d ' ' -f 1 | xargs --no-run-if-empty buku -o
+if [ -n "$WAYLAND_DISPLAY" ]; then
+    buku -p -f 5 | sed 's/\t/ /g' | bemenu --fn "Monospace 24" -l 10 | cut -d ' ' -f 1 | xargs --no-run-if-empty buku -o
+else
+    buku -p -f 5 | sed 's/\t/ /g' | dmenu -i -fn "Monospace:24" -l 10 | cut -d ' ' -f 1 | xargs --no-run-if-empty buku -o
+fi

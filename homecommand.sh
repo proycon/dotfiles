@@ -14,11 +14,15 @@ fi
 
 
 if [ -z "$1" ]; then
-    which rofi > /dev/null 2> /dev/null
-    if [ $? -eq 0 ]; then
-        chosen=$(cat ~/dotfiles/homecommands | rofi -dmenu -font "Sans 16" | sed "s/.*=//")
+    if [ -n "$WAYLAND_DISPLAY" ]; then
+        chosen=$(cat ~/dotfiles/homecommands | bemenu -l 20 -b -p "Home" | sed "s/.*=//")
     else
-        chosen=$(cat ~/dotfiles/homecommands | dmenu -l 20 -c -p "Home" | sed "s/.*=//")
+        which rofi > /dev/null 2> /dev/null
+        if [ $? -eq 0 ]; then
+            chosen=$(cat ~/dotfiles/homecommands | rofi -dmenu -font "Sans 16" | sed "s/.*=//")
+        else
+            chosen=$(cat ~/dotfiles/homecommands | dmenu -l 20 -c -p "Home" | sed "s/.*=//")
+        fi
     fi
 
     # Exit if none chosen.
