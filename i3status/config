@@ -1,0 +1,47 @@
+general {
+    colors = true
+    interval = 1
+}
+
+order += "read_file timetracker"
+order += "battery 0"
+order += "wireless wlp2s0"
+order += "volume master"
+order += "time"
+
+wireless wlp2s0 {
+        format_up = "%essid (%quality)"
+        format_down = "(no wifi)"
+}
+
+volume master {
+        format = "♪ %volume"
+        format_muted = "♪: MUTE"
+        device = "default"
+        mixer = "Master"
+        mixer_idx = 0
+}
+
+battery 0 {
+        format = "%status %percentage"
+        format_down = "No battery"
+        status_chr = "⚡ "
+        status_bat = "🔋 "
+        status_unk = "⚡ "
+        status_full = "☻ "
+        integer_battery_capacity = true
+        last_full_capacity = true
+        path = "/sys/class/power_supply/BAT%d/uevent"
+        low_threshold = 15
+}
+
+read_file timetracker {
+    format = ">%content"
+    path = "/home/proycon/.timetracker.current"
+    color_good = "#cccccc"
+}
+
+
+time {
+    format = "%H:%M:%S"
+}

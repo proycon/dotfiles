@@ -1,7 +1,11 @@
 #!/bin/sh
 
 if [ -z "$2" ]; then
-    chosen=$(cut -d ';' -f1 ~/dotfiles/timetracker.tasks | rofi -dmenu -font "Monospace 28" | sed "s/ .*//")
+    if [ -n "$WAYLAND_DISPLAY" ]; then
+        chosen=$(cut -d ';' -f1 ~/dotfiles/timetracker.tasks | bemenu -p "Task" -l 10 | sed "s/ .*//")
+    else
+        chosen=$(cut -d ';' -f1 ~/dotfiles/timetracker.tasks | rofi -dmenu -font "Monospace 28" | sed "s/ .*//")
+    fi
 else
     chosen=$(echo "$2" | tr -d "\n")
 fi
@@ -17,3 +21,4 @@ else
     D=$(date "+%Y-%m-%d %a %H:%M" --date "@$T")
 fi
 echo "$D $chosen" >> ~/.timetracker.$(hostname).log
+echo "$(date +%H:%M) $chosen" > ~/.timetracker.current
