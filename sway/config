@@ -15,7 +15,7 @@ font pango:Source Code Pro for Powerline 9
 # text rendering and scalability on retina/hidpi displays (thanks to pango).
 #font pango:DejaVu Sans Mono 8
 input type:keyboard xkb_layout proylatin
-input type:keyboard xkb_options compose:ralt,caps:ctrl_modifier
+input type:keyboard xkb_options lv3:ralt_switch,caps:ctrl_modifier
 input type:keyboard repeat_delay 300
 input type:keyboard repeat_rate 50
 
@@ -175,7 +175,7 @@ mode "resize" {
 }
 
 
-bindsym $mod+a [instance="scratchpad"] scratchpad show; [instance="scratchpad"] move position center
+bindsym $mod+a scratchpad show; [instance="scratchpad"] move position center
 bindsym $mod+Shift+a resize shrink height 10 px or 10 ppt
 
 
@@ -247,12 +247,11 @@ for_window [class="mpv"]       move absolute position 1760 840
 
 # #---Dropdown/Scratchpad Windows---# #
 # First I have a tmux window used for background scripts.
-# I'll later bind this to mod+u.
+# I'll later bind this to mod+a.
 for_window [instance="scratchpad"] floating enable
 for_window [instance="scratchpad"] resize set 1600 1200
 for_window [instance="scratchpad"] move scratchpad
 for_window [instance="scratchpad"] border pixel 10
-exec --no-startup-id st -t scratchpad -g 120x34 -e /home/proycon/bin/tm scratchpad
 
 exec swayidle -w \
      timeout 300 '/home/proycon/dotfiles/lock.sh' \
@@ -285,6 +284,7 @@ set $white #ffffff
 set $focus #689d68
 set $light #eaeaea
 set $dark #404040
+set $darkest #202020
 set $highlight #4d9de0
 
 
@@ -311,10 +311,10 @@ bar {
     status_command i3status
 
     colors {
-        background $dark
+        background $darkest
         separator $focus
         statusline $light
-        inactive_workspace $dark $dark $focus
+        inactive_workspace $darkest $darkest $focus
         active_workspace $light $light $focus
         urgent_workspace $highlight $highlight $focus
         focused_workspace $focus $focus $dark
@@ -323,14 +323,17 @@ bar {
 }
 
 default_border pixel 3
-titlebar_border_thickness 3
+titlebar_border_thickness 2
 
 exec_always --no-startup-id swaybar
+exec_always --no-startup-id mako
 exec_always --no-startup-id amixer sset Master unmute
 exec_always --no-startup-id pulseaudio --start
+exec_always --no-startup-id killall mosquitto_sub
 exec_always --no-startup-id /home/proycon/dotfiles/notifyclient.sh
 exec_always --no-startup-id /home/proycon/dotfiles/media/cylontune_low.ogg
-exec_always --no-startup-id udiskie
+exec --no-startup-id $term --title scratchpad -e /home/proycon/bin/tm scratchpad
+exec --no-startup-id udiskie
 
 include /etc/sway/config.d/*
 include ~/.config/sway/config.d/*
