@@ -10,6 +10,7 @@ if [ ! -f /tmp/locked ]; then
     else
         setxkbmap proylatin
         i3lock -n -c '#220000'
+        pidof picom || picom -cC -z -r 3 -l 2 -t 2 -f &
     fi
     play ~/dotfiles/media/unlock.wav >/dev/null 2>/dev/null &!
     rm /tmp/locked

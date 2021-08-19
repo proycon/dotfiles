@@ -15,10 +15,11 @@ fi
 
 if [ -z "$1" ]; then
     if [ -n "$WAYLAND_DISPLAY" ]; then
-        chosen=$(cat ~/dotfiles/homecommands | bemenu -l 20 -p "Home" | sed "s/.*=//")
+        chosen=$(cat ~/dotfiles/homecommands | bemenu -p "Home Command" -l 20 -p "Home" | sed "s/.*=//")
     else
-        which rofi > /dev/null 2> /dev/null
-        if [ $? -eq 0 ]; then
+        if which bemenu; then
+            chosen=$(cat ~/dotfiles/homecommands | bemenu -p "Home Command" -l 20 --fn "Monospace 20" | sed "s/.*=//")
+        elif which rofi; then
             chosen=$(cat ~/dotfiles/homecommands | rofi -dmenu -font "Sans 16" | sed "s/.*=//")
         else
             chosen=$(cat ~/dotfiles/homecommands | dmenu -l 20 -c -p "Home" | sed "s/.*=//")

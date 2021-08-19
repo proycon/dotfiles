@@ -1,0 +1,358 @@
+# Read `man 5 i3` for a complete reference.
+
+set $mod Mod4
+set $alt Mod1
+set $term alacritty
+set $termexec "-e"
+set $menu bemenu
+set $menurun bemenu-run
+
+# Font for window titles. Will also be used by the bar unless a different font
+# is used in the bar {} block below.
+font pango:Source Code Pro for Powerline 9
+
+
+
+# Use Mouse+$mod to drag floating windows to their wanted position
+floating_modifier $mod
+
+# start a terminal
+bindsym $mod+Return exec $term
+bindsym $mod+t exec $term
+bindsym $mod+Shift+Return exec $term
+
+# kill focused window
+bindsym $mod+Shift+q kill
+
+# start dmenu (a program launcher)
+bindsym $mod+space exec $menurun --fn "Monospace 24" -l 20
+
+# There also is the (new) i3-dmenu-desktop which only displays applications
+# shipping a .desktop file. It is a wrapper around dmenu, so you need that
+# installed.
+# bindsym $mod+d exec --no-startup-id i3-dmenu-desktop
+
+# change focus
+bindsym $mod+h focus left
+bindsym $mod+j focus down
+bindsym $mod+k focus up
+bindsym $mod+l focus right
+
+
+# move focused window
+bindsym $mod+Shift+h move left
+bindsym $mod+Shift+j move down
+bindsym $mod+Shift+k move up
+bindsym $mod+Shift+l move right
+
+# alternatively, you can use the cursor keys:
+bindsym $mod+Shift+Left move workspace prev
+bindsym $mod+Shift+Right move workspace next
+#bindsym $mod+Shift+Down move down
+#bindsym $mod+Shift+Up move up
+#bindsym $mod+Shift+Right move right
+
+# split in horizontal orientation
+
+# split in vertical orientation
+bindsym $mod+Shift+v split v
+
+# enter fullscreen mode for the focused container
+bindsym $mod+f fullscreen toggle
+
+# change container layout (stacked, tabbed, toggle split)
+bindsym $mod+s layout stacking
+bindsym $mod+w layout tabbed
+bindsym $mod+e layout toggle split
+bindsym $mod+d floating toggle
+
+bindsym $mod+v split v
+bindsym $mod+c split h
+
+bindsym $mod+Shift+s sticky toggle
+
+
+# change focus between tiling / floating windows
+bindsym $mod+Shift+d focus mode_toggle
+
+# focus the parent container
+bindsym $mod+period focus parent
+bindsym $mod+Shift+period focus parent
+
+# focus the child container
+#bindsym $mod+d focus child
+
+# customize workspace name
+set $WS00 "0"
+set $WS01 "1"
+set $WS02 "2"
+set $WS03 "3"
+set $WS04 "4"
+set $WS05 "5"
+set $WS06 "6"
+set $WS07 "7"
+set $WS08 "8"
+set $WS09 "9"
+
+
+workspace $WS00 output DP-2
+workspace $WS01 output DP-4
+workspace $WS02 output DP-4
+workspace $WS03 output DP-4
+workspace $WS04 output DP-4
+workspace $WS05 output DP-4
+workspace $WS06 output DP-4
+workspace $WS07 output DP-4
+workspace $WS08 output DP-4
+workspace $WS09 output DP-4
+
+
+# Move the focused workspace to output
+bindsym $mod+Shift+Ctrl+Left move workspace output left
+bindsym $mod+Shift+Ctrl+Down move workspace output down
+bindsym $mod+Shift+Ctrl+Up move workspace output up
+bindsym $mod+Shift+Ctrl+Right move workspace output right
+
+
+
+# switch to workspace
+bindsym $mod+apostrophe workspace $WS00
+bindsym $mod+1 workspace $WS01
+bindsym $mod+2 workspace $WS02
+bindsym $mod+3 workspace $WS03
+bindsym $mod+4 workspace $WS04
+bindsym $mod+5 workspace $WS05
+bindsym $mod+6 workspace $WS06
+bindsym $mod+7 workspace $WS07
+bindsym $mod+8 workspace $WS08
+bindsym $mod+9 workspace $WS09
+
+bindsym $mod+Left focus left
+bindsym $mod+Right focus right
+bindsym $mod+Up focus up
+bindsym $mod+Down focus down
+bindsym $mod+Tab workspace back_and_forth
+
+# move focused container to workspace
+bindsym $mod+Shift+apostrophe move container to workspace $WS00
+bindsym $mod+Shift+1 move container to workspace $WS01
+bindsym $mod+Shift+2 move container to workspace $WS02
+bindsym $mod+Shift+3 move container to workspace $WS03
+bindsym $mod+Shift+4 move container to workspace $WS04
+bindsym $mod+Shift+5 move container to workspace $WS05
+bindsym $mod+Shift+6 move container to workspace $WS06
+bindsym $mod+Shift+7 move container to workspace $WS07
+bindsym $mod+Shift+8 move container to workspace $WS08
+bindsym $mod+Shift+9 move container to workspace $WS09
+
+# reload the configuration file
+bindsym $mod+Shift+c reload; exec "i3-nagbar -t warning -m 'Reloaded'"
+# restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
+bindsym $mod+Shift+r restart; exec "i3-nagbar -t warning -m 'Restarted'"
+# exit i3 (logs you out of your X session)
+bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit sway? This will end your wayland session.' -b 'Yes, exit sway' 'i3-msg exit'"
+
+bindsym XF86MonBrightnessDown exec --no-startup-id sudo ~/dotfiles/bright_down.sh
+bindsym XF86MonBrightnessUp exec --no-startup-id sudo ~/dotfiles/bright_up.sh
+
+
+# resize window (you can also use the mouse for that)
+mode "resize" {
+        # These bindings trigger as soon as you enter the resize mode
+
+        # Pressing left will shrink the window’s width.
+        # Pressing right will grow the window’s width.
+        # Pressing up will shrink the window’s height.
+        # Pressing down will grow the window’s height.
+        bindsym h resize shrink width 10 px or 10 ppt
+        bindsym j resize grow height 10 px or 10 ppt
+        bindsym k resize shrink height 10 px or 10 ppt
+        bindsym l resize grow width 10 px or 10 ppt
+
+        # same bindings, but for the arrow keys
+        bindsym Left resize shrink width 10 px or 10 ppt
+        bindsym Down resize grow height 10 px or 10 ppt
+        bindsym Up resize shrink height 10 px or 10 ppt
+        bindsym Right resize grow width 10 px or 10 ppt
+
+        # back to normal: Enter or Escape
+        bindsym Return mode "default"
+        bindsym Escape mode "default"
+}
+mode "exec" {
+        # back to normal: Enter or Escape
+        bindsym Return mode "default"
+        bindsym Escape mode "default"
+}
+
+
+
+bindsym $mod+Shift+a resize shrink height 10 px or 10 ppt
+
+
+bindsym $mod+r mode "resize"
+bindsym $mod+x mode "exec"
+bindsym $mod+a scratchpad show
+
+bindsym $mod+comma gaps outer current plus 32
+bindsym $mod+Shift+comma gaps outer current minus 32
+bindsym $mod+semicolon gaps inner current plus 16
+bindsym $mod+Shift+semicolon gaps inner current minus 16
+
+bindsym $mod+Escape exec /home/proycon/dotfiles/lock.sh
+bindsym $mod+Shift+Escape exec /home/proycon/dotfiles/suspend.sh
+
+bindsym $mod+F1 exec $term --working-directory ~ --title mail $termexec ssh -Y -A -t anaproy.nl ~/bin/tm_alot
+bindsym $mod+F2 exec $term --working-directory ~ --title vim $termexec ~/bin/tm nvim
+bindsym $alt+F2 exec /home/proycon/bin/lala
+bindsym $alt+Shift+F2 exec killall snapclient; exec mpc stop
+bindsym $mod+F3 exec /home/proycon/dotfiles/homecommand.sh
+bindsym $alt+F3 exec /home/proycon/dotfiles/homecommand.sh mute
+bindsym $alt+F5 exec /home/proycon/dotfiles/emojiselect
+bindsym $mod+F4 exec grim "/home/proycon/$(date +%Y-%m-%d-%H%M%S)_screenshot.png"; exec notify-send "Screenshot ready"
+bindsym $mod+Shift+F4 exec grim -g "$(slurp)" "/home/proycon/$(date +%Y-%m-%d-%H%M%S)_screenshot.png"; exec notify-send "Screenshot ready"
+bindsym $mod+F5 exec /home/proycon/dotfiles/opensxiv.sh
+bindsym $mod+F6 exec $term --title newsboat $termexec newsboat
+bindsym $mod+F7 exec $term --title ncmpcpp $termexec ncmpcpp
+bindsym $mod+F8 exec $term --title youtube $termexec ytfzt -t
+bindsym $mod+F10 exec pamixer -t && play /home/proycon/dotfiles/media/key.wav
+bindsym $mod+F11 exec pamixer --allow-boost -d 5 && play /home/proycon/dotfiles/media/key.wav
+bindsym $mod+F12 exec pamixer --allow-boost -i 5 && play /home/proycon/dotfiles/media/key.wav
+bindsym XF86AudioMute exec pamixer -t && play /home/proycon/dotfiles/media/key.wav
+bindsym XF86AudioLowerVolume exec pamixer --allow-boost -d 5 && play /home/proycon/dotfiles/media/key.wav
+bindsym XF86AudioRaiseVolume exec pamixer --allow-boost -i 5 && play /home/proycon/dotfiles/media/key.wav
+bindsym $mod+slash exec /home/proycon/dotfiles/timetracker.sh
+bindsym $mod+Shift+slash exec /home/proycon/dotfiles/timetracker.sh 15
+bindsym $mod+Ctrl+Shift+slash exec /home/proycon/dotfiles/timetracker.sh 60
+bindsym $mod+Shift+w exec /home/proycon/dotfiles/buku-dmenu
+bindsym $mod+u exec /home/proycon/dotfiles/dmenu-files.sh /nettmp -t
+bindsym $mod+o exec /home/proycon/dotfiles/dmenu-files.sh /home/proycon -t
+
+
+#i3 only
+bindsym $mod+g exec picom -cC -z -r 3 -l 2 -t 2 -f
+bindsym $mod+$alt+g exec killall picom
+
+
+bindsym $alt+F8 exec fcitx
+bindsym $alt+F9 exec setxkbmap proylatin && play ~/dotfiles/media/key.wav
+bindsym $alt+F10 exec setxkbmap proyeo && play ~/dotfiles/media/key.wav
+bindsym $alt+F11 exec setxkbmap proyru && play ~/dotfiles/media/key.wav
+bindsym $alt+Shift+F11 exec setxkbmap proyel && play ~/dotfiles/media/key.wav
+bindsym $alt+F12 exec setxkbmap proyar && play ~/dotfiles/media/key.wav
+bindsym $alt+Shift+F12 exec setxkbmap proylogic && play ~/dotfiles/media/key.wav
+
+
+# Start i3bar to display a workspace bar (plus the system information i3status
+# finds out, if available)
+#bar {
+#        status_command i3status
+#}
+
+# set floating mode when applications started
+for_window [class="Lightdm-gtk-greeter-settings"]   floating enable
+for_window [class="Lxappearance"]                   floating enable
+for_window [class="Menu"]                           floating enable
+
+
+for_window [class="^.*"]                border pixel 0
+for_window [window_role="pop-up"]       floating enable
+for_window [window_role="task_dialog"]  floating enable
+for_window [title="Preferences$"]       floating enable
+for_window [class="mpv"]       floating enable
+for_window [class="mpv"]       resize set 800 600
+for_window [class="mpv"]       border pixel 3
+for_window [class="mpv"]       sticky enable
+for_window [class="mpv"]       move absolute position 1760 840
+
+# #---Dropdown/Scratchpad Windows---# #
+# First I have a tmux window used for background scripts.
+# I'll later bind this to mod+a.
+for_window [title="scratchpad"] floating enable
+for_window [title="scratchpad"] move scratchpad
+for_window [title="scratchpad"] resize set 800 600
+for_window [title="scratchpad"] border pixel 10
+for_window [title="scratchpad"] move position center
+
+exec xss-lock --ignore-sleep -- /home/proycon/dotfiles/lock.sh &
+
+#smart_gaps off
+#gaps inner 16
+#gaps outer 0
+
+#workspace $WS00 gaps inner 0
+#workspace $WS01 gaps inner 0
+#workspace $WS02 gaps inner 0
+#workspace $WS03 gaps inner 0
+#workspace $WS08 gaps inner 0
+#workspace $WS09 gaps inner 0
+
+#gruvbox colorscheme
+set $bg #282828
+set $red #cc241d
+set $green #98971a
+set $yellow #d79921
+set $blue #458588
+set $purple #b16286
+set $aqua #689d68
+set $gray #a89984
+set $darkgray #1d2021
+set $white #ffffff
+
+set $focus #689d68
+set $light #eaeaea
+set $dark #404040
+set $darkest #202020
+set $highlight #4d9de0
+
+
+
+# green gruvbox
+# class                 border|backgr|text|indicator|child_border
+client.focused          $green $green $darkgray $purple $darkgray
+client.focused_inactive $bg $darkgray $yellow $purple $darkgray
+client.unfocused        $bg $darkgray $yellow $purple $darkgray
+client.urgent           $red $red $white $red $red
+
+
+
+#
+# Status Bar:
+#
+# Read `man 5 sway-bar` for more information about this section.
+bar {
+    position bottom
+
+    # When the status_command prints a new line to stdout, swaybar updates.
+    # The default just shows the current date and time.
+    status_command i3status
+
+    colors {
+        background $darkest
+        separator $focus
+        statusline $light
+        inactive_workspace $darkest $darkest $focus
+        active_workspace $light $light $focus
+        urgent_workspace $highlight $highlight $focus
+        focused_workspace $focus $focus $dark
+        urgent_workspace $highlight $highlight $light
+    }
+}
+
+default_border pixel 3
+
+exec_always --no-startup-id i3bar
+exec_always --no-startup-id dunst
+exec_always --no-startup-id amixer sset Master unmute
+exec_always --no-startup-id pulseaudio --start
+exec_always --no-startup-id killall mosquitto_sub
+exec_always --no-startup-id setxkbmap proylatin
+exec_always --no-startup-id /home/proycon/dotfiles/notifyclient.sh
+exec_always --no-startup-id /home/proycon/dotfiles/media/cylontune_low.ogg
+exec_always --no-startup-id xsetroot -cursor_name left_ptr
+exec_always --no-startup-id feh --bg-fill /home/proycon/dotfiles/media/green-leafed-closeup.jpg --image-bg '#2e3440'
+exec_always --no-startup-id xset r rate 300 50
+exec_always --no-startup-id xrdb -all -merge /home/proycon/.Xresources
+exec_always --no-startup-id picom -cC -z -r 3 -l 2 -t 2 -f
+exec_always --no-startup-id $term --title scratchpad /home/proycon/bin/tm scratchpad
+exec_always --no-startup-id killall udiskie; udiskie
