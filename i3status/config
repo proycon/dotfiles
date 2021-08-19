@@ -44,5 +44,5 @@ read_file timetracker {
 
 
 time {
-    format = "%H:%M:%S"
+    format = "%H:%M"
 }

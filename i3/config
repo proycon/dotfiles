@@ -270,7 +270,7 @@ for_window [class="mpv"]       move absolute position 1760 840
 # I'll later bind this to mod+a.
 for_window [title="scratchpad"] floating enable
 for_window [title="scratchpad"] move scratchpad
-for_window [title="scratchpad"] resize set 800 600
+for_window [title="scratchpad"] resize set 1600 1200
 for_window [title="scratchpad"] border pixel 10
 for_window [title="scratchpad"] move position center
 
@@ -325,7 +325,7 @@ bar {
 
     # When the status_command prints a new line to stdout, swaybar updates.
     # The default just shows the current date and time.
-    status_command i3status
+    status_command i3status -c /home/proycon/dotfiles/i3status/$(hostname).config
 
     colors {
         background $darkest
@@ -354,5 +354,5 @@ exec_always --no-startup-id feh --bg-fill /home/proycon/dotfiles/media/green-lea
 exec_always --no-startup-id xset r rate 300 50
 exec_always --no-startup-id xrdb -all -merge /home/proycon/.Xresources
 exec_always --no-startup-id picom -cC -z -r 3 -l 2 -t 2 -f
-exec_always --no-startup-id $term --title scratchpad /home/proycon/bin/tm scratchpad
+exec_always --no-startup-id $term --title scratchpad $termexec /home/proycon/bin/tm scratchpad
 exec_always --no-startup-id killall udiskie; udiskie
