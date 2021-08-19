@@ -331,10 +331,10 @@ alias -s js=vim
 alias -s css=vim
 
 alias -s pdf=zathura
-alias -s jpg=feh
-alias -s png=feh
-alias -s eps=feh
-alias -s gif=feh
+alias -s jpg=imv
+alias -s png=imv
+alias -s eps=imv
+alias -s gif=imv
 alias -s mp3=mpg321
 alias -s ogg=play
 
