@@ -1,6 +1,7 @@
 general {
     colors = true
     interval = 1
+    color_good = "#cccccc"
 }
 
 order += "read_file timetracker"
@@ -25,10 +26,10 @@ volume master {
 battery 0 {
         format = "%status %percentage"
         format_down = "No battery"
-        status_chr = "⚡ "
-        status_bat = "🔋 "
-        status_unk = "⚡ "
-        status_full = "☻ "
+        status_chr = "CHR"
+        status_bat = "BAT"
+        status_unk = "CHR"
+        status_full = ""
         integer_battery_capacity = true
         last_full_capacity = true
         path = "/sys/class/power_supply/BAT%d/uevent"
