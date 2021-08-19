@@ -63,6 +63,7 @@ alias pi='pip install .'
 alias gl='git pull && git submodule update; if (( $? == 0 )); then; play -q /usr/share/sounds/KDE-Window-Minimize.ogg 2> /dev/null &!; fi'
 alias gp='git push; if (( $? == 0 )); then; play -q /usr/share/sounds/KDE-Window-Maximize.ogg 2> /dev/null &!; fi'
 alias pg='git push; if (( $? == 0 )); then; play -q /usr/share/sounds/KDE-Window-Maximize.ogg 2> /dev/null &!; fi'
+alias gca="LD_LIBRARY_PATH= git commit -a"
 alias cf='LANGUAGE="en_GB.UTF-8" ./configure'
 alias a='tmux attach'
 alias b="buku"
