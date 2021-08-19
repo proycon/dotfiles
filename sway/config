@@ -194,8 +194,8 @@ bindsym $mod+Shift+semicolon gaps inner current minus 16
 bindsym $mod+Escape exec /home/proycon/dotfiles/lock.sh
 bindsym $mod+Shift+Escape exec /home/proycon/dotfiles/suspend.sh
 
-bindsym $mod+F1 exec $term --working-directory ~ --title mail -e ssh -Y -A -t anaproy.nl ~/bin/tm_alot
-bindsym $mod+F2 exec $term --working-directory ~ --title vim -e ~/bin/tm nvim
+bindsym $mod+F1 exec $term --working-directory ~ --title mail ssh -Y -A -t anaproy.nl ~/bin/tm_alot
+bindsym $mod+F2 exec $term --working-directory ~ --title vim ~/bin/tm nvim
 bindsym $alt+F2 exec /home/proycon/bin/lala
 bindsym $alt+Shift+F2 exec killall snapclient; exec mpc stop
 bindsym $mod+F3 exec /home/proycon/dotfiles/homecommand.sh
@@ -204,9 +204,9 @@ bindsym $alt+F5 exec /home/proycon/dotfiles/emojiselect
 bindsym $mod+F4 exec grim "/home/proycon/$(date +%Y-%m-%d-%H%M%S)_screenshot.png"; exec notify-send "Screenshot ready"
 bindsym $mod+Shift+F4 exec grim -g "$(slurp)" "/home/proycon/$(date +%Y-%m-%d-%H%M%S)_screenshot.png"; exec notify-send "Screenshot ready"
 bindsym $mod+F5 exec /home/proycon/dotfiles/opensxiv.sh
-bindsym $mod+F6 exec $term --title newsboat -e newsboat
-bindsym $mod+F7 exec $term --title ncmpcpp -e ncmpcpp
-bindsym $mod+F8 exec $term --title youtube -e ytfzt -t
+bindsym $mod+F6 exec $term --title newsboat newsboat
+bindsym $mod+F7 exec $term --title ncmpcpp ncmpcpp
+bindsym $mod+F8 exec $term --title youtube ytfzt -t
 bindsym $mod+F10 exec pamixer -t && play /home/proycon/dotfiles/media/key.wav
 bindsym $mod+F11 exec pamixer --allow-boost -d 5 && play /home/proycon/dotfiles/media/key.wav
 bindsym $mod+F12 exec pamixer --allow-boost -i 5 && play /home/proycon/dotfiles/media/key.wav
@@ -341,7 +341,7 @@ exec_always --no-startup-id killall mosquitto_sub
 exec_always --no-startup-id /home/proycon/dotfiles/notifyclient.sh
 exec_always --no-startup-id /home/proycon/dotfiles/media/cylontune_low.ogg
 exec_always --no-startup-id nm-applet
-exec_always $term --title scratchpad -e /home/proycon/bin/tm scratchpad
+exec_always $term --title scratchpad /home/proycon/bin/tm scratchpad
 exec --no-startup-id udiskie
 
 include /etc/sway/config.d/*
