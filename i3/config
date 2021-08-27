@@ -208,8 +208,8 @@ bindsym $alt+Shift+F2 exec killall snapclient; exec mpc stop
 bindsym $mod+F3 exec /home/proycon/dotfiles/homecommand.sh
 bindsym $alt+F3 exec /home/proycon/dotfiles/homecommand.sh mute
 bindsym $alt+F5 exec /home/proycon/dotfiles/emojiselect
-bindsym $mod+F4 exec grim "/home/proycon/$(date +%Y-%m-%d-%H%M%S)_screenshot.png"; exec notify-send "Screenshot ready"
-bindsym $mod+Shift+F4 exec grim -g "$(slurp)" "/home/proycon/$(date +%Y-%m-%d-%H%M%S)_screenshot.png"; exec notify-send "Screenshot ready"
+bindsym $mod+F4 exec scrot "/home/proycon/$(date +%Y-%m-%d-%H%M%S)_screenshot.png"; exec notify-send "Screenshot ready"
+bindsym $mod+Shift+F4 exec scrot --focused "/home/proycon/$(date +%Y-%m-%d-%H%M%S)_screenshot.png"; exec notify-send "Screenshot ready"
 bindsym $mod+F5 exec /home/proycon/dotfiles/opensxiv.sh
 bindsym $mod+F6 exec $term --title newsboat $termexec newsboat
 bindsym $mod+F7 exec $term --title ncmpcpp $termexec ncmpcpp
