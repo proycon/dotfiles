@@ -226,6 +226,7 @@ bindsym $mod+Ctrl+Shift+slash exec /home/proycon/dotfiles/timetracker.sh 60
 bindsym $mod+Shift+w exec /home/proycon/dotfiles/buku-dmenu
 bindsym $mod+u exec /home/proycon/dotfiles/dmenu-files.sh /nettmp -t
 bindsym $mod+o exec /home/proycon/dotfiles/dmenu-files.sh /home/proycon -t
+bindsym $mod+n exec /home/proycon/dotfiles/network-menu.sh
 
 
 #i3 only
@@ -273,7 +274,8 @@ for_window [title="scratchpad"] resize set 1600 1200
 for_window [title="scratchpad"] border pixel 10
 for_window [title="scratchpad"] move position center
 
-exec xss-lock --ignore-sleep -- /home/proycon/dotfiles/lock.sh &
+exec xset 300 #set timeout for screensaver
+exec xss-lock -- /home/proycon/dotfiles/lock.sh &
 
 #smart_gaps off
 #gaps inner 16

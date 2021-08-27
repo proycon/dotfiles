@@ -220,6 +220,7 @@ bindsym $mod+Shift+w exec /home/proycon/dotfiles/buku-dmenu
 bindsym $mod+u exec /home/proycon/dotfiles/dmenu-files.sh /nettmp -t
 bindsym $mod+o exec /home/proycon/dotfiles/dmenu-files.sh /home/proycon -t
 bindsym $mod+g exec sh -c "printf '1.0\n1.4\n1.6\n2.0' | $menu -p scaling | xargs swaymsg -- output "$(slurp -f %o -or)" scale"
+bindsym $mod+n exec /home/proycon/dotfiles/network-menu.sh
 
 bindsym $alt+F8 exec fcitx
 bindsym $alt+F9 exec swaymsg input type:keyboard xkb_layout proylatin && play ~/dotfiles/media/key.wav
