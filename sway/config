@@ -264,8 +264,7 @@ for_window [title="scratchpad"] move position center
 
 exec swayidle -w \
      timeout 300 '/home/proycon/dotfiles/lock.sh' \
-     timeout 600 'swaymsg "output * dpms off"' resume 'swaymsg "output * dpms on"' \
-     before-sleep '/home/proycon/dotfiles/lock.sh'
+     timeout 600 'swaymsg "output * dpms off"' resume 'swaymsg "output * dpms on"'
 
 #smart_gaps off
 #gaps inner 16
@@ -342,7 +341,7 @@ exec_always --no-startup-id killall mosquitto_sub
 exec_always --no-startup-id /home/proycon/dotfiles/notifyclient.sh
 exec_always --no-startup-id /home/proycon/dotfiles/media/cylontune_low.ogg
 exec_always --no-startup-id nm-applet
-exec_always $term --title scratchpad /home/proycon/bin/tm scratchpad
+exec_always --no-startup-id $term --title scratchpad /home/proycon/bin/tm scratchpad
 exec --no-startup-id udiskie
 
 include /etc/sway/config.d/*
