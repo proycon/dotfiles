@@ -12,6 +12,11 @@ if [ ! -z "$MQTT_PASSWORD" ]; then
     exit 2
 fi
 
+if [ -x "$(which sxmo_dmenu.sh)" ]; then
+    alias bemenu="$(which sxmo_dmenu.sh)"
+else
+    alias dmenu="$(which sxmo_dmenu.sh)"
+fi
 
 if [ -z "$1" ]; then
     if [ -n "$WAYLAND_DISPLAY" ]; then
