@@ -19,6 +19,12 @@ elif [ "$1" = "html" ]; then
     boldred="<span style=\"font-weight: bold; color: red\">"
     boldgreen="<span style=\"font-weight: bold; color: green\">"
     boldyellow="<span style=\"font-weight: bold; color: yellow\">"
+elif [ "$1" = "pango" ]; then
+    bold="<span weight=\"bold\">"
+    normal="</span>"
+    boldred="<span weight=\"bold\" foreground=\"red\">"
+    boldgreen="<span weight=\"bold\" foreground=\"green\">"
+    boldyellow="<span weight=\"bold\" foreground=\"yellow\">"
 else
     bold=$(tput bold)
     boldred=${bold}$(tput setaf 1) #  red
