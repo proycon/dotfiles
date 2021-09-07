@@ -333,6 +333,7 @@ bar {
 default_border pixel 3
 titlebar_border_thickness 1
 titlebar_padding 1 1
+hide_edge_borders --i3 smart
 
 exec_always --no-startup-id swaybar
 exec_always --no-startup-id mako

@@ -277,6 +277,7 @@ for_window [title="scratchpad"] move position center
 exec xset 300 #set timeout for screensaver
 exec xss-lock -- /home/proycon/dotfiles/lock.sh &
 
+hide_edge_borders smart
 #smart_gaps off
 #gaps inner 16
 #gaps outer 0
