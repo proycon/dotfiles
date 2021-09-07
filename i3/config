@@ -340,7 +340,8 @@ bar {
     }
 }
 
-default_border pixel 3
+default_border pixel 1
+
 
 exec_always --no-startup-id i3bar
 exec_always --no-startup-id dunst
