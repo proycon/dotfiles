@@ -1,5 +1,6 @@
 #!/bin/bash
 
+loop=0
 
 if [ "$1" = "conky" ]; then
     bold="\${color white}"
@@ -25,6 +26,8 @@ elif [ "$1" = "pango" ]; then
     boldred="<span weight=\"bold\" foreground=\"red\">"
     boldgreen="<span weight=\"bold\" foreground=\"green\">"
     boldyellow="<span weight=\"bold\" foreground=\"yellow\">"
+elif [ "$1" = "loop" ] || [ "$2" = "loop" ]; then
+    loop=1
 else
     bold=$(tput bold)
     boldred=${bold}$(tput setaf 1) #  red
@@ -37,29 +40,44 @@ else
     normal=$(tput sgr0)
 fi
 
-
-NOW=$(date +%s | tr -d '\n')
-LASTUPDATE=$(stat -c %Y /tmp/homestatus/presence | tr -d '\n')
-TIMEDELTA=$(( (NOW - LASTUPDATE) / 60 ))
-echo -e  "${bold}Last update:${normal}   $TIMEDELTA mins ago"
-if [ "$1" = "html" ]; then
-    echo "<hr/>"
-else
-    echo "─────────────────────────────────"
-fi
-echo -en "${bold}presence${normal}: ${boldgreen}     "
-cat /tmp/homestatus/presence 2> /dev/null
-echo -en $normal
-echo -en "${bold}alarm${normal}:         "
-cat /tmp/homestatus/alarm 2> /dev/null
-echo -en "${bold}temperature${normal}:   "
-cat /tmp/homestatus/temperature | sed 's/,/\n              /g'  2> /dev/null
-echo -en "${bold}climate${normal}:       "
-cat /tmp/homestatus/climate | sed 's/,/\n              /g' 2> /dev/null
-echo -en "${bold}doors/windows${normal}: ${boldred}"
-cat /tmp/homestatus/doors | sed 's/ /\n               /g' 2> /dev/null
-echo -en $normal
-echo -en "${bold}lights${normal}: ${boldyellow}       "
-cat /tmp/homestatus/lights | sed 's/ /\n               /g' 2> /dev/null
-echo -en $normal
+while [ 1 ]; do
+    NOW=$(date +%s | tr -d '\n')
+    LASTUPDATE=$(stat -c %Y /tmp/homestatus/presence | tr -d '\n')
+    TIMEDELTA=$(( (NOW - LASTUPDATE) / 60 ))
+    echo -e  "${bold}Time:          $(date +%H:%M)${normal}"
+    echo -en  "${bold}Last update:${normal}   $TIMEDELTA mins ago "
+    if pgrep mosq > /dev/null; then
+        echo -e  "(${green}ok${normal})"
+    else
+        echo -e  "(${red}no daemon${normal})"
+    fi
+    if [ "$1" = "html" ]; then
+        echo "<hr/>"
+    else
+        echo "─────────────────────────────────"
+    fi
+    echo -en "${bold}presence${normal}: ${boldgreen}     "
+    cat /tmp/homestatus/presence 2> /dev/null
+    echo -en $normal
+    echo -en "${bold}alarm${normal}:         "
+    cat /tmp/homestatus/alarm 2> /dev/null
+    echo -en "${bold}temperature${normal}:   "
+    cat /tmp/homestatus/temperature | sed 's/,/\n              /g'  2> /dev/null
+    echo -en "${bold}climate${normal}:       "
+    cat /tmp/homestatus/climate | sed 's/,\w/\n              #1/g' |
+    echo -en "${bold}doors/windows${normal}: ${boldred}"
+    cat /tmp/homestatus/doors | sed 's/ /\n               /g' 2> /dev/null
+    echo -en $normal
+    echo -en "${bold}lights${normal}: ${boldyellow}       "
+    cat /tmp/homestatus/lights | sed 's/ /\n               /g' 2> /dev/null
+    echo -en $normal
+    echo -e
+    if [ $loop -eq 1 ]; then
+        SECS=$(date +%S)
+        #sleep until next minute
+        sleep $((60 - SECS - 1))
+    else
+        break
+    fi
+done
 
