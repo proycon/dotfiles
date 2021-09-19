@@ -47,9 +47,9 @@ while [ 1 ]; do
     echo -e  "${bold}Time:          $(date +%H:%M)${normal}"
     echo -en  "${bold}Last update:${normal}   $TIMEDELTA mins ago "
     if pgrep mosq > /dev/null; then
-        echo -e  "(${green}ok${normal})"
+        echo -e  "(${boldgreen}ok${normal})"
     else
-        echo -e  "(${red}no daemon${normal})"
+        echo -e  "(${boldred}no daemon${normal})"
     fi
     if [ "$1" = "html" ]; then
         echo "<hr/>"
