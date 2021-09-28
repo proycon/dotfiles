@@ -17,8 +17,8 @@ export BROWSER=firefox
 
 cd $HOME
 
-exec dbus-launch i3 -d all 2> ~/.xsession-errors$DISPLAY
-exit 0
+#exec dbus-launch i3 -d all 2> ~/.xsession-errors$DISPLAY
+#exit 0
 
 xset r rate 300 50
 xrdb -all -merge /home/proycon/.Xresources
