@@ -1,1 +1,5 @@
-#include /home/proycon/dotfiles/gruvbox-rofi/gruvbox-dark.theme
+configuration {
+    theme: "gruvbox-dark-hard";
+    font: "Monospace 25";
+    show-icons: true;
+}
