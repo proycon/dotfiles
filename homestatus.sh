@@ -26,8 +26,6 @@ elif [ "$1" = "pango" ]; then
     boldred="<span weight=\"bold\" foreground=\"red\">"
     boldgreen="<span weight=\"bold\" foreground=\"green\">"
     boldyellow="<span weight=\"bold\" foreground=\"yellow\">"
-elif [ "$1" = "loop" ] || [ "$2" = "loop" ]; then
-    loop=1
 else
     bold=$(tput bold)
     boldred=${bold}$(tput setaf 1) #  red
@@ -38,6 +36,11 @@ else
     boldblue=${bold}$(tput setaf 4) #  blue
     boldyellow=${bold}$(tput setaf 3) #  yellow
     normal=$(tput sgr0)
+fi
+
+if [ "$1" = "loop" ] || [ "$2" = "loop" ]; then
+    echo "looping">&2
+    loop=1
 fi
 
 while [ 1 ]; do
@@ -64,15 +67,15 @@ while [ 1 ]; do
     echo -en "${bold}temperature${normal}:   "
     cat /tmp/homestatus/temperature | sed 's/,/\n              /g'  2> /dev/null
     echo -en "${bold}climate${normal}:       "
-    cat /tmp/homestatus/climate | sed 's/,\w/\n              #1/g' |
+    cat /tmp/homestatus/climate | sed 's/,/\n              /g' 2> /dev/null
     echo -en "${bold}doors/windows${normal}: ${boldred}"
     cat /tmp/homestatus/doors | sed 's/ /\n               /g' 2> /dev/null
     echo -en $normal
     echo -en "${bold}lights${normal}: ${boldyellow}       "
     cat /tmp/homestatus/lights | sed 's/ /\n               /g' 2> /dev/null
     echo -en $normal
-    echo -e
     if [ $loop -eq 1 ]; then
+        echo -e "\n"
         SECS=$(date +%S)
         #sleep until next minute
         sleep $((60 - SECS - 1))
