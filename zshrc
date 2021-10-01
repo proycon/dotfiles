@@ -81,6 +81,7 @@ alias ghls="gh issue list"
 alias ghic="gh issue create"
 alias ghiv="gh issue view"
 alias ghicm="gh issue comment"
+alias protontricks-flat="flatpak run com.github.Matoking.protontricks"
 if [ ! -z "$DISPLAY" ]; then
     alias lf="~/dotfiles/lf/lfrun" #wrapper for ueberzug support
 fi

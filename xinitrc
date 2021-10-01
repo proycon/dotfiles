@@ -52,9 +52,9 @@ fi
 play ~/dotfiles/media/cylontune_low.ogg &
 which picom > /dev/null 2>/dev/null
 if [ $? -eq 0 ]; then
-    picom -cC -z -r 3 -l 2 -t 2 -f &
+    picom -f -e 1.0 &
 else
-    compton -cC -z -r 3 -l 2 -t 2 -f &
+    compton -cC -z -r 3 -l 2 -t 2 -f -e 1.0 &
 fi
 
 #if [ $MULTI -eq 1 ]; then
