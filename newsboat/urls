@@ -81,6 +81,8 @@ https://xnux.eu/log/rss.xml "blog" "tech" "~🐧📱 Megi's Pinephone Developmen
 https://devtube.dev-wiki.de/feeds/videos.xml?videoChannelId=3372 "tech" "~🐧📱 LINMOBnet"
 https://news.ycombinator.com/rss "tech" "~🐧 Hacker News"
 https://lwn.net/headlines/newrss "tech" "~🐧 LWN.net"
+https://n-o-d-e.net/rss/rss.xml "tech" "blog" "~🐧 N-O-D-E"
+https://www.raspberrypi.org/blog/feed/ "tech" "blog" "~🐧 Raspberry Pi Blog"
 https://linguistlist.org/issues/rss/software.xml "nlp"
 https://norvig.com/rss-feed.xml "nlp" "blog"
 https://simonbrugman.nl/feed.xml "blog" "tech"
