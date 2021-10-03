@@ -543,7 +543,11 @@ key_bindings:
   #- { key: Add,      mods: Control,       action: IncreaseFontSize }
   #- { key: Subtract, mods: Control,       action: DecreaseFontSize }
   #- { key: Minus,    mods: Control,       action: DecreaseFontSize }
+  - { key: C,        mods: Super|Control, action: Copy             }
+  - { key: Y,        mods: Super|Control, action: Copy             }
   - { key: V,        mods: Super, action: Paste            }
+  - { key: P,        mods: Super, action: Paste            }
+  - { key: V,        mods: Super|Shift, action: Paste            }
 
   # (Windows only)
   #- { key: Return,   mods: Alt,           action: ToggleFullscreen }
