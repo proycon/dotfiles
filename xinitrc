@@ -74,7 +74,7 @@ if [[ "$HOSTNAME" == "mhysa" ]]; then
 fi
 feh --bg-fill ~/dotfiles/media/green-leafed-closeup.jpg --image-bg '#2e3440'
 
-
+dbus-update-activation-environment --systemd DBUS_SESSION_BUS_ADDRESS DISPLAY XAUTHORITY
 
 which dwm > /dev/null 2>/dev/null
 if [ $? -eq 0 ]; then
