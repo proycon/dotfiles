@@ -22,3 +22,6 @@ fi
 ~/dotfiles/homecommand.sh status &
 ~/dotfiles/notifyclient.sh &
 
+# Auto hide cursor with touchscreen, Show it with a mouse
+unclutter-xfixes --hide-on-touch --start-hidden &
+
