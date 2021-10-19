@@ -4,23 +4,11 @@ source ~/.profile
 
 export DEFAULT_NUMBER_PREFIX=+31
 
-sxmo_audioout.sh Speaker
-amixer sset 'Line Out Source' 'Mono Differential','Mono Differential'
-amixer set "Line Out" 50%
-mpv --quiet --no-video ~/dotfiles/media/cylontune_low.ogg &
 #feh --bg-fill -z ~/dotfiles/media/pine.jpg
 
 feh --bg-fill /usr/share/sxmo/background.jpg
 
 conky -c ~/.config/sxmo/conky.conf -d
-
-
-if ! pgrep -f sxmo_modemmonitor.sh; then
-    sleep 30 && sxmo_modemmonitortoggle.sh 2> /tmp/modemtoggle.log >&2 &
-    sleep 32 && ~/dotfiles/sxmo/initsecrets.sh &
-fi
-~/dotfiles/homecommand.sh status &
-~/dotfiles/notifyclient.sh &
 
 # Auto hide cursor with touchscreen, Show it with a mouse
 unclutter-xfixes --hide-on-touch --start-hidden &

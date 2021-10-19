@@ -1,0 +1,19 @@
+#!/usr/bin/env sh
+
+source ~/.profile
+
+sxmo_audioout.sh Speaker
+amixer sset 'Line Out Source' 'Mono Differential','Mono Differential'
+amixer set "Line Out" 50%
+
+if ! pgrep -f sxmo_modemmonitor.sh; then
+    sleep 20 && sxmo_modemmonitortoggle.sh 2> /tmp/modemtoggle.log >&2 &
+    sleep 22 && ~/dotfiles/sxmo/initsecrets.sh &
+fi
+
+~/dotfiles/homecommand.sh status &
+~/dotfiles/notifyclient.sh &
+
+if [ -n "$WAYLAND_DISPLAY" ]; then
+    ~/dotfiles/sxmo/homestatus_widget.sh
+fi
