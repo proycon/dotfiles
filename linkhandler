@@ -29,7 +29,7 @@ play ~/dotfiles/media/glass.ogg > /dev/null 2>/dev/null &
 
 case "$1" in
 	*mkv|*webm|*mp4|*youtube.com*|*youtu.be*|*hooktube.com*|*bitchute.com*|*gifv|*v.redd.it*|*gifs.com*)
-		setsid mpv --input-ipc-server=/tmp/mpvsoc$(date +%s) -quiet "$1" >/dev/null 2>&1 & ;;
+		setsid mpv --ytdl-format="bestvideo[height<=1080]+bestaudio" --input-ipc-server=/tmp/mpvsoc$(date +%s) -quiet "$1" >/dev/null 2>&1 & ;;
 	*png|*jpg|*jpe|*jpeg|*gif)
 		setsid sxiv -a "$1" >/dev/null 2>&1 & ;;
 	*mp3|*flac|*opus|*mp3?source*)
