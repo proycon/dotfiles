@@ -13,3 +13,4 @@ conky -c ~/.config/sxmo/conky.conf -d
 # Auto hide cursor with touchscreen, Show it with a mouse
 unclutter-xfixes --hide-on-touch --start-hidden &
 
+sxmo_hooks.sh start
