@@ -5,7 +5,7 @@
 
 
 # Start the mpv ring until another hook kill it
-mpv --quiet --no-video --loop /usr/share/sxmo/ring.ogg &
+mpv --quiet --no-video --loop=10 /usr/share/sxmo/ring.ogg &
 MPVID=$!
 echo "$MPVID" > "$XDG_RUNTIME_DIR/sxmo.ring.pid"
 

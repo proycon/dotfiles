@@ -1,6 +1,7 @@
 #!/usr/bin/env sh
 
 pkill -CONT conky
+sxmo_statusbarupdate.sh
 
 if [ "$1" != "rtc" ]; then
     #only run when not woken up by rtc

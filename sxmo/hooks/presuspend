@@ -3,3 +3,7 @@
 #touch /tmp/.notifyclient.silent
 #killall -wq notifyhandler.sh notifyclient.sh #kill the one already running
 #sleep 1
+
+pkill clickclack
+pkill -f "$KEYBOARD"
+pkill mpv #if any audio/video is playing, kill it (it might stutter otherwise)
