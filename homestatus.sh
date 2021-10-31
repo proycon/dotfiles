@@ -54,18 +54,11 @@ while [ 1 ]; do
     else
         echo -e  "(${boldred}no daemon${normal})"
     fi
+    nmcli -w 3 -c no -p -f DEVICE,STATE,NAME,TYPE con show | grep activated | sed 's/activated/   /' 2> /dev/null
     if [ "$1" = "html" ]; then
         echo "<hr/>"
     else
         echo "─────────────────────────────────"
-    fi
-    nmcli -w 3 -c no -p -f DEVICE,STATE,NAME,TYPE con show | grep activated | sed 's/activated//' 2> /dev/null
-    if [ -z "$?" ]; then
-        if [ "$1" = "html" ]; then
-            echo "<hr/>"
-        else
-            echo "─────────────────────────────────"
-        fi
     fi
     echo -en "${bold}presence${normal}: ${boldgreen}     "
     cat /tmp/homestatus/presence 2> /dev/null
