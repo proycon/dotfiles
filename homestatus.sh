@@ -60,7 +60,7 @@ while [ 1 ]; do
     else
         echo -e  "(${boldred}no daemon${normal})"
     fi
-    nmcli -w 3 -c no -p -f DEVICE,STATE,NAME,TYPE con show | grep activated | sed 's/activated/   /' 2> /dev/null
+    nmcli -w 3 -c no -p -f DEVICE,STATE,NAME,TYPE con show | grep activated | sed 's/activated/   /' | sed '/^\s*$/d' 2> /dev/null
     if [ "$1" = "html" ]; then
         echo "<hr/>"
     else
@@ -72,14 +72,14 @@ while [ 1 ]; do
     echo -en "${bold}alarm${normal}:         "
     cat /tmp/homestatus/alarm 2> /dev/null
     echo -en "${bold}temperature${normal}:   "
-    cat /tmp/homestatus/temperature | sed 's/,/\n              /g'  2> /dev/null
+    cat /tmp/homestatus/temperature | sed 's/,/\n              /g' | sed '/^\s*$/d' 2> /dev/null
     echo -en "${bold}climate${normal}:       "
-    cat /tmp/homestatus/climate | sed 's/,/\n              /g' 2> /dev/null
+    cat /tmp/homestatus/climate | sed 's/,/\n              /g' | sed '/^\s*$/d' 2> /dev/null
     echo -en "${bold}doors/windows${normal}: ${boldred}"
-    cat /tmp/homestatus/doors | sed 's/ /\n               /g' 2> /dev/null
+    cat /tmp/homestatus/doors | sed 's/ /\n               /g' | sed '/^\s*$/d' 2> /dev/null
     echo -en $normal
     echo -en "${bold}lights${normal}: ${boldyellow}       "
-    cat /tmp/homestatus/lights | sed 's/ /\n               /g' 2> /dev/null
+    cat /tmp/homestatus/lights | sed 's/ /\n               /g' | sed '/^\s*$/d' 2> /dev/null
     echo -en $normal
     if [ $loop -eq 1 ]; then
         echo -e "\n"
