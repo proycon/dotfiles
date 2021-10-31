@@ -43,6 +43,12 @@ if [ "$1" = "loop" ] || [ "$2" = "loop" ]; then
     loop=1
 fi
 
+forceupdate() {
+    WAIT=0
+}
+
+trap 'forceupdate' USR1 USR2
+
 while [ 1 ]; do
     NOW=$(date +%s | tr -d '\n')
     LASTUPDATE=$(stat -c %Y /tmp/homestatus/presence | tr -d '\n')
@@ -79,7 +85,11 @@ while [ 1 ]; do
         echo -e "\n"
         SECS=$(date +%S)
         #sleep until next minute
-        sleep $((60 - SECS - 1))
+        WAIT=$((60 - SECS - 1))
+        while [ $WAIT -gt 0 ] ; do
+            WAIT=$((WAIT - 1))
+            sleep 1
+        done
     else
         break
     fi
