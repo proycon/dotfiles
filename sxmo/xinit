@@ -2,7 +2,10 @@
 
 source ~/.profile
 
-export DEFAULT_NUMBER_PREFIX=+31
+export DEFAULT_COUNTRY=NL
+
+# Use firefox as default browser if installed
+command -v firefox && export BROWSER=firefox
 
 #feh --bg-fill -z ~/dotfiles/media/pine.jpg
 
@@ -14,3 +17,5 @@ conky -c ~/.config/sxmo/conky.conf -d
 unclutter-xfixes --hide-on-touch --start-hidden &
 
 sxmo_hooks.sh start
+
+sxmo_modemmonitortoggle.sh restart &

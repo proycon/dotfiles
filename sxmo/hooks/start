@@ -1,6 +1,12 @@
 #!/usr/bin/env sh
 
+# include common definitions
+# shellcheck source=scripts/core/sxmo_common.sh
+. "$(which sxmo_common.sh)"
+
 source ~/.profile
+
+echo "$DBUS_SESSION_BUS_ADDRESS" > "$CACHEDIR"/dbus.bus
 
 sxmo_audioout.sh Speaker
 amixer sset 'Line Out Source' 'Mono Differential','Mono Differential'
