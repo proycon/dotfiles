@@ -1,10 +1,12 @@
 #!/bin/bash
 
+pgrep -f notifyclient.sh && exit 1 #already running
+pidof mosquitto_sub && exit 1 #already running
+
 if [ -f ~/.mqtt_secrets ]; then
     source ~/.mqtt_secrets
 fi
 
-pidof mosquitto_sub && exit 1 #already running
 
 if [ -z "$MQTT_USER" ]; then
     echo "No MQTT user defined">&2
