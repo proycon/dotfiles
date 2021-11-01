@@ -1,2 +1,5 @@
 #!/usr/bin/env sh
-pkill -USR1 -f homestatus_widget.sh
+
+pkill -USR1 -f homestatus.sh
+pkill -USR1 -f homestatus_widget.sh || ~/dotfiles/sxmo/homestatus_widget.sh &
+pkill -USR1 -f wayout
