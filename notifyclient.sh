@@ -1,6 +1,5 @@
 #!/bin/bash
 
-pgrep -f notifyclient.sh && exit 1 #already running
 pidof mosquitto_sub && exit 1 #already running
 
 if [ -f ~/.mqtt_secrets ]; then
@@ -43,6 +42,7 @@ if [ "$MQTT_SILENT_START" != "1" ] && [ ! -f /tmp/.notifyclient.silent ]; then
 fi
 
 echo "Starting notifyclient">&2
+pidof mosquitto_sub && exit 1 #already running
 mosquitto_sub -c -q 1 -i $HOST.notifyclient -h $MQTT_HOST -p 8883 -u "$MQTT_USER" -P "$MQTT_PASSWORD" --cafile $CACERT -t '#' -F "@H:@M:@S|%t|%p" $MQTT_OPTIONS "$@" | ~/dotfiles/notifyhandler.sh >> ~/.notifications.log 2>> ~/.notifications.err
 
 if [ "$MQTT_SILENT_END" != "1" ] && [ ! -f /tmp/.notifyclient.silent ]; then
