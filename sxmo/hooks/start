@@ -23,5 +23,5 @@ fi
 ~/dotfiles/notifyclient.sh &
 
 if [ -n "$WAYLAND_DISPLAY" ]; then
-    ~/dotfiles/sxmo/homestatus_widget.sh
+    pgrep -f homestatus_widget.sh || ~/dotfiles/sxmo/homestatus_widget.sh
 fi
