@@ -90,6 +90,7 @@ while [ 1 ]; do
             WAIT=$((WAIT - 1))
             sleep 1
         done
+        ./dotfiles/homecommand.sh status &
     else
         break
     fi

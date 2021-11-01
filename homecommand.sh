@@ -12,13 +12,14 @@ if [ ! -z "$MQTT_PASSWORD" ]; then
     exit 2
 fi
 
-if [ -x "$(which sxmo_dmenu.sh)" ]; then
-    alias bemenu="$(which sxmo_dmenu.sh)"
-else
-    alias dmenu="$(which sxmo_dmenu.sh)"
-fi
 
 if [ -z "$1" ]; then
+    if [ -x "$(which sxmo_dmenu.sh 2> /dev/null)" ]; then
+        alias bemenu="$(which sxmo_dmenu.sh 2> /dev/null)"
+    else
+        alias dmenu="$(which sxmo_dmenu.sh 2> /dev/null)"
+
+    fi
     if [ -n "$WAYLAND_DISPLAY" ]; then
         chosen=$(cat ~/dotfiles/homecommands | bemenu -p "Home Command" -l 20 -p "Home" | sed "s/.*=//")
     else
