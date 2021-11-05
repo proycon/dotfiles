@@ -27,6 +27,8 @@ fi
 
 if [ -e /etc/ssl/certs/ISRG_Root_X1.pem ]; then
     CACERT="/etc/ssl/certs/ISRG_Root_X1.pem"
+elif [ -e /etc/ssl/certs/ca-cert-ISRG_Root_X1.pem ]; then
+    CACERT="/etc/ssl/certs/ca-cert-ISRG_Root_X1.pem"
 elif [ -e /etc/ssl/certs/DST_Root_CA_X3.pem ]; then
     CACERT="/etc/ssl/certs/DST_Root_CA_X3.pem"
 elif [ -e /etc/ssl/certs/ca-cert-DST_Root_CA_X3.pem ]; then
