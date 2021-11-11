@@ -14,11 +14,6 @@ amixer set "Line Out" 50%
 
 sxmo_lock_idle.sh &
 
-if ! pgrep -f sxmo_modemmonitor.sh; then
-    sleep 20 && sxmo_modemmonitortoggle.sh 2> /tmp/modemtoggle.log >&2 &
-    sleep 22 && ~/dotfiles/sxmo/initsecrets.sh &
-fi
-
 ~/dotfiles/homecommand.sh status &
 ~/dotfiles/notifyclient.sh &
 
