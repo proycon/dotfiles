@@ -94,6 +94,7 @@ Plug 'pearofducks/ansible-vim' "highlighting for ansible
 Plug 'plasticboy/vim-markdown'
 Plug 'chrisbra/csv.vim'
 Plug 'nblock/vim-dokuwiki'
+Plug 'aklt/plantuml-syntax'
 
 
 "Themes
