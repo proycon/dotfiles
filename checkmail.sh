@@ -1,0 +1,1 @@
+ls -t ~/Server/Maildir/new/* | head -n 100 | mpick -t '"List-Id" !=~ ".*" && subject !=~~ "spam" && from !=~~ "proycon@science.ru.nl" && subject !=~~ "nieuwsbrief" && subject !=~~ "newsletter" && from !=~~ "reply" && from !=~~ "notification" && from !=~~ "verify@twitter.com" && from !=~~ "proycon@anaproy.nl"' | msort -d -r | MBLAZE_PAGER="cat" mscan -f "%f : %s"
