@@ -1,5 +1,6 @@
 configuration {
-    theme: "gruvbox-dark-hard";
     font: "Monospace 25";
     show-icons: true;
 }
+
+@theme "gruvbox-dark-hard"
