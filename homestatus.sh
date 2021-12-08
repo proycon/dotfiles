@@ -90,7 +90,7 @@ while [ 1 ]; do
             WAIT=$((WAIT - 1))
             sleep 1
         done
-        pgrep -f homecommand.sh > /dev/null || ./dotfiles/homecommand.sh status &
+        pgrep -f homecommand.sh > /dev/null || ~/dotfiles/homecommand.sh status &
     else
         break
     fi
