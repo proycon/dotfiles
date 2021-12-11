@@ -27,6 +27,7 @@ set wait_key = no
 set pager_index_lines = 7
 set pager_context = 10
 set recall = ask-no
+set edit_headers
 set narrow_tree
 auto_view text/html
 auto_view application/pgp-encrypted
