@@ -2,7 +2,11 @@
 
 # Receives notifications from MQTT
 
-PLAY="play"
+if command -v play > /dev/null; then
+    PLAY="play"
+else
+    PLAY="mpv --no-video --really-quiet"
+fi
 
 if [ -z "$USER" ]; then
     USER=$(whoami)
