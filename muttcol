@@ -43,6 +43,7 @@ color index_tag black brightyellow "todo"
 color index_tag brightwhite brightred "reply"
 color index_tag blue default "not"
 color index_tag brightwhite blue "waiting"
+color index_tag brightwhite blue "calendar"
 color index_tag black white "lowpriority"
 color index_tag black green "interesting"
 

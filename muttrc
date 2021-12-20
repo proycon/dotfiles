@@ -27,6 +27,7 @@ set wait_key = no
 set pager_index_lines = 7
 set pager_context = 10
 set recall = ask-no
+set edit_headers
 set narrow_tree
 auto_view text/html
 auto_view application/pgp-encrypted
@@ -103,7 +104,7 @@ set include                          # include message in replies
 set attach_save_dir = "/nettmp"
 
 #Ctrl-R to mark all as read
-macro index \Cr "T~U<enter><tag-prefix><clear-flag>N<untag-pattern>.<enter>" "mark all messages as read"
+#macro index \Cr "T~U<enter><tag-prefix><clear-flag>N<untag-pattern>.<enter>" "mark all messages as read"
 
 #sync email
 #macro index O "<shell-escape>$HOME/.config/mutt/etc/mailsync.sh<enter>" "run offlineimap to sync all mail"
@@ -114,6 +115,7 @@ macro index \Cr "T~U<enter><tag-prefix><clear-flag>N<untag-pattern>.<enter>" "ma
 #macro index M "<save-message>?<toggle-mailboxes>" "move a message to a mailbox"
 
 macro index,pager,attach ,p "|cat > /nettmp/patch\n" "copy a message as patch"
+macro attach ,c "|cat > /nettmp/ical\n" "copy a message as ical"
 macro index,pager,attach ,v "|cat > ~/.vbuf\n" "copy to ~/.vbuf"
 macro index,pager,attach ,h "|cat > /nettmp/mail.html" "copy to /nettmp/mail.html"
 
@@ -190,13 +192,15 @@ macro index,pager ,2 "<vfolder-from-query>NOT tag:killed\n<collapse-all>\n"
 macro index,pager ,a "<vfolder-from-query>NOT tag:killed\n<collapse-all>\n"
 macro index,pager ,i "<change-vfolder>INBOX\n<collapse-all>\n"
 macro index,pager ,s "<change-vfolder>sent\n<collapse-all>\n"
-macro index,pager ,3 "<change-vfolder>work\n<collapse-all>\n"
-macro index,pager ,4 "<change-vfolder>notwork\n<collapse-all>\n"
-macro index,pager ,5 "<change-vfolder>sent<collapse-all>\n\n"
+macro index,pager ,3 "<vfolder-from-query>tag:inbox AND tag:work\n<collapse-all>n"
+macro index,pager ,4 "<vfolder-from-query>tag:inbox AND not tag:work and not tag:sxmo\n<collapse-all>\n"
+macro index,pager ,5 "<vfolder-from-query>tag:inbox and tag:sxmo\n<collapse-all>\n"
 macro index,pager ,r "<vfolder-from-query>tag:inbox AND tag:reply\n"
 macro index,pager ,y "<vfolder-from-query>tag:inbox AND tag:reply\n"
 macro index,pager ,t "<vfolder-from-query>tag:inbox AND tag:todo\n"
 macro index,pager ,w "<vfolder-from-query>tag:inbox AND tag:waiting\n"
+macro index,pager ,c "<vfolder-from-query>tag:inbox AND (mimetype:text/calendar OR mimetype:application/ics)\n"
+macro index,pager ,C "<vfolder-from-query>mimetype:text/calendar OR mimetype:application/ics\n"
 macro index,pager ,6 "<vfolder-from-query>tag:spam\n"
 
 
@@ -206,13 +210,13 @@ tag-transforms "inbox"   "📥"   \
                "unread"  "📧"   \
                "replied" "💬"  \
                "reply" "🔄reply" \
-               "todo" "📅todo" \
+               "todo" "⏳todo" \
                "interesting" "💡" \
                "sent"    "👉"  \
-               "spam"    "🏭"  \
+               "spam"    "🗑"  \
                "deleted" "❌" \
                "killed" "❌" \
-               "invites" "📆" \
+               "calendar" "📆" \
                "signed" "🔑" \
                "encrypted" "🔒" \
                "attachment" "📎" \
@@ -242,7 +246,11 @@ tag-transforms "inbox"   "📥"   \
                "politics" "🕊"\
                "clam" "🐚" \
                "sxmo" "📱" \
-               "suckless" ""
+               "suckless" "" \
+               "applied" "✅" \
+               "rejected" "❌" \
+               "superseded" "⚱" \
+               "needsrevision" "🎗"
 
 
 
@@ -258,7 +266,7 @@ tag-formats "inbox"   "Gi" \
             "lists"    "Gl" \
             "waiting"    "GW" \
             "deleted" "GD" \
-            "invites" "Gc" \
+            "calendar" "Gc" \
             "signed"  "Gs" \
             "encrypted"  "Ge" \
             "personal"  "Gp" \
