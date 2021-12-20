@@ -96,3 +96,4 @@ while [ 1 ]; do
     fi
 done
 
+killall wayout 2> /dev/null
