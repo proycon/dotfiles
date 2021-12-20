@@ -10,7 +10,11 @@ if [ "$1" != "rtc" ]; then
 
 
     #kill the one already running (if any)
-    killall notifyhandler.sh notifyclient.sh mosquitto_sub
+    if pidof mosquitto_sub > /dev/null; then
+        touch /tmp/.notifyclient.silent
+        pkill mosquitto_sub
+        rm /tmp/.notifyclient.silent
+    fi
 
     NMSTATE=$(nmcli -c no -t -f DEVICE,STATE con show)
     if ! echo "$NMSTATE" | grep -q "wlan0:activated"; then
@@ -22,7 +26,7 @@ if [ "$1" != "rtc" ]; then
 
     #wait for connection (max 15s) and restart notification handler in background
     (
-        (ping -c 1 -W 15 anaproy.nl >/dev/null 2>/dev/null && MQTT_SILENT_END=1 ~/dotfiles/notifyclient.sh) || mpv --no-video --really-quiet ~/dotfiles/media/error.wav
+        (ping -c 1 -W 15 anaproy.nl >/dev/null 2>/dev/null && ~/dotfiles/notifyclient.sh)
     ) &
 
 fi

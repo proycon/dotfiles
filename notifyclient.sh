@@ -39,8 +39,8 @@ else
 fi
 
 if [ "$MQTT_SILENT_START" != "1" ] && [ ! -f /tmp/.notifyclient.silent ]; then
-    #prepare to play a sound just after we are connected
-    (sleep 2 && pidof mosquitto_sub && mpv --no-video --really-quiet ~/dotfiles/media/notifyconnect.wav) &
+    #ping just after connection (triggers playing a sound and also returns status)
+    (sleep 1 && ~/dotfiles/notifysend.sh "home/command/ping" "$(hostname)") &
 fi
 
 echo "Starting notifyclient">&2

@@ -14,9 +14,8 @@ amixer set "Line Out" 50%
 
 sxmo_lock_idle.sh &
 
-~/dotfiles/homecommand.sh status &
 ~/dotfiles/notifyclient.sh &
 
 if [ -n "$WAYLAND_DISPLAY" ]; then
-    (pgrep -f homestatus_widget.sh || ~/dotfiles/sxmo/homestatus_widget.sh) &
+    sxmo_hooks.sh desktop_widget &
 fi

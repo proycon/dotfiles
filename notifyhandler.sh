@@ -2,10 +2,17 @@
 
 # Receives notifications from MQTT
 
-PLAY="play"
+if command -v play > /dev/null; then
+    PLAY="play"
+else
+    PLAY="mpv --no-video --really-quiet"
+fi
 
 if [ -z "$USER" ]; then
     USER=$(whoami)
+fi
+if [ -z "$HOSTNAME" ]; then
+    HOSTNAME=$(hostname)
 fi
 
 declare -a fields
@@ -83,6 +90,13 @@ do
 			MSG="Timer finished"
 			$PLAY ~/dotfiles/media/bell.wav &
 			;;
+        "home/notify/ping")
+            if [ "$PAYLOAD" = "$HOSTNAME" ]; then
+                $PLAY ~/dotfiles/media/notifyconnect.wav &
+            else
+                echo "received ping for $PAYLOAD (not us)">&2
+            fi
+            ;;
 		"home/status/"*)
             STATUSFILE="/tmp/homestatus/${TOPIC/home\/status\//}"
             echo "$PAYLOAD" | tr -s " " > $STATUSFILE

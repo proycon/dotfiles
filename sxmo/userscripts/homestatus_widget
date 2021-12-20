@@ -1,0 +1,1 @@
+../homestatus_widget.sh
