@@ -1,9 +1,7 @@
 #!/usr/bin/env sh
 
-#touch /tmp/.notifyclient.silent
-#killall -wq notifyhandler.sh notifyclient.sh #kill the one already running
-#sleep 1
-
+pkill mosquitto_sub #kill notify client
 pkill clickclack
 pkill -f "$KEYBOARD"
+pkill notifyclient.sh #kill notify client
 pkill mpv #if any audio/video is playing, kill it (it might stutter otherwise)
