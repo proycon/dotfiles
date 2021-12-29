@@ -18,4 +18,4 @@ if pgrep -f notifyclient.sh; then
 else
     ~/dotfiles/notifyclient.sh &
 fi
-~/dotfiles/homestatus.sh pango loop | wayout --foreground-color "#ffffff" --font "Monospace" --fontsize "$FONTSIZE" --feed-par --height 500 $1 >&2 2> /tmp/wayout.log
+~/dotfiles/homestatus.sh pango loop | wayout --foreground-color "#ffffff" --font "Monospace" --fontsize "$FONTSIZE" --feed-par --height 500 $1 >&2 2> /tmp/wayout.loxg
