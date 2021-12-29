@@ -5,32 +5,57 @@
 # updates. Does NOT handle communication with the backend.
 
 loop=0
+format="ansi"
+finalkill=""
 
-if [ "$1" = "conky" ]; then
+while true; do
+    case $1 in
+        "conky")
+            format=conky
+            ;;
+        "pango")
+            format=pango
+            ;;
+        "no")
+            format=""
+            ;;
+        "html")
+            format=html
+            ;;
+        "ansi")
+            format=html
+            ;;
+        "loop")
+            loop=1
+            ;;
+        "wayout")
+            finalkill=wayout
+            ;;
+        *)
+            break
+    esac
+    shift
+done
+
+if [ "$format" = "conky" ]; then
     bold="\${color white}"
     normal="\${color white}"
     boldred="\${color red}"
     boldgreen="\${color green}"
     boldyellow="\${color yellow}"
-elif [ "$1" = "no" ]; then
-    bold=""
-    normal=""
-    boldred=""
-    boldgreen=""
-    boldyellow=""
-elif [ "$1" = "html" ]; then
+elif [ "$format" = "html" ]; then
     bold="<span style=\"font-weight: bold;\">"
     normal="</span>"
     boldred="<span style=\"font-weight: bold; color: red\">"
     boldgreen="<span style=\"font-weight: bold; color: green\">"
     boldyellow="<span style=\"font-weight: bold; color: yellow\">"
-elif [ "$1" = "pango" ]; then
+elif [ "$format" = "pango" ]; then
     bold="<span weight=\"bold\">"
     normal="</span>"
     boldred="<span weight=\"bold\" foreground=\"red\">"
     boldgreen="<span weight=\"bold\" foreground=\"green\">"
     boldyellow="<span weight=\"bold\" foreground=\"yellow\">"
-else
+elif [ "$format" = "ansi" ]; then
     bold=$(tput bold)
     boldred=${bold}$(tput setaf 1) #  red
     boldgreen=${bold}$(tput setaf 2) #  green
@@ -40,12 +65,14 @@ else
     boldblue=${bold}$(tput setaf 4) #  blue
     boldyellow=${bold}$(tput setaf 3) #  yellow
     normal=$(tput sgr0)
+else
+    bold=""
+    normal=""
+    boldred=""
+    boldgreen=""
+    boldyellow=""
 fi
 
-
-forceupdate() {
-    touch /tmp/homestatus/trigger
-}
 
 printhomestatus() {
     NOW=$(date +%s | tr -d '\n')
@@ -85,12 +112,18 @@ printhomestatus() {
 
 #lights is the last status message, so we only watch that, as they always come in batches
 #additionally we have an extra trigger file that cron can poke each minute to update the clock
-if [ "$1" = "loop" ] || [ "$2" = "loop" ]; then
+if [ $loop -eq 1 ]; then
     echo "looping">&2
-    forceupdate
+    touch /tmp/homestatus/trigger
+    [ ! -f /tmp/homestatus/lights ] && touch /tmp/homestatus/lights
 	while true; do
         inotifywait -e create,modify,attrib /tmp/homestatus/lights /tmp/homestatus/trigger | printhomestatus
     done
 else
     printhomestatus
 fi
+
+if [ -n "$finalkill" ]; then
+    pkill -f $finalkill
+fi
+

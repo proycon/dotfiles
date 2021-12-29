@@ -3,7 +3,19 @@
 # Homestatus widget, wrapper around
 # homestatus.sh using wayout
 
-if [ "$1" = "--check" ]; then
+check=0
+while true; do
+    case $1 in
+        --check)
+            check=1
+            ;;
+        *)
+            break
+    esac
+    shift
+done
+
+if [ $check -eq 1 ]; then
     pgrep -f homestatus.sh && exit 0
     export XDG_RUNTIME_DIR=~/.local/run/
     export SWAYSOCK=~/.cache/sxmo/sxmo.swaysock
@@ -18,4 +30,4 @@ if pgrep -f notifyclient.sh; then
 else
     ~/dotfiles/notifyclient.sh &
 fi
-~/dotfiles/homestatus.sh pango loop | wayout --foreground-color "#ffffff" --font "Monospace" --fontsize "$FONTSIZE" --feed-par --height 500 $1 >&2 2> /tmp/wayout.loxg
+~/dotfiles/homestatus.sh pango loop wayout | wayout --foreground-color "#ffffff" --font "Monospace" --fontsize "$FONTSIZE" --feed-par --height 500 $1 >&2 2> /tmp/wayout.log
