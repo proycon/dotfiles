@@ -16,6 +16,7 @@ while true; do
 done
 
 if [ $check -eq 1 ]; then
+    echo "Checking">&2
     pgrep -f homestatus.sh && exit 0
     export XDG_RUNTIME_DIR=~/.local/run/
     export SWAYSOCK=~/.cache/sxmo/sxmo.swaysock
