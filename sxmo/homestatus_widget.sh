@@ -1,9 +1,9 @@
 #!/usr/bin/env sh
 if [ "$1" = "--check" ]; then
     pidof wayout && exit 0
-    export SWAYSOCK="$(cat "$CACHEDIR"/sxmo/sxmo.swaysock)"
     export XDG_RUNTIME_DIR=~/.local/run/
-    export CACHEDIR="~/.cache/"
+    export CACHEDIR=~/.cache/
+    export SWAYSOCK=$(cat $CACHEDIR/sxmo/sxmo.swaysock)
 fi
 FONTSIZE="22"
 pgrep -f notifyclient.sh || ~/dotfiles/notifyclient.sh &
