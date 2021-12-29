@@ -20,7 +20,6 @@ if [ $check -eq 1 ]; then
     export XDG_RUNTIME_DIR=~/.local/run/
     export SWAYSOCK=~/.cache/sxmo/sxmo.swaysock
     export WAYLAND_DISPLAY=wayland-1
-    shift
 fi
 FONTSIZE="22"
 if pgrep -f notifyclient.sh; then
@@ -32,4 +31,4 @@ else
 fi
 #kill existing wayout
 pkill -f wayout
-~/dotfiles/homestatus.sh pango loop wayout | wayout --foreground-color "#ffffff" --font "Monospace" --fontsize "$FONTSIZE" --feed-par --height 500 $1 >&2 2> /tmp/wayout.log
+~/dotfiles/homestatus.sh pango loop wayout 2> /tmp/homestatus.log | wayout --foreground-color "#ffffff" --font "Monospace" --fontsize "$FONTSIZE" --feed-par --height 500 >&2 2> /tmp/wayout.log
