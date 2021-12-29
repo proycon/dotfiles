@@ -4,6 +4,7 @@ if [ "$1" = "--check" ]; then
     export XDG_RUNTIME_DIR=~/.local/run/
     export CACHEDIR=~/.cache/
     export SWAYSOCK=$(cat $CACHEDIR/sxmo/sxmo.swaysock)
+    export WAYLAND_DISPLAY=wayland-0
     shift
 fi
 FONTSIZE="22"
