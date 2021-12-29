@@ -30,4 +30,6 @@ if pgrep -f notifyclient.sh; then
 else
     ~/dotfiles/notifyclient.sh &
 fi
+#kill existing wayout
+pgrep -f wayout
 ~/dotfiles/homestatus.sh pango loop wayout | wayout --foreground-color "#ffffff" --font "Monospace" --fontsize "$FONTSIZE" --feed-par --height 500 $1 >&2 2> /tmp/wayout.log
