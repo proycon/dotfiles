@@ -1,4 +1,8 @@
-#!/bin/bash
+#!/bin/sh
+
+# Homestatus display, returns a report on the current
+# cached status, can automatically update when the cache
+# updates. Does NOT handle communication with the backend.
 
 loop=0
 
@@ -38,20 +42,14 @@ else
     normal=$(tput sgr0)
 fi
 
-if [ "$1" = "loop" ] || [ "$2" = "loop" ]; then
-    echo "looping">&2
-    loop=1
-fi
 
 forceupdate() {
-    WAIT=0
+    touch /tmp/homestatus/trigger
 }
 
-trap 'forceupdate' USR1 USR2
-
-while [ 1 ]; do
+printhomestatus() {
     NOW=$(date +%s | tr -d '\n')
-    LASTUPDATE=$(stat -c %Y /tmp/homestatus/presence | tr -d '\n')
+    LASTUPDATE=$(stat -c %Y /tmp/homestatus/lights | tr -d '\n')
     TIMEDELTA=$(( (NOW - LASTUPDATE) / 60 ))
     echo -e  "${bold}Time:          $(date +%H:%M)${normal}"
     echo -en  "${bold}Last update:${normal}   $TIMEDELTA mins ago "
@@ -81,19 +79,17 @@ while [ 1 ]; do
     echo -en "${bold}lights${normal}: ${boldyellow}       "
     cat /tmp/homestatus/lights | sed 's/ /\n               /g' | sed '/^\s*$/d' 2> /dev/null
     echo -en $normal
-    if [ $loop -eq 1 ]; then
-        echo -e "\n"
-        SECS=$(date +%S)
-        #sleep until next minute
-        WAIT=$((60 - SECS - 1))
-        while [ $WAIT -gt 0 ] ; do
-            WAIT=$((WAIT - 1))
-            sleep 1
-        done
-        pgrep -f homecommand.sh > /dev/null || ~/dotfiles/homecommand.sh status &
-    else
-        break
-    fi
-done
+}
 
-killall wayout 2> /dev/null
+
+#lights is the last status message, so we only watch that, as they always come in batches
+#additionally we have an extra trigger file that cron can poke each minute to update the clock
+if [ "$1" = "loop" ] || [ "$2" = "loop" ]; then
+    echo "looping">&2
+    forceupdate
+	while true; do
+        inotifywait -e create,modify,attrib /tmp/homestatus/lights /tmp/homestatus/trigger | printhomestatus
+    done
+else
+    printhomestatus
+fi

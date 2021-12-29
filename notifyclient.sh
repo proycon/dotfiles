@@ -1,4 +1,7 @@
-#!/bin/bash
+#!/bin/sh
+
+# Notification client, listens on an MQTT stream for
+# events. Each incoming event is processed by notifyhandler.sh
 
 pidof mosquitto_sub && exit 1 #already running
 
