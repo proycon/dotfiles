@@ -79,6 +79,7 @@ printhomestatus() {
     echo -en "${bold}lights${normal}: ${boldyellow}       "
     cat /tmp/homestatus/lights | sed 's/ /\n               /g' | sed '/^\s*$/d' 2> /dev/null
     echo -en $normal
+    echo -e "\n"
 }
 
 
