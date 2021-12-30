@@ -5,6 +5,7 @@
 
 pidof mosquitto_sub && exit 1 #already running
 
+
 if [ -f ~/.mqtt_secrets ]; then
     source ~/.mqtt_secrets
 fi

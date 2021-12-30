@@ -16,6 +16,7 @@ if [ -z "$HOSTNAME" ]; then
 fi
 
 declare -a fields
+declare -a payloadfields
 
 LASTMSG=""
 LASTMSGTIME=0
@@ -25,34 +26,42 @@ chmod go-rwx /tmp/homestatus
 
 while IFS= read -r line
 do
-	IFS="|" read -ra fields <<< $line;
+	IFS="|" read -ra fields <<< $line; #-a is bash, not posix
 	RECEIVETIME=${fields[0]} #time of reception
 	TOPIC=${fields[1]}
 	PAYLOAD="${fields[2]}"
     echo ">$TOPIC" >&2
 
-    #parse payload
-	IFS=":" read -ra payloadfields <<< $PAYLOAD;
-    set -- $payloadfields
-    MSGTIME=$1 #timestamp
-    shift
-    PAYLOAD="$@"
-
-
     NOW=$(date +%s | tr -d '\n')
+
+    #parse payload
+    IFS=":" read -ra payloadfields <<< $PAYLOAD;
+    set -- "${payloadfields[@]}"
+    MSGTIME="$1" #timestamp?
+    case $MSGTIME in
+         *[0-9]*)
+            shift
+            PAYLOAD=$(echo -e "$@" | sed -e 's/^[[:space:]]*//' -e 's/[[:space:]]*$//') #trim
+            echo "   [$MSGTIME] $PAYLOAD" >&2
+            TIMEDELTA=$(( NOW - MSGTIME ))
+            if [ $TIMEDELTA -ge 600 ] && [ $TOPIC != "home/notify/alarm" ]; then
+                echo "Ignoring old message $TOPIC ($TIMEDELTA sec)">&2
+                continue
+            fi
+            ;;
+        *)
+            MSGTIME=$NOW
+            echo "   [?] $PAYLOAD" >&2
+    esac
+
+
+    #clear last message buffer if message is too old
     if [ "$LASTMSG" != "" ] && [ $LASTMSGTIME -ne 0 ]; then
         TIMEDELTA=$(( NOW - LASTMSGTIME ))
         if [ $TIMEDELTA -ge 60 ]; then
-            #reset last message buffer
             LASTMSG=""
             LASTMSGTIME=0
         fi
-    fi
-
-    TIMEDELTA=$(( NOW - MSGTIME ))
-    if [ $TIMEDELTA -ge 600 ]; then
-        echo "Ignoring old message $TOPIC ($TIMEDELTA sec)">&2
-        continue
     fi
 
 	MSG=""
