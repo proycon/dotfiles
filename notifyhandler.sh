@@ -26,21 +26,29 @@ chmod go-rwx /tmp/homestatus
 while IFS= read -r line
 do
 	IFS="|" read -ra fields <<< $line;
-	TIME=${fields[0]}
+	RECEIVETIME=${fields[0]} #time of reception
 	TOPIC=${fields[1]}
 	PAYLOAD="${fields[2]}"
     echo ">$TOPIC" >&2
+
+    #parse payload
+	IFS=":" read -ra payloadfields <<< $PAYLOAD;
+    set -- $payloadfields
+    MSGTIME=$1 #timestamp
+    shift
+    PAYLOAD="$@"
+
 
     NOW=$(date +%s | tr -d '\n')
     if [ "$LASTMSG" != "" ] && [ $LASTMSGTIME -ne 0 ]; then
         TIMEDELTA=$(( NOW - LASTMSGTIME ))
         if [ $TIMEDELTA -ge 60 ]; then
-            LASTMSG="" #reset
+            #reset last message buffer
+            LASTMSG=""
             LASTMSGTIME=0
         fi
     fi
 
-    MSGTIME=$(date +%s --date "$TIME" | tr -d '\n')
     TIMEDELTA=$(( NOW - MSGTIME ))
     if [ $TIMEDELTA -ge 600 ]; then
         echo "Ignoring old message $TOPIC ($TIMEDELTA sec)">&2
