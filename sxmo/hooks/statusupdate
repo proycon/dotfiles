@@ -1,4 +1,0 @@
-#!/usr/bin/env sh
-
-pkill -USR1 -f homestatus.sh
-pkill -USR1 -f wayout

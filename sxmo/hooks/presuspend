@@ -1,7 +1,5 @@
 #!/usr/bin/env sh
 
-pkill mosquitto_sub #kill notify client
 pkill clickclack
 pkill -f "$KEYBOARD"
-pkill notifyclient.sh #kill notify client
 pkill mpv #if any audio/video is playing, kill it (it might stutter otherwise)

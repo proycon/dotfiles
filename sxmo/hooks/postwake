@@ -1,4 +1,4 @@
-#!/usr/bin/env sh
+#!/bin/sh
 
 pkill -CONT conky
 sxmo_statusbarupdate.sh
@@ -12,7 +12,7 @@ if [ "$1" != "rtc" ]; then
     #kill the one already running (if any)
     if pidof mosquitto_sub > /dev/null; then
         touch /tmp/.notifyclient.silent
-        pkill mosquitto_sub
+        killall mosquitto_sub notifyhandler.sh notifyclient.sh #kill the one already running
         rm /tmp/.notifyclient.silent
     fi
 

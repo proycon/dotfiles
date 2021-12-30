@@ -1,17 +1,15 @@
-#!/usr/bin/env sh
+#!/bin/sh
 
 . $(which sxmo_common.sh)
 
 if ! grep -q rtc "$UNSUSPENDREASONFILE"; then
 
-    #restart notify client
-    touch /tmp/.notifyclient.silent
-    killall notifyhandler.sh notifyclient.sh mosquitto_sub #kill the one already running
-    rm /tmp/.notifyclient.silent
+    #restart notify client (it might prefer the new network connection)
+    killall mosquitto_sub notifyhandler.sh notifyclient.sh
 
-    #wait for connection
+    #wait for connection and start
     (
-        (ping -c 1 -W 15 anaproy.nl >/dev/null 2>/dev/null && ~/dotfiles/notifyclient.sh) || mpv --no-video --really-quiet ~/dotfiles/media/error.wav
+        (ping -c 1 -W 15 anaproy.nl >/dev/null 2>/dev/null && ~/dotfiles/notifyclient.sh)
     ) &
 
 fi

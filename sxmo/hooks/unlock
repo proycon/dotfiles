@@ -5,10 +5,3 @@ pkill -CONT conky 2>/dev/null
 #request status update from home automation
 ~/dotfiles/notifysend.sh "home/command/status" "ON"
 
-#force a conky update (assuming we got the response)
-if pidof conky; then
-    sleep 1 && pkill -USR2 conky
-elif pidof wayout; then
-    sleep 1 && pkill -USR2 homestatus.sh
-fi
-
