@@ -1,5 +1,8 @@
 Start TV                =media/tv
 Start Music             =media/music
+Start Music (bedroom)   =media/music2
+Start Kodi              =kodi/on
+Start Kodi (bedroom)    =kodi2/on
 Stop all media          =media/off
 Volume Up               =volup
 Volume Down             =voldown
@@ -9,6 +12,7 @@ Previous TV channel     =tvdecoder/previous
 Next music track        =music/next
 Previous music track    =music/previous
 Music Off               =music/off
+Music Off (bedroom)     =music2/off
 TV power toggle         =tv/on
 TV Decoder - Power      =tvdecoder/on
 TV Decoder - Up         =tvdecoder/up
