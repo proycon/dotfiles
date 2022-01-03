@@ -18,26 +18,61 @@ fi
 if [ -z "$TERMINAL" ]; then
     TERMINAL=urxvt
 fi
-if [ -z "$EDIT" ]; then
+if [ -z "$EDITOR" ]; then
     EDITOR=vim
 fi
 
 # If no url given. Opens browser. For using script as $BROWSER.
 [ -z "$1" ] && { "$BROWSER"; exit; }
 
-play ~/dotfiles/media/glass.ogg > /dev/null 2>/dev/null &
+if [ -f /tmp/linkhandler.target ]; then
+    TARGET=$(cat /tmp/linkhandler.target)
+    play ~/dotfiles/media/glass_low.ogg > /dev/null 2>/dev/null &
+else
+    TARGET=0
+    play ~/dotfiles/media/glass.ogg > /dev/null 2>/dev/null &
+fi
 
-case "$1" in
-	*mkv|*webm|*mp4|*youtube.com*|*youtu.be*|*hooktube.com*|*bitchute.com*|*gifv|*v.redd.it*|*gifs.com*)
-		setsid mpv --ytdl-format="bestvideo[height<=1080]+bestaudio" --input-ipc-server=/tmp/mpvsoc$(date +%s) -quiet "$1" >/dev/null 2>&1 & ;;
-	*png|*jpg|*jpe|*jpeg|*gif)
-		setsid sxiv -a "$1" >/dev/null 2>&1 & ;;
-	*mp3|*flac|*opus|*mp3?source*)
-		setsid mpv curl -LO "$1" >/dev/null 2>&1 & ;;
-	*springer.com*)
-		setsid curl -sO "$(curl -s "$scihub$*" | grep -Po "(?<=location.href=').+.pdf")" >/dev/null 2>&1 & ;;
-	*)
-		if [ -f "$1" ]; then "$TERMINAL" -e "$EDITOR $1"
-		else setsid "$BROWSER" "$1" >/dev/null 2>&1 & fi ;;
-esac
-
+if [ "$TARGET" = "0" ]; then
+    case "$1" in
+        *mkv|*webm|*mp4|*youtube.com*|*youtu.be*|*hooktube.com*|*bitchute.com*|*gifv|*v.redd.it*|*gifs.com*)
+            setsid mpv --ytdl-format="bestvideo[height<=1080]+bestaudio" --input-ipc-server=/tmp/mpvsoc$(date +%s) -quiet "$1" >/dev/null 2>&1 & ;;
+        *png|*jpg|*jpe|*jpeg|*gif)
+            case "$URL" in
+                http*)
+                    wget "$URL" -O /tmp/image
+                    setsid sxiv -a /tmp/image >/dev/null 2>&1 & ;;
+                *)
+                    setsid sxiv -a "$1" >/dev/null 2>&1 & ;;
+            esac
+            ;;
+        *mp3|*flac|*opus|*mp3?source*)
+            setsid mpv curl -LO "$1" >/dev/null 2>&1 & ;;
+        *springer.com*)
+            setsid curl -sO "$(curl -s "$scihub$*" | grep -Po "(?<=location.href=').+.pdf")" >/dev/null 2>&1 & ;;
+        *)
+            if [ -f "$1" ]; then "$TERMINAL" -e "$EDITOR $1"
+            else setsid "$BROWSER" "$1" >/dev/null 2>&1 & fi ;;
+    esac
+else
+    case "$1" in
+        *mkv|*webm|*mp4|*mp3|*flac|*youtube.com*|*youtu.be*|*hooktube.com*|*bitchute.com*|*gifv|*v.redd.it*|*gifs.com*)
+           ~/dotfiles/homecommand.sh "youtube$TARGET" "$URL"
+           ;;
+        *png|*jpg|*jpe|*jpeg|*gif)
+            cd /nettmp/videoqueue
+            case "$URL" in
+                http*)
+                    wget "$URL" ;;
+                *)
+                    cp "$URL" .
+                    ;;
+            esac
+            cd -
+           ~/dotfiles/homecommand.sh "kodi$TARGET/playdir_default"
+           ;;
+        *)
+           play ~/dotfiles/media/error.wav > /dev/null 2>/dev/null &
+           ;;
+    esac
+fi

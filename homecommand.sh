@@ -35,5 +35,11 @@ else
 fi
 
 
-~/dotfiles/notifysend.sh $TOPIC "ON"
+if [ -n "$2" ]; then
+    PAYLOAD=$2
+else
+    PAYLOAD=ON
+fi
+
+~/dotfiles/notifysend.sh $TOPIC $PAYLOAD
 exit $?
