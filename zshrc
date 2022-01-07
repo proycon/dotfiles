@@ -84,7 +84,7 @@ alias ghicm="gh issue comment"
 alias protontricks-flat="flatpak run com.github.Matoking.protontricks"
 alias lh="linkhandler"
 lh0() {
-    rm /tmp/linkhandler.target
+    rm /tmp/linkhandler.target 2> /dev/null || echo "(already set)"
 }
 lh1() {
     echo -n "1" > /tmp/linkhandler.target
