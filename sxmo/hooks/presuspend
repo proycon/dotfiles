@@ -1,5 +1,0 @@
-#!/usr/bin/env sh
-
-pkill clickclack
-pkill -f "$KEYBOARD"
-pkill mpv #if any audio/video is playing, kill it (it might stutter otherwise)

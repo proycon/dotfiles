@@ -1,21 +1,6 @@
-#!/usr/bin/env sh
+#!/bin/sh
 
-source ~/.profile
-
-export DEFAULT_COUNTRY=NL
-
-# Use firefox as default browser if installed
-command -v firefox && export BROWSER=firefox
-
-#feh --bg-fill -z ~/dotfiles/media/pine.jpg
-
-feh --bg-fill /usr/share/sxmo/background.jpg
-
-conky -c ~/.config/sxmo/conky.conf -d
-
-# Auto hide cursor with touchscreen, Show it with a mouse
-unclutter-xfixes --hide-on-touch --start-hidden &
-
-sxmo_hooks.sh start
-
-sxmo_modemmonitortoggle.sh restart &
+# Run actions on start
+# By default, setup audio over the main speaker
+# and set a sane default volume
+sxmo_hooks.sh start &

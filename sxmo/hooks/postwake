@@ -1,7 +1,15 @@
 #!/bin/sh
 
-pkill -CONT conky
-sxmo_statusbarupdate.sh
+UNSUSPENDREASON="$1"
+
+#The UNSUSPENDREASON can be "usb power", "modem", "rtc" (real-time clock
+#periodic wakeup) or "button". You will likely want to check against this and
+#decide what to do
+
+pkill -USR2 conky # refresh conky
+sxmo_hooks.sh statusbar time
+
+# Add here whatever you want to do
 
 if [ "$1" != "rtc" ]; then
     #only run when not woken up by rtc
