@@ -9,7 +9,7 @@ Software
 Current setup:
 
 * **OS**: Arch Linux
-* **Window Manager**: dwm
+* **Window Manager**: [dwm](https://github.com/proycon/dwm)
 * **Shell**: zsh
 * **Terminal:** alacritty
 * **Terminal Multiplexer**: tmux
@@ -17,7 +17,7 @@ Current setup:
 * **Browser**: firefox
 * **Music player**: ncmpcpp + mopidy
 * **Mail**: neomutt
-* **Chat**: weechat + bitblee (IRC+XMPP+Twitter+Telegram+Discord)
+* **Chat**: weechat + bitblee (IRC+XMPP+Twitter+Telegram) + weechat-matrix (Matrix)
 
 Key bindings
 --------------
