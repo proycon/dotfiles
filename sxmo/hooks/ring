@@ -1,10 +1,11 @@
-#!/usr/bin/env sh
+#!/bin/sh
 
 # This script is executed (asynchronously) when you get an incoming call
 # You can use it to play a ring tone
 
+# $1 = Contact Name or Number (if not in contacts)
 
-# Start the mpv ring until another hook kill it
+# Start the mpv ring until another hook kill it or the max (10) is reached
 mpv --quiet --no-video --loop=10 /usr/share/sxmo/ring.ogg &
 MPVID=$!
 echo "$MPVID" > "$XDG_RUNTIME_DIR/sxmo.ring.pid"
