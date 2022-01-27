@@ -4,18 +4,15 @@
 # shellcheck source=scripts/core/sxmo_common.sh
 . "$(which sxmo_common.sh)"
 
-#Make dbus session available
-echo "$DBUS_SESSION_BUS_ADDRESS" > "$CACHEDIR"/dbus.bus
-
 # in case of weird crash
-echo "unlock" > "$LASTSTATE"
-[ -f "$UNSUSPENDREASONFILE" ] && rm -f "$UNSUSPENDREASONFILE"
+echo "unlock" > "$SXMO_LASTSTATE"
+[ -f "$SXMO_UNSUSPENDREASONFILE" ] && rm -f "$SXMO_UNSUSPENDREASONFILE"
 
 # Force audio over the main speaker
 # and set a sane default volume
-sxmo_audioout.sh Speaker
-amixer sset 'Line Out Source' 'Mono Differential','Mono Differential'
-amixer set "Line Out" 50%
+sxmo_audio.sh device set Speaker
+amixer sset 'Line Out Source' 'Mono Differential','Mono Differential' >/dev/null
+amixer set "Line Out" 75% >/dev/null
 
 ~/dotfiles/notifyclient.sh &
 
@@ -46,14 +43,15 @@ case "$SXMO_WM" in
 		sxmo_daemons.sh start autocutsel_1 autocutsel
 		sxmo_daemons.sh start autocutsel_2 autocutsel -selection PRIMARY
 		sxmo_daemons.sh start statusbar_xsetroot sxmo_status_xsetroot.sh
+		;;
 esac
 
-if [ -f "$MMS_BASE_DIR/mms" ]; then
-	sxmo_daemons.sh start mmsd mmsdtng
+if [ -f "${SXMO_MMS_BASE_DIR:-"$HOME"/.mms/modemmanager}/mms" ]; then
+	sxmo_daemons.sh start mmsd mmsdtng "$SXMO_MMSD_ARGS"
 fi
 
-if [ -f "$VVM_BASE_DIR/vvm" ]; then
-	sxmo_daemons.sh start vvmd vvmd
+if [ -f "${SXMO_VVM_BASE_DIR:-"$HOME"/.vvm/modemmanager}/vvm" ]; then
+	sxmo_daemons.sh start vvmd vvmd "$SXMO_VVMD_ARGS"
 fi
 
 # Start the desktop widget (e.g. clock)
@@ -68,6 +66,9 @@ sxmo_daemons.sh start network_monitor sxmo_networkmonitor.sh
 # The daemon that display notifications popup messages
 sxmo_daemons.sh start notification_monitor sxmo_notificationmonitor.sh
 
+# To setup initial lock state
+sxmo_screenlock.sh unlock
+
 # turn on modemmonitor on login
 # Note: if the modemmonitor is not on you can
 # not receive texts/calls!
@@ -75,5 +76,3 @@ sxmo_daemons.sh start notification_monitor sxmo_notificationmonitor.sh
 # give the modem some time to set up)
 sxmo_modemmonitortoggle.sh restart
 
-# To setup initial lock state
-sxmo_screenlock.sh unlock
