@@ -69,10 +69,15 @@ sxmo_daemons.sh start notification_monitor sxmo_notificationmonitor.sh
 # To setup initial lock state
 sxmo_screenlock.sh unlock
 
-# turn on modemmonitor on login
-# Note: if the modemmonitor is not on you can
-# not receive texts/calls!
-# (there is a bit of a delay to
-# give the modem some time to set up)
-sxmo_modemmonitortoggle.sh restart
+# Verify modemmanager and eg25-manager are running
+if ! sxmo_modemdaemons.sh status; then
+	sxmo_notify_user.sh --urgency=critical "Warning! Modem daemons are not running."
+else
+	# Turn on the dbus-monitors for modem-related tasks
+	sxmo_daemons.sh start modem_monitor sxmo_modemmonitor.sh
 
+	# Prevent crust for 120s if this is a reboot (uptime < 3mins)
+	if [ "$(cut -d '.' -f1 < /proc/uptime)" -lt 180 ]; then
+		sxmo_daemons.sh start modem_nocrust sleep 120
+	fi
+fi
