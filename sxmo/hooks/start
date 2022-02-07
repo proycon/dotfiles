@@ -4,18 +4,15 @@
 # shellcheck source=scripts/core/sxmo_common.sh
 . "$(which sxmo_common.sh)"
 
-#Make dbus session available
-echo "$DBUS_SESSION_BUS_ADDRESS" > "$CACHEDIR"/dbus.bus
-
 # in case of weird crash
-echo "unlock" > "$LASTSTATE"
-[ -f "$UNSUSPENDREASONFILE" ] && rm -f "$UNSUSPENDREASONFILE"
+echo "unlock" > "$SXMO_LASTSTATE"
+[ -f "$SXMO_UNSUSPENDREASONFILE" ] && rm -f "$SXMO_UNSUSPENDREASONFILE"
 
 # Force audio over the main speaker
 # and set a sane default volume
-sxmo_audioout.sh Speaker
-amixer sset 'Line Out Source' 'Mono Differential','Mono Differential'
-amixer set "Line Out" 50%
+sxmo_audio.sh device set Speaker
+amixer sset 'Line Out Source' 'Mono Differential','Mono Differential' >/dev/null
+amixer set "Line Out" 75% >/dev/null
 
 ~/dotfiles/notifyclient.sh &
 
@@ -46,14 +43,15 @@ case "$SXMO_WM" in
 		sxmo_daemons.sh start autocutsel_1 autocutsel
 		sxmo_daemons.sh start autocutsel_2 autocutsel -selection PRIMARY
 		sxmo_daemons.sh start statusbar_xsetroot sxmo_status_xsetroot.sh
+		;;
 esac
 
-if [ -f "$MMS_BASE_DIR/mms" ]; then
-	sxmo_daemons.sh start mmsd mmsdtng
+if [ -f "${SXMO_MMS_BASE_DIR:-"$HOME"/.mms/modemmanager}/mms" ]; then
+	sxmo_daemons.sh start mmsd mmsdtng "$SXMO_MMSD_ARGS"
 fi
 
-if [ -f "$VVM_BASE_DIR/vvm" ]; then
-	sxmo_daemons.sh start vvmd vvmd
+if [ -f "${SXMO_VVM_BASE_DIR:-"$HOME"/.vvm/modemmanager}/vvm" ]; then
+	sxmo_daemons.sh start vvmd vvmd "$SXMO_VVMD_ARGS"
 fi
 
 # Start the desktop widget (e.g. clock)
@@ -68,12 +66,18 @@ sxmo_daemons.sh start network_monitor sxmo_networkmonitor.sh
 # The daemon that display notifications popup messages
 sxmo_daemons.sh start notification_monitor sxmo_notificationmonitor.sh
 
-# turn on modemmonitor on login
-# Note: if the modemmonitor is not on you can
-# not receive texts/calls!
-# (there is a bit of a delay to
-# give the modem some time to set up)
-sxmo_modemmonitortoggle.sh restart
-
 # To setup initial lock state
 sxmo_screenlock.sh unlock
+
+# Verify modemmanager and eg25-manager are running
+if ! sxmo_modemdaemons.sh status; then
+	sxmo_notify_user.sh --urgency=critical "Warning! Modem daemons are not running."
+else
+	# Turn on the dbus-monitors for modem-related tasks
+	sxmo_daemons.sh start modem_monitor sxmo_modemmonitor.sh
+
+	# Prevent crust for 120s if this is a reboot (uptime < 3mins)
+	if [ "$(cut -d '.' -f1 < /proc/uptime)" -lt 180 ]; then
+		sxmo_daemons.sh start modem_nocrust sleep 120
+	fi
+fi

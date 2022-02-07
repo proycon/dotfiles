@@ -19,7 +19,7 @@ export DEFAULT_COUNTRY=NL
 # parameters, see the sxmo documentation for more.
 
 # Use firefox as default browser if installed
-command -v firefox && export BROWSER=firefox
+command -v firefox >/dev/null && export BROWSER=firefox
 
 # Prepopulate Subreddits menu with custom subreddits
 #export SXMO_SUBREDDITS="postmarketos pinephoneOfficial pinephone unixporn"
