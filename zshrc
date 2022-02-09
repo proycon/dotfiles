@@ -66,6 +66,7 @@ alias pg='git push; if (( $? == 0 )); then; play -q /usr/share/sounds/KDE-Window
 alias gca="LD_LIBRARY_PATH= git commit -a"
 alias cf='LANGUAGE="en_GB.UTF-8" ./configure'
 alias pm="podman"
+alias pmc="podman-compose"
 alias a='tmux attach'
 alias b="buku"
 alias tmux='tmux -2' #force 256 colour support regardless of terminal
