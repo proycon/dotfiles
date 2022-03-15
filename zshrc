@@ -391,6 +391,11 @@ export GPGKEY="1A31555C"
 GPG_TTY=$(tty)
 export GPG_TTY
 
+export NNN_FIFO="/tmp/nnn.fifo"
+export NNN_PLUG="o:fzopen;c:fcd;j:jump;p:preview-tui;i:imgview;d:dragdrop"
+export BAT_THEME="gruvbox-dark"
+alias nnn="nnn -e"
+
 PANEL_FIFO=/tmp/panel-fifo
 PANEL_HEIGHT=24
 PANEL_FONT_FAMILY="-*-terminus-medium-r-normal-*-12-*-*-*-c-*-*-1"
