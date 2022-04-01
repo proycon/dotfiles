@@ -100,7 +100,7 @@ if [ $SUDO -eq 1 ]; then
             esac
         done
         if [ $YAY -eq 1 ]; then
-            yay -S polybar powerline-fonts-git ttf-material-design-icons-git ttf-symbola ccls javascript-typescript-langserver ttf-nerd-fonts-input libxft-bgra.git || echo "WARNING: yay is not installed yet, do so yourself!">&2
+            yay -S polybar powerline-fonts-git ttf-material-design-icons-git ttf-symbola ccls javascript-typescript-langserver ttf-nerd-fonts-input libxft-bgra || echo "WARNING: yay is not installed yet, do so yourself!">&2
         fi
     elif [[ "$OS" == "postmarketos" ]]; then
         sudo apk update
