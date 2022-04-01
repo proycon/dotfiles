@@ -45,7 +45,7 @@ udiskie &
 slstatus &
 dunst &
 setxkbmap proylatin
-if [[ "$HOSTNAME" == "rocinante" ]]; then
+if [ "$HOSTNAME" = "rocinante" ] || [ "$HOSTNAME" = "trantor" ]; then
     setxkbmap -option "altwin:swap_lalt_lwin"
 fi
 /home/proycon/dotfiles/notifyclient.sh &
