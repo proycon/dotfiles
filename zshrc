@@ -27,7 +27,7 @@ export DISABLE_UNTRACKED_FILES_DIRTY="true"
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
-plugins=(vi-mode history history-substring-search git python debian pip github git-flow cargo ripgrep fd lxd rust ufw zsh-autosuggestions)
+plugins=(vi-mode history history-substring-search git python debian pip github git-flow rust ripgrep fd lxd rust ufw zsh-autosuggestions ansible systemd archlinux)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -42,7 +42,7 @@ menu () {
     whiptail --menu "Menu" 25 80 15 sysadmin "Sysadmin tools" file "File management" data "Data tools" tldr "tldr" cheat "cheat"  2> ~/.menuchoice
     choice=$(cat ~/.menuchoice)
     if [[ "$choice " == "sysadmin"* ]]; then
-        whiptail --menu "Menu" 25 80 15 atop "Apache top (root)" bmon "Bandwidth Monitor" glances "Interactive process viewer" htop "Interactive process viewer" iftop "Network interface monitoring" iostat "I/O Statistics" iotop "I/O monitor (root)" lshw "List hardware" lsmod "List kernel modules" lsof "List open files" lspci "List PCI devices" lsusb "List USB devices" netcat "Read/write network data" netstat "Print network connections" top "Interactive process viewer" vmstat "Report virtual memory statistics" wavemon "Wireless monitor" 2> ~/.menuchoice
+        whiptail --menu "Menu" 25 80 15 atop "Apache top (root)" bmon "Bandwidth Monitor" btop "Interactive process viewer" glances "Interactive process viewer" htop "Interactive process viewer" iftop "Network interface monitoring" iostat "I/O Statistics" iotop "I/O monitor (root)" lshw "List hardware" lsmod "List kernel modules" lsof "List open files" lspci "List PCI devices" lsusb "List USB devices" netcat "Read/write network data" netstat "Print network connections" top "Interactive process viewer" vmstat "Report virtual memory statistics" wavemon "Wireless monitor" 2> ~/.menuchoice
         eval $(cat ~/.menuchoice)
     elif [[ "$choice " == "file"* ]]; then
         whiptail --menu "Menu" 25 80 15 ranger "ranger: Terminal file manager" br "Broot Tree Navigation" lf "lf: Terminal file manager"  2> ~/.menuchoice
@@ -65,6 +65,8 @@ alias gp='git push; if (( $? == 0 )); then; play -q /usr/share/sounds/KDE-Window
 alias pg='git push; if (( $? == 0 )); then; play -q /usr/share/sounds/KDE-Window-Maximize.ogg 2> /dev/null &!; fi'
 alias gca="LD_LIBRARY_PATH= git commit -a"
 alias cf='LANGUAGE="en_GB.UTF-8" ./configure'
+alias pm="podman"
+alias pmc="podman-compose"
 alias a='tmux attach'
 alias b="buku"
 alias tmux='tmux -2' #force 256 colour support regardless of terminal
@@ -388,6 +390,11 @@ export GPGKEY="1A31555C"
 #fi
 GPG_TTY=$(tty)
 export GPG_TTY
+
+export NNN_FIFO="/tmp/nnn.fifo"
+export NNN_PLUG="o:fzopen;c:fcd;j:jump;p:preview-tui;i:imgview;d:dragdrop"
+export BAT_THEME="gruvbox-dark"
+alias nnn="nnn -e"
 
 PANEL_FIFO=/tmp/panel-fifo
 PANEL_HEIGHT=24
