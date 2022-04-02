@@ -1,4 +1,5 @@
 #!/bin/sh
+# configversion: 1
 
 # Homestatus widget, wrapper around
 # homestatus.sh using wayout

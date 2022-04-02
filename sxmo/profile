@@ -1,4 +1,5 @@
 #!/bin/sh
+# configversion: c4996d637ffa87798c160e9d0c981945
 
 # Please modify this file to your liking
 
@@ -11,7 +12,7 @@
 # You will sometime get SMS or calls from not
 #  country code prefixed phone numbers. To make
 #  it easy to fixup configure the default countryu.
-export DEFAULT_COUNTRY=NL
+#export DEFAULT_COUNTRY=FR
 
 ### Configuration Parameters ###
 
@@ -28,13 +29,16 @@ command -v firefox >/dev/null && export BROWSER=firefox
 # export TERMCMD="st -e"
 
 # When scrolling past the beginning or end of a menu, wrap it around:
-export DMENU_WRAP_AROUND=1
+#export DMENU_WRAP_AROUND=1
 
 # Enable audio feedback on keypress
-export KEYBOARD_ARGS="-o | clickclack -f /usr/share/sxmo/keytap.wav"
+#export KEYBOARD_ARGS="-o | clickclack -f /usr/share/sxmo/keytap.wav"
 
 # Or, enable vibration feedback on keypress
 #export KEYBOARD_ARGS="-o | clickclack -V"
+
+# Set the scale factor in sway
+# export SXMO_SWAY_SCALE=2
 
 # To load specific part of configuration depending on the running environment
 case "$SXMO_WM" in
