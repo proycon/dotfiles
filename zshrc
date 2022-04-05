@@ -391,6 +391,14 @@ export GPGKEY="1A31555C"
 GPG_TTY=$(tty)
 export GPG_TTY
 
+if ! pgrep -u "$USER" ssh-agent > /dev/null; then
+    ssh-agent -t 6h > "$XDG_RUNTIME_DIR/ssh-agent.env"
+fi
+if [[ ! "$SSH_AUTH_SOCK" ]]; then
+    source "$XDG_RUNTIME_DIR/ssh-agent.env" >/dev/null
+fi
+
+
 export NNN_FIFO="/tmp/nnn.fifo"
 export NNN_PLUG="o:fzopen;c:fcd;j:jump;p:preview-tui;i:imgview;d:dragdrop"
 export BAT_THEME="gruvbox-dark"
