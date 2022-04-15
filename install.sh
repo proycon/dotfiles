@@ -172,7 +172,9 @@ if [ -z "$NO_DESKTOP" ]; then
     ln -sfn $DOTDIR/screencast.sh $HOMEDIR/bin/screencast.sh
     ln -sfn $DOTDIR/xinitrc $HOMEDIR/.xsession
     mkdir $HOMEDIR/rofi
+    mkdir -p $HOMEDIR/.config/rofi
     ln -sfn $DOTDIR/rofi $HOMEDIR/rofi/config.rasi
+    ln -sfn $DOTDIR/rofi $HOMEDIR/.config/rofi/config.rasi
 fi
 cd $HOMEDIR
 
