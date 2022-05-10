@@ -20,7 +20,7 @@ ffmpeg -y \
 -f x11grab \
 -s "$RES" \
 -i "$INPUT" \
--thread_queue_size 1024 \
+-thread_queue_size 2048 \
  -f alsa -ar 44100 -i hw:3 \
 -c:v libx264 -r 30 -c:a flac $filename
 
