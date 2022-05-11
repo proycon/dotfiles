@@ -8,7 +8,7 @@ reload-only-visible-feeds yes
 
 external-url-viewer "urlscan -dc -r 'linkhandler {}'"
 download-path "/home/proycon/Downloads/"
-download-filename-format "%Y%m%d-%h.%e"
+download-filename-format "%Y%m%d-%H:%M-%n.%e"
 player "mpv"
 
 bind-key j down
