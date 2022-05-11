@@ -7,6 +7,8 @@ confirm-exit yes
 reload-only-visible-feeds yes
 
 external-url-viewer "urlscan -dc -r 'linkhandler {}'"
+download-path "/home/proycon/Downloads/"
+player "mpv"
 
 bind-key j down
 bind-key k up
@@ -70,3 +72,4 @@ highlight feedlist " r/" red default
 highlight feedlist "\\([0-9]+/[0-9]+\\)" white default
 
 articlelist-format  "%4i %f %D   %?T?|%-20T|  ?%t"
+podlist-format "%i %u %-15S %F"
