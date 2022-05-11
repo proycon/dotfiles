@@ -8,6 +8,7 @@ reload-only-visible-feeds yes
 
 external-url-viewer "urlscan -dc -r 'linkhandler {}'"
 download-path "/home/proycon/Downloads/"
+download-filename-format "%Y%m%d-%h.%e"
 player "mpv"
 
 bind-key j down
@@ -72,4 +73,4 @@ highlight feedlist " r/" red default
 highlight feedlist "\\([0-9]+/[0-9]+\\)" white default
 
 articlelist-format  "%4i %f %D   %?T?|%-20T|  ?%t"
-podlist-format "%i %u %-15S %F"
+podlist-format "%i %K %S %b"
