@@ -88,9 +88,15 @@ vnoremap <Leader>s :sort<CR>
 "mail signature
 map <Leader>S :r ~/sru<CR>
 
-set t_Co=256
-color gruvbox
-set background=dark
+
+if filereadable($HOME . "/.light")
+    set background=light
+    colorscheme lucius
+else
+    set t_Co=256
+    color gruvbox
+    set background=dark
+endif
 
 
 " Showing line numbers and length
