@@ -83,11 +83,6 @@ nmap <Leader>y :.w! ~/.vbuf<CR>:!xsel -i -b < ~/.vbuf<CR>
 nmap <Leader>p :r ~/.vbuf<CR>
 nmap <Leader>P :-1r ~/.vbuf<CR>
 
-command! Caj !scp proycon@applejack.science.ru.nl:~/.vbuf ~/
-command! C2aj !scp ~/.vbuf proycon@applejack.science.ru.nl:~/
-command! Cap !scp proycon@anaproy.nl:~/.vbuf ~/
-command! C2ap !scp ~/.vbuf proycon@anaproy.nl:~/
-
 vnoremap <Leader>s :sort<CR>
 
 "mail signature
@@ -160,13 +155,6 @@ au! BufNewFile,BufRead *.n3 set filetype=n3
 syntax on
 
 autocmd FileType python,c,cpp,java,javascript,perl,awk,bash,haskell syn match ops /[(){}\[\]=\+\-%!\*:\,\.<>\|\&]/ | hi ops ctermfg=117
-
-
-""""" Settings for NERDTree
-
-let NERDTreeIgnore=['\~$', '^\.git', '^\.svn', '\.swp$', '\.DS_Store$','\.pyc$','\.jpg$','\.png$','\.gif$','\.bak$','\.o$','\.lo$','\.in$','\.so$','\.aux$','\.pdf$','\.bbl$','^build','^dist' ]
-let NERDTreeShowHidden=0
-" nmap <Leader>n :NERDTreeToggle<cr>
 
 
 
@@ -279,7 +267,7 @@ let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_auto_loc_list = 1
 let g:syntastic_check_on_wq = 0
 let g:syntastic_check_on_open = 1
-let g:syntastic_python_python_exec = "/home/proycon/lamachine/bin/python3"
+let g:syntastic_python_python_exec = "python3"
 let g:syntastic_python_checkers = ['python', 'pylint']
 let g:syntastic_python_flake8_args = "--ignore=E501,E225 --max-complexity 10"
 let g:syntastic_javascript_checkers = ['jshint']
@@ -425,8 +413,6 @@ au BufRead *.tex set textwidth=79 formatoptions=cqt wrapmargin=0
 
 
 
-
-
 fun! PullAndRefresh()
   set noconfirm
   !git pull
@@ -462,25 +448,6 @@ command! Spit setlocal spell spelllang=it
 command! Spde setlocal spell spelllang=de
 command! Spfr setlocal spell spelllang=fr
 
-" Insert into your .vimrc after quick-scope is loaded.
-" Obviously depends on <https://github.com/unblevable/quick-scope> being installed.
-
-function! Quick_scope_selective(movement)
-    let needs_disabling = 0
-    if !g:qs_enable
-        QuickScopeToggle
-        redraw
-        let needs_disabling = 1
-    endif
-
-    let letter = nr2char(getchar())
-
-    if needs_disabling
-        QuickScopeToggle
-    endif
-
-    return a:movement . letter
-endfunction
 
 let g:qs_enable = 0
 
