@@ -113,6 +113,9 @@ return packer.startup(function(use)
   use "tpope/vim-characterize" -- unicode information on 'ga' character inspection
   use "norcalli/nvim-colorizer.lua" -- show colour codes in colour
   use "ellisonleao/glow.nvim" -- markdown preview
+  use "folke/trouble.nvim" -- pretty list for showing diagnostics
+  use "tpope/vim-fugitive" -- git wrapper (provides :Git commands)
+  use "simrat39/symbols-outline.nvim" --symbols (tags) tree like view
 
   -- Automatically set up your configuration after cloning packer.nvim
   -- Put this at the end after all plugins
