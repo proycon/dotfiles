@@ -77,8 +77,15 @@ return packer.startup(function(use)
   use "rafamadriz/friendly-snippets" -- a bunch of snippets to use
 
   -- LSP
-  use "neovim/nvim-lspconfig" -- enable LSP
   use "williamboman/nvim-lsp-installer" -- simple to use language server installer
+  use {
+        "neovim/nvim-lspconfig", -- enable LSP
+        config = function()
+            require("nvim-lsp-installer").setup {}
+            local lspconfig = require("lspconfig")
+            lspconfig.sumneko_lua.setup {}
+        end
+  }
   use "tamago324/nlsp-settings.nvim" -- language server settings defined in json for
   use "jose-elias-alvarez/null-ls.nvim" -- for formatters and linters
 
@@ -96,6 +103,16 @@ return packer.startup(function(use)
 
   -- Git
   use "lewis6991/gitsigns.nvim"
+
+  -- Distraction free writing
+  use "Pocco81/TrueZen.nvim"
+
+  use "jamessan/vim-gnupg"
+  use "aklt/plantuml-syntax"
+  use "chrisbra/csv.vim"
+  use "tpope/vim-characterize" -- unicode information on 'ga' character inspection
+  use "norcalli/nvim-colorizer.lua" -- show colour codes in colour
+  use "ellisonleao/glow.nvim" -- markdown preview
 
   -- Automatically set up your configuration after cloning packer.nvim
   -- Put this at the end after all plugins
