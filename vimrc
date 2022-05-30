@@ -1,77 +1,29 @@
-scriptencoding utf-8
-set encoding=utf-8
-
 " Automatic reloading of .vimrc
 autocmd! bufwritepost .vimrc source %
 
-" Better copy & paste
-" " When you want to paste large blocks of code into vim, press F2 before you
-" " paste. At the bottom you should see ``-- INSERT (paste) --``.
-"
-
-set pastetoggle=<F2>
 set clipboard=unnamed
-
-set mouse=a  " on OSX press ALT and click
-set bs=2     " make backspace behave like normal again
-
 set hidden " allow leaving buffers without saving
-nnoremap <F9> :buffers<CR>:buffer<Space>
 
 
-let mapleader=","
-noremap \ ,
-
-" for mutt only:
-au BufRead /tmp/mutt-* set tw=72
-au BufRead /tmp/mutt-* setlocal fo+=aw
-
-" Quicksave command
-"" noremap <C-Z> :update<CR>
-"" vnoremap <C-Z> <C-C>:update<CR>
-"" inoremap <C-Z> <C-O>:update<CR>
+let mapleader=" "
 
 
-" Quick quit command
-"" noremap <Leader>e :quit<CR>  " Quit current window
-"" noremap <Leader>E :qa!<CR>   " Quit all windows
-
-map <Leader>j <c-w>j
-map <Leader>k <c-w>k
-map <Leader>l <c-w>l
-map <Leader>h <c-w>h
-
+nmap L <esc>:bp<CR>
+nmap H <esc>:bn<CR>
 
 nnoremap <Leader>d "_d
 xnoremap <Leader>d "_d
-
-" easier moving between tabs
-map <Leader>< <esc>:tabprevious<CR>
-map <Leader>, <esc>:tabnext<CR>
-map <Leader>= <esc>:bn<CR>
-map <Leader>- <esc>:bp<CR>
-
 
 " bind Ctrl+<movement> keys to move around the windows, instead of using Ctrl+w + <movement>
 " Every unnecessary keystroke that can be saved is good for your health :)
 map <C-l> <c-w>l
 map <C-h> <c-w>h
+map <C-j> <c-w>j
+map <C-k> <c-w>k
 
 
-map <C-m> <esc>:CtrlPFunky<Cr>
-map <C-n> <esc>:CtrlPMRU<Cr>
-map <C-b> <esc>:CtrlPBuffer<Cr>
-
-" close quickfix window
-" map <leader>E <esc>:ccl<CR>
-" open
-map <Leader>e <esc>:cw<CR>
-
-
-map <Leader>O <esc>:on<CR>
-"map <Leader>P <esc>:hide<CR>
-map <Leader>b <esc>:buffers<CR>:b
-map <Leader>B <esc>:MiniBufExplorer<CR>
+map <Leader>f <esc>:CtrlP<Cr>
+map <Leader>b <esc>:CtrlPBuffer<CR>
 
 "custom copy'n'paste
 "
@@ -82,11 +34,6 @@ nmap <Leader>y :.w! ~/.vbuf<CR>:!xsel -i -b < ~/.vbuf<CR>
 "paste the contents of the buffer file
 nmap <Leader>p :r ~/.vbuf<CR>
 nmap <Leader>P :-1r ~/.vbuf<CR>
-
-vnoremap <Leader>s :sort<CR>
-
-"mail signature
-map <Leader>S :r ~/sru<CR>
 
 
 if filereadable($HOME . "/.light")
@@ -109,11 +56,6 @@ set fo-=t   " don't automatically wrap text when typing
 set cursorline "highlight current line
 set wrap
 
-
-"transparent background
-"hi NonText ctermfg=250 ctermbg=none
-
-
 " easier moving of code blocks
 " Try to go into visual mode (v), thenselect several lines of code here and
 " then press ``>`` several times.
@@ -124,7 +66,7 @@ vnoremap > >gv  " better indentation
 set history=700
 set undolevels=700
 
-" Real programmers don't use TABs but spaces
+" Use spaces by default
 set tabstop=4
 set softtabstop=4
 set shiftwidth=4
@@ -137,7 +79,6 @@ set incsearch
 set ignorecase
 set smartcase
 
-
 set switchbuf=useopen,usetab
 set listchars=tab:▸\ ,eol:¬,extends:❯,precedes:❮
 
@@ -146,7 +87,6 @@ set listchars=tab:▸\ ,eol:¬,extends:❯,precedes:❮
 set nobackup
 set nowritebackup
 set noswapfile
-
 
 
 " Pathogen load
@@ -164,7 +104,7 @@ autocmd FileType python,c,cpp,java,javascript,perl,awk,bash,haskell syn match op
 
 
 
-nmap <Leader>t :TagbarToggle<CR>
+nmap <Leader>T :TagbarToggle<CR>
 nmap <Leader>T :TagbarOpen fj<CR>
 
 
@@ -177,23 +117,6 @@ set sessionoptions-=help
 set sessionoptions+=resize,buffers,blank,curdir
 let g:session_default_to_last="yes"
 let g:session_autoload="yes"
-
-
-map <leader>ct :!ctags -R --c++-kinds=+p --fields=+iaS --extra=+q .<CR>
-
-" map <leader>y y:e ~/clipboard<CR>P:w !pbcopy<CR><CR>:bdelete!<CR>
-" map <leader>y :w! ~/clipboard<CR>!cpcopy<CR>
-
-
-" " ============================================================================
-" Python IDE Setup
-" ============================================================================
-
-
-" Settings for vim-powerline
-" cd ~/.vim/bundle
-" git clone git://github.com/Lokaltog/vim-powerline.git
-set laststatus=2
 
 
 " Settings for ctrlp
@@ -317,56 +240,6 @@ map <leader>6 :b6<CR>
 map <leader>7 :b7<CR>
 map <leader>8 :b8<CR>
 map <leader>9 :b9<CR>
-map <leader>10 :b10<CR>
-map <leader>11 :b11<CR>
-map <leader>12 :b12<CR>
-map <leader>13 :b13<CR>
-map <leader>14 :b14<CR>
-map <leader>15 :b15<CR>
-map <leader>16 :b16<CR>
-map <leader>17 :b17<CR>
-map <leader>18 :b18<CR>
-map <leader>19 :b19<CR>
-map <leader>20 :b20<CR>
-map <leader>21 :b21<CR>
-map <leader>22 :b22<CR>
-map <leader>23 :b23<CR>
-map <leader>24 :b24<CR>
-map <leader>25 :b25<CR>
-map <leader>26 :b26<CR>
-map <leader>27 :b27<CR>
-map <leader>28 :b28<CR>
-map <leader>29 :b29<CR>
-map <leader>30 :b30<CR>
-map <leader>31 :b31<CR>
-map <leader>32 :b32<CR>
-map <leader>33 :b33<CR>
-map <leader>34 :b34<CR>
-map <leader>35 :b35<CR>
-map <leader>36 :b36<CR>
-map <leader>37 :b37<CR>
-map <leader>38 :b38<CR>
-map <leader>39 :b39<CR>
-map <leader>40 :b30<CR>
-map <leader>41 :b41<CR>
-map <leader>42 :b42<CR>
-map <leader>43 :b43<CR>
-map <leader>44 :b44<CR>
-map <leader>45 :b45<CR>
-map <leader>46 :b46<CR>
-map <leader>47 :b47<CR>
-map <leader>48 :b48<CR>
-map <leader>49 :b49<CR>
-map <leader>50 :b50<CR>
-map <leader>51 :b51<CR>
-map <leader>52 :b52<CR>
-map <leader>53 :b53<CR>
-map <leader>54 :b54<CR>
-map <leader>55 :b55<CR>
-map <leader>56 :b56<CR>
-map <leader>57 :b57<CR>
-map <leader>58 :b58<CR>
-map <leader>59 :b59<CR>
 
 
 map <leader>E <esc>:bufdo e<CR>
@@ -414,19 +287,9 @@ set nofoldenable
 
 let g:Tex_SmartKeyQuote = 0
 
-
 au BufRead *.tex set textwidth=79 formatoptions=cqt wrapmargin=0
 
 
-
-fun! PullAndRefresh()
-  set noconfirm
-  !git pull
-  bufdo e!
-  set confirm
-endfun
-
-" nmap <leader>gr call PullAndRefresh()
 function! s:MakeWhite()
     set background=light
     colorscheme lucius
@@ -436,13 +299,6 @@ function! s:MakeDark()
     set background=dark
     colorscheme wombat256mod
 endfunction
-
-command! White call s:MakeWhite()
-command! Dark call s:MakeDark()
-command! W w
-command! P2 let g:pymode_lint_checker = 'pylint'
-command! P3 let g:pymode_lint_checker = 'pylint3'
-command! UP call PullAndRefresh()
 
 command! Spen setlocal spell spelllang=en_gb
 command! Spus setlocal spell spelllang=en_us
