@@ -1,6 +1,3 @@
-[submodule "vim/bundle/syntastic"]
-	path = vim/bundle/syntastic
-	url = git@github.com:scrooloose/syntastic.git
 [submodule "vim/bundle/nerdcommenter"]
 	path = vim/bundle/nerdcommenter
 	url = https://github.com/scrooloose/nerdcommenter
@@ -10,9 +7,6 @@
 [submodule "vim/bundle/vim-fugitive"]
 	path = vim/bundle/vim-fugitive
 	url = https://github.com/tpope/vim-fugitive
-[submodule "vim/bundle/vim-sensible"]
-	path = vim/bundle/vim-sensible
-	url = https://github.com/tpope/vim-sensible
 [submodule "vim/bundle/vim-ipython"]
 	path = vim/bundle/vim-ipython
 	url = git@github.com:ivanov/vim-ipython.git
@@ -37,21 +31,9 @@
 [submodule "vim/bundle/bundle/vim-surround"]
 	path = vim/bundle/bundle/vim-surround
 	url = https://github.com/tpope/vim-surround
-[submodule "vim/bundle/limelight.vim"]
-	path = vim/bundle/limelight.vim
-	url = https://github.com/junegunn/limelight.vim.git
-[submodule "vim/bundle/splitjoin.vim"]
-	path = vim/bundle/splitjoin.vim
-	url = https://github.com/AndrewRadev/splitjoin.vim
-[submodule "vim/bundle/vim-visual-star-search"]
-	path = vim/bundle/vim-visual-star-search
-	url = https://github.com/bronson/vim-visual-star-search.git
 [submodule "vim/bundle/ctrlp.vim"]
 	path = vim/bundle/ctrlp.vim
 	url = https://github.com/ctrlpvim/ctrlp.vim.git
-[submodule "vim/bundle/vim-virtualenv"]
-	path = vim/bundle/vim-virtualenv
-	url = https://github.com/jmcantrell/vim-virtualenv
 [submodule "zsh-syntax-highlighting"]
 	path = zsh-syntax-highlighting
 	url = https://github.com/zsh-users/zsh-syntax-highlighting.git

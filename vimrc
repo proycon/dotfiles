@@ -105,7 +105,6 @@ autocmd FileType python,c,cpp,java,javascript,perl,awk,bash,haskell syn match op
 
 
 nmap <Leader>T :TagbarToggle<CR>
-nmap <Leader>T :TagbarOpen fj<CR>
 
 
 set ssop-=options    " do not store global and local values in a session
