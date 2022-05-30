@@ -116,6 +116,9 @@ return packer.startup(function(use)
   use "folke/trouble.nvim" -- pretty list for showing diagnostics
   use "tpope/vim-fugitive" -- git wrapper (provides :Git commands)
   use "simrat39/symbols-outline.nvim" --symbols (tags) tree like view
+  use "pwntester/octo.nvim" -- github CLI integration
+  use "ray-x/lsp_signature.nvim" -- Show function signature as you type
+
 
   -- Automatically set up your configuration after cloning packer.nvim
   -- Put this at the end after all plugins
