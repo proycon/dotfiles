@@ -4,10 +4,15 @@ local colors = require("gruvbox-baby.colors").config()
 vim.g.gruvbox_baby_highlights = {Search = {fg = colors.milk, bg = colors.orange}}
 
 vim.cmd [[
-try
-  colorscheme gruvbox-baby
-catch /^Vim\%((\a\+)\)\=:E185/
-  colorscheme default
-  set background=dark
-endtry
+if filereadable($HOME . "/.light")
+    set background=light
+    colorscheme zenwritten
+else
+    try
+      colorscheme gruvbox-baby
+    catch /^Vim\%((\a\+)\)\=:E185/
+      colorscheme default
+      set background=dark
+    endtry
+endif
 ]]
