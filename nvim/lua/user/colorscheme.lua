@@ -1,7 +1,7 @@
 vim.g.gruvbox_baby_transparent_mode = 1
 vim.g.gruvbox_baby_telescope_theme = 1
--- local colors = require("gruvbox-baby.colors").config()
--- vim.g.gruvbox_baby_highlights = {Normal = {fg = colors.orange}}
+local colors = require("gruvbox-baby.colors").config()
+vim.g.gruvbox_baby_highlights = {Search = {fg = colors.milk, bg = colors.orange}}
 
 vim.cmd [[
 try
