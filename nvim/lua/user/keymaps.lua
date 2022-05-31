@@ -74,6 +74,7 @@ keymap("n", "<leader>T", ":SymbolsOutline<CR>", opts)
 
 keymap("n", "<F9>", ":Git commit -a<CR>", opts)
 keymap("n", "<F10>", ":Git push<CR>", opts)
+keymap("n", "<F12>", ":Octo issue list<CR>", opts)
 
 -- Cyrillic in normal mode, map some minimal cyrillic so I don't have to switch
 keymap("n", "и", "i", opts)
