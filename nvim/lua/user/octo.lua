@@ -124,3 +124,7 @@ require"octo".setup({
     }
   }
 })
+
+
+
+vim.cmd "hi! link OctoEditable CursorLine"
