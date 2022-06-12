@@ -9,9 +9,12 @@ color index_author green default '.*'
 color index_subject white default '.*'
 color index_date white default
 
+color index_subject blue default "~s \"(Re|RE|re|antw): .*\""
 color index_subject magenta default "~l"
-color index_subject magenta default "~h List-Unsubscribe"
-color index_subject magenta default "~f basecamp"
+color index_subject color242 default "~f \"(servicedesk@knaw.nl|(communicatie|secretariaat)@bb.huc.knaw.nl|Microsoft365@ru.nl|c.spijkman@let.ru.nl|cls@let.ru.nl|builds.sr.ht|dependabot|invitations@|notifications@|no-?_?reply@|mailer@|@googlegroups.com)\"" #grey
+color index_subject color242 default "~t \"(@knaw.local|lst-pi-group@googlegroups.com)\"" #grey
+color index_subject magenta default "~f \"(notifications@github.com|issues-reply@bitbucket.org|outgoing@sr.ht|.*@basecamp.com|gitlab@.*|.*@russianwithmax.com|servicedesk@socialhistoryservices.org)\""
+#color index_subject magenta default "~h List-Unsubscribe" #slows things down too much
 
 # For new mail:
 color index brightblue black "~N"
@@ -23,10 +26,10 @@ color index_subject brightred black "~F" #flagged messages
 color index_subject color204 default "~s PATCH"
 
 #semi-spam:
-color index_author color242 default "~f \"(servicedesk@knaw.nl|communicatie@bb.huc.knaw.nl|Microsoft365@ru.nl|c.spijkman@let.ru.nl|cls@let.ru.nl|builds.sr.ht|dependabot)\"" #grey
-color index_subject color242 default "~f \"(servicedesk@knaw.nl|communicatie@bb.huc.knaw.nl|Microsoft365@ru.nl|c.spijkman@let.ru.nl|cls@let.ru.nl|builds.sr.ht|dependabot)\"" #grey
+color index_author color242 default "~f \"(servicedesk@knaw.nl|(communicatie|secretariaat)@bb.huc.knaw.nl|Microsoft365@ru.nl|c.spijkman@let.ru.nl|cls@let.ru.nl|builds.sr.ht|dependabot|invitations@|notifications@[^github.com]|no-?_?reply@|mailer@)\"" #grey
 color index_subject color242 default "~s \"(automatisch antwoord|automatic reply)\"" #grey
-color index_subject color88 default "~h \"Tag:.*(killed|spam)\"" #grey
+color index_subject color88 default "~s \"(spam|loan|sale)\"" #darkred
+#color index_subject color88 default "~h \"Tag:.*(killed|spam)\"" 
 color index_author brightblack color220 "~T"
 
 color index_flags green default "~(~Q)"
@@ -36,14 +39,10 @@ color index_author blue default "~P"
 
 color index_tag magenta default "work"
 color index_tag cyan default "unilang"
-color index_tag yellow default "personal"
-color index_tag yellow default "familie"
 color index_tag blue default "github"
 color index_tag black brightyellow "todo"
 color index_tag brightwhite brightred "reply"
 color index_tag blue default "not"
-color index_tag brightwhite blue "waiting"
-color index_tag brightwhite blue "calendar"
 color index_tag black white "lowpriority"
 color index_tag black green "interesting"
 
@@ -83,7 +82,6 @@ color bold black default
 color underline black default
 color normal default default
 
-color status brightred black "(folia|pynlpl|clam|piccl|frog|ucto|flat|nederlab|clariah|clarin|sysadmin)"
 color status magenta default "work"
 color status cyan default "unilang"
 color status yellow default "personal"
