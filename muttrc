@@ -22,7 +22,7 @@ set date_format="!%y-%m-%d %I:%M"
 set markers = no
 set mark_old = no
 set mime_forward = yes
-set smtp_authenticators = 'gssapi:login'
+#set smtp_authenticators = 'gssapi:login'
 set wait_key = no
 set pager_index_lines = 7
 set pager_context = 10
@@ -38,11 +38,14 @@ set send_charset = "utf-8"
 
 
 set to_chars = " »›-‹L"
-set sidebar_format = '%B%?F? [%F]?%* %?N?%N/? %?S?%S?'
+#set sidebar_format = '%B%?F? [%F]?%* %?N?%N/? %?S?%S?'
+set sidebar_format = '%D%?F? [%F]?%* %?N?%N/? %?S?%S?'
 #set index_format='%4C %Z %<[y?%<[m?%<[d?%[%H:%M       ]&%[%a %b %d  ]>&%[%b %d]>&%[%b %d, %Y]> %-25.25L %?E?%2.e/%2.E&? %g %s'
-set index_format='%4C %Z %<[y?%<[m?%<[d?%10[     %H:%M  ]&%10[%a %b %d  ]>&%12[%b %d  ]>&%10[%b %d, %Y]> %-25.25L %?E?%2.e/%2.E&     ? %g %?GI?%GI &?%?GL?%GL &?%?Gt?%Gt &?%?Gr?%Gr &?%?GW?%GW &? %s'
+#set index_format='%4C %Z %<[y?%<[m?%<[d?%10[     %H:%M  ]&%10[%a %b %d  ]>&%12[%b %d  ]>&%10[%b %d, %Y]> %-20.20L %?E?%2.e/%2.E&     ? %g %?GI?%GI &?%?GL?%GL &?%?Gt?%Gt &?%?Gr?%Gr &?%?GW?%GW &? %s'
 #set index_format='%4C %Z %<[y?%<[m?%<[d?%[%H:%M       ]&%[%a %b %d  ]>&%[%b %d]>&%[%b %d, %Y]> %-25.25L %?E?%2.e/%2.E&     ? %?Gi?%Gi &?%?Gl?%Gl &?%?Gn?%Gn &?%?Gg?%Gg &?%?Gw ?%Gw &?%?GI?%GI &?%?GL?%GL &?%?Gf?%Gf &?%?Gp?%Gp &?%?Gu?%Gu &?%?Gt?%Gt &?%?Gr?%Gr &?%?GW?%GW &? %s'
 #set index_format='%4C %Z %<[y?%<[m?%<[d?%[%H:%M       ]&%[%a %b %d  ]>&%[%b %d]>&%[%b %d, %Y]> %-25.25L %?E?%2.e/%2.E&     ? %?Gi?%Gi &?%?Gl?%Gl &?%?Gn?%Gn &?%?Gg?%Gg &?%?Gw ?%Gw &?%?GI?%GI &?%?GL?%GL &?%?Gf?%Gf &?%?Gp?%Gp &?%?Gu?%Gu &?%?Gt?%Gt &?%?Gr?%Gr &?%?GW?%GW &? %s'
+#set index_format='%4C %Z %<[y?%<[m?%<[d?%10[     %H:%M  ]&%10[%a %b %d  ]>&%12[%b %d  ]>&%10[%b %d, %Y]> %-20.20L %?E?%2.e/%2.E&     ? %g %?GI?%GI &?%?GL?%GL &?%?Gt?%Gt &?%?Gr?%Gr &?%?GW?%GW &? %s'
+set index_format='%4C %Z %<[y?%<[m?%<[d?%10[     %H:%M  ]&%10[%a %b %d  ]>&%12[%b %d  ]>&%10[%b %d, %Y]> %-20.20L %?E?%2.e/%2.E&     ? %?Gi?%Gi&?%?GS?%GS&?%?Gr?%Gr&?%?Gt?%Gt&?%?GI?%GI&?%?GL?%GL&?%?Gl?%Gl&?%?GW?%GW&?%?GD?%GD&?%?Gc?%Gc&?%?Gs?%Gs&?%?Ge?%Ge&?%?Gp?%Gp&?%?Gw?%Gw&?%?Gf?%Gf&?%?Gn?%Gn&?%?Gu?%Gu&?%?Gg?%Gg&?%?Gy?%Gy&?%?GP?%GP&?%?Gh?%Gh&?%?GF?%GF&?%?G2?%G2&?%?GT?%GT&?%?GM?%GM&? %s'
 set pager_format = '-%Z- %e/%E: %-20.20n  %25.25s%* %g (%P)'
 #
 # The default index_format is:
@@ -124,7 +127,7 @@ macro index \Cf "<enter-command>unset wait_key<enter><shell-escape>read -p 'notm
 macro index ,A "<limit>all\n" "show all messages (undo limit)"
 
 # Sidebar mappings
-set sidebar_visible = no
+set sidebar_visible = yes
 set sidebar_width = 20
 set sidebar_short_path = yes
 set sidebar_next_new_wrap = yes
@@ -234,7 +237,6 @@ tag-transforms "inbox"   "📥"   \
                "frog" "🐸" \
                "folia" "🥬" \
                "flat" "🥬" \
-               "travis" "🤖" \
                "ci" "🤖" \
                "sysadmin" "💻" \
                "homeautomation" "🏡" \
@@ -260,7 +262,6 @@ tag-formats "inbox"   "Gi" \
             "sent"    "GS" \
             "todo"    "Gt" \
             "reply"    "Gr" \
-            "replied"    "Greplied" \
             "interesting"    "GI" \
             "lowpriority"    "GL" \
             "lists"    "Gl" \
@@ -279,8 +280,7 @@ tag-formats "inbox"   "Gi" \
             "patch"  "GP" \
             "homeautomation"  "Gh" \
             "frog"  "GF" \
-            "folia"  "GF2" \
-            "travis"  "GT" \
+            "folia"  "G2" \
             "ci"  "GT" \
             "lamachine"  "GM"
 
