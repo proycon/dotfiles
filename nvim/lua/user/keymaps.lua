@@ -67,6 +67,7 @@ keymap("x", "<A-k>", ":move '<-2<CR>gv-gv", opts)
 keymap("n", "<C-b>", ":Gitsigns blame_line<CR>", opts)
 keymap("n", "<leader>L", ":TroubleToggle<CR>", opts)
 keymap("n", "<leader>T", ":SymbolsOutline<CR>", opts)
+keymap("n", "<leader>o", ":Telescope git_files<CR>", opts)
 
 keymap("n", "<F9>", ":Git commit -a<CR>", opts)
 keymap("n", "<F10>", ":Git push<CR>", opts)
