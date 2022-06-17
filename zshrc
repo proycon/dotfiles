@@ -484,13 +484,20 @@ fi
 #bindkey '[C' forward-word
 #bindkey '[D' backward-word
 
-function lesscsv {
-    sed 's/,/ ,/g' | column -t -s, "$@" | less -F -S -X -K
+function catcsv {
+    sed 's/,/ ,/g' | column -t -s, "$@"
 }
 
+function lesscsv {
+    catcsv | less -F -S -X -K
+}
+
+function cattsv {
+    sed 's/,/ ,/g' | column -t -s $'\t' "$@"
+}
 
 function lesstsv {
-    sed 's/,/ ,/g' | column -t -s $'\t' "$@" | less -F -S -X -K
+    cattsv | less -F -S -X -K
 }
 
 
