@@ -84,6 +84,8 @@ alias ghic="gh issue create"
 alias ghiv="gh issue view"
 alias ghicm="gh issue comment"
 alias protontricks-flat="flatpak run com.github.Matoking.protontricks"
+alias hutsxmo="hut lists patchset list \~mil/sxmo-devel"
+alias hutsxmo2="hut todo ticket list -t \~mil/sxmo-tickets"
 alias lh="linkhandler"
 lh0() {
     rm /tmp/linkhandler.target 2> /dev/null || echo "(already set)"
