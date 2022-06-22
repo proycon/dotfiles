@@ -45,4 +45,7 @@ vim.cmd "set whichwrap+=<,>,[,],h,l"
 vim.cmd [[set iskeyword+=-]]
 vim.cmd [[set formatoptions-=cro]] -- TODO: this doesn't seem to work
 vim.cmd [[set listchars=tab:▸\ ,eol:¬,extends:❯,precedes:❮]]
+vim.cmd "autocmd BufRead,BufNewFile [Cc]ontainerfile set ft=dockerfile"
+vim.cmd "autocmd BufRead,BufNewFile [Cc]ontainerfile* set ft=dockerfile"
+vim.cmd "autocmd BufRead,BufNewFile *.[Cc]ontainerfile set ft=dockerfile"
 vim.cmd "silent! so .vimlocal"
