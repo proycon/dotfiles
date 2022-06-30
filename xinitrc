@@ -32,9 +32,6 @@ sleep 0.2
 dbus-launch gnome-keyring-daemon -s --components=pkcs11,secrets,ssh,gpg  &
 #dbus-launch /usr/lib/gnome-settings-daemon/gnome-settings-daemon &
 xrdb -all -merge /home/proycon/.Xresources
-if [[ "$HOSTNAME" == "mhysa" ]]; then
-    mountssh &
-fi
 pidof nm-applet
 if [[ "$?" == "1" ]]; then
     nm-applet &
