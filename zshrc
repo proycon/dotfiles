@@ -56,12 +56,12 @@ alias en='LANGUAGE="en_US.UTF-8" zsh'
 alias km="setxkbmap proylatin"
 alias mk='LANGUAGE="en_GB.UTF-8" make'
 alias mi='LANGUAGE="en_GB.UTF-8" make install; if (( $? == 0 )); then; play -q /usr/share/sounds/KDE-Sys-App-Positive.ogg 2> /dev/null &!; else; play -q /usr/share/sounds/KDE-K3B-Finish-Error.ogg 2> /dev/null &!; fi; hr'
-alias glmi='git pull &&  && git submodule update && LANGUAGE="en_GB.UTF-8" make install; if (( $? == 0 )); then; play -q /usr/share/sounds/KDE-Sys-App-Positive.ogg 2> /dev/null &!; else; play -q /usr/share/sounds/KDE-K3B-Finish-Error.ogg 2> /dev/null &!; fi; hr'
+alias glmi='sshcheck && git pull &&  && git submodule update && LANGUAGE="en_GB.UTF-8" make install; if (( $? == 0 )); then; play -q /usr/share/sounds/KDE-Sys-App-Positive.ogg 2> /dev/null &!; else; play -q /usr/share/sounds/KDE-K3B-Finish-Error.ogg 2> /dev/null &!; fi; hr'
 alias glsi='git pull && git submodule update && pip install .'
 alias psi='pip install .'
 alias pi='pip install .'
-alias gl='git pull && git submodule update; if (( $? == 0 )); then; play -q /usr/share/sounds/KDE-Window-Minimize.ogg 2> /dev/null &!; fi'
-alias gp='git push; if (( $? == 0 )); then; play -q /usr/share/sounds/KDE-Window-Maximize.ogg 2> /dev/null &!; fi'
+alias gl='sshcheck && git pull && git submodule update; if (( $? == 0 )); then; play -q /usr/share/sounds/KDE-Window-Minimize.ogg 2> /dev/null &!; fi'
+alias gp='sshcheck && git push; if (( $? == 0 )); then; play -q /usr/share/sounds/KDE-Window-Maximize.ogg 2> /dev/null &!; fi'
 alias pg='git push; if (( $? == 0 )); then; play -q /usr/share/sounds/KDE-Window-Maximize.ogg 2> /dev/null &!; fi'
 alias gca="LD_LIBRARY_PATH= git commit -a"
 alias cf='LANGUAGE="en_GB.UTF-8" ./configure'
@@ -247,11 +247,8 @@ else
 fi
 
 
-alias ssha='ssh -Y -A anaproy.nl'
-alias sshm='ssh -Y -A mhysa.anaproy.nl'
-alias sshat='ssh -Y -A anaproy.nl /home/proycon/bin/tm'
-alias e='ssh -Y -A -t anaproy.nl /home/proycon/bin/tm_vi'
-alias m="ssh -Y -A -t anaproy.nl /home/proycon/bin/tm_alot"
+alias ssha='sshcheck && ssh -Y -A anaproy.nl'
+alias sshm='sshcheck && ssh -Y -A mhysa.anaproy.nl'
 alias aj="ssh -Y -A -t applejack.science.ru.nl /home/proycon/bin/tm"
 alias fs="ssh -Y -A -t applejack.science.ru.nl ssh -Y -A -t fluttershy /home/proycon/bin/tm"
 alias rr="ssh -Y -A -t applejack.science.ru.nl ssh -Y -A -t rarity /home/proycon/bin/tm"
@@ -277,7 +274,7 @@ alias mlp10="ssh -Y -A -t applejack.science.ru.nl ssh -Y -A -t mlp10 /home/proyc
 alias mlp11="ssh -Y -A -t applejack.science.ru.nl ssh -Y -A -t mlp11 /home/proycon/bin/tm"
 alias mlp12="ssh -Y -A -t applejack.science.ru.nl ssh -Y -A -t mlp12 /home/proycon/bin/tm"
 alias mlp13="ssh -Y -A -t applejack.science.ru.nl ssh -Y -A -t mlp13 /home/proycon/bin/tm"
-alias _aj="ssh -Y -A -t applejack.science.ru.nl zsh"
+alias _aj="sshcheck && ssh -Y -A -t applejack.science.ru.nl zsh"
 alias _fs="ssh -Y -A -t applejack.science.ru.nl ssh -Y -A -t fluttershy zsh"
 alias _rr="ssh -Y -A -t applejack.science.ru.nl ssh -Y -A -t rarity zsh"
 alias _cl="ssh -Y -A -t applejack.science.ru.nl ssh -Y -A -t cheerilee zsh"
@@ -332,6 +329,11 @@ sshtunnel() {
     TARGETHOST=$1
     PORT=$2
     ssh -N -f -L localhost:${PORT}:localhost:${PORT} $TARGETHOST
+}
+
+sshcheck() {
+    [ -n "$SSH_AUTH_SOCK" ] || ssh-add
+    true
 }
 
 alias dps="dirpersiststore"
