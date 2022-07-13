@@ -123,7 +123,7 @@ else
 fi
 
 
-export MPD_HOST="proycon@anaproy.nl"
+export MPD_HOST="anaproy.nl"
 
 export DEBEMAIL="proycon@anaproy.nl"
 export DEBFULLNAME="Maarten van Gompel"
