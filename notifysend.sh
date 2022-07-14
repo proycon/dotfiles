@@ -1,7 +1,7 @@
-#!/bin/bash
+#!/bin/sh
 
 if [ -f ~/.mqtt_secrets ]; then
-    source ~/.mqtt_secrets
+    . ~/.mqtt_secrets
 fi
 
 if [ -z "$MQTT_USER" ]; then
@@ -51,6 +51,5 @@ fi
 
 echo "Sending: $TOPIC - $PAYLOAD">&2
 
-mosquitto_pub -I $HOST.notifysend -h "$MQTT_HOST" -p 8883 -u "$MQTT_USER" -P "$MQTT_PASSWORD" --cafile $CACERT -t "$TOPIC" -m "$PAYLOAD" --qos 1 $MQTT_OPTIONS
+mosquitto_pub -I "$HOST.notifysend" -h "$MQTT_HOST" -p 8883 -u "$MQTT_USER" -P "$MQTT_PASSWORD" --cafile $CACERT -t "$TOPIC" -m "$PAYLOAD" --qos 1 $MQTT_OPTIONS
 exit $?
-
