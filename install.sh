@@ -143,7 +143,7 @@ else
     CONFIGNAMES=("nvim" "ranger" "ipython" "tm" "vifm" "lf" "broot")
 fi
 
-SCRIPTS=("suspend.sh" "linkhander" "lock.sh" "screencast.sh" "emojiselect" "wtime" "rotdir" "lf-select")
+SCRIPTS=("suspend.sh" "linkhander" "lock.sh" "screencast.sh" "emojiselect" "wtime" "rotdir" "lf-select" "updatemail.sh")
 
 for NAME in ${ROOTNAMES[*]}; do
     if [ -e "$DOTDIR/$NAME" ]; then
@@ -226,18 +226,6 @@ fi
 
 if [ $SXMO -eq 1 ]; then
     ln -sf ~/dotfiles/sxmo/profile ~/.profile
-    while true; do
-        echo -n "Rebuild sxmo [yn] "
-        read yn
-        case $yn in
-            [Yy]* ) REBUILD=1; break;;
-            [Nn]* ) REBUILD=0; break;;
-            * ) echo "Please answer yes or no.";;
-        esac
-    done
-    if [ $REBUILD -eq 1 ]; then
-        source ~/dotfiles/build-sxmo.sh
-    fi
     cd $DOTDIR
 fi
 
