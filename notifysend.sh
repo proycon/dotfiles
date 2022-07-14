@@ -1,7 +1,9 @@
 #!/bin/sh
 
-if [ -f ~/.mqtt_secrets ]; then
+if [ -e ~/.mqtt_secrets ]; then
     . ~/.mqtt_secrets
+elif [ -e /etc/mqtt_secrets ]; then
+    . /etc/mqtt_secrets
 fi
 
 if [ -z "$MQTT_USER" ]; then
