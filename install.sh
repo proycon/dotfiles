@@ -93,6 +93,7 @@ if [ $SUDO -eq 1 ]; then
         sudo pacman -Syyu --needed cargo rust go gdb nodejs
         sudo pacman -Syyu --needed pyright flake8 eslint cppcheck rustfmt prettier python-pylint
         sudo pacman -Syyu --needed sway swaylock swaybg swayidle mako bemenu wtype wofi xdg-desktop-portal-wlr libpipewire02 slurp grim wl-clipboard i3status xorg-xwayland imv
+        sudo pacman -Syyu --needed weechat msmtp-mta calcurse #neomutt
         YAY=0
         while true; do
             echo -n "Install AUR packages? (requires yay!) [yn] "
