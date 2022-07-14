@@ -6,9 +6,9 @@ bind index,pager , noop #for switching mailboxes
 bind index,pager . noop #for tags
 bind index \Cf noop
 source ~/dotfiles/muttcol
-set alias_file = ~/dotfiles/muttaliases
-source ~/dotfiles/muttaliases
-source ~/dotfiles/personal.muttrc
+set alias_file = ~/dotfiles.private/muttaliases
+source ~/dotfiles.private/muttaliases
+source ~/dotfiles.private/personal.muttrc
 set sleep_time = 0
 set sort = threads
 set sort_aux = 'reverse-date'
