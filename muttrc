@@ -37,6 +37,11 @@ set rfc2047_parameters = yes
 set send_charset = "utf-8"
 
 
+# headers to show
+ignore *                                      # ignore all headers
+unignore from: to: cc: date: subject:         # show only these
+hdr_order from: to: cc: date: subject:        # and in this order
+
 set to_chars = " »›-‹L"
 #set sidebar_format = '%B%?F? [%F]?%* %?N?%N/? %?S?%S?'
 set sidebar_format = '%D%?F? [%F]?%* %?N?%N/? %?S?%S?'
