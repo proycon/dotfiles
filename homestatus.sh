@@ -78,7 +78,16 @@ printhomestatus() {
     NOW=$(date +%s | tr -d '\n')
     LASTUPDATE=$(stat -c %Y /tmp/homestatus/lights | tr -d '\n')
     TIMEDELTA=$(( (NOW - LASTUPDATE) / 60 ))
-    echo -e  "${bold}Time:          $(date +%H:%M)${normal}"
+
+    if [ "$format" = "pango" ] && command -v sxmo_common.sh > /dev/null 2> /dev/null; then
+        date +"<big><big><big><big><big><big><big><big><b>%H</b>:%M</big></big></big></big></big></big></big></big>" #date with some pango markup syntax (https://docs.gtk.org/Pango/pango_markup.html)
+        date +"%a %d %b %Y"
+        echo "─────────────────────────────────"
+    else
+        echo -e  "${bold}Time:          $(date +%H:%M)${normal}"
+    fi
+
+
     echo -en  "${bold}Last update:${normal}   $TIMEDELTA mins ago "
     if pgrep mosq > /dev/null; then
         echo -e  "(${boldgreen}ok${normal})"
@@ -107,6 +116,15 @@ printhomestatus() {
     echo -en "${bold}lights${normal}: ${boldyellow}       "
     cat /tmp/homestatus/lights | sed 's/ /\n               /g' | sed '/^\s*$/d' 2> /dev/null
     echo -en $normal
+
+    if command -v sxmo_common.sh > /dev/null 2> /dev/null; then
+        cannot_suspend_reasons="$(sxmo_mutex.sh can_suspend list)"
+        if [ "$format" = "pango" ] && [ -n "$cannot_suspend_reasons" ]; then
+            echo "<small><small><small><small>"
+            printf "%s" "$cannot_suspend_reasons" | awk '{print "• " $0}'
+            echo "</small></small></small></small>"
+        fi
+    fi
     echo -e "\n"
 }
 
