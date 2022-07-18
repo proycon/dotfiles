@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/sh
 
 # Receives notifications from MQTT
 
@@ -15,11 +15,11 @@ fi
 
 if [ -z "$1" ]; then
     if [ -x "$(which sxmo_dmenu.sh 2> /dev/null)" ]; then
-        chosen=$(cat ~/dotfiles/homecommands | sxmo_dmenu.sh -p "Home" -l 20 | sed "s/.*=//")
+        chosen=$(cat ~/dotfiles/homecommands | sxmo_dmenu.sh -i -p "Home" -l 20 | sed "s/.*=//")
     elif [ -n "$WAYLAND_DISPLAY" ]; then
-        chosen=$(cat ~/dotfiles/homecommands | bemenu -p "Home" -l 20  | sed "s/.*=//")
+        chosen=$(cat ~/dotfiles/homecommands | bemenu -i -p "Home" -l 20  | sed "s/.*=//")
     else
-        chosen=$(cat ~/dotfiles/homecommands | dmenu -l 20 -p "Home" | sed "s/.*=//")
+        chosen=$(cat ~/dotfiles/homecommands | dmenu -i -l 20 -p "Home" | sed "s/.*=//")
     fi
 
     # Exit if none chosen.
@@ -37,5 +37,5 @@ else
     PAYLOAD=ON
 fi
 
-~/dotfiles/notifysend.sh $TOPIC $PAYLOAD
+~/dotfiles/notifysend.sh "$TOPIC" "$PAYLOAD"
 exit $?
