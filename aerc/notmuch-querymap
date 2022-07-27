@@ -1,0 +1,6 @@
+inbox=tag:inbox and not tag:spam and not tag:killed
+work=tag:inbox and tag:work and not tag:spam and not tag:killed
+personal=tag:inbox and not tag:work and not tag:sxmo and not tag:spam and not tag:killed
+sxmo=tag:inbox and tag:sxmo and not tag:spam and not tag:killed
+calendar=tag:inbox AND (mimetype:text/calendar OR mimetype:application/ics)
+all recent=not tag:spam and not tag:killed and date:2M..

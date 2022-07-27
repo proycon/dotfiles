@@ -1,0 +1,3 @@
+#!/bin/bash
+
+exec catimg -l 1 -w 72 -
