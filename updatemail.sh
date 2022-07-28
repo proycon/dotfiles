@@ -3,11 +3,9 @@ if [ ! -f /tmp/.maillock ]; then
     touch /tmp/.maillock
     date
     echo "Checking for new mail..."
-    time notmuch new
+    time notmuch new --verbose
     echo "Tagging new mail..."
-    time afew -n -t 
-    #echo "Moving mail to folders..."
-    #afew -a --move-mails
+    time notmuch tag --batch --input=$HOME/dotfiles.private/tags.txt
     #echo "Archiving leftovers..."
     #/home/proycon/bin/inbox2archive.sh &
     echo "done"
