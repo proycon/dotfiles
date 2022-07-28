@@ -179,6 +179,7 @@ bind pager <Down> next-line
 macro index,pager a "<modify-labels-then-hide>-inbox,-unread\n<sync-mailbox>"
 macro index,pager A ";<modify-labels-then-hide>-inbox,-unread\n<sync-mailbox>"
 macro index,pager S ";<modify-labels-then-hide>-inbox,-unread,+spam,+killed\n<sync-mailbox>"
+macro index,pager M ":source ~/dotfiles/muttfzf.sh|<enter>"
 
 # modify (notmuch/imap) tags
 bind index,pager .l modify-labels

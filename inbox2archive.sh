@@ -19,4 +19,7 @@ else
         cat /tmp/.inbox2archive | xargs mv -vt /home/proycon/Maildir/.Archive/cur/
     fi
     rm /tmp/.inbox2archive
+
+    echo "Done archiving, calling updatemail">&2
+    updatemail.sh
 fi
