@@ -45,6 +45,7 @@ hdr_order from: to: cc: date: subject:        # and in this order
 set to_chars = " »›-‹L"
 #set sidebar_format = '%B%?F? [%F]?%* %?N?%N/? %?S?%S?'
 set sidebar_format = '%D%?F? [%F]?%* %?N?%N/? %?S?%S?'
+set sidebar_sort_method = 'unsorted'
 #set index_format="%2C %zs %?X?A& ? %D %-15.15F %s (%-4.4c)"
 #set index_format='%4C %Z %<[y?%<[m?%<[d?%[%H:%M       ]&%[%a %b %d  ]>&%[%b %d]>&%[%b %d, %Y]> %-25.25L %?E?%2.e/%2.E&? %g %s'
 #set index_format='%4C %Z %<[y?%<[m?%<[d?%10[     %H:%M  ]&%10[%a %b %d  ]>&%12[%b %d  ]>&%10[%b %d, %Y]> %-20.20L %?E?%2.e/%2.E&     ? %g %?GI?%GI &?%?GL?%GL &?%?Gt?%Gt &?%?Gr?%Gr &?%?GW?%GW &? %s'
@@ -141,8 +142,8 @@ set mail_check_stats = yes
 bind index,pager \Ck sidebar-prev
 bind index,pager \Cj sidebar-next
 bind index,pager \Co sidebar-open
-bind index,pager \Cp sidebar-prev-new
-bind index,pager \Cn sidebar-next-new
+bind index,pager \Cp sidebar-prev
+bind index,pager \Cn sidebar-next
 bind index,pager B sidebar-toggle-visible
 #
 # Store message headers locally to speed things up.

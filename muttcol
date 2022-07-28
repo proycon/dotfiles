@@ -58,9 +58,8 @@ mono indicator reverse
 mono error bold
 color normal default default
 color indicator brightyellow default
-color sidebar_highlight red default
+color sidebar_highlight brightyellow default
 color sidebar_divider brightblack black
-color sidebar_flagged red black
 color sidebar_new green black
 color normal brightyellow default
 color error red default
@@ -69,7 +68,7 @@ color message cyan default
 color markers red white
 color attachment white default
 color search brightmagenta default
-color status brightblack black
+color status white black
 color hdrdefault brightgreen default
 color quoted green default
 color quoted1 blue default
@@ -82,7 +81,8 @@ color bold black default
 color underline black default
 color normal default default
 
-color status magenta default "work"
+color status blue default "work"
+color status magenta default "sxmo"
 color status cyan default "unilang"
 color status yellow default "personal"
 color status yellow default "familie"
@@ -92,6 +92,9 @@ color status brightwhite brightred "reply"
 color status brightwhite blue "waiting"
 color status black white "lowpriority"
 color status black green "interesting"
+color status brightblue default "INBOX"
+color status brightred default "QUEUE"
+color status brightgreen default "ALL"
 #
 # Color if the attachment is autoviewed
 color   attach_headers     brightgreen     default    "Autoview"
