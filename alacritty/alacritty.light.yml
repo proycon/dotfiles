@@ -220,11 +220,11 @@ colors:
   normal:
     black:   '0xfbf1c7'
     red:     '0xcc241d'
-    green:   '0x98971a'
+    green:   '0x5d7e13'
     yellow:  '0xd79921'
     blue:    '0x458588'
     magenta: '0xb16286'
-    cyan:    '0x899d6a'
+    cyan:    '0x738655'
     white:   '0x7c6f64'
 
   # Bright colors
