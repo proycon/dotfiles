@@ -76,7 +76,7 @@ env:
   #
   # Override the variant of the GTK theme. Commonly supported values are `dark` and `light`.
   # Set this to `None` to use the default theme variant.
-  #gtk_theme_variant: None
+  gtk_theme_variant: light
 
 #scrolling:
   # Maximum number of lines in the scrollback buffer.
@@ -188,8 +188,8 @@ font:
 colors:
   # Default colors
   primary:
-    background: '0x17191a'
-    foreground: '0xfbf1c7'
+    background: '0xeeebdc'
+    foreground: '0x3c3836'
 
     # Bright and dim foreground colors
     #
