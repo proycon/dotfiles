@@ -168,7 +168,7 @@ fi
 
 
 #PATHS
-if [[ $HOST == "rocinante" || $HOST == "mhysa" || $HOST == "drasha" ]]; then
+if [[ $HOST == "rocinante" || $HOST == "trantor" || $HOST == "mhysa" || $HOST == "drasha" ]]; then
     export PATH="/home/proycon/bin:/home/proycon/.cargo/bin:$PATH"
     #export LD_LIBRARY_PATH="$LD_LIBRARY_PATH:/home/proycon/local/lib"
     export CDPATH=.:~/work:~/projects
