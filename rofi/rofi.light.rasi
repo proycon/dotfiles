@@ -1,0 +1,6 @@
+configuration {
+    font: "Monospace 25";
+    show-icons: true;
+}
+
+@theme "gruvbox-light-hard"
