@@ -34,15 +34,15 @@ bind-key V view-dialogs
 macro p set browser "setsid nohup mpv"; one ; set browser linkhandler
 macro P set browser "cd ~/Downloads && wget"; one ; set browser linkhandler
 
-color listnormal cyan default
+color listnormal green default
 color listfocus black yellow standout bold
-color listnormal_unread green default
+color listnormal_unread default default
 color listfocus_unread yellow default bold
 color info magenta black bold
-color article white default
+color article default default
 
 #Sport is not news, get rid of it:
-ignore-article "*" "title =~ \"(PSV|Ajax|Feyenoord|Bundesliga|voetbal|Fußbal|championship|soccer|Formula 1|Formule 1|tennis|hockey|sport)\""
+ignore-article "*" "title =~ \"(PSV|Ajax|Feyenoord|FC |Bundesliga|voetbal|Fußbal|championship|soccer|Formula 1|Formule 1|tennis|hockey|sport)\""
 
 
 browser /home/proycon/dotfiles/linkhandler
@@ -50,7 +50,7 @@ browser /home/proycon/dotfiles/linkhandler
 #macro . set browser "setsid nohup mpv"; open-in-browser ; set browser linkhandler
 #
 
-highlight article "(^Feed:.*|^Title:.*|^Author:.*)" cyan default bold
+highlight article "(^Feed:.*|^Title:.*|^Author:.*)" magenta default bold
 highlight article "(^Link:.*|^Date:.*)" default default
 highlight article "https?://[^ ]+" green default
 
@@ -63,14 +63,14 @@ highlight article ":.*\\(image\\)$" blue default
 highlight article ":.*\\(embedded flash\\)$" magenta default
 
 highlight articlelist "(Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec) [0-9]+" white default
-highlight articlelist "\\|[^\\|]+\\|" cyan default
-highlight articlelist "\\(YouTube\\)" magenta default
-highlight articlelist "\\(PeerTube\\)" magenta default
+highlight articlelist "\\|[^\\|]+\\|" magenta default
+highlight articlelist "\\(YouTube\\)" cyan default
+highlight articlelist "\\(PeerTube\\)" cyan default
 highlight articlelist "\\|r/" red default
-highlight feedlist "\\(YouTube\\)" magenta default
-highlight feedlist "\\(PeerTube\\)" magenta default
+highlight feedlist "\\(YouTube\\)" cyan default
+highlight feedlist "\\(PeerTube\\)" cyan default
 highlight feedlist " r/" red default
 highlight feedlist "\\([0-9]+/[0-9]+\\)" white default
 
-articlelist-format  "%4i %f %D   %?T?|%-20T|  ?%t"
+articlelist-format  "%4i %f %D   %?T?|%-15T|  ?%t"
 podlist-format "%i %K %S %b"
