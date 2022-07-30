@@ -144,7 +144,7 @@ else
     CONFIGNAMES=("nvim" "ranger" "ipython" "tm" "vifm" "lf" "broot")
 fi
 
-SCRIPTS=("suspend.sh" "linkhander" "lock.sh" "screencast.sh" "emojiselect" "wtime" "rotdir" "lf-select" "updatemail.sh")
+SCRIPTS=("suspend.sh" "linkhander" "lock.sh" "screencast.sh" "emojiselect" "wtime" "rotdir" "lf-select" "updatemail.sh" "darkmode.sh" "lightmode.sh")
 
 for NAME in ${ROOTNAMES[*]}; do
     if [ -e "$DOTDIR/$NAME" ]; then
