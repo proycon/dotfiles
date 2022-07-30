@@ -2,5 +2,5 @@
 
 ln -sf ~/.config/foot/foot.light.ini ~/.config/foot/foot.ini
 ln -sf ~/.config/alacritty/alacritty.light.yml ~/.config/alacritty.yml
-rm ~/.light 2>/dev/null
+touch ~/.light
 notify-send "light mode"
