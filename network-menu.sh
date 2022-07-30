@@ -1,3 +1,7 @@
+#!/bin/sh
+
+. ~/dotfiles/colorargs.sh 
+
 icon_chk="✔"
 connections() {
 	ACTIVE="$(nmcli -c no -t c show --active | cut -d: -f1,3 | sed "s/$/ $icon_chk/")"
@@ -21,7 +25,7 @@ CHOICE="$(
         $(connections)
         Close Menu
     " |
-    awk '{$1=$1};1' | grep '\w' | bemenu -p 'Networks' -l 20 --fn "Monospace 16"
+    awk '{$1=$1};1' | grep '\w' | bemenu -p 'Networks' -l 20 --fn "Monospace 16" $BEMENU_COLORARGS
 )"
 case "$CHOICE" in
     "Close Menu" )

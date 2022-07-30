@@ -6,10 +6,10 @@
 #xclip -h >/dev/null || exit
 
 
-
+. ~/dotfiles/colorargs.sh
 
 if [ -n "$WAYLAND_DISPLAY" ]; then
-    chosen=$(cut -d ';' -f1 ~/dotfiles/emoji | bemenu -p "Emoji" -n -l 30 --fn "Monospace 16" | sed "s/ .*//")
+    chosen=$(cut -d ';' -f1 ~/dotfiles/emoji | bemenu -p "Emoji" -n -l 30 --fn "Monospace 16" $BEMENU_COLORARGS | sed "s/ .*//")
 else
     chosen=$(cut -d ';' -f1 ~/dotfiles/emoji | rofi -dmenu -font "Monospace 32" | sed "s/ .*//")
 fi
@@ -23,12 +23,3 @@ else
     echo "$chosen" | tr -d '\n' | xclip -selection clipboard
     xdotool type "$chosen"
 fi
-
-
-
-# If you run this command with an argument, it will automatically insert the
-# character. Otherwise, show a message that the emoji has been copied.
-#if [ -n "$1" ]; then
-#else
-	#notify-send "'$chosen' copied to clipboard." &
-

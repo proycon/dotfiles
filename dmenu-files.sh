@@ -1,8 +1,11 @@
 #!/usr/bin/env sh
+
+. ~/dotfiles/colorargs.sh
+
 if [ -n "$WAYLAND_DISPLAY" ]; then
-    MENUTOOL="bemenu -p $1"
+    MENUTOOL="bemenu $BEMENU_COLORARGS -p $1"
 else
-    MENUTOOL="dmenu"
+    MENUTOOL="dmenu $DMENU_COLORARGS"
 fi
 PICKED=$(ls $2 "$1" | $MENUTOOL -i -l 20)
 if [ -n "$PICKED" ]; then
