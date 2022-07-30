@@ -229,4 +229,5 @@ if [ $SXMO -eq 1 ]; then
     ln -sf ~/dotfiles/sxmo/profile ~/.profile
     cd $DOTDIR
 fi
-
+ 
+~/dotfiles/darkmode.sh
