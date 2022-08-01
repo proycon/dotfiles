@@ -164,7 +164,6 @@ set abort_noattach = ask-yes
 set abort_noattach_regex = "\\<attachments?|attached|bijlagen?|bijgevoegd)\\>"
 
 macro index \\ "<vfolder-from-query>"
-macro index,pager \ea "<shell-escape>$HOME/bin/updatemail.sh<enter>"
 macro index,pager ./ "<shell-escape>$HOME/bin/updatemail.sh<enter>"
 macro index \eg "<shell-escape>$HOME/bin/updatemail-quick.sh<enter>"
 bind index,pager \eA create-alias
@@ -184,7 +183,7 @@ macro index,pager M ":source ~/dotfiles/muttfzf.sh|<enter>"
 # modify (notmuch/imap) tags
 bind index,pager .l modify-labels
 macro index,pager .L ";<modify-labels>"
-# modify (notmuch/imap) tag non-interactively.
+# toggle (notmuch/imap) tag non-interactively.
 macro index,pager .a "<modify-labels>!inbox\n"
 macro index,pager .t "<modify-labels>!todo\n"
 macro index,pager .y "<modify-labels>!reply\n"
@@ -194,6 +193,7 @@ macro index,pager .W "<modify-labels>!work\n"
 macro index,pager .p "<modify-labels>!personal\n"
 macro index,pager .i "<modify-labels>!interesting\n"
 macro index,pager .0 "<modify-labels>!lowpriority\n"
+#single message version, S is preferred:
 macro index,pager .j "<modify-labels>-inbox,-unread,+spam,+killed\n"
 
 macro index,pager ,0 "<vfolder-from-query>date:2M.. and tag:unread and NOT tag:killed and NOT tag:spam\n<collapse-all>\n"
