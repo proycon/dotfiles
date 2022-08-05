@@ -69,6 +69,15 @@ keymap("n", "<leader>L", ":TroubleToggle<CR>", opts)
 keymap("n", "<leader>T", ":SymbolsOutline<CR>", opts)
 keymap("n", "<leader>o", ":Telescope git_files<CR>", opts)
 
+-- custom copy'n'paste
+-- copy the current visual selection to ~/.vbuf
+keymap("v", "<leader>y", ":w! ~/.vbuf<CR>:!~/dotfiles/updatevbuf.sh<CR>", opts)
+-- copy the current line to the buffer file if no visual selection
+keymap("n", "<leader>y", ":.w! ~/.vbuf<CR>:!~/dotfiles/updatevbuf.sh<CR>", opts)
+keymap("n", ",y", ":w! ~/.vbuf<CR>:!xsel -i -b < ~/.vbuf<CR>", opts)
+keymap("n", ",p", ":r ~/.vbuf<CR>", opts)
+keymap("n", ",P", ":-1r ~/.vbuf<CR>", opts)
+
 keymap("n", "<F9>", ":Git commit -a<CR>", opts)
 keymap("n", "<F10>", ":Git push<CR>", opts)
 keymap("n", "<F12>", ":Octo issue list<CR>", opts)
