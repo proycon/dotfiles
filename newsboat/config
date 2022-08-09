@@ -35,7 +35,7 @@ macro p set browser "setsid nohup mpv"; one ; set browser linkhandler
 macro P set browser "cd ~/Downloads && wget"; one ; set browser linkhandler
 
 color listnormal green default
-color listfocus black yellow standout bold
+color listfocus yellow default bold
 color listnormal_unread default default
 color listfocus_unread yellow default bold
 color info magenta black bold
