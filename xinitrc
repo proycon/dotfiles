@@ -69,7 +69,7 @@ if [[ "$HOSTNAME" == "mhysa" ]]; then
     #feh --bg-tile --no-xinerama ~/dotfiles/media/hummingbird_twin.jpg
     #feh --bg-center ~/dotfiles/media/centerpiece.png --image-bg '#191919'
 fi
-feh --bg-fill ~/dotfiles/media/green-leafed-closeup.jpg --image-bg '#2e3440'
+feh --bg-fill ~/dotfiles/media/mountains.jpg --image-bg '#2e3440'
 
 dbus-update-activation-environment --systemd DBUS_SESSION_BUS_ADDRESS DISPLAY XAUTHORITY
 
