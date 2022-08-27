@@ -206,7 +206,7 @@ printhomestatus() {
     NOW=$(date +%s | tr -d '\n')
     LASTUPDATE=0
     getlastupdate $STATEDIR
-    TIMEDELTA=$(( (NOW - LASTUPDATE) / 60 ))
+    TIMEDELTA=$(( (NOW - LASTUPDATE) ))
 
     if [ "$format" = "pango" ] && command -v sxmo_common.sh > /dev/null 2> /dev/null; then
         date +"<big><big><big><big><big><big><big><big><b>%H</b>:%M</big></big></big></big></big></big></big></big>" #date with some pango markup syntax (https://docs.gtk.org/Pango/pango_markup.html)
@@ -229,7 +229,7 @@ printhomestatus() {
         fi
     fi
     if pgrep mosquitto_sub > /dev/null; then
-        echo -e  "(${boldgreen}run${normal})"
+        echo -e  " (${boldgreen}run${normal})"
     else
         echo -e  "(${boldred}OFF${normal})"
     fi
