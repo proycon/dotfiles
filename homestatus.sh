@@ -87,85 +87,16 @@ else
     boldyellow=""
 fi
 
-printstategroup() {
-    label="$1"
-    shift
-    filenames="$*"
-    EOL=0
-    grouplabel=$label
-    for filename in $filenames; do 
-        if [ -e "$STATEDIR/$filename" ]; then
-            VALUE=$(cat "$STATEDIR/$filename")
-            color=$normal
-            case $label in 
-                alarm)
-                    case $VALUE in
-                        triggered)
-                            color="$boldred"
-                            ;;
-                        armed)
-                            color="$boldyellow"
-                            ;;
-                        *)
-                            color="$boldgreen"
-                            ;;
-                    esac
-                    ;;
-                climate)
-                    case $VALUE in
-                        off*|OFF*)
-                            continue #don't show airco when off
-                            ;;
-                    esac
-                    ;;
-            esac
-            case $filename in
-                *bedroom*)
-                    extralabel=bedroom
-                    ;;
-                *living*)
-                    extralabel=living
-                    ;;
-                *office*)
-                    extralabel=office
-                    ;;
-                *outside*)
-                    extralabel=office
-                    ;;
-                *)
-                    extralabel=""
-                    ;;
-            esac
-            case $filename in
-                *temperature*)
-                    unit=" °C"
-                    ;;
-                *)
-                    unit=""
-                    ;;
-            esac
-            if [ -n "$extralabel" ]; then
-                printf "${bold}%-13s${normal} %s%s (%s)\n" "$grouplabel" "${color}$VALUE${normal}" "$unit" "$extralabel"
-                EOL=1
-            else
-                printf "${bold}%-13s${normal} %s%s\n" "$grouplabel" "${color}$VALUE${normal}" "$unit"
-                EOL=0
-            fi
-            grouplabel=""
-        fi
-    done
-    [ $EOL -eq 0 ] && echo
-}
 
 printstategroup() {
     label="$1"
     shift
     filenames="$*"
     grouplabel="$label:"
+    color=
     for filename in $filenames; do 
         if [ -e "$STATEDIR/$filename" ]; then
             VALUE=$(cat "$STATEDIR/$filename")
-            color=$normal
             case $label in 
                 alarm)
                     case $VALUE in
@@ -240,11 +171,15 @@ printstategroup() {
                     unit=""
                     ;;
             esac
-
-            if [ -n "$extralabel" ]; then
-                printf "${bold}%-13s${normal} %s%s (%s)\n" "$grouplabel" "${color}$VALUE${normal}" "$unit" "$extralabel"
+            if [ -n "$color" ]; then
+                colorend="$normal"
             else
-                printf "${bold}%-13s${normal} %s%s\n" "$grouplabel" "${color}$VALUE${normal}" "$unit"
+                colorend=
+            fi
+            if [ -n "$extralabel" ]; then
+                printf "${bold}%-13s${normal} %s%s (%s)\n" "$grouplabel" "${color}$VALUE${colorend}" "$unit" "$extralabel"
+            else
+                printf "${bold}%-13s${normal} %s%s\n" "$grouplabel" "${color}$VALUE${colorend}" "$unit"
             fi
             grouplabel=""
         fi
