@@ -45,8 +45,8 @@ setxkbmap proylatin
 if [ "$HOSTNAME" = "rocinante" ] || [ "$HOSTNAME" = "trantor" ]; then
     setxkbmap -option "altwin:swap_lalt_lwin"
 fi
-/home/proycon/dotfiles/notifyclient.sh &
-play ~/dotfiles/media/cylontune_low.ogg &
+/home/proycon/projects/lighthome/client.sh &
+(sleep 3 && play ~/dotfiles/media/cylontune_low.ogg) &
 which picom > /dev/null 2>/dev/null
 if [ $? -eq 0 ]; then
     picom -f -e 1.0 &

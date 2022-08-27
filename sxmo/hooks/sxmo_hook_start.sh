@@ -20,7 +20,7 @@ mpv --quiet --no-video ~/dotfiles/media/cylontune_low.ogg &
 
 sxmo_daemons.sh start daemon_manager superd -v
 
-~/dotfiles/notifyclient.sh &
+(sleep 10 && ~/lighthome/lighthome.sh) &
 
 sleep 2 # let time to superd to start correctly
 
