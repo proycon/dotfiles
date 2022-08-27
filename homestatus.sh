@@ -59,12 +59,12 @@ elif [ "$format" = "html" ]; then
 elif [ "$format" = "pango" ]; then
     bold="<span weight=\"bold\">"
     normal="</span>"
-    magenta="<span foreground=\"magenta\">"
-    yellow="<span foreground=\"yellow\">"
-    green="<span foreground=\"green\">"
-    boldred="<span weight=\"bold\" foreground=\"red\">"
-    boldgreen="<span weight=\"bold\" foreground=\"green\">"
-    boldyellow="<span weight=\"bold\" foreground=\"yellow\">"
+    magenta="<span foreground=\"#ff54ff\">"
+    yellow="<span foreground=\"#ffff54\">"
+    green="<span foreground=\"#54ff54\">"
+    boldred="<span weight=\"bold\" foreground=\"#ff5454\">"
+    boldgreen="<span weight=\"bold\" foreground=\"#54ff54\">"
+    boldyellow="<span weight=\"bold\" foreground=\"#ffff54\">"
 elif [ "$format" = "ansi" ]; then
     bold=$(tput bold)
     boldred=${bold}$(tput setaf 1) #  red
