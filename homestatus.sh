@@ -189,6 +189,11 @@ printstategroup() {
 
 getlastupdate() {
     for filename in $1/*; do
+        case $filename in 
+            *trigger)
+                continue #ignore
+                ;;
+        esac
         if [ -f "$filename" ]; then
             TIMESTAMP=$(stat -c %Y "$filename" | tr -d '\n')
             if [ $TIMESTAMP -gt $LASTUPDATE ]; then
