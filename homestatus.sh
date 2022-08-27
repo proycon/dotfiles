@@ -317,14 +317,14 @@ printhomestatus() {
 }
 
 
-#lights is the last status message, so we only watch that, as they always come in batches
+#update when a file updates
 #additionally we have an extra trigger file that cron can poke each minute to update the clock
 if [ $loop -eq 1 ]; then
     echo "looping">&2
     touch /tmp/homestatus/trigger
-    [ ! -f /tmp/homestatus/lights ] && touch /tmp/homestatus/lights
 	while true; do
-        inotifywait -e create,modify,attrib /tmp/homestatus/lights /tmp/homestatus/trigger | printhomestatus
+        files=$(find /tmp/homestatus -type f)
+        inotifywait -e create,modify,attrib /tmp/homestatus $files /tmp/homestatus/trigger | printhomestatus
     done
 else
     printhomestatus
