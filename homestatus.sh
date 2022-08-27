@@ -194,7 +194,7 @@ printstategroup() {
                     ;;
                 apertures)
                     case $VALUE in
-                        off|OFF)
+                        off|OFF|unknown)
                             continue #don't show doors/windows that are closed
                             ;;
                         on|ON)
