@@ -4,6 +4,8 @@
 # cached status, can automatically update when the cache
 # updates. Does NOT handle communication with the backend.
 
+STATEDIR=/tmp/homestatus/
+
 loop=0
 format="ansi"
 finalkill=""
@@ -61,6 +63,7 @@ elif [ "$format" = "ansi" ]; then
     boldgreen=${bold}$(tput setaf 2) #  green
     green=${normal}$(tput setaf 2) #  green
     yellow=${normal}$(tput setaf 3) #  yellow
+    magenta=${normal}$(tput setaf 5) 
     blue=${normal}$(tput setaf 4) #  blue
     boldblue=${bold}$(tput setaf 4) #  blue
     boldyellow=${bold}$(tput setaf 3) #  yellow
@@ -73,10 +76,190 @@ else
     boldyellow=""
 fi
 
+printstategroup() {
+    label="$1"
+    shift
+    filenames="$*"
+    EOL=0
+    grouplabel=$label
+    for filename in $filenames; do 
+        if [ -e "$STATEDIR/$filename" ]; then
+            VALUE=$(cat "$STATEDIR/$filename")
+            color=$normal
+            case $label in 
+                alarm)
+                    case $VALUE in
+                        triggered)
+                            color="$boldred"
+                            ;;
+                        armed)
+                            color="$boldyellow"
+                            ;;
+                        *)
+                            color="$boldgreen"
+                            ;;
+                    esac
+                    ;;
+                climate)
+                    case $VALUE in
+                        off*|OFF*)
+                            continue #don't show airco when off
+                            ;;
+                    esac
+                    ;;
+            esac
+            case $filename in
+                *bedroom*)
+                    extralabel=bedroom
+                    ;;
+                *living*)
+                    extralabel=living
+                    ;;
+                *office*)
+                    extralabel=office
+                    ;;
+                *outside*)
+                    extralabel=office
+                    ;;
+                *)
+                    extralabel=""
+                    ;;
+            esac
+            case $filename in
+                *temperature*)
+                    unit=" °C"
+                    ;;
+                *)
+                    unit=""
+                    ;;
+            esac
+            if [ -n "$extralabel" ]; then
+                printf "${bold}%-13s${normal} %s%s (%s)\n" "$grouplabel" "${color}$VALUE${normal}" "$unit" "$extralabel"
+                EOL=1
+            else
+                printf "${bold}%-13s${normal} %s%s\n" "$grouplabel" "${color}$VALUE${normal}" "$unit"
+                EOL=0
+            fi
+            grouplabel=""
+        fi
+    done
+    [ $EOL -eq 0 ] && echo
+}
+
+printstategroup() {
+    label="$1"
+    shift
+    filenames="$*"
+    grouplabel="$label:"
+    for filename in $filenames; do 
+        if [ -e "$STATEDIR/$filename" ]; then
+            VALUE=$(cat "$STATEDIR/$filename")
+            color=$normal
+            case $label in 
+                alarm)
+                    case $VALUE in
+                        triggered)
+                            color="$boldred"
+                            ;;
+                        armed)
+                            color="$boldyellow"
+                            ;;
+                        *)
+                            color="$boldgreen"
+                            ;;
+                    esac
+                    ;;
+                presence)
+                    case $VALUE in
+                        off|OFF)
+                            color="$boldred"
+                            VALUE="$(basename "$filename")"
+                            ;;
+                        on|ON)
+                            color="$boldgreen"
+                            VALUE="$(basename "$filename")"
+                            ;;
+                    esac
+                    ;;
+                lights)
+                    case $VALUE in
+                        off|OFF)
+                            continue #don't show lights that are off
+                            ;;
+                        on|ON)
+                            color="$boldyellow"
+                            VALUE="$(basename "$filename")"
+                            ;;
+                    esac
+                    ;;
+                apertures)
+                    case $VALUE in
+                        off|OFF)
+                            continue #don't show doors/windows that are closed
+                            ;;
+                        on|ON)
+                            color="$magenta"
+                            VALUE="$(basename "$filename" | sed "s/_sensor//" | sed "s/_/-/g")"
+                            ;;
+                    esac
+                    ;;
+            esac
+            case $filename in
+                *temperature*|*climate*)
+                    unit=" °C"
+                    case $filename in
+                        *bedroom*)
+                            extralabel=bedroom
+                            ;;
+                        *living*)
+                            extralabel=living
+                            ;;
+                        *office*)
+                            extralabel=office
+                            ;;
+                        *outside*)
+                            extralabel=outside
+                            ;;
+                        *)
+                            extralabel=""
+                            ;;
+                    esac
+                    ;;
+                *)
+                    unit=""
+                    ;;
+            esac
+
+            if [ -n "$extralabel" ]; then
+                printf "${bold}%-13s${normal} %s%s (%s)\n" "$grouplabel" "${color}$VALUE${normal}" "$unit" "$extralabel"
+            else
+                printf "${bold}%-13s${normal} %s%s\n" "$grouplabel" "${color}$VALUE${normal}" "$unit"
+            fi
+            grouplabel=""
+        fi
+    done
+}
+
+
+getlastupdate() {
+    for filename in $1/*; do
+        if [ -f "$filename" ]; then
+            TIMESTAMP=$(stat -c %Y "$filename" | tr -d '\n')
+            if [ $TIMESTAMP -gt $LASTUPDATE ]; then
+                LASTUPDATE=$TIMESTAMP
+            fi
+        elif [ -d "$filename" ]; then
+            #recurse
+            getlastupdate "$filename"
+        fi
+    done
+}
+
 
 printhomestatus() {
     NOW=$(date +%s | tr -d '\n')
-    LASTUPDATE=$(stat -c %Y /tmp/homestatus/lights | tr -d '\n')
+    LASTUPDATE=0
+    getlastupdate $STATEDIR
     TIMEDELTA=$(( (NOW - LASTUPDATE) / 60 ))
 
     if [ "$format" = "pango" ] && command -v sxmo_common.sh > /dev/null 2> /dev/null; then
@@ -84,38 +267,43 @@ printhomestatus() {
         date +"%a %d %b %Y"
         echo "─────────────────────────────────"
     else
-        echo -e  "${bold}Time:          $(date +%H:%M)${normal}"
+        echo "${bold}Time:         $(date +%H:%M)${normal}"
     fi
 
+    $HADIR
 
-    echo -en  "${bold}Last update:${normal}   $TIMEDELTA mins ago "
-    if pgrep mosq > /dev/null; then
-        echo -e  "(${boldgreen}ok${normal})"
+    if [ $TIMEDELTA -lt 120 ]; then 
+        echo -en  "${bold}Last update:${normal}  ${green}$TIMEDELTA secs ago${normal} "
     else
-        echo -e  "(${boldred}no daemon${normal})"
+        TIMEDELTA=$(( TIMEDELTA / 60 ))
+        if [ $TIMEDELTA -lt 10 ]; then
+            echo -en  "${bold}Last update:${normal}  ${yellow}$TIMEDELTA mins ago${normal}"
+        else
+            echo -en  "${bold}Last update:${normal}  ${red}$TIMEDELTA mins ago${normal}"
+        fi
     fi
-    nmcli -w 3 -c no -p -f DEVICE,STATE,NAME,TYPE con show | grep activated | sed 's/activated/   /' | sed '/^\s*$/d' 2> /dev/null
-    vnstat wwan0 --oneline | cut -d ';' -f 11 2> /dev/null
+    if pgrep mosquitto_sub > /dev/null; then
+        echo -e  "(${boldgreen}run${normal})"
+    else
+        echo -e  "(${boldred}OFF${normal})"
+    fi
+    if pgrep NetworkManager >/dev/null 2>/dev/null; then
+        nmcli -w 3 -c no -p -f DEVICE,STATE,NAME,TYPE con show | grep activated | sed 's/activated/   /' | sed '/^\s*$/d' 2> /dev/null
+    fi
+    if command -v vnstat >/dev/null; then
+        vnstat wwan0 --oneline | cut -d ';' -f 11 2> /dev/null
+    fi
     if [ "$1" = "html" ]; then
         echo "<hr/>"
     else
         echo "─────────────────────────────────"
     fi
-    echo -en "${bold}presence${normal}: ${boldgreen}     "
-    cat /tmp/homestatus/presence 2> /dev/null
-    echo -en $normal
-    echo -en "${bold}alarm${normal}:         "
-    cat /tmp/homestatus/alarm 2> /dev/null
-    echo -en "${bold}temperature${normal}:   "
-    cat /tmp/homestatus/temperature | sed 's/,/\n              /g' | sed '/^\s*$/d' 2> /dev/null
-    echo -en "${bold}climate${normal}:       "
-    cat /tmp/homestatus/climate | sed 's/,/\n              /g' | sed '/^\s*$/d' 2> /dev/null
-    echo -en "${bold}doors/windows${normal}: ${boldred}"
-    cat /tmp/homestatus/doors | sed 's/ /\n               /g' | sed '/^\s*$/d' 2> /dev/null
-    echo -en $normal
-    echo -en "${bold}lights${normal}: ${boldyellow}       "
-    cat /tmp/homestatus/lights | sed 's/ /\n               /g' | sed '/^\s*$/d' 2> /dev/null
-    echo -en $normal
+    printstategroup "alarm" "alarm"
+    printstategroup "presence" "presence/proycon" "presence/hans"
+    printstategroup "temperature" "sensor/temperature_living_room" "sensor/bedroom_temperature"  "sensor/office_temperature" "sensor/outside_temperature"
+    printstategroup "climate" "climate/cv"
+    printstategroup "apertures" "binary_sensor/front_door" "binary_sensor/back_door" "binary_sensor/bathroom_window_sensor" "binary_sensor/bedroom_window_right" "binary_sensor/bedroom_window_left"
+    printstategroup "lights" "lights/tv_spots" "lights/front_room" "lights/midspots" "lights/back_room" "lights/back_corner" "lights/kitchen" "lights/hall" "lights/office" "lights/bedroom" "lights/balcony" "lights/garden" "lights/porch" "lights/roof"
 
     if command -v sxmo_common.sh > /dev/null 2> /dev/null; then
         cannot_suspend_reasons="$(sxmo_mutex.sh can_suspend list)"
