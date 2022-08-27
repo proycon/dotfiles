@@ -42,18 +42,26 @@ done
 if [ "$format" = "conky" ]; then
     bold="\${color white}"
     normal="\${color white}"
+    green="\${color green}"
+    magenta="\${color magenta}"
+    yellow="\${color yellow}"
     boldred="\${color red}"
     boldgreen="\${color green}"
     boldyellow="\${color yellow}"
 elif [ "$format" = "html" ]; then
     bold="<span style=\"font-weight: bold;\">"
     normal="</span>"
+    yellow="<span style=\"color: yellow\">"
+    green="<span style=\"color: green\">"
     boldred="<span style=\"font-weight: bold; color: red\">"
     boldgreen="<span style=\"font-weight: bold; color: green\">"
     boldyellow="<span style=\"font-weight: bold; color: yellow\">"
 elif [ "$format" = "pango" ]; then
     bold="<span weight=\"bold\">"
     normal="</span>"
+    magenta="<span foreground=\"magenta\">"
+    yellow="<span foreground=\"yellow\">"
+    green="<span foreground=\"green\">"
     boldred="<span weight=\"bold\" foreground=\"red\">"
     boldgreen="<span weight=\"bold\" foreground=\"green\">"
     boldyellow="<span weight=\"bold\" foreground=\"yellow\">"
@@ -64,13 +72,16 @@ elif [ "$format" = "ansi" ]; then
     green=${normal}$(tput setaf 2) #  green
     yellow=${normal}$(tput setaf 3) #  yellow
     magenta=${normal}$(tput setaf 5) 
-    blue=${normal}$(tput setaf 4) #  blue
-    boldblue=${bold}$(tput setaf 4) #  blue
+    #blue=${normal}$(tput setaf 4) #  blue
+    #boldblue=${bold}$(tput setaf 4) #  blue
     boldyellow=${bold}$(tput setaf 3) #  yellow
     normal=$(tput sgr0)
 else
     bold=""
     normal=""
+    yellow=""
+    magenta=""
+    green=""
     boldred=""
     boldgreen=""
     boldyellow=""
