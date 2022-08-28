@@ -253,7 +253,7 @@ printhomestatus() {
     printstategroup "presence" "presence/proycon" "presence/hans"
     printstategroup "temperature" "sensor/temperature_living_room" "sensor/bedroom_temperature"  "sensor/office_temperature" "sensor/outside_temperature"
     printstategroup "climate" "climate/cv"
-    printstategroup "apertures" "binary_sensor/front_door" "binary_sensor/back_door" "binary_sensor/bathroom_window_sensor" "binary_sensor/bedroom_window_right" "binary_sensor/bedroom_window_left"
+    printstategroup "apertures" "binary_sensor/frontdoor" "binary_sensor/backdoor" "binary_sensor/bathroom_window_sensor" "binary_sensor/bedroomwindow_right" "binary_sensor/bedroomwindow_left"
     printstategroup "lights" "lights/tv_spots" "lights/front_room" "lights/midspots" "lights/back_room" "lights/back_corner" "lights/kitchen" "lights/hall" "lights/office" "lights/bedroom" "lights/balcony" "lights/garden" "lights/porch" "lights/roof"
 
     if command -v sxmo_common.sh > /dev/null 2> /dev/null; then
