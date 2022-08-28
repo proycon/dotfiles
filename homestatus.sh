@@ -103,7 +103,7 @@ printstategroup() {
                         triggered)
                             color="$boldred"
                             ;;
-                        armed)
+                        armed*)
                             color="$boldyellow"
                             ;;
                         *)

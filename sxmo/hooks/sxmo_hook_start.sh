@@ -20,9 +20,9 @@ mpv --quiet --no-video ~/dotfiles/media/cylontune_low.ogg &
 
 sxmo_daemons.sh start daemon_manager superd -v
 
-(sleep 10 && ~/lighthome/client.sh) &
-
 sleep 2 # let time to superd to start correctly
+
+(sleep 10 && ~/lighthome/client.sh > /tmp/lighthome.log 2>&1) &
 
 case "$SXMO_WM" in
 	sway)
