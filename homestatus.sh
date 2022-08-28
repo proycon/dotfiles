@@ -214,11 +214,11 @@ printhomestatus() {
     TIMEDELTA=$(( (NOW - LASTUPDATE) ))
 
     if [ "$format" = "pango" ] && command -v sxmo_common.sh > /dev/null 2> /dev/null; then
-        date +"<big><big><big><big><big><big><big><big><b>%H</b>:%M</big></big></big></big></big></big></big></big>" #date with some pango markup syntax (https://docs.gtk.org/Pango/pango_markup.html)
+        date +"<big><big><big><big><big><big><big><big><b>%H</b>:%M</big></big></big></big></big></big></big></big>:%S" #date with some pango markup syntax (https://docs.gtk.org/Pango/pango_markup.html)
         date +"%a %d %b %Y"
         echo "─────────────────────────────────"
     else
-        echo "${bold}Time:         $(date +%H:%M)${normal}"
+        echo "${bold}Time:         $(date +%H:%M:%S)${normal}"
     fi
 
     $HADIR
