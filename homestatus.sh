@@ -275,7 +275,7 @@ if [ $loop -eq 1 ]; then
     touch /tmp/homestatus/trigger
 	while true; do
         files=$(find /tmp/homestatus -type f)
-        inotifywait -e create,modify,attrib /tmp/homestatus $files /tmp/homestatus/trigger | printhomestatus
+        inotifywait -t 3 -e create,modify,attrib /tmp/homestatus $files /tmp/homestatus/trigger | printhomestatus
     done
 else
     printhomestatus
