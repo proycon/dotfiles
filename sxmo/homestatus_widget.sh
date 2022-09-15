@@ -31,12 +31,14 @@ if [ $check -eq 1 ]; then
     export WAYLAND_DISPLAY=wayland-1
 fi
 FONTSIZE="22"
-if pgrep -f notifyclient.sh; then
+if pgrep -f mosquitto_sub; then
     #already running
     #ping just after connection (triggers playing a sound and also returns status)
     (sleep 1 && ~/dotfiles/notifysend.sh "home/command/ping" "$(hostname)") &
+    #initial status update
+    (sleep 1 && ~/dotfiles/notifysend.sh "home/command/status" "$(hostname)") &
 else
-    ~/dotfiles/notifyclient.sh &
+    ~/lighthome/client.sh &
 fi
 trap 'forceredraw' USR2
 #kill existing wayout
