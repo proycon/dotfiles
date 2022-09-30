@@ -22,7 +22,7 @@ sxmo_daemons.sh start daemon_manager superd -v
 
 sleep 2 # let time to superd to start correctly
 
-(sleep 10 && ~/lighthome/client.sh > /tmp/lighthome.log 2>&1) &
+(sleep 10 && cd ~/lighthome && ./client.sh > /tmp/lighthome.log 2>&1) &
 
 case "$SXMO_WM" in
 	sway)
