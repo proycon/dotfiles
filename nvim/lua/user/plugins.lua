@@ -117,7 +117,8 @@ return packer.startup(function(use)
 
   use "jamessan/vim-gnupg"
   use "aklt/plantuml-syntax"
-  use "chrisbra/csv.vim"
+  --use "chrisbra/csv.vim"
+  use "mechatroner/rainbow_csv"
   use "tpope/vim-characterize" -- unicode information on 'ga' character inspection
   use "norcalli/nvim-colorizer.lua" -- show colour codes in colour
   use "ellisonleao/glow.nvim" -- markdown preview
