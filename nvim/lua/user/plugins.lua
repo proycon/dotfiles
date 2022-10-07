@@ -109,6 +109,7 @@ return packer.startup(function(use)
   use "JoosepAlviste/nvim-ts-context-commentstring"
   use "p00f/nvim-ts-rainbow" --rainbow parantheses
 
+
   -- Git
   use "lewis6991/gitsigns.nvim"
 
@@ -126,7 +127,14 @@ return packer.startup(function(use)
   use "tpope/vim-fugitive" -- git wrapper (provides :Git commands)
   use "simrat39/symbols-outline.nvim" --symbols (tags) tree like view
   use "pwntester/octo.nvim" -- github CLI integration
-  use "ray-x/lsp_signature.nvim" -- Show function signature as you type
+  use { 
+        "ray-x/lsp_signature.nvim", -- Show function signature as you type
+        config = function()
+            require('lsp_signature').setup({
+                floating_window_off_y = -1
+            })
+        end
+  }
 
 
   -- Automatically set up your configuration after cloning packer.nvim
