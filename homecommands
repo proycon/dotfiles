@@ -22,6 +22,7 @@ Music Off (bedroom)     =music2/off
 Presence - Both Away    =presence/both_away
 Presence - Away         =presence/away
 Presence - Home         =presence/home
+Presence - Hans Home    =presence/hans_home
 TV power toggle         =tv/on
 TV Decoder - Power      =tvdecoder/on
 TV Decoder - Up         =tvdecoder/up
