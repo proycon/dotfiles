@@ -108,7 +108,7 @@ return packer.startup(function(use)
   }
   use "JoosepAlviste/nvim-ts-context-commentstring"
   use "p00f/nvim-ts-rainbow" --rainbow parantheses
-
+  use "phelipetls/jsonpath.nvim" --jq
 
   -- Git
   use "lewis6991/gitsigns.nvim"
