@@ -3,7 +3,7 @@
 "position": "bottom",
 "modules-left": ["wlr/workspaces","hyprland/window"],
 "modules-center": ["clock"],
-"modules-right":  ["custom/timetracker","pulseaudio","network","battery"],
+"modules-right":  ["custom/timetracker","pulseaudio","hyprland/language","network","battery"],
 
 "battery": {
   "min-length": 5,
