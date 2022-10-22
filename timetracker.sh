@@ -4,7 +4,7 @@
 
 if [ -z "$2" ]; then
     if [ -n "$WAYLAND_DISPLAY" ]; then
-        chosen=$(cut -d ';' -f1 ~/dotfiles/timetracker.tasks | bemenu -p "Task" -l 10 $BEMENU_COLORARGS | sed "s/ .*//")
+        chosen=$(cut -d ';' -f1 ~/dotfiles/timetracker.tasks | bemenu -n -p "Task" -l 10 $BEMENU_COLORARGS | sed "s/ .*//")
     else
         chosen=$(cut -d ';' -f1 ~/dotfiles/timetracker.tasks | rofi -dmenu -font "Monospace 28" | sed "s/ .*//")
     fi
