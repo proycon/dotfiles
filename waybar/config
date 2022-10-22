@@ -1,0 +1,62 @@
+{
+"layer": "top",
+"position": "bottom",
+"modules-left": ["wlr/workspaces","hyprland/window"],
+"modules-center": ["clock"],
+"modules-right":  ["custom/timetracker","pulseaudio","network","battery"],
+
+"battery": {
+  "min-length": 5,
+  "states": {
+  "full": 90,
+  "warning": 25,
+  "critical": 10
+  },
+  "tooltip": false,
+  "full-at": 95,
+  "format-plugged": "{icon} {capacity}%",
+  "format-charging": "{icon} {capacity}%",
+  "format": "{icon} {capacity}%",
+  "format-icons": ["", "", "", "", "", "", ""]
+},
+"wlr/workspaces": {
+     "sort-by-name": true,
+     "on-click": "activate"
+},
+"hyprland/window": {
+    "format": "{}"
+},
+"clock": {
+  "format": " {:%a %b %d %H:%M}",
+  "tooltip": false,
+  "min-length": 18
+},
+"network": {
+  "interval": 2,
+  "format-wifi": " {essid} {signalStrength}%",
+  "format-ethernet": "",
+  "format-linked": " {ipaddr}",
+  "format-disconnected": " Disconnected",
+  "format-disabled": "",
+  "tooltip": false,
+  "max-length": 20,
+  "min-length": 6
+},
+"pulseaudio": {
+  "tooltip": false,
+  "min-length": 5,
+  "format": "{icon} {volume}%",
+  "format-bluetooth": "{icon} {volume}%",
+  "format-muted": "MUTE",
+  "format-icons": {
+  "headphone": "",
+  "headset": "",
+  "default": ["", "", ""]
+  }
+},
+"custom/timetracker": {
+    "exec": "cat /home/proycon/.timetracker.current",
+    "interval": 10,
+    "tooltip": false
+}
+}

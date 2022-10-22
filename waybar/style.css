@@ -1,0 +1,73 @@
+/* waybar style.css */
+@define-color bgcolor #202020;	/* background color */
+@define-color fgcolor #d8caac;  /* foreground color */
+@define-color charging #07fb05; /* battery charging color */
+@define-color plugged #acfcad;  /* ac plugged color */
+@define-color critical #ff0000; /* critical color */
+@define-color warning #f3f809;  /* warning color */
+@define-color hover #94a6e3;    /* mouse hover over workspace color */ 
+@define-color bgfocus #202020;  /* unfocused workspace color background */
+@define-color fgfocus #d8caac; /* unfocused workspace color foreground */
+
+/* Reset all styles */
+* {
+	border: none;
+	border-radius: 0;
+	min-height: 0;
+	margin: 0;
+	padding: 0;
+}
+
+#waybar {
+	background:@bgcolor;
+	font-family: Source Code Pro for powerline;
+	font-size: 12px;
+	color: @fgcolor;
+}
+
+#workspaces button {
+	padding-left: 10px;
+	padding-right: 10px;
+        background: @bgfocus;
+	color: @fgfocus;
+}
+
+#workspaces button.focused, #workspaces button.active {
+	background: #a7c080 ;
+	color: black;
+}
+
+
+
+#custom-cap-left, #custom-cap-right {
+	color: @bgcolor;
+	font-size: 24px;
+}
+
+#idle_inhibitor {
+	background: @bgcolor;
+	padding-left: 20px;
+	padding-right: 10px;
+}
+
+#custom-offswitch {
+	background: @bgcolor;
+	padding-right: 20px;
+	padding-left: 10px;
+}
+
+#custom-weather,
+#cpu, 
+#temperature, 
+#memory, 
+#pulseaudio, 
+#custom-vpn,
+#disk,
+#battery, 
+#clock, 
+#network {
+	background: @bgcolor;
+	padding-left: 10px;
+	padding-right: 10px;
+}
+
