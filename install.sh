@@ -169,6 +169,8 @@ done
 
 mkdir .ncmpcpp
 ln -sfn $DOTDIR/ncmpcpp.config $HOMEDIR/.ncmpcpp/config
+ln -sfn $DOTDIR/defaults.list $HOMEDIR/.config/mimeapps.list
+ln -sfn $HOMEDIR/.config/mimeapps.list $HOMEDIR/.local/share/applications/mimeapps.list #legacy
 ln -sfn $DOTDIR/tm $HOMEDIR/bin/tm
 if [ -z "$NO_DESKTOP" ]; then
     ln -sfn $DOTDIR/screencast.sh $HOMEDIR/bin/screencast.sh
