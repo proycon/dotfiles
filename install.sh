@@ -105,7 +105,7 @@ if [ $SUDO -eq 1 ]; then
             esac
         done
         if [ $YAY -eq 1 ]; then
-            yay -S polybar otf-nerd-fonts-fira-mono powerline-fonts-git ttf-material-design-icons-git ttf-symbola ccls javascript-typescript-langserver ttf-nerd-fonts-input libxft-bgra || echo "WARNING: yay is not installed yet, do so yourself!">&2
+            yay -S hyprland-git waybar-hyprland-git lf-sixel-git lsix-git otf-nerd-fonts-fira-mono powerline-fonts-git ttf-material-design-icons-git ttf-symbola ccls javascript-typescript-langserver ttf-nerd-fonts-input libxft-bgra || echo "WARNING: yay is not installed yet, do so yourself!">&2
         fi
     elif [[ "$OS" == "postmarketos" ]]; then
         sudo apk update
@@ -141,7 +141,7 @@ if [ $SXMO -eq 1 ]; then
 elif [ -z "$NO_DESKTOP" ]; then
     CONFIGNAMES=("kitty" "alacritty" "openbox" "nvim" "ranger" "polybar" "sxiv" "i3" "ipython" "tm" "ncmpcpp.config" "vifm" "lf" "broot" "zathura" "tuir" "newsboat" "dunst" "sway" "mako" "i3status" "foot" "rofi")
 else
-    CONFIGNAMES=("nvim" "ranger" "ipython" "tm" "vifm" "lf" "broot")
+    CONFIGNAMES=("nvim" "ranger" "ipython" "tm" "vifm" "lf" "broot" "hypr")
 fi
 
 SCRIPTS=("suspend.sh" "linkhander" "lock.sh" "screencast.sh" "emojiselect" "wtime" "rotdir" "lf-select" "updatemail.sh" "darkmode.sh" "lightmode.sh")

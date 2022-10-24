@@ -71,7 +71,6 @@ alias a='tmux attach'
 alias b="buku"
 alias i="img2sixel"
 alias tmux='tmux -2' #force 256 colour support regardless of terminal
-alias ta='~/todo.sh add'
 alias ka='killall'
 alias za='zathura'
 alias sx='sxiv -t .'
