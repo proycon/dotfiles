@@ -9,6 +9,10 @@ else
 fi
 # Exit if none chosen.
 [ -z "$dir" ] && exit
-echo "$dir" | tr -d '\n' | xclip -selection clipboard
-export PATH=$HOME/bin:$PATH
-sxiv -rt "$HOME/Pictures/$dir" 2> /tmp/err
+if [ -n "$WAYLAND_DISPLAY" ]; then
+    pqiv --auto-montage-mode "$dir"
+else
+    echo "$dir" | tr -d '\n' | xclip -selection clipboard
+    export PATH=$HOME/bin:$PATH
+    sxiv -rt "$HOME/Pictures/$dir" 2> /tmp/err
+fi
