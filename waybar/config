@@ -58,7 +58,7 @@
   }
 },
 "custom/timetracker": {
-    "exec": "cat /home/proycon/.timetracker.current",
+    "exec": "cat /home/proycon/.timetracker.current | sed 's/&/&amp;/g'",
     "interval": 10,
     "tooltip": false
 }
