@@ -1,7 +1,10 @@
 #!/bin/sh
-# configversion: c4996d637ffa87798c160e9d0c981945
+# configversion: 6eea46448f82f12a04d79fafc45d6fb0
 
 # Please modify this file to your liking
+#
+# shellcheck source=scripts/core/sxmo_common.sh
+. sxmo_common.sh
 
 # Important Instructions:
 #  All processes you launch from this script must
@@ -32,7 +35,7 @@ command -v firefox >/dev/null && export BROWSER=firefox
 export DMENU_WRAP_AROUND=1
 
 # Enable audio feedback on keypress
-export KEYBOARD_ARGS="-o | clickclack -f /usr/share/sxmo/keytap.wav"
+export KEYBOARD_ARGS="-o | clickclack -f $(xdg_data_path sxmo/keytap.wav)"
 
 # Or, enable vibration feedback on keypress
 #export KEYBOARD_ARGS="-o | clickclack -V"
@@ -47,3 +50,16 @@ case "$SXMO_WM" in
 	dwm)
 		;;
 esac
+#
+#Set RINGTONE to audio file to play for incoming call
+export SXMO_RINGTONE="$(xdg_data_path sxmo/ring.ogg)"
+
+#Set TEXTSOUND to audio file to play when received text message
+export SXMO_TEXTSOUND="$(xdg_data_path sxmo/notify.ogg)"
+
+#Set RINGTIME to number of seconds the phone will ring
+export SXMO_RINGTIME=20
+
+#Set RINGNUMBER to number of times phone will ring or repeat ringtone
+#(whichever of SXMO_RINGTIME or SXMO_RINGNUMBER runs less will limit how long phone rings)
+export SXMO_RINGNUMER=10

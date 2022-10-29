@@ -1,5 +1,5 @@
 #!/bin/sh
-# configversion: 87b4993c7e625e865ddd5f9c940cb472
+# configversion: c632df3564d7c6dd5a31dd6904197c4e
 # SPDX-License-Identifier: AGPL-3.0-only
 # Copyright 2022 Sxmo Contributors
 
@@ -22,7 +22,7 @@ sxmo_daemons.sh start daemon_manager superd -v
 
 sleep 2 # let time to superd to start correctly
 
-(sleep 10 && cd ~/lighthome && ./client.sh > /tmp/lighthome.log 2>&1) &
+(sleep 10 && ~/lighthome/client.sh > /tmp/lighthome.log 2>&1) &
 
 case "$SXMO_WM" in
 	sway)
