@@ -1,5 +1,6 @@
 #!/bin/sh
 
+
 . ~/dotfiles/colorargs.sh
 
 if [ -z "$2" ]; then

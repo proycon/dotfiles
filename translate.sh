@@ -1,6 +1,8 @@
 #!/bin/sh
 
-if [ -n "$DISPLAY" ]; then
+if [ -n "$WAYLAND_DISPLAY" ]; then
+    TEXT=$(wl-paste -p)
+elif [ -n "$DISPLAY" ]; then
     TEXT=$(xclip -out)
 fi
 

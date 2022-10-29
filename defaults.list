@@ -13,6 +13,7 @@ image/gif=imv.desktop
 image/tiff=imv.desktop
 image/webp=imv.desktop
 image/svg+xml=inkscape.desktop
+image/svg=inkscape.desktop
 image/bmp=imv.desktop
 image/x-photoshop=gimp.desktop
 image/x-psd=gimp.desktop

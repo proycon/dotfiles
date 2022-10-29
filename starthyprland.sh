@@ -1,0 +1,11 @@
+#!/bin/sh
+killall client.sh
+export XDG_CURRENT_DESKTOP=Hyprland
+export XDG_SESSION_TYPE=wayland
+export XDG_SESSION_DESKTOP=Hyprland
+export GDK_BACKEND=wayland
+export MOZ_ENABLE_WAYLAND=1
+export SDL_VIDEODRIVER=wayland
+#export GDK_DPI_SCALE=2    # only needed for firefox, messes up others
+export BEMENU_BACKEND=wayland
+exec Hyprland

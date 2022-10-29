@@ -49,14 +49,14 @@ return packer.startup(function(use)
   use "kyazdani42/nvim-web-devicons"
   use "kyazdani42/nvim-tree.lua"
   use "akinsho/bufferline.nvim"
-  use "moll/vim-bbye"
+  use "moll/vim-bbye" -- helps closing unneeded buffers
   use "nvim-lualine/lualine.nvim"
   use "akinsho/toggleterm.nvim"
   use "ahmedkhalf/project.nvim"
-  use "lewis6991/impatient.nvim"
-  use "lukas-reineke/indent-blankline.nvim"
+  use "lewis6991/impatient.nvim" -- Speed up loading Lua modules in Neovim to improve startup time.
+  use "lukas-reineke/indent-blankline.nvim" -- add indentation guides
   use "antoinemadec/FixCursorHold.nvim" -- This is needed to fix lsp doc highlight
-  use "folke/which-key.nvim"
+  use "folke/which-key.nvim" -- show popup with keybindings
 
   -- Colorschemes
   use "lunarvim/colorschemes" -- A bunch of colorschemes you can try out
@@ -108,7 +108,7 @@ return packer.startup(function(use)
   }
   use "JoosepAlviste/nvim-ts-context-commentstring"
   use "p00f/nvim-ts-rainbow" --rainbow parantheses
-
+  use "phelipetls/jsonpath.nvim" --jq
 
   -- Git
   use "lewis6991/gitsigns.nvim"
@@ -135,6 +135,7 @@ return packer.startup(function(use)
             })
         end
   }
+  use "goerz/jupytext.vim" -- edit ipynb as markdown via jupytext
 
 
   -- Automatically set up your configuration after cloning packer.nvim
