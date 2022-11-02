@@ -2,8 +2,8 @@
 "layer": "top",
 "position": "bottom",
 "modules-left": ["wlr/workspaces","hyprland/window"],
-"modules-center": [],
-"modules-right":  ["custom/mail", "custom/timetracker","pulseaudio","hyprland/language","network","battery", "clock"],
+"modules-center": ["custom/mail"],
+"modules-right":  ["custom/timetracker","pulseaudio","hyprland/language","network","battery", "clock"],
 
 "battery": {
   "min-length": 5,
