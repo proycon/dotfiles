@@ -61,7 +61,7 @@
     "exec": "~/dotfiles/checkmail.sh",
     "interval": 60,
     "tooltip": false
-}
+},
 "custom/timetracker": {
     "exec": "cat /home/proycon/.timetracker.current | sed 's/&/&amp;/g'",
     "interval": 10,
