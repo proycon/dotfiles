@@ -59,7 +59,7 @@
 },
 "custom/mail": {
     "exec": "~/dotfiles/checkmail.sh",
-    "interval": 60,
+    "interval": 10,
     "tooltip": false
 },
 "custom/timetracker": {
