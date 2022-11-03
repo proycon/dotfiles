@@ -97,8 +97,12 @@ printstategroup() {
     for filename in $filenames; do 
         if [ -e "$STATEDIR/$filename" ]; then
             VALUE=$(cat "$STATEDIR/$filename")
+            WITHTIMEDELTA=0
             case $label in 
                 alarm)
+                    TIMESTAMP=$(stat -c %Y "$STATEDIR/$filename" | tr -d '\n')
+                    TIMEDELTA=$(( (NOW - TIMESTAMP) ))
+                    WITHTIMEDELTA=1
                     case $VALUE in
                         triggered)
                             color="$boldred"
@@ -112,6 +116,9 @@ printstategroup() {
                     esac
                     ;;
                 presence)
+                    TIMESTAMP=$(stat -c %Y "$STATEDIR/$filename" | tr -d '\n')
+                    TIMEDELTA=$(( (NOW - TIMESTAMP) ))
+                    WITHTIMEDELTA=1
                     case $VALUE in
                         off|OFF)
                             color="$boldred"
@@ -176,6 +183,9 @@ printstategroup() {
             else
                 colorend=
             fi
+            if [ $WITHTIMEDELTA -eq 1 ]; then
+                extralabel=$(printtimedelta)
+            fi
             if [ -n "$extralabel" ]; then
                 printf "${bold}%-13s${normal} %s%s (%s)\n" "$grouplabel" "${color}$VALUE${colorend}" "$unit" "$extralabel"
             else
@@ -206,6 +216,16 @@ getlastupdate() {
     done
 }
 
+printtimedelta() {
+    if [ $TIMEDELTA -lt 30 ]; then 
+        echo -en  "${bold}${TIMEDELTA} s${normal}"
+    elif [ $TIMEDELTA -lt 60 ]; then 
+        echo -en  "${TIMEDELTA} s"
+    else
+        TIMEDELTA=$(( TIMEDELTA / 60 ))
+        echo -en  "${TIMEDELTA} min"
+    fi
+}
 
 printhomestatus() {
     NOW=$(date +%s | tr -d '\n')
@@ -242,7 +262,10 @@ printhomestatus() {
         nmcli -w 3 -c no -p -f DEVICE,STATE,NAME,TYPE con show | grep activated | sed 's/activated/   /' | sed '/^\s*$/d' 2> /dev/null
     fi
     if command -v vnstat >/dev/null; then
+    if ip a | grep -q wwan0; then
+        #only if wwan0 exists
         vnstat wwan0 --oneline | cut -d ';' -f 11 2> /dev/null
+    fi
     fi
     if [ "$1" = "html" ]; then
         echo "<hr/>"
