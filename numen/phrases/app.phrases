@@ -1,0 +1,27 @@
+# This saves your changes in vi-style text editors
+safeguard:press Escape colon w Return
+
+terminal:eval foot &
+master: eval hyprctl dispatch layoutmsg focusmaster
+promote: eval hyprctl dispatch layoutmsg swapwithmaster
+sister: eval hyprctl dispatch layoutmsg cycleprev
+brother: eval hyprctl dispatch layoutmsg cyclenext
+
+initial: eval hyprctl dispatch workspace 1
+second: eval hyprctl dispatch workspace 2
+final: eval hyprctl dispatch workspace 9
+rightward: eval hyprctl dispatch workspace +1
+leftward: eval hyprctl dispatch workspace -1
+revert: eval hyprctl dispatch workspace previous
+goodbye: eval hyprctl dispatch killactive 0
+onscreen: eval hyprctl dispatch fullscreen 1
+
+house: eval ~/dotfiles/homecommand.sh &
+
+
+
+# I bind these to navigate in-app windows
+fall:press alt+Down
+rise:press alt+Up
+small:press alt+Left
+large:press alt+Right

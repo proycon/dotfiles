@@ -1,0 +1,18 @@
+# Cancel sentence
+# For example, "four down no five down" would just do "five down".
+@instant @cancel no
+
+# Transcribe sentence
+# For example, "scribe, please type this".
+@instant @transcribe scribe
+# Erase transcription
+nevermind:localeval awk -v n=${#NUMEN_TEXT} 'BEGIN {for(; n--; n) print "press BackSpace"}'
+
+# Menu of transcription results
+# (Requires the dmenu command)
+transcripts:set DISPLAY displaying\
+eval { f="${XDG_DATA_HOME:-$HOME/.local/share}/numen/transcripts"; [ -s "$f" ] && printf 'type %s\n' "$(dmenu -i -l 10 < "$f")" || notify-send 'No transcripts' & } &
+# Menu to change transcription result
+# (Requires the dmenu command)
+change:set DISPLAY displaying\
+eval { f="${XDG_DATA_HOME:-$HOME/.local/share}/numen/transcripts"; if [ "$(wc -l < "$f")" -gt 1 ]; then t="$(tail -n +2 "$f" | dmenu -i -l 10)" && awk -v n=${#NUMEN_TEXT} 'BEGIN {for(; n--; n) print "press BackSpace"}' && printf %s\\n "type $t"; else notify-send 'No alternative transcripts' & fi } &

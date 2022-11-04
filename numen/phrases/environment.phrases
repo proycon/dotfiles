@@ -1,0 +1,16 @@
+# I have the keybindings these simulate bound for window management.
+# They likely won't do anything out of the box.
+# You can get my desktop environment at: https://git.sr.ht/~geb/tiles
+
+# Navigate to the window in the given direction
+@rapidoff west:unstick press super+Left
+@rapidoff east:unstick press super+Right
+@rapidoff north:unstick press super+Up
+@rapidoff south:unstick press super+Down
+# Cycle round the windows
+@rapidoff cycle:unstick press super+c
+@rapidoff recycle:unstick press super+C
+# Close window
+@rapidoff exterminate:unstick press super+q
+# Toggle fullscreen
+@rapidoff screen:unstick press super+f
