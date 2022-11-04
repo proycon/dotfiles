@@ -1,16 +1,31 @@
-# I have the keybindings these simulate bound for window management.
-# They likely won't do anything out of the box.
-# You can get my desktop environment at: https://git.sr.ht/~geb/tiles
+terminal:eval foot &
+launcher:eval bemenu-run -l 20 &
+master: eval hyprctl dispatch layoutmsg focusmaster
+promote: eval hyprctl dispatch layoutmsg swapwithmaster
+sister: eval hyprctl dispatch layoutmsg cycleprev
+brother: eval hyprctl dispatch layoutmsg cyclenext
 
-# Navigate to the window in the given direction
-@rapidoff west:unstick press super+Left
-@rapidoff east:unstick press super+Right
-@rapidoff north:unstick press super+Up
-@rapidoff south:unstick press super+Down
-# Cycle round the windows
-@rapidoff cycle:unstick press super+c
-@rapidoff recycle:unstick press super+C
-# Close window
-@rapidoff exterminate:unstick press super+q
-# Toggle fullscreen
-@rapidoff screen:unstick press super+f
+initial: eval hyprctl dispatch workspace 1
+second: eval hyprctl dispatch workspace 2
+third: eval hyprctl dispatch workspace 3
+final: eval hyprctl dispatch workspace 9
+rightward: eval hyprctl dispatch workspace +1
+leftward: eval hyprctl dispatch workspace -1
+revert: eval hyprctl dispatch workspace previous
+goodbye: eval hyprctl dispatch killactive 0
+onscreen: eval hyprctl dispatch fullscreen 1
+
+house: eval ~/dotfiles/homecommand.sh &
+
+periscope:eval streetcam.sh &
+translate:eval ~/dotfiles/translate.sh &
+screenshot:eval ~/dotfiles/translate.sh &
+emoticon:eval ~/dotfiles/emojiselect &
+bookmarks:eval ~/dotfiles/buku-dmenu &
+connectivity:eval ~/dotfiles/network-menu.sh &
+lockup:eval ~/dotfiles/lock.sh &
+
+latin:eval hyprctl keyword input:kb_layout proylatin
+cyrillic:eval hyprctl keyword input:kb_layout proyru
+
+exterminate:eval killall numen
