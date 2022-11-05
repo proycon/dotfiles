@@ -8,8 +8,8 @@ tab:press Tab
 # (The Super modifier is also known as the "Windows key")
 shift:mod shift
 troll:mod ctrl
-hype:mod alt
-bless:mod super
+sub:mod alt
+mode:mod super
 @rapidoff suck:mod super unstick
 # Clear modifiers
 @rapidoff forget:mod clear capsoff unstick

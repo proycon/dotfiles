@@ -11,7 +11,7 @@ third: eval hyprctl dispatch workspace 3
 final: eval hyprctl dispatch workspace 9
 rightward: eval hyprctl dispatch workspace +1
 leftward: eval hyprctl dispatch workspace -1
-revert: eval hyprctl dispatch workspace previous
+return: eval hyprctl dispatch workspace previous
 goodbye: eval hyprctl dispatch killactive 0
 onscreen: eval hyprctl dispatch fullscreen 1
 
