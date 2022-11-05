@@ -7,6 +7,7 @@ tab:press Tab
 # Enable a modifier for the next press
 # (The Super modifier is also known as the "Windows key")
 shift:mod shift
+large:mod shift
 troll:mod ctrl
 sub:mod alt
 mode:mod super
