@@ -1,5 +1,6 @@
 terminal: press super+Return
 menu: press super+p
+launcher:eval bemenu-run -l 20 &
 goodbye: press super+shift+q
 
 west: press super+Left
@@ -14,6 +15,9 @@ last: press super+4
 
 rightward: press super+Right
 leftward: press super+Left
+
 return: press super+Tab
 onscreen: press super+w
 stack: press super+s
+
+exterminate:eval killall numen
