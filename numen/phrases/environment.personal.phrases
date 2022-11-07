@@ -1,0 +1,10 @@
+house: eval ~/dotfiles/homecommand.sh &
+periscope:eval streetcam.sh &
+translate:eval ~/dotfiles/translate.sh &
+screenshot:eval ~/dotfiles/translate.sh &
+emoticon:eval ~/dotfiles/emojiselect &
+bookmarks:eval ~/dotfiles/buku-dmenu &
+connectivity:eval ~/dotfiles/network-menu.sh &
+lockup:eval ~/dotfiles/lock.sh &
+
+exterminate:eval killall numen

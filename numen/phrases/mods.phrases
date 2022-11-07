@@ -1,0 +1,14 @@
+# Enable a modifier for the next press
+# (The Super modifier is also known as the "Windows key")
+shift:mod shift
+large:mod shift
+troll:mod ctrl
+sub:mod super
+mode:mod alt
+@rapidoff suck:mod super unstick
+# Clear modifiers
+@rapidoff forget:mod clear capsoff unstick
+
+# Turn on Caps Lock by saying "suck shout" (turn it off by saying "forget")
+shout:localeval [ "$NUMEN_SUPER" = 1 ] && echo capson\
+mod clear

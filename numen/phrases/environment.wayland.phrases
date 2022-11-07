@@ -1,0 +1,2 @@
+terminal:eval foot &
+launcher:eval bemenu-run -l 20 &

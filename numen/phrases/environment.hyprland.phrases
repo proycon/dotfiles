@@ -1,5 +1,3 @@
-terminal:eval foot &
-launcher:eval bemenu-run -l 20 &
 master: eval hyprctl dispatch layoutmsg focusmaster
 promote: eval hyprctl dispatch layoutmsg swapwithmaster
 sister: eval hyprctl dispatch layoutmsg cycleprev
@@ -15,17 +13,5 @@ return: eval hyprctl dispatch workspace previous
 goodbye: eval hyprctl dispatch killactive 0
 onscreen: eval hyprctl dispatch fullscreen 1
 
-house: eval ~/dotfiles/homecommand.sh &
-
-periscope:eval streetcam.sh &
-translate:eval ~/dotfiles/translate.sh &
-screenshot:eval ~/dotfiles/translate.sh &
-emoticon:eval ~/dotfiles/emojiselect &
-bookmarks:eval ~/dotfiles/buku-dmenu &
-connectivity:eval ~/dotfiles/network-menu.sh &
-lockup:eval ~/dotfiles/lock.sh &
-
 latin:eval hyprctl keyword input:kb_layout proylatin
 cyrillic:eval hyprctl keyword input:kb_layout proyru
-
-exterminate:eval killall numen
