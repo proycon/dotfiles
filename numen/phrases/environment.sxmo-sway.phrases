@@ -5,8 +5,8 @@ applications: eval sxmo_appmenu.sh apps &
 notifications: eval sxmo_notificationsmenu.sh &
 messages: eval sxmo_text.sh &
 contacts: eval sxmo_contactmenu.sh &
-phonecall: eval sxmo_phonemenu.sh &
-networks: eval sxmo_networkmenu.sh &
+telephone: eval sxmo_phonemenu.sh &
+network: eval sxmo_networkmenu.sh &
 configuration: eval sxmo_appmenu.sh config &
 launcher:eval bemenu-run -l 20 &
 goodbye: press super+shift+q
