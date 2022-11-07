@@ -20,4 +20,3 @@ return: press super+Tab
 onscreen: press super+w
 stack: press super+s
 
-exterminate:eval killall numen
