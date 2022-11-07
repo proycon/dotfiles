@@ -1,5 +1,7 @@
 terminal: press super+Return
 menu: press super+p
+system: eval sxmo_appmenu.sh sys &
+applications: eval sxmo_appmenu.sh apps &
 launcher:eval bemenu-run -l 20 &
 goodbye: press super+shift+q
 
