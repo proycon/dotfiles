@@ -1,0 +1,19 @@
+terminal: press super+Return
+menu: press super+p
+goodbye: press super+shift+q
+
+west: press super+Left
+east: press super+Right
+north: press super+Up
+south: press super+Down
+
+first: press super+1
+second: press super+2
+third: press super+3
+last: press super+4
+
+rightward: press super+Right
+leftward: press super+Left
+return: press super+Tab
+onscreen: press super+w
+stack: press super+s

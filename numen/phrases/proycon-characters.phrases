@@ -15,7 +15,7 @@ llama:press l
 mink:press m
 mule:press m
 newt:press n
-old:press o
+owl:press o
 otter:press o
 pig:press p
 quail:press q
@@ -25,9 +25,8 @@ seal:press s
 toad:press t
 trout:press t
 ugly:press u
-void:press v
 viper:press v
 wolf:press w
-plex:press x
+ox:press x
 yak:press y
-zulu:press z
+zebra:press z
