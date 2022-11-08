@@ -7,4 +7,3 @@ bookmarks:eval ~/dotfiles/buku-dmenu &
 connectivity:eval ~/dotfiles/network-menu.sh &
 lockup:eval ~/dotfiles/lock.sh &
 
-exterminate:eval killall numen

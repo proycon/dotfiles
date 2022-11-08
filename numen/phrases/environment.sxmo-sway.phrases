@@ -1,25 +1,23 @@
 terminal: press super+Return
 menu: press super+p
 system: eval sxmo_appmenu.sh sys &
-applications: eval sxmo_appmenu.sh apps &
+applications: eval sxmo_appmenu.sh applications &
+abs: eval sxmo_appmenu.sh applications &
 notifications: eval sxmo_notificationsmenu.sh &
-messages: eval sxmo_text.sh &
+messages: eval sxmo_modemtext.sh &
 contacts: eval sxmo_contactmenu.sh &
 telephone: eval sxmo_phonemenu.sh &
-network: eval sxmo_networkmenu.sh &
+networks: eval sxmo_networks.sh &
 configuration: eval sxmo_appmenu.sh config &
 launcher:eval bemenu-run -l 20 &
+keyboard: eval sxmo_keyboard.sh toggle &
 goodbye: press super+shift+q
+exterminate: eval killall numen
 
 west: press super+Left
 east: press super+Right
 north: press super+Up
 south: press super+Down
-
-first: press super+1
-second: press super+2
-third: press super+3
-last: press super+4
 
 rightward: press super+Right
 leftward: press super+Left
