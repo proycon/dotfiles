@@ -26,4 +26,4 @@ leftward: press super+Left
 
 return: press super+Tab
 onscreen: press super+w
-split: press super+e
+tiles: press super+v
