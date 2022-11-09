@@ -26,8 +26,8 @@
 }
 
 #workspaces button {
-	padding-left: 10px;
-	padding-right: 10px;
+	padding-left: 5px;
+	padding-right: 5px;
         background: @bgfocus;
 	color: @fgfocus;
 }
@@ -71,3 +71,18 @@
 	padding-right: 10px;
 }
 
+#clock {
+    color: #eeeeee;
+}
+
+#battery.warning {
+    color: #bf8330;
+}
+#battery.critical {
+    color: #f37575;
+    background: black;
+}
+
+#custom-mail {
+    color: #7a8047;
+}
