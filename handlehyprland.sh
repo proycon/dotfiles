@@ -16,8 +16,11 @@ handle() {
                 for i in $(seq 1 9); do 
                     hyprctl dispatch moveworkspacetomonitor $i DP-3
                 done
+                hyprctl focusmonitor DP-4
+                hyprctl workspace 10
                 hyprctl focusmonitor DP-3
                 hyprctl workspace 1
+                pidof waybar || waybar &
             fi
             ;;
     esac
