@@ -36,8 +36,8 @@ SCRIPT_VERSION  = '0.2'
 SCRIPT_LICENSE  = 'GPL3'
 SCRIPT_DESC     = "What have they been saying about you?"
 
-OPTIONS         = {'buffer_color'        : ("gray", 'color of buffer name'),
-                   'nick_color'          : ("gray", 'color of mentioners nick'),
+OPTIONS         = {'buffer_color'        : ("magenta", 'color of buffer name'),
+                   'nick_color'          : ("green", 'color of mentioners nick'),
                    'nick_blacklist'      : ("gitlama,f00f", 'comma separated list of nicks to ignore, case insensitive'),
                    'buffer_blacklist'    : ("gitlama", 'comma separated list of buffers to ignore, case insensitive'),
                    'notify'              : ("off", 'highlight (notify) buffer if written to'),
@@ -96,9 +96,6 @@ def checker(data, buffer, date, tags, displayed, highlight, prefix, message):
                 nick = tags[idx][5:]
                 nick_colored = c(cg('nick_color')) + tags[idx][5:] + rst
 
-
-            return w.WEECHAT_RC_OK
-
         buffername = w.buffer_get_string(buffer, 'short_name')
 
         if nick.lower() in [ x.strip().lower() for x in cg('nick_blacklist').split(',') ] or buffername.lower() in [ x.strip().lower() for x in cg('buffer_blacklist').split(',') ]:
@@ -118,10 +115,10 @@ def checker(data, buffer, date, tags, displayed, highlight, prefix, message):
 
         w.prnt(himan_buffer, outp_left + nick_colored + outp_sep + buffername_colored + outp_right + sp + message)
 
-        if len(message) >= 10 and not (message.startswith("[") and message[9] == "]"): #this is likely a timestamp from ZNC, we don't notify for those
+        if not (message.startswith("[") and len(message) >= 10 and message[9] == "]"): #this is likely a timestamp from ZNC, we don't notify for those
             os.system(f"notify-send -t \"{nick}@{buffername}\" \"{message}\"")
             if int(time.time()) - lastchime > 10:
-                os.system(f"play ~/dotfiles/media/chime.wav &")
+                os.system(f"mpv --no-video ~/dotfiles/media/chime.wav &")
                 lastchime = int(time.time())
 
     return w.WEECHAT_RC_OK
