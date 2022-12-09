@@ -125,7 +125,12 @@ return packer.startup(function(use)
   use "ellisonleao/glow.nvim" -- markdown preview
   use "folke/trouble.nvim" -- pretty list for showing diagnostics
   use "tpope/vim-fugitive" -- git wrapper (provides :Git commands)
-  use "simrat39/symbols-outline.nvim" --symbols (tags) tree like view
+  use {
+    "simrat39/symbols-outline.nvim", --symbols (tags) tree like view
+    config = function() 
+            require("symbols-outline").setup()
+    end
+  }
   use "pwntester/octo.nvim" -- github CLI integration
   use { 
         "ray-x/lsp_signature.nvim", -- Show function signature as you type
