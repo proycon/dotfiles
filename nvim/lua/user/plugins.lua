@@ -141,6 +141,7 @@ return packer.startup(function(use)
         end
   }
   use "goerz/jupytext.vim" -- edit ipynb as markdown via jupytext
+  use "fatih/vim-go" -- edit ipynb as markdown via jupytext
 
 
   -- Automatically set up your configuration after cloning packer.nvim
