@@ -1,2 +1,7 @@
 default-timeout=3000
 max-visible=5
+max-history=5
+background-color=#000000cc
+width=400
+height=256
+max-icon-size=256
