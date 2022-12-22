@@ -76,6 +76,7 @@ alias za='zathura'
 alias sx='sxiv -t .'
 alias gpp='git push origin gh-pages'
 alias mp="ncmpcpp -b ~/dotfiles/ncmpcpp.bindings"
+alias t="todo.sh"
 alias f='cd $(cat ${XDG_CONFIG_HOME:-$HOME/.config}/directories | fzf)'
 alias hs="~/dotfiles/homestatus.sh"
 alias ghils="gh issue list"

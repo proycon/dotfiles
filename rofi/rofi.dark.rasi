@@ -1,5 +1,5 @@
 configuration {
-    font: "Monospace 25";
+    font: "Monospace 14";
     show-icons: true;
 }
 
