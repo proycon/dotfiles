@@ -60,11 +60,11 @@
 "custom/mail": {
     "exec": "~/dotfiles/checkmail.sh",
     "interval": 10,
-    "tooltip": false
+    "tooltip": true
 },
 "custom/timetracker": {
-    "exec": "cat /home/proycon/.timetracker.current | sed 's/&/&amp;/g'",
-    "interval": 10,
-    "tooltip": false
+    "exec": "todo.sh timetrack current -d | sed 's/&/&amp;/g'",
+    "interval": 15,
+    "tooltip": true
 }
 }
