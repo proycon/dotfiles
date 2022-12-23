@@ -1,7 +1,7 @@
 #!/usr/bin/env sh
 if [ ! -f /tmp/locked ]; then
-    lasttask=$(tail -n 1 ~/.timetracker.log | cut --delimiter=" " -f 4 | tr -d '\n')
-    ~/dotfiles/timetracker.sh 0 afk
+    task=$(todo.sh timetrack current -t)
+    todo.sh timetrack stop
     touch /tmp/locked
     play ~/dotfiles/media/lock.wav >/dev/null 2>/dev/null &!
     if [ -n "$WAYLAND_DISPLAY" ]; then
@@ -15,5 +15,5 @@ if [ ! -f /tmp/locked ]; then
     fi
     play ~/dotfiles/media/unlock.wav >/dev/null 2>/dev/null &!
     rm /tmp/locked
-    ~/dotfiles/timetracker.sh 0 "$lasttask"
+    todo.sh timetrack start "$task"
 fi
