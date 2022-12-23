@@ -1,0 +1,15 @@
+{
+    "folia": ["@work","@huc","@clariah","+wp3t108"],
+    "foliatools": ["@work","@huc","@clariah", "+wp3t108"],
+    "foliautils": ["@work","@huc","@clariah","+wp3t108"],
+    "flat": ["@work","@huc","@clariah","+wp3t062"],
+    "clam": ["@work","@huc","@clariah","+wp3t142"],
+    "frog": ["@work","@huc","@clariah","+wp3t139"],
+    "deepfrog": ["@work","@huc","@clariah","+wp3t139"],
+    "ucto": ["@work","@huc","@clariah","+wp3t139"],
+    "lamachine": ["@work","@huc","@clariah","+wp3t098"],
+    "codemetapy": ["@work","@huc","@clariah","+wp2tooldiscovery"],
+    "codemetaharvester": ["@work","@huc","@clariah","+wp2tooldiscovery"],
+    "codemetaserver": ["@work","@huc","@clariah","+wp2tooldiscovery"],
+    "stam": ["@work","@huc","+clariah","+wp2annotation"],
+}
