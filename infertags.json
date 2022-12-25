@@ -42,5 +42,5 @@
     "ticcltools": ["@work","@radboud"],
     "nederlablinguisticenrichment": ["@work","@radboud"],
     "glem": ["@work","@radboud","@clariah"],
-    "stam": ["@work","@huc","+clariah","+wp2annotation"],
+    "stam": ["@work","@huc","+clariah","+wp2annotation"]
 }
