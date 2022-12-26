@@ -140,6 +140,7 @@ export XDG_CONFIG_HOME="$HOME/.config"
 
 export TODO_ISSUE_LABELMAP="$HOME/dotfiles/labelmap.json"
 export TODO_ISSUE_INFERMAP="$HOME/dotfiles/infertags.json"
+export TODOTXT_NOTMUCH_MAP="$HOME/dotfiles/notmuchmap.json"
 
 
 #coloured man pages
