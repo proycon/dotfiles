@@ -36,6 +36,9 @@ unsetopt correct_all
 unset GREP_OPTIONS #deprecated
 
 
+td() {
+    todo.sh fancy list $@ | head
+}
 
 #apps
 menu () {
