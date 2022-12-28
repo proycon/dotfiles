@@ -1,11 +1,8 @@
 #!/bin/sh
 killall client.sh
-[ -z "$HOSTNAME" ]  && HOSTNAME=$(hostname)
-if [ "$HOSTNAME" = "mhysa" ]; then
-    export QT_AUTO_SCREEN_SCALE_FACTOR=0
-    export QT_SCALE_FACTOR=1.8
-    export ELM_SCALE=1.8
-fi
+export QT_AUTO_SCREEN_SCALE_FACTOR=0
+export QT_SCALE_FACTOR=1.8
+export ELM_SCALE=1.8
 export XDG_CURRENT_DESKTOP=Hyprland
 export XDG_SESSION_TYPE=wayland
 export XDG_SESSION_DESKTOP=Hyprland
