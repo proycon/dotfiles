@@ -1,9 +1,10 @@
-default-timeout=3000
+default-timeout=5000
 max-visible=5
 max-history=5
 background-color=#000000cc
 border-color=#ff0000ff
 border-size=2
-width=400
+width=800
 height=128
 max-icon-size=128
+font=Monospace 22
