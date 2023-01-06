@@ -1,5 +1,6 @@
 #!/bin/sh
 killall client.sh
+rm /tmp/locked
 export QT_AUTO_SCREEN_SCALE_FACTOR=0
 export QT_SCALE_FACTOR=1.8
 export ELM_SCALE=1.8
