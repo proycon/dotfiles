@@ -78,42 +78,31 @@ Key bindings
         * ``M`` - Move pane (to another window or tmux)
         * ``F`` - Fingers mode
 * vim
-    * leader is space or comma
-    * fzf - fuzzy matcher
-        * type ``:Maps`` to see all custom keymaps and search
-        * ``ctrl-p`` or ``,o`` - git files
-        * ``ctrl-f`` or ``,O`` - all files
-        * ``ctrl-m`` - marks
-        * ``ctrl-b`` or ``,b`` - buffers
-        * ``ctrl-g`` - git commits
-        * ``,n`` - lines (buffer)
-        * ``,N`` - lines (all)
-        * ``,r`` - tags
+    * leader is space
+    * navigate popup menus with C-j C-k
+    * spelling
+        * ``z=`` -- spelling suggestion
+        * ``:set spelllang``
     * buffers
-        * ``,=`` or ``ctrl-right`` - next
-        * ``,-`` or ``ctrl-left`` - previous
-        * ``,1`` - buffer 1, etc..
-        * ``,,`` - last buffer
-        * ``<space><space>`` - last buffer
-        * ``,e`` - reload current buffer
-        * ``,x`` - close current buffer
-        * ``,E`` - reload all buffers
+        * ``C-^`` -- previous buffer
+    * telescope
+        * ``<leader> o`` - git files
+        * ``<leader> f`` - find files
+        * ``<leader> b`` - find buffers
+        * ``<leader> F`` - find inside files (live grep)
     * building
         * ``F4`` - Build and preview (syncronously) (tex, markdown); pip install . (python)
         * ``F5`` - Build and preview (asyncronously) (tex, markdown); pip install . (python)
     * git (tpope/fugitive)
         * ``F9`` - Commit
         * ``F10`` - Push
-    * documentation/navigation
-        * ``,K`` - keyword documentation
+    * documentation/navigation/LSP
+        * ``<space> K`` - keyword documentation
         * ``,ga`` - Goto assignment (jedi/python)
         * ``,gd`` - Goto definition (jedi/python)
         * ``,gu`` - Show usages (places where it is used) (jedi/python)
     * editing
         * ``,_`` - strip trailing whitespace
-        * tpope/surround.vim
-            * ``cs``XY - change surround tag X to Y (understand XML tags too)
-            * ``ds``X - delete surround tag X
         * visual mode
             * ``,s`` - sort
     * copy/paste

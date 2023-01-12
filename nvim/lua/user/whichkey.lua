@@ -79,7 +79,6 @@ local opts = {
 }
 
 local mappings = {
-  ["a"] = { "<cmd>Alpha<cr>", "Alpha" },
   ["b"] = {
     "<cmd>lua require('telescope.builtin').buffers(require('telescope.themes').get_dropdown{previewer = false})<cr>",
     "Buffers",
@@ -95,6 +94,18 @@ local mappings = {
   },
   ["F"] = { "<cmd>Telescope live_grep theme=ivy<cr>", "Find Text" },
   ["P"] = { "<cmd>lua require('telescope').extensions.projects.projects()<cr>", "Projects" },
+  ["O"] = { 
+    name = "Octo Github",
+    l = { "<cmd>Octo issue list<cr>", "list issues" },
+    c = { "<cmd>Octo issue create<cr>", "create issue" },
+    ic = { "<cmd>Octo issue close<cr>", "close issue" },
+    io = { "<cmd>Octo issue reopen<cr>", "reopen usse" },
+    A = { "<cmd>Octo assignees add proycon<cr>", "add self as assignee" },
+    aa = { "<cmd>Octo assignees add ", "add assignee" },
+    la = { "<cmd>Octo label add ", "add label" },
+    ca = { "<cmd>Octo comment add<cr>", "add comment" },
+  },
+
 
   p = {
     name = "Packer",
