@@ -130,9 +130,9 @@ local mappings = {
       "<cmd>lua require 'gitsigns'.undo_stage_hunk()<cr>",
       "Undo Stage Hunk",
     },
-    o = { "<cmd>Telescope git_status<cr>", "Open changed file" },
-    b = { "<cmd>Telescope git_branches<cr>", "Checkout branch" },
-    c = { "<cmd>Telescope git_commits<cr>", "Checkout commit" },
+    S = { "<cmd>Telescope git_status<cr>", "Status" },
+    b = { "<cmd>Telescope git_branches<cr>", "Branches" },
+    c = { "<cmd>Telescope git_commits<cr>", "Commits" },
     d = {
       "<cmd>Gitsigns diffthis HEAD<cr>",
       "Diff",
@@ -185,6 +185,8 @@ local mappings = {
     R = { "<cmd>Telescope registers<cr>", "Registers" },
     k = { "<cmd>Telescope keymaps<cr>", "Keymaps" },
     C = { "<cmd>Telescope commands<cr>", "Commands" },
+    z = { "<cmd>Telescope spell_suggest<cr>", "Spelling" },
+    y = { "<cmd>Telescope neoclip<cr>", "Yank history" },
   },
 
   t = {
@@ -197,6 +199,12 @@ local mappings = {
     h = { "<cmd>ToggleTerm size=10 direction=horizontal<cr>", "Horizontal" },
     v = { "<cmd>ToggleTerm size=80 direction=vertical<cr>", "Vertical" },
   },
+
+  Z = {
+    name = "zen",
+    m = { "<cmd>TZMinimalist<cr>", "Toggle minimalist" },
+    n = { "<cmd>TZNarrow<cr>", "Toggle narrow" },
+  }
 }
 
 which_key.setup(setup)

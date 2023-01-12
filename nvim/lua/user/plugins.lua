@@ -57,6 +57,16 @@ return packer.startup(function(use)
   use "lukas-reineke/indent-blankline.nvim" -- add indentation guides
   use "antoinemadec/FixCursorHold.nvim" -- This is needed to fix lsp doc highlight
   use "folke/which-key.nvim" -- show popup with keybindings
+  use { "AckslD/nvim-neoclip.lua", -- remember yanks
+     requires = {
+        -- you'll need at least one of these
+        {'nvim-telescope/telescope.nvim'},
+        -- {'ibhagwan/fzf-lua'},
+      },
+      config = function()
+        require('neoclip').setup()
+      end,
+  }
 
   -- Colorschemes
   use "lunarvim/colorschemes" -- A bunch of colorschemes you can try out
@@ -114,7 +124,7 @@ return packer.startup(function(use)
   use "lewis6991/gitsigns.nvim"
 
   -- Distraction free writing
-  use "Pocco81/TrueZen.nvim"
+  use "Pocco81/true-zen.nvim"
 
   use "jamessan/vim-gnupg"
   use "aklt/plantuml-syntax"
