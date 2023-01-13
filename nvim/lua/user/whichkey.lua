@@ -101,8 +101,6 @@ local mappings = {
     x = { "<cmd>Octo issue close<cr>", "close issue" },
     r = { "<cmd>Octo issue reopen<cr>", "reopen usse" },
     A = { "<cmd>Octo assignee add proycon<cr>", "add self as assignee" },
-    a = { "<cmd>Octo assignee add ", "add assignee" },
-    l = { "<cmd>Octo label add ", "add label" },
     C = { "<cmd>Octo comment add<cr>", "add comment" },
   },
 
