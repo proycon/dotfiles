@@ -13,7 +13,7 @@ telescope.setup {
 
     prompt_prefix = " ",
     selection_caret = " ",
-    path_display = { "absolute" },
+    path_display = { "truncate" },
 
     mappings = {
       i = {

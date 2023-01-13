@@ -98,12 +98,12 @@ local mappings = {
     name = "Octo Github",
     l = { "<cmd>Octo issue list<cr>", "list issues" },
     c = { "<cmd>Octo issue create<cr>", "create issue" },
-    ic = { "<cmd>Octo issue close<cr>", "close issue" },
-    io = { "<cmd>Octo issue reopen<cr>", "reopen usse" },
-    A = { "<cmd>Octo assignees add proycon<cr>", "add self as assignee" },
-    aa = { "<cmd>Octo assignees add ", "add assignee" },
-    la = { "<cmd>Octo label add ", "add label" },
-    ca = { "<cmd>Octo comment add<cr>", "add comment" },
+    x = { "<cmd>Octo issue close<cr>", "close issue" },
+    r = { "<cmd>Octo issue reopen<cr>", "reopen usse" },
+    A = { "<cmd>Octo assignee add proycon<cr>", "add self as assignee" },
+    a = { "<cmd>Octo assignee add ", "add assignee" },
+    l = { "<cmd>Octo label add ", "add label" },
+    C = { "<cmd>Octo comment add<cr>", "add comment" },
   },
 
 
