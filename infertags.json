@@ -40,7 +40,11 @@
     "lamawebcheck": ["@work","@radboud"],
     "piccl": ["@work","@radboud"],
     "ticcltools": ["@work","@radboud"],
+    "ponyland": ["@work","@radboud"],
     "nederlablinguisticenrichment": ["@work","@radboud"],
     "glem": ["@work","@radboud","+clariah"],
-    "stam": ["@work","@huc","+clariah","+wp2annotation"]
+    "stam": ["@work","@huc","+clariah","+wp2annotation"],
+    "todotxtmore": ["@hobby"],
+    "sxmo": ["@hobby"],
+    "homepage": ["@hobby"]
 }
