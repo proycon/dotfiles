@@ -125,7 +125,7 @@ set attach_save_dir = "/nettmp"
 #macro index M "<save-message>?<toggle-mailboxes>" "move a message to a mailbox"
 
 macro index,pager,attach ,p "|cat > /nettmp/patch\n" "copy a message as patch"
-macro attach ,c "|cat > /nettmp/ical; todo.sh cal import /nettmp/ical\ncalcurse --import /nettmp/ical\necho \"imported in calendar\"" "import in calendar"
+macro attach ,c "|cat > /nettmp/ical; todo.sh cal import --edit /nettmp/ical\ncalcurse --import /nettmp/ical\necho \"imported in calendar\"" "import in calendar"
 macro index,pager,attach ,v "|cat > ~/.vbuf\n" "copy to ~/.vbuf"
 macro index,pager,attach ,h "|cat > /nettmp/mail.html" "copy to /nettmp/mail.html"
 
