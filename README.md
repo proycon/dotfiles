@@ -9,15 +9,15 @@ Software
 Current setup:
 
 * **OS**: Arch Linux
-* **Window Manager**: [dwm](https://github.com/proycon/dwm)
+* **Window Manager**: hyprland
 * **Shell**: zsh
-* **Terminal:** alacritty
+* **Terminal:** foot
 * **Terminal Multiplexer**: tmux
 * **Editor**: neovim
 * **Browser**: firefox
 * **Music player**: ncmpcpp + mopidy
 * **Mail**: neomutt
-* **Chat**: weechat + bitblee (IRC+XMPP+Twitter+Telegram) + weechat-matrix (Matrix)
+* **Chat**: weechat (irc) + bitblee (xmpp) + gomuks (matrix) + tg (telegram)
 
 Key bindings
 --------------
@@ -97,36 +97,22 @@ Key bindings
         * ``F9`` - Commit
         * ``F10`` - Push
     * documentation/navigation/LSP
-        * ``<space> K`` - keyword documentation
-        * ``,ga`` - Goto assignment (jedi/python)
-        * ``,gd`` - Goto definition (jedi/python)
-        * ``,gu`` - Show usages (places where it is used) (jedi/python)
+        * ``K`` - documentation
+        * ``<space>lc`` - Incoming calls
+        * ``<space>lC`` - Outgoing calls
+        * ``gd`` - Goto definition
+        * ``gi`` - Goto implementation
+        * ``gr`` - goto references
+        * ``<space>ld`` - Goto definition
+        * ``ga`` - show (unicode) character information
     * editing
-        * ``,_`` - strip trailing whitespace
+        * ``<space>_`` - strip trailing whitespace
         * visual mode
-            * ``,s`` - sort
+            * ``gc`` - (un)comment selection
     * copy/paste
         * ``,y`` - yank selection (to ~/.vbuf and X clipboard)
         * ``,p`` - paste
         * ``,P`` - paste before
-    * toggle plugins
-        * ``,t`` - Toggle tagbar
-        * ``,f`` - Toggle file browser (nerdTree)
-        * ``,ig`` - Toggle Indentation Guides
-        * ``ga`` - show (unicode) character information
-    * coc.nvim
-        * ``K`` - documentation
-        * ``,d`` - open diagnostic window
-        * ``,c`` - next diagnostic
-        * ``,C`` - previous diagnostic
-        * ``gd`` - goto definition
-        * ``gy`` - goto type definition
-        * ``gi`` - goto implementation
-        * ``gr`` - goto references
-        * ``,a`` - codeaction on selection
-        * ``,F`` - (re)format
-    * miscellaneous
-        * ``,L`` - Lost where you are in a file? Show a context clue
 * **weechat**
     * ``ctrl+s`` or ``ctrl+u`` - Set unread marker on all windows
     * ``ctrl+n``  - Switch to next buffer
