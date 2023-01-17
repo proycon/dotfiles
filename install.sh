@@ -131,9 +131,9 @@ git submodule update
 DOTDIR=`pwd`
 
 if [ $SXMO -eq 1 ]; then
-    ROOTNAMES=("vim" "vimrc" "zshrc" "urlview" "muttrc" "mailcap" "signature" "signature.ru.txt" "signature.unilang" "tmux.conf" "tmux-powerlinerc" "tmux")
+    ROOTNAMES=("vim" "vimrc" "zshrc" "urlview" "muttrc" "mailcap" "signature" "signature.ru.txt" "signature.unilang" "tmux.conf" "tmux-powerlinerc" "tmux" "tigrc")
 else
-    ROOTNAMES=("vim" "vimrc" "zshrc" "urlview" "muttrc" "urxvt" "gdbinit"  "mailcap" "signature" "signature.ru.txt" "signature.unilang" "xinitrc" "tmux.conf" "tmux-powerlinerc" "inputrc" "Xresources" "pylintrc" "pdbrc.py" "tmux")
+    ROOTNAMES=("vim" "vimrc" "zshrc" "urlview" "muttrc" "urxvt" "gdbinit"  "mailcap" "signature" "signature.ru.txt" "signature.unilang" "xinitrc" "tmux.conf" "tmux-powerlinerc" "inputrc" "Xresources" "pylintrc" "pdbrc.py" "tmux" "tigrc")
 fi
 
 if [ $SXMO -eq 1 ]; then
