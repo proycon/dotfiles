@@ -5,6 +5,7 @@ end
 
 telescope.load_extension('media_files')
 telescope.load_extension('neoclip')
+telescope.load_extension('luasnip')
 
 local actions = require "telescope.actions"
 

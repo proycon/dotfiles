@@ -182,6 +182,7 @@ local mappings = {
     r = { "<cmd>Telescope oldfiles<cr>", "Open Recent File" },
     R = { "<cmd>Telescope registers<cr>", "Registers" },
     k = { "<cmd>Telescope keymaps<cr>", "Keymaps" },
+    s = { "<cmd>Telescope luasnip<cr>", "Snippets" },
     C = { "<cmd>Telescope commands<cr>", "Commands" },
     z = { "<cmd>Telescope spell_suggest<cr>", "Spelling" },
     y = { "<cmd>Telescope neoclip<cr>", "Yank history" },
