@@ -8,6 +8,7 @@ if [ ! -f /tmp/locked ]; then
         swaymsg input type:keyboard xkb_layout proylatin
         swaylock -c 220000
         hyprctl dispatch dpms on #ensure dpms is on after lock finishes
+        pidof waybar || waybar &!
     else
         setxkbmap proylatin
         i3lock -n -c '220000'
