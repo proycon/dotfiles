@@ -1,0 +1,5 @@
+#!/bin/sh
+rm ~/.mblaze/seq*
+mlist ~/Maildir/new ~/Maildir/.Notifications/new ~/Maildir/.Lists*/new | msort -dr  | mseq -S
+nr=$(mscan -f "%-3n %c%u%r %10d %17f %t %2i%s" | rofi -dmenu | cut -d " " -f 1)
+[ -n "$nr" ] && foot mshow "$nr"
