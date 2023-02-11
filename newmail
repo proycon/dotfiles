@@ -2,4 +2,13 @@
 rm ~/.mblaze/seq*
 mlist ~/Maildir/new ~/Maildir/.Notifications/new ~/Maildir/.Lists*/new | msort -dr  | mseq -S
 nr=$(mscan -f "%-3n %c%u%r %10d %17f %t %2i%s" | rofi -dmenu | cut -d " " -f 1)
-[ -n "$nr" ] && foot mshow "$nr"
+if [ -n "$nr" ]; then
+    ATTACHDIR=~/Downloads/mailattachments
+    rm -rf "$ATTACHDIR"
+    mkdir -p "$ATTACHDIR"
+    cd "$ATTACHDIR"
+    ~/dotfiles/dmenu-files.sh "$ATTACHDIR" -t &
+    mshow -x "$nr" #extract attachments
+    cd -
+    foot mshow -N "$nr"
+fi
