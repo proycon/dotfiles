@@ -1,7 +1,7 @@
 #!/bin/sh
 rm ~/.mblaze/seq*
-mlist ~/Maildir/new ~/Maildir/.Notifications/new ~/Maildir/.Lists*/new | msort -dr  | mseq -S
-nr=$(mscan -f "%-3n %c%u%r %10d %17f %t %2i%s" | rofi -matching glob -tokenize -i -no-sort -no-levenshtein-sort -dmenu | cut -d " " -f 1)
+cd ~/Maildir/cur
+nr=$(ls | tail -n 250 | mthread | msort -r | mseq -S | mscan -f "%-3n %c%u%r %10d %17f %t %2i%s" | rofi -matching glob -tokenize -i -no-sort -no-levenshtein-sort -dmenu | cut -d " " -f 1)
 if [ -n "$nr" ]; then
     ATTACHDIR=~/Downloads/mailattachments
     rm -rf "$ATTACHDIR"
@@ -14,3 +14,4 @@ if [ -n "$nr" ]; then
     cd -
     foot mshow -N "$nr"
 fi
+cd -
