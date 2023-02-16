@@ -101,7 +101,7 @@ return packer.startup(function(use)
         config = function()
             require("nvim-lsp-installer").setup {}
             local lspconfig = require("lspconfig")
-            lspconfig.sumneko_lua.setup {}
+            lspconfig.lua_ls.setup {}
         end
   }
   use "tamago324/nlsp-settings.nvim" -- language server settings defined in json for
@@ -152,7 +152,10 @@ return packer.startup(function(use)
         end
   }
   use "goerz/jupytext.vim" -- edit ipynb as markdown via jupytext
-  use "fatih/vim-go" -- edit ipynb as markdown via jupytext
+  use "fatih/vim-go" -- Go
+  use "simrat39/inlay-hints.nvim" -- Inlay hints (e.g for Rust)
+  -- use "simrat39/rust-tools.nvim" -- Rust, used for inlay hints and more
+  -- use 'mfussenegger/nvim-dap' -- Debugger
   use "proycon/todo.txt-vim" -- my own extended todo.txt syntax highlighting
 
 
