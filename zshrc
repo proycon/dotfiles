@@ -93,6 +93,7 @@ alias hutsxmo2="hut todo ticket list -t \~mil/sxmo-tickets"
 alias mkenv="[ ! -e env ] && python3 -m venv env; . env/bin/activate"
 alias mk.env="[ ! -e .env ] && python3 -m venv .env; . .env/bin/activate"
 alias lh="linkhandler"
+alias open="linkhandler"
 lh0() {
     rm /tmp/linkhandler.target 2> /dev/null || echo "(already set)"
 }
