@@ -57,19 +57,10 @@ if [ "$TARGET" = "0" ]; then
 else
     case "$1" in
         *mkv|*webm|*mp4|*mp3|*flac|*youtube.com*|*youtu.be*|*hooktube.com*|*bitchute.com*|*gifv|*v.redd.it*|*gifs.com*)
-           ~/dotfiles/homecommand.sh "youtube$TARGET" "$URL"
+           ~/dotfiles/notifysend.sh "home/video/pi1/play" "$URL"
            ;;
-        *png|*jpg|*jpe|*jpeg|*gif)
-            cd /nettmp/videoqueue
-            case "$URL" in
-                http*)
-                    wget "$URL" ;;
-                *)
-                    cp "$URL" .
-                    ;;
-            esac
-            cd -
-           ~/dotfiles/homecommand.sh "kodi$TARGET/playdir_default"
+        *png|*jpg|*JPG|*jpeg|*gif)
+           ~/dotfiles/notifysend.sh "home/video/pi1/play" "$URL"
            ;;
         *)
            play ~/dotfiles/media/error.wav > /dev/null 2>/dev/null &
