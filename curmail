@@ -1,7 +1,7 @@
 #!/bin/sh
 rm ~/.mblaze/seq*
 cd ~/Maildir/cur/
-nr=$(ls | tail -n 250 | msort -r | mseq -S | mscan -f "%-3n %c%u%r %10d %17f %t %2i%s" | rofi -matching glob -tokenize -i -no-sort -no-levenshtein-sort -p "Mail" -dmenu | cut -d " " -f 1)
+nr=$(ls | tail -n 250 | msort -r | mseq -S | mscan -f "%-3n %c%u%r %10d <span fgcolor=\"darkcyan\">%17f</span> ICON %2i%s" | ~/dotfiles/mblaze2pango.sh | rofi -matching glob -tokenize -i -no-sort -no-levenshtein-sort -p "Mail" -markup -markup-rows -dmenu | cut -d " " -f 1)
 if [ -n "$nr" ]; then
     ATTACHDIR=~/Downloads/mailattachments
     rm -rf "$ATTACHDIR"
