@@ -1,7 +1,24 @@
 #!/bin/sh
 rm ~/.mblaze/seq*
-cd ~/Maildir/cur/
-nr=$(ls | tail -n 250 | msort -r | mseq -S | mscan -f "%-3n %c%u%r %10d <span fgcolor=\"darkcyan\">%17f</span> ICON %2i%s" | ~/dotfiles/mblaze2pango.sh | rofi -matching glob -tokenize -i -no-sort -no-levenshtein-sort -p "Mail" -markup -markup-rows -dmenu | cut -d " " -f 1)
+#cd ~/Maildir/cur/
+lists=$(ls -d ~/Maildir/.Lists* | tr '\n' ' ')
+DATETHRESHOLD=$(date --date="3 months ago" +%s)
+for maildir in ~/Maildir $lists; do
+    case $maildir in
+        *CorporaList*|Siks*)
+            #noisy lists I don't really care about
+            ;;
+        *)
+            [ $(stat --format="%X" $maildir/new) -gt $DATETHRESHOLD ] &&\
+                ls $maildir/new | tail -n 250 | grep ",S=" | sed "s|^|$maildir/new |" >> ~/.mblaze/seq_pre
+            [ $(stat --format="%X" $maildir/cur) -gt $DATETHRESHOLD ] &&\
+                ls $maildir/cur | tail -n 250 | grep ",S=" | sed "s|^|$maildir/cur |" >> ~/.mblaze/seq_pre
+            ;;
+    esac
+done
+cat ~/.mblaze/seq_pre | sort -rk 2 | head -n 1000 | sed "s| |/|" > ~/.mblaze/seq
+nr=$(mseq | mscan -f "%-3n %c%u%r %10d <span fgcolor=\"darkcyan\">%17f</span> ICON %2i%s" | ~/dotfiles/mblaze2pango.sh | rofi -matching glob -tokenize -i -no-sort -no-levenshtein-sort -p "Mail" -markup -markup-rows -dmenu -click-to-exit | cut -d " " -f 1)
+#nr=$(find ~/Maildir/cur/ -ctime -14 | tail -n 250 | msort -r | mseq -S | mscan -f "%-3n %c%u%r %10d <span fgcolor=\"darkcyan\">%17f</span> ICON %2i%s" | ~/dotfiles/mblaze2pango.sh | rofi -matching glob -tokenize -i -no-sort -no-levenshtein-sort -p "Mail" -markup -markup-rows -dmenu | cut -d " " -f 1)
 if [ -n "$nr" ]; then
     ATTACHDIR=~/Downloads/mailattachments
     rm -rf "$ATTACHDIR"

@@ -2,14 +2,22 @@
 while read -r line; do
     nr=$(echo "$line" | cut -d " " -f 1)
     remainder=$(echo "$line" | cut -d " " -f 2-)
-    color=white
+    color="#fbf1c7"
     icon="  "
     case "$line" in
-        *"Registration request from"*)
+        *"Registration request from"*|*"build success"*|*"build fail"*|*Siksleden*|*Corpora-List*|*Nieuwsbrief*|*Newsletter*|*Correspondent*|*Steam*)
             color=gray
             ;;
         *"[PATCH"*)
             color=HotPink
+            ;;
+        *"TO:"*)
+            color=green
+            ;;
+    esac
+    case "$line" in
+        *"TO:"*)
+            icon=👉
             ;;
         *"frog"*)
             icon=🐸
@@ -17,9 +25,11 @@ while read -r line; do
         *"folia"*)
             icon=🥬
             ;;
-        *"TO:"*)
-            icon=👉
-            color=green
+        *"clam"*)
+            icon=🐚
+            ;;
+        *"sxmo"*)
+            icon=📱
             ;;
         *)
             from=$(maddr -h from "$nr")
@@ -40,13 +50,16 @@ while read -r line; do
                 *anaxotic*|*van-gompel*)
                     icon=👪
                     ;;
+                *debian.org*|*alpinelinux.org*)
+                    icon=🐧
+                    ;;
                 *github.com*)
                     color=HotPink
-                    icon=
+                    icon=🎫
                     ;;
                 *sr.ht*)
                     color=HotPink
-                    icon=
+                    icon=🎫
                     ;;
                 *noreply*|*homeautomation*)
                     color=gray
@@ -55,6 +68,4 @@ while read -r line; do
             ;;
     esac
     echo "$nr <span fgcolor=\"$color\">$remainder</span>" | sed "s/ ICON / $icon /" | sed 's/Re:/<span fgcolor="green">Re:<\/span>/i' | sed 's/Fwd:/<span fgcolor="blue">Fwd:<\/span>/i'
-
-
 done
