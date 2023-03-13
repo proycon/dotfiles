@@ -9,6 +9,7 @@ Xft.rgba: rgb
 Xft.dpi: 180
 urxvt*depth: 32
 urxvt*background: rgba:2f00/2f00/2f00/f900
+nsxiv*window.background: black
 
 st*font: Source Code Pro for Powerline:size=10
 st*alpha: 0.8
