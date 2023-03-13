@@ -157,6 +157,9 @@ return packer.startup(function(use)
   -- use "simrat39/rust-tools.nvim" -- Rust, used for inlay hints and more
   -- use 'mfussenegger/nvim-dap' -- Debugger
   use "proycon/todo.txt-vim" -- my own extended todo.txt syntax highlighting
+  use { "raghur/vim-ghost",
+        run = ":GhostInstall" 
+  }
 
 
   -- Automatically set up your configuration after cloning packer.nvim
