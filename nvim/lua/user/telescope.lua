@@ -4,6 +4,8 @@ if not status_ok then
 end
 
 telescope.load_extension('media_files')
+telescope.load_extension('neoclip')
+telescope.load_extension('luasnip')
 
 local actions = require "telescope.actions"
 
@@ -12,7 +14,7 @@ telescope.setup {
 
     prompt_prefix = " ",
     selection_caret = " ",
-    path_display = { "absolute" },
+    path_display = { "truncate" },
 
     mappings = {
       i = {

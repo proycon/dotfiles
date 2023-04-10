@@ -15,4 +15,5 @@ else
 fi
 
 export DMENU_COLORARGS="-nb $BG -nf $FG -sb $BGSEL -sf $FGSEL"
+export BEMENU_FONT="Monospace 32"
 export BEMENU_COLORARGS="--nb $BG --nf $FG --sb $BGSEL --sf $FGSEL"

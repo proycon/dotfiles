@@ -9,15 +9,15 @@ Software
 Current setup:
 
 * **OS**: Arch Linux
-* **Window Manager**: [dwm](https://github.com/proycon/dwm)
+* **Window Manager**: hyprland
 * **Shell**: zsh
-* **Terminal:** alacritty
+* **Terminal:** foot
 * **Terminal Multiplexer**: tmux
 * **Editor**: neovim
 * **Browser**: firefox
 * **Music player**: ncmpcpp + mopidy
 * **Mail**: neomutt
-* **Chat**: weechat + bitblee (IRC+XMPP+Twitter+Telegram) + weechat-matrix (Matrix)
+* **Chat**: weechat (irc) + bitblee (xmpp) + gomuks (matrix) + tg (telegram)
 
 Key bindings
 --------------
@@ -78,66 +78,41 @@ Key bindings
         * ``M`` - Move pane (to another window or tmux)
         * ``F`` - Fingers mode
 * vim
-    * leader is space or comma
-    * fzf - fuzzy matcher
-        * type ``:Maps`` to see all custom keymaps and search
-        * ``ctrl-p`` or ``,o`` - git files
-        * ``ctrl-f`` or ``,O`` - all files
-        * ``ctrl-m`` - marks
-        * ``ctrl-b`` or ``,b`` - buffers
-        * ``ctrl-g`` - git commits
-        * ``,n`` - lines (buffer)
-        * ``,N`` - lines (all)
-        * ``,r`` - tags
+    * leader is space
+    * navigate popup menus with C-j C-k
+    * spelling
+        * ``z=`` -- spelling suggestion
+        * ``:set spelllang``
     * buffers
-        * ``,=`` or ``ctrl-right`` - next
-        * ``,-`` or ``ctrl-left`` - previous
-        * ``,1`` - buffer 1, etc..
-        * ``,,`` - last buffer
-        * ``<space><space>`` - last buffer
-        * ``,e`` - reload current buffer
-        * ``,x`` - close current buffer
-        * ``,E`` - reload all buffers
+        * ``C-^`` -- previous buffer
+    * telescope
+        * ``<leader> o`` - git files
+        * ``<leader> f`` - find files
+        * ``<leader> b`` - find buffers
+        * ``<leader> F`` - find inside files (live grep)
     * building
         * ``F4`` - Build and preview (syncronously) (tex, markdown); pip install . (python)
         * ``F5`` - Build and preview (asyncronously) (tex, markdown); pip install . (python)
     * git (tpope/fugitive)
         * ``F9`` - Commit
         * ``F10`` - Push
-    * documentation/navigation
-        * ``,K`` - keyword documentation
-        * ``,ga`` - Goto assignment (jedi/python)
-        * ``,gd`` - Goto definition (jedi/python)
-        * ``,gu`` - Show usages (places where it is used) (jedi/python)
+    * documentation/navigation/LSP
+        * ``K`` - documentation
+        * ``<space>lc`` - Incoming calls
+        * ``<space>lC`` - Outgoing calls
+        * ``gd`` - Goto definition
+        * ``gi`` - Goto implementation
+        * ``gr`` - goto references
+        * ``<space>ld`` - Goto definition
+        * ``ga`` - show (unicode) character information
     * editing
-        * ``,_`` - strip trailing whitespace
-        * tpope/surround.vim
-            * ``cs``XY - change surround tag X to Y (understand XML tags too)
-            * ``ds``X - delete surround tag X
+        * ``<space>_`` - strip trailing whitespace
         * visual mode
-            * ``,s`` - sort
+            * ``gc`` - (un)comment selection
     * copy/paste
         * ``,y`` - yank selection (to ~/.vbuf and X clipboard)
         * ``,p`` - paste
         * ``,P`` - paste before
-    * toggle plugins
-        * ``,t`` - Toggle tagbar
-        * ``,f`` - Toggle file browser (nerdTree)
-        * ``,ig`` - Toggle Indentation Guides
-        * ``ga`` - show (unicode) character information
-    * coc.nvim
-        * ``K`` - documentation
-        * ``,d`` - open diagnostic window
-        * ``,c`` - next diagnostic
-        * ``,C`` - previous diagnostic
-        * ``gd`` - goto definition
-        * ``gy`` - goto type definition
-        * ``gi`` - goto implementation
-        * ``gr`` - goto references
-        * ``,a`` - codeaction on selection
-        * ``,F`` - (re)format
-    * miscellaneous
-        * ``,L`` - Lost where you are in a file? Show a context clue
 * **weechat**
     * ``ctrl+s`` or ``ctrl+u`` - Set unread marker on all windows
     * ``ctrl+n``  - Switch to next buffer

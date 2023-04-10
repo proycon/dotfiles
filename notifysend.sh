@@ -23,7 +23,7 @@ else
     exit 2
 fi
 
-if [ ! -z "$2" ]; then
+if [ -n "$2" ]; then
     PAYLOAD="$2"
 else
     PAYLOAD="ON"

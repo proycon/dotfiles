@@ -6,6 +6,7 @@ set hidden " allow leaving buffers without saving
 
 
 let mapleader=" "
+let maplocalleader=","
 
 
 nmap L <esc>:bp<CR>

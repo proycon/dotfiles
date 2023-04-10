@@ -25,7 +25,7 @@ CHOICE="$(
         $(connections)
         Close Menu
     " |
-    awk '{$1=$1};1' | grep '\w' | bemenu -p 'Networks' -l 20 --fn "Monospace 16" $BEMENU_COLORARGS
+    awk '{$1=$1};1' | grep '\w' | bemenu -p 'Networks' -l 20 --fn "$BEMENU_FONT" $BEMENU_COLORARGS
 )"
 case "$CHOICE" in
     "Close Menu" )

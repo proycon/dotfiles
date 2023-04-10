@@ -13,3 +13,4 @@ Telegram:   proycon                  IRC: proycon (libera.chat + oftc)
 Mastodon:   https://social.anaproy.nl/@proycon   (@proycon@social.anaproy.nl)
 ORCID:      https://orcid.org/0000-0002-1046-0006
 Keyoxide:   https://keyoxide.org/8AC624881EF2AC30C0E68E2C39FE11201A31555C
+vCard:      https://proycon.anaproy.nl/proycon.vcf

@@ -7,7 +7,7 @@ if [ -n "$WAYLAND_DISPLAY" ]; then
 else
     MENUTOOL="dmenu $DMENU_COLORARGS"
 fi
-PICKED=$(ls $2 "$1" | $MENUTOOL -i -l 20)
+PICKED=$(ls $2 "$1" | $MENUTOOL --fn "$BEMENU_FONT" -i -l 20)
 if [ -n "$PICKED" ]; then
     if [ -d "$1/$PICKED" ]; then
         ~/dotfiles/dmenu-files.sh "$1/$PICKED" $2

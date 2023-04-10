@@ -38,9 +38,9 @@ if [ "$TARGET" = "0" ]; then
         *mkv|*webm|*mp4|*youtube.com*|*youtu.be*|*hooktube.com*|*bitchute.com*|*gifv|*v.redd.it*|*gifs.com*)
             setsid mpv --ytdl-format="bestvideo[height<=1080]+bestaudio" --input-ipc-server=/tmp/mpvsoc$(date +%s) -quiet "$1" >/dev/null 2>&1 & ;;
         *png|*jpg|*jpe|*jpeg|*gif)
-            case "$URL" in
+            case "$1" in
                 http*)
-                    wget "$URL" -O /tmp/image
+                    wget "$1" -O /tmp/image
                     setsid sxiv -a /tmp/image >/dev/null 2>&1 & ;;
                 *)
                     setsid sxiv -a "$1" >/dev/null 2>&1 & ;;
@@ -57,19 +57,12 @@ if [ "$TARGET" = "0" ]; then
 else
     case "$1" in
         *mkv|*webm|*mp4|*mp3|*flac|*youtube.com*|*youtu.be*|*hooktube.com*|*bitchute.com*|*gifv|*v.redd.it*|*gifs.com*)
-           ~/dotfiles/homecommand.sh "youtube$TARGET" "$URL"
+           ~/dotfiles/notifysend.sh "home/command/videoplayer/pi$TARGET"
+           ~/dotfiles/notifysend.sh "home/command/video/pi$TARGET/play" "$1"
            ;;
-        *png|*jpg|*jpe|*jpeg|*gif)
-            cd /nettmp/videoqueue
-            case "$URL" in
-                http*)
-                    wget "$URL" ;;
-                *)
-                    cp "$URL" .
-                    ;;
-            esac
-            cd -
-           ~/dotfiles/homecommand.sh "kodi$TARGET/playdir_default"
+        *png|*jpg|*JPG|*jpeg|*gif)
+           ~/dotfiles/notifysend.sh "home/command/videoplayer/pi$TARGET"
+           ~/dotfiles/notifysend.sh "home/command/video/pi$TARGET/play" "$1"
            ;;
         *)
            play ~/dotfiles/media/error.wav > /dev/null 2>/dev/null &

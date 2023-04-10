@@ -57,6 +57,16 @@ return packer.startup(function(use)
   use "lukas-reineke/indent-blankline.nvim" -- add indentation guides
   use "antoinemadec/FixCursorHold.nvim" -- This is needed to fix lsp doc highlight
   use "folke/which-key.nvim" -- show popup with keybindings
+  use { "AckslD/nvim-neoclip.lua", -- remember yanks
+     requires = {
+        -- you'll need at least one of these
+        {'nvim-telescope/telescope.nvim'},
+        -- {'ibhagwan/fzf-lua'},
+      },
+      config = function()
+        require('neoclip').setup()
+      end,
+  }
 
   -- Colorschemes
   use "lunarvim/colorschemes" -- A bunch of colorschemes you can try out
@@ -91,7 +101,7 @@ return packer.startup(function(use)
         config = function()
             require("nvim-lsp-installer").setup {}
             local lspconfig = require("lspconfig")
-            lspconfig.sumneko_lua.setup {}
+            lspconfig.lua_ls.setup {}
         end
   }
   use "tamago324/nlsp-settings.nvim" -- language server settings defined in json for
@@ -100,6 +110,7 @@ return packer.startup(function(use)
   -- Telescope
   use "nvim-telescope/telescope.nvim"
   use "nvim-telescope/telescope-media-files.nvim"
+  use "benfowler/telescope-luasnip.nvim"
 
   -- Treesitter
   use {
@@ -114,7 +125,7 @@ return packer.startup(function(use)
   use "lewis6991/gitsigns.nvim"
 
   -- Distraction free writing
-  use "Pocco81/TrueZen.nvim"
+  use "Pocco81/true-zen.nvim"
 
   use "jamessan/vim-gnupg"
   use "aklt/plantuml-syntax"
@@ -141,7 +152,15 @@ return packer.startup(function(use)
         end
   }
   use "goerz/jupytext.vim" -- edit ipynb as markdown via jupytext
-  use "fatih/vim-go" -- edit ipynb as markdown via jupytext
+  use "fatih/vim-go" -- Go
+  use "simrat39/inlay-hints.nvim" -- Inlay hints (e.g for Rust)
+  -- use "simrat39/rust-tools.nvim" -- Rust, used for inlay hints and more
+  -- use 'mfussenegger/nvim-dap' -- Debugger
+  use "https://git.sr.ht/~sotirisp/vim-tsv"
+  use "proycon/todo.txt-vim" -- my own extended todo.txt syntax highlighting
+  use { "raghur/vim-ghost",
+        run = ":GhostInstall" 
+  }
 
 
   -- Automatically set up your configuration after cloning packer.nvim

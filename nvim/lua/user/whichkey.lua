@@ -79,7 +79,6 @@ local opts = {
 }
 
 local mappings = {
-  ["a"] = { "<cmd>Alpha<cr>", "Alpha" },
   ["b"] = {
     "<cmd>lua require('telescope.builtin').buffers(require('telescope.themes').get_dropdown{previewer = false})<cr>",
     "Buffers",
@@ -95,6 +94,23 @@ local mappings = {
   },
   ["F"] = { "<cmd>Telescope live_grep theme=ivy<cr>", "Find Text" },
   ["P"] = { "<cmd>lua require('telescope').extensions.projects.projects()<cr>", "Projects" },
+  ["O"] = { 
+    name = "Octo Github",
+    l = { "<cmd>Octo issue list<cr>", "list issues" },
+    p = { "<cmd>Octo pr list<cr>", "list pull requests" },
+    d = { "<cmd>Octo pr diff<cr>", "diff (PR)" },
+    c = { "<cmd>Octo issue create<cr>", "create issue" },
+    x = { "<cmd>Octo issue close<cr>", "close issue" },
+    r = { "<cmd>Octo issue reopen<cr>", "reopen issue" },
+    o = { "<cmd>Octo issue browser<cr>", "Open in browser" },
+    b = { "<cmd>Octo label add bug<cr>", "label as bug" },
+    f = { "<cmd>Octo label add enhancement<cr>", "label as feature (enhancement)" },
+    R = { "<cmd>Octo label add ready<cr>", "label as ready" },
+    U = { "<cmd>Octo reaction thumbs_up<cr>", "👍" },
+    A = { "<cmd>Octo assignee add proycon<cr>", "add self as assignee" },
+    C = { "<cmd>Octo comment add<cr>", "add comment" },
+  },
+
 
   p = {
     name = "Packer",
@@ -119,9 +135,9 @@ local mappings = {
       "<cmd>lua require 'gitsigns'.undo_stage_hunk()<cr>",
       "Undo Stage Hunk",
     },
-    o = { "<cmd>Telescope git_status<cr>", "Open changed file" },
-    b = { "<cmd>Telescope git_branches<cr>", "Checkout branch" },
-    c = { "<cmd>Telescope git_commits<cr>", "Checkout commit" },
+    S = { "<cmd>Telescope git_status<cr>", "Status" },
+    b = { "<cmd>Telescope git_branches<cr>", "Branches" },
+    c = { "<cmd>Telescope git_commits<cr>", "Commits" },
     d = {
       "<cmd>Gitsigns diffthis HEAD<cr>",
       "Diff",
@@ -131,7 +147,7 @@ local mappings = {
   l = {
     name = "LSP",
     a = { "<cmd>lua vim.lsp.buf.code_action()<cr>", "Code Action" },
-    d = {
+    D = {
       "<cmd>Telescope lsp_document_diagnostics<cr>",
       "Document Diagnostics",
     },
@@ -140,6 +156,10 @@ local mappings = {
       "Workspace Diagnostics",
     },
     f = { "<cmd>lua vim.lsp.buf.formatting()<cr>", "Format" },
+    d = { "<cmd>Telescope lsp_definitions<cr>", "Definitions" },
+    m = { "<cmd>Telescope lsp_implementations<cr>", "Implementations" },
+    c = { "<cmd>Telescope lsp_incoming_calls<cr>", "Incoming calls" },
+    C = { "<cmd>Telescope lsp_outgoing_calls<cr>", "Outgoing calls" },
     i = { "<cmd>LspInfo<cr>", "Info" },
     I = { "<cmd>LspInstallInfo<cr>", "Installer Info" },
     j = {
@@ -162,13 +182,17 @@ local mappings = {
   s = {
     name = "Search",
     b = { "<cmd>Telescope git_branches<cr>", "Checkout branch" },
+    C = { "<cmd>Telescope git_commits<cr>", "Git commits" },
     c = { "<cmd>Telescope colorscheme<cr>", "Colorscheme" },
     h = { "<cmd>Telescope help_tags<cr>", "Find Help" },
     M = { "<cmd>Telescope man_pages<cr>", "Man Pages" },
     r = { "<cmd>Telescope oldfiles<cr>", "Open Recent File" },
     R = { "<cmd>Telescope registers<cr>", "Registers" },
     k = { "<cmd>Telescope keymaps<cr>", "Keymaps" },
+    s = { "<cmd>Telescope luasnip<cr>", "Snippets" },
     C = { "<cmd>Telescope commands<cr>", "Commands" },
+    z = { "<cmd>Telescope spell_suggest<cr>", "Spelling" },
+    y = { "<cmd>Telescope neoclip<cr>", "Yank history" },
   },
 
   t = {
@@ -176,11 +200,20 @@ local mappings = {
     n = { "<cmd>lua _NODE_TOGGLE()<cr>", "Node" },
     u = { "<cmd>lua _NCDU_TOGGLE()<cr>", "NCDU" },
     t = { "<cmd>lua _HTOP_TOGGLE()<cr>", "Htop" },
+    T = { "<cmd>lua _TIG_TOGGLE()<cr>", "Tig" },
     p = { "<cmd>lua _PYTHON_TOGGLE()<cr>", "Python" },
     f = { "<cmd>ToggleTerm direction=float<cr>", "Float" },
     h = { "<cmd>ToggleTerm size=10 direction=horizontal<cr>", "Horizontal" },
     v = { "<cmd>ToggleTerm size=80 direction=vertical<cr>", "Vertical" },
   },
+  T = { "Symbols Tree" },  --SymbolsOutlineOpen
+  L = { "Diagnostics List" },  --TroubleToggle
+
+  Z = {
+    name = "zen",
+    m = { "<cmd>TZMinimalist<cr>", "Toggle minimalist" },
+    n = { "<cmd>TZNarrow<cr>", "Toggle narrow" },
+  }
 }
 
 which_key.setup(setup)

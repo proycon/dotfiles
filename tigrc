@@ -1,0 +1,6 @@
+set show-changes = true
+color cursor black yellow bold
+bind generic U      ?git pull %(remote)
+set mouse = true
+color   title-focus             252     237
+color   title-blur              252     237

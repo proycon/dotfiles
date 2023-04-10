@@ -36,6 +36,9 @@ unsetopt correct_all
 unset GREP_OPTIONS #deprecated
 
 
+td() {
+    todo.sh fancy list $@ | head
+}
 
 #apps
 menu () {
@@ -76,6 +79,7 @@ alias za='zathura'
 alias sx='sxiv -t .'
 alias gpp='git push origin gh-pages'
 alias mp="ncmpcpp -b ~/dotfiles/ncmpcpp.bindings"
+alias t="todo.sh more"
 alias f='cd $(cat ${XDG_CONFIG_HOME:-$HOME/.config}/directories | fzf)'
 alias hs="~/dotfiles/homestatus.sh"
 alias ghils="gh issue list"
@@ -89,6 +93,7 @@ alias hutsxmo2="hut todo ticket list -t \~mil/sxmo-tickets"
 alias mkenv="[ ! -e env ] && python3 -m venv env; . env/bin/activate"
 alias mk.env="[ ! -e .env ] && python3 -m venv .env; . .env/bin/activate"
 alias lh="linkhandler"
+alias open="linkhandler"
 lh0() {
     rm /tmp/linkhandler.target 2> /dev/null || echo "(already set)"
 }
@@ -133,6 +138,10 @@ export DEBFULLNAME="Maarten van Gompel"
 export BROWSER="firefox"
 
 export XDG_CONFIG_HOME="$HOME/.config"
+. ~/dotfiles/user-dirs.dirs
+export XDG_DESKTOP_DIR XDG_DOCUMENTS_DIR XDG_PICTURES_DIR XDG_MUSIC_DIR XDG_DOWNLOAD_DIR XDG_VIDEOS_DIR
+
+export TODO_DIR="$HOME/.todo"
 
 
 #coloured man pages

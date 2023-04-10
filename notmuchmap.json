@@ -1,0 +1,10 @@
+{
+    "work": ["@work"],
+    "personal": ["@hobby"],
+    "sxmo": ["+sxmo", "@hobby"],
+    "folia": ["+folia","@huc","@work"],
+    "frog": ["+frog","@huc","@work"],
+    "flat": ["+frog","@huc","@work"],
+    "clam": ["+frog","@huc","@work"],
+    "sysadmin": ["@radboud","@work"]
+}
