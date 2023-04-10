@@ -1,5 +1,5 @@
 #!/bin/sh
-# configversion: c632df3564d7c6dd5a31dd6904197c4e
+# configversion: 70fdc4af93d11d5d84abaaecd49ad1dc
 # SPDX-License-Identifier: AGPL-3.0-only
 # Copyright 2022 Sxmo Contributors
 
@@ -7,29 +7,40 @@
 # shellcheck source=scripts/core/sxmo_common.sh
 . sxmo_common.sh
 
-# in case of weird crash
-echo "unlock" > "$SXMO_STATE"
-[ -f "$SXMO_UNSUSPENDREASONFILE" ] && rm -f "$SXMO_UNSUSPENDREASONFILE"
-
 # Create xdg user directories, such as ~/Pictures
 xdg-user-dirs-update
 
-# Play a funky startup tune if you want (disabled by default)
-#mpv --quiet --no-video ~/welcome.ogg &
-mpv --quiet --no-video ~/dotfiles/media/cylontune_low.ogg &
-
 sxmo_daemons.sh start daemon_manager superd -v
 
-sleep 2 # let time to superd to start correctly
+# let time to superd to start correctly
+while ! superctl status > /dev/null 2>&1; do
+	sleep 0.5
+done
 
-(sleep 10 && ~/lighthome/client.sh > /tmp/lighthome.log 2>&1) &
+# Load our sound daemons
 
+if [ "$(command -v pulseaudio)" ]; then
+	superctl start pulseaudio
+elif [ "$(command -v pipewire)" ]; then
+	# pipewire-pulse will start pipewire
+	superctl start pipewire-pulse
+	superctl start wireplumber
+fi
+
+# Periodically update some status bar components
+sxmo_hook_statusbar.sh all
+sxmo_daemons.sh start statusbar_periodics sxmo_run_aligned.sh 60 \
+	sxmo_hook_statusbar.sh periodics
+
+# mako/dunst are required for warnings.
+# load some other little things here too.
 case "$SXMO_WM" in
 	sway)
 		superctl start mako
 		superctl start sxmo_wob
 		superctl start sxmo_menumode_toggler
 		superctl start bonsaid
+		swaymsg output '*' bg "$SXMO_BG_IMG" fill
 		;;
 	dwm)
 		superctl start dunst
@@ -42,31 +53,37 @@ case "$SXMO_WM" in
 		fi
 		superctl start "$1"
 
-		# Set a pretty wallpaper
-		feh --bg-fill "$(xdg_data_path sxmo/background.jpg)"
-
 		superctl start autocutsel
 		superctl start autocutsel-primary
 		superctl start sxmo-x11-status
+		superctl start bonsaid
 		[ -n "$SXMO_MONITOR" ] && xrandr --output "$SXMO_MONITOR" --primary
+		feh --bg-fill "$SXMO_BG_IMG"
 		;;
 esac
 
-if [ -f "${SXMO_MMS_BASE_DIR:-"$HOME"/.mms/modemmanager}/mms" ]; then
-	superctl start mmsd
+# To setup initial lock state
+sxmo_hook_unlock.sh
+
+# Turn on auto-suspend
+if [ -w "/sys/power/wakeup_count" ] && [ -f "/sys/power/wake_lock" ]; then
+	superctl start sxmo_autosuspend
 fi
 
-if [ -f "${SXMO_VVM_BASE_DIR:-"$HOME"/.vvm/modemmanager}/vvm" ]; then
-	superctl start vvmd
+# Turn on lisgd
+superctl start sxmo_hook_lisgd
+
+if [ "$(command -v ModemManager)" ]; then
+	# Turn on the dbus-monitors for modem-related tasks
+	superctl start sxmo_modemmonitor
+
+	# place a wakelock for 120s to allow the modem to fully warm up (eg25 +
+	# elogind/systemd would do this for us, but we don't use those.)
+	sxmo_wakelock.sh lock modem_warming_up 120s
 fi
 
 # Start the desktop widget (e.g. clock)
-superctl start sxmo_desktop_widget
-
-# Periodically update some status bar components
-sxmo_hook_statusbar.sh all
-sxmo_daemons.sh start statusbar_periodics sxmo_run_aligned.sh 60 \
-	sxmo_hook_statusbar.sh periodics
+superctl start sxmo_conky
 
 # Monitor the battery
 superctl start sxmo_battery_monitor
@@ -77,20 +94,28 @@ superctl start sxmo_networkmonitor
 # The daemon that display notifications popup messages
 superctl start sxmo_notificationmonitor
 
-# To setup initial lock state
-sxmo_hook_unlock.sh
+# monitor for headphone for statusbar
+superctl start sxmo_soundmonitor
 
-superctl start pipewire
-superctl start pipewire-pulse
-superctl start wireplumber
+# Play a funky startup tune if you want (disabled by default)
+mpv --quiet --no-video ~/dotfiles/media/cylontune_low.ogg &
 
-(
-	sleep 5 # let some time to pipewire
-	superctl start callaudiod
+# mmsd and vvmd
+if [ -f "${SXMO_MMS_BASE_DIR:-"$HOME"/.mms/modemmanager}/mms" ]; then
+	superctl start mmsd-tng
+fi
 
-	# Turn on the dbus-monitors for modem-related tasks
-	sxmo_daemons.sh start modem_monitor sxmo_modemmonitor.sh
-) &
+if [ -f "${SXMO_VVM_BASE_DIR:-"$HOME"/.vvm/modemmanager}/vvm" ]; then
+	superctl start vvmd
+fi
+
+# add some warnings if things are not setup correctly
+deviceprofile="$(command -v "sxmo_deviceprofile_$SXMO_DEVICE_NAME.sh")"
+
+[ -f "$deviceprofile" ] || sxmo_notify_user.sh --urgency=critical \
+	"No deviceprofile found $SXMO_DEVICE_NAME. See: https://sxmo.org/deviceprofile"
 
 sxmo_migrate.sh state || sxmo_notify_user.sh --urgency=critical \
 	"Config needs migration" "$? file(s) in your sxmo configuration are out of date and disabled - using defaults until you migrate (run sxmo_migrate.sh)"
+
+(sleep 10 && ~/lighthome/client.sh > /tmp/lighthome.log 2>&1) &

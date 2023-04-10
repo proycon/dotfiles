@@ -1,5 +1,5 @@
 #!/bin/sh
-# configversion: 6eea46448f82f12a04d79fafc45d6fb0
+# configversion: 4284f96d91e9550ff8f3b25823e402ad
 
 # Please modify this file to your liking
 #
@@ -62,4 +62,10 @@ export SXMO_RINGTIME=20
 
 #Set RINGNUMBER to number of times phone will ring or repeat ringtone
 #(whichever of SXMO_RINGTIME or SXMO_RINGNUMBER runs less will limit how long phone rings)
-export SXMO_RINGNUMER=10
+export SXMO_RINGNUMBER=4
+
+#Set to the default text for a new text message.
+export SXMO_DEFAULT_DRAFT="Enter new message here."
+
+#Set background image
+export SXMO_BG_IMG="$(xdg_data_path sxmo/background.jpg)"
