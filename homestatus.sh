@@ -279,14 +279,14 @@ printhomestatus() {
     printstategroup "apertures" "binary_sensor/frontdoor" "binary_sensor/backdoor" "binary_sensor/bathroom_window_sensor" "binary_sensor/bedroomwindow_right" "binary_sensor/bedroomwindow_left"
     printstategroup "lights" "lights/tv_spots" "lights/front_room" "lights/midspots" "lights/back_room" "lights/back_corner" "lights/kitchen" "lights/hall" "lights/office" "lights/bedroom" "lights/balcony" "lights/garden" "lights/porch" "lights/roof"
 
-    if command -v sxmo_common.sh > /dev/null 2> /dev/null; then
-        cannot_suspend_reasons="$(sxmo_mutex.sh can_suspend list)"
-        if [ "$format" = "pango" ] && [ -n "$cannot_suspend_reasons" ]; then
-            echo "<small><small><small><small>"
-            printf "%s" "$cannot_suspend_reasons" | awk '{print "• " $0}'
-            echo "</small></small></small></small>"
-        fi
-    fi
+   #if command -v sxmo_common.sh > /dev/null 2> /dev/null; then
+   #    cannot_suspend_reasons="$(sxmo_mutex.sh can_suspend list)"
+   #    if [ "$format" = "pango" ] && [ -n "$cannot_suspend_reasons" ]; then
+   #        echo "<small><small><small><small>"
+   #        printf "%s" "$cannot_suspend_reasons" | awk '{print "• " $0}'
+   #        echo "</small></small></small></small>"
+   #    fi
+   #fi
     echo -e "\n"
 }
 
