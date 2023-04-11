@@ -1,0 +1,75 @@
+# should work with any terminal colorscheme, but was designed for gruvbox
+# terminal colors are preferred, but hex is used for grayscale
+
+*.default=true
+
+# present in 'Send this email?' dialog
+title.fg=yellow
+title.bg=#303030
+title.bold=true
+
+# used in setup and in 'From:' etc
+header.bold=true
+header.fg=purple
+
+# decorative lines
+border.fg=blue
+
+# requires attention
+*error.bold=true
+*error.fg=red
+*error.blink=true
+*warning.fg=yellow
+*warning.blink=true
+*success.fg=green
+
+# statusline
+statusline_default.fg=gray
+statusline_*.bg=#303030
+
+# message list colors
+msglist_deleted.fg=gray
+msglist_unread.fg=#ffffff
+msglist_unread.bold=true
+msglist_default.fg=#dedede
+msglist_marked.fg=yellow
+msglist_marked.reverse=true
+msglist_flagged.fg=red
+msglist_flagged.bold=true
+
+# inbox etc
+dirlist_default.fg=#dedede
+dirlist_unread.fg=white
+dirlist_unread.bold=true
+
+# highlight selected item
+*.selected.bg=black
+*.selected.fg=yellow
+*.selected.bold=true
+
+# primarily used in account setup
+selector_default.fg=gray
+selector_chooser.bold=true
+selector_focused.bg=green
+selector_focused.bold=true
+
+# command completion
+completion_default.bg=#303030
+completion_gutter.bg=#303030
+completion_pill.bg=aqua
+
+#dynamic
+*msglist_answered.fg = #21771f
+"msglist_default.X-Spam,~Yes.fg" = #000000
+"msglist_default.Subject,~PATCH.bg" = #4e075b
+"msglist_default.From,~(outgoing@sr\.ht|notification@github\.com|comment-noreply@docs\.google\.com|socialhistoryservices\.org|gitlab@|@bitbucket.org).bg" = #4b2a51
+"msglist_default.From,~(builds@sr\.ht|noreply@github\.com|communicatie@let\.ru\.nl|cls@let\.ru\.nl|googlegroups|corpora|dependabot|noreply@anaproy\.nl|steampowered|ccpgames|Cron|slack\.com|proycon@science\.ru\.nl).fg" = gray
+"msglist_default.From,~notifications?.bg" = #4b2a51
+"msglist_default.From,~[@\.]ru\.nl.bg" = #0c0534
+"msglist_default.To,~admin@cls\.ru\.nl.bg" = #0c0534
+"msglist_default.Cc,~admin@cls\.ru\.nl.bg" = #0c0534
+"msglist_default.From,~(knaw\.nl|[@\.]uu\.nl|beeldengeluid\.nl|fryske-akademy\.nl|leidenuniv\.nl|@vu\.nl|kuleuven\.be|ivdnt\.org).bg" = #052134
+"msglist_default.From,~(anaxotic|gompel|wijck).bg" = #343205
+"msglist_default.Subject,~(newsletter|nieuwsbrief).fg" = gray
+"msglist_default.Subject,~build (failed|success).fg" = gray
+"msglist_default.Subject,~(automatic reply|automatisch antwoord).fg" = gray
