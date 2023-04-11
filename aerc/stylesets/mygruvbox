@@ -61,6 +61,10 @@ completion_pill.bg=aqua
 #dynamic
 *msglist_answered.fg = #21771f
 "msglist_default.X-Spam,~Yes.fg" = #000000
+"msglist_default.X-Sourcehut-Patchset-Update,~APPLIED.fg" = green
+"msglist_default.X-Sourcehut-Patchset-Update,~APPROVED.fg" = green
+"msglist_default.X-Sourcehut-Patchset-Update,~NEEDS\_REVISION.fg" = yellow
+"msglist_default.X-Sourcehut-Patchset-Update,~REJECTED.fg" = red
 "msglist_default.Subject,~PATCH.bg" = #4e075b
 "msglist_default.From,~(outgoing@sr\.ht|notification@github\.com|comment-noreply@docs\.google\.com|socialhistoryservices\.org|gitlab@|@bitbucket.org).bg" = #4b2a51
 "msglist_default.From,~(builds@sr\.ht|noreply@github\.com|communicatie@let\.ru\.nl|cls@let\.ru\.nl|googlegroups|corpora|dependabot|noreply@anaproy\.nl|steampowered|ccpgames|Cron|slack\.com|proycon@science\.ru\.nl).fg" = gray
@@ -73,3 +77,4 @@ completion_pill.bg=aqua
 "msglist_default.Subject,~(newsletter|nieuwsbrief).fg" = gray
 "msglist_default.Subject,~build (failed|success).fg" = gray
 "msglist_default.Subject,~(automatic reply|automatisch antwoord).fg" = gray
+"msglist_default.List-Id,~\w+.bg" = #291840
