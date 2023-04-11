@@ -258,15 +258,15 @@ printhomestatus() {
     else
         echo -e  "(${boldred}OFF${normal})"
     fi
-    if pgrep NetworkManager >/dev/null 2>/dev/null; then
-        nmcli -w 3 -c no -p -f DEVICE,STATE,NAME,TYPE con show | grep activated | sed 's/activated/   /' | sed '/^\s*$/d' 2> /dev/null
-    fi
-    if command -v vnstat >/dev/null; then
-    if ip a | grep -q wwan0; then
-        #only if wwan0 exists
-        vnstat wwan0 --oneline | cut -d ';' -f 11 2> /dev/null
-    fi
-    fi
+    #if pgrep NetworkManager >/dev/null 2>/dev/null; then
+    #    nmcli -w 3 -c no -p -f DEVICE,STATE,NAME,TYPE con show | grep activated | sed 's/activated/   /' | sed '/^\s*$/d' 2> /dev/null
+    #fi
+    #if command -v vnstat >/dev/null; then
+    #if ip a | grep -q wwan0; then
+    #    #only if wwan0 exists
+    #    vnstat wwan0 --oneline | cut -d ';' -f 11 2> /dev/null
+    #fi
+    #fi
     if [ "$1" = "html" ]; then
         echo "<hr/>"
     else
