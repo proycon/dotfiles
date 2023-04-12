@@ -34,7 +34,8 @@ msglist_unread.bold=true
 msglist_default.fg=#dedede
 msglist_marked.fg=yellow
 msglist_marked.reverse=true
-msglist_flagged.fg=red
+msglist_flagged.fg=white
+msglist_flagged.bg=red
 msglist_flagged.bold=true
 
 # inbox etc
@@ -58,6 +59,7 @@ completion_default.bg=#303030
 completion_gutter.bg=#303030
 completion_pill.bg=aqua
 
+
 #dynamic
 *msglist_answered.fg = #21771f
 "msglist_default.X-Spam,~Yes.fg" = #000000
@@ -70,11 +72,32 @@ completion_pill.bg=aqua
 "msglist_default.From,~(builds@sr\.ht|noreply@github\.com|communicatie@let\.ru\.nl|cls@let\.ru\.nl|googlegroups|corpora|dependabot|noreply@anaproy\.nl|steampowered|ccpgames|Cron|slack\.com|proycon@science\.ru\.nl).fg" = gray
 "msglist_default.From,~notifications?.bg" = #4b2a51
 "msglist_default.From,~[@\.]ru\.nl.bg" = #0c0534
+"msglist_default.To,~forum@unilang\.org.bg" = #342305
 "msglist_default.To,~admin@cls\.ru\.nl.bg" = #0c0534
 "msglist_default.Cc,~admin@cls\.ru\.nl.bg" = #0c0534
 "msglist_default.From,~(knaw\.nl|[@\.]uu\.nl|beeldengeluid\.nl|fryske-akademy\.nl|leidenuniv\.nl|@vu\.nl|kuleuven\.be|ivdnt\.org).bg" = #052134
+"msglist_default.To,~(knaw\.nl|[@\.]uu\.nl|beeldengeluid\.nl|fryske-akademy\.nl|leidenuniv\.nl|@vu\.nl|kuleuven\.be|ivdnt\.org).bg" = #052134
 "msglist_default.From,~(anaxotic|gompel|wijck).bg" = #343205
 "msglist_default.Subject,~(newsletter|nieuwsbrief).fg" = gray
 "msglist_default.Subject,~build (failed|success).fg" = gray
 "msglist_default.Subject,~(automatic reply|automatisch antwoord).fg" = gray
 "msglist_default.List-Id,~\w+.bg" = #291840
+
+[viewer]
+header.fg=#d845c5
+header.bold=true    
+signature.fg=3   
+signature.dim=true    
+diff_meta.fg=#ff0000
+diff_meta.bold=true    
+diff_chunk.dim=true    
+diff_add.fg=#00ff00    
+diff_del.fg=#ff0000
+quote_1.fg=6    
+quote_2.fg=7
+quote_3.fg=6    
+quote_4.fg=7    
+quote_3.dim=true
+quote_4.dim=true
+quote_x.fg=gray
+quote_x.dim=true
