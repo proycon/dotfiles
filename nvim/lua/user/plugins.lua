@@ -120,6 +120,10 @@ return packer.startup(function(use)
   use "JoosepAlviste/nvim-ts-context-commentstring"
   use "p00f/nvim-ts-rainbow" --rainbow parantheses
   use "phelipetls/jsonpath.nvim" --jq
+  use { -- adds a :FeMaco command to edit fenced code blocks in markdown, with proper syntax highlighting, LSP and all
+      'AckslD/nvim-FeMaco.lua',
+      config = 'require("femaco").setup()',
+  }
 
   -- Git
   use "lewis6991/gitsigns.nvim"
