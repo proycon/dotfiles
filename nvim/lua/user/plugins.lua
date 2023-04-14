@@ -112,7 +112,7 @@ return packer.startup(function(use)
   use "nvim-telescope/telescope-media-files.nvim"
   use "benfowler/telescope-luasnip.nvim"
 
-  -- Treesitter
+  -- Treesitter: provides more informed syntax highlighting
   use {
     "nvim-treesitter/nvim-treesitter",
     run = ":TSUpdate",
@@ -133,7 +133,9 @@ return packer.startup(function(use)
   use "mechatroner/rainbow_csv"
   use "tpope/vim-characterize" -- unicode information on 'ga' character inspection
   use "norcalli/nvim-colorizer.lua" -- show colour codes in colour
-  use "ellisonleao/glow.nvim" -- markdown preview
+  use { "ellisonleao/glow.nvim", -- markdown preview
+        config = function() require("glow").setup() end 
+  }
   use "folke/trouble.nvim" -- pretty list for showing diagnostics
   use "tpope/vim-fugitive" -- git wrapper (provides :Git commands)
   use {
