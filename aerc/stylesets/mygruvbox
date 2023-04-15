@@ -64,6 +64,7 @@ completion_pill.bg=aqua
 *msglist_answered.fg = #21771f
 "msglist_default.X-Spam,~Yes.fg" = #000000
 "msglist_default.X-Sourcehut-Patchset-Update,~APPLIED.fg" = green
+"msglist_default.X-Sourcehut-Patchset-Update,~APPLIED.bg" = #4e075b
 "msglist_default.X-Sourcehut-Patchset-Update,~APPROVED.fg" = green
 "msglist_default.X-Sourcehut-Patchset-Update,~NEEDS\_REVISION.fg" = yellow
 "msglist_default.X-Sourcehut-Patchset-Update,~REJECTED.fg" = red
