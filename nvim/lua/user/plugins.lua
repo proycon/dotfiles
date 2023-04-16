@@ -72,7 +72,8 @@ return packer.startup(function(use)
   use "lunarvim/colorschemes" -- A bunch of colorschemes you can try out
   use "lunarvim/darkplus.nvim"
   use "morhetz/gruvbox"
-  use "luisiacc/gruvbox-baby"
+  use "proycon/gruvbox-baby"
+  --use "luisiacc/gruvbox-baby"
   use {
     "mcchrish/zenbones.nvim",
     -- Optionally install Lush. Allows for more configuration or extending the colorscheme
