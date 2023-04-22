@@ -3,6 +3,7 @@ if [ ! -f /tmp/locked ]; then
     task=$(todo.sh timetrack current -t)
     todo.sh timetrack stop
     touch /tmp/locked
+    killall gpg-agent
     play ~/dotfiles/media/lock.wav >/dev/null 2>/dev/null &!
     if [ -n "$WAYLAND_DISPLAY" ]; then
         swaymsg input type:keyboard xkb_layout proylatin
