@@ -30,6 +30,8 @@
     "codemetapy": ["@work","@huc","+clariah","+wp2tooldiscovery"],
     "codemetaharvester": ["@work","@huc","+clariah","+wp2tooldiscovery"],
     "codemetaserver": ["@work","@huc","+clariah","+wp2tooldiscovery"],
+    "codemeta": ["@work","@huc","+clariah","+wp2tooldiscovery"],
+    "codemeta2html": ["@work","@huc","+clariah","+wp2tooldiscovery"],
     "tooldiscovery": ["@work","@huc","+clariah","+wp2tooldiscovery"],
     "softwaretypes": ["@work","@huc","+clariah","+wp2tooldiscovery"],
     "softwarequalityguidelines": ["@work","@huc","+clariah","+clariahtc"],
