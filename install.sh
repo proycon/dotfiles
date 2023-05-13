@@ -208,7 +208,7 @@ if [ $SXMO -eq 1 ]; then
 elif [ -z "$NO_DESKTOP" ]; then
     CONFIGNAMES=("aerc" "nvim" "ranger" "sxiv" "ipython" "tm" "ncmpcpp.config" "lf" "zathura" "tuir" "tut" "newsboat" "dunst" "sway" "mako" "i3status" "foot" "rofi" "user-dirs.dirs" "waybar" "hypr")
 else
-    CONFIGNAMES=("nvim" "ranger" "ipython" "tm" "vifm" "lf")
+    CONFIGNAMES=("nvim" "ranger" "ipython" "tm" "lf")
 fi
 
 SCRIPTS=("suspend.sh" "linkhander" "lock.sh" "screencast.sh" "emojiselect" "wtime" "rotdir" "lf-select" "updatemail.sh" "darkmode.sh" "lightmode.sh")
