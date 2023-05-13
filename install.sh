@@ -77,7 +77,7 @@ fi
 
 
 if [ $SUDO -eq 1 ]; then
-    if [[ "$OS" == "debian" ]]; then
+    if [ "$OS" = "debian" ]; then
         sudo -E apt-get $APT_YES update
         sudo -E apt-get $APT_YES  install aptitude tmux tig neovim ncdu ranger curl wget gcc autoconf-archive pandoc htop glances iotop netcat git whiptail ack jq sed fping highlight chafa gawk
         if [ -z "$NO_DESKTOP" ]; then
@@ -85,15 +85,72 @@ if [ $SUDO -eq 1 ]; then
             sudo -E apt-get $APT_YES install cmake cmake-data libcairo2-dev libxcb1-dev libxcb-ewmh-dev libxcb-icccm4-dev libxcb-image0-dev libxcb-randr0-dev libxcb-util0-dev libxcb-xkb-dev pkg-config python-xcbgen xcb-proto libxcb-xrm-dev libasound2-dev libmpdclient-dev libiw-dev libcurl4-openssl-dev libpulse-dev libxcb-composite0-dev xcb libxcb-ewmh2 #for compiling polybar
             sudo -E apt-get $APT_YES install rustc cargo #for compiling alacritty and other rust stuff
         fi
-    elif [[ "$OS" == "arch" ]]; then
-        sudo pacman -Syyu --needed sudo openssh aspell aspell-de aspell-en aspell-es aspell-fr aspell-it aspell-nl aspell-ru audacity autoconf autoconf-archive bat bzip2 calibre cheese chromium cmake compton debootstrap deluge doxygen e2fsprogs encfs evince fcitx fcitx-gtk3 fcitx-gtk2 feh ffmpeg firefox gawk gcc gdb geeqie gedit gimp git gitg glances gmp gnome-common gnupg gnu-netcat gnome-settings-daemon gnome-keyring go gnutls gnuplot grep gpgme gpm groovy graphviz gstreamer gst-plugins-good gst-plugins-base gst-plugins-bad gst-plugins-ugly gzip htop hdparm hunspell icu ipython imagemagick iotop iperf jupyter keybase lm_sensors lsb-release lsof lua make mailcap m4 maven mesa mplayer mpv nano nautilus ncdu mosquitto mpc networkmanager newsboat ncmpcpp nmap nnn ranger okular openssl perl poppler powerline procps-ng psmisc python python-cherrypy python-lxml python-django python-setuptools python-jinja python-flask python-matplotlib python-numpy python-oauth2client python-oauthlib python-jupyter_core python-jupyter_client python-pandas python-pip python-pillow python-psutil python-requests python-seaborn python-setuptools python-virtualenv python-yaml rofi rsync readline ruby rust rxvt-unicode rxvt-unicode-terminfo scrot semver slim smbclient sqlite tar sxiv subversion bzr mercurial telegram-desktop texlive-bin texlive-core texlive-humanities texlive-langextra texlive-latexextra texlive-pstricks texlive-pictures texlive-publishers texlive-formatsextra texlive-fontsextra texlive-bibtexextra texlive-science thunar thunderbird tig tk ttf-dejavu ttf-droid ttf-fira-code ttf-khmer ttf-ubuntu-font-family ttf-tibetan-machine ttf-roboto ttf-opensans ttf-font-awesome ttf-fira-mono ttf-fira-sans ttf-linux-libertine traceroute udiskie unrar unzip urxvt-perls virtualbox vagrant usbutils v4l-utils vlc w3m wget whois wireshark-cli xorg-server xorg-fonts-100dpi xorg-xkbutils xorg-xev xorg-xrandr xorg-xrdb xorg-xset xorg-xauth xorg-server-common xorg-setxkbmap xss-lock youtube-dl zathura zathura-pdf-poppler zip zsh tmux cups cups-filters foomatic-db antiword highlight chafa perl-authen-sasl perl-net-smtp-ssl perl-mime-tools dunst inetutils
-        sudo pacman -Syyu --needed alacritty tmux picom neovim tig i3lock ncdu ranger curl wget rofi dmenu openbox ipython pcmanfm gcc mpv autoconf-archive pandoc htop glances iotop netcat sxiv newsboat mplayer fcitx firefox pavucontrol ncmpcpp git fzf zathura zathura-pdf-poppler gimp inkscape ack bat jq fd sed sox ctags alsa-utils python-neovim wqy-zenhei wqy-microhei wqy-bitmapfont network-manager-applet nm-connection-editor sshfs autoconf automake pkg-config fping ripgrep exa bash-language-server python-rope pamixer noto-fonts-emoji otf-fira-mono ttf-fira-code xclip xsel scrot clutter encfs pipewire-pulse pipewire-alsa xdg-desktop-portal flatpak tldr yt-dlp powertop buku ueberzug github-cli telegram-desktop gucharmap leafpad
-        sudo pacman- Syyu --needed xorg-startx xorg-xinit xf86-video-intel mesa
-        sudo pacman -Syyu --needed alsa-firmware sof-firmware alsa-ucm-conf
-        sudo pacman -Syyu --needed cargo rust go gdb nodejs
-        sudo pacman -Syyu --needed pyright flake8 eslint cppcheck rustfmt prettier python-pylint
-        sudo pacman -Syyu --needed sway swaylock swaybg swayidle mako bemenu wtype wofi xdg-desktop-portal-wlr libpipewire02 slurp grim wl-clipboard i3status xorg-xwayland imv
-        sudo pacman -Syyu --needed weechat msmtp-mta calcurse afew #neomutt
+    elif [ "$OS" = "arch" ]; then
+        #this is much more elaborate than the others because this is my main distro
+
+        PACMAN="sudo pacman -Syyu --needed"
+        #core
+        $PACMAN base-devel bash busybox bzip2 coreutils e2fsprogs fzf gnupg gnutls gzip hdparm htop iotop iperf less lm_sensors lsb-release lshw lsof make nano neovim openssh openssl procps-ng psmisc readline rsync sudo tar time tmux tree udiskie vi zip zsh
+        #networking
+        $PACMAN curl encfs fping inetutils netcat networkmanager nfs-utils nm-connection-editor nmap nmap smbclient sshfs traceroute usbutils wget whois wireshark-cli
+        #version control
+        $PACMAN git mercurial subversion tig
+        #audio
+        $PACMAN alsa-firmware alsa-ucm-conf audacity gst-plugins-bad gst-plugins-base gst-plugins-good gst-plugins-ugly gstreamer mpc ncmpcpp pamixer pavucontrol pipewire-alsa pipewire-pulse sof-firmware
+        #dev: python
+        $PACMAN ipython jupyter-nbconvert jupyter-notebook jupyterlab python python-cherrypy python-django python-flask python-jinja python-jupyter-client python-jupyter-core python-lxml python-matplotlib python-numpy python-oauth2client python-oauthlib python-pandas python-pillow python-pip python-psutil python-requests python-scikit-learn python-scipy python-seaborn python-setuptools python-setuptools python-sphinx python-virtualenv python-yaml
+        #dev: rust
+        $PACMAN cargo gdb go nodejs rust rust-src
+        #dev: C/C++
+        $PACMAN autoconf autoconf-archive automake cmake ctags doxygen gdb gmp icu m4 meson ninja pkg-config valgrind
+        #dev: various programming languages
+        $PACMAN go groovy jdk-openjdk lua maven nodejs perl ruby
+        #dev: distro specific
+        $PACMAN abuild apk-tools debootstrap pmbootstrap
+        #dev: linters, formatters
+        $PACMAN bash-language-server cppcheck eslint flake8 prettier pyright python-pylint rustfmt
+        #communication
+        $PACMAN aerc mailcap mosquitto msmtp-mta newsboat weechat
+        #libs
+        $PACMAN perl-mime-tools perl-net-smtp-ssl
+        #containers & VM
+        $PACMAN apptainer lxd podman podman-compose podman-docker vagrant
+        #CLI text tools
+        $PACMAN ack antiword bat dasel fzf gawk glow grep highlight jq miller pandoc ripgrep sed xsv
+        #CLI file management
+        $PACMAN exa fd lf ncdu ranger
+        #CLI process management
+        $PACMAN btop
+        #printing
+        $PACMAN cups cups-filters foomatic-db
+        #languages
+        $PACMAN aspell aspell-de aspell-en aspell-es aspell-fr aspell-it aspell-nl aspell-ru hunspell
+        #TeX
+        $PACMAN texlive-bibtexextra texlive-bin texlive-core texlive-fontsextra texlive-formatsextra texlive-humanities texlive-langextra texlive-latexextra texlive-pictures texlive-pstricks texlive-publishers texlive-science
+        #plotting
+        $PACMAN gnuplot graphviz
+        #various
+        $PACMAN amfora lynx links w3m urlscan chafa
+        #compression
+        $PACMAN p7zip unrar xz zstd
+
+        if [ -z "$NO_DESKTOP" ]; then
+            #desktop: wayland core
+            $PACMAN bemenu foot grim hyprland i3status imv libpipewire02 mako mesa slurp swaybg swayidle swaylock wev wl-clipboard wofi wtype xdg-desktop-portal-wlr xorg-xwayland ydotool
+            #desktop: basic
+            $PACMAN bemenu-wayland chromium firefox gedit network-manager-applet pcmanfm rofi telegram-desktop thunar zathura zathura-pdf-poppler
+            #fonts
+            $PACMAN noto-fonts-emoji otf-fira-mono ttf-dejavu ttf-droid ttf-fira-code ttf-fira-code ttf-fira-mono ttf-fira-sans ttf-font-awesome ttf-khmer ttf-linux-libertine ttf-opensans ttf-roboto ttf-tibetan-machine ttf-ubuntu-font-family wqy-bitmapfont wqy-microhei wqy-zenhei
+            #graphics & video
+            $PACMAN cheese feh ffmpeg gimp imagemagick imv inkscape mplayer mpv sxiv v4l-utils vlc yt-dlp
+            #IME & languages
+            $PACMAN fcitx5 fcitx5-chinese-addons fcitx5-gtk fcitx5-qt
+            #various
+            $PACMAN calibre
+            #containers & vm
+            $PACMAN flatpak virtualbox
+        fi
+
         YAY=0
         while true; do
             echo -n "Install AUR packages? (requires yay!) [yn] "
@@ -105,12 +162,21 @@ if [ $SUDO -eq 1 ]; then
             esac
         done
         if [ $YAY -eq 1 ]; then
-            yay -S hyprland-git waybar-hyprland-git lf-sixel-git lsix-git otf-nerd-fonts-fira-mono powerline-fonts-git ttf-material-design-icons-git ttf-symbola ccls javascript-typescript-langserver ttf-nerd-fonts-input libxft-bgra || echo "WARNING: yay is not installed yet, do so yourself!">&2
+            if ! command -v yay; then
+                echo "Installing yay"
+                d=$(pwd)
+                cd /tmp/
+                git clone https://aur.archlinux.org/yay.git
+                cd yay
+                makepkg -si
+                cd "$d"
+            fi
+            yay -S waybar-hyprland-git lf-sixel-git lsix-git otf-nerd-fonts-fira-mono powerline-fonts-git ttf-material-design-icons-git ttf-symbola ccls ttf-nerd-fonts-input || echo "WARNING: yay is not installed yet, do so yourself!">&2
         fi
-    elif [[ "$OS" == "postmarketos" ]]; then
+    elif [ "$OS" = "postmarketos" ]; then
         sudo apk update
         sudo apk upgrade
-        sudo apk add openssh vim zsh bash tmux htop bat feh newsboat weechat zathura-pdf-mupdf git tig mpv lf python3 fzf tuir espeak sxiv ncdu mpc make gcc libc-dev linux-headers libx11-dev libxft-dev libxcb-dev libxtst-dev freetype-dev libxinerama-dev wqy-zenhei font-fira-mono-nerd font-fira-code || exit 2
+        sudo apk add bash bat espeak feh font-fira-code font-fira-mono-nerd freetype-dev fzf gcc git htop lf libc-dev libx11-dev libxcb-dev libxft-dev libxinerama-dev libxtst-dev linux-headers make mpc mpv ncdu newsboat openssh python3 sxiv tig tmux tuir vim weechat wqy-zenhei zathura-pdf-mupdf zsh || exit 2
     else
         echo "Distribution not supported!">&2
         sleep 10
@@ -118,11 +184,12 @@ if [ $SUDO -eq 1 ]; then
 fi
 
 cd ~
-HOMEDIR=`pwd`
+HOMEDIR=$(pwd)
 mkdir bin
 mkdir .config
 mkdir .local
 mkdir .local/share
+
 cd dotfiles
 git submodule init
 git submodule sync
