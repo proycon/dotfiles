@@ -90,9 +90,9 @@ if [ $SUDO -eq 1 ]; then
 
         PACMAN="sudo pacman -Syyu --needed"
         #core
-        $PACMAN base-devel bash busybox bzip2 coreutils e2fsprogs fzf gnupg gnutls gzip hdparm htop iotop iperf less lm_sensors lsb-release lshw lsof make nano neovim openssh openssl procps-ng psmisc readline rsync sudo tar time tmux tree udiskie vi zip zsh
+        $PACMAN base-devel bash busybox bzip2 coreutils e2fsprogs fzf gnupg gnutls gzip hdparm htop iotop iperf less lm_sensors lsb-release lshw lsof make nano neovim openssh openssl procps-ng psmisc readline rsync sudo tar time tmux tree udiskie vi zip zsh pass
         #networking
-        $PACMAN curl encfs fping inetutils netcat networkmanager nfs-utils nm-connection-editor nmap nmap smbclient sshfs traceroute usbutils wget whois wireshark-cli
+        $PACMAN curl fping inetutils netcat networkmanager nfs-utils nm-connection-editor nmap nmap smbclient sshfs traceroute usbutils wget whois wireshark-cli termshark openfortivpn gocryptfs
         #version control
         $PACMAN git mercurial subversion tig
         #audio
@@ -100,7 +100,7 @@ if [ $SUDO -eq 1 ]; then
         #dev: python
         $PACMAN ipython jupyter-nbconvert jupyter-notebook jupyterlab python python-cherrypy python-django python-flask python-jinja python-jupyter-client python-jupyter-core python-lxml python-matplotlib python-numpy python-oauth2client python-oauthlib python-pandas python-pillow python-pip python-psutil python-requests python-scikit-learn python-scipy python-seaborn python-setuptools python-setuptools python-sphinx python-virtualenv python-yaml
         #dev: rust
-        $PACMAN cargo gdb go nodejs rust rust-src
+        $PACMAN cargo gdb go nodejs npm rust rust-src
         #dev: C/C++
         $PACMAN autoconf autoconf-archive automake cmake ctags doxygen gdb gmp icu m4 meson ninja pkg-config valgrind
         #dev: various programming languages
@@ -108,13 +108,13 @@ if [ $SUDO -eq 1 ]; then
         #dev: distro specific
         $PACMAN abuild apk-tools debootstrap pmbootstrap
         #dev: linters, formatters
-        $PACMAN bash-language-server cppcheck eslint flake8 prettier pyright python-pylint rustfmt
+        $PACMAN bash-language-server ccls cppcheck eslint flake8 prettier pyright python-pylint rustfmt shellcheck
         #communication
-        $PACMAN aerc mailcap mosquitto msmtp-mta newsboat weechat
+        $PACMAN aerc mailcap mosquitto msmtp-mta newsboat weechat notmuch
         #libs
         $PACMAN perl-mime-tools perl-net-smtp-ssl
         #containers & VM
-        $PACMAN apptainer lxd podman podman-compose podman-docker vagrant
+        $PACMAN apptainer lxd podman buildah podman-compose podman-docker vagrant
         #CLI text tools
         $PACMAN ack antiword bat dasel fzf gawk glow grep highlight jq miller pandoc ripgrep sed xsv
         #CLI file management
@@ -130,19 +130,19 @@ if [ $SUDO -eq 1 ]; then
         #plotting
         $PACMAN gnuplot graphviz
         #various
-        $PACMAN amfora lynx links w3m urlscan chafa
+        $PACMAN amfora lynx links w3m urlscan chafa semver oath-toolkit
         #compression
         $PACMAN p7zip unrar xz zstd
 
         if [ -z "$NO_DESKTOP" ]; then
             #desktop: wayland core
-            $PACMAN bemenu foot grim hyprland i3status imv libpipewire02 mako mesa slurp swaybg swayidle swaylock wev wl-clipboard wofi wtype xdg-desktop-portal-wlr xorg-xwayland ydotool
+            $PACMAN bemenu foot grim hyprland i3status imv libpipewire mako mesa slurp swaybg swayidle swaylock wev wl-clipboard wofi wtype xdg-desktop-portal-wlr xorg-xwayland ydotool
             #desktop: basic
-            $PACMAN bemenu-wayland chromium firefox gedit network-manager-applet pcmanfm rofi telegram-desktop thunar zathura zathura-pdf-poppler
+            $PACMAN bemenu-wayland chromium firefox gedit network-manager-applet pcmanfm rofi telegram-desktop thunar zathura zathura-pdf-poppler gnome-keyring
             #fonts
-            $PACMAN noto-fonts-emoji otf-fira-mono ttf-dejavu ttf-droid ttf-fira-code ttf-fira-code ttf-fira-mono ttf-fira-sans ttf-font-awesome ttf-khmer ttf-linux-libertine ttf-opensans ttf-roboto ttf-tibetan-machine ttf-ubuntu-font-family wqy-bitmapfont wqy-microhei wqy-zenhei
+            $PACMAN noto-fonts-emoji otf-fira-mono ttf-dejavu ttf-droid ttf-fira-code ttf-fira-code ttf-fira-mono ttf-fira-sans ttf-font-awesome ttf-khmer ttf-linux-libertine ttf-opensans ttf-roboto ttf-tibetan-machine ttf-ubuntu-font-family wqy-bitmapfont wqy-microhei wqy-zenhei cantarell-fonts gucharmap
             #graphics & video
-            $PACMAN cheese feh ffmpeg gimp imagemagick imv inkscape mplayer mpv sxiv v4l-utils vlc yt-dlp
+            $PACMAN cheese feh ffmpeg gimp imagemagick imv inkscape mplayer mpv sxiv v4l-utils vlc yt-dlp kdenlive
             #IME & languages
             $PACMAN fcitx5 fcitx5-chinese-addons fcitx5-gtk fcitx5-qt
             #various
@@ -168,10 +168,10 @@ if [ $SUDO -eq 1 ]; then
                 cd /tmp/
                 git clone https://aur.archlinux.org/yay.git
                 cd yay
-                makepkg -si
+                sudo makepkg -si
                 cd "$d"
             fi
-            yay -S waybar-hyprland-git lf-sixel-git lsix-git otf-nerd-fonts-fira-mono powerline-fonts-git ttf-material-design-icons-git ttf-symbola ccls ttf-nerd-fonts-input || echo "WARNING: yay is not installed yet, do so yourself!">&2
+            yay -S aercbook-bin gomuks-git lf-sixel-git lsix-git mblaze-git otf-nerd-fonts-fira-mono powerline-fonts-git telegram-tg-git todotxt ttf-material-design-icons-git ttf-nerd-fonts-input ttf-symbola waybar-hyprland-git
         fi
     elif [ "$OS" = "postmarketos" ]; then
         sudo apk update
