@@ -102,7 +102,7 @@ if [ $SUDO -eq 1 ]; then
         #dev: rust
         $PACMAN cargo gdb go nodejs npm rust rust-src
         #dev: C/C++
-        $PACMAN autoconf autoconf-archive automake cmake ctags doxygen gdb gmp icu m4 meson ninja pkg-config valgrind
+        $PACMAN autoconf autoconf-archive automake cmake ctags doxygen gdb gmp icu m4 meson ninja pkg-config valgrind libxml2
         #dev: various programming languages
         $PACMAN go groovy jdk-openjdk lua maven nodejs perl ruby
         #dev: distro specific
@@ -116,7 +116,7 @@ if [ $SUDO -eq 1 ]; then
         #containers & VM
         $PACMAN apptainer lxd podman buildah podman-compose podman-docker vagrant
         #CLI text tools
-        $PACMAN ack antiword bat dasel fzf gawk glow grep highlight jq miller pandoc ripgrep sed xsv
+        $PACMAN ack antiword bat dasel fmt fzf gawk glow grep highlight jq miller pandoc ripgrep sed xsv
         #CLI file management
         $PACMAN exa fd lf ncdu ranger
         #CLI process management
@@ -138,11 +138,11 @@ if [ $SUDO -eq 1 ]; then
             #desktop: wayland core
             $PACMAN bemenu foot grim hyprland i3status imv libpipewire mako mesa slurp swaybg swayidle swaylock wev wl-clipboard wofi wtype xdg-desktop-portal-wlr xorg-xwayland ydotool
             #desktop: basic
-            $PACMAN bemenu-wayland chromium firefox gedit network-manager-applet pcmanfm rofi telegram-desktop thunar zathura zathura-pdf-poppler gnome-keyring
+            $PACMAN bemenu-wayland chromium element-desktop firefox gedit gnome-keyring libreoffice-fresh network-manager-applet pcmanfm telegram-desktop thunar xdg-utils zathura zathura-pdf-poppler
             #fonts
             $PACMAN noto-fonts-emoji otf-fira-mono ttf-dejavu ttf-droid ttf-fira-code ttf-fira-code ttf-fira-mono ttf-fira-sans ttf-font-awesome ttf-khmer ttf-linux-libertine ttf-opensans ttf-roboto ttf-tibetan-machine ttf-ubuntu-font-family wqy-bitmapfont wqy-microhei wqy-zenhei cantarell-fonts gucharmap
             #graphics & video
-            $PACMAN cheese feh ffmpeg gimp imagemagick imv inkscape mplayer mpv sxiv v4l-utils vlc yt-dlp kdenlive
+            $PACMAN cheese feh ffmpeg gimp imagemagick imv inkscape mplayer mpv sxiv v4l-utils vlc yt-dlp kdenlive ytfzf
             #IME & languages
             $PACMAN fcitx5 fcitx5-chinese-addons fcitx5-gtk fcitx5-qt
             #various
@@ -171,7 +171,7 @@ if [ $SUDO -eq 1 ]; then
                 sudo makepkg -si
                 cd "$d"
             fi
-            yay -S aercbook-bin gomuks-git lf-sixel-git lsix-git mblaze-git otf-nerd-fonts-fira-mono powerline-fonts-git telegram-tg-git todotxt ttf-material-design-icons-git ttf-nerd-fonts-input ttf-symbola waybar-hyprland-git
+            yay -S aercbook-bin gomuks-git lf-sixel-git lsix-git mblaze-git otf-nerd-fonts-fira-mono powerline-fonts-git rofi-lbonn-wayland telegram-tg-git todotxt ttf-material-design-icons-git ttf-nerd-fonts-input ttf-symbola waybar-hyprland-git
         fi
     elif [ "$OS" = "postmarketos" ]; then
         sudo apk update
