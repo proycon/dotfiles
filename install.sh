@@ -116,7 +116,7 @@ if [ $SUDO -eq 1 ]; then
         #containers & VM
         $PACMAN apptainer lxd podman buildah podman-compose podman-docker vagrant
         #CLI text tools
-        $PACMAN ack antiword bat dasel fmt fzf gawk glow grep highlight jq miller pandoc ripgrep sed xsv
+        $PACMAN ack antiword bat fmt fzf gawk glow grep highlight jq miller pandoc ripgrep sed xsv
         #CLI file management
         $PACMAN exa fd lf ncdu ranger
         #CLI process management
