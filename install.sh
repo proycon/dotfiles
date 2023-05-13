@@ -204,9 +204,9 @@ else
 fi
 
 if [ $SXMO -eq 1 ]; then
-    CONFIGNAMES=("sxiv" "tm" "ncmpcpp.config" "lf" "sxmo" "tuir" "newsboat" "user-dirs.dirs")
+    CONFIGNAMES=("aerc" "sxiv" "tm" "ncmpcpp.config" "lf" "sxmo" "tuir" "tut" "newsboat" "user-dirs.dirs")
 elif [ -z "$NO_DESKTOP" ]; then
-    CONFIGNAMES=("nvim" "ranger" "sxiv" "ipython" "tm" "ncmpcpp.config" "lf" "zathura" "tuir" "newsboat" "dunst" "sway" "mako" "i3status" "foot" "rofi" "user-dirs.dirs" "waybar" "hypr")
+    CONFIGNAMES=("aerc" "nvim" "ranger" "sxiv" "ipython" "tm" "ncmpcpp.config" "lf" "zathura" "tuir" "tut" "newsboat" "dunst" "sway" "mako" "i3status" "foot" "rofi" "user-dirs.dirs" "waybar" "hypr")
 else
     CONFIGNAMES=("nvim" "ranger" "ipython" "tm" "vifm" "lf")
 fi
