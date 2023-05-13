@@ -90,7 +90,7 @@ if [ $SUDO -eq 1 ]; then
 
         PACMAN="sudo pacman -Syyu --needed"
         #core
-        $PACMAN base-devel bash busybox bzip2 coreutils e2fsprogs fzf gnupg gnutls gzip hdparm htop iotop iperf less lm_sensors lsb-release lshw lsof make nano neovim openssh openssl procps-ng psmisc readline rsync sudo tar time tmux tree udiskie vi zip zsh pass
+        $PACMAN base-devel bash busybox bzip2 coreutils e2fsprogs fzf gnupg gnutls gzip hdparm htop iotop iperf less lm_sensors lsb-release lshw lsof make nano neovim openssh openssl procps-ng psmisc readline rsync sudo tar time tmux tree udiskie vi zip zsh pass apparmor firejail
         #networking
         $PACMAN curl fping inetutils netcat networkmanager nfs-utils nm-connection-editor nmap nmap smbclient sshfs traceroute usbutils wget whois wireshark-cli termshark openfortivpn gocryptfs
         #version control
@@ -130,13 +130,13 @@ if [ $SUDO -eq 1 ]; then
         #plotting
         $PACMAN gnuplot graphviz
         #various
-        $PACMAN amfora lynx links w3m urlscan chafa semver oath-toolkit
+        $PACMAN amfora lynx links w3m urlscan chafa semver oath-toolkit pwgen
         #compression
         $PACMAN p7zip unrar xz zstd
 
         if [ -z "$NO_DESKTOP" ]; then
             #desktop: wayland core
-            $PACMAN bemenu foot grim hyprland i3status imv libpipewire mako mesa slurp swaybg swayidle swaylock wev wl-clipboard wofi wtype xdg-desktop-portal-wlr xorg-xwayland ydotool
+            $PACMAN bemenu foot grim hyprland i3status imv libpipewire mako mesa slurp swaybg swayidle swaylock wofi wtype xdg-desktop-portal-wlr xorg-xwayland ydotool
             #desktop: basic
             $PACMAN bemenu-wayland chromium element-desktop firefox gedit gnome-keyring libreoffice-fresh network-manager-applet pcmanfm telegram-desktop thunar xdg-utils zathura zathura-pdf-poppler
             #fonts
@@ -168,10 +168,10 @@ if [ $SUDO -eq 1 ]; then
                 cd /tmp/
                 git clone https://aur.archlinux.org/yay.git
                 cd yay
-                sudo makepkg -si
+                makepkg -si
                 cd "$d"
             fi
-            yay -S aercbook-bin gomuks-git lf-sixel-git lsix-git mblaze-git otf-nerd-fonts-fira-mono powerline-fonts-git rofi-lbonn-wayland telegram-tg-git todotxt ttf-material-design-icons-git ttf-nerd-fonts-input ttf-symbola waybar-hyprland-git
+            yay -S aercbook-bin gomuks-git lf-sixel-git lsix-git mblaze-git otf-nerd-fonts-fira-mono powerline-fonts-git rofi-lbonn-wayland telegram-tg-git todotxt ttf-material-design-icons-git ttf-symbola waybar-hyprland-git
         fi
     elif [ "$OS" = "postmarketos" ]; then
         sudo apk update
