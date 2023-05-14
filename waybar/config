@@ -58,7 +58,7 @@
   }
 },
 "custom/mail": {
-    "exec": "~/dotfiles/checkmail.sh",
+    "exec": "~/dotfiles/scripts/checkmail.sh",
     "interval": 10,
     "tooltip": true
 },
