@@ -1,8 +1,8 @@
 .PHONY: bin conffiles update
 
-bin: bin/darkmode.sh bin/lightmode.sh bin/emojiselect bin/lock.sh bin/rotdir bin/screencast.sh bin/suspend.sh bin/tm bin/wtime bin/starthyprland.sh bin/network-menu.sh bin/linkhandler bin/colorargs.sh bin/buku-dmenu bin/newmail bin/curmail bin/vpn-knaw.sh
+bin: bin/darkmode.sh bin/lightmode.sh bin/emojiselect bin/lock.sh bin/rotdir bin/screencast.sh bin/suspend.sh bin/tm bin/wtime bin/starthyprland.sh bin/network-menu.sh bin/linkhandler bin/colorargs.sh bin/buku-dmenu bin/newmail bin/curmail bin/vpn-knaw.sh bin/runsteam
 
-bin/darkmode.sh bin/lightmode.sh bin/emojiselect bin/lock.sh bin/rotdir bin/screencast.sh bin/suspend.sh bin/tm bin/wtime bin/starthyprland.sh bin/network-menu.sh bin/linkhandler bin/colorargs.sh bin/buku-dmenu bin/newmail bin/curmail bin/vpn-knaw.sh:
+bin/darkmode.sh bin/lightmode.sh bin/emojiselect bin/lock.sh bin/rotdir bin/screencast.sh bin/suspend.sh bin/tm bin/wtime bin/starthyprland.sh bin/network-menu.sh bin/linkhandler bin/colorargs.sh bin/buku-dmenu bin/newmail bin/curmail bin/vpn-knaw.sh bin/runsteam:
 	ln -sf ~/dotfiles/scripts/$(shell basename "$@") $@
 
 all: bin conffiles .oh-my-zsh
