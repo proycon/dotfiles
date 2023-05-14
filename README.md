@@ -16,12 +16,36 @@ Current setup:
 * **Editor**: neovim
 * **Browser**: firefox
 * **Music player**: ncmpcpp + mopidy
-* **Mail**: neomutt
+* **Mail**: aerc
 * **Chat**: weechat (irc) + bitblee (xmpp) + gomuks (matrix) + tg (telegram)
+
+Install
+--------------
+
+You probably don't want to use the install method if you're not me, but rather
+just pick and copy things you like into your own setup.
+
+If you are me, you (me) can install all dotfiles including **all system
+packages I use for my system** as follows:
+
+```
+$ make install
+```
+
+On Arch Linux this essentially provisions and entire desktop system. The script
+is idempotent so can be rerun freely.
+
+However, to forcibly update some things as well, use this instead:
+
+```
+$ make update
+```
 
 Key bindings
 --------------
 
+* **hyprland**
+    * TODO, very comparable to what I had for dwm though
 * **dwm**
     * ``cmd+1,2,3,4,5,6,7,8,9`` - switch tags/workspace
     * ``cmd+Shift+1,2,3,4,5,6,7,8,9`` - move window to selected workspaces

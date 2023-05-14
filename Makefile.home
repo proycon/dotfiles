@@ -1,0 +1,25 @@
+.PHONY: bin conffiles update
+
+bin: bin/darkmode.sh bin/lightmode.sh bin/emojiselect bin/lock.sh bin/rotdir bin/screencast.sh bin/suspend.sh bin/tm bin/wtime bin/starthyprland.sh bin/network-menu.sh bin/linkhandler bin/colorargs.sh bin/buku-dmenu bin/newmail bin/curmail
+
+bin/darkmode.sh bin/lightmode.sh bin/emojiselect bin/lock.sh bin/rotdir bin/screencast.sh bin/suspend.sh bin/tm bin/wtime bin/starthyprland.sh bin/network-menu.sh bin/linkhandler bin/colorargs.sh bin/buku-dmenu bin/newmail bin/curmail:
+	ln -sf ~/dotfiles/scripts/$(shell basename "$@") $@
+
+all: bin conffiles .oh-my-zsh
+
+conffiles: zshrc urlview muttrc mailcap signature signature.ru.txt signature.knaw.txt signature.unilang tmux.conf tmux-powerlinerc tmux tigrc
+
+.zshrc .urlview .muttrc .mailcap .signature .signature.ru.txt .signature.knaw.txt .signature.unilang .tmux.conf .tmux-powerlinerc .tmux .tigrc:
+	ln -sf ~/dotfiles/$(shell echo $@ | sed s/^\.//) $@
+
+update: oh-my-zsh
+	cd oh-my-zsh && git pull
+
+oh-my-zsh:
+    git clone https://github.com/robbyrussell/oh-my-zsh.git
+
+.oh-my-zsh: oh-my-zsh
+	ln -s $< $@
+
+.oh-my-zsh/themes/proysh.zsh-theme: .oh-my-zsh	
+	ln -s ~/dotfiles/proysh.zsh-theme $@
