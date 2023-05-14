@@ -80,7 +80,7 @@ ifeq ($(DISTRO),arch)
 	#TeX
 	${PACMAN} texlive-bibtexextra texlive-bin texlive-core texlive-fontsextra texlive-formatsextra texlive-humanities texlive-langextra texlive-latexextra texlive-pictures texlive-pstricks texlive-publishers texlive-science
 	#plotting
-	${PACMAN} gnuplot graphviz
+	${PACMAN} gnuplot graphviz plantuml
 	#various
 	${PACMAN} amfora lynx links w3m urlscan chafa semver oath-toolkit pwgen
 	#compression
