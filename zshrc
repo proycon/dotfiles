@@ -19,7 +19,7 @@ export DISABLE_AUTO_UPDATE="true"
 # DISABLE_AUTO_TITLE="true"
 
 # Uncomment following line if you want red dots to be displayed while waiting for completion
-# COMPLETION_WAITING_DOTS="true"
+COMPLETION_WAITING_DOTS="true"
 
 unset CHECKGIT
 export DISABLE_UNTRACKED_FILES_DIRTY="true"
@@ -34,11 +34,6 @@ source $ZSH/oh-my-zsh.sh
 setopt cshnullglob
 unsetopt correct_all
 unset GREP_OPTIONS #deprecated
-
-
-td() {
-    todo.sh fancy list $@ | head
-}
 
 #apps
 menu () {
@@ -61,7 +56,6 @@ alias mk='LANGUAGE="en_GB.UTF-8" make'
 alias mi='LANGUAGE="en_GB.UTF-8" make install; if (( $? == 0 )); then; play -q /usr/share/sounds/KDE-Sys-App-Positive.ogg 2> /dev/null &!; else; play -q /usr/share/sounds/KDE-K3B-Finish-Error.ogg 2> /dev/null &!; fi; hr'
 alias glmi='sshcheck && git pull &&  && git submodule update && LANGUAGE="en_GB.UTF-8" make install; if (( $? == 0 )); then; play -q /usr/share/sounds/KDE-Sys-App-Positive.ogg 2> /dev/null &!; else; play -q /usr/share/sounds/KDE-K3B-Finish-Error.ogg 2> /dev/null &!; fi; hr'
 alias glsi='git pull && git submodule update && pip install .'
-alias psi='pip install .'
 alias pi='pip install .'
 alias gl='sshcheck && git pull && git submodule update; if (( $? == 0 )); then; play -q /usr/share/sounds/KDE-Window-Minimize.ogg 2> /dev/null &!; fi'
 alias gp='sshcheck && git push; if (( $? == 0 )); then; play -q /usr/share/sounds/KDE-Window-Maximize.ogg 2> /dev/null &!; fi'
@@ -163,94 +157,112 @@ tlms() {
 }
 
 topcommands() {
+    if [ -z "$1" ]; then
+        n=25
+    else
+        n=$1
+    fi
     history | awk '{CMD[$2]++;count++;}END { for (a in CMD) print CMD[a] " " CMD[a]/count*100 "% " a;}' | grep -v "./" | column -c3 -s " " -t | sort -nr | nl | head -n $1
 }
 
-alias dis='export $(tmux showenv | grep DISPLAY)'
-
-if [ -f ~/bin/lamachine-main-activate ]; then
-    alias lm='source ~/bin/lamachine-main-activate'
-elif [ -f ~/bin/lamachine-stable-activate ]; then
-    alias lm='source ~/bin/lamachine-stable-activate'
-fi
-if [ -f ~/bin/lamachine-dev-activate ]; then
-    alias lmdev='source ~/bin/lamachine-dev-activate'
-fi
-
 
 #PATHS
-if [[ $HOST == "rocinante" || $HOST == "trantor" || $HOST == "mhysa" || $HOST == "drasha" ]]; then
-    export PATH="/home/proycon/bin:/home/proycon/.cargo/bin:$PATH"
-    #export LD_LIBRARY_PATH="$LD_LIBRARY_PATH:/home/proycon/local/lib"
-    export CDPATH=.:~/work:~/projects
-    #export PYTHONPATH="/home/proycon/work/"
-    #export ANDROID_SDK="/usr/local/android-sdk-linux"
-
-    hash -d X=/home/proycon/exp
-    #hash -d lsrc=/home/proycon/local/src/
-    hash -d W=/home/proycon/work
-    hash -d P=/home/proycon/projects
-elif [[ $HOST == "proyphone" ]]; then
-    export PATH="/home/proycon/bin:/home/proycon/.cargo/bin:$PATH"
-
-elif [[ $HOST == "applejack" || $HOST == "fluttershy" || $HOST == "rarity" || $HOST == "cheerilee" || $HOST == "fancypants" || $HOST == "pipsqueak" || $HOST == "scootaloo" || $HOST == "blossomforth" || $HOST == "featherweight" || $HOST == "twist" || $HOST == "thunderlane" || ${HOST:0:3} == "mlp" ]]; then
-    alias lmws='source lamachine-weblamachine-activate'
-    alias lmws1='source /var/www/lamachine/bin/activate'
-    alias lm='source /vol/customopt/bin/lamachine-activate'
-    alias lmdev='source /vol/customopt/bin/lamachine-dev-activate'
-    #export LD_LIBRARY_PATH="/vol/customopt/machine-translation/lib:/vol/customopt/nlptools/lib/:$LD_LIBRARY_PATH"
-    BASEPATH="/home/proycon/bin:/home/proycon/.cargo/bin:/home/proycon/local/bin:/vol/customopt/machine-translation/bin:$PATH"
-    #/vol/customopt/uvt-ru/bin:/vol/customopt/alpino/bin:/vol/customopt/uvt-ru/src/colibri/scripts:/vol/customopt/nlptools/bin/:/vol/customopt/nlptools/cmd/:/vol/customopt/cython3/bin/:$PATH"
-    export PATH=$BASEPATH
-    export CDPATH=.:/scratch/proycon/:/scratch/proycon/local/:/scratch/proycon/local/src/
-    #export PYTHONPATH="/home/proycon/:/vol/customopt/uvt-ru/lib/python2.7/site-packages/:/vol/customopt/uvt-ru/src/colibri/scripts:/vol/customopt/uvt-ru/lib/python2.7/site-packages/frog/:/vol/customopt/nlptools/stanford-corenlp-python:/vol/customopt/uvt-ru/lib/python3.2/site-packages/:/vol/customopt/python3-packages/lib/python3.2/site-packages/"
-    #export CLASSPATH="/vol/customopt/nlptools/stanford-corenlp-full/stanford-corenlp-1.3.4.jar:/vol/customopt/nlptools/stanford-corenlp-full/stanford-corenlp-1.3.4-models.jar:/vol/customopt/nlptools/stanford-corenlp-full/xom.jar:/vol/customopt/nlptools/stanford-corenlp-full/joda-time.jar:/vol/customopt/nlptools/stanford-corenlp-full/jollyday.jar:/vol/customopt/nlptools/javalib:."
-    #export FREELINGSHARE="/vol/customopt/nlptools/share/freeling/"
-    if [ -d /scratch/proycon/tmp ]; then
-        export TMPDIR="/scratch/proycon/tmp"
-    fi
-    hash -d X=/scratch/proycon/
-    hash -d corpora=/vol/bigdata/corpora/
-    hash -d lm=/vol/customopt/lamachine/
-    hash -d lmdev=/vol/customopt/lamachine.dev/
-    hash -d lmsrc=/vol/customopt/lamachine/src/
-    hash -d mt=/vol/customopt/machine-translation/
-    hash -d corp=/vol/bigdata/corpora/
-    hash -d bd=/vol/bigdata/users/proycon/
-    hash -d tu=/vol/tensusers/proycon/
-    hash -d ws=/var/www/webservices-lst/live
-
-    umask u=rwx,g=rx,o=rx
-else
-    DOMAIN=$(hostname -d | tr -d "\n")
-    if [[ $DOMAIN == "anaproy.lxd" || $HOST == "anaproy" || $HOST == "anaproy2" ]]; then
-        export PATH="/home/proycon/bin:/home/proycon/.cargo/bin:/home/proycon/local/bin:$PATH"
-        export LD_LIBRARY_PATH="$LD_LIBRARY_PATH:/home/proycon/local/lib"
-        export PYTHONPATH="/home/proycon/work/"
+case "$HOST" in 
+    rocinante|trantor|mhysa|pollux)
+        export PATH="/home/proycon/bin:/home/proycon/.cargo/bin:$PATH"
         export CDPATH=.:~/work:~/projects
 
         hash -d X=/home/proycon/exp
-        hash -d lsrc=/home/proycon/local/src/
         hash -d W=/home/proycon/work
         hash -d P=/home/proycon/projects
-    fi
-fi
+
+        alias sshm='sshcheck && ssh -Y -A mhysa.anaproy.nl'
+        alias sshp='sshcheck && ssh -Y -A pollux.anaproy.nl'
+        alias lg="ssh -Y -A -t lilo.science.ru.nl ssh -Y -A -t lightning"
+        alias aj="ssh -Y -A -t lilo.science.ru.nl ssh -Y -A -t applejack /home/proycon/bin/tm"
+        alias _aj="ssh -Y -A -t lilo.science.ru.nl ssh -Y -A -t applejack"
+        alias fs="ssh -Y -A -t lilo.science.ru.nl ssh -Y -A -t fluttershy /home/proycon/bin/tm"
+        alias rr="ssh -Y -A -t lilo.science.ru.nl ssh -Y -A -t rarity /home/proycon/bin/tm"
+        alias cl="ssh -Y -A -t lilo.science.ru.nl ssh -Y -A -t cheerilee /home/proycon/bin/tm"
+        alias fp="ssh -Y -A -t lilo.science.ru.nl ssh -Y -A -t fancypants /home/proycon/bin/tm"
+        alias pq="ssh -Y -A -t lilo.science.ru.nl ssh -Y -A -t pipsqueak /home/proycon/bin/tm"
+        alias so="ssh -Y -A -t lilo.science.ru.nl ssh -Y -A -t scootaloo /home/proycon/bin/tm"
+        alias fw="ssh -Y -A -t lilo.science.ru.nl ssh -Y -A -t featherweight /home/proycon/bin/tm"
+        alias bf="ssh -Y -A -t lilo.science.ru.nl ssh -Y -A -t blossomforth /home/proycon/bin/tm"
+        alias tl="ssh -Y -A -t lilo.science.ru.nl ssh -Y -A -t thunderlane /home/proycon/bin/tm"
+        alias tw="ssh -Y -A -t lilo.science.ru.nl ssh -Y -A -t twist /home/proycon/bin/tm"
+        ;;
+    proyphone)
+        export PATH="/home/proycon/bin:/home/proycon/.cargo/bin:$PATH"
+        ;;
+    mlp*)
+        alias lmws='source lamachine-weblamachine-activate'
+        alias lmws1='source /var/www/lamachine/bin/activate'
+        alias lm='source /vol/customopt/bin/lamachine-activate'
+        alias lmdev='source /vol/customopt/bin/lamachine-dev-activate'
+        #export LD_LIBRARY_PATH="/vol/customopt/machine-translation/lib:/vol/customopt/nlptools/lib/:$LD_LIBRARY_PATH"
+        BASEPATH="/home/proycon/bin:/home/proycon/.cargo/bin:/home/proycon/local/bin:/vol/customopt/machine-translation/bin:$PATH"
+        #/vol/customopt/uvt-ru/bin:/vol/customopt/alpino/bin:/vol/customopt/uvt-ru/src/colibri/scripts:/vol/customopt/nlptools/bin/:/vol/customopt/nlptools/cmd/:/vol/customopt/cython3/bin/:$PATH"
+        export PATH=$BASEPATH
+        export CDPATH=.:/scratch/proycon/:/scratch/proycon/local/:/scratch/proycon/local/src/
+        #export PYTHONPATH="/home/proycon/:/vol/customopt/uvt-ru/lib/python2.7/site-packages/:/vol/customopt/uvt-ru/src/colibri/scripts:/vol/customopt/uvt-ru/lib/python2.7/site-packages/frog/:/vol/customopt/nlptools/stanford-corenlp-python:/vol/customopt/uvt-ru/lib/python3.2/site-packages/:/vol/customopt/python3-packages/lib/python3.2/site-packages/"
+        #export CLASSPATH="/vol/customopt/nlptools/stanford-corenlp-full/stanford-corenlp-1.3.4.jar:/vol/customopt/nlptools/stanford-corenlp-full/stanford-corenlp-1.3.4-models.jar:/vol/customopt/nlptools/stanford-corenlp-full/xom.jar:/vol/customopt/nlptools/stanford-corenlp-full/joda-time.jar:/vol/customopt/nlptools/stanford-corenlp-full/jollyday.jar:/vol/customopt/nlptools/javalib:."
+        if [ -d /scratch/proycon/tmp ]; then
+            export TMPDIR="/scratch/proycon/tmp"
+        fi
+        hash -d X=/scratch/proycon/
+        hash -d corpora=/vol/bigdata/corpora/
+        hash -d lm=/vol/customopt/lamachine/
+        hash -d lmdev=/vol/customopt/lamachine.dev/
+        hash -d lmsrc=/vol/customopt/lamachine/src/
+        hash -d mt=/vol/customopt/machine-translation/
+        hash -d corp=/vol/bigdata/corpora/
+        hash -d bd=/vol/bigdata/users/proycon/
+        hash -d tu=/vol/tensusers/proycon/
+        hash -d ws=/var/www/webservices-lst/live
+
+        umask u=rwx,g=rx,o=rx
+
+        alias aj="ssh -Y -A -t applejack /home/proycon/bin/tm"
+        alias _aj="ssh -Y -A -t applejack"
+        alias fs="ssh -Y -A -t fluttershy /home/proycon/bin/tm"
+        alias rr="ssh -Y -A -t rarity /home/proycon/bin/tm"
+        alias cl="ssh -Y -A -t cheerilee /home/proycon/bin/tm"
+        alias fp="ssh -Y -A -t fancypants /home/proycon/bin/tm"
+        alias pq="ssh -Y -A -t pipsqueak /home/proycon/bin/tm"
+        alias so="ssh -Y -A -t scootaloo /home/proycon/bin/tm"
+        alias fw="ssh -Y -A -t featherweight /home/proycon/bin/tm"
+        alias bf="ssh -Y -A -t blossomforth /home/proycon/bin/tm"
+        alias tl="ssh -Y -A -t thunderlane /home/proycon/bin/tm"
+        alias tw="ssh -Y -A -t twist /home/proycon/bin/tm"
+        ;;
+    *)
+        DOMAIN=$(hostname -d | tr -d "\n")
+        case "$DOMAIN" in
+            anaproy|anaproy.lxd|anaproy2)
+                export PATH="/home/proycon/bin:/home/proycon/.cargo/bin:/home/proycon/local/bin:$PATH"
+                export LD_LIBRARY_PATH="$LD_LIBRARY_PATH:/home/proycon/local/lib"
+                export PYTHONPATH="/home/proycon/work/"
+                export CDPATH=.:~/work:~/projects
+
+                hash -d X=/home/proycon/exp
+                hash -d lsrc=/home/proycon/local/src/
+                hash -d W=/home/proycon/work
+                hash -d P=/home/proycon/projects
+                ;;
+        esac
+        ;;
+esac
 
 
-#if [[ -f  /usr/share/source-highlight/src-hilite-lesspipe.sh ]]; then
-#    export LESSOPEN="| /usr/share/source-highlight/src-hilite-lesspipe.sh %s"
-#fi
-
-which exa > /dev/null 2>/dev/null
-if (( $? == 0 )); then
+if command -v exa > /dev/null 2>/dev/null; then
     alias l='exa'
     alias ll='exa -l'
 else
     alias l='ls'
     alias ll='ls -l'
 fi
-which bat > /dev/null 2>/dev/null
-if (( $? == 0 )); then
+if command -v bat > /dev/null 2>/dev/null; then
     export PAGER="bat --style=plain --paging=always"
     export BAT_PAGER="less -q"
 else
@@ -259,47 +271,8 @@ fi
 
 
 alias ssha='sshcheck && ssh -Y -A anaproy.nl'
-alias sshm='sshcheck && ssh -Y -A mhysa.anaproy.nl'
-alias aj="ssh -Y -A -t applejack.science.ru.nl /home/proycon/bin/tm"
-alias fs="ssh -Y -A -t applejack.science.ru.nl ssh -Y -A -t fluttershy /home/proycon/bin/tm"
-alias rr="ssh -Y -A -t applejack.science.ru.nl ssh -Y -A -t rarity /home/proycon/bin/tm"
-alias cl="ssh -Y -A -t applejack.science.ru.nl ssh -Y -A -t cheerilee /home/proycon/bin/tm"
-alias fp="ssh -Y -A -t applejack.science.ru.nl ssh -Y -A -t fancypants /home/proycon/bin/tm"
-alias pq="ssh -Y -A -t applejack.science.ru.nl ssh -Y -A -t pipsqueak /home/proycon/bin/tm"
-alias so="ssh -Y -A -t applejack.science.ru.nl ssh -Y -A -t scootaloo /home/proycon/bin/tm"
-alias fw="ssh -Y -A -t applejack.science.ru.nl ssh -Y -A -t featherweight /home/proycon/bin/tm"
-alias bf="ssh -Y -A -t applejack.science.ru.nl ssh -Y -A -t blossomforth /home/proycon/bin/tm"
-alias tl="ssh -Y -A -t applejack.science.ru.nl ssh -Y -A -t thunderlane /home/proycon/bin/tm"
-alias tw="ssh -Y -A -t applejack.science.ru.nl ssh -Y -A -t twist /home/proycon/bin/tm"
-alias mlp1="ssh -Y -A -t applejack.science.ru.nl ssh -Y -A -t mlp01 /home/proycon/bin/tm"
-alias mlp01="ssh -Y -A -t applejack.science.ru.nl ssh -Y -A -t mlp01 /home/proycon/bin/tm"
-alias mlp02="ssh -Y -A -t applejack.science.ru.nl ssh -Y -A -t mlp02 /home/proycon/bin/tm"
-alias mlp03="ssh -Y -A -t applejack.science.ru.nl ssh -Y -A -t mlp03 /home/proycon/bin/tm"
-alias mlp04="ssh -Y -A -t applejack.science.ru.nl ssh -Y -A -t mlp04 /home/proycon/bin/tm"
-alias mlp05="ssh -Y -A -t applejack.science.ru.nl ssh -Y -A -t mlp05 /home/proycon/bin/tm"
-alias mlp06="ssh -Y -A -t applejack.science.ru.nl ssh -Y -A -t mlp06 /home/proycon/bin/tm"
-alias mlp07="ssh -Y -A -t applejack.science.ru.nl ssh -Y -A -t mlp07 /home/proycon/bin/tm"
-alias mlp08="ssh -Y -A -t applejack.science.ru.nl ssh -Y -A -t mlp08 /home/proycon/bin/tm"
-alias mlp09="ssh -Y -A -t applejack.science.ru.nl ssh -Y -A -t mlp09 /home/proycon/bin/tm"
-alias mlp10="ssh -Y -A -t applejack.science.ru.nl ssh -Y -A -t mlp10 /home/proycon/bin/tm"
-alias mlp11="ssh -Y -A -t applejack.science.ru.nl ssh -Y -A -t mlp11 /home/proycon/bin/tm"
-alias mlp12="ssh -Y -A -t applejack.science.ru.nl ssh -Y -A -t mlp12 /home/proycon/bin/tm"
-alias mlp13="ssh -Y -A -t applejack.science.ru.nl ssh -Y -A -t mlp13 /home/proycon/bin/tm"
-alias _aj="sshcheck && ssh -Y -A -t applejack.science.ru.nl zsh"
-alias _fs="ssh -Y -A -t applejack.science.ru.nl ssh -Y -A -t fluttershy zsh"
-alias _rr="ssh -Y -A -t applejack.science.ru.nl ssh -Y -A -t rarity zsh"
-alias _cl="ssh -Y -A -t applejack.science.ru.nl ssh -Y -A -t cheerilee zsh"
-alias _fp="ssh -Y -A -t applejack.science.ru.nl ssh -Y -A -t fancypants zsh"
-alias _pq="ssh -Y -A -t applejack.science.ru.nl ssh -Y -A -t pipsqueak zsh"
-alias _so="ssh -Y -A -t applejack.science.ru.nl ssh -Y -A -t scootaloo zsh"
-alias _sc="ssh -Y -A -t mvgompel@radium.uvt.nl ssh -Y -A -t scylla zsh"
-alias homsar="ssh -Y -A -t homsar.uvt.nl zsh"
-alias luon="ssh -Y -A -t maartenvg@void.luon.net"
-#alias gpga="killall gpg-agent; gpg-agent --daemon --enable-ssh-support --write-env-file /home/proycon/.gpg-agent-info"
-#
 
 
-alias lq="source ~/.sgesh"
 
 alias wtr="curl http://wttr.in/Eindhoven"
 alias wttr="curl http://wttr.in/Eindhoven"
@@ -314,27 +287,6 @@ qr() {
     curl -s http://qrenco.de/$1 | cat
 }
 
-
-if [[ $HOST == "applejack" || $HOST == "fluttershy" || $HOST == "rarity" || $HOST == "cheerilee" || $HOST == "fancypants" || $HOST == "pipsqueak" || $HOST == "scootaloo" || $HOST == "blossomforth" || $HOST == "featherweight" || $HOST == "twist" || $HOST == "thunderlane" ]]; then
-
-    ipynb() {
-        if [ ! -z "$1" ]; then
-            ipy3 notebook --no-browser --port=$1
-        else
-            ipy3 notebook --no-browser --port=8888
-        fi
-    }
-
-fi
-
-alias py="python3"
-alias py2="python2"
-alias py3="python3"
-alias ipy="ipython3"
-alias ipy2="ipython"
-alias ipyq="ipython qtconsole"
-alias ipyq3="ipython3 qtconsole"
-alias ipynb="ipython3 notebook"
 
 sshtunnel() {
     TARGETHOST=$1
@@ -382,7 +334,7 @@ function virtualenv_prompt_info(){
 
 function rmd () {
   pandoc -s -f gfm -H ~/dotfiles/header.sty -o /tmp/rmd.pdf $1
-  DISPLAY=:0.0 zathura /tmp/rmd.pdf
+  zathura /tmp/rmd.pdf
 }
 
 export VIRTUAL_ENV_DISABLE_PROMPT=1
@@ -532,17 +484,5 @@ esac
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 [ -f ~/dotfiles/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh ] && source ~/dotfiles/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-# BEGIN LAMACHINE MANAGED BLOCK - path
-if [[ "$PATH" != *"/home/proycon/bin"* ]]; then
-    export PATH=~/bin:$PATH #add ~/bin to $PATH, that is where the activation scripts are
-fi
-# END LAMACHINE MANAGED BLOCK - path
 
 export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH:$HOME/.local/bin"
-
-if [ -e /home/proycon/.config/broot/launcher/bash/br ]; then
-    source /home/proycon/.config/broot/launcher/bash/br
-fi
-
-# added by travis gem
-[ ! -s /home/proycon/.travis/travis.sh ] || source /home/proycon/.travis/travis.sh
