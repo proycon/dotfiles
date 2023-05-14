@@ -1,6 +1,6 @@
 #!/usr/bin/env sh
 
-. ~/dotfiles/colorargs.sh
+. ~/dotfiles/scripts/colorargs.sh
 
 if [ -n "$WAYLAND_DISPLAY" ]; then
     MENUTOOL="bemenu $BEMENU_COLORARGS -p $1"

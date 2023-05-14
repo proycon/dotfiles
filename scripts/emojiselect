@@ -6,7 +6,7 @@
 #xclip -h >/dev/null || exit
 
 
-. ~/dotfiles/colorargs.sh
+. ~/dotfiles/scripts/colorargs.sh
 
 if [ -n "$WAYLAND_DISPLAY" ]; then
     chosen=$(cut -d ';' -f1 ~/dotfiles/emoji | bemenu -p "Emoji" -n -l 30 --fn "$BEMENU_FONT" $BEMENU_COLORARGS | sed "s/ .*//")

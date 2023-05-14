@@ -29,7 +29,7 @@ elif [ "$1" = "--version" ] ; then
     exit 0
 fi
 
-. ~/dotfiles/colorargs.sh
+. ~/dotfiles/scripts/colorargs.sh
 
 #get all bmks | swap tabs for spaces | run dmenu | cut to ID | run buku if not empty
 if [ -n "$WAYLAND_DISPLAY" ]; then

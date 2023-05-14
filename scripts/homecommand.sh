@@ -2,7 +2,7 @@
 
 # Receives notifications from MQTT
 
-. ~/dotfiles/colorargs.sh
+. ~/dotfiles/scripts/colorargs.sh
 
 if [ ! -z "$MQTT_USER" ]; then
     echo "No MQTT user defined">&2
@@ -39,5 +39,5 @@ else
     PAYLOAD=ON
 fi
 
-~/dotfiles/notifysend.sh "$TOPIC" "$PAYLOAD"
+~/dotfiles/scripts/notifysend.sh "$TOPIC" "$PAYLOAD"
 exit $?

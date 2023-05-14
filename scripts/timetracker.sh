@@ -1,7 +1,7 @@
 #!/bin/sh
 
 
-. ~/dotfiles/colorargs.sh
+. ~/dotfiles/scripts/colorargs.sh
 
 if [ -z "$2" ]; then
     if [ -n "$WAYLAND_DISPLAY" ]; then

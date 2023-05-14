@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-. ~/dotfiles/colorargs.sh
+. ~/dotfiles/scripts/colorargs.sh
 
 shopt -s nullglob globstar
 

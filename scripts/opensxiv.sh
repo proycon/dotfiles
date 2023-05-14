@@ -1,6 +1,6 @@
 #!/bin/bash
 
-. ~/dotfiles/colorargs.sh
+. ~/dotfiles/scripts/colorargs.sh
  
 if [ -n "$WAYLAND_DISPLAY" ] || which bemenu; then
     dir=$(ls -d ~/Pictures/*/  | sed "s|$HOME/Pictures/||g" | bemenu -l 20 --fn "Monospace 20" -p "Open Folder?" $BEMENU_COLORARGS)

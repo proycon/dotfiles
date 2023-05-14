@@ -1,14 +1,14 @@
 #!/bin/sh
 rm ~/.mblaze/seq*
 mlist ~/Maildir/new ~/Maildir/.Notifications/new ~/Maildir/.Lists*/new | msort -dr  | mseq -S
-nr=$(mscan -f "%-3n %c%u%r %10d <span fgcolor=\"darkcyan\">%17f</span> ICON %2i%s" | ~/dotfiles/mblaze2pango.sh | rofi -matching glob -tokenize -i -no-sort -no-levenshtein-sort -p "Unread mail" -dmenu -markup -markup-rows | cut -d " " -f 1)
+nr=$(mscan -f "%-3n %c%u%r %10d <span fgcolor=\"darkcyan\">%17f</span> ICON %2i%s" | ~/dotfiles/scripts/mblaze2pango.sh | rofi -matching glob -tokenize -i -no-sort -no-levenshtein-sort -p "Unread mail" -dmenu -markup -markup-rows | cut -d " " -f 1)
 if [ -n "$nr" ]; then
     ATTACHDIR=~/Downloads/mailattachments
     rm -rf "$ATTACHDIR"
     mkdir -p "$ATTACHDIR"
     cd "$ATTACHDIR"
     if ls ~/Downloads/mailattachments/* > /dev/null; then
-        ~/dotfiles/dmenu-files.sh "$ATTACHDIR" -t &
+        ~/dotfiles/scripts/dmenu-files.sh "$ATTACHDIR" -t &
     fi
     mshow -x "$nr" #extract attachments
     cd -

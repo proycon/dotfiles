@@ -1,6 +1,6 @@
 #!/bin/sh
 
-. ~/dotfiles/colorargs.sh 
+. ~/dotfiles/scripts/colorargs.sh 
 
 icon_chk="✔"
 connections() {
