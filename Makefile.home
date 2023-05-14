@@ -23,3 +23,6 @@ oh-my-zsh:
 
 .oh-my-zsh/themes/proysh.zsh-theme: .oh-my-zsh	
 	ln -s ~/dotfiles/proysh.zsh-theme $@
+
+.oh-my-zsh/plugins/zsh-autosuggestions: .oh-my-zsh	
+	ln -s ~/dotfiles/zsh-autosuggestions/
