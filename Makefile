@@ -65,7 +65,7 @@ ifeq ($(DISTRO),arch)
 	#libs
 	${PACMAN} perl-mime-tools perl-net-smtp-ssl
 	#containers & VM
-	${PACMAN} apptainer lxd podman buildah podman-compose podman-docker vagrant
+	${PACMAN} apptainer lxd podman buildah podman-compose podman-docker vagrant kubectl
 	#CLI text tools
 	${PACMAN} ack antiword bat fmt fzf gawk glow grep highlight jq miller pandoc ripgrep sed xsv
 	#CLI file management
