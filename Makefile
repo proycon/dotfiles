@@ -98,7 +98,7 @@ ifeq ($(DESKTOP),1)
 	#IME & languages
 	${PACMAN} fcitx5 fcitx5-chinese-addons fcitx5-gtk fcitx5-qt fcitx5-configtool ibus-libpinyin
 	#various
-	${PACMAN} calibre
+	${PACMAN} calibre zola hugo
 	#containers & vm
 	${PACMAN} flatpak virtualbox
 	@echo "--> Run make aur manually to also make aur packages !!!"
