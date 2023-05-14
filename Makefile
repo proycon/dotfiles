@@ -56,7 +56,7 @@ ifeq ($(DISTRO),arch)
 	#dev: various programming languages
 	${PACMAN} go groovy jdk-openjdk lua maven nodejs perl ruby
 	#dev: distro specific
-	${PACMAN} apk-tools debootstrap pmbootstrap
+	${PACMAN} apk-tools debootstrap pmbootstrap android-tools
 	#(abuild is in AUR)
 	#dev: linters, formatters
 	${PACMAN} bash-language-server ccls cppcheck eslint flake8 prettier pyright python-pylint rustfmt shellcheck
