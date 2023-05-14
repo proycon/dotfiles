@@ -96,7 +96,7 @@ ifeq ($(DESKTOP),1)
 	#graphics & video
 	${PACMAN} cheese feh ffmpeg gimp imagemagick imv inkscape mplayer mpv sxiv v4l-utils vlc yt-dlp kdenlive ytfzf
 	#IME & languages
-	${PACMAN} fcitx5 fcitx5-chinese-addons fcitx5-gtk fcitx5-qt
+	${PACMAN} fcitx5 fcitx5-chinese-addons fcitx5-gtk fcitx5-qt fcitx5-configtool ibus-libpinyin
 	#various
 	${PACMAN} calibre
 	#containers & vm
