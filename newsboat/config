@@ -45,7 +45,7 @@ color article default default
 ignore-article "*" "title =~ \"(PSV|Ajax|Feyenoord|FC |Bundesliga|voetbal|Fußbal|championship|soccer|Formula 1|Formule 1|tennis|hockey|sport)\""
 
 
-browser /home/proycon/dotfiles/linkhandler
+browser /home/proycon/dotfiles/scripts/linkhandler
 #macro , open-in-browser
 #macro . set browser "setsid nohup mpv"; open-in-browser ; set browser linkhandler
 #
