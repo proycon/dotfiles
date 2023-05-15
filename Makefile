@@ -87,7 +87,7 @@ ifeq ($(DISTRO),arch)
 	${PACMAN} p7zip unrar xz zstd
 ifeq ($(DESKTOP),1)
 	#desktop: wayland core
-	${PACMAN} bemenu foot grim hyprland i3status imv libpipewire mako mesa slurp swaybg swayidle swaylock wofi wtype xdg-desktop-portal-hyprland xorg-xwayland ydotool
+	${PACMAN} bemenu foot grim hyprland i3status imv libpipewire mako mesa slurp swaybg swayidle swaylock wofi wtype xdg-desktop-portal-hyprland xorg-xwayland ydotool catimg wl-clipboard
 	#desktop: basic
 	${PACMAN} bemenu-wayland chromium element-desktop firefox gedit gnome-keyring libreoffice-fresh network-manager-applet pcmanfm telegram-desktop thunar xdg-utils zathura zathura-pdf-poppler
 	#(rofi will be installed from AUR)
