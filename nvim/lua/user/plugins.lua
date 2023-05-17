@@ -166,8 +166,15 @@ return packer.startup(function(use)
   -- use 'mfussenegger/nvim-dap' -- Debugger
   use "https://git.sr.ht/~sotirisp/vim-tsv"
   use "proycon/todo.txt-vim" -- my own extended todo.txt syntax highlighting
-  use { "raghur/vim-ghost",
-        run = ":GhostInstall" 
+  use { "glacambre/firenvim",
+    -- Lazy load firenvim
+    -- Explanation: https://github.com/folke/lazy.nvim/discussions/463#discussioncomment-4819297
+    run = function() vim.fn['firenvim#install'](0) end 
+    --cond = not not vim.g.started_by_firenvim,
+    --build = function()
+    --    require("lazy").load({ plugins = "firenvim", wait = true })
+    --    vim.fn["firenvim#install"](0)
+    --end
   }
   use({
     'sQVe/sort.nvim',
