@@ -33,8 +33,8 @@ target/home/bin:
 	mkdir target/home/bin
 
 links: targets 
-	make -C ~/.config/
-	make -C ~
+	make -C ~/.config/ all
+	make -C ~ all
 	~/dotfiles/scripts/darkmode.sh || true
 
 packages:
