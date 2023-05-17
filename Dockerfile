@@ -9,7 +9,7 @@ WORKDIR /home/proycon
 
 ENV DESKTOP=1
 
-RUN git clone https://git.sr.ht/~proycon/dotfiles && cd dotfiles && make install DESKTOP=$DESKTOP
+RUN git clone --recurse-submodules https://github.com/proycon/dotfiles && cd dotfiles && make install DESKTOP=$DESKTOP
 
 WORKDIR /home/proycon
 
