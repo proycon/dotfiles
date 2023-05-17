@@ -50,6 +50,14 @@ vim.api.nvim_create_autocmd("BufWritePre", {
     end
 })
 
+-- firenvim in github issues, use markdown
+vim.api.nvim_create_autocmd('BufEnter', {
+    pattern = { "github.com_*.txt" },
+    callback = function()
+        vim.cmd "set filetype=markdown"
+    end
+})
+
 vim.cmd "set whichwrap+=<,>,[,],h,l"
 vim.cmd [[set iskeyword+=-]]
 vim.cmd [[set formatoptions-=cro]] -- TODO: this doesn't seem to work
