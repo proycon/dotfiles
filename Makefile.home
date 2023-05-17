@@ -16,13 +16,13 @@ update: oh-my-zsh
 	cd oh-my-zsh && git pull
 
 oh-my-zsh:
-    git clone https://github.com/ohmyzsh/ohmyzsh.git oh-my-zsh
+	git clone https://github.com/ohmyzsh/ohmyzsh.git oh-my-zsh
 
 .oh-my-zsh: oh-my-zsh
-	ln -s $< $@
+	ln -sf $< $@
 
 .oh-my-zsh/themes/proysh.zsh-theme: .oh-my-zsh	
-	ln -s ~/dotfiles/proysh.zsh-theme $@
+	ln -sf ~/dotfiles/proysh.zsh-theme $@
 
 .oh-my-zsh/plugins/zsh-autosuggestions: .oh-my-zsh	
 	ln -s ~/dotfiles/zsh-autosuggestions/
