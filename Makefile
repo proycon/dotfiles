@@ -5,14 +5,14 @@ DESKTOP := 1
 # -- automatically computed or static parameters
 DISTRO := $(shell . /etc/os-release; echo $$ID)
 PACMAN := sudo pacman -S --needed
-APK := sudo apk add
+APK := sudo apk add --no-interactive
 APT := sudo apt-get install
 
 
 .PHONY: targets packages install aur yay update updating
 
 
-targets: target/config/Makefile target/home/Makefile
+targets: target/config/Makefile target/home/Makefile target/home/bin
 
 target/home:
 	mkdir -p target
@@ -29,10 +29,13 @@ target/config/Makefile: target/config
 target/home/Makefile: target/home
 	ln -sf ~/dotfiles/Makefile.home target/home/Makefile
 
+target/home/bin:
+	mkdir target/home/bin
+
 links: targets 
 	make -C ~/.config/
 	make -C ~
-	~/dotfiles/scripts/darkmode.sh
+	~/dotfiles/scripts/darkmode.sh || true
 
 packages:
 	@echo "--> Installing packages"
@@ -50,11 +53,11 @@ ifeq ($(DISTRO),arch)
 	#dev: python
 	${PACMAN} ipython jupyter-nbconvert jupyter-notebook jupyterlab python python-cherrypy python-django python-flask python-jinja python-jupyter-client python-jupyter-core python-lxml python-matplotlib python-numpy python-oauth2client python-oauthlib python-pandas python-pillow python-pip python-psutil python-requests python-scikit-learn python-scipy python-seaborn python-setuptools python-setuptools python-sphinx python-virtualenv python-yaml twine
 	#dev: rust
-	${PACMAN} cargo go nodejs npm rust rust-src
+	${PACMAN} cargo rust rust-src
 	#dev: C/C++
 	${PACMAN} autoconf autoconf-archive automake cmake ctags doxygen gdb gmp icu m4 meson ninja pkg-config valgrind libxml2
 	#dev: various programming languages
-	${PACMAN} go groovy jdk-openjdk lua maven nodejs perl ruby
+	${PACMAN} go groovy jdk-openjdk lua maven nodejs nodejs npm perl ruby
 	#dev: distro specific
 	${PACMAN} apk-tools debootstrap pmbootstrap android-tools
 	#(abuild is in AUR)
@@ -106,7 +109,37 @@ endif
 else ifeq ($(DISTRO),$(filter $(DISTRO), alpine postmarketos))
 	sudo apk update
 	sudo apk upgrade
-	${APK} bash bat espeak feh font-fira-code font-fira-mono-nerd freetype-dev fzf gcc git htop lf libc-dev libx11-dev libxcb-dev libxft-dev libxinerama-dev libxtst-dev linux-headers make mpc mpv ncdu newsboat openssh python3 sxiv tig tmux tuir vim weechat wqy-zenhei zathura-pdf-mupdf zsh
+	#core
+	${APK} build-base bash fzf gnupg htop lm_sensors lshw neovim openssh openssl readline sudo tmux tree zip zsh pass docs
+	#vcs
+	${APK} git tig github-cli hut
+	#networking
+	${APK} curl nmap sshfs mosquitto
+	#dev: C/C++
+	${APK} autoconf autoconf-archive automake cmake ctags doxygen gdb gmp icu m4 meson ninja libxml2
+	${APK} shellcheck
+	#CLI text tools
+	${APK} ack bat fmt fzf highlight dasel jq miller pandoc ripgrep sed xsv
+	#CLI file management
+	${APK} exa fd ncdu
+	#python
+	${APK} python3 py3-pip py3-wheel py3-setuptools py3-pylint py3-numpy py3-scipy py3-lxml py3-virtualenv jupyter-notebook py3-matplotlib
+	#various:
+	${APK} btop gnuplot todo.txt-cli todo.txt-cli w3m lynx links urlscan
+	#languages
+	${APK} aspell aspell-en
+	#communication
+	${APK} aerc mailcap msmtp newsboat weechat
+ifeq ($(DESKTOP),1)
+	#core desktop
+	${APK} bemenu rofi-wayland foot mako swaybg swayidle waybar wtype xdg-desktop-portal-wlr catimg wl-clipboard libnotify
+	#multimedia
+	${APK} mpv mpc espeak sxiv imv yt-dlp
+	#fonts
+	${APK} font-fira-mono-nerd font-ubuntu-nerd
+	#various
+	${APK} zathura-pdf-mupdf
+endif
 else ifeq ($(DISTRO),$(filter $(DISTRO), debian ubuntu))
 	sudo apt-get update
 	${APT} ack aptitude autoconf-archive bat chafa curl fping gawk gcc git glances highlight htop iotop jq ncdu neovim netcat pandoc sed tig tmux wget whiptail zsh

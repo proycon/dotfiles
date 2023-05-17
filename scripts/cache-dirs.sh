@@ -12,4 +12,4 @@ ls -d ~/Videos/*/ >> ~/.config/directories
 ls -d ~/Music/*/ >> ~/.config/directories
 ls -d ~/Music/byLanguage/ >> ~/.config/directories
 
-
+exit 0
