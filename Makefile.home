@@ -7,7 +7,7 @@ bin/darkmode.sh bin/lightmode.sh bin/emojiselect bin/lock.sh bin/rotdir bin/scre
 
 all: bin conffiles .oh-my-zsh
 
-conffiles: zshrc urlview muttrc mailcap signature signature.ru.txt signature.knaw.txt signature.unilang tmux.conf tmux-powerlinerc tmux tigrc
+conffiles: .zshrc .urlview .muttrc .mailcap .signature .signature.ru.txt .signature.knaw.txt .signature.unilang .tmux.conf .tmux-powerlinerc .tmux .tigrc
 
 .zshrc .urlview .muttrc .mailcap .signature .signature.ru.txt .signature.knaw.txt .signature.unilang .tmux.conf .tmux-powerlinerc .tmux .tigrc:
 	ln -sf ~/dotfiles/$(shell echo $@ | sed s/^\.//) $@
@@ -16,7 +16,7 @@ update: oh-my-zsh
 	cd oh-my-zsh && git pull
 
 oh-my-zsh:
-    git clone https://github.com/robbyrussell/oh-my-zsh.git
+    git clone https://github.com/ohmyzsh/ohmyzsh.git oh-my-zsh
 
 .oh-my-zsh: oh-my-zsh
 	ln -s $< $@
