@@ -57,6 +57,15 @@ vim.api.nvim_create_autocmd('BufEnter', {
         vim.cmd "set filetype=markdown"
     end
 })
+vim.g.firenvim_config = {
+    localSettings = { 
+        [".*"] = { takeover="never", priority=0 } ,  -- rely on manual activation with Ctrl-E
+    },
+    globalSettings = {
+      ['<C-w>'] = 'noop',
+      ['<C-n>'] = 'default'
+    }
+}
 
 vim.cmd "set whichwrap+=<,>,[,],h,l"
 vim.cmd [[set iskeyword+=-]]
