@@ -1,6 +1,7 @@
-/home/proycon/dotfiles/lock.sh &!
+#!/bin/sh
+~/dotfiles/scripts/lock.sh &
 sleep 5
-while pidof notmuch; do
+while pidof notmuch rsync pacman git; do
     sleep 5
 done
 systemctl suspend
