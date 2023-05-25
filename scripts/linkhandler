@@ -27,10 +27,10 @@ fi
 
 if [ -f /tmp/linkhandler.target ]; then
     TARGET=$(cat /tmp/linkhandler.target)
-    play ~/dotfiles/media/glass_low.ogg > /dev/null 2>/dev/null &
+    paplay ~/dotfiles/media/glass_low.ogg > /dev/null 2>/dev/null &
 else
     TARGET=0
-    play ~/dotfiles/media/glass.ogg > /dev/null 2>/dev/null &
+    paplay ~/dotfiles/media/glass.ogg > /dev/null 2>/dev/null &
 fi
 
 if [ "$TARGET" = "0" ]; then
@@ -62,10 +62,10 @@ else
            ;;
         *png|*jpg|*JPG|*jpeg|*gif)
            ~/dotfiles/scripts/notifysend.sh "home/command/videoplayer/pi$TARGET"
-           ~/dotfiles/scripts/notifysend.sh "home/command/video/pi$TARGET/play" "$1"
+           ~/dotfiles/notifysend.sh "home/command/video/pi$TARGET/play" "$1"
            ;;
         *)
-           play ~/dotfiles/media/error.wav > /dev/null 2>/dev/null &
+           paplay ~/dotfiles/media/error.wav > /dev/null 2>/dev/null &
            ;;
     esac
 fi

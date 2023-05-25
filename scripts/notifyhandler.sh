@@ -2,8 +2,8 @@
 
 # Receives notifications from MQTT
 
-if command -v play > /dev/null; then
-    PLAY="play"
+if command -v paplay > /dev/null; then
+    PLAY="paplay"
 else
     PLAY="mpv --no-video --really-quiet"
 fi

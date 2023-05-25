@@ -1,6 +1,6 @@
 #!/bin/sh
 killall speech
-play ~/dotfiles/media/glass.ogg
+paplay ~/dotfiles/media/glass.ogg
 numen
-play ~/dotfiles/media/glass_low.ogg
+paplay ~/dotfiles/media/glass_low.ogg
 
