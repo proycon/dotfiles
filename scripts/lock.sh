@@ -4,7 +4,7 @@ if [ ! -f /tmp/locked ]; then
     todo.sh timetrack stop
     touch /tmp/locked
     killall gpg-agent
-    play ~/dotfiles/media/lock.wav >/dev/null 2>/dev/null &!
+    aplay ~/dotfiles/media/lock.wav >/dev/null 2>/dev/null &!
     if [ -n "$WAYLAND_DISPLAY" ]; then
         swaymsg input type:keyboard xkb_layout proylatin
         swaylock -c 220000
@@ -15,7 +15,7 @@ if [ ! -f /tmp/locked ]; then
         i3lock -n -c '220000'
         pidof picom || picom -f -e 1.0 &
     fi
-    play ~/dotfiles/media/unlock.wav >/dev/null 2>/dev/null &!
+    aplay ~/dotfiles/media/unlock.wav >/dev/null 2>/dev/null &!
     rm /tmp/locked
     todo.sh timetrack start "$task"
 fi
