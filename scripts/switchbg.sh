@@ -9,6 +9,12 @@ elif ps aux | grep swaybg | grep -v grep | grep mountain-view; then
 elif ps aux | grep swaybg | grep -v grep | grep mountain.jpg; then
     killall swaybg
     swaybg -m fill -i ~/dotfiles/media/forest.jpg &
+elif ps aux | grep swaybg | grep -v grep | grep forest.jpg; then
+    killall swaybg
+    swaybg -m fill -i ~/dotfiles/media/night-misty-peaks.png &
+elif ps aux | grep swaybg | grep -v grep | grep night-misty-peaks.png; then
+    killall swaybg
+    swaybg -m fill -i ~/dotfiles/media/night-autora.jpg &
 else
     killall swaybg
     swaybg -m fill -i ~/dotfiles/media/photo-of-lake-krivec-ales.jpg &
