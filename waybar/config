@@ -63,7 +63,7 @@
     "tooltip": true
 },
 "custom/timetracker": {
-    "exec": "todo.sh timetrack current -d | sed 's/&/&amp;/g'",
+    "exec": "[ -d ~/.todo ] && todo.sh timetrack current -d | sed 's/&/&amp;/g'",
     "interval": 15,
     "tooltip": true
 }
