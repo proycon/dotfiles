@@ -18,4 +18,7 @@ if [ ! -f /tmp/locked ]; then
     paplay ~/dotfiles/media/unlock.wav >/dev/null 2>/dev/null &!
     rm /tmp/locked
     todo.sh timetrack start "$task"
+    if [ "$(hostname)" = "pollux" ]; then
+        ~/dotfiles/scripts/fixworkspaces.sh
+    fi
 fi
