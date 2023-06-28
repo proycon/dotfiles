@@ -169,7 +169,7 @@ topcommands() {
 #PATHS
 case "$HOST" in 
     rocinante|trantor|mhysa|pollux)
-        export PATH="/home/proycon/bin:/home/proycon/.cargo/bin:$PATH"
+        export PATH="/home/proycon/bin:/home/proycon/.cargo/bin:/home/proycon/local/bin:$PATH"
         export CDPATH=.:~/work:~/projects
 
         hash -d X=/home/proycon/exp
