@@ -104,7 +104,30 @@ return packer.startup(function(use)
         config = function()
             require("nvim-lsp-installer").setup {}
             local lspconfig = require("lspconfig")
-            lspconfig.lua_ls.setup {}
+            lspconfig.lua_ls.setup {
+              settings = {
+                Lua = {
+                  runtime = {
+                    version = 'LuaJIT',
+                  },
+                  diagnostics = {
+                    globals = { "vim" },
+                  },
+                  workspace = {
+                    checkThirdParty = false,
+                    maxPreload = 100000,
+                    preloadFileSize = 10000,
+                  },
+                  completion = {
+                    callSnippet = "Replace",
+                  },
+                  -- Do not send telemetry data containing a randomized but unique identifier
+                  telemetry = {
+                    enable = false,
+                  },
+                },
+              },
+            }
         end
   }
   use "tamago324/nlsp-settings.nvim" -- language server settings defined in json for
