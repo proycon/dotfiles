@@ -89,6 +89,8 @@ ifeq ($(DISTRO),arch)
 	#compression
 	${PACMAN} p7zip unrar xz zstd
 ifeq ($(DESKTOP),1)
+	#hardware key
+	${PACMAN} python-pynitrokey libnitrokey
 	#desktop: wayland core
 	${PACMAN} bemenu foot grim hyprland i3status imv libpipewire mako mesa slurp swaybg swayidle swaylock wofi wtype xdg-desktop-portal-hyprland xorg-xwayland ydotool catimg wl-clipboard
 	#desktop: basic
@@ -132,7 +134,7 @@ else ifeq ($(DISTRO),$(filter $(DISTRO), alpine postmarketos))
 	${APK} aerc mailcap msmtp newsboat weechat
 ifeq ($(DESKTOP),1)
 	#core desktop
-	${APK} bemenu rofi-wayland foot mako swaybg swayidle waybar wtype xdg-desktop-portal-wlr catimg wl-clipboard libnotify
+	${APK} bemenu rofi-wayland foot mako swaybg swayidle waybar wtype xdg-desktop-portal-wlr catimg wl-clipboard libnotify py3-pynitrokey libnitrokey
 	#multimedia
 	${APK} mpv mpc espeak sxiv imv yt-dlp
 	#fonts
