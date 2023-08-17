@@ -116,7 +116,7 @@ else ifeq ($(DISTRO),$(filter $(DISTRO), alpine postmarketos))
 	#vcs
 	${APK} git tig github-cli hut
 	#networking
-	${APK} curl nmap sshfs mosquitto-clients
+	${APK} curl nmap sshfs mosquitto-clients vnstat
 	#dev: C/C++
 	${APK} autoconf autoconf-archive automake cmake ctags doxygen gdb gmp icu m4 meson ninja libxml2
 	${APK} shellcheck
@@ -136,7 +136,7 @@ ifeq ($(DESKTOP),1)
 	#core desktop
 	${APK} bemenu rofi-wayland foot mako swaybg swayidle waybar wtype xdg-desktop-portal-wlr catimg wl-clipboard libnotify py3-pynitrokey libnitrokey
 	#multimedia
-	${APK} mpv mpc espeak sxiv imv yt-dlp
+	${APK} mpv mpc espeak sxiv imv yt-dlp ncmpcpp
 	#fonts
 	${APK} font-fira-mono-nerd font-ubuntu-nerd
 	#various
