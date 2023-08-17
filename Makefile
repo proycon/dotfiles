@@ -116,7 +116,7 @@ else ifeq ($(DISTRO),$(filter $(DISTRO), alpine postmarketos))
 	#vcs
 	${APK} git tig github-cli hut
 	#networking
-	${APK} curl nmap sshfs mosquitto
+	${APK} curl nmap sshfs mosquitto-clients
 	#dev: C/C++
 	${APK} autoconf autoconf-archive automake cmake ctags doxygen gdb gmp icu m4 meson ninja libxml2
 	${APK} shellcheck
