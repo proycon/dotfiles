@@ -162,10 +162,10 @@ ifeq (, $(shell which yay))
 endif
 endif 
 
-aur: yay abuild aercbook-bin dasel gomuks-git lf-sixel-git lsix-git mblaze-git nerd-fonts-complete-starship powerline-fonts-git rofi-lbonn-wayland todotxt ttf-material-design-icons-git ttf-symbola waybar-hyprland-git snapcast-git
+aur: yay abuild aercbook-bin dasel gomuks-git lf-sixel-git lsix-git mblaze-git nerd-fonts-complete-starship powerline-fonts-git rofi-lbonn-wayland todotxt ttf-material-design-icons-git ttf-symbola waybar-hyprland-git snapcast-git senpai-irc-git
 
-.PHONY: abuild aercbook-bin dasel gomuks-git lf-sixel-git lsix-git mblaze-git nerd-fonts-complete-starship powerline-fonts-git rofi-lbonn-wayland todotxt ttf-material-design-icons-git ttf-symbola waybar-hyprland-git snapcast-git
-abuild aercbook-bin dasel gomuks-git lf-sixel-git lsix-git mblaze-git nerd-fonts-complete-starship powerline-fonts-git rofi-lbonn-wayland todotxt ttf-material-design-icons-git ttf-symbola waybar-hyprland-git snapcast-git:
+.PHONY: abuild aercbook-bin dasel gomuks-git lf-sixel-git lsix-git mblaze-git nerd-fonts-complete-starship powerline-fonts-git rofi-lbonn-wayland todotxt ttf-material-design-icons-git ttf-symbola waybar-hyprland-git snapcast-git senpai-irc-git
+abuild aercbook-bin dasel gomuks-git lf-sixel-git lsix-git mblaze-git nerd-fonts-complete-starship powerline-fonts-git rofi-lbonn-wayland todotxt ttf-material-design-icons-git ttf-symbola waybar-hyprland-git snapcast-git senpai-irc-git:
 ifeq ($(DISTRO),arch)
 	yay -S $@
 endif
