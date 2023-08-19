@@ -1,0 +1,10 @@
+#!/bin/sh
+
+escape() {
+	printf "%s" "$1" | sed 's#\\#\\\\#g'
+}
+#TODO: figure out for Hyprland
+#FOCUS=$(swaymsg -t get_tree | jq '..|objects|select(.focused==true)|.name' | grep senpai | wc -l)
+#if [ "$HERE" -eq 0 ] || [ $FOCUS -eq 0 ]; then
+notify-send "[$BUFFER] $SENDER" "$(escape "$MESSAGE")"
+#fi

@@ -78,4 +78,6 @@ ZSH_THEME_GIT_PROMPT_UNTRACKED="%{$fg[cyan]%} ≈"
 
 ZSH_THEME_VIRTUALENV_PREFIX="%{$fg_bold[magenta]%}"
 ZSH_THEME_VIRTUALENV_SUFFIX="%{$reset_color%}"
+
+typeset -g ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=#7a8478'
 }
