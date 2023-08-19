@@ -467,6 +467,22 @@ function lesstsv {
     cattsv | less -F -S -X -K
 }
 
+function hutlist {
+    list="$1"
+    if [ "$1" = "sxmo" ]; then
+        list="~mil/sxmo-devel"
+    fi
+    hut lists patchset list -l "$list"
+}
+
+function huttodo {
+    tickets="$1"
+    if [ "$1" = "sxmo" ]; then
+        tickets="~mil/sxmo-tickets"
+    fi
+    hut todo ticket list -t "$tickets"
+}
+
 
 export LESS_TERMCAP_so=$'\E[30;42m'
 
