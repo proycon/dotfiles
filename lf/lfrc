@@ -25,7 +25,7 @@ cmd open ${{
     text/*) bat --style=plain --paging=always $fx;;
 	image/x-xcf) setsid gimp $f >/dev/null 2>&1 & ;;
 	image/svg+xml) setsid inkscape $f >/dev/null 2>&1 & ;;
-	image/*) rotdir $f | grep -i "\.\(png\|jpg\|jpeg\|gif\|webp\)\(_large\)*$" | setsid sxiv -aio 2>/dev/null | lf-select & ;;
+	image/*) rotdir $f | grep -i "\.\(png\|jpg\|jpeg\|gif\|webp\)\(_large\)*$" | setsid imv 2>/dev/null | lf-select & ;;
 	audio/*) mpv $f ;;
 	video/*) setsid mpv $f -quiet >/dev/null 2>&1 & ;;
 	application/pdf) setsid zathura $fx >/dev/null 2>&1 & ;;
