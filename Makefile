@@ -140,7 +140,7 @@ ifeq ($(DESKTOP),1)
 	#fonts
 	${APK} font-fira-mono-nerd font-ubuntu-nerd
 	#various
-	${APK} zathura-pdf-mupdf
+	${APK} zathura
 endif
 else ifeq ($(DISTRO),$(filter $(DISTRO), debian ubuntu))
 	sudo apt-get update
