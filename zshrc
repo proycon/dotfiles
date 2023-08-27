@@ -192,7 +192,7 @@ case "$HOST" in
         alias tl="ssh -Y -A -t lilo.science.ru.nl ssh -Y -A -t thunderlane /home/proycon/bin/tm"
         alias tw="ssh -Y -A -t lilo.science.ru.nl ssh -Y -A -t twist /home/proycon/bin/tm"
         ;;
-    proyphone)
+    proyphone|pine64-pinephone|oneplus-enchilada)
         export PATH="/home/proycon/bin:/home/proycon/.cargo/bin:$PATH"
         ;;
     mlp*)
