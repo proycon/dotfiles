@@ -469,19 +469,35 @@ function lesstsv {
 }
 
 function hutlist {
+    if [ -z "$1" ]; then
+        echo "hutlist [list] [[patchno]]">&2
+        return 1;
+    fi
     list="$1"
     if [ "$1" = "sxmo" ]; then
         list="~mil/sxmo-devel"
     fi
-    hut lists patchset list -l "$list"
+    if [ -n "$2" ]; then
+        hut lists patchset show -l "$list" "$2"
+    else
+        hut lists patchset list -l "$list"
+    fi
 }
 
 function huttodo {
+    if [ -z "$1" ]; then
+        echo "huttodo [ticketlist] [[ticketno]]">&2
+        return 1;
+    fi
     tickets="$1"
     if [ "$1" = "sxmo" ]; then
         tickets="~mil/sxmo-tickets"
     fi
-    hut todo ticket list -t "$tickets"
+    if [ -n "$2" ]; then
+        hut todo ticket show -t "$tickets" "$2"
+    else
+        hut todo ticket list -t "$tickets"
+    fi
 }
 
 
