@@ -34,8 +34,8 @@ msglist_unread.bold=true
 msglist_default.fg=#dedede
 msglist_marked.fg=yellow
 msglist_marked.reverse=true
-msglist_flagged.fg=white
-msglist_flagged.bg=red
+#msglist_flagged.fg=white
+msglist_flagged.bg=#ff0000
 msglist_flagged.bold=true
 
 # inbox etc
