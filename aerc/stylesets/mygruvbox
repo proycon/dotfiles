@@ -29,7 +29,7 @@ statusline_*.bg=#303030
 
 # message list colors
 msglist_deleted.fg=gray
-msglist_unread.fg=#ffffff
+#msglist_unread.fg=#ffffff
 msglist_unread.bold=true
 msglist_default.fg=#dedede
 msglist_marked.fg=yellow
