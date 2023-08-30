@@ -1,5 +1,5 @@
 #!/bin/sh
-# configversion: 70fdc4af93d11d5d84abaaecd49ad1dc
+# configversion: 732de0678f37d8ba9a872ebd7a4cd05b 
 # SPDX-License-Identifier: AGPL-3.0-only
 # Copyright 2022 Sxmo Contributors
 
@@ -79,7 +79,7 @@ if [ "$(command -v ModemManager)" ]; then
 
 	# place a wakelock for 120s to allow the modem to fully warm up (eg25 +
 	# elogind/systemd would do this for us, but we don't use those.)
-	sxmo_wakelock.sh lock modem_warming_up 120s
+	sxmo_wakelock.sh lock sxmo_modem_warming_up 120s
 fi
 
 # Start the desktop widget (e.g. clock)
