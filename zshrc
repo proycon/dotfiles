@@ -97,9 +97,6 @@ lh1() {
 lh2() {
     echo -n "2" > /tmp/linkhandler.target
 }
-if [ ! -z "$DISPLAY" ]; then
-    alias lf="~/dotfiles/lf/lfrun" #wrapper for ueberzug support
-fi
 #colours
 #which colorgcc > /dev/null 2> /dev/null
 #if (( $? == 0 )); then
