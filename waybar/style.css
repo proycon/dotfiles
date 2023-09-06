@@ -86,3 +86,7 @@
 #custom-mail {
     color: #7a8047;
 }
+
+window#waybar.fullscreen {
+    background: #495732;
+}
