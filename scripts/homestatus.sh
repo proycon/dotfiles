@@ -223,7 +223,13 @@ printtimedelta() {
         echo -en  "${TIMEDELTA} s"
     else
         TIMEDELTA=$(( TIMEDELTA / 60 ))
-        echo -en  "${TIMEDELTA} min"
+        if [ $TIMEDELTA -ge 60 ]; then
+            REMAINDER=$(( TIMEDELTA % 60 ))
+            TIMEDELTA=$(( TIMEDELTA / 60 ))
+            echo -en  "${TIMEDELTA}h${REMAINDER}m"
+        else
+            echo -en  "${TIMEDELTA} min"
+        fi
     fi
 }
 
@@ -250,7 +256,13 @@ printhomestatus() {
         if [ $TIMEDELTA -lt 10 ]; then
             echo -en  "${bold}Last update:${normal}  ${yellow}$TIMEDELTA mins ago${normal}"
         else
-            echo -en  "${bold}Last update:${normal}  ${red}$TIMEDELTA mins ago${normal}"
+            if [ $TIMEDELTA -ge 60 ]; then
+                REMAINDER=$(( TIMEDELTA % 60 ))
+                TIMEDELTA=$(( TIMEDELTA / 60 ))
+                echo -en  "${bold}Last update:${normal}  ${red}${TIMEDELTA}h ${REMAINDER}m ago${normal}"
+            else
+                echo -en  "${bold}Last update:${normal}  ${red}$TIMEDELTA mins ago${normal}"
+            fi
         fi
     fi
     if pgrep mosquitto_sub > /dev/null; then
