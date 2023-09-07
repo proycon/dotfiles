@@ -1,5 +1,5 @@
 #!/bin/sh
-# configversion: 732de0678f37d8ba9a872ebd7a4cd05b 
+# configversion: 7791b92c9ed87e2ada2031cba77f8aec
 # SPDX-License-Identifier: AGPL-3.0-only
 # Copyright 2022 Sxmo Contributors
 
@@ -10,7 +10,7 @@
 # Create xdg user directories, such as ~/Pictures
 xdg-user-dirs-update
 
-sxmo_daemons.sh start daemon_manager superd -v
+sxmo_daemons.sh start daemon_manager superd
 
 # let time to superd to start correctly
 while ! superctl status > /dev/null 2>&1; do
@@ -71,7 +71,9 @@ if [ -w "/sys/power/wakeup_count" ] && [ -f "/sys/power/wake_lock" ]; then
 fi
 
 # Turn on lisgd
-superctl start sxmo_hook_lisgd
+if [ ! -e "$XDG_CACHE_HOME"/sxmo/sxmo.nogesture ]; then
+	superctl start sxmo_hook_lisgd
+fi
 
 if [ "$(command -v ModemManager)" ]; then
 	# Turn on the dbus-monitors for modem-related tasks
@@ -98,7 +100,7 @@ superctl start sxmo_notificationmonitor
 superctl start sxmo_soundmonitor
 
 # Play a funky startup tune if you want (disabled by default)
-mpv --quiet --no-video ~/dotfiles/media/cylontune_low.ogg &
+#mpv --quiet --no-video ~/welcome.ogg &
 
 # mmsd and vvmd
 if [ -f "${SXMO_MMS_BASE_DIR:-"$HOME"/.mms/modemmanager}/mms" ]; then
@@ -110,10 +112,10 @@ if [ -f "${SXMO_VVM_BASE_DIR:-"$HOME"/.vvm/modemmanager}/vvm" ]; then
 fi
 
 # add some warnings if things are not setup correctly
-deviceprofile="$(command -v "sxmo_deviceprofile_$SXMO_DEVICE_NAME.sh")"
-
-[ -f "$deviceprofile" ] || sxmo_notify_user.sh --urgency=critical \
-	"No deviceprofile found $SXMO_DEVICE_NAME. See: https://sxmo.org/deviceprofile"
+if ! command -v "sxmo_deviceprofile_$SXMO_DEVICE_NAME.sh";  then
+	sxmo_notify_user.sh --urgency=critical \
+		"No deviceprofile found $SXMO_DEVICE_NAME. See: https://sxmo.org/deviceprofile"
+fi
 
 sxmo_migrate.sh state || sxmo_notify_user.sh --urgency=critical \
 	"Config needs migration" "$? file(s) in your sxmo configuration are out of date and disabled - using defaults until you migrate (run sxmo_migrate.sh)"

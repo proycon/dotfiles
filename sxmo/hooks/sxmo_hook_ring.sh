@@ -1,5 +1,5 @@
 #!/bin/sh
-# configversion: fc857f0eec65ce76ee07251621c457f4
+# configversion: 694779686e908a966baed6673fdd6003
 # SPDX-License-Identifier: AGPL-3.0-only
 # Copyright 2022 Sxmo Contributors
 
@@ -15,7 +15,7 @@
 if sxmo_modemcall.sh list_active_calls \
 	| grep -v ringing-in \
 	| grep -q .; then
-	sxmo_vibrate 1500
+	sxmo_vibrate 1500 "${SXMO_VIBRATE_STRENGTH:-1}"
 	exit
 fi
 
@@ -42,7 +42,7 @@ if [ ! -f "$XDG_CONFIG_HOME"/sxmo/.noring ] && [ ! -f "$XDG_CONFIG_HOME"/sxmo/.n
 	echo "$MPVID" > "$XDG_RUNTIME_DIR/sxmo.ring.pid"
 	# vibrate while mpv is running
 	while kill -0 $MPVID; do
-		sxmo_vibrate 1500
+		sxmo_vibrate 1500 "${SXMO_VIBRATE_STRENGTH:-1}"
 		sleep 0.5
 	done
 
@@ -62,7 +62,7 @@ elif [ ! -f "$XDG_CONFIG_HOME"/sxmo/.noring ] && [ -f "$XDG_CONFIG_HOME"/sxmo/.n
 elif [ ! -f "$XDG_CONFIG_HOME"/sxmo/.novibrate ] && [ -f "$XDG_CONFIG_HOME"/sxmo/.noring ]; then
 	smxo_log "VIBRATE ONLY"
 	for _ in $(seq 5); do
-		sxmo_vibrate 1500
+		sxmo_vibrate 1500 "${SXMO_VIBRATE_STRENGTH:-1}"
 		sleep 0.5
 	done &
 	echo "$!" > "$XDG_RUNTIME_DIR/sxmo.ring.pid"
