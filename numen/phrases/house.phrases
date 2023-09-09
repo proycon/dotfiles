@@ -1,0 +1,109 @@
+house mute: run ~/dotfiles/scripts/homecommand.sh mute
+house volume up: run ~/dotfiles/scripts/homecommand.sh volup
+house volume down: run ~/dotfiles/scripts/homecommand.sh voldown
+house lights on: run ~/dotfiles/scripts/homecommand.sh lights/on
+house lights off: run ~/dotfiles/scripts/homecommand.sh lights/off
+house hall light on: run ~/dotfiles/scripts/homecommand.sh lights/hall/on
+house hall light off: run ~/dotfiles/scripts/homecommand.sh lights/hall/off
+house tv light on: run ~/dotfiles/scripts/homecommand.sh lights/tv_spots/on
+house tv light off: run ~/dotfiles/scripts/homecommand.sh lights/tv_spots/off
+house tv spots on: run ~/dotfiles/scripts/homecommand.sh lights/tv_spots/on
+house tv spots off: run ~/dotfiles/scripts/homecommand.sh lights/tv_spots/off
+house office light on: run ~/dotfiles/scripts/homecommand.sh lights/office/on
+house office light off: run ~/dotfiles/scripts/homecommand.sh lights/office/off
+house office on: run ~/dotfiles/scripts/homecommand.sh lights/office/on
+house office off: run ~/dotfiles/scripts/homecommand.sh lights/office/off
+house garden light on: run ~/dotfiles/scripts/homecommand.sh lights/garden/on
+house garden light off: run ~/dotfiles/scripts/homecommand.sh lights/garden/off
+house garden on: run ~/dotfiles/scripts/homecommand.sh lights/garden/on
+house garden off: run ~/dotfiles/scripts/homecommand.sh lights/garden/off
+house middle light on: run ~/dotfiles/scripts/homecommand.sh lights/midspots/on
+house middle light off: run ~/dotfiles/scripts/homecommand.sh lights/midspots/off
+house back light on: run ~/dotfiles/scripts/homecommand.sh lights/back_room/on
+house back light off: run ~/dotfiles/scripts/homecommand.sh lights/back_room/off
+house corner light on: run ~/dotfiles/scripts/homecommand.sh lights/back_corner/on
+house corner light off: run ~/dotfiles/scripts/homecommand.sh lights/back_corner/off
+house front light on: run ~/dotfiles/scripts/homecommand.sh lights/front_room/on
+house front light off: run ~/dotfiles/scripts/homecommand.sh lights/front_room/off
+house bedroom light on: run ~/dotfiles/scripts/homecommand.sh lights/bedroom/on
+house bedroom light off: run ~/dotfiles/scripts/homecommand.sh lights/bedroom/off
+house kitchen light on: run ~/dotfiles/scripts/homecommand.sh lights/kitchen/on
+house kitchen light off: run ~/dotfiles/scripts/homecommand.sh lights/kitchen/off
+house kitchen on: run ~/dotfiles/scripts/homecommand.sh lights/kitchen/on
+house kitchen off: run ~/dotfiles/scripts/homecommand.sh lights/kitchen/off
+house porch light on: run ~/dotfiles/scripts/homecommand.sh lights/porch/on
+house porch light off: run ~/dotfiles/scripts/homecommand.sh lights/porch/off
+house porch on: run ~/dotfiles/scripts/homecommand.sh lights/porch/on
+house porch off: run ~/dotfiles/scripts/homecommand.sh lights/porch/off
+house balcony light on: run ~/dotfiles/scripts/homecommand.sh lights/balcony/on
+house balcony light off: run ~/dotfiles/scripts/homecommand.sh lights/balcony/off
+house balcony on: run ~/dotfiles/scripts/homecommand.sh lights/balcony/on
+house balcony off: run ~/dotfiles/scripts/homecommand.sh lights/balcony/off
+house night lights: run ~/dotfiles/scripts/homecommand.sh lights/night
+house night scene: run ~/dotfiles/scripts/homecommand.sh lights/night
+house start tv: run ~/dotfiles/scripts/homecommand.sh media/tv
+house start music: run ~/dotfiles/scripts/homecommand.sh media/music
+house start music upstairs: run ~/dotfiles/scripts/homecommand.sh media/music2
+house start media center: run ~/dotfiles/scripts/homecommand.sh kodi/on
+house next song: run ~/dotfiles/scripts/homecommand.sh music/next 
+house previous song: run ~/dotfiles/scripts/homecommand.sh music/previous 
+house next music: run ~/dotfiles/scripts/homecommand.sh music/next 
+house previous music: run ~/dotfiles/scripts/homecommand.sh music/previous 
+house music next: run ~/dotfiles/scripts/homecommand.sh music/next 
+house music previous: run ~/dotfiles/scripts/homecommand.sh music/previous 
+house pause music: run ~/dotfiles/scripts/homecommand.sh music/pauseplay
+house resume music: run ~/dotfiles/scripts/homecommand.sh music/pauseplay
+house music pause: run ~/dotfiles/scripts/homecommand.sh music/pauseplay
+house music resume: run ~/dotfiles/scripts/homecommand.sh music/pauseplay
+house media off: run ~/dotfiles/scripts/homecommand.sh media/off
+house decoder on: run ~/dotfiles/scripts/homecommand.sh decoder/on
+house decoder off: run ~/dotfiles/scripts/homecommand.sh decoder/off
+house next channel: run ~/dotfiles/scripts/homecommand.sh tvdecoder/next
+house previous channel: run ~/dotfiles/scripts/homecommand.sh tvdecoder/previous
+house tv next: run ~/dotfiles/scripts/homecommand.sh tvdecoder/next
+house tv previous: run ~/dotfiles/scripts/homecommand.sh tvdecoder/previous
+house tv confirm: run ~/dotfiles/scripts/homecommand.sh tvdecoder/ok
+house tv cancel: run ~/dotfiles/scripts/homecommand.sh tvdecoder/back
+house tv mute: run ~/dotfiles/scripts/homecommand.sh mute
+house tv volume up: run ~/dotfiles/scripts/homecommand.sh volup
+house tv volume down: run ~/dotfiles/scripts/homecommand.sh voldown
+house tv one: run ~/dotfiles/scripts/homecommand.sh tvdecoder/channel/npo1
+house tv first: run ~/dotfiles/scripts/homecommand.sh tvdecoder/channel/npo1
+house tv two: run ~/dotfiles/scripts/homecommand.sh tvdecoder/channel/npo2
+house tv three: run ~/dotfiles/scripts/homecommand.sh tvdecoder/channel/npo3
+house tv german: run ~/dotfiles/scripts/homecommand.sh tvdecoder/channel/ard
+house tv british: run ~/dotfiles/scripts/homecommand.sh tvdecoder/channel/bbc1
+house tv belgian: run ~/dotfiles/scripts/homecommand.sh tvdecoder/channel/een
+house tv dutch: run ~/dotfiles/scripts/homecommand.sh tvdecoder/channel/npo1
+house tv pause: run ~/dotfiles/scripts/homecommand.sh tvdecoder/pause
+house tv resume: run ~/dotfiles/scripts/homecommand.sh tvdecoder/pause
+house pause tv: run ~/dotfiles/scripts/homecommand.sh tvdecoder/pause
+house resume tv: run ~/dotfiles/scripts/homecommand.sh tvdecoder/pause
+house start air conditioning: run ~/dotfiles/scripts/homecommand.sh airco/living/cool
+house stop air conditioning: run ~/dotfiles/scripts/homecommand.sh airco/living/off
+house start air conditioning bedroom: run ~/dotfiles/scripts/homecommand.sh airco/bedroom/cool
+house stop air conditioning bedroom: run ~/dotfiles/scripts/homecommand.sh airco/bedroom/off
+house start air conditioning upstairs: run ~/dotfiles/scripts/homecommand.sh airco/bedroom/cool
+house stop air conditioning upstairs: run ~/dotfiles/scripts/homecommand.sh airco/bedroom/off
+house wake eight: run ~/dotfiles/scripts/homecommand.sh wake/800
+house wake eight thirty: run ~/dotfiles/scripts/homecommand.sh wake/830
+house wake nine: run ~/dotfiles/scripts/homecommand.sh wake/900
+house wake nine thirty: run ~/dotfiles/scripts/homecommand.sh wake/930
+house wake ten: run ~/dotfiles/scripts/homecommand.sh wake/1000
+house wake ten thirty: run ~/dotfiles/scripts/homecommand.sh wake/1030
+house watch front: run ~/dotfiles/scripts/homecommand.sh homecam/voor
+house watch back: run ~/dotfiles/scripts/homecommand.sh homecam/achter
+house watch down: run ~/dotfiles/scripts/homecommand.sh homecam/onder
+house watch hall: run ~/dotfiles/scripts/homecommand.sh homecam/gang
+house temperature eighteen: run ~/dotfiles/scripts/homecommand.sh heating/18
+house temperature nineteen: run ~/dotfiles/scripts/homecommand.sh heating/19
+house temperature twenty: run ~/dotfiles/scripts/homecommand.sh heating/20
+house temperature twenty one: run ~/dotfiles/scripts/homecommand.sh heating/21
+house set temperature eighteen: run ~/dotfiles/scripts/homecommand.sh heating/18
+house set temperature nineteen: run ~/dotfiles/scripts/homecommand.sh heating/19
+house set temperature twenty: run ~/dotfiles/scripts/homecommand.sh heating/20
+house set temperature twenty one: run ~/dotfiles/scripts/homecommand.sh heating/21
+house heating eighteen: run ~/dotfiles/scripts/homecommand.sh heating/18
+house heating nineteen: run ~/dotfiles/scripts/homecommand.sh heating/19
+house heating twenty: run ~/dotfiles/scripts/homecommand.sh heating/20
+house heating twenty one: run ~/dotfiles/scripts/homecommand.sh heating/21
