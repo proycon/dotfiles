@@ -3,28 +3,32 @@ shock: mod alt
 hype: mod super \
        stick off
 
-master: eval hyprctl dispatch layoutmsg focusmaster
-promote: eval hyprctl dispatch layoutmsg swapwithmaster
-recycle: eval hyprctl dispatch layoutmsg cycleprev
-cycle: eval hyprctl dispatch layoutmsg cyclenext
+master: run hyprctl dispatch layoutmsg focusmaster
+promote: run hyprctl dispatch layoutmsg swapwithmaster
+recycle: run hyprctl dispatch layoutmsg cycleprev
+cycle: run hyprctl dispatch layoutmsg cyclenext
 
-desktop one: eval hyprctl dispatch workspace 1
-desktop two: eval hyprctl dispatch workspace 2
-desktop three: eval hyprctl dispatch workspace 3
-desktop four: eval hyprctl dispatch workspace 4
-desktop five: eval hyprctl dispatch workspace 5
-desktop six: eval hyprctl dispatch workspace 6
-desktop seven: eval hyprctl dispatch workspace 7
-desktop eight: eval hyprctl dispatch workspace 8
-desktop nine: eval hyprctl dispatch workspace 9
-desktop ten: eval hyprctl dispatch workspace 10
-desktop eleven: eval hyprctl dispatch workspace 11
-desktop twelve: eval hyprctl dispatch workspace 12
-rightward: eval hyprctl dispatch workspace +1
-leftward: eval hyprctl dispatch workspace -1
-return: eval hyprctl dispatch workspace previous
-exterminate: eval hyprctl dispatch killactive 0
-onscreen: eval hyprctl dispatch fullscreen 1
+desktop one: run hyprctl dispatch workspace 1
+desktop two: run hyprctl dispatch workspace 2
+desktop three: run hyprctl dispatch workspace 3
+desktop four: run hyprctl dispatch workspace 4
+desktop five: run hyprctl dispatch workspace 5
+desktop six: run hyprctl dispatch workspace 6
+desktop seven: run hyprctl dispatch workspace 7
+desktop eight: run hyprctl dispatch workspace 8
+desktop nine: run hyprctl dispatch workspace 9
+desktop ten: run hyprctl dispatch workspace 10
+desktop eleven: run hyprctl dispatch workspace 11
+desktop twelve: run hyprctl dispatch workspace 12
+desktop right: run hyprctl dispatch workspace +1
+desktop left: run hyprctl dispatch workspace -1
+desktop next: run hyprctl dispatch workspace +1
+desktop previous: run hyprctl dispatch workspace -1
+rightward: run hyprctl dispatch workspace +1
+leftward: run hyprctl dispatch workspace -1
+return: run hyprctl dispatch workspace previous
+exterminate: run hyprctl dispatch killactive 0
+onscreen: run hyprctl dispatch fullscreen 1
 
-latin:eval hyprctl keyword input:kb_layout proylatin
-cyrillic:eval hyprctl keyword input:kb_layout proyru
+latin: run hyprctl keyword input:kb_layout proylatin
+cyrillic: run hyprctl keyword input:kb_layout proyru
