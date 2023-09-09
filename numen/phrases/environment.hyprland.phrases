@@ -3,6 +3,11 @@ shock: mod alt
 hype: mod super \
        stick off
 
+master: eval hyprctl dispatch layoutmsg focusmaster
+promote: eval hyprctl dispatch layoutmsg swapwithmaster
+recycle: eval hyprctl dispatch layoutmsg cycleprev
+cycle: eval hyprctl dispatch layoutmsg cyclenext
+
 master: run hyprctl dispatch layoutmsg focusmaster
 promote: run hyprctl dispatch layoutmsg swapwithmaster
 recycle: run hyprctl dispatch layoutmsg cycleprev
