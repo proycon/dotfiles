@@ -1,3 +1,8 @@
+#switch alt and super due to the way my default keymap works
+shock: mod alt
+hype: mod super \
+       stick off
+
 master: eval hyprctl dispatch layoutmsg focusmaster
 promote: eval hyprctl dispatch layoutmsg swapwithmaster
 recycle: eval hyprctl dispatch layoutmsg cycleprev
