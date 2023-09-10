@@ -12,12 +12,21 @@ networks: run sxmo_networks.sh &
 configuration: run sxmo_appmenu.sh config &
 launcher:run bemenu-run -l 20 &
 keyboard: run sxmo_keyboard.sh toggle &
+rotate: run sxmo_rotate.sh
 exterminate: press super+shift+q
 
 desktop one: run swaymsg workspace 1
 desktop two: run swaymsg workspace 2
 desktop three: run swaymsg workspace 3
 desktop four: run swaymsg workspace 4
+desktop next: run swaymsg workspace next
+desktop previous: run swaymsg workspace prev
+next desktop: run swaymsg workspace next
+previous desktop: run swaymsg workspace prev
+move to one: run swaymsg move workspace 1
+move to two: run swaymsg move workspace 2
+move to three: run swaymsg move workspace 3
+move to four: run swaymsg move workspace 4
 west: press super+Left
 east: press super+Right
 north: press super+Up
