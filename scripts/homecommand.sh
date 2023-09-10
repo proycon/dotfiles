@@ -40,4 +40,11 @@ else
 fi
 
 ~/dotfiles/scripts/notifysend.sh "$TOPIC" "$PAYLOAD"
-exit $?
+ret=$?
+if [ $ret -eq 0 ]; then
+    mpv --no-video --quiet ~/lighthome/media/computerbeep_5.wav
+else
+    mpv --no-video --quiet ~/lighthome/media/computerbeep_9.wav
+
+fi
+exit $ret

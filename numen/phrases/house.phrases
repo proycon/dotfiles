@@ -81,10 +81,16 @@ house pause tv: run ~/dotfiles/scripts/homecommand.sh tvdecoder/pause
 house resume tv: run ~/dotfiles/scripts/homecommand.sh tvdecoder/pause
 house start air conditioning: run ~/dotfiles/scripts/homecommand.sh airco/living/cool
 house stop air conditioning: run ~/dotfiles/scripts/homecommand.sh airco/living/off
+house air conditioning on: run ~/dotfiles/scripts/homecommand.sh airco/living/on
+house air conditioning off: run ~/dotfiles/scripts/homecommand.sh airco/living/off
 house start air conditioning bedroom: run ~/dotfiles/scripts/homecommand.sh airco/bedroom/cool
 house stop air conditioning bedroom: run ~/dotfiles/scripts/homecommand.sh airco/bedroom/off
 house start air conditioning upstairs: run ~/dotfiles/scripts/homecommand.sh airco/bedroom/cool
 house stop air conditioning upstairs: run ~/dotfiles/scripts/homecommand.sh airco/bedroom/off
+house air conditioning upstairs on: run ~/dotfiles/scripts/homecommand.sh airco/upstairs/on
+house air conditioning upstairs off: run ~/dotfiles/scripts/homecommand.sh airco/upstairs/off
+house air conditioning bedroom on: run ~/dotfiles/scripts/homecommand.sh airco/upstairs/on
+house air conditioning bedroom off: run ~/dotfiles/scripts/homecommand.sh airco/upstairs/off
 house wake eight: run ~/dotfiles/scripts/homecommand.sh wake/800
 house wake eight thirty: run ~/dotfiles/scripts/homecommand.sh wake/830
 house wake nine: run ~/dotfiles/scripts/homecommand.sh wake/900
