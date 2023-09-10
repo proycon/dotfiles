@@ -1,27 +1,34 @@
 terminal: press super+Return
 menu: press super+p
-system: run sxmo_appmenu.sh sys
-applications: run sxmo_appmenu.sh applications
-abs: run sxmo_appmenu.sh applications
-notifications: run sxmo_notificationsmenu.sh
-messages: run sxmo_modemtext.sh
-contacts: run sxmo_contactmenu.sh
-telephone: run sxmo_phonemenu.sh
-networks: run sxmo_networks.sh
-configuration: run sxmo_appmenu.sh config
-launcher: run bemenu-run -l 20
-keyboard: run sxmo_keyboard.sh toggle
+system: run sxmo_appmenu.sh sys &
+scripts: run sxmo_appmenu.sh scripts &
+applications: run sxmo_appmenu.sh applications &
+abs: run sxmo_appmenu.sh applications &
+notifications: run sxmo_notificationsmenu.sh &
+messages: run sxmo_modemtext.sh &
+contacts: run sxmo_contactmenu.sh &
+telephone: run sxmo_phonemenu.sh &
+networks: run sxmo_networks.sh &
+configuration: run sxmo_appmenu.sh config &
+launcher:run bemenu-run -l 20 &
+keyboard: run sxmo_keyboard.sh toggle &
 exterminate: press super+shift+q
 
+desktop one: run swaymsg workspace 1
+desktop two: run swaymsg workspace 2
+desktop three: run swaymsg workspace 3
+desktop four: run swaymsg workspace 4
 west: press super+Left
 east: press super+Right
 north: press super+Up
 south: press super+Down
 
-rightward: press super+Right
-leftward: press super+Left
-
 return: press super+Tab
 onscreen: press super+w
 tiles: press super+e
 tiled: press super+e
+
+cycle: stick off \
+	press super+c
+recycle: stick off \
+	press super+C
