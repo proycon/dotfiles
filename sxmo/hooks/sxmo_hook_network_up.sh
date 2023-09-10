@@ -11,7 +11,10 @@
 sxmo_notify_user.sh "$2 ($1) up."
 killall mosquitto_sub
 ~/dotfiles/scripts/homecommand.sh status &
-mpv --no-video --quiet ~/lighthome/media/connect.wav 
+HOUR=$(date +%H) 
+if [ "$HOUR" -ge 09 ] && [ "$HOUR" -le 22 ]; then
+    mpv --no-video --quiet ~/lighthome/media/connect.wav 
+fi
 
 # tell us wifi strength
 #if [ "$2" = "wifi" ]; then
