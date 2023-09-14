@@ -26,7 +26,7 @@ if ! sxmo_modemcall.sh list_active_calls \
 	exit
 fi
 
-~/dotfiles/notifysend.sh notify/proycon/phone "$1" &
+~/lighthome/send.sh notify/proycon/phone "$1" &
 
 # RING & VIBRATE MODE (DEFAULT)
 if [ ! -f "$XDG_CONFIG_HOME"/sxmo/.noring ] && [ ! -f "$XDG_CONFIG_HOME"/sxmo/.novibrate ]; then

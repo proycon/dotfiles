@@ -30,4 +30,4 @@ if ! sxmo_modemcall.sh list_active_calls | grep -q active; then
 
 fi
 
-~/dotfiles/notifysend.sh notify/proycon/sms "$@" &
+~/lighthome/send.sh notify/proycon/sms "$@" &

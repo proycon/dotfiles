@@ -4,17 +4,6 @@
 
 . ~/dotfiles/scripts/colorargs.sh
 
-if [ ! -z "$MQTT_USER" ]; then
-    echo "No MQTT user defined">&2
-    exit 2
-fi
-
-if [ ! -z "$MQTT_PASSWORD" ]; then
-    echo "No MQTT password defined">&2
-    exit 2
-fi
-
-
 if [ -z "$1" ]; then
     if [ -x "$(which sxmo_dmenu.sh 2> /dev/null)" ]; then
         chosen=$(cat ~/dotfiles/homecommands | sxmo_dmenu.sh -i -p "Home" -l 20 | sed "s/.*=//")
@@ -39,12 +28,9 @@ else
     PAYLOAD=ON
 fi
 
-~/dotfiles/scripts/notifysend.sh "$TOPIC" "$PAYLOAD"
-ret=$?
-if [ $ret -eq 0 ]; then
-    mpv --no-video --quiet ~/lighthome/media/computerbeep_5.wav
-else
-    mpv --no-video --quiet ~/lighthome/media/computerbeep_9.wav
-
+if [ ! -e ~/lighthome ]; then
+    echo "lighthome not installed" >&2
+    exit 2
 fi
-exit $ret
+
+~/lighthome/send.sh --notify "$TOPIC" "$PAYLOAD"

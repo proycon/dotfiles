@@ -57,12 +57,12 @@ if [ "$TARGET" = "0" ]; then
 else
     case "$1" in
         *mkv|*webm|*mp4|*mp3|*flac|*youtube.com*|*youtu.be*|*hooktube.com*|*bitchute.com*|*gifv|*v.redd.it*|*gifs.com*)
-           ~/dotfiles/scripts/notifysend.sh "home/command/videoplayer/pi$TARGET"
-           ~/dotfiles/scripts/notifysend.sh "home/command/video/pi$TARGET/play" "$1"
+           ~/lighthome/send.sh "home/command/videoplayer/pi$TARGET"
+           ~/lighthome/send.sh --notify "home/command/video/pi$TARGET/play" "$1"
            ;;
         *png|*jpg|*JPG|*jpeg|*gif)
-           ~/dotfiles/scripts/notifysend.sh "home/command/videoplayer/pi$TARGET"
-           ~/dotfiles/notifysend.sh "home/command/video/pi$TARGET/play" "$1"
+           ~/lighthome/send.sh "home/command/videoplayer/pi$TARGET"
+           ~/lighthome/send.sh --notify "home/command/video/pi$TARGET/play" "$1"
            ;;
         *)
            paplay ~/dotfiles/media/error.wav > /dev/null 2>/dev/null &
