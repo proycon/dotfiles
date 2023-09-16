@@ -1,0 +1,1 @@
+/home/proycon/dotfiles/scripts/passmenu.sh
