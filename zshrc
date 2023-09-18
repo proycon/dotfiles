@@ -473,6 +473,8 @@ function hutlist {
     list="$1"
     if [ "$1" = "sxmo" ]; then
         list="~mil/sxmo-devel"
+    elif [ "$1" = "aerc" ]; then
+        list="~rjarry/aerc-devel"
     fi
     if [ -n "$2" ]; then
         hut lists patchset show -l "$list" "$2"
@@ -489,6 +491,8 @@ function huttodo {
     tickets="$1"
     if [ "$1" = "sxmo" ]; then
         tickets="~mil/sxmo-tickets"
+    elif [ "$1" = "aerc" ]; then
+        tickets="~rjarry/aerc"
     fi
     if [ -n "$2" ]; then
         hut todo ticket show -t "$tickets" "$2"
