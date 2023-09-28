@@ -54,7 +54,10 @@ return packer.startup(function(use)
   use "akinsho/toggleterm.nvim"
   use "ahmedkhalf/project.nvim"
   use "lewis6991/impatient.nvim" -- Speed up loading Lua modules in Neovim to improve startup time.
-  use "lukas-reineke/indent-blankline.nvim" -- add indentation guides
+  use {
+    "lukas-reineke/indent-blankline.nvim", -- add indentation guides
+    main = "ibl"
+  }
   use "antoinemadec/FixCursorHold.nvim" -- This is needed to fix lsp doc highlight
   use "folke/which-key.nvim" -- show popup with keybindings
   use { "AckslD/nvim-neoclip.lua", -- remember yanks

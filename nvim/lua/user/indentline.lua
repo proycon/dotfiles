@@ -3,24 +3,11 @@ if not status_ok then
 	return
 end
 
-vim.g.indent_blankline_buftype_exclude = { "terminal", "nofile" }
-vim.g.indent_blankline_filetype_exclude = {
-	"help",
-	"startify",
-	"dashboard",
-	"packer",
-	"neogitstatus",
-	"NvimTree",
-	"Trouble",
-}
 vim.g.indentLine_enabled = 1
--- vim.g.indent_blankline_char = "│"
-vim.g.indent_blankline_char = "▏"
--- vim.g.indent_blankline_char = "▎"
+-- not sure if all these are used anymore (proycon) since v3 (https://github.com/lukas-reineke/indent-blankline.nvim/wiki/Migrate-to-version-3)
 vim.g.indent_blankline_show_trailing_blankline_indent = false
 vim.g.indent_blankline_show_first_indent_level = true
 vim.g.indent_blankline_use_treesitter = true
-vim.g.indent_blankline_show_current_context = true
 vim.g.indent_blankline_context_patterns = {
 	"class",
 	"return",
@@ -56,15 +43,15 @@ vim.wo.colorcolumn = "99999"
 -- vim.opt.listchars:append "space:⋅"
 -- vim.opt.listchars:append "space:"
 -- vim.opt.listchars:append "eol:↴"
-
-indent_blankline.setup({
-	-- show_end_of_line = true,
-	-- space_char_blankline = " ",
-	show_current_context = true,
-	-- show_current_context_start = true,
-	-- char_highlight_list = {
-	--   "IndentBlanklineIndent1",
-	--   "IndentBlanklineIndent2",
-	--   "IndentBlanklineIndent3",
-	-- },
-})
+require "ibl".setup {
+    indent  = {
+         char = "▏"
+    },
+    scope = {
+        enabled = true
+    },
+    exclude = {
+        buftypes = { "terminal", "nofile" },
+        filetypes = { "help", "startify", "dashboard", "packer", "neogitstatus", "NVimTree", "Trouble" }
+    }
+}
