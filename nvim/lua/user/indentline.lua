@@ -48,7 +48,9 @@ require "ibl".setup {
          char = "▏"
     },
     scope = {
-        enabled = true
+        enabled = true,
+        show_start = false,
+        show_end = false
     },
     exclude = {
         buftypes = { "terminal", "nofile" },
