@@ -8,16 +8,17 @@ Software
 
 Current setup:
 
-* **OS**: Arch Linux
-* **Window Manager**: hyprland
+* **OS**: [Arch Linux](https://archlinux.org)
+* **Compositor**: [Hyprland](https://hyprland.org)
+* **Bar**: [waybar](https://github.com/Alexays/Waybar)
 * **Shell**: zsh
-* **Terminal:** foot
+* **Terminal:** [foot](https://codeberg.org/dnkl/foot)
 * **Terminal Multiplexer**: tmux
 * **Editor**: neovim
 * **Browser**: firefox
 * **Music player**: ncmpcpp + mopidy
-* **Mail**: aerc
-* **Chat**: weechat (irc) + bitblee (xmpp) + gomuks (matrix) + tg (telegram)
+* **Mail**: [aerc](https://aerc-mail.org/)
+* **Chat**: [senpai](https://sr.ht/~taiite/senpai/) (IRC client), [soju](https://git.sr.ht/~emersion/soju) (IRC bouncer), bitlbee (XMPP), gomuks (matrix), tg (telegram)
 
 Install
 --------------
