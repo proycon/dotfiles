@@ -142,7 +142,6 @@ man() {
     LESS_TERMCAP_md=$'\E[01;38;5;74m'  \
     LESS_TERMCAP_me=$'\E[0m'           \
     LESS_TERMCAP_se=$'\E[0m'           \
-    LESS_TERMCAP_so=$'\E[30;42m'       \
     LESS_TERMCAP_ue=$'\E[0m'           \
     LESS_TERMCAP_us=$'\E[04;38;5;146m' \
     man "$@"
@@ -502,7 +501,6 @@ function huttodo {
 }
 
 
-export LESS_TERMCAP_so=$'\E[30;42m'
 
 case $TERM in
     xterm*|rxvt)
@@ -520,3 +518,4 @@ esac
 [ -f ~/dotfiles/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh ] && source ~/dotfiles/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
 export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH:$HOME/.local/bin"
+unset LESS LESS_TERMCAP_so
