@@ -63,6 +63,7 @@ completion_pill.bg=aqua
 #dynamic
 *msglist_answered.fg = #21771f
 "msglist_default.X-Spam,~Yes.fg" = #000000
+"msglist_default.From,~proycon@anaproy\.nl.bg" = #062c0f
 "msglist_default.X-Sourcehut-Patchset-Update,~APPLIED.fg" = #00ff00
 "msglist_default.X-Sourcehut-Patchset-Update,~APPLIED.bg" = #3d0647
 "msglist_default.X-Sourcehut-Patchset-Update,~APPROVED.fg" = green
