@@ -61,7 +61,7 @@ completion_pill.bg=aqua
 
 
 #dynamic
-*msglist_answered.fg = #21771f
+*msglist_answered.fg = #1e8b1b
 "msglist_default.X-Spam,~Yes.fg" = #000000
 "msglist_default.From,~proycon@anaproy\.nl.bg" = #062c0f
 "msglist_default.X-Sourcehut-Patchset-Update,~APPLIED.fg" = #00ff00
@@ -98,6 +98,7 @@ signature.dim=true
 diff_meta.fg=#ff0000
 diff_meta.bold=true    
 diff_chunk.dim=true    
+diff_chunk_func.bold=true    
 diff_add.fg=#00ff00    
 diff_del.fg=#ff0000
 quote_1.fg=6    
