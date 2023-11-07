@@ -8,17 +8,34 @@ Software
 
 Current setup:
 
-* **OS**: [Arch Linux](https://archlinux.org)
-* **Compositor**: [Hyprland](https://hyprland.org)
-* **Bar**: [waybar](https://github.com/Alexays/Waybar)
-* **Shell**: zsh
-* **Terminal:** [foot](https://codeberg.org/dnkl/foot)
-* **Terminal Multiplexer**: tmux
-* **Editor**: neovim
-* **Browser**: firefox
-* **Music player**: ncmpcpp + mopidy
-* **Mail**: [aerc](https://aerc-mail.org/)
-* **Chat**: [senpai](https://sr.ht/~taiite/senpai/) (IRC client), [soju](https://git.sr.ht/~emersion/soju) (IRC bouncer), bitlbee (XMPP), gomuks (matrix), tg (telegram)
+* 🐧 **OS**: [Arch Linux](https://archlinux.org)
+* ⚙ **Compositor**: [Hyprland](https://hyprland.org)
+* 🍫 **Bar**: [waybar](https://github.com/Alexays/Waybar)
+* 🐚 **Shell**: zsh
+* 🤖 **Terminal:** [foot](https://codeberg.org/dnkl/foot)
+* 🤖 **Terminal Multiplexer**: tmux
+* 📮 Mail Client: [aerc](https://aerc-mail.org)
+* 🌐 Web Browser: [Firefox](https://www.mozilla.org/en-US/firefox/)
+* 🧮 Code/Text Editor: [neovim](https://neovim.org)
+* 📜 Word Processing: [LaTeX](https://www.latex-project.org/) (but more often via Markdown + [pandoc](https://pandoc.org))
+* 📊 Presentations: [LaTeX](https://www.latex-project.org/) with beamer (more often via Markdown + pandoc)
+* 📜 PDF viewer: [zathura](https://pwmt.org/projects/zathura/)
+* 🎥 Media Player: [mpv](https://mpv.io)
+* 🎵 Music: [ncmpcpp](https://rybczak.net/ncmpcpp/) (client) + [mpd](https://musicpd.org) + [snapcast](https://github.com/badaix/snapcast)
+* 📝 Notes: [neovim](https://neovim.org) and markdown files in a git repo
+* ✅ To-Do: [todo.txt](https://todotxt.org) with my own [todo.txt-more](https://git.sr.ht/~proycon/todotxt-more) extension.
+* 📆 Calendar: [todo.txt-more](https://git.sr.ht/~proycon/todotxt-more)
+* 🗞️ RSS Client:  [newsboat](https://newsboat.org)
+* 🎤 Podcasts: podboat (comes with newsboat)
+* ⌨️ Launcher:  [bemenu](https://github.com/Cloudef/bemenu)
+* 🌅 Photo viewer: [imv](https://sr.ht/~exec64/imv/)
+* 🌅 Photo editing: [gimp](https://gimp.org)
+* 🌅 Image editing (vector): [inkscape](https://inkscape.org)
+* 📹 Video editing: [kdenlive](https://kdenlive.org)
+* 💬 Chat: [senpai](https://sr.ht/~taiite/senpai/) + [soju](https://git.sr.ht/~emersion/soju) (IRC), [bitlbee](https://bitlbee.org) (XMPP), [gomuks](https://github.com/tulir/gomuks) (Matrix), [Telegram](https://desktop.telegram.org/) (or [tg](https://github.com/paul-nameless/tg))
+* 🔖 Bookmarks: [buku](https://github.com/jarun/Buku) + bemenu script
+* 🔐 Password Management: [pass](https://www.passwordstore.org/)
+* 🤦 Social Media: [Mastodon](https://social.anaproy.nl/@proycon) (sometimes via [tut](https://github.com/RasmusLindroth/tut))
 
 Install
 --------------
