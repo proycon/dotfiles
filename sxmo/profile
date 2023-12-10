@@ -1,5 +1,5 @@
 #!/bin/sh
-# configversion: 4284f96d91e9550ff8f3b25823e402ad
+# configversion: 22abf3cab32b9affcf5543b44f9b04ac
 
 # Please modify this file to your liking
 #
@@ -29,7 +29,7 @@ command -v firefox >/dev/null && export BROWSER=firefox
 #export SXMO_SUBREDDITS="postmarketos pinephoneOfficial pinephone unixporn"
 
 # Change the default terminal command
-# export TERMCMD="st -e"
+export TERMCMD="sxmo_terminal.sh"
 
 # When scrolling past the beginning or end of a menu, wrap it around:
 export DMENU_WRAP_AROUND=1

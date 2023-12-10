@@ -1,0 +1,236 @@
+[
+  {
+    "type": "event",
+    "event_name": "power_pressed",
+    "transitions": [
+      {
+        "type": "delay",
+        "delay_duration": 400000000,
+        "transitions": [
+          {
+            "type": "exec",
+            "command": [
+              "setsid",
+              "-f",
+              "sxmo_hook_inputhandler.sh",
+              "powerbutton_three"
+            ]
+          }
+        ]
+      },
+      {
+        "type": "event",
+        "event_name": "power_released",
+        "transitions": [
+          {
+            "type": "delay",
+            "delay_duration": 400000000,
+            "transitions": [
+              {
+                "type": "exec",
+                "command": [
+                  "setsid",
+                  "-f",
+                  "sxmo_hook_inputhandler.sh",
+                  "powerbutton_one"
+                ]
+              }
+            ]
+          },
+          {
+            "type": "event",
+            "event_name": "power_released",
+            "transitions": [
+              {
+                "type": "delay",
+                "delay_duration": 400000000,
+                "transitions": [
+                  {
+                    "type": "exec",
+                    "command": [
+                      "setsid",
+                      "-f",
+                      "sxmo_hook_inputhandler.sh",
+                      "powerbutton_two"
+                    ]
+                  }
+                ]
+              },
+              {
+                "type": "event",
+                "event_name": "power_released",
+                "transitions": [
+                  {
+                    "type": "exec",
+                    "command": [
+                      "setsid",
+                      "-f",
+                      "sxmo_hook_inputhandler.sh",
+                      "powerbutton_three"
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "type": "event",
+    "event_name": "voldown_pressed",
+    "transitions": [
+      {
+        "type": "delay",
+        "delay_duration": 400000000,
+        "transitions": [
+          {
+            "type": "exec",
+            "command": [
+              "setsid",
+              "-f",
+              "sxmo_hook_inputhandler.sh",
+              "voldown_three"
+            ]
+          }
+        ]
+      },
+      {
+        "type": "event",
+        "event_name": "voldown_released",
+        "transitions": [
+          {
+            "type": "delay",
+            "delay_duration": 400000000,
+            "transitions": [
+              {
+                "type": "exec",
+                "command": [
+                  "setsid",
+                  "-f",
+                  "sxmo_hook_inputhandler.sh",
+                  "voldown_one"
+                ]
+              }
+            ]
+          },
+          {
+            "type": "event",
+            "event_name": "voldown_released",
+            "transitions": [
+              {
+                "type": "delay",
+                "delay_duration": 400000000,
+                "transitions": [
+                  {
+                    "type": "exec",
+                    "command": [
+                      "setsid",
+                      "-f",
+                      "sxmo_hook_inputhandler.sh",
+                      "voldown_two"
+                    ]
+                  }
+                ]
+              },
+              {
+                "type": "event",
+                "event_name": "voldown_released",
+                "transitions": [
+                  {
+                    "type": "exec",
+                    "command": [
+                      "setsid",
+                      "-f",
+                      "sxmo_hook_inputhandler.sh",
+                      "voldown_three"
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "type": "event",
+    "event_name": "volup_pressed",
+    "transitions": [
+      {
+        "type": "delay",
+        "delay_duration": 400000000,
+        "transitions": [
+          {
+            "type": "exec",
+            "command": [
+              "setsid",
+              "-f",
+              "sxmo_hook_inputhandler.sh",
+              "volup_three"
+            ]
+          }
+        ]
+      },
+      {
+        "type": "event",
+        "event_name": "volup_released",
+        "transitions": [
+          {
+            "type": "delay",
+            "delay_duration": 400000000,
+            "transitions": [
+              {
+                "type": "exec",
+                "command": [
+                  "setsid",
+                  "-f",
+                  "sxmo_hook_inputhandler.sh",
+                  "volup_one"
+                ]
+              }
+            ]
+          },
+          {
+            "type": "event",
+            "event_name": "volup_released",
+            "transitions": [
+              {
+                "type": "delay",
+                "delay_duration": 400000000,
+                "transitions": [
+                  {
+                    "type": "exec",
+                    "command": [
+                      "setsid",
+                      "-f",
+                      "sxmo_hook_inputhandler.sh",
+                      "volup_two"
+                    ]
+                  }
+                ]
+              },
+              {
+                "type": "event",
+                "event_name": "volup_released",
+                "transitions": [
+                  {
+                    "type": "exec",
+                    "command": [
+                      "setsid",
+                      "-f",
+                      "sxmo_hook_inputhandler.sh",
+                      "volup_three"
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+]

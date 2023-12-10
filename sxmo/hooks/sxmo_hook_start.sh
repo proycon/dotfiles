@@ -1,5 +1,5 @@
 #!/bin/sh
-# configversion: 7791b92c9ed87e2ada2031cba77f8aec
+# configversion: 8cfba03599987e42f3dc6126cce0994e
 # SPDX-License-Identifier: AGPL-3.0-only
 # Copyright 2022 Sxmo Contributors
 
@@ -10,26 +10,34 @@
 # Create xdg user directories, such as ~/Pictures
 xdg-user-dirs-update
 
-sxmo_daemons.sh start daemon_manager superd
+sxmo_jobs.sh start daemon_manager superd
 
 # let time to superd to start correctly
 while ! superctl status > /dev/null 2>&1; do
 	sleep 0.5
 done
 
+# Not dangerous if "locker" isn't an available state
+sxmo_state.sh set locker
+
+if [ -n "$SXMO_ROTATE_START" ]; then
+	sxmo_rotate.sh
+fi
+
 # Load our sound daemons
 
-if [ "$(command -v pulseaudio)" ]; then
-	superctl start pulseaudio
-elif [ "$(command -v pipewire)" ]; then
-	# pipewire-pulse will start pipewire
-	superctl start pipewire-pulse
-	superctl start wireplumber
+if [ -z "$SXMO_NO_AUDIO" ]; then
+	if [ "$(command -v pulseaudio)" ]; then
+		superctl start pulseaudio
+	elif [ "$(command -v pipewire)" ]; then
+		# pipewire-pulse will start pipewire
+		superctl start pipewire-pulse
+		superctl start wireplumber
 fi
 
 # Periodically update some status bar components
 sxmo_hook_statusbar.sh all
-sxmo_daemons.sh start statusbar_periodics sxmo_run_aligned.sh 60 \
+sxmo_jobs.sh start statusbar_periodics sxmo_run_aligned.sh 60 \
 	sxmo_hook_statusbar.sh periodics
 
 # mako/dunst are required for warnings.
@@ -66,16 +74,20 @@ esac
 sxmo_hook_unlock.sh
 
 # Turn on auto-suspend
-if [ -w "/sys/power/wakeup_count" ] && [ -f "/sys/power/wake_lock" ]; then
+if sxmo_wakelock.sh isenabled; then
+	sxmo_wakelock.sh lock sxmo_not_suspendable infinite
 	superctl start sxmo_autosuspend
 fi
+
+# To setup initial unlock state
+sxmo_state.sh set unlock
 
 # Turn on lisgd
 if [ ! -e "$XDG_CACHE_HOME"/sxmo/sxmo.nogesture ]; then
 	superctl start sxmo_hook_lisgd
 fi
 
-if [ "$(command -v ModemManager)" ]; then
+if [ -z "$SXMO_NO_MODEM" ] && command -v ModemManager > /dev/null; then
 	# Turn on the dbus-monitors for modem-related tasks
 	superctl start sxmo_modemmonitor
 
@@ -96,19 +108,18 @@ superctl start sxmo_networkmonitor
 # The daemon that display notifications popup messages
 superctl start sxmo_notificationmonitor
 
-# monitor for headphone for statusbar
-superctl start sxmo_soundmonitor
-
 # Play a funky startup tune if you want (disabled by default)
 #mpv --quiet --no-video ~/welcome.ogg &
 
 # mmsd and vvmd
-if [ -f "${SXMO_MMS_BASE_DIR:-"$HOME"/.mms/modemmanager}/mms" ]; then
-	superctl start mmsd-tng
-fi
+if [ -z "$SXMO_NO_MODEM" ]; then
+	if [ -f "${SXMO_MMS_BASE_DIR:-"$HOME"/.mms/modemmanager}/mms" ]; then
+		superctl start mmsd-tng
+	fi
 
-if [ -f "${SXMO_VVM_BASE_DIR:-"$HOME"/.vvm/modemmanager}/vvm" ]; then
-	superctl start vvmd
+	if [ -f "${SXMO_VVM_BASE_DIR:-"$HOME"/.vvm/modemmanager}/vvm" ]; then
+		superctl start vvmd
+	fi
 fi
 
 # add some warnings if things are not setup correctly
