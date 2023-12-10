@@ -33,6 +33,7 @@ if [ -z "$SXMO_NO_AUDIO" ]; then
 		# pipewire-pulse will start pipewire
 		superctl start pipewire-pulse
 		superctl start wireplumber
+    fi
 fi
 
 # Periodically update some status bar components
