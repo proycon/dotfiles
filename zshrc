@@ -317,6 +317,12 @@ alias -s ogg=play
 
 alias -s html=firefox
 
+function s() {
+    clear
+    for i in $(seq 0 20); do
+        echo "\n"
+    done
+}
 
 function git_prompt_info() {
   ref=$(git symbolic-ref HEAD 2> /dev/null) || return
