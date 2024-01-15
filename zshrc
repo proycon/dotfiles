@@ -525,3 +525,7 @@ esac
 
 export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH:$HOME/.local/bin"
 unset LESS_TERMCAP_so
+
+if [ "$(tty)" = "/dev/tty1" ]; then
+    exec ~/dotfiles/scripts/starthyprland.sh
+fi
