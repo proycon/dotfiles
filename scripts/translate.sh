@@ -31,7 +31,11 @@ if [ ! -e ~/.cargo/bin/lingua-cli ]; then
     fi
 fi
 
-DETECTEDLANG=$(lingua-cli "$TEXT" | cut -d " " -f 1)
+if [ "$1" ]; then
+    DETECTEDLANG="$1"
+else
+    DETECTEDLANG=$(lingua-cli "$TEXT" | cut -d " " -f 1)
+fi
 . ~/local/argostranslate.env/bin/activate
 if [ ! -e ~/local/argostranslate.env/bin/argos-translate ]; then
     notify-send "Pip installing argostranslate, this may take quite a while!"
