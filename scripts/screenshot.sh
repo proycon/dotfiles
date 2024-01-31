@@ -3,6 +3,7 @@ if [ "$1" = "region" ]; then
     NAME="screenshot$(date +%Y%m%d%H%M%S).png"
     wl-copy "https://download.anaproy.nl/$NAME"
     if grim -g "$(slurp)" "/nettmp/$NAME"; then
+        ln -s "/nettmp/$NAME" "/tmp/$NAME"
         notify-send "Screenshot ready" "Published at https://download.anaproy.nl/$NAME and URL copied to clipboard"
     else
         notify-send "Screenshot failed!"
@@ -11,6 +12,7 @@ elif [ "$1" = "annotate" ]; then
     NAME="screenshot$(date +%Y%m%d%H%M%S).png"
     wl-copy "https://download.anaproy.nl/$NAME"
     if grim -g "$(slurp -o -r -c '#ff0000ff')" - | satty --filename - --fullscreen --output-filename "/nettmp/$NAME"; then
+        ln -s "/nettmp/$NAME" "/tmp/$NAME"
         notify-send "Screenshot ready" "Published at https://download.anaproy.nl/$NAME and URL copied to clipboard"
     else
         notify-send "Screenshot failed!"
