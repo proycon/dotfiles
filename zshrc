@@ -27,7 +27,7 @@ export DISABLE_UNTRACKED_FILES_DIRTY="true"
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
-plugins=(ansible archlinux colored-man-pages debian fd git git-flow github history history-substring-search lxd pip python ripgrep rust systemd ufw vi-mode zsh-autosuggestions)
+plugins=(ansible archlinux colored-man-pages debian fd git git-flow github history history-substring-search lxd pip python pylint ripgrep rust systemd ufw vi-mode zsh-autosuggestions pass podman qrcode rsync kubectl)
 
 source $ZSH/oh-my-zsh.sh
 
