@@ -483,9 +483,9 @@ function hutlist {
         list="~rjarry/aerc-devel"
     fi
     if [ -n "$2" ]; then
-        hut lists patchset show -l "$list" "$2"
+        PAGER=less hut lists patchset show -l "$list" "$2"
     else
-        hut lists patchset list -l "$list"
+        PAGER=less hut lists patchset list -l "$list"
     fi
 }
 
@@ -501,9 +501,9 @@ function huttodo {
         tickets="~rjarry/aerc"
     fi
     if [ -n "$2" ]; then
-        hut todo ticket show -t "$tickets" "$2"
+        PAGER=less hut todo ticket show -t "$tickets" "$2"
     else
-        hut todo ticket list -t "$tickets"
+        PAGER=less hut todo ticket list -t "$tickets"
     fi
 }
 
