@@ -343,14 +343,6 @@ function rmd () {
 export VIRTUAL_ENV_DISABLE_PROMPT=1
 
 
-#if [[ $TERM == "xterm" ]] && [[ $COLORTERM == "gnome-terminal" ]]; then
-#if [[ "$TERM" == "alacritty" || "$TERM" == "xterm-kitty" ]]; then
-    #not well enough supported yet
-    #export TERM="xterm-256color"
-#fi
-#fi
-#export PS1="$PS1"'$([ -n "$TMUX" ] && tmux setenv TMUXPWD_$(tmux display -p "#D" | tr -d %) "$PWD")' #tmux-powerline support
-
 
 export GPGKEY="1A31555C"
 #if [ -f "${HOME}/.gpg-agent-info" ]; then
@@ -394,48 +386,7 @@ bindkey '^h' backward-delete-char
 bindkey '^w' backward-kill-word
 bindkey '^r' history-incremental-search-backward
 
-set_cursor() {
-    local style
-    case $1 in
-        reset) style=0;; # The terminal emulator's default
-        blink-block) style=1;;
-        block) style=2;;
-        blink-underline) style=3;;
-        underline) style=4;;
-        blink-vertical-line) style=5;;
-        vertical-line) style=6;;
-    esac
-
-    [ $style -ge 0 ] && print -n -- "\e[${style} q"
-}
-
-function zle-line-init zle-keymap-select {
-    case $KEYMAP in
-        vicmd)
-          set_cursor block
-          echo -ne "\033]12;Red\007"
-          ;;
-         *)
-          set_cursor block
-          echo -ne "\033]12;Grey\007"
-          ;;
-    esac
-}
-#function zle-line-init zle-keymap-select {
-#    VIM_PROMPT="%{$fg_bold[yellow]%} [% NORMAL]%  %{$reset_color%}"
-#    RPS1="${${KEYMAP/vicmd/$VIM_PROMPT}/(main|viins)/}$RPROMPT $EPS1"
-#    zle reset-prompt
-#}
-#
-
-zle -N zle-line-init
-zle -N zle-keymap-select
-zle-line-init() { echoti smkx 2>/dev/null; }
-zle-line-finish() { echoti rmkx 2>/dev/null; }
-zle -N zle-line-init
-zle -N zle-line-finish
 export KEYTIMEOUT=1
-
 
 #bindkey -M viins 'jj' vi-cmd-mode
 
