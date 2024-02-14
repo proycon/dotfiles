@@ -349,7 +349,7 @@ export VIRTUAL_ENV_DISABLE_PROMPT=1
     #export TERM="xterm-256color"
 #fi
 #fi
-export PS1="$PS1"'$([ -n "$TMUX" ] && tmux setenv TMUXPWD_$(tmux display -p "#D" | tr -d %) "$PWD")' #tmux-powerline support
+#export PS1="$PS1"'$([ -n "$TMUX" ] && tmux setenv TMUXPWD_$(tmux display -p "#D" | tr -d %) "$PWD")' #tmux-powerline support
 
 
 export GPGKEY="1A31555C"
