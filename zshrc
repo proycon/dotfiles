@@ -296,6 +296,19 @@ sshcheck() {
     true
 }
 
+gpghelp() {
+    echo "gpg --recv-key 8AC624881EF2AC30C0E68E2C39FE11201A31555C"
+    echo "echo \"your secret message here\" | gpg -e --armor -r proycon@anaproy.nl"
+}
+
+gpgmsg() {
+    if [ -n "$1" ]; then
+        gpg -e --armor -r $1
+    else
+        gpg -e --armor -r proycon@anaproy.nl
+    fi
+}
+
 alias dps="dirpersiststore"
 
 alias -s txt=vim
