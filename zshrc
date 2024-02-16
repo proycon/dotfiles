@@ -344,7 +344,7 @@ export VIRTUAL_ENV_DISABLE_PROMPT=1
 
 
 
-export GPGKEY="1A31555C"
+export GPGKEY="8AC624881EF2AC30C0E68E2C39FE11201A31555C"
 #if [ -f "${HOME}/.gpg-agent-info" ]; then
 #    . "${HOME}/.gpg-agent-info"
 #    export GPG_AGENT_INFO
