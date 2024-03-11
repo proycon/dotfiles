@@ -52,6 +52,7 @@
     "stam": ["@work","@huc","+clariah","+wp2annotation"],
     "stamrust": ["+stam","@work","@huc","+clariah","+wp2annotation"],
     "stampython": ["+stam","@work","@huc","+clariah","+wp2annotation"],
+    "stamtools": ["+stam","@work","@huc","+clariah","+wp2annotation"],
     "analiticcl": ["@work","@huc"],
     "todotxtmore": ["@hobby"],
     "sxmo": ["@hobby"],
