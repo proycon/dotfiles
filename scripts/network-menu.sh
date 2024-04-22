@@ -25,13 +25,16 @@ toggleconnection() {
 scan() {
     ssid=$( nmcli -g ssid -c no device wifi | bemenu -p 'Networks' -l 20 --fn "$BEMENU_FONT" $BEMENU_COLORARGS)
 
-    if [ -f ~/.password-store/"$ssid".gpg ]; then
-        passwd=$(  pass show "$ssid" | head -n 1 )
-    else
-        passwd=$(bemenu -p 'Password' -l 20 --fn "$BEMENU_FONT" $BEMENU_COLORARGS)
-    fi
+    if [ -n "$ssid" ]; then
+        if [ -f ~/.password-store/"$ssid".gpg ]; then
+            passwd=$(  pass show "$ssid" | head -n 1 )
+        else
+            passwd=$(bemenu -p 'Password' -l 20 --fn "$BEMENU_FONT" $BEMENU_COLORARGS)
+        fi
 
-    nmcli dev wifi connect "$ssid" password "$passwd"
+        RES=$(nmcli dev wifi connect "$ssid" password "$passwd" 2>&1)
+        notify-send "$RES"
+    fi
 }
 
 
