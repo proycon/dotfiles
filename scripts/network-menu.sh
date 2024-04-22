@@ -42,6 +42,8 @@ CHOICE="$(
     printf %b "
         Scan
         $(connections)
+        Editor
+        List
         Close Menu
     " |
     awk '{$1=$1};1' | grep '\w' | bemenu -p 'Networks' -l 20 --fn "$BEMENU_FONT" $BEMENU_COLORARGS
@@ -52,6 +54,12 @@ case "$CHOICE" in
         ;;
     "Scan")
         scan
+        ;;
+    "Editor")
+        nm-connection-editor
+        ;;
+    "List")
+        foot -e nmcli device wifi list
         ;;
     *)
         toggleconnection "$CHOICE"
