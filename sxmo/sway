@@ -1,5 +1,5 @@
 # Default config for sway
-# configversion: b6d4033a256e7db9f31bbdfb7ad84e9b
+# configversion: aa9cb0b4cb026e71bb601cf30fb543e8
 #
 # Copy this to ~/.config/sway/config and edit it to your liking.
 #
@@ -28,7 +28,6 @@ exec_always sxmo_swayinitconf.sh
 exec_always dbus-update-activation-environment WAYLAND_DISPLAY DISPLAY XDG_CURRENT_DESKTOP
 
 mode "menu" {
-    #bindsym --input-device=1:1:1c21800.lradc XF86AudioMute exec nothing # just a placeholder for "menu" mode
     # This is slower than remapping the keys using a keymap, but we don't need
     # to know the device names, so use it as a fallback so this functionality
     # keeps working if a deviceprofile doesn't exist.
@@ -39,20 +38,48 @@ mode "menu" {
     bindsym XF86AudioLowerVolume exec wtype -k Down
 }
 
+mode "nomod" {
+    # follow the standard sxmo keybinds as far as possible
+    bindsym t exec $term; mode "default"
+    bindsym q mode "default"
+    bindsym Shift+p exec sxmo_appmenu.sh sys; mode "default"
+    bindsym p exec sxmo_appmenu.sh; mode "default"
+    bindsym d exec $menu; mode "default"
+    bindsym Shift+q kill; mode "default"
+    bindsym i exec sxmo_wmmenu.sh windowswitcher; mode "default"
+    bindsym Shift+c reload; mode "default"
+    bindsym f fullscreen; mode "default"
+    bindsym Shift+space floating toggle; mode "default"
+    bindsym a focus parent; mode "default"
+}
+
 ### Key bindings
 #
 # Basics:
 #
     input * xkb_options compose:ralt
 
+    # Nokia N900 hardware keyboard
+    input "1:1:TWL4030_Keypad" {
+        xkb_model "nokiarx51"
+        xkb_layout "us"
+        # ralt has special meaning on N900 keyboard so do not use as
+        # compose key
+        xkb_options compose:rwin
+    }
+
+    # in the absence of a mod key (e.g. N900), provide a "nomod" mode
+    bindsym Shift+space mode "nomod"
+
     # Start a terminal
     bindsym $mod+Return exec $term
 
     # Launch appmenu
     bindsym $mod+p exec sxmo_appmenu.sh
+    bindsym $mod+Shift+p exec sxmo_appmenu.sh sys
 
-    # Launch scripts menu
-    bindsym $mod+i exec sxmo_appmenu.sh scripts
+    # Wm menu switcher
+    bindsym $mod+i exec sxmo_wmmenu.sh windowswitcher
 
     # Kill focused window
     bindsym $mod+Shift+q kill
@@ -144,7 +171,7 @@ mode "menu" {
     bindsym $mod+e layout toggle split
 
     # Make the current focus fullscreen
-    # bindsym $mod+f fullscreen
+    bindsym $mod+f fullscreen
 
     # Toggle the current focus between tiling and floating mode
     bindsym $mod+Shift+space floating toggle
@@ -154,6 +181,13 @@ mode "menu" {
 
     # Move focus to the parent container
     bindsym $mod+a focus parent
+
+    # Manual locker
+    bindsym $mod+g exec sxmo_state.sh set locker
+
+    # Shutdown
+    bindsym $mod+t exec sxmo_appmenu.sh power
+
 #
 # Scratchpad:
 #
@@ -207,7 +241,7 @@ bar {
     colors {
         statusline #ffffff
         background #323232
-        inactive_workspace #32323200 #32323200 #5c5c5c
+        inactive_workspace #323232 #323232 #ffffff
         font "Sxmo 11"
     }
 }
@@ -236,6 +270,7 @@ bindsym button2 kill
 
 bindswitch lid:on exec sxmo_wm.sh dpms on
 bindswitch lid:off exec sxmo_wm.sh dpms off
+
 include /etc/sway/config.d/*
 
 exec 'printf %s "$SWAYSOCK" > "$XDG_RUNTIME_DIR"/sxmo.swaysock'

@@ -1,5 +1,5 @@
 #!/bin/sh
-# configversion: 8cfba03599987e42f3dc6126cce0994e
+# configversion: 71903f5832f7cc05bf9996a487e3ec16
 # SPDX-License-Identifier: AGPL-3.0-only
 # Copyright 2022 Sxmo Contributors
 
@@ -33,7 +33,10 @@ if [ -z "$SXMO_NO_AUDIO" ]; then
 		# pipewire-pulse will start pipewire
 		superctl start pipewire-pulse
 		superctl start wireplumber
-    fi
+	fi
+
+	# monitor for headphone for statusbar
+	superctl start sxmo_soundmonitor
 fi
 
 # Periodically update some status bar components
@@ -53,6 +56,7 @@ case "$SXMO_WM" in
 		;;
 	dwm)
 		superctl start dunst
+		superctl start sxmo_xob
 
 		# Auto hide cursor with touchscreen, Show it with a mouse
 		if command -v "unclutter-xfixes" > /dev/null; then
@@ -70,9 +74,6 @@ case "$SXMO_WM" in
 		feh --bg-fill "$SXMO_BG_IMG"
 		;;
 esac
-
-# To setup initial lock state
-sxmo_hook_unlock.sh
 
 # Turn on auto-suspend
 if sxmo_wakelock.sh isenabled; then
@@ -132,4 +133,4 @@ fi
 sxmo_migrate.sh state || sxmo_notify_user.sh --urgency=critical \
 	"Config needs migration" "$? file(s) in your sxmo configuration are out of date and disabled - using defaults until you migrate (run sxmo_migrate.sh)"
 
-(sleep 10 && ~/lighthome/client.sh > /tmp/lighthome.log 2>&1) &
+(sleep 10 && ~/lighthome/client.sh > /tmp/lighthome.log 2>&1)
