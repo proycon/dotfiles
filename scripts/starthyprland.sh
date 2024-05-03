@@ -11,7 +11,7 @@ export GDK_BACKEND=wayland
 export MOZ_ENABLE_WAYLAND=1
 export SDL_VIDEODRIVER=wayland
 export GLFW_IM_MODULE=fcitx
-export GTK_IM_MODULE=fcitx
+#export GTK_IM_MODULE=fcitx
 export INPUT_METHOD=fcitx
 export XMODIFIERS=@im=fcitx
 export IMSETTINGS_MODULE=fcitx
