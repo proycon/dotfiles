@@ -1,5 +1,5 @@
 #!/bin/sh
-# configversion: 656ada683ce62137e8ef5b917645f259
+# configversion: 22abf3cab32b9affcf5543b44f9b04ac
 
 # shellcheck source=scripts/core/sxmo_common.sh
 . sxmo_common.sh
@@ -15,7 +15,7 @@
 # You will sometime get SMS or calls from not
 #  country code prefixed phone numbers. To make
 #  it easy to fixup configure the default countryu.
-export DEFAULT_COUNTRY=NL
+#export DEFAULT_COUNTRY=FR
 
 ### Configuration Parameters ###
 
@@ -32,7 +32,7 @@ command -v firefox >/dev/null && export BROWSER=firefox
 export TERMCMD="sxmo_terminal.sh"
 
 # Change the used terminal command
-# export SXMO_TERMINAL="st"
+# export SXMO_TERMINAL="st -e"
 
 # When scrolling past the beginning or end of a menu, wrap it around:
 #export DMENU_WRAP_AROUND=1
@@ -65,10 +65,10 @@ export SXMO_RINGTIME=20
 
 #Set RINGNUMBER to number of times phone will ring or repeat ringtone
 #(whichever of SXMO_RINGTIME or SXMO_RINGNUMBER runs less will limit how long phone rings)
-export SXMO_RINGNUMBER=4
+export SXMO_RINGNUMBER=10
 
 #Set to the default text for a new text message.
 export SXMO_DEFAULT_DRAFT="Enter new message here."
 
 #Set background image
-export SXMO_BG_IMG="$(sxmo_hook_wallpaper.sh)"
+export SXMO_BG_IMG="$(xdg_data_path sxmo/background.jpg)"
