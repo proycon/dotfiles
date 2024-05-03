@@ -1,5 +1,5 @@
 #!/bin/sh
-# configversion: 71903f5832f7cc05bf9996a487e3ec16
+# configversion: 8cfba03599987e42f3dc6126cce0994e
 # SPDX-License-Identifier: AGPL-3.0-only
 # Copyright 2022 Sxmo Contributors
 
@@ -56,7 +56,6 @@ case "$SXMO_WM" in
 		;;
 	dwm)
 		superctl start dunst
-		superctl start sxmo_xob
 
 		# Auto hide cursor with touchscreen, Show it with a mouse
 		if command -v "unclutter-xfixes" > /dev/null; then
