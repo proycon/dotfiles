@@ -40,14 +40,14 @@ while true; do
 done
 
 if [ "$format" = "conky" ]; then
-    bold="\${color white}"
-    normal="\${color white}"
-    green="\${color green}"
-    magenta="\${color magenta}"
-    yellow="\${color yellow}"
-    boldred="\${color red}"
-    boldgreen="\${color green}"
-    boldyellow="\${color yellow}"
+    bold="\${color #ffffff}"
+    normal="\${color #ffffff}"
+    green="\${color #00ff00}"
+    magenta="\${color #ff00ff}"
+    yellow="\${color #ffff00}"
+    boldred="\${color #ff0000}"
+    boldgreen="\${color #00ff00}"
+    boldyellow="\${color #ffff00}"
 elif [ "$format" = "html" ]; then
     bold="<span style=\"font-weight: bold;\">"
     normal="</span>"
