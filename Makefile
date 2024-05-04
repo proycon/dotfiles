@@ -138,9 +138,11 @@ ifeq ($(DESKTOP),1)
 	#multimedia
 	${APK} mpv mpc espeak sxiv imv yt-dlp ncmpcpp lf chafa
 	#fonts
-	${APK} font-fira-mono-nerd font-ubuntu-nerd
+	${APK} font-fira-mono-nerd font-ubuntu-nerd font-wqy-zenhei
+	#communication
+	${APK} nheko telegram-desktop
 	#various
-	${APK} zathura
+	${APK} zathura evince geary
 endif
 else ifeq ($(DISTRO),$(filter $(DISTRO), debian ubuntu))
 	sudo apt-get update
