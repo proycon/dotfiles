@@ -53,11 +53,11 @@ menu () {
 resultsound () {
     if [ $1 -eq 0 ]; then
         if [ -f $HOME/dotfiles/media/$2 ]; then
-            mpv --really-quiet $HOME/dotfiles/media/$2 2>/dev/null
+            mpv --really-quiet $HOME/dotfiles/media/$2 2>/dev/null &!
         fi
     else
         if [ -f $HOME/dotfiles/media/$3 ]; then
-            mpv --really-quiet $HOME/dotfiles/media/$3 2>/dev/null
+            mpv --really-quiet $HOME/dotfiles/media/$3 2>/dev/null &!
         fi
     fi
     return $1
