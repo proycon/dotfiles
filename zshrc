@@ -50,18 +50,28 @@ menu () {
         eval $(cat ~/.menuchoice)
     fi
 }
+resultsound () {
+    if [ $1 -eq 0 ]; then
+        if [ -f $HOME/dotfiles/media/$2 ]; then
+            mpv --really-quiet $HOME/dotfiles/media/$2 2>/dev/null
+        fi
+    else
+        if [ -f $HOME/dotfiles/media/$3 ]; then
+            mpv --really-quiet $HOME/dotfiles/media/$3 2>/dev/null
+        fi
+    fi
+    return $1
+}
+
 alias en='LANGUAGE="en_US.UTF-8" zsh'
 alias km="setxkbmap proylatin"
-alias mk='LANGUAGE="en_GB.UTF-8" make'
-alias mi='LANGUAGE="en_GB.UTF-8" make install; if (( $? == 0 )); then; play -q /usr/share/sounds/KDE-Sys-App-Positive.ogg 2> /dev/null &!; else; play -q /usr/share/sounds/KDE-K3B-Finish-Error.ogg 2> /dev/null &!; fi; hr'
-alias glmi='sshcheck && git pull &&  && git submodule update && LANGUAGE="en_GB.UTF-8" make install; if (( $? == 0 )); then; play -q /usr/share/sounds/KDE-Sys-App-Positive.ogg 2> /dev/null &!; else; play -q /usr/share/sounds/KDE-K3B-Finish-Error.ogg 2> /dev/null &!; fi; hr'
-alias glsi='git pull && git submodule update && pip install .'
-alias pi='pip install .'
-alias gl='sshcheck && git pull && git submodule update; if (( $? == 0 )); then; play -q /usr/share/sounds/KDE-Window-Minimize.ogg 2> /dev/null &!; fi'
-alias gp='sshcheck && git push; if (( $? == 0 )); then; play -q /usr/share/sounds/KDE-Window-Maximize.ogg 2> /dev/null &!; fi'
-alias pg='git push; if (( $? == 0 )); then; play -q /usr/share/sounds/KDE-Window-Maximize.ogg 2> /dev/null &!; fi'
+alias mi='LANGUAGE="en_GB.UTF-8" make install; resultsound $? submit.wav boing.wav'
+alias glmi='sshcheck && git pull &&  && git submodule update && LANGUAGE="en_GB.UTF-8" make install; resultsound $? submit.wav boing.wav'
+alias glsi='git pull && git submodule update && pip install .; resultsound $? submit.wav boing.wav'
+alias pi='pip install .; resultsound $? submit.wav boing.wav'
+alias gl='sshcheck && git pull && git submodule update; resultsound $? wipe.wav boing.wav'
+alias gp='sshcheck && git push; resultsound $? submit.wav boing.wav'
 alias gca="git commit -a"
-alias cf='LANGUAGE="en_GB.UTF-8" ./configure'
 alias pm="podman"
 alias pmc="podman-compose"
 alias a='tmux attach'
