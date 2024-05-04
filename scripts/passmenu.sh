@@ -5,7 +5,7 @@
 shopt -s nullglob globstar
 
 typeit=0
-if [ $1 == "--type" ]; then
+if [ "$1" == "--type" ]; then
 	typeit=1
 	shift
 fi
@@ -20,8 +20,14 @@ password=$(printf '%s\n' "${password_files[@]}" | bemenu -p "Target" --fn "$BEME
 [ -n "$password" ] || exit
 
 if [ $typeit -eq 0 ]; then
-	pass show -c "$password" 2>/dev/null
+	if pass show -c "$password" 2>/dev/null; then
+        mpv --really-quiet "$HOME/dotfiles/media/unlock2.wav" &
+    else
+        mpv --really-quiet "$HOME/dotfiles/media/boing.wav" &
+    fi
 else
-	pass show "$password" | { IFS= read -r pass; printf %s "$pass"; } | ydotool type --file -
+	if pass show "$password" | { IFS= read -r pass; printf %s "$pass"; } | ydotool type --file -; then
+        mpv --really-quiet "$HOME/dotfiles/media/unlock2.wav" &
+    fi
 fi
 
