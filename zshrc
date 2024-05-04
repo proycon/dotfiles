@@ -109,13 +109,9 @@ lh1() {
 lh2() {
     echo -n "2" > /tmp/linkhandler.target
 }
-#colours
-#which colorgcc > /dev/null 2> /dev/null
-#if (( $? == 0 )); then
-#    export CC="colorgcc"
-#fi
 alias z='less -rN'
 alias myip="dig +short myip.opendns.com @resolver1.opendns.com"
+alias whatismyip="dig +short myip.opendns.com @resolver1.opendns.com"
 if [[ "$HOST" == "proyphone" ]]; then
     alias vi="vis"
     alias vim="vis"
