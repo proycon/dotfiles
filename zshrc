@@ -300,7 +300,9 @@ sshtunnel() {
 }
 
 sshcheck() {
-    [ -n "$SSH_AUTH_SOCK" ] || ssh-add
+    if [ -n "$SSH_AUTH_SOCK" ]; then
+        ssh-add -l > /dev/null 2> /dev/null || ssh-add
+    fi
     true
 }
 
