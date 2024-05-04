@@ -70,7 +70,9 @@ alias glmi='sshcheck && git pull &&  && git submodule update && LANGUAGE="en_GB.
 alias glsi='git pull && git submodule update && pip install .; resultsound $? submit.wav boing.wav'
 alias pi='pip install .; resultsound $? submit.wav boing.wav'
 alias gl='sshcheck && git pull && git submodule update; resultsound $? wipe.wav boing.wav'
+alias glsrht='sshcheck && git pull srht master&& git submodule update; resultsound $? wipe.wav boing.wav'
 alias gp='sshcheck && git push; resultsound $? submit.wav boing.wav'
+alias gpsrht='sshcheck && git push srht master; resultsound $? submit.wav boing.wav'
 alias gca="git commit -a"
 alias pm="podman"
 alias pmc="podman-compose"
