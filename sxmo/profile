@@ -1,5 +1,5 @@
 #!/bin/sh
-# configversion: 22abf3cab32b9affcf5543b44f9b04ac
+# configversion: 656ada683ce62137e8ef5b917645f259
 
 # shellcheck source=scripts/core/sxmo_common.sh
 . sxmo_common.sh
@@ -32,7 +32,7 @@ command -v firefox >/dev/null && export BROWSER=firefox
 export TERMCMD="sxmo_terminal.sh"
 
 # Change the used terminal command
-# export SXMO_TERMINAL="st -e"
+# export SXMO_TERMINAL="st"
 
 # When scrolling past the beginning or end of a menu, wrap it around:
 #export DMENU_WRAP_AROUND=1
@@ -71,4 +71,4 @@ export SXMO_RINGNUMBER=10
 export SXMO_DEFAULT_DRAFT="Enter new message here."
 
 #Set background image
-export SXMO_BG_IMG="$(xdg_data_path sxmo/background.jpg)"
+export SXMO_BG_IMG="$(sxmo_hook_wallpaper.sh)"

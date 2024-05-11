@@ -1,5 +1,5 @@
 # Default config for sway
-# configversion: b6d4033a256e7db9f31bbdfb7ad84e9b
+# configversion: aa9cb0b4cb026e71bb601cf30fb543e8
 #
 # Copy this to ~/.config/sway/config and edit it to your liking.
 #
@@ -38,11 +38,38 @@ mode "menu" {
     bindsym XF86AudioLowerVolume exec wtype -k Down
 }
 
+mode "nomod" {
+    # follow the standard sxmo keybinds as far as possible
+    bindsym t exec $term; mode "default"
+    bindsym q mode "default"
+    bindsym Shift+p exec sxmo_appmenu.sh sys; mode "default"
+    bindsym p exec sxmo_appmenu.sh; mode "default"
+    bindsym d exec $menu; mode "default"
+    bindsym Shift+q kill; mode "default"
+    bindsym i exec sxmo_wmmenu.sh windowswitcher; mode "default"
+    bindsym Shift+c reload; mode "default"
+    bindsym f fullscreen; mode "default"
+    bindsym Shift+space floating toggle; mode "default"
+    bindsym a focus parent; mode "default"
+}
+
 ### Key bindings
 #
 # Basics:
 #
     input * xkb_options compose:ralt
+
+    # Nokia N900 hardware keyboard
+    input "1:1:TWL4030_Keypad" {
+        xkb_model "nokiarx51"
+        xkb_layout "us"
+        # ralt has special meaning on N900 keyboard so do not use as
+        # compose key
+        xkb_options compose:rwin
+    }
+
+    # in the absence of a mod key (e.g. N900), provide a "nomod" mode
+    bindsym Shift+space mode "nomod"
 
     # Start a terminal
     bindsym $mod+Return exec $term
@@ -156,7 +183,7 @@ mode "menu" {
     bindsym $mod+a focus parent
 
     # Manual locker
-    bindsym $mod+g exec sxmo_hook_locker.sh
+    bindsym $mod+g exec sxmo_state.sh set locker
 
     # Shutdown
     bindsym $mod+t exec sxmo_appmenu.sh power
@@ -214,7 +241,7 @@ bar {
     colors {
         statusline #ffffff
         background #323232
-        inactive_workspace #32323200 #32323200 #5c5c5c
+        inactive_workspace #323232 #323232 #ffffff
         font "Sxmo 11"
     }
 }
