@@ -21,7 +21,6 @@ if echo -n "$TEXT" | ~/dotfiles/scripts/ischinese.py; then
         fi
     fi
     notify-send "Not in HSK or CEDICT"
-    exit 1
 fi
 
 if [ ! -d ~/local ]; then
