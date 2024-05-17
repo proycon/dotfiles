@@ -8,6 +8,22 @@ fi
 [ -z "$TEXT" ] && notify-send "No text selected"
 echo "IN: $TEXT"
 
+if echo -n "$TEXT" | ~/dotfiles/scripts/ischinese.py; then
+    TRANS=$(grep -h "$TEXT" ~/projects/vocadata/zh/hsk*.tsv | cut -f 1-4)
+    if [ -n "$TRANS" ]; then
+        notify-send -t 10000 "HSK Lookup" "$TRANS"
+        exit 0
+    elif [ -e ~/Documents/languages/chinese/cedict.txt ]; then
+        TRANS=$(grep -h "$TEXT" ~/Documents/languages/chinese/cedict.txt | head)
+        if [ -n "$TRANS" ]; then
+            notify-send -t 10000 "CEDICT Lookup" "$TRANS"
+            exit 0
+        fi
+    fi
+    notify-send "Not in HSK or CEDICT"
+    exit 1
+fi
+
 if [ ! -d ~/local ]; then
     mkdir ~/local
 fi
@@ -30,6 +46,7 @@ if [ ! -e ~/.cargo/bin/lingua-cli ]; then
         notify-send "Installation of lingua-cli failed"
     fi
 fi
+
 
 if [ "$1" ]; then
     DETECTEDLANG="$1"
