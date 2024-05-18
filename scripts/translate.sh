@@ -56,6 +56,7 @@ fi
 if [ ! -e ~/local/argostranslate.env/bin/argos-translate ]; then
     notify-send "Pip installing argostranslate, this may take quite a while!"
     if pip install argostranslate; then
+        argospm update
         argospm install translate || notify-send "Failed to install translation packages"
         notify-send "Installation of argostranslate complete"
     else
