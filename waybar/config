@@ -3,7 +3,7 @@
 "position": "bottom",
 "modules-left": ["hyprland/workspaces","hyprland/window"],
 "modules-center": ["custom/mail"],
-"modules-right":  ["custom/timetracker","pulseaudio","hyprland/language","network","battery", "clock"],
+"modules-right":  ["custom/timetracker","custom/hanzi","pulseaudio","hyprland/language","network","battery", "clock"],
 
 "battery": {
   "min-length": 5,
@@ -61,8 +61,16 @@
     "interval": 10,
     "tooltip": true
 },
+"custom/hanzi": {
+    "format": " - {}",
+    "exec": "echo ' q' | vocage -m plain -s ~/projects/vocadata/zh/myorder.tsv | decolor > /tmp/hanzi && head -n 1 /tmp/hanzi",
+    "on-click": "notify-send -t 5000 Hanzi \"$(cat /tmp/hanzi)\"",
+    "interval": 3600,
+    "tooltip": true
+},
 "custom/timetracker": {
-    "exec": "[ -d ~/.todo ] && todo.sh timetrack current -d | sed 's/&/&amp;/g' | awk '{print substr($0, 0, 60)}'",
+    "exec": "todo.sh timetrack current -d | sed 's/&/&amp;/g' | awk '{print substr($0, 0, 60)}'",
+    "exec-if": "[ -d ~/.todo ]",
     "interval": 15,
     "tooltip": true
 }
