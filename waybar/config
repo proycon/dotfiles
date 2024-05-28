@@ -63,7 +63,7 @@
 },
 "custom/hanzi": {
     "format": " - {}",
-    "exec": "echo ' q' | vocage -m plain -s ~/projects/vocadata/zh/myorder.tsv | decolor > /tmp/hanzi && head -n 1 /tmp/hanzi",
+    "exec": "echo ' q' | vocage -m plain -s ~/projects/vocadata/zh/myorder.tsv | decolor | tr -s '\n' > /tmp/hanzi && head -n 1 /tmp/hanzi",
     "on-click": "notify-send -t 5000 Hanzi \"$(cat /tmp/hanzi)\"",
     "interval": 3600,
     "tooltip": true
