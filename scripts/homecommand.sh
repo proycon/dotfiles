@@ -29,8 +29,12 @@ else
 fi
 
 if [ ! -e ~/lighthome ]; then
-    echo "lighthome not installed" >&2
-    exit 2
+    if [ -e ~/projects/lighthome ]; then
+        ln -s ~/projects/lighthome ~/lighthome
+    else
+        echo "lighthome not installed" >&2
+        exit 2
+    fi
 fi
 
 ~/lighthome/send.sh --notify "$TOPIC" "$PAYLOAD"
