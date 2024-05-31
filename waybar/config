@@ -1,6 +1,8 @@
+[
 {
 "layer": "top",
 "position": "bottom",
+"output": "!DP-3",
 "modules-left": ["hyprland/workspaces","hyprland/window"],
 "modules-center": ["custom/mail"],
 "modules-right":  ["custom/timetracker","custom/hanzi","pulseaudio","hyprland/language","network","battery", "clock"],
@@ -70,8 +72,16 @@
 },
 "custom/timetracker": {
     "exec": "todo.sh timetrack current -d | sed 's/&/&amp;/g' | awk '{print substr($0, 0, 60)}'",
-    "exec-if": "[ -d ~/.todo ]",
+    "exec-if": "[ -e ~/.todo ]",
     "interval": 15,
     "tooltip": true
 }
+},
+{
+"layer": "top",
+"position": "bottom",
+"output": "DP-3",
+"modules-left": ["hyprland/workspaces","hyprland/window"],
+"modules-right":  ["clock"],
 }
+]
