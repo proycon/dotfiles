@@ -33,6 +33,7 @@
 "clock": {
   "format": " {:%a %b %d %H:%M}",
   "tooltip": false,
+  "on-click": "todo.sh rofi list @calendar",
   "min-length": 18
 },
 "network": {
@@ -41,13 +42,15 @@
   "format-ethernet": "",
   "format-linked": " {ipaddr}",
   "format-disconnected": " Disconnected",
-  "format-disabled": "",
-  "tooltip": false,
+  "format-disabled": " Disabled",
+  "tooltip-format-ethernet": "{ifname}: {ipaddr}",
+  "tooltip-format-wifi": "{ifname}: {ipaddr} - {essid} {signalStrength}% {frequency}Ghz",
+  "on-click": "network-menu.sh",
   "max-length": 20,
   "min-length": 6
 },
 "pulseaudio": {
-  "tooltip": false,
+  "tooltip": true,
   "min-length": 5,
   "format": "{icon} {volume}%",
   "format-bluetooth": "{icon} {volume}%",
@@ -73,6 +76,7 @@
 "custom/timetracker": {
     "exec": "todo.sh timetrack current -d | sed 's/&/&amp;/g' | awk '{print substr($0, 0, 60)}'",
     "exec-if": "[ -e ~/.todo ]",
+    "on-click": "todo.sh rofi list @work",
     "interval": 15,
     "tooltip": true
 }
