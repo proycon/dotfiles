@@ -61,7 +61,7 @@ menu () {
         whiptail --menu "Menu" 25 80 15 alsamixer "Mixer TUI" ffmpeg "Media transcoder and more" grim "Screenshots for wayland"  mpc "MPD client" mpv "Media player" pactl "CLI for pulseaudio" yt-dlp "Youtube downloader"    2> ~/.menuchoice
         eval $(cat ~/.menuchoice)
     elif [[ "$choice " == "other"* ]]; then
-        whiptail --menu "Menu" 25 80 15 argos-translate "Machine Translation" buku "Bookmark manager" cal "Calendar" figlet "Banner-like" "todo.sh more" "Todo manager" tmux "Terminal Multiplexer"  numen "Speech Recognition" 2> ~/.menuchoice
+        whiptail --menu "Menu" 25 80 15 argos-translate "Machine Translation" buku "Bookmark manager" cal "Calendar" figlet "Banner-like" "todo.sh more" "Todo manager" ollama "Local LLM runner" tmux "Terminal Multiplexer"  numen "Speech Recognition" 2> ~/.menuchoice
         eval $(cat ~/.menuchoice)
     else
         eval $(cat ~/.menuchoice)
