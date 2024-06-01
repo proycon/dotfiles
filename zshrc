@@ -37,15 +37,32 @@ unset GREP_OPTIONS #deprecated
 
 #apps
 menu () {
-    whiptail --menu "Menu" 25 80 15 sysadmin "Sysadmin tools" file "File management" data "Data tools" tldr "tldr" cheat "cheat"  2> ~/.menuchoice
+    whiptail --menu "Menu" 25 80 15 sysadmin "Sysadmin tools" file "File management" development "Development" net "Network" data "Data tools" security "Security" media "Audio/Video" other "Other" tldr "tldr" cheat "cheat"  2> ~/.menuchoice
     choice=$(cat ~/.menuchoice)
     if [[ "$choice " == "sysadmin"* ]]; then
-        whiptail --menu "Menu" 25 80 15 atop "Apache top (root)" bmon "Bandwidth Monitor" btop "Interactive process viewer" glances "Interactive process viewer" htop "Interactive process viewer" iftop "Network interface monitoring" iostat "I/O Statistics" iotop "I/O monitor (root)" lshw "List hardware" lsmod "List kernel modules" lsof "List open files" lspci "List PCI devices" lsusb "List USB devices" netcat "Read/write network data" netstat "Print network connections" top "Interactive process viewer" vmstat "Report virtual memory statistics" wavemon "Wireless monitor" 2> ~/.menuchoice
+        whiptail --menu "Menu" 25 80 15 btop "Interactive process viewer" dbus-monitor "DBUS Monitor" htop "Interactive process viewer"  iostat "I/O Statistics" iotop "I/O monitor (root)" lshw "List hardware" lsmod "List kernel modules" lsof "List open files" lspci "List PCI devices" lsusb "List USB devices" netcat "Read/write network data" netstat "Print network connections" top "Interactive process viewer" udevadm "Device administration" vmstat "Report virtual memory statistics" 2> ~/.menuchoice
+        eval $(cat ~/.menuchoice)
+    elif [[ "$choice " == "net"* ]]; then
+        whiptail --menu "Menu" 25 80 15 atop "Apache top (root)" bmon "Bandwidth Monitor" curl "CLI for HTTP requests (and more)" iftop "Network interface monitoring"  nc "Netcat: Read/write network data" netstat "Print network connections" nmap "Port scanner" termshark "TUI for Packet sniffing" wavemon "Wireless monitor" wget "Downloader" 2> ~/.menuchoice
+        eval $(cat ~/.menuchoice)
+    elif [[ "$choice " == "development"* ]]; then
+        whiptail --menu "Menu" 25 80 15 abuild "Alpine Package builder" adb "Android Debug Bridge" fastboot "Bootloader bridge" flamegraph "Flamegraph" gdb "GNU Debugger" gh "GitHub CLI" hut "SourceHut CLI"  make "GNU Make" mosquitto-sub "MQTT sub client" mosquitto-pub "MQTT pub client" pmbootstrap "PostmarketOS bootstrap" podman "Container management" tig "TUI for git" twine "PyPI package publishing" zola "Static site generator" 2> ~/.menuchoice
         eval $(cat ~/.menuchoice)
     elif [[ "$choice " == "file"* ]]; then
-        whiptail --menu "Menu" 25 80 15 ranger "ranger: Terminal file manager" br "Broot Tree Navigation" lf "lf: Terminal file manager"  2> ~/.menuchoice
+        whiptail --menu "Menu" 25 80 15 find "Find" fd "Find (alternative)" fdisk "Partioner" fzf "Fuzzy finder" lf "Terminal file manager" ncdu "Disk usage TUI" tree "Tree" rsync "File transfer" 2> ~/.menuchoice
+        eval $(cat ~/.menuchoice)
     elif [[ "$choice " == "data"* ]]; then
-        whiptail --menu "Menu" 25 80 15 ack "Grep-like text finder" bat "Fancy cat viewer" glow "Fancy markdown viewer" fd "Find replacement" jq "JSON-processor" rg "Ripgrep" vd "Tabular data viewer" xsv "CSV processor" 2> ~/.menuchoice
+        whiptail --menu "Menu" 25 80 15 column "Pretty-print columns" ack "Grep-like text finder" bat "Fancy cat viewer" diff "Diff" difft "Difftastic" glow "Fancy markdown viewer" jq "JSON-processor" pandoc "Document conversion" rg "Ripgrep" vd "Tabular data viewer" mlr "TSV,CSV,JSON processor" xsv "CSV processor" zbarimg "QRcode decoder" 2> ~/.menuchoice
+        eval $(cat ~/.menuchoice)
+    elif [[ "$choice " == "security"* ]]; then
+        whiptail --menu "Menu" 25 80 15 age "File encryption" flawz "CVE browser (TUI)" gpg "GnuPG" pass "Password manager" pwgen "Password generator" nitropy "NitroKey tool"   2> ~/.menuchoice
+        eval $(cat ~/.menuchoice)
+    elif [[ "$choice " == "media"* ]]; then
+        whiptail --menu "Menu" 25 80 15 alsamixer "Mixer TUI" ffmpeg "Media transcoder and more" grim "Screenshots for wayland"  mpc "MPD client" mpv "Media player" pactl "CLI for pulseaudio" yt-dlp "Youtube downloader"    2> ~/.menuchoice
+        eval $(cat ~/.menuchoice)
+    elif [[ "$choice " == "other"* ]]; then
+        whiptail --menu "Menu" 25 80 15 argos-translate "Machine Translation" buku "Bookmark manager" cal "Calendar" figlet "Banner-like" "todo.sh more" "Todo manager" tmux "Terminal Multiplexer"  numen "Speech Recognition" 2> ~/.menuchoice
+        eval $(cat ~/.menuchoice)
     else
         eval $(cat ~/.menuchoice)
     fi

@@ -70,7 +70,7 @@ ifeq ($(DISTRO),arch)
 	#containers & VM
 	${PACMAN} apptainer lxd podman buildah podman-compose podman-docker vagrant kubectl
 	#CLI text tools
-	${PACMAN} ack antiword bat fmt fzf gawk glow grep highlight jq miller pandoc ripgrep sed xsv
+	${PACMAN} ack antiword bat difftastic fmt fzf gawk glow grep highlight jq miller pandoc ripgrep sed xsv
 	#CLI file management
 	${PACMAN} exa fd ncdu
 	#(lf will be installed from AUR)
