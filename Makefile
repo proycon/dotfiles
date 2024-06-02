@@ -61,8 +61,8 @@ ifeq ($(DISTRO),arch)
 	#dev: distro specific
 	${PACMAN} apk-tools debootstrap pmbootstrap android-tools
 	#(abuild is in AUR)
-	#dev: linters, formatters
-	${PACMAN} bash-language-server lua-language-server ccls cppcheck eslint flake8 prettier openapi-tui pyright python-pylint rustfmt shellcheck tokei
+	#dev: linters, formatters, misc
+	${PACMAN} bash-language-server lua-language-server ccls cppcheck eslint flake8 prettier openapi-tui pyright python-pylint rustfmt shellcheck tokei hyperfine
 	#communication
 	${PACMAN} aerc mailcap mosquitto msmtp-mta newsboat weechat notmuch
 	#libs
@@ -118,7 +118,7 @@ else ifeq ($(DISTRO),$(filter $(DISTRO), alpine postmarketos))
 	${APK} curl nmap sshfs mosquitto-clients vnstat
 	#dev: C/C++
 	${APK} autoconf autoconf-archive automake cmake ctags doxygen gdb gmp icu m4 meson ninja libxml2
-	${APK} shellcheck tokei
+	${APK} shellcheck tokei hyperfine
 	#CLI text tools
 	${APK} ack bat fmt fzf highlight dasel delta jless jq miller pandoc ripgrep sed xsv
 	#CLI file management
