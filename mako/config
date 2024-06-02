@@ -4,6 +4,7 @@ max-history=5
 background-color=#000000cc
 border-color=#ff0000ff
 border-size=2
+border-radius=10
 width=800
 height=320
 max-icon-size=128
