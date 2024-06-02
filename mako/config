@@ -8,3 +8,4 @@ width=800
 height=320
 max-icon-size=128
 font=Monospace 22
+anchor=bottom-right
