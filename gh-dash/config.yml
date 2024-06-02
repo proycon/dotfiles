@@ -1,0 +1,48 @@
+prSections:
+- title: My Pull Requests
+  filters: is:open author:@me
+- title: Needs My Review
+  filters: is:open review-requested:@me
+- title: CLARIAH
+  filters: is:open repo:CLARIAH/clariah-plus repo:CLARIAH/tool-discovery
+issuesSections:
+- title: My Issues
+  filters: is:open author:@me
+- title: Assigned
+  filters: is:open assignee:@me
+- title: Team Text
+  filters: is:open repo:knaw-huc/team-text-backlog
+- title: CLARIAH
+  filters: is:open repo:CLARIAH/clariah-plus repo:CLARIAH/tool-discovery
+- title: STAM
+  filters: is:open repo:annotation/stam repo:annotation/stam-rust repo:annotation/stam-python repo:annotation/stam-tools
+- title: FoLiA
+  filters: is:open repo:proycon/folia repo:proycon/foliapy repo:proycon/foliatools repo:LanguageMachines/foliautils repo:LanguageMachines/libfolia
+- title: Frog
+  filters: is:open repo:LanguageMachines/frog repo:LanguageMachines/ucto repo:proycon/python-frog repo:proycon/python-ucto
+- title: Sxmo
+  filters: is:open repo:jjsullivan5196/wvkbd
+- title: Golden Agents
+  filters: is:open repo:proycon/analiticcl repo:knaw-huc/golden-agents-htr
+defaults:
+  preview:
+    open: true
+    width: 80
+  prsLimit: 100
+  issuesLimit: 100
+  view: issues
+repoPaths:
+  knaw-huc/team-text-backlog: ~/work/team-text-backlog
+  CLARIAH/clariah-plus: ~/work/clariah-plus
+  CLARIAH/tool-discovery: ~/work/clariah-tool-discovery
+  proycon/*: ~/work/*
+  annotation/*: ~/work/*
+  jjsullivan5196/wvkbd: ~/projects/sxmo/wvkbd
+  LanguageMachines/frog: ~/work/frog
+  LanguageMachines/ucto: ~/work/ucto
+  LanguageMachines/libfolia: ~/work/libfolia
+  LanguageMachines/ticcutils: ~/work/ticcutils
+  LanguageMachines/timbl: ~/work/timbl
+pager:
+  diff: delta
+confirmQuit: false
