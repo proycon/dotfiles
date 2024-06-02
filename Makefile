@@ -43,7 +43,7 @@ ifeq ($(DISTRO),arch)
 	#sync once
 	sudo pacman -Sy
 	#core
-	${PACMAN} base-devel bash busybox bzip2 coreutils e2fsprogs fzf gnupg gnutls gzip hdparm htop iotop iperf less lm_sensors lsb-release lshw lsof make nano neovim openssh openssl procps-ng psmisc readline rsync sudo tar time tmux tree udiskie vi zip zsh pass apparmor firejail man tldr tailspin
+	${PACMAN} base-devel bash busybox bzip2 coreutils e2fsprogs fzf gnupg gnutls gzip hdparm htop iotop iperf less lm_sensors lsb-release lshw lsof make nano neovim openssh openssl procps-ng psmisc readline rsync rclone sudo tar time tmux tree udiskie vi zip zsh pass apparmor firejail man tldr tailspin
 	#networking
 	${PACMAN} curl fping inetutils netcat networkmanager nfs-utils nm-connection-editor nmap nmap smbclient sshfs traceroute usbutils wget whois wireshark-cli termshark openfortivpn gocryptfs
 	#version control
@@ -111,7 +111,7 @@ else ifeq ($(DISTRO),$(filter $(DISTRO), alpine postmarketos))
 	sudo apk update
 	sudo apk upgrade
 	#core
-	${APK} build-base bash fzf gnupg htop lm_sensors lshw neovim openssh openssl readline sudo tmux tree zip zsh pass docs
+	${APK} build-base bash fzf gnupg htop lm_sensors lshw neovim openssh openssl readline sudo tmux tree zip zsh pass docs rsync rclone
 	#vcs
 	${APK} git tig github-cli hut
 	#networking
