@@ -43,7 +43,7 @@ ifeq ($(DISTRO),arch)
 	#sync once
 	sudo pacman -Sy
 	#core
-	${PACMAN} base-devel bash busybox bzip2 coreutils e2fsprogs fzf gnupg gnutls gzip hdparm htop iotop iperf less lm_sensors lsb-release lshw lsof make nano neovim openssh openssl procps-ng psmisc readline rsync sudo tar time tmux tree udiskie vi zip zsh pass apparmor firejail man tldr
+	${PACMAN} base-devel bash busybox bzip2 coreutils e2fsprogs fzf gnupg gnutls gzip hdparm htop iotop iperf less lm_sensors lsb-release lshw lsof make nano neovim openssh openssl procps-ng psmisc readline rsync sudo tar time tmux tree udiskie vi zip zsh pass apparmor firejail man tldr tailspin
 	#networking
 	${PACMAN} curl fping inetutils netcat networkmanager nfs-utils nm-connection-editor nmap nmap smbclient sshfs traceroute usbutils wget whois wireshark-cli termshark openfortivpn gocryptfs
 	#version control
@@ -62,7 +62,7 @@ ifeq ($(DISTRO),arch)
 	${PACMAN} apk-tools debootstrap pmbootstrap android-tools
 	#(abuild is in AUR)
 	#dev: linters, formatters
-	${PACMAN} bash-language-server lua-language-server ccls cppcheck eslint flake8 prettier pyright python-pylint rustfmt shellcheck
+	${PACMAN} bash-language-server lua-language-server ccls cppcheck eslint flake8 prettier openapi-tui pyright python-pylint rustfmt shellcheck tokei
 	#communication
 	${PACMAN} aerc mailcap mosquitto msmtp-mta newsboat weechat notmuch
 	#libs
@@ -70,10 +70,9 @@ ifeq ($(DISTRO),arch)
 	#containers & VM
 	${PACMAN} apptainer lxd podman buildah podman-compose podman-docker vagrant kubectl
 	#CLI text tools
-	${PACMAN} ack antiword bat difftastic fmt fzf gawk glow grep highlight jq miller pandoc ripgrep sed xsv
+	${PACMAN} ack antiword bat difftastic fmt fzf gawk glow grep highlight jless jq miller pandoc ripgrep sed xsv
 	#CLI file management
-	${PACMAN} exa fd ncdu
-	#(lf will be installed from AUR)
+	${PACMAN} exa fd ncdu lf yazi
 	#CLI process management
 	${PACMAN} btop
 	#printing
@@ -119,15 +118,15 @@ else ifeq ($(DISTRO),$(filter $(DISTRO), alpine postmarketos))
 	${APK} curl nmap sshfs mosquitto-clients vnstat
 	#dev: C/C++
 	${APK} autoconf autoconf-archive automake cmake ctags doxygen gdb gmp icu m4 meson ninja libxml2
-	${APK} shellcheck
+	${APK} shellcheck tokei
 	#CLI text tools
-	${APK} ack bat fmt fzf highlight dasel jq miller pandoc ripgrep sed xsv
+	${APK} ack bat fmt fzf highlight dasel delta jless jq miller pandoc ripgrep sed xsv
 	#CLI file management
 	${APK} exa fd ncdu
 	#python
 	${APK} python3 py3-pip py3-wheel py3-setuptools py3-pylint py3-numpy py3-scipy py3-lxml py3-virtualenv jupyter-notebook py3-matplotlib
 	#various:
-	${APK} btop gnuplot todo.txt-cli todo.txt-cli w3m lynx links urlscan
+	${APK} btop gnuplot todo.txt-cli todo.txt-cli w3m lynx links urlscan tailspin
 	#languages
 	${APK} aspell aspell-en
 	#communication
@@ -164,11 +163,10 @@ ifeq (, $(shell which yay))
 endif
 endif 
 
-#TODO: lf-git will be obsolete as soon as lf >= 31 is released and hits the repos
-aur: yay abuild aercbook-bin dasel gomuks-git lf-git lsix-git mblaze-git nerd-fonts-complete-starship powerline-fonts-git rofi-lbonn-wayland todotxt ttf-material-design-icons-git ttf-symbola waybar-hyprland-git snapcast-git senpai-irc-git
+aur: yay abuild aercbook-bin dasel gomuks-git lsix-git mblaze-git nerd-fonts-complete-starship powerline-fonts-git rofi-lbonn-wayland todotxt ttf-material-design-icons-git ttf-symbola waybar-hyprland-git snapcast-git senpai-irc-git crates-tui
 
-.PHONY: abuild aercbook-bin dasel gomuks-git lf-git lsix-git mblaze-git nerd-fonts-complete-starship powerline-fonts-git rofi-lbonn-wayland todotxt ttf-material-design-icons-git ttf-symbola waybar-hyprland-git snapcast-git senpai-irc-git
-abuild aercbook-bin dasel gomuks-git lf-git lsix-git mblaze-git nerd-fonts-complete-starship powerline-fonts-git rofi-lbonn-wayland todotxt ttf-material-design-icons-git ttf-symbola waybar-hyprland-git snapcast-git senpai-irc-git:
+.PHONY: abuild aercbook-bin dasel gomuks-git lsix-git mblaze-git nerd-fonts-complete-starship powerline-fonts-git rofi-lbonn-wayland todotxt ttf-material-design-icons-git ttf-symbola waybar-hyprland-git snapcast-git senpai-irc-git crates-tui
+abuild aercbook-bin dasel gomuks-git lsix-git mblaze-git nerd-fonts-complete-starship powerline-fonts-git rofi-lbonn-wayland todotxt ttf-material-design-icons-git ttf-symbola waybar-hyprland-git snapcast-git senpai-irc-git crates-tui:
 ifeq ($(DISTRO),arch)
 	yay -S $@
 endif
