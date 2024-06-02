@@ -1,0 +1,12 @@
+[profiles.user]
+user_id = "@proycon:matrix.anaproy.nl"
+
+[settings.image_preview]
+protocol.type = "sixel"
+
+[settings.notifications]
+enabled = true
+
+[settings]
+username_display = "displayname"
+
