@@ -1,14 +1,14 @@
 [Groups/0]
 # Group Name
-Name=Default
+Name="Group 1"
 # Layout
-Default Layout=gb
+Default Layout=us
 # Default Input Method
 DefaultIM=pinyin
 
 [Groups/0/Items/0]
 # Name
-Name=keyboard-gb
+Name=keyboard-us
 # Layout
 Layout=
 
@@ -18,12 +18,21 @@ Name=pinyin
 # Layout
 Layout=
 
-[Groups/0/Items/2]
+[Groups/1]
+# Group Name
+Name="Group 2"
+# Layout
+Default Layout=gb
+# Default Input Method
+DefaultIM=keyboard-gb
+
+[Groups/1/Items/0]
 # Name
-Name=anthy
+Name=keyboard-gb
 # Layout
 Layout=
 
 [GroupOrder]
-0=Default
+0="Group 1"
+1="Group 2"
 
