@@ -49,7 +49,7 @@ menu () {
         whiptail --menu "Menu" 25 80 15 abuild "Alpine Package builder" adb "Android Debug Bridge" crates-tui "Crates.io browser" fastboot "Bootloader bridge" flamegraph "Flamegraph" gdb "GNU Debugger" gh "GitHub CLI" "gh dash" "GitHub Dashboard TUI" hut "SourceHut CLI" hyperfine "Benchmarker" make "GNU Make" mosquitto-sub "MQTT sub client" mosquitto-pub "MQTT pub client" openapi-tui "OpenAPI TUI" pmbootstrap "PostmarketOS bootstrap" podman "Container management" tig "TUI for git" tokei "Code counter" twine "PyPI package publishing" zola "Static site generator" 2> ~/.menuchoice
         eval $(cat ~/.menuchoice)
     elif [[ "$choice " == "file"* ]]; then
-        whiptail --menu "Menu" 25 80 15 find "Find" fd "Find (alternative)" fdisk "Partioner" fzf "Fuzzy finder" lf "Terminal file manager" ncdu "Disk usage TUI" tree "Tree" rsync "File transfer" yazi "Terminal file manager" 2> ~/.menuchoice
+        whiptail --menu "Menu" 25 80 15 find "Find" fd "Find (alternative)" fdisk "Partioner" fzf "Fuzzy finder" lf "Terminal file manager" ncdu "Disk usage TUI" tree "Tree" rclone "File transfer" rsync "File transfer" yazi "Terminal file manager" 2> ~/.menuchoice
         eval $(cat ~/.menuchoice)
     elif [[ "$choice " == "data"* ]]; then
         whiptail --menu "Menu" 25 80 15 column "Pretty-print columns" ack "Grep-like text finder" bat "Fancy cat viewer" csvlens "CSV pager" diff "Diff" difft "Difftastic" glow "Fancy markdown viewer" jless "JSON pager" jq "JSON-processor" pandoc "Document conversion" rg "Ripgrep" vd "Tabular data viewer" mlr "TSV,CSV,JSON processor" xsv "CSV processor" zbarimg "QRcode decoder" 2> ~/.menuchoice
@@ -116,6 +116,7 @@ alias hutsxmo="hut lists patchset list \~mil/sxmo-devel"
 alias hutsxmo2="hut todo ticket list -t \~mil/sxmo-tickets"
 alias mkenv="[ ! -e env ] && python3 -m venv env; . env/bin/activate"
 alias mk.env="[ ! -e .env ] && python3 -m venv .env; . .env/bin/activate"
+alias surfdrive="rclone ls surfdrive_knaw:"
 alias lh="linkhandler"
 alias open="linkhandler"
 lh0() {
