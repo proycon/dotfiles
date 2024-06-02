@@ -46,7 +46,7 @@ menu () {
         whiptail --menu "Menu" 25 80 15 atop "Apache top (root)" bmon "Bandwidth Monitor" curl "CLI for HTTP requests (and more)" iftop "Network interface monitoring"  nc "Netcat: Read/write network data" netstat "Print network connections" nmap "Port scanner" termshark "TUI for Packet sniffing" wavemon "Wireless monitor" wget "Downloader" 2> ~/.menuchoice
         eval $(cat ~/.menuchoice)
     elif [[ "$choice " == "development"* ]]; then
-        whiptail --menu "Menu" 25 80 15 abuild "Alpine Package builder" adb "Android Debug Bridge" crates-tui "Crates.io browser" fastboot "Bootloader bridge" flamegraph "Flamegraph" gdb "GNU Debugger" gh "GitHub CLI" hut "SourceHut CLI" hyperfine "Benchmarker" make "GNU Make" mosquitto-sub "MQTT sub client" mosquitto-pub "MQTT pub client" openapi-tui "OpenAPI TUI" pmbootstrap "PostmarketOS bootstrap" podman "Container management" tig "TUI for git" tokei "Code counter" twine "PyPI package publishing" zola "Static site generator" 2> ~/.menuchoice
+        whiptail --menu "Menu" 25 80 15 abuild "Alpine Package builder" adb "Android Debug Bridge" crates-tui "Crates.io browser" fastboot "Bootloader bridge" flamegraph "Flamegraph" gdb "GNU Debugger" gh "GitHub CLI" "gh dash" "GitHub Dashboard TUI" hut "SourceHut CLI" hyperfine "Benchmarker" make "GNU Make" mosquitto-sub "MQTT sub client" mosquitto-pub "MQTT pub client" openapi-tui "OpenAPI TUI" pmbootstrap "PostmarketOS bootstrap" podman "Container management" tig "TUI for git" tokei "Code counter" twine "PyPI package publishing" zola "Static site generator" 2> ~/.menuchoice
         eval $(cat ~/.menuchoice)
     elif [[ "$choice " == "file"* ]]; then
         whiptail --menu "Menu" 25 80 15 find "Find" fd "Find (alternative)" fdisk "Partioner" fzf "Fuzzy finder" lf "Terminal file manager" ncdu "Disk usage TUI" tree "Tree" rsync "File transfer" yazi "Terminal file manager" 2> ~/.menuchoice
@@ -105,6 +105,7 @@ alias mp="ncmpcpp -b ~/dotfiles/ncmpcpp.bindings"
 alias t="todo.sh more"
 alias f='cd $(cat ${XDG_CONFIG_HOME:-$HOME/.config}/directories | fzf)'
 alias hs="~/dotfiles/scripts/homestatus.sh"
+alias yz=yazi
 alias ghils="gh issue list"
 alias ghls="gh issue list"
 alias ghic="gh issue create"
