@@ -50,7 +50,7 @@ fi
 if [ "$1" ]; then
     DETECTEDLANG="$1"
 else
-    DETECTEDLANG=$(lingua-cli "$TEXT" | cut -d " " -f 1)
+    DETECTEDLANG=$(lingua-cli -l fr,de,es,it,pt,ru,uk,ro,pl "$TEXT" | cut -f 1)
 fi
 . ~/local/argostranslate.env/bin/activate
 if [ ! -e ~/local/argostranslate.env/bin/argos-translate ]; then
