@@ -224,19 +224,6 @@ case "$HOST" in
 
         alias sshm='sshcheck && ssh -Y -A mhysa.anaproy.nl'
         alias sshp='sshcheck && ssh -Y -A pollux.anaproy.nl'
-        alias lg="ssh -Y -A -t lilo.science.ru.nl ssh -Y -A -t lightning"
-        alias aj="ssh -Y -A -t lilo.science.ru.nl ssh -Y -A -t applejack /home/proycon/bin/tm"
-        alias _aj="ssh -Y -A -t lilo.science.ru.nl ssh -Y -A -t applejack"
-        alias fs="ssh -Y -A -t lilo.science.ru.nl ssh -Y -A -t fluttershy /home/proycon/bin/tm"
-        alias rr="ssh -Y -A -t lilo.science.ru.nl ssh -Y -A -t rarity /home/proycon/bin/tm"
-        alias cl="ssh -Y -A -t lilo.science.ru.nl ssh -Y -A -t cheerilee /home/proycon/bin/tm"
-        alias fp="ssh -Y -A -t lilo.science.ru.nl ssh -Y -A -t fancypants /home/proycon/bin/tm"
-        alias pq="ssh -Y -A -t lilo.science.ru.nl ssh -Y -A -t pipsqueak /home/proycon/bin/tm"
-        alias so="ssh -Y -A -t lilo.science.ru.nl ssh -Y -A -t scootaloo /home/proycon/bin/tm"
-        alias fw="ssh -Y -A -t lilo.science.ru.nl ssh -Y -A -t featherweight /home/proycon/bin/tm"
-        alias bf="ssh -Y -A -t lilo.science.ru.nl ssh -Y -A -t blossomforth /home/proycon/bin/tm"
-        alias tl="ssh -Y -A -t lilo.science.ru.nl ssh -Y -A -t thunderlane /home/proycon/bin/tm"
-        alias tw="ssh -Y -A -t lilo.science.ru.nl ssh -Y -A -t twist /home/proycon/bin/tm"
         ;;
     proyphone|pine64-pinephone|oneplus-enchilada)
         export PATH="/home/proycon/bin:/home/proycon/.cargo/bin:$PATH"
