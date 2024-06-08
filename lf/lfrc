@@ -15,8 +15,6 @@ set sixel true
 # Vars that depend on environmental variables
 #$lf -remote "send $id set previewer ${XDG_CONFIG_HOME:-$HOME/.config}/lf/scope"
 
-#set previewer ~/dotfiles/lf/scope
-set previewer ~/dotfiles/lf/preview  #ueberzug-powered
 
 # cmds/functions
 cmd open ${{

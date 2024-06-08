@@ -10,3 +10,6 @@
 [submodule "zsh-autosuggestions"]
 	path = zsh-autosuggestions
 	url = https://github.com/zsh-users/zsh-autosuggestions
+[submodule "yazi/flavors"]
+	path = yazi/flavors
+	url = https://github.com/yazi-rs/flavors
