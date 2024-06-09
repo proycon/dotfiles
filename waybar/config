@@ -5,7 +5,7 @@
 "output": "!DP-3",
 "modules-left": ["hyprland/workspaces","hyprland/window"],
 "modules-center": ["custom/mail"],
-"modules-right":  ["custom/timetracker","custom/hanzi","pulseaudio","hyprland/language","network","battery", "clock"],
+"modules-right":  ["custom/timetracker","custom/ru","custom/hanzi","pulseaudio","hyprland/language","network","battery", "clock"],
 
 "battery": {
   "min-length": 5,
@@ -64,6 +64,13 @@
 "custom/mail": {
     "exec": "~/dotfiles/scripts/checkmail.sh",
     "interval": 10,
+    "tooltip": true
+},
+"custom/ru": {
+    "format": " : {}",
+    "exec": "sleep 1 && echo ' q' | vocage -m plain -s ~/projects/vocadata/ru/myselection.tsv | decolor | tr -s '\n' > /tmp/ru && head -n 1 /tmp/ru",
+    "on-click": "cp -f /tmp/ru /tmp/ru.prev && notify-send -t 5000 Русский \"$(cat /tmp/ru)\"",
+    "interval": 3600,
     "tooltip": true
 },
 "custom/hanzi": {
