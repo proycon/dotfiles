@@ -1,6 +1,12 @@
 configuration {
     font: "Monospace 22";
     show-icons: true;
+    location: 2;
 }
 
 @theme "gruvbox-dark-hard"
+
+window {
+    width: 100%;
+    border: 0px;
+}

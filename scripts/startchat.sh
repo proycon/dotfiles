@@ -1,4 +1,5 @@
 #!/bin/sh
+sleep 1
 pidof telegram-desktop || telegram-desktop &
 #pidof tg || foot --title tg tg &
 #pidof tut-mastodon || foot --title tut-mastodon tut-mastodon &
