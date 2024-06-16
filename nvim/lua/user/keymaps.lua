@@ -99,3 +99,5 @@ keymap("n", "в", "v", opts)
 keymap("n", "б", "b", opts)
 keymap("n", "н", "n", opts)
 keymap("n", "м", "m", opts)
+
+keymap("n", "<C-i>", "i", opts)
