@@ -131,14 +131,16 @@ lh2() {
 alias z='less -rN'
 alias myip="dig +short myip.opendns.com @resolver1.opendns.com"
 alias whatismyip="dig +short myip.opendns.com @resolver1.opendns.com"
-if [[ "$HOST" == "proyphone" ]]; then
-    alias vi="vis"
-    alias vim="vis"
+if [[ "$HOST" == "proyphone" ]] || [[ "$HOST" == "oneplus-enchilada" ]]; then
+    if which vis > /dev/null 2> /dev/null; then
+        alias vi="vis"
+        alias vim="vis"
+    fi
 else
     if which nvim > /dev/null 2> /dev/null; then
         export EDITOR="nvim"
-        alias vi="LD_LIBRARY_PATH= nvim"
-        alias vim="LD_LIBRARY_PATH= nvim"
+        alias vi=nvim
+        alias vim=nvim
     else
         if which vim > /dev/null 2>/dev/null; then
             export EDITOR="vim"
