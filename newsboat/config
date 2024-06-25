@@ -31,8 +31,9 @@ bind-key U show-urls
 bind-key x pb-delete
 bind-key ^t next-unread
 bind-key V view-dialogs
-macro p set browser "setsid nohup mpv"; one ; set browser linkhandler
-macro P set browser "cd ~/Downloads && wget"; one ; set browser linkhandler
+macro p enqueue; set browser "podboat -a"; open-in-browser; set browser /home/proycon/dotfiles/scripts/linkhandler
+#macro p set browser "setsid nohup mpv"; one ; set browser linkhandler
+#macro P set browser "cd ~/Downloads && wget"; one ; set browser linkhandler
 
 color listnormal green default
 color listfocus yellow default bold
@@ -74,3 +75,7 @@ highlight feedlist "\\([0-9]+/[0-9]+\\)" white default
 
 articlelist-format  "%4i %f %D   %?T?|%-15T|  ?%t"
 podlist-format "%i %K %S %b"
+delete-played-files "yes"
+max-downloads 4
+
+
