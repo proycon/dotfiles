@@ -42,7 +42,7 @@ color info magenta black bold
 color article default default
 
 #Sport is not news, get rid of it:
-ignore-article "*" "title =~ \"(PSV|Ajax|Feyenoord|FC |Bundesliga|voetbal|Fußbal|championship|soccer|Formula 1|Formule 1|tennis|hockey|sport)\""
+ignore-article "*" "title =~ \"(PSV|Ajax|Feyenoord|FC |Bundesliga|voetbal|Fußbal|championship|soccer|Formula 1|Formule 1|tennis|hockey|sport|Oranje|KNVB|World Cup)\""
 
 
 browser /home/proycon/dotfiles/scripts/linkhandler
