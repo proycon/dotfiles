@@ -1,10 +1,39 @@
 #!/bin/sh
 
+killall client.sh
+rm /tmp/locked
+export QT_AUTO_SCREEN_SCALE_FACTOR=0
+export QT_SCALE_FACTOR=1.8
+export ELM_SCALE=1.8
+export XDG_CURRENT_DESKTOP=river
+export XDG_SESSION_TYPE=wayland
+export XDG_SESSION_DESKTOP=river
+export GDK_BACKEND=wayland
+export MOZ_ENABLE_WAYLAND=1
+export SDL_VIDEODRIVER=wayland
+export GLFW_IM_MODULE=fcitx
+#export GTK_IM_MODULE=fcitx
+export INPUT_METHOD=fcitx
+export XMODIFIERS=@im=fcitx
+export IMSETTINGS_MODULE=fcitx
+export QT_IM_MODULE=fcitx
+#export GDK_DPI_SCALE=2    # only needed for firefox, messes up others
+export BEMENU_BACKEND=wayland
+
 # See the river(1), riverctl(1), and rivertile(1) man pages for complete
 # documentation.
 
 HOSTNAME=$(hostname)
+if [ "$HOSTNAME" = "trantor" ]; then
+    KB_OPTS="-options lv3:ralt_switch,caps:ctrl_modifier,altwin:swap_alt_win,grp:alt_shift_toggle"
+else
+    KB_OPTS=
+fi
+
 kanshi -c ~/dotfiles/kanshi/$HOSTNAME.config &
+
+pkill -f /usr/lib/xdg-desktop-portal-wlr
+/usr/lib/xdg-desktop-portal-wlr &
 
 # Super+Shift+Return to start an instance of foot (https://codeberg.org/dnkl/foot)
 riverctl map normal Super+Shift Return spawn foot
@@ -122,39 +151,39 @@ riverctl map normal Super+Control Down  send-layout-cmd rivercarro "main-locatio
 riverctl map normal Super+Control Left  send-layout-cmd rivercarro "main-location left"
 
 #custom actions
-riverctl map normal Super space spawn bemenu-run --fn "Monospace 22" -l 20
-riverctl map normal Super+Shift space spawn rofi -sidebar-mode -show drun
-riverctl map normal Super F1 spawn foot aerc
+riverctl map normal Super Space spawn 'bemenu-run --fn "Monospace 22" -l 20'
+riverctl map normal Super+Shift space spawn 'rofi -sidebar-mode -show drun'
+riverctl map normal Super F1 spawn 'foot aerc'
 riverctl map normal Super E spawn ~/dotfiles/scripts/translate.sh
 riverctl map normal Alt F2 spawn ~/bin/lala
-riverctl map normal Alt+Shift, F2 spawn killall snapclient
-riverctl map normal Super F2 spawn foot --title nvim ~/bin/tm nvim
+riverctl map normal Alt+Shift, F2 spawn 'killall snapclient'
+riverctl map normal Super F2 spawn "foot --title nvim ~/bin/tm nvim"
 riverctl map normal Super F3 spawn ~/dotfiles/scripts/homecommand.sh
 riverctl map normal Super F4 spawn ~/dotfiles/scripts/screenshot.sh
-riverctl map normal Super+Shift F4 spawn ~/dotfiles/scripts/screenshot.sh region
-riverctl map normal Super+Control+Shift F4 spawn ~/dotfiles/scripts/screenshot.sh annotate
-riverctl map normal Alt F3 spawn ~/dotfiles/scripts/homecommand.sh mute
+riverctl map normal Super+Shift F4 spawn "~/dotfiles/scripts/screenshot.sh region"
+riverctl map normal Super+Control+Shift F4 spawn "~/dotfiles/scripts/screenshot.sh annotate"
+riverctl map normal Alt F3 spawn "~/dotfiles/scripts/homecommand.sh mute"
 riverctl map normal Alt F5 spawn ~/dotfiles/scripts/emojiselect
-riverctl map normal Super F6 spawn foot --title newsboat newsboat 
-riverctl map normal Super+SHIFT F6 spawn foot --title ncmpcpp ncmpcpp 
-riverctl map normal Super F7 spawn ~/dotfiles/scripts/startchat.sh 
-riverctl map normal Super F8 spawn foot --title ytfzt ytfzt -t
-riverctl map normal Super+ALT slash, spawn todo.sh rofi listall @work
-rivertcl map normal Super+SHIFT slash, spawn todo.sh timetrack stop
-rivertcl map normal Super+CONTROL slash, spawn foot -e todo.sh edit
-rivertcl map normal Super backslash spawn todo.sh rofi list -@work
-rivertcl map normal Super+ALT backslash spawn todo.sh rofi listall -@work
-rivertcl map normal Super+SHIFT backslash spawn todo.sh timetrack stop
-rivertcl map normal Super+CONTROL backslash spawn foot -e todo.sh edit
-riverctl map normal Super dead_acute spawn todo.sh rofi list @calendar
+riverctl map normal Super F6 spawn "foot --title newsboat newsboat"
+riverctl map normal Super+Shift F6 spawn "foot --title ncmpcpp ncmpcpp"
+riverctl map normal Super F7 spawn "~/dotfiles/scripts/startchat.sh"
+riverctl map normal Super F8 spawn "foot --title ytfzt ytfzt -t"
+riverctl map normal Super+Alt slash spawn "todo.sh rofi listall @work"
+riverctl map normal Super+Shift slash spawn "todo.sh timetrack stop"
+riverctl map normal Super+Control slash spawn "foot -e todo.sh edit"
+riverctl map normal Super backslash spawn "todo.sh rofi list -@work"
+riverctl map normal Super+Alt backslash spawn "todo.sh rofi listall -@work"
+riverctl map normal Super+Shift backslash spawn "todo.sh timetrack stop"
+riverctl map normal Super+Control backslash spawn "foot -e todo.sh edit"
+riverctl map normal Super dead_acute spawn "todo.sh rofi list @calendar"
 riverctl map normal Super dead_tilde spawn newmail
 riverctl map normal Super dead_grave spawn curmail
 riverctl map normal Super w spawn ~/dotfiles/scripts/buku-dmenu
-riverctl map normal Super u spawn ~/dotfiles/scripts/dmenu-files.sh /nettmp -t
-riverctl map normal Super o spawn ~/dotfiles/scripts/dmenu-files.sh /home/proycon -t
+riverctl map normal Super u spawn "~/dotfiles/scripts/dmenu-files.sh /nettmp -t"
+riverctl map normal Super o spawn "~/dotfiles/scripts/dmenu-files.sh /home/proycon -t"
 riverctl map normal Super p spawn ~/dotfiles/scripts/passmenu.sh
-riverctl map normal Super y spawn foot -e ytfzf --async-thumbnails --preview-side=right -t -T mpv --loop --rii
-riverctl map normal Super+SHIFT p spawn ~/dotfiles/scripts/otpmenu.sh
+riverctl map normal Super y spawn "foot -e ytfzf --async-thumbnails --preview-side=right -t -T mpv --loop --rii"
+riverctl map normal Super+Shift p spawn ~/dotfiles/scripts/otpmenu.sh
 riverctl map normal Super n spawn ~/dotfiles/scripts/network-menu.sh
 riverctl map normal Super+Shift n spawn ~/dotfiles/scripts/startnumen.sh
 riverctl map normal Super+Control k spawn ~/dotfiles/scripts/killmenu.sh
@@ -162,11 +191,11 @@ riverctl map normal Super b spawn ~/dotfiles/scripts/switchbg.sh
 riverctl map normal Super escape spawn ~/dotfiles/scripts/lock.sh
 riverctl map normal Super+Shift escape spawn ~/dotfiles/scripts/suspend.sh
 
-riverctl map normal Super+Alt F9 spawn hyprctl keyword input:kb_layout proylatin && play ~/dotfiles/media/key.wav 
-riverctl map normal Super+Alt F10 spawn hyprctl keyword input:kb_layout proyeo && play ~/dotfiles/media/key.wav 
-riverctl map normal Super+Shift+Alt F10 spawn hyprctl keyword input:kb_layout proyipa && play ~/dotfiles/media/key.wav 
-riverctl map normal Super+Alt F11 spawn hyprctl keyword input:kb_layout proyru && play ~/dotfiles/media/key.wav 
-riverctl map normal Super+Alt F12 spawn hyprctl keyword input:kb_layout proyar && play ~/dotfiles/media/key.wav 
+riverctl map normal Super+Alt F9 spawn "riverctl keyboard-layout $KB_OPTS proylatin && play ~/dotfiles/media/key.wav"
+riverctl map normal Super+Alt F10 spawn "riverctl keyboard-layout $KB_OPTS proyeo && play ~/dotfiles/media/key.wav"
+riverctl map normal Super+Shift+Alt F10 spawn "riverctl keyboard-layout $KB_OPTS proyipa && play ~/dotfiles/media/key.wav"
+riverctl map normal Super+Alt F11 spawn "riverctl keyboard-layout $KB_OPTS proyru && play ~/dotfiles/media/key.wav"
+riverctl map normal Super+Alt F12 spawn "riverctl keyboard-layout $KB_OPTS proyar && play ~/dotfiles/media/key.wav"
 
 # Declare a passthrough mode. This mode has only a single mapping to return to
 # normal mode. This makes it useful for testing a nested wayland compositor
@@ -215,13 +244,13 @@ riverctl rule-add -app-id 'float*' -title 'foo' float
 # Make all views with app-id "bar" and any title use client-side decorations
 riverctl rule-add -app-id "bar" csd
 
-riverctl keyboard-layout proylatin
+riverctl keyboard-layout $KB_OPTS proylatin
 # Set the default layout generator to be rivercarro and start it.
 # River will send the process group of the init executable SIGTERM on exit.
 riverctl default-layout rivercarro
 riverctl default-attach-mode bottom
 riverctl set-cursor-warp on-focus-change
-riverctl focus-follow-cursor always
+riverctl focus-follows-cursor always
 rivercarro -outer-gaps 0 -inner-gaps 5 -per-tag &
 swaybg -m fill -i ~/dotfiles/media/forest.jpg & waybar & mako & dbus-launch gnome-keyring-daemon -s --components=pkcs11,secrets,ssh,gpg & udiskie & setsid /home/proycon/projects/lighthome/client.sh & ~/dotfiles/scripts/handlehyprland.sh &
 #sleep 60 && swayidle timeout 300 '/home/proycon/dotfiles/scripts/lock.sh' timeout 900 'hyprctl dispatch dpms off' resume 'hyprctl dispatch dpms on'
@@ -232,4 +261,3 @@ aa-notify -p -s 1 -w 60 -f /var/log/audit/audit.log &
 pactl set-default-sink alsa_output.pci-0000_17_00.6.3.analog-stereo.monitor
 pactl set-default-source alsa_input.usb-Samson_Technologies_Samson_C01U_Pro_Mic-00.3.analog-stereo 
 gsettings set org.gnome.desktop.interface text-scaling-factor 1.8
-hyprctl setcursor Adwaita 54
