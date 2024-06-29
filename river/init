@@ -30,7 +30,9 @@ else
     KB_OPTS=
 fi
 
-kanshi -c ~/dotfiles/kanshi/$HOSTNAME.config &
+if [ -e ~/dotfiles/kanshi/$HOSTNAME.config ]; then
+    kanshi -c ~/dotfiles/kanshi/$HOSTNAME.config &
+fi
 
 pkill -f /usr/lib/xdg-desktop-portal-wlr
 /usr/lib/xdg-desktop-portal-wlr &
