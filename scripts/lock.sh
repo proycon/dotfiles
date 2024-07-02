@@ -6,9 +6,10 @@ if [ ! -f /tmp/locked ]; then
     killall gpg-agent
     paplay ~/dotfiles/media/lock.wav >/dev/null 2>/dev/null &!
     if [ -n "$WAYLAND_DISPLAY" ]; then
-        swaymsg input type:keyboard xkb_layout proylatin
-        swaylock -c 220000
-        hyprctl dispatch dpms on #ensure dpms is on after lock finishes
+        swaylock -k -c 220000
+        if [ "$XDG_SESSION_DESKTOP" = "Hyprland" ]; then
+            hyprctl dispatch dpms on #ensure dpms is on after lock finishes
+        fi
         pidof waybar || waybar &!
     else
         setxkbmap proylatin

@@ -2,8 +2,10 @@
 
 killall client.sh
 rm /tmp/locked
-export QT_AUTO_SCREEN_SCALE_FACTOR=0
+export QT_AUTO_SCREEN_SCALE_FACTOR=1
+export QT_QPA_PLATFORM=wayland;xcb 
 export QT_WAYLAND_DISABLE_WINDOWDECORATION=1
+export QT_QPA_PLATFORMTHEME=qt5ct
 export QT_SCALE_FACTOR=1.8
 export TDESKTOP_DISABLE_GTK_INTEGRATION=1
 export CLUTTER_BACKEND=wayland
@@ -32,6 +34,7 @@ if [ "$HOSTNAME" = "trantor" ]; then
 else
     KB_OPTS=
 fi
+export KB_OPTS
 
 if [ -e ~/dotfiles/kanshi/$HOSTNAME.config ]; then
     kanshi -c ~/dotfiles/kanshi/$HOSTNAME.config &
@@ -52,6 +55,10 @@ riverctl map normal Super+Shift Backspace exit
 # Super+J and Super+K to focus the next/previous view in the layout stack
 riverctl map normal Super J focus-view next
 riverctl map normal Super K focus-view previous
+riverctl map normal Super Up    focus-view previous
+riverctl map normal Super Right focus-view next
+riverctl map normal Super Down  focus-view next
+riverctl map normal Super Left  focus-view previous
 
 # Super+Shift+J and Super+Shift+K to swap the focused view with the next/previous
 # view in the layout stack
@@ -61,6 +68,8 @@ riverctl map normal Super+Shift K swap previous
 # Super+Period and Super+Comma to focus the next/previous output
 riverctl map normal Super Period focus-output next
 riverctl map normal Super Comma focus-output previous
+
+riverctl map normal Super Tab focus-output next
 
 # Super+Shift+{Period,Comma} to send the focused view to the next/previous output
 riverctl map normal Super+Shift Period send-to-output next
@@ -78,10 +87,6 @@ riverctl map normal Super+Shift H send-layout-cmd rivercarro "main-count +1"
 riverctl map normal Super+Shift L send-layout-cmd rivercarro "main-count -1"
 
 # Mod+{Up,Right,Down,Left} to change layout orientation
-riverctl map normal Super Up    send-layout-cmd rivercarro "main-location top"
-riverctl map normal Super Right send-layout-cmd rivercarro "main-location right"
-riverctl map normal Super Down  send-layout-cmd rivercarro "main-location bottom"
-riverctl map normal Super Left  send-layout-cmd rivercarro "main-location left"
 # And for monocle
 riverctl map normal Super M     send-layout-cmd rivercarro "main-location monocle"
 # Cycle through layout
@@ -124,9 +129,12 @@ riverctl map-pointer normal Super BTN_RIGHT resize-view
 # Super + Middle Mouse Button to toggle float
 riverctl map-pointer normal Super BTN_MIDDLE toggle-float
 
+scratch_tag=$((1 << 20 ))
+sticky_tag=$((1 << 31 ))
+
 for i in $(seq 1 9)
 do
-    tags=$((1 << ($i - 1)))
+    tags=$(( (1 << (i - 1)) ^ sticky_tag ))
 
     # Super+[1-9] to focus tag [0-8]
     riverctl map normal Super $i set-focused-tags $tags
@@ -140,18 +148,17 @@ do
     # Super+Shift+Control+[1-9] to toggle tag [0-8] of focused view
     riverctl map normal Super+Shift+Control $i toggle-view-tags $tags
 done
-scratch_tag=$((1 << 20 ))
+
+riverctl map normal Super s set-view-tags ${sticky_tag}		# set sticky
 
 riverctl map normal Super a toggle-focused-tags ${scratch_tag}		# toggle the scratchpad
 riverctl map normal Super+Shift a set-view-tags ${scratch_tag}		# send windows to the scratchpad
 
 # Set spawn tagmask to ensure new windows do not have the scratchpad tag unless explicitly set.
-all_but_scratch_tag=$(( ((1 << 32) - 1) ^ $scratch_tag ))
+all_but_scratch_tag=$(( ((1 << 32) - 1) ^ scratch_tag ))
 riverctl spawn-tagmask ${all_but_scratch_tag}
 
-tag10=$((1 << (10 - 1)))
-riverctl map normal Super 0 set-focused-tags $tag10
-riverctl map normal Super+Shift 0 set-view-tags $tag10
+riverctl map normal Super 0 set-focused-tags $all_but_scratch_tag
 
 # Super+0 to focus all tags
 # Super+Shift+0 to tag focused view with all tags
@@ -188,6 +195,7 @@ riverctl map normal Super F8 spawn "foot --title ytfzt ytfzt -t"
 riverctl map normal Super+Alt slash spawn "todo.sh rofi listall @work"
 riverctl map normal Super+Shift slash spawn "todo.sh timetrack stop"
 riverctl map normal Super+Control slash spawn "foot -e todo.sh edit"
+riverctl map normal Super slash spawn "todo.sh rofi list @work"
 riverctl map normal Super backslash spawn "todo.sh rofi list -@work"
 riverctl map normal Super+Alt backslash spawn "todo.sh rofi listall -@work"
 riverctl map normal Super+Shift backslash spawn "todo.sh timetrack stop"
@@ -208,24 +216,12 @@ riverctl map normal Super b spawn ~/dotfiles/scripts/switchbg.sh
 riverctl map normal Super escape spawn ~/dotfiles/scripts/lock.sh
 riverctl map normal Super+Shift escape spawn ~/dotfiles/scripts/suspend.sh
 
-# restart river config
-riverctl map normal Super+Shift R spawn ~/.config/river/init
 
 riverctl map normal Super+Alt F9 spawn "riverctl keyboard-layout $KB_OPTS proylatin && play ~/dotfiles/media/key.wav"
 riverctl map normal Super+Alt F10 spawn "riverctl keyboard-layout $KB_OPTS proyeo && play ~/dotfiles/media/key.wav"
 riverctl map normal Super+Shift+Alt F10 spawn "riverctl keyboard-layout $KB_OPTS proyipa && play ~/dotfiles/media/key.wav"
 riverctl map normal Super+Alt F11 spawn "riverctl keyboard-layout $KB_OPTS proyru && play ~/dotfiles/media/key.wav"
 riverctl map normal Super+Alt F12 spawn "riverctl keyboard-layout $KB_OPTS proyar && play ~/dotfiles/media/key.wav"
-
-# Declare a passthrough mode. This mode has only a single mapping to return to
-# normal mode. This makes it useful for testing a nested wayland compositor
-riverctl declare-mode passthrough
-
-# Super+F11 to enter passthrough mode
-riverctl map normal Super F11 enter-mode passthrough
-
-# Super+F11 to return to normal mode
-riverctl map passthrough Super F11 enter-mode normal
 
 # Various media key mapping examples for both normal and locked mode which do
 # not have a modifier
@@ -260,6 +256,7 @@ riverctl set-repeat 50 300
 
 # Make all views with an app-id that starts with "float" and title "foo" start floating.
 riverctl rule-add -app-id 'float*' -title 'foo' float
+riverctl rule-add -app-id 'popup*' -title 'foo' float
 
 # Make all views with app-id "bar" and any title use client-side decorations
 riverctl rule-add -app-id "bar" csd

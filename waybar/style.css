@@ -25,18 +25,26 @@
 	color: @fgcolor;
 }
 
-#workspaces button {
+#workspaces button{
 	padding-left: 5px;
 	padding-right: 5px;
-        background: @bgfocus;
+    background: @bgfocus;
 	color: @fgfocus;
 }
 
-#workspaces button.focused, #workspaces button.active {
+#tags button {
+	padding-left: 5px;
+	padding-right: 5px;
+    background: @bgfocus;
+	color: #666666;
+}
+#tags button.occupied {
+    color: @fgfocus;
+}
+#workspaces button.focused, #workspaces button.active, #tags button.focused {
 	background: #a7c080 ;
 	color: black;
 }
-
 
 
 #custom-cap-left, #custom-cap-right {
