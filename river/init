@@ -3,7 +3,10 @@
 killall client.sh
 rm /tmp/locked
 export QT_AUTO_SCREEN_SCALE_FACTOR=0
+export QT_WAYLAND_DISABLE_WINDOWDECORATION=1
 export QT_SCALE_FACTOR=1.8
+export TDESKTOP_DISABLE_GTK_INTEGRATION=1
+export CLUTTER_BACKEND=wayland
 export ELM_SCALE=1.8
 export XDG_CURRENT_DESKTOP=river
 export XDG_SESSION_TYPE=wayland
@@ -137,6 +140,18 @@ do
     # Super+Shift+Control+[1-9] to toggle tag [0-8] of focused view
     riverctl map normal Super+Shift+Control $i toggle-view-tags $tags
 done
+scratch_tag=$((1 << 20 ))
+
+riverctl map normal Super a toggle-focused-tags ${scratch_tag}		# toggle the scratchpad
+riverctl map normal Super+Shift a set-view-tags ${scratch_tag}		# send windows to the scratchpad
+
+# Set spawn tagmask to ensure new windows do not have the scratchpad tag unless explicitly set.
+all_but_scratch_tag=$(( ((1 << 32) - 1) ^ $scratch_tag ))
+riverctl spawn-tagmask ${all_but_scratch_tag}
+
+tag10=$((1 << (10 - 1)))
+riverctl map normal Super 0 set-focused-tags $tag10
+riverctl map normal Super+Shift 0 set-view-tags $tag10
 
 # Super+0 to focus all tags
 # Super+Shift+0 to tag focused view with all tags
@@ -192,6 +207,9 @@ riverctl map normal Super+Control k spawn ~/dotfiles/scripts/killmenu.sh
 riverctl map normal Super b spawn ~/dotfiles/scripts/switchbg.sh
 riverctl map normal Super escape spawn ~/dotfiles/scripts/lock.sh
 riverctl map normal Super+Shift escape spawn ~/dotfiles/scripts/suspend.sh
+
+# restart river config
+riverctl map normal Super+Shift R spawn ~/.config/river/init
 
 riverctl map normal Super+Alt F9 spawn "riverctl keyboard-layout $KB_OPTS proylatin && play ~/dotfiles/media/key.wav"
 riverctl map normal Super+Alt F10 spawn "riverctl keyboard-layout $KB_OPTS proyeo && play ~/dotfiles/media/key.wav"
@@ -254,11 +272,17 @@ riverctl default-attach-mode bottom
 riverctl set-cursor-warp on-focus-change
 riverctl focus-follows-cursor always
 rivercarro -outer-gaps 0 -inner-gaps 5 -per-tag &
-swaybg -m fill -i ~/dotfiles/media/forest.jpg & waybar & mako & dbus-launch gnome-keyring-daemon -s --components=pkcs11,secrets,ssh,gpg & udiskie & setsid /home/proycon/projects/lighthome/client.sh & ~/dotfiles/scripts/handlehyprland.sh &
+riverctl spawn "swaybg -m fill -i ~/dotfiles/media/forest.jpg"
+riverctl spawn "waybar"
+riverctl spawn "mako" 
+riverctl spawn "dbus-launch gnome-keyring-daemon -s --components=pkcs11,secrets,ssh,gpg"
+riverctl spawn "udiskie"
+riverctl spawn "setsid /home/proycon/projects/lighthome/client.sh"
+# ~/dotfiles/scripts/handlehyprland.sh &
 #sleep 60 && swayidle timeout 300 '/home/proycon/dotfiles/scripts/lock.sh' timeout 900 'hyprctl dispatch dpms off' resume 'hyprctl dispatch dpms on'
 dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP
 fcitx5 &
-aa-notify -p -s 1 -w 60 -f /var/log/audit/audit.log &
+riverctl spawn "aa-notify -p -s 1 -w 60 -f /var/log/audit/audit.log"
 #view sources with: pactl list short sources
 pactl set-default-sink alsa_output.pci-0000_17_00.6.3.analog-stereo.monitor
 pactl set-default-source alsa_input.usb-Samson_Technologies_Samson_C01U_Pro_Mic-00.3.analog-stereo 
