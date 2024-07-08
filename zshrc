@@ -476,6 +476,9 @@ function lesstsv {
     cattsv | less -F -S -X -K
 }
 
+alias body="tail -n +2"
+alias header="head -n 1"
+
 function hutlist {
     if [ -z "$1" ]; then
         echo "hutlist [list] [[patchno]]">&2
