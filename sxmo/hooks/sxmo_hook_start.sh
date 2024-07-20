@@ -10,6 +10,11 @@
 # Create xdg user directories, such as ~/Pictures
 xdg-user-dirs-update
 
+#kill possibly stale things from previous session
+killall client.sh
+killall mosquitto_sub
+killall -9 mpv
+
 sxmo_jobs.sh start daemon_manager superd
 
 # let time to superd to start correctly
@@ -132,4 +137,4 @@ fi
 sxmo_migrate.sh state || sxmo_notify_user.sh --urgency=critical \
 	"Config needs migration" "$? file(s) in your sxmo configuration are out of date and disabled - using defaults until you migrate (run sxmo_migrate.sh)"
 
-(sleep 10 && ~/lighthome/client.sh > /tmp/lighthome.log 2>&1)
+(sleep 10 && ~/lighthome/client.sh > /dev/null 2>&1)
