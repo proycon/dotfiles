@@ -15,7 +15,7 @@ sxmo_notify_user.sh "$2 ($1) down."
 ~/dotfiles/scripts/homecommand.sh status &
 HOUR=$(date +%H) 
 if [ "$HOUR" -ge 09 ] && [ "$HOUR" -le 22 ]; then
-    sxmo_wakelock.sh run mpv --no-video --quiet ~/lighthome/media/disconnect.wav 
+    sxmo_wakelock.sh timeout --kill-after=7s --signal=9 5s  mpv --no-video --quiet ~/lighthome/media/disconnect.wav 
 fi
 # Toggle the data connection when wifi goes down.
 #if [ "$2" = "wifi" ]; then

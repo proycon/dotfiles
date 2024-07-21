@@ -13,7 +13,7 @@ killall mosquitto_sub
 ~/dotfiles/scripts/homecommand.sh status &
 HOUR=$(date +%H) 
 if [ "$HOUR" -ge 09 ] && [ "$HOUR" -le 22 ]; then
-    sxmo_wakelock.sh mpv --no-video --quiet ~/lighthome/media/connect.wav 
+    sxmo_wakelock.sh timeout --kill-after=7s --signal=9 5s  mpv --no-video --quiet ~/lighthome/media/connect.wav 
 fi
 
 # tell us wifi strength
