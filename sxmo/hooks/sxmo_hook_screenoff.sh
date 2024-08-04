@@ -42,4 +42,4 @@ sxmo_jobs.sh stop idle_locker
 
 wait
 
-peanutbuffer &
+peanutbutter &
