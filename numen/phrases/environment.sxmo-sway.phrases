@@ -14,6 +14,7 @@ launcher:run bemenu-run -l 20 &
 keyboard: run sxmo_keyboard.sh toggle &
 rotate: run sxmo_rotate.sh
 exterminate: press super+shift+q
+force restart: run killall sway 
 
 desktop one: run swaymsg workspace 1
 desktop two: run swaymsg workspace 2
