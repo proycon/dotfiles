@@ -339,7 +339,8 @@ case "$ACTION" in
 		exit
 		;;
 	"voldown_two")
-		sxmo_wm.sh togglelayout
+		#sxmo_wm.sh togglelayout
+        ~/dotfiles/scripts/startnumen.sh --timeout &
 		exit
 		;;
 	"voldown_three")
