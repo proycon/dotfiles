@@ -2,13 +2,14 @@
 killall speech 2> /dev/null
 paplay ~/dotfiles/media/glass.ogg
 
+if [ "$1" = "--house" ] && [ -f ~/lighthome/config/house.phrases ]; then
+    HOUSEPHRASES=~/lighthome/config/house.idle.phrases
+fi
 if [ -n "$HYPRLAND_INSTANCE_SIGNATURE" ]; then
     ENVPHRASES=~/dotfiles/numen/phrases/environment.hyprland.phrases
 elif [ -n "$SXMO_WM" ]; then
     ENVPHRASES=~/dotfiles/numen/phrases/environment.sxmo-sway.phrases
-fi
-if [ "$1" = "--house" ] && [ -f ~/lighthome/config/house.phrases ]; then
-    HOUSEPHRASES=~/lighthome/config/house.idle.phrases
+    HOUSEPHRASES=~/lighthome/config/house.phrases
 fi
 if [ "$1" = "--timeout" ] || [ "$2" = "--timeout" ]; then
     TIMEOUT="timeout --kill-after=12s --signal=9 10s"
