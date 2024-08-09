@@ -64,7 +64,7 @@ ifeq ($(DISTRO),arch)
 	#dev: linters, formatters, misc
 	${PACMAN} bash-language-server lua-language-server ccls cppcheck eslint flake8 prettier openapi-tui pyright python-pylint rustfmt shellcheck tokei hyperfine
 	#communication
-	${PACMAN} aerc mailcap mosquitto msmtp-mta newsboat weechat notmuch
+	${PACMAN} aerc mailcap mosquitto msmtp-mta newsboat weechat notmuch senpai
 	#libs
 	${PACMAN} perl-mime-tools perl-net-smtp-ssl
 	#containers & VM
@@ -163,10 +163,10 @@ ifeq (, $(shell which yay))
 endif
 endif 
 
-aur: yay abuild aercbook-bin dasel gomuks-git lsix-git mblaze-git nerd-fonts-complete-starship powerline-fonts-git rofi-lbonn-wayland todotxt ttf-material-design-icons-git ttf-symbola waybar-hyprland-git snapcast-git senpai-irc-git crates-tui pass-git-helper
+aur: yay abuild aercbook-bin dasel gomuks-git lsix-git mblaze-git nerd-fonts-complete-starship powerline-fonts-git rofi-lbonn-wayland todotxt ttf-material-design-icons-git ttf-symbola waybar-hyprland-git snapcast-git crates-tui pass-git-helper
 
-.PHONY: abuild aercbook-bin dasel gomuks-git lsix-git mblaze-git nerd-fonts-complete-starship powerline-fonts-git rofi-lbonn-wayland todotxt ttf-material-design-icons-git ttf-symbola waybar-hyprland-git snapcast-git senpai-irc-git crates-tui pass-git-helper
-abuild aercbook-bin dasel gomuks-git lsix-git mblaze-git nerd-fonts-complete-starship powerline-fonts-git rofi-lbonn-wayland todotxt ttf-material-design-icons-git ttf-symbola waybar-hyprland-git snapcast-git senpai-irc-git crates-tui pass-git-helper:
+.PHONY: abuild aercbook-bin dasel gomuks-git lsix-git mblaze-git nerd-fonts-complete-starship powerline-fonts-git rofi-lbonn-wayland todotxt ttf-material-design-icons-git ttf-symbola waybar-hyprland-git snapcast-git crates-tui pass-git-helper
+abuild aercbook-bin dasel gomuks-git lsix-git mblaze-git nerd-fonts-complete-starship powerline-fonts-git rofi-lbonn-wayland todotxt ttf-material-design-icons-git ttf-symbola waybar-hyprland-git snapcast-git crates-tui pass-git-helper:
 ifeq ($(DISTRO),arch)
 	yay -S $@
 endif
