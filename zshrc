@@ -172,6 +172,12 @@ xl() {
     argos-translate -f "$FROM" -t "$TO" "$*"
     deactivate
 }
+hsk() {
+    grep "$1" ~/projects/vocadata/zh/hsk*.tsv | cut -f 1-4
+}
+cedict() {
+    grep "$1" ~/Documents/languages/chinese/cedict.txt
+}
 
 export MPD_HOST="anaproy.nl"
 
