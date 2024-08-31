@@ -6,6 +6,7 @@ if [ ! -f /tmp/locked ]; then
     killall gpg-agent
     paplay ~/dotfiles/media/lock.wav >/dev/null 2>/dev/null &!
     if [ -n "$WAYLAND_DISPLAY" ]; then
+        hyprctl keyword input:kb_layout proylatin
         hyprlock
         if [ "$XDG_SESSION_DESKTOP" = "Hyprland" ]; then
             hyprctl dispatch dpms on #ensure dpms is on after lock finishes
