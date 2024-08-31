@@ -35,6 +35,9 @@
         2147483904
     ]
 },
+"river/window": {
+    "max-length": 25,
+},
 "river/layout": {
     "format": "[{}] ",
     "min-length": 4,

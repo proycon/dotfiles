@@ -218,11 +218,16 @@ riverctl map normal Super escape spawn ~/dotfiles/scripts/lock.sh
 riverctl map normal Super+Shift escape spawn ~/dotfiles/scripts/suspend.sh
 
 
-riverctl map normal Super+Alt F9 spawn "riverctl keyboard-layout $KB_OPTS proylatin && play ~/dotfiles/media/key.wav"
-riverctl map normal Super+Alt F10 spawn "riverctl keyboard-layout $KB_OPTS proyeo && play ~/dotfiles/media/key.wav"
-riverctl map normal Super+Shift+Alt F10 spawn "riverctl keyboard-layout $KB_OPTS proyipa && play ~/dotfiles/media/key.wav"
-riverctl map normal Super+Alt F11 spawn "riverctl keyboard-layout $KB_OPTS proyru && play ~/dotfiles/media/key.wav"
-riverctl map normal Super+Alt F12 spawn "riverctl keyboard-layout $KB_OPTS proyar && play ~/dotfiles/media/key.wav"
+riverctl map normal Super F9 spawn "riverctl keyboard-layout $KB_OPTS proylatin && play ~/dotfiles/media/key.wav"
+riverctl map normal Alt F9 spawn "riverctl keyboard-layout $KB_OPTS proylatin && play ~/dotfiles/media/key.wav"
+riverctl map normal Alt F10 spawn "riverctl keyboard-layout $KB_OPTS proyeo && play ~/dotfiles/media/key.wav"
+riverctl map normal Alt+Shift F10 spawn "riverctl keyboard-layout $KB_OPTS proyipa && play ~/dotfiles/media/key.wav"
+riverctl map normal Alt F11 spawn "riverctl keyboard-layout $KB_OPTS proyru && play ~/dotfiles/media/key.wav"
+riverctl map normal Alt F12 spawn "riverctl keyboard-layout $KB_OPTS proyar && play ~/dotfiles/media/key.wav"
+
+riverctl map normal Super F10  spawn 'pamixer --toggle-mute && aplay ~/dotfiles/media/submit.wav'
+riverctl map normal Super F11  spawn 'pamixer -d 5 && aplay ~/dotfiles/media/submit.wav'
+riverctl map normal Super F12  spawn 'pamixer -i 5 && aplay ~/dotfiles/media/submit.wav'
 
 # Various media key mapping examples for both normal and locked mode which do
 # not have a modifier
@@ -277,7 +282,9 @@ riverctl spawn "dbus-launch gnome-keyring-daemon -s --components=pkcs11,secrets,
 riverctl spawn "udiskie"
 riverctl spawn "setsid /home/proycon/projects/lighthome/client.sh"
 # ~/dotfiles/scripts/handlehyprland.sh &
-#sleep 60 && swayidle timeout 300 '/home/proycon/dotfiles/scripts/lock.sh' timeout 900 'hyprctl dispatch dpms off' resume 'hyprctl dispatch dpms on'
+riverctl spawn "swayidle timeout 300 '/home/proycon/dotfiles/scripts/lock.sh' timeout 900 'wlopm --off \*' resume 'wlopm --on \*'"
+
+#swayidle -w timeout 300 'swaylock -f -i $wallpaper' timeout 600 'wlopm --off \*;swaylock -F -i $wallpaper' resume 'wlopm --on \*' \ before-sleep 'swaylock -f -i $wallpaper' &
 dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP
 fcitx5 &
 riverctl spawn "aa-notify -p -s 1 -w 60 -f /var/log/audit/audit.log"
