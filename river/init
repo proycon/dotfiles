@@ -55,9 +55,9 @@ riverctl map normal Super+Shift Backspace exit
 # Super+J and Super+K to focus the next/previous view in the layout stack
 riverctl map normal Super J focus-view next
 riverctl map normal Super K focus-view previous
-riverctl map normal Super Up    focus-view previous
+riverctl map normal Super Up    focus-view up
 riverctl map normal Super Right focus-view next
-riverctl map normal Super Down  focus-view next
+riverctl map normal Super Down  focus-view down
 riverctl map normal Super Left  focus-view previous
 
 # Super+Shift+J and Super+Shift+K to swap the focused view with the next/previous
@@ -66,10 +66,11 @@ riverctl map normal Super+Shift J swap next
 riverctl map normal Super+Shift K swap previous
 
 # Super+Period and Super+Comma to focus the next/previous output
-riverctl map normal Super Period focus-output next
-riverctl map normal Super Comma focus-output previous
+riverctl map normal Super Z focus-output next
+#riverctl map normal Super Comma focus-output previous
 
-riverctl map normal Super Tab focus-output next
+riverctl map normal Super Tab focus-previous-tags
+riverctl map normal Super+Shift Tab focus-output next
 
 # Super+Shift+{Period,Comma} to send the focused view to the next/previous output
 riverctl map normal Super+Shift Period send-to-output next
@@ -88,8 +89,9 @@ riverctl map normal Super+Shift L send-layout-cmd rivercarro "main-count -1"
 
 # Mod+{Up,Right,Down,Left} to change layout orientation
 # And for monocle
-riverctl map normal Super M     send-layout-cmd rivercarro "main-location monocle"
+riverctl map normal Super M     send-layout-cmd rivercarro "main-location-cycle monocle,left"
 # Cycle through layout
+riverctl map normal Super comma     send-layout-cmd rivercarro "main-location-cycle right,left,bottom,top"
 riverctl map normal Super period     send-layout-cmd rivercarro "main-location-cycle left,right,top,bottom"
 
 # Add others rivercarro's commands the same way with the keybinds you'd like.
@@ -130,11 +132,10 @@ riverctl map-pointer normal Super BTN_RIGHT resize-view
 riverctl map-pointer normal Super BTN_MIDDLE toggle-float
 
 scratch_tag=$((1 << 20 ))
-sticky_tag=$((1 << 31 ))
 
 for i in $(seq 1 9)
 do
-    tags=$(( (1 << (i - 1)) ^ sticky_tag ))
+    tags=$(( (1 << (i - 1)) ))
 
     # Super+[1-9] to focus tag [0-8]
     riverctl map normal Super $i set-focused-tags $tags
@@ -149,7 +150,7 @@ do
     riverctl map normal Super+Shift+Control $i toggle-view-tags $tags
 done
 
-riverctl map normal Super s set-view-tags ${sticky_tag}		# set sticky
+#riverctl map normal Super s set-view-tags ${sticky_tag}		# set sticky
 
 riverctl map normal Super a toggle-focused-tags ${scratch_tag}		# toggle the scratchpad
 riverctl map normal Super+Shift a set-view-tags ${scratch_tag}		# send windows to the scratchpad
