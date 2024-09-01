@@ -237,7 +237,10 @@ riverctl rule-add -app-id 'float*' -title 'foo' float
 riverctl rule-add -app-id 'popup*' -title 'foo' float
 
 # Make all views with app-id "bar" and any title use client-side decorations
-riverctl rule-add -app-id "bar" csd
+riverctl rule-add -app-id "org.telegram.desktop" ssd
+riverctl rule-add -app-id 'libreoffice*' ssd
+riverctl rule-add -app-id 'org.pwmt.zathura' ssd
+riverctl rule-add -app-id 'imv' ssd
 
 riverctl keyboard-layout $KB_OPTS proylatin
 # Set the default layout generator to be rivercarro and start it.
