@@ -9,7 +9,7 @@ Software
 Current setup:
 
 * 🐧 **OS**: [Arch Linux](https://archlinux.org)
-* ⚙ **Compositor**: [Hyprland](https://hyprland.org)
+* ⚙ **Compositor**: [River](https://codeberg.org/river/river)
 * 🍫 **Bar**: [waybar](https://github.com/Alexays/Waybar)
 * 🐚 **Shell**: zsh
 * 🤖 **Terminal:** [foot](https://codeberg.org/dnkl/foot)
@@ -62,7 +62,7 @@ $ make update
 Key bindings
 --------------
 
-* **hyprland**
+* **river**
     * TODO, very comparable to what I had for dwm though
 * **dwm**
     * ``cmd+1,2,3,4,5,6,7,8,9`` - switch tags/workspace
