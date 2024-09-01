@@ -73,8 +73,9 @@ highlight feedlist "\\(PeerTube\\)" cyan default
 highlight feedlist " r/" red default
 highlight feedlist "\\([0-9]+/[0-9]+\\)" white default
 
-articlelist-format  "%4i %f %D   %?T?|%-15T|  ?%t"
+articlelist-format  "%D %?T?|%-15T| ?%t"
 podlist-format "%i %K %S %b"
+feedlist-format "%t %u"
 delete-played-files "yes"
 max-downloads 4
 
