@@ -6,7 +6,11 @@ if [ ! -f /tmp/locked ]; then
     killall gpg-agent
     paplay ~/dotfiles/media/lock.wav >/dev/null 2>/dev/null &!
     if [ -n "$WAYLAND_DISPLAY" ]; then
-        hyprctl keyword input:kb_layout proylatin
+        if [ "$XDG_SESSION_DESKTOP" = "Hyprland" ]; then
+            hyprctl keyword input:kb_layout proylatin
+        elif [ "$XDG_SESSION_DESKTOP" = "river" ]; then
+            riverctl keyboard-layout $KB_OPTS proylatin
+        fi
         hyprlock
         if [ "$XDG_SESSION_DESKTOP" = "Hyprland" ]; then
             hyprctl dispatch dpms on #ensure dpms is on after lock finishes
@@ -20,7 +24,9 @@ if [ ! -f /tmp/locked ]; then
     paplay ~/dotfiles/media/unlock.wav >/dev/null 2>/dev/null &!
     rm /tmp/locked
     todo.sh timetrack start "$task"
-    if [ "$(hostname)" = "pollux" ]; then
-        ~/dotfiles/scripts/fixworkspaces.sh
+    if [ "$XDG_SESSION_DESKTOP" = "Hyprland" ]; then
+        if [ "$(hostname)" = "pollux" ]; then
+            ~/dotfiles/scripts/fixworkspaces.sh
+        fi
     fi
 fi
