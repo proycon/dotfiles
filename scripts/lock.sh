@@ -4,7 +4,7 @@ if [ ! -f /tmp/locked ]; then
     todo.sh timetrack stop
     touch /tmp/locked
     killall gpg-agent
-    paplay ~/dotfiles/media/lock.wav >/dev/null 2>/dev/null &!
+    paplay ~/dotfiles/media/lock.wav >/dev/null 2>/dev/null &
     if [ -n "$WAYLAND_DISPLAY" ]; then
         if [ "$XDG_SESSION_DESKTOP" = "Hyprland" ]; then
             hyprctl keyword input:kb_layout proylatin
@@ -15,13 +15,13 @@ if [ ! -f /tmp/locked ]; then
         if [ "$XDG_SESSION_DESKTOP" = "Hyprland" ]; then
             hyprctl dispatch dpms on #ensure dpms is on after lock finishes
         fi
-        pidof waybar || waybar &!
+        pidof waybar || waybar &
     else
         setxkbmap proylatin
         i3lock -n -c '220000'
         pidof picom || picom -f -e 1.0 &
     fi
-    paplay ~/dotfiles/media/unlock.wav >/dev/null 2>/dev/null &!
+    paplay ~/dotfiles/media/unlock.wav >/dev/null 2>/dev/null &
     rm /tmp/locked
     todo.sh timetrack start "$task"
     if [ "$XDG_SESSION_DESKTOP" = "Hyprland" ]; then
