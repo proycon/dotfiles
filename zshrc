@@ -550,5 +550,5 @@ export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH:$
 unset LESS_TERMCAP_so
 
 if [ "$(tty)" = "/dev/tty1" ]; then
-    exec ~/dotfiles/scripts/starthyprland.sh
+    exec ~/dotfiles/scripts/startriver.sh
 fi
