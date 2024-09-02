@@ -155,30 +155,5 @@ Key bindings
         * ``,y`` - yank selection (to ~/.vbuf and X clipboard)
         * ``,p`` - paste
         * ``,P`` - paste before
-* **weechat**
-    * ``ctrl+s`` or ``ctrl+u`` - Set unread marker on all windows
-    * ``ctrl+n``  - Switch to next buffer
-    * ``ctrl+p``  - Switch to previous buffer
-    * ``alt+a`` - Switch to buffer with activity
-    * ``alt+0..9`` - Switch to buffer
-    * ``F9/F10``  - Scroll buffer title
-    * ``F11/F12``  - Scroll nick list
-    * ``ctrl+r`` - Search
-        * Enter, ``ctrl+j``, ``ctrl+m``  - Stop search
-    * ``alt+=`` -  Disabled filters (hide/join) (``alt+-`` for current buffer)
-        * ``/filter add irc_smart * irc_smart_filter *``  - Smart hide/join/filter
-    * ``alt+t`` -  Toggle nick list
-        * ``/key bind meta-t /bar toggle nicklist``
-    * ``/mob`` - Mobile layout
-    * ``/desk`` - Desktop layout
-* **sxiv**
-    * ``ctrl+x`` and:
-        * ``e`` - Edit in the Gimp
-        * ``r`` - Rotate 90 degrees clockwise
-        * ``R`` - Rotate 90 degrees clockwise
-        * ``d`` - Delete (asks confirmation)
-        * ``n`` - Copy to nettmp
-        * ``t`` - Copy to shared/transfer
-        * ``T`` - Copy to /tmp
 
 
