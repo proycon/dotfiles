@@ -68,8 +68,10 @@ riverctl map normal Super period     send-layout-cmd rivercarro "main-location-c
 
 # Add others rivercarro's commands the same way with the keybinds you'd like.
 # e.g.
-# riverctl map normal Super <keys> send-layout-cmd rivercarro "inner-gaps -1"
-# riverctl map normal Super <keys> send-layout-cmd rivercarro "inner-gaps +1"
+riverctl map normal Super Minus send-layout-cmd rivercarro "inner-gaps -5"
+riverctl map normal Super Equal send-layout-cmd rivercarro "inner-gaps +5"
+riverctl map normal Super+Shift Minus send-layout-cmd rivercarro "outer-gaps -5"
+riverctl map normal Super+Shift Equal send-layout-cmd rivercarro "outer-gaps +5"
 # riverctl map normal Super <keys> send-layout-cmd rivercarro "outer-gaps -1"
 # riverctl map normal Super <keys> send-layout-cmd rivercarro "outer-gaps +1"
 # riverctl map normal Super <keys> send-layout-cmd rivercarro "width-ratio -0.1"
