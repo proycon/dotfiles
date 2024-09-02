@@ -10,7 +10,7 @@
 # Some examples:
 
 # Notify the user when a network goes down.
-killall mosquitto_sub
+killall -9 mosquitto_sub
 sxmo_notify_user.sh "$2 ($1) down."
 ~/dotfiles/scripts/homecommand.sh status &
 HOUR=$(date +%H) 

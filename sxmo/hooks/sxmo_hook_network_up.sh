@@ -9,7 +9,7 @@
 
 # Notify the user if a network goes up.
 sxmo_notify_user.sh "$2 ($1) up."
-killall mosquitto_sub
+killall -9 mosquitto_sub
 ~/dotfiles/scripts/homecommand.sh status &
 HOUR=$(date +%H) 
 if [ "$HOUR" -ge 09 ] && [ "$HOUR" -le 22 ]; then
