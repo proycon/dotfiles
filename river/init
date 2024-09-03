@@ -180,7 +180,10 @@ riverctl map normal Super dead_tilde spawn newmail
 riverctl map normal Super dead_grave spawn curmail
 riverctl map normal Super w spawn ~/dotfiles/scripts/buku-dmenu
 riverctl map normal Super u spawn "~/dotfiles/scripts/dmenu-files.sh /nettmp -t"
-riverctl map normal Super o spawn "~/dotfiles/scripts/dmenu-files.sh /home/proycon -t"
+riverctl map normal Super i spawn "~/dotfiles/scripts/dmenu-files.sh /home/proycon -t"
+riverctl map normal Super o spawn "echo -n 0 > /tmp/linkhandler.target && notify-send 'cast disabled' && play ~/dotfiles/media/glass.ogg"
+riverctl map normal Super+Shift o spawn "echo -n 1 > /tmp/linkhandler.target && notify-send 'casting to pi1' && play ~/dotfiles/media/glass_low.ogg"
+riverctl map normal Super+Control o spawn "echo -n 2 > /tmp/linkhandler.target && notify-send 'casting to pi2' && play ~/dotfiles/media/glass_low.ogg"
 riverctl map normal Super p spawn ~/dotfiles/scripts/passmenu.sh
 riverctl map normal Super y spawn "foot -e ytfzf --async-thumbnails --preview-side=right -t -T mpv --loop --rii"
 riverctl map normal Super+Shift p spawn ~/dotfiles/scripts/otpmenu.sh
