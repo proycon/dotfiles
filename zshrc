@@ -52,7 +52,7 @@ menu () {
         whiptail --menu "Menu" 25 80 15 find "Find" fd "Find (alternative)" fdisk "Partioner" fzf "Fuzzy finder" lf "Terminal file manager" ncdu "Disk usage TUI" tree "Tree" rclone "File transfer" rsync "File transfer" yazi "Terminal file manager" 2> ~/.menuchoice
         eval $(cat ~/.menuchoice)
     elif [[ "$choice " == "data"* ]]; then
-        whiptail --menu "Menu" 25 80 15 column "Pretty-print columns" ack "Grep-like text finder" bat "Fancy cat viewer" csvlens "CSV pager" diff "Diff" difft "Difftastic" delta "Fancy diff" glow "Fancy markdown viewer" jless "JSON pager" jq "JSON-processor" pandoc "Document conversion" rg "Ripgrep" vd "Tabular data viewer" mlr "TSV,CSV,JSON processor" xsv "CSV processor" zbarimg "QRcode decoder" 2> ~/.menuchoice
+        whiptail --menu "Menu" 25 80 15 column "Pretty-print columns" ack "Grep-like text finder" bat "Fancy cat viewer" csvlens "CSV pager" diff "Diff" difft "Difftastic" delta "Fancy diff" glow "Fancy markdown viewer" jless "JSON pager" jq "JSON-processor" pandoc "Document conversion" rg "Ripgrep" tw "Tabiew: view tabular data" vd "Tabular data viewer" mlr "TSV,CSV,JSON processor" xsv "CSV processor" zbarimg "QRcode decoder" 2> ~/.menuchoice
         eval $(cat ~/.menuchoice)
     elif [[ "$choice " == "security"* ]]; then
         whiptail --menu "Menu" 25 80 15 age "File encryption" flawz "CVE browser (TUI)" gpg "GnuPG" pass "Password manager" pwgen "Password generator" nitropy "NitroKey tool"   2> ~/.menuchoice
