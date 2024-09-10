@@ -70,7 +70,7 @@ ifeq ($(DISTRO),arch)
 	#containers & VM
 	${PACMAN} apptainer lxd podman buildah podman-compose podman-docker vagrant kubectl
 	#CLI text tools
-	${PACMAN} ack antiword bat difftastic fmt fzf gawk glow grep highlight jless jq miller pandoc ripgrep sed xsv
+	${PACMAN} ack antiword bat difftastic fmt fzf gawk glow grep highlight jless jq miller pandoc ripgrep sed tabiew xsv
 	#CLI file management
 	${PACMAN} exa fd ncdu lf yazi
 	#CLI process management
