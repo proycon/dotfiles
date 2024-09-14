@@ -230,8 +230,8 @@ case "$HOST" in
         hash -d W=/home/proycon/work
         hash -d P=/home/proycon/projects
 
-        alias sshm='sshcheck && ssh -Y -A mhysa.anaproy.nl'
-        alias sshp='sshcheck && ssh -Y -A pollux.anaproy.nl'
+        alias sshm='sshcheck && ssh -A mhysa.anaproy.nl'
+        alias sshp='sshcheck && ssh -A pollux.anaproy.nl'
         ;;
     proyphone|pine64-pinephone|oneplus-enchilada)
         export PATH="/home/proycon/bin:/home/proycon/.cargo/bin:$PATH"
@@ -312,7 +312,7 @@ else
 fi
 
 
-alias ssha='sshcheck && ssh -Y -A anaproy.nl'
+alias ssha='sshcheck && ssh -A anaproy.nl'
 
 
 
