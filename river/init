@@ -185,7 +185,7 @@ riverctl map normal Super o spawn ~/dotfiles/scripts/castnone.sh
 riverctl map normal Super+Shift o spawn ~/dotfiles/scripts/castpi1.sh
 riverctl map normal Super+Control o spawn ~/dotfiles/scripts/castpi2.sh 
 riverctl map normal Super p spawn ~/dotfiles/scripts/passmenu.sh
-riverctl map normal Super y spawn "foot -e ytfzf --async-thumbnails --preview-side=right -t -T mpv --loop --rii"
+riverctl map normal Super y spawn "foot -e ytfzf --async-thumbnails --preview-side=right -t -T mpv -u ~/dotfiles/scripts/linkhandler --loop --rii"
 riverctl map normal Super+Shift p spawn ~/dotfiles/scripts/otpmenu.sh
 riverctl map normal Super n spawn ~/dotfiles/scripts/network-menu.sh
 riverctl map normal Super+Shift n spawn ~/dotfiles/scripts/startnumen.sh

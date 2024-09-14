@@ -1,2 +1,2 @@
 #!/bin/sh
-rm /tmp/linkhandler.target; notify-send 'not casting' && play ~/dotfiles/media/glass.ogg
+rm /tmp/linkhandler.target; notify-send 'casting disabled' && play ~/dotfiles/media/glass.ogg
