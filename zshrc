@@ -413,6 +413,10 @@ export GPGKEY="8AC624881EF2AC30C0E68E2C39FE11201A31555C"
 GPG_TTY=$(tty)
 export GPG_TTY
 
+if [ -z "$XDG_RUNTIME_DIR" ]; then
+    export XDG_RUNTIME_DIR="/tmp"
+fi
+
 if ! pgrep -u "$USER" ssh-agent > /dev/null; then
     ssh-agent -t 6h > "$XDG_RUNTIME_DIR/ssh-agent.env"
 fi
