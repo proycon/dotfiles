@@ -34,7 +34,9 @@ source $ZSH/oh-my-zsh.sh
 setopt cshnullglob
 unsetopt correct_all
 unset GREP_OPTIONS #deprecated
-
+if [ "$OSTYPE" = "linux-musl" ]; then
+    unalias grep
+fi
 #apps
 menu () {
     whiptail --menu "Menu" 25 80 15 sysadmin "Sysadmin tools" file "File management" development "Development" net "Network" data "Data tools" security "Security" media "Audio/Video" other "Other" tldr "tldr" cheat "cheat"  2> ~/.menuchoice
