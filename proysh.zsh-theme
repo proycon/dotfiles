@@ -34,7 +34,7 @@ if [[ $HOST == "rocinante" || $HOST == "trantor" ]] {
 	PR_HOST="%F{blue}%m%f"
 } elif [[ $HOST == *"phone"* || $HOST == *"enchilada"* ]] {
 	PR_HOST="%F{cyan}%m%f"
-} elif [[ $HOST == "roma" || $DOMAIN == "anaproy.nl" || $DOMAIN == "anaproy.lxd" || $DOMAIN == "anaproy2" ]] {
+} elif [[ $HOST == "roma" || $HOST == "anaproy.nl" || $HOST == "anaproy2" || $HOST ==  "anaproy" ]] {
     if [ "$OSTYPE" = "linux-musl" ]; then
         PR_HOST="%F{yellow}%M%f"
     else
