@@ -281,7 +281,7 @@ case "$HOST" in
         alias tw="ssh -Y -A -t twist /home/proycon/bin/tm"
         ;;
     *)
-        DOMAIN=$(hostname -d | tr -d "\n")
+        DOMAIN=$(hostname | tr -d "\n")
         case "$DOMAIN" in
             anaproy|anaproy.lxd|anaproy2)
                 export PATH="/home/proycon/bin:/home/proycon/.cargo/bin:/home/proycon/local/bin:$PATH"
