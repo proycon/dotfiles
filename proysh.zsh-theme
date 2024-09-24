@@ -28,16 +28,18 @@ else
   PR_HOST='%F{green}%M%f' # no SSH
 fi
 
-if [[ $HOST == "rocinante" ]] {
+if [[ $HOST == "rocinante" || $HOST == "trantor" ]] {
 	PR_HOST="%F{green}%m%f"
-} elif [[ $HOST == "mhysa" || $HOST == "drasha" ]] {
+} elif [[ $HOST == "mhysa" || $HOST == "drasha" || $HOST == "pollux" ]] {
 	PR_HOST="%F{blue}%m%f"
-} elif [[ $HOST == *"phone"* ]] {
+} elif [[ $HOST == *"phone"* || $HOST == *"enchilada"* ]] {
 	PR_HOST="%F{cyan}%m%f"
-} elif [[ $HOST == "roma" || $DOMAIN == "anaproy.nl" || $DOMAIN == "anaproy.lxd" ]] {
-	PR_HOST="%F{yellow}%M%f"
-} elif [[ $HOST == 'applejack' ]] || [[ $HOST == 'mlp01' ]]   {
-	PR_HOST="%F{red}%}%m%f"
+} elif [[ $HOST == "roma" || $DOMAIN == "anaproy.nl" || $DOMAIN == "anaproy.lxd" || $DOMAIN == "anaproy2" ]] {
+    if [ "$OSTYPE" = "linux-musl" ]; then
+        PR_HOST="%F{yellow}%M%f"
+    else
+        PR_HOST="%F{red}%M%f"
+    fi
 } elif [[ -f /etc/profile.d/mlp.sh ]] {
     HOSTNAME=$HOST
     source /etc/profile.d/mlp.sh
