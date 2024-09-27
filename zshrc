@@ -108,6 +108,7 @@ alias t="todo.sh more"
 alias f='cd $(cat ${XDG_CONFIG_HOME:-$HOME/.config}/directories | fzf)'
 alias hs="~/dotfiles/scripts/homestatus.sh"
 alias yz=yazi
+alias ttw="tw --separator=\"	\""
 alias ghils="gh issue list"
 alias ghls="gh issue list"
 alias ghic="gh issue create"
