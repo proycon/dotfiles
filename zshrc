@@ -39,7 +39,7 @@ if [ "$OSTYPE" = "linux-musl" ]; then
 fi
 #apps
 menu () {
-    whiptail --menu "Menu" 25 80 15 sysadmin "Sysadmin tools" file "File management" development "Development" net "Network" data "Data tools" security "Security" media "Audio/Video" other "Other" tldr "tldr" cheat "cheat"  2> ~/.menuchoice
+    whiptail --menu "Menu" 25 80 15 sysadmin "Sysadmin tools" file "File management" desktop "Desktop" development "Development" net "Network" data "Data tools" security "Security" media "Audio/Video" other "Other" tldr "tldr" cheat "cheat"  2> ~/.menuchoice
     choice=$(cat ~/.menuchoice)
     if [[ "$choice " == "sysadmin"* ]]; then
         whiptail --menu "Menu" 25 80 15 btop "Interactive process viewer" dbus-monitor "DBUS Monitor" htop "Interactive process viewer"  iostat "I/O Statistics" iotop "I/O monitor (root)" lshw "List hardware" lsmod "List kernel modules" lsof "List open files" lspci "List PCI devices" lsusb "List USB devices" netcat "Read/write network data" netstat "Print network connections" top "Interactive process viewer" tspin "Tailspin: highlighting for logs" udevadm "Device administration" vmstat "Report virtual memory statistics" 2> ~/.menuchoice
@@ -61,6 +61,9 @@ menu () {
         eval $(cat ~/.menuchoice)
     elif [[ "$choice " == "media"* ]]; then
         whiptail --menu "Menu" 25 80 15 alsamixer "Mixer TUI" ffmpeg "Media transcoder and more" grim "Screenshots for wayland"  mpc "MPD client" mpv "Media player" pactl "CLI for pulseaudio" yt-dlp "Youtube downloader"    2> ~/.menuchoice
+        eval $(cat ~/.menuchoice)
+    elif [[ "$choice " == "desktop"* ]]; then
+        whiptail --menu "Menu" 25 80 15 lswt "List wayland toplevels" 2> ~/.menuchoice
         eval $(cat ~/.menuchoice)
     elif [[ "$choice " == "other"* ]]; then
         whiptail --menu "Menu" 25 80 15 argos-translate "Machine Translation" buku "Bookmark manager" cal "Calendar" figlet "Banner-like" "todo.sh more" "Todo manager" ollama "Local LLM runner" tmux "Terminal Multiplexer"  numen "Speech Recognition" 2> ~/.menuchoice
