@@ -11,7 +11,7 @@ if [ ! -f /tmp/locked ]; then
         elif [ "$XDG_SESSION_DESKTOP" = "river" ]; then
             riverctl keyboard-layout $KB_OPTS proylatin
         fi
-        hyprlock
+        waylock -init-color 0x110000 -input-color 0x444400 -fail-color 0xff0000
         if [ "$XDG_SESSION_DESKTOP" = "Hyprland" ]; then
             hyprctl dispatch dpms on #ensure dpms is on after lock finishes
         fi
