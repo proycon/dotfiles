@@ -91,7 +91,7 @@ ifeq ($(DESKTOP),1)
 	#hardware key
 	${PACMAN} python-pynitrokey libnitrokey
 	#desktop: wayland core
-	${PACMAN} bemenu foot grim hyprland i3status imv libpipewire mako mesa slurp swaybg swayidle swaylock wofi wtype xdg-desktop-portal-hyprland xorg-xwayland ydotool catimg wl-clipboard
+	${PACMAN} bemenu foot grim river waylock waybar kanshi i3status imv libpipewire mako mesa slurp swaybg swayidle wofi wtype xdg-desktop-portal-wlr xorg-xwayland ydotool catimg wl-clipboard
 	#desktop: basic
 	${PACMAN} bemenu-wayland chromium element-desktop firefox gedit gnome-keyring libreoffice-fresh network-manager-applet pcmanfm telegram-desktop thunar xdg-utils zathura zathura-pdf-poppler
 	#(rofi will be installed from AUR)
@@ -133,7 +133,7 @@ else ifeq ($(DISTRO),$(filter $(DISTRO), alpine postmarketos))
 	${APK} aerc mailcap msmtp newsboat weechat
 ifeq ($(DESKTOP),1)
 	#core desktop
-	${APK} bemenu rofi-wayland foot mako swaybg swayidle waybar wtype xdg-desktop-portal-wlr catimg wl-clipboard libnotify py3-pynitrokey libnitrokey
+	${APK} bemenu rofi-wayland foot mako kanshi swaybg swayidle waybar wtype xdg-desktop-portal-wlr catimg wl-clipboard libnotify py3-pynitrokey libnitrokey
 	#multimedia
 	${APK} mpv mpc espeak sxiv imv yt-dlp ncmpcpp lf chafa
 	#fonts
@@ -163,10 +163,10 @@ ifeq (, $(shell which yay))
 endif
 endif 
 
-aur: yay abuild aercbook-bin dasel gomuks-git lsix-git mblaze-git nerd-fonts-complete-starship powerline-fonts-git rofi-lbonn-wayland todotxt ttf-material-design-icons-git ttf-symbola waybar-hyprland-git snapcast-git crates-tui pass-git-helper
+aur: yay abuild aercbook-bin dasel gomuks-git lsix-git mblaze-git nerd-fonts-complete-starship powerline-fonts-git rofi-lbonn-wayland todotxt ttf-material-design-icons-git ttf-symbola snapcast-git crates-tui pass-git-helper lswt
 
-.PHONY: abuild aercbook-bin dasel gomuks-git lsix-git mblaze-git nerd-fonts-complete-starship powerline-fonts-git rofi-lbonn-wayland todotxt ttf-material-design-icons-git ttf-symbola waybar-hyprland-git snapcast-git crates-tui pass-git-helper
-abuild aercbook-bin dasel gomuks-git lsix-git mblaze-git nerd-fonts-complete-starship powerline-fonts-git rofi-lbonn-wayland todotxt ttf-material-design-icons-git ttf-symbola waybar-hyprland-git snapcast-git crates-tui pass-git-helper:
+.PHONY: abuild aercbook-bin dasel gomuks-git lsix-git mblaze-git nerd-fonts-complete-starship powerline-fonts-git rofi-lbonn-wayland todotxt ttf-material-design-icons-git ttf-symbola snapcast-git crates-tui pass-git-helper lswt
+abuild aercbook-bin dasel gomuks-git lsix-git mblaze-git nerd-fonts-complete-starship powerline-fonts-git rofi-lbonn-wayland todotxt ttf-material-design-icons-git ttf-symbola snapcast-git crates-tui pass-git-helper lswt:
 ifeq ($(DISTRO),arch)
 	yay -S $@
 endif
