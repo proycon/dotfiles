@@ -66,7 +66,7 @@ menu () {
         whiptail --menu "Menu" 25 80 15 lswt "List wayland toplevels" 2> ~/.menuchoice
         eval $(cat ~/.menuchoice)
     elif [[ "$choice " == "other"* ]]; then
-        whiptail --menu "Menu" 25 80 15 argos-translate "Machine Translation" buku "Bookmark manager" cal "Calendar" figlet "Banner-like" "todo.sh more" "Todo manager" ollama "Local LLM runner" tmux "Terminal Multiplexer"  numen "Speech Recognition" 2> ~/.menuchoice
+        whiptail --menu "Menu" 25 80 15 argos-translate "Machine Translation" buku "Bookmark manager" cal "Calendar" figlet "Banner-like" "todo.sh more" "Todo manager" ollama "Local LLM runner" tclock "Clock/timer in terminal (clock-tui)" tmux "Terminal Multiplexer"  numen "Speech Recognition" 2> ~/.menuchoice
         eval $(cat ~/.menuchoice)
     else
         eval $(cat ~/.menuchoice)
