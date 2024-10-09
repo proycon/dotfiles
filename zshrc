@@ -57,7 +57,7 @@ menu () {
         whiptail --menu "Menu" 25 80 15 column "Pretty-print columns" ack "Grep-like text finder" bat "Fancy cat viewer" csvlens "CSV pager" diff "Diff" difft "Difftastic" delta "Fancy diff" glow "Fancy markdown viewer" jless "JSON pager" jq "JSON-processor" pandoc "Document conversion" rg "Ripgrep" tw "Tabiew: view tabular data" vd "Tabular data viewer" mlr "TSV,CSV,JSON processor" xsv "CSV processor" zbarimg "QRcode decoder" pgcli "Postgresql client" 2> ~/.menuchoice
         eval $(cat ~/.menuchoice)
     elif [[ "$choice " == "security"* ]]; then
-        whiptail --menu "Menu" 25 80 15 age "File encryption" flawz "CVE browser (TUI)" gpg "GnuPG" pass "Password manager" pwgen "Password generator" nitropy "NitroKey tool"   2> ~/.menuchoice
+        whiptail --menu "Menu" 25 80 15 age "File encryption" flawz "CVE browser (TUI)" gpg "GnuPG" gpg-tui "GnuPG TUI" pass "Password manager" pwgen "Password generator" nitropy "NitroKey tool"   2> ~/.menuchoice
         eval $(cat ~/.menuchoice)
     elif [[ "$choice " == "media"* ]]; then
         whiptail --menu "Menu" 25 80 15 alsamixer "Mixer TUI" ffmpeg "Media transcoder and more" grim "Screenshots for wayland"  mpc "MPD client" mpv "Media player" pactl "CLI for pulseaudio" yt-dlp "Youtube downloader"    2> ~/.menuchoice
