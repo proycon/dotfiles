@@ -184,6 +184,18 @@ hsk() {
 cedict() {
     grep "$1" ~/Documents/languages/chinese/cedict.txt
 }
+gitlog() {
+    #relies on a proper pager being set for diffs in ~/.gitconfig
+    set pipefail
+    while ; do
+        COMMIT="$(git log --color=always --pretty="%Cgreen%cs%Creset %h %Cblue%an%Creset %Cred%d%Creset %s" | fzf --ansi | cut -d" " -f 2)"
+        if [ $? -ne 0 ] || [ -z "$COMMIT" ]; then
+            break
+        fi
+        git show "$COMMIT" || break
+    done
+}
+alias gL=gitlog
 
 export MPD_HOST="anaproy.nl"
 
