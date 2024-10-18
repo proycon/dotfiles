@@ -1,5 +1,5 @@
 #!/bin/sh
-# configversion: 02e741a43378a9312425005f70468925
+# configversion: d300b1d1d6d37e4107c6eff4cafaacc4
 # SPDX-License-Identifier: AGPL-3.0-only
 # Copyright 2022 Sxmo Contributors
 
@@ -331,7 +331,7 @@ case "$ACTION" in
 		exit 0
 		;;
 	"voldown_one")
-		if [ -n "$SXMO_NO_KEYBOARD" ]; then
+		if [ -n "$SXMO_NO_VIRTUAL_KEYBOARD" ]; then
 			sxmo_killwindow.sh
 		else
 			sxmo_keyboard.sh toggle
@@ -402,7 +402,7 @@ case "$ACTION" in
 		exit 0
 		;;
 	"upbottomedge")
-		if [ -n "$SXMO_NO_KEYBOARD" ]; then
+		if [ -n "$SXMO_NO_VIRTUAL_KEYBOARD" ]; then
 			sxmo_terminal.sh
 		else
 			sxmo_keyboard.sh open
@@ -410,7 +410,7 @@ case "$ACTION" in
 		exit 0
 		;;
 	"downbottomedge")
-		if [ -n "$SXMO_NO_KEYBOARD" ]; then
+		if [ -n "$SXMO_NO_VIRTUAL_KEYBOARD" ]; then
 			sxmo_killwindow.sh
 		else
 			sxmo_keyboard.sh close

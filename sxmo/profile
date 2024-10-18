@@ -1,5 +1,5 @@
 #!/bin/sh
-# configversion: 656ada683ce62137e8ef5b917645f259
+# configversion: 7dc37edbb333893e0b890ff4c7593713
 
 # shellcheck source=scripts/core/sxmo_common.sh
 . sxmo_common.sh
@@ -49,6 +49,8 @@ export TERMCMD="sxmo_terminal.sh"
 # To load specific part of configuration depending on the running environment
 case "$SXMO_WM" in
 	sway)
+		#set either bemenu or wofi
+		export SXMO_MENU=wofi
 		;;
 	dwm)
 		;;
@@ -69,6 +71,3 @@ export SXMO_RINGNUMBER=10
 
 #Set to the default text for a new text message.
 export SXMO_DEFAULT_DRAFT="Enter new message here."
-
-#Set background image
-export SXMO_BG_IMG="$(sxmo_hook_wallpaper.sh)"

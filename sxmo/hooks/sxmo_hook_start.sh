@@ -1,5 +1,5 @@
 #!/bin/sh
-# configversion: 71903f5832f7cc05bf9996a487e3ec16
+# configversion: 882dd8ce85914c77dca5a5f466ddb608
 # SPDX-License-Identifier: AGPL-3.0-only
 # Copyright 2022 Sxmo Contributors
 
@@ -103,6 +103,9 @@ if [ -z "$SXMO_NO_MODEM" ] && command -v ModemManager > /dev/null; then
 	# elogind/systemd would do this for us, but we don't use those.)
 	sxmo_wakelock.sh lock sxmo_modem_warming_up 120s
 fi
+
+# Start the desktop wallpaper
+superctl start sxmo_bg
 
 # Start the desktop widget (e.g. clock)
 superctl start sxmo_conky
