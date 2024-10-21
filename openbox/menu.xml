@@ -7,7 +7,16 @@
 
 <menu id="root-menu" label="Openbox 3">
   <item label="Terminal" icon="/usr/share/icons/Faenza/apps/16/terminal.png">
-    <action name="Execute"><execute>urxvt</execute></action>
+    <action name="Execute"><execute>alacritty</execute></action>
+  </item>
+  <item label="Single monitor" icon="/usr/share/icons/Faenza/apps/16/terminal.png">
+    <action name="Execute"><execute>xrandr --output DP-3 --off</execute></action>
+  </item>
+  <item label="Zoom" icon="/usr/share/icons/Faenza/apps/16/terminal.png">
+    <action name="Execute"><execute>zoom</execute></action>
+  </item>
+  <item label="Steam" icon="/usr/share/icons/Faenza/apps/16/terminal.png">
+    <action name="Execute"><execute>runsteam</execute></action>
   </item>
   <item label="File manager" icon="/usr/share/icons/Faenza/apps/16/file-manager.png">
     <action name="Execute"><execute>pcmanfm</execute></action>

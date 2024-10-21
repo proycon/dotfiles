@@ -482,9 +482,9 @@
       <action name="Execute">
         <startupnotify>
           <enabled>true</enabled>
-          <name>urxvt</name>
+          <name>alacritty</name>
         </startupnotify>
-        <command>urxvt</command>
+        <command>alacritty</command>
       </action>
     </keybind>
     <keybind key="W-v">
