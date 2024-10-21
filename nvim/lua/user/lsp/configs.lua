@@ -1,4 +1,6 @@
-local status_ok, lsp_installer = pcall(require, "nvim-lsp-installer")
+local m = require("mason")
+m.setup()
+local status_ok, lsp_installer = pcall(require, "mason-lspconfig")
 if not status_ok then
 	return
 end
@@ -6,7 +8,7 @@ end
 local lspconfig = require("lspconfig")
 
 -- (proycon) I don't think it should be necessary to add all those explicitly here (kinda conflicts with nvim-lsp-installer), but I can't get it to work otherwise
-local servers = { "jsonls", "lua_ls", "pyright", 'html', 'bashls', 'rust_analyzer', 'texlab', 'yamlls', 'jsonls', 'jdtls','kotlin_language_server', 'clangd', 'lemminx', 'cssls', 'eslint', 'gopls', 'ansiblels' }
+local servers = { "jsonls", "lua_ls", "pyright", 'html', 'bashls', 'rust_analyzer', 'texlab', 'yamlls', 'jsonls', 'jdtls','kotlin_language_server', 'clangd', 'lemminx', 'cssls', 'eslint', 'gopls', 'ansiblels', 'zls' }
 
 lsp_installer.setup {
 	ensure_installed = servers
