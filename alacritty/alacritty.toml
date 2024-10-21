@@ -79,8 +79,8 @@ action = "Paste"
 key = "V"
 mods = "Super|Shift"
 
-[mouse.hints.launcher]
-program = "xdg-open"
+#[mouse.hints.launcher]
+#program = "xdg-open"
 
 [window]
 dynamic_title = true
