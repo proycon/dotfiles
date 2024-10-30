@@ -1,5 +1,6 @@
 #!/bin/sh
 sleep 1
+export GTK_THEME=Adwaita-dark
 pidof senpai || foot --title senpai senpai &
 pidof telegram-desktop || telegram-desktop &
 #pidof tg || foot --title tg tg &
@@ -7,6 +8,5 @@ pidof telegram-desktop || telegram-desktop &
 if [ "$HOST" = "pollux" ]; then
     pidof scli || foot --title scli scli &
 fi
-pidof dino || (GTK_THEME=Adwaita-dark dino) &
-pidof nheko || nheko &
-
+pidof dino || dino &
+pidof fractal || fractal &
