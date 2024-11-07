@@ -63,8 +63,6 @@ completion_pill.bg=aqua
 #dynamic
 *msglist_answered.fg = #1e8b1b
 "msglist_default.X-Spam,~Yes.fg" = #000000
-"msglist_default.From,~proycon@anaproy\.nl.fg" = #497248
-"msglist_default.From,~proycon@anaproy\.nl.italic" = true
 "msglist_default.X-Sourcehut-Patchset-Update,~APPLIED.fg" = #00ff00
 "msglist_default.X-Sourcehut-Patchset-Update,~APPLIED.bg" = #3d0647
 "msglist_default.X-Sourcehut-Patchset-Update,~APPROVED.fg" = green
@@ -75,6 +73,8 @@ completion_pill.bg=aqua
 "msglist_default.X-Sourcehut-Patchset-Update,~SUPERSEDED.bg" = #3d0647 
 "msglist_default.X-Sourcehut-Patchset-Update,~REJECTED.fg" = #ff0000
 "msglist_default.X-Sourcehut-Patchset-Update,~REJECTED.bg" = #3d0647 
+"msglist_default.From,~proycon@anaproy\.nl.fg" = #497248
+"msglist_default.From,~proycon@anaproy\.nl.italic" = true
 "msglist_default.Subject,~PATCH.bg" = #3d0647
 "msglist_default.From,~(outgoing@sr\.ht|notification@github\.com|comment-noreply@docs\.google\.com|socialhistoryservices\.org|gitlab@|@bitbucket.org).bg" = #4b2a51
 "msglist_default.From,~(builds@sr\.ht|noreply@github\.com|communicatie@let\.ru\.nl|cls@let\.ru\.nl|googlegroups|corpora|dependabot|noreply@anaproy\.nl|steampowered|ccpgames|Cron|slack\.com|proycon@science\.ru\.nl).fg" = gray
