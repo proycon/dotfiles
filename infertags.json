@@ -53,7 +53,11 @@
     "stamrust": ["+stam","@work","@huc","+clariah","+wp2annotation"],
     "stampython": ["+stam","@work","@huc","+clariah","+wp2annotation"],
     "stamtools": ["+stam","@work","@huc","+clariah","+wp2annotation"],
+    "stamd": ["+stam","@work","@huc","+clariah","+wp2annotation"],
     "analiticcl": ["@work","@huc"],
+    "teamtextbacklog": ["@work","@huc"],
+    "globalise": ["@work","@huc"],
+    "globalize": ["@work","@huc"],
     "todotxtmore": ["@hobby"],
     "sxmo": ["@hobby"],
     "homepage": ["@hobby"]
