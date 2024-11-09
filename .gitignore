@@ -1,3 +1,4 @@
+fcitx5/
 #protects against accidental commits of sensitive date:
 aerc/accounts.conf
 afew/config
