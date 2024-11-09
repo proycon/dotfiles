@@ -1,38 +1,38 @@
 [Groups/0]
 # Group Name
-Name="Group 2"
-# Layout
-Default Layout=gb
-# Default Input Method
-DefaultIM=keyboard-gb
-
-[Groups/0/Items/0]
-# Name
-Name=keyboard-gb
-# Layout
-Layout=
-
-[Groups/1]
-# Group Name
 Name="Group 1"
 # Layout
 Default Layout=us
 # Default Input Method
 DefaultIM=pinyin
 
-[Groups/1/Items/0]
+[Groups/0/Items/0]
 # Name
 Name=keyboard-us
 # Layout
 Layout=
 
-[Groups/1/Items/1]
+[Groups/0/Items/1]
 # Name
 Name=pinyin
 # Layout
 Layout=
 
+[Groups/1]
+# Group Name
+Name="Group 2"
+# Layout
+Default Layout=gb
+# Default Input Method
+DefaultIM=keyboard-gb
+
+[Groups/1/Items/0]
+# Name
+Name=keyboard-gb
+# Layout
+Layout=
+
 [GroupOrder]
-0="Group 2"
-1="Group 1"
+0="Group 1"
+1="Group 2"
 
