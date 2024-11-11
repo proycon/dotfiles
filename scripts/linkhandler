@@ -28,6 +28,9 @@ fi
 if [ -f /tmp/linkhandler.target ]; then
     TARGET=$(cat /tmp/linkhandler.target)
     paplay ~/dotfiles/media/glass_low.ogg > /dev/null 2>/dev/null &
+elif [ -n "$2" ]; then
+    TARGET=$2
+    paplay ~/dotfiles/media/glass_low.ogg > /dev/null 2>/dev/null &
 else
     TARGET=0
     paplay ~/dotfiles/media/glass.ogg > /dev/null 2>/dev/null &
@@ -35,7 +38,7 @@ fi
 
 if [ "$TARGET" = "0" ]; then
     case "$1" in
-        *mkv|*webm|*mp4|*youtube.com*|*youtu.be*|*hooktube.com*|*bitchute.com*|*gifv|*v.redd.it*|*gifs.com*)
+        *mkv|*webm|*mp4|*youtube.com*|*youtu.be*|*hooktube.com*|*bitchute.com*|*gifv|*v.redd.it*|*gifs.com*|*mkv?*|*mp4?*|*gifv?*)
             setsid mpv --ytdl-format="bestvideo[height<=1080]+bestaudio" --input-ipc-server=/tmp/mpvsoc$(date +%s) -quiet "$1" >/dev/null 2>&1 & ;;
         *png|*jpg|*jpe|*jpeg|*gif)
             case "$1" in
@@ -46,7 +49,7 @@ if [ "$TARGET" = "0" ]; then
                     setsid imv "$1" >/dev/null 2>&1 & ;;
             esac
             ;;
-        *mp3|*flac|*opus|*mp3?source*)
+        *mp3|*flac|*opus|*mp3?*|*flac?*|*opus?*)
             setsid mpv --input-ipc-server=/tmp/mpvsoc$(date +%s) "$1" >/dev/null 2>&1 & ;;
         *springer.com*)
             setsid curl -sO "$(curl -s "$scihub$*" | grep -Po "(?<=location.href=').+.pdf")" >/dev/null 2>&1 & ;;
