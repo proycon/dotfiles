@@ -163,7 +163,7 @@ riverctl map normal Super+Shift F4 spawn "~/dotfiles/scripts/screenshot.sh regio
 riverctl map normal Super+Control+Shift F4 spawn "~/dotfiles/scripts/screenshot.sh annotate"
 riverctl map normal Alt F3 spawn "~/dotfiles/scripts/homecommand.sh mute"
 riverctl map normal Alt F5 spawn ~/dotfiles/scripts/emojiselect
-riverctl map normal Super F6 spawn "foot --title newsboat newsboat"
+riverctl map normal Super F6 spawn "foot --title newsraft newsraft"
 riverctl map normal Super+Shift F6 spawn "foot --title ncmpcpp ncmpcpp"
 riverctl map normal Super F7 spawn "~/dotfiles/scripts/startchat.sh"
 riverctl map normal Super F8 spawn "foot --title ytfzt ytfzt -t"
