@@ -163,10 +163,10 @@ ifeq (, $(shell which yay))
 endif
 endif 
 
-aur: yay abuild aercbook-bin dasel gomuks-git lsix-git mblaze-git nerd-fonts-complete-starship powerline-fonts-git rofi-lbonn-wayland todotxt ttf-material-design-icons-git ttf-symbola snapcast-git crates-tui pass-git-helper lswt
+aur: yay abuild aercbook-bin dasel gomuks-git lsix-git mblaze-git nerd-fonts-complete-starship powerline-fonts-git rofi-lbonn-wayland todotxt ttf-material-design-icons-git ttf-symbola snapcast-git crates-tui pass-git-helper lswt newsraft
 
-.PHONY: abuild aercbook-bin dasel gomuks-git lsix-git mblaze-git nerd-fonts-complete-starship powerline-fonts-git rofi-lbonn-wayland todotxt ttf-material-design-icons-git ttf-symbola snapcast-git crates-tui pass-git-helper lswt
-abuild aercbook-bin dasel gomuks-git lsix-git mblaze-git nerd-fonts-complete-starship powerline-fonts-git rofi-lbonn-wayland todotxt ttf-material-design-icons-git ttf-symbola snapcast-git crates-tui pass-git-helper lswt:
+.PHONY: abuild aercbook-bin dasel gomuks-git lsix-git mblaze-git nerd-fonts-complete-starship powerline-fonts-git rofi-lbonn-wayland todotxt ttf-material-design-icons-git ttf-symbola snapcast-git crates-tui pass-git-helper lswt newsraft
+abuild aercbook-bin dasel gomuks-git lsix-git mblaze-git nerd-fonts-complete-starship powerline-fonts-git rofi-lbonn-wayland todotxt ttf-material-design-icons-git ttf-symbola snapcast-git crates-tui pass-git-helper lswt newsraft:
 ifeq ($(DISTRO),arch)
 	yay -S $@
 endif

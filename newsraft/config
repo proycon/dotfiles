@@ -1,0 +1,6 @@
+list-entry-date-format "%d %b '%y"
+color-list-item green default
+color-list-item-unread default default
+color-list-section green default
+color-list-section-unread default default
+bind o exec /home/proycon/dotfiles/scripts/linkhandler "%l"
