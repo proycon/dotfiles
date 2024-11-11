@@ -6,4 +6,4 @@ color-list-section-unread default default
 bind o exec /home/proycon/dotfiles/scripts/linkhandler "%l"
 bind O exec /home/proycon/dotfiles/scripts/linkhandler "%l" 1
 bind p exec mpv "%l"
-notification-command "cat > /dev/null"
+notification-command ""
