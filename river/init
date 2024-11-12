@@ -261,7 +261,7 @@ riverctl spawn "mako"
 riverctl spawn "dbus-launch gnome-keyring-daemon -s --components=pkcs11,secrets,ssh,gpg"
 riverctl spawn "udiskie"
 riverctl spawn "setsid /home/proycon/projects/lighthome/client.sh"
-riverctl spawn "swayidle timeout 600 '/home/proycon/dotfiles/scripts/lock.sh' timeout 900 'wlopm --off \*' resume 'wlopm --on \*'"
+riverctl spawn "swayidle timeout 600 '/home/proycon/dotfiles/scripts/lock.sh' timeout 900 'wlopm --off \*' resume 'wlopm --on \*' timeout 3600 '/home/proycon/dotfiles/scripts/trysuspend.sh'"
 
 #swayidle -w timeout 300 'swaylock -f -i $wallpaper' timeout 600 'wlopm --off \*;swaylock -F -i $wallpaper' resume 'wlopm --on \*' \ before-sleep 'swaylock -f -i $wallpaper' &
 dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP
