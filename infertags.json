@@ -47,6 +47,7 @@
     "piccl": ["@work","@radboud"],
     "ticcltools": ["@work","@radboud"],
     "ponyland": ["@work","@radboud"],
+    "atrium": ["@work","@radboud"],
     "nederlablinguisticenrichment": ["@work","@radboud"],
     "glem": ["@work","@radboud","+clariah"],
     "stam": ["@work","@huc","+clariah","+wp2annotation"],
