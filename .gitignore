@@ -1,7 +1,19 @@
 fcitx5/
-#protects against accidental commits of sensitive date:
+target
+#these are symlinks to a host-specific version (or other) so don't need to be checked in
+hypr/hyprland.conf
+foot/foot.ini
+rofi/config.rasi
+#protects against accidental commits of sensitive data
+aliases
 aerc/accounts.conf
 afew/config
 newsboat/urls
-target
-
+newsraft/feeds
+sxmo/contacts.tsv
+tut/accounts.toml
+personal.muttrc
+muttaliases
+mblaze/cur
+mblaze/curmail
+mblaze/seq
