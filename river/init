@@ -247,7 +247,7 @@ riverctl rule-add -app-id 'libreoffice*' ssd
 riverctl rule-add -app-id 'org.pwmt.zathura' ssd
 riverctl rule-add -app-id 'imv' ssd
 
-riverctl keyboard-layout $KB_OPTS proylatin
+riverctl keyboard-layout $KB_OPTS proybasic
 # Set the default layout generator to be rivercarro and start it.
 # River will send the process group of the init executable SIGTERM on exit.
 riverctl default-layout rivercarro
