@@ -195,7 +195,7 @@ riverctl map normal Super escape spawn ~/dotfiles/scripts/lock.sh
 riverctl map normal Super+Shift escape spawn ~/dotfiles/scripts/suspend.sh
 
 
-riverctl map normal Super F9 spawn "riverctl keyboard-layout $KB_OPTS proylatin && play ~/dotfiles/media/key.wav"
+riverctl map normal Super F9 spawn "riverctl keyboard-layout $KB_OPTS proybasic && play ~/dotfiles/media/key.wav"
 riverctl map normal Alt F9 spawn "riverctl keyboard-layout $KB_OPTS proylatin && play ~/dotfiles/media/key.wav"
 riverctl map normal Alt F10 spawn "riverctl keyboard-layout $KB_OPTS proyeo && play ~/dotfiles/media/key.wav"
 riverctl map normal Alt+Shift F10 spawn "riverctl keyboard-layout $KB_OPTS proyipa && play ~/dotfiles/media/key.wav"
