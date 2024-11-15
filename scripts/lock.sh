@@ -7,9 +7,9 @@ if [ ! -f /tmp/locked ]; then
     paplay ~/dotfiles/media/lock.wav >/dev/null 2>/dev/null &
     if [ -n "$WAYLAND_DISPLAY" ]; then
         if [ "$XDG_SESSION_DESKTOP" = "Hyprland" ]; then
-            hyprctl keyword input:kb_layout proylatin
+            hyprctl keyword input:kb_layout proybasic
         elif [ "$XDG_SESSION_DESKTOP" = "river" ]; then
-            riverctl keyboard-layout $KB_OPTS proylatin
+            riverctl keyboard-layout $KB_OPTS proybasic
         fi
         waylock -init-color 0x110000 -input-color 0x112200 -fail-color 0x990000
         if [ "$XDG_SESSION_DESKTOP" = "Hyprland" ]; then
