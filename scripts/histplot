@@ -1,0 +1,65 @@
+#!/bin/sh
+
+
+die() {
+    echo "error: $*" >&2
+    exit 2
+}
+
+usage() {
+    echo "histplot [options] [input-file]"
+    echo "Options:"
+    echo " -d [char] - Set seperator"
+    echo " -h        - Help"
+    echo "Arguments:"
+    echo " Input file is a CSV or TSV file"
+    exit 0
+}
+
+separator="	"
+
+while getopts :hd:x:y: ARG; do
+    case $ARG in
+        d)
+            separator=$OPTARG
+            ;;
+        h)
+            usage
+            ;;
+        x)
+            xlabel=$OPTARG
+            ;;
+        y)
+            ylabel=$OPTARG
+            ;;
+        \?)
+            die "Invalid option: -$ARG"
+            ;;
+    esac
+done
+
+shift "$(( OPTIND - 1 ))"
+
+[ -z "$1" ] && die "CSV or TSV input file required"
+
+case "$1" in
+    *.csv)
+        separator=","
+        infile="$1"
+        outfile=$(basename -s csv "$infile")
+        ;;
+    *.tsv)
+        separator="\t"
+        infile="$1"
+        outfile=$(basename -s .tsv "$infile")
+        ;;
+    *)
+        infile="$1"
+        outfile=$(basename "$infile")
+        ;;
+esac
+
+outfile="$outfile.png"
+
+gnuplot -p -e "set term png; set output '$outfile'; set datafile separator '$separator'; set style fill solid; set sty d hist; set xlabel '$xlabel'; set ylabel "$ylabel"; set yrange [0:50]; plot "$infile" u 2:xtic(1) notitle"
+

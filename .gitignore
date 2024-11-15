@@ -8,6 +8,7 @@ rofi/config.rasi
 nvim/.netrwhist
 nvim/plugged
 nvim/plugin
+nvim/spell
 #protects against accidental commits of sensitive data
 aliases
 aerc/accounts.conf
