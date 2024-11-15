@@ -2,8 +2,8 @@
 
 # $all is shorthand for $username$hostname$localip$shlvl$singularity$kubernetes$nats$directory$vcsh$fossil_branch$fossil_metrics$git_branch$git_commit$git_state$git_metrics$git_status$hg_branch$pijul_channel$docker_context$package$bun$c$cmake$cobol$daml$dart$deno$dotnet$elixir$elm$erlang$fennel$gleam$golang$gradle$haskell$haxe$helm$java$julia$kotlin$lua$mojo$nim$nodejs$ocaml$odin$opa$perl$php$pulumi$purescript$python$quarto$raku$rlang$red$ruby$rust$scala$solidity$swift$terraform$typst$vlang$vagrant$zig$buf$guix_shell$nix_shell$conda$meson$spack$memory_usage$aws$gcloud$openstack$azure$direnv$env_var$crystal$custom$sudo$cmd_duration$line_break$jobs$battery$time$status$container$os$shell$character
 "$schema" = "https://starship.rs/config-schema.json"
-format = "╭ $username$hostname$directory$git_branch$git_commit$git_state$git_metrics$git_status$c$rust$bun$zig$python$conda$nodejs$java$kotlin$perl$php$package$docker_context$custom$container$time$status$line_break$character"
-right_format = ""
+format = "╭ $username$hostname$directory$git_branch$git_commit$git_state$git_metrics$git_status$c$rust$bun$zig$python$conda$nodejs$java$kotlin$perl$php$package$docker_context$custom$container$time$line_break$character"
+right_format = "$status"
 continuation_prompt = "[∙](bright-black) "
 scan_timeout = 30
 command_timeout = 500
@@ -504,7 +504,7 @@ disabled = true
 
 [hostname]
 ssh_only = false
-ssh_symbol = "🌐 "
+ssh_symbol = "🌐"
 trim_at = "."
 detect_env_vars = []
 format = "[$ssh_symbol$hostname]($style) "
