@@ -1,5 +1,5 @@
 #!/bin/sh
-# configversion: 7dc37edbb333893e0b890ff4c7593713
+# configversion: e7cdaa3a889d251bed8a89ce8c622995
 
 # shellcheck source=scripts/core/sxmo_common.sh
 . sxmo_common.sh
