@@ -5,6 +5,7 @@ ZSH=$HOME/.oh-my-zsh
 # Optionally, if you set this to "random", it'll load a random theme each
 # time that oh-my-zsh is loaded.
 [ -z "$ZSH_THEME" ] && ZSH_THEME="proysh"
+# ZSH_THEME is not used anymore when starship is enabled
 
 # Set to this to use case-sensitive completion
 # CASE_SENSITIVE="true"
@@ -27,7 +28,7 @@ export DISABLE_UNTRACKED_FILES_DIRTY="true"
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
-plugins=(ansible archlinux colored-man-pages debian fd git git-flow github history history-substring-search lxd pip python pylint ripgrep rust systemd ufw vi-mode zsh-autosuggestions pass podman qrcode rsync kubectl)
+plugins=(ansible archlinux colored-man-pages debian git git-flow github tig history history-substring-search lxd pip python pylint rust systemd ufw vi-mode zsh-autosuggestions pass podman qrcode rsync kubectl zsh-interactive-cd starship copybuffer)
 
 source $ZSH/oh-my-zsh.sh
 
