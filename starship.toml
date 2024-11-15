@@ -1100,6 +1100,7 @@ style = ""
 use_12hr = false
 disabled = false
 utc_time_offset = "local"
+time_format = "%H:%M:%S ── %b %d"
 time_range = "-"
 
 [typst]
