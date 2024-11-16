@@ -293,10 +293,6 @@ case "$HOST" in
         hash -d tmp=/tmp
         ;;
     mlp*)
-        alias lmws='source lamachine-weblamachine-activate'
-        alias lmws1='source /var/www/lamachine/bin/activate'
-        alias lm='source /vol/customopt/bin/lamachine-activate'
-        alias lmdev='source /vol/customopt/bin/lamachine-dev-activate'
         #export LD_LIBRARY_PATH="/vol/customopt/machine-translation/lib:/vol/customopt/nlptools/lib/:$LD_LIBRARY_PATH"
         BASEPATH="/home/proycon/bin:/home/proycon/.cargo/bin:/home/proycon/local/bin:/scratch/proycon/apptainer/bin:/vol/customopt/machine-translation/bin:$PATH"
         #/vol/customopt/uvt-ru/bin:/vol/customopt/alpino/bin:/vol/customopt/uvt-ru/src/colibri/scripts:/vol/customopt/nlptools/bin/:/vol/customopt/nlptools/cmd/:/vol/customopt/cython3/bin/:$PATH"
