@@ -37,7 +37,7 @@ setopt cshnullglob
 unsetopt correct_all
 unset GREP_OPTIONS #deprecated
 if [ "$OSTYPE" = "linux-musl" ]; then
-    unalias grep
+    unalias grep 2>/dev/null
 fi
 #apps
 menu () {
@@ -74,6 +74,7 @@ menu () {
         eval $(cat ~/.menuchoice)
     fi
 }
+
 resultsound () {
     if [ $1 -eq 0 ]; then
         if [ -f $HOME/dotfiles/media/$2 ]; then
@@ -92,19 +93,23 @@ alias mi='LANGUAGE="en_GB.UTF-8" make install; resultsound $? submit.wav boing.w
 alias glmi='sshcheck && git pull &&  && git submodule update && LANGUAGE="en_GB.UTF-8" make install; resultsound $? submit.wav boing.wav'
 alias glsi='git pull && git submodule update && pip install .; resultsound $? submit.wav boing.wav'
 alias pi='pip install .; resultsound $? submit.wav boing.wav'
+alias cb='cargo build; resultsound $? submit.wav boing.wav'
+alias cbr='cargo build --release; resultsound $? submit.wav boing.wav'
 alias gl='sshcheck && git pull && git submodule update; resultsound $? wipe.wav boing.wav'
 alias glgh='sshcheck && git pull github $(git branch --show-current) && git submodule update; resultsound $? wipe.wav boing.wav'
 alias glsrht='sshcheck && git pull srht $(git branch --show-current) && git submodule update; resultsound $? wipe.wav boing.wav'
 alias glu='sshcheck && git pull upstream $(git branch --show-current) && git submodule update; resultsound $? wipe.wav boing.wav'
+alias gf='sshcheck && git fetch -a'
 alias gp='sshcheck && git push; resultsound $? submit.wav boing.wav'
 alias gpgh='sshcheck && git push github $(git branch --show-current); resultsound $? submit.wav boing.wav'
 alias gpsrht='sshcheck && git push srht $(git branch --show-current); resultsound $? submit.wav boing.wav'
 alias gpcb='sshcheck && git push codeberg $(git branch --show-current); resultsound $? submit.wav boing.wav'
 alias gpu='sshcheck && git push upstream $(git branch --show-current); resultsound $? submit.wav boing.wav'
 gpa() {
-    gpgh
-    gpsrht
-    gpcp
+    echo "default: " && gp
+    git remote | grep -q github && echo "github: " && gpgh
+    git remote | grep -q srht && echo "sourcehut: " && gpsrht
+    git remote | grep -q codeberg &&  echo "codeberg: " && gpcb
 }
 alias gca="git commit -a"
 alias pm="podman"
@@ -136,19 +141,10 @@ alias mk.env="[ ! -e .env ] && python3 -m venv .env; . .env/bin/activate"
 alias surfdrive="rclone ls surfdrive_knaw:"
 alias lh="linkhandler"
 alias open="linkhandler"
-lh0() {
-    rm /tmp/linkhandler.target 2> /dev/null || echo "(already set)"
-}
-lh1() {
-    echo -n "1" > /tmp/linkhandler.target
-}
-lh2() {
-    echo -n "2" > /tmp/linkhandler.target
-}
 alias z='less -rN'
 alias myip="dig +short myip.opendns.com @resolver1.opendns.com"
 alias whatismyip="dig +short myip.opendns.com @resolver1.opendns.com"
-if [[ "$HOST" == "proyphone" ]] || [[ "$HOST" == "oneplus-enchilada" ]]; then
+if [[ "$HOST" == "proyphone" ]] || [[ "$HOST" == "oneplus-enchilada" ]] || [[ "$HOST" == "google-sargo" ]]; then
     if which vis > /dev/null 2> /dev/null; then
         alias vi="vis"
         alias vim="vis"
