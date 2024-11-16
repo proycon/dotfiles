@@ -176,6 +176,7 @@ riverctl map normal Super+Alt backslash spawn "todo.sh rofi listall -@work"
 riverctl map normal Super+Shift backslash spawn "todo.sh timetrack stop"
 riverctl map normal Super+Control backslash spawn "foot -e todo.sh edit"
 riverctl map normal Super dead_acute spawn "todo.sh rofi list @calendar"
+riverctl map normal Super apostrophe spawn "todo.sh rofi list @calendar"
 riverctl map normal Super dead_tilde spawn newmail
 riverctl map normal Super dead_grave spawn curmail
 riverctl map normal Super w spawn ~/dotfiles/scripts/buku-dmenu
