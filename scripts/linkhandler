@@ -29,30 +29,38 @@ if [ -f /tmp/linkhandler.target ]; then
     TARGET=$(cat /tmp/linkhandler.target)
     paplay ~/dotfiles/media/glass_low.ogg > /dev/null 2>/dev/null &
 elif [ -n "$2" ]; then
+    TARGET="$2"
     paplay ~/dotfiles/media/glass_low.ogg > /dev/null 2>/dev/null &
 else
     TARGET=local
     paplay ~/dotfiles/media/glass.ogg > /dev/null 2>/dev/null &
 fi
 
+
+case "$TARGET" in 
+    local)
+        case "$1" in
+            http*png|http*jpg|http*jpe|http*jpeg|http*gif|http*webp|http*pdf)
+                TARGET=download
+                ;;
+        esac
+        ;;
+esac
+
 case "$TARGET" in 
     local)
         case "$1" in
             *mkv|*webm|*mp4|*youtube.com*|*youtu.be*|*hooktube.com*|*bitchute.com*|*gifv|*v.redd.it*|*gifs.com*|*mkv?*|*mp4?*|*gifv?*)
+                #handles both local and remote
                 setsid mpv --ytdl-format="bestvideo[height<=1080]+bestaudio" --input-ipc-server="/tmp/mpvsoc$(date +%s)" -quiet "$1" >/dev/null 2>&1 & ;;
             *png|*jpg|*jpe|*jpeg|*gif|*webp)
-                case "$1" in
-                    http*)
-                        wget "$1" -O /tmp/image
-                        setsid imv /tmp/image >/dev/null 2>&1 & ;;
-                    *)
-                        setsid imv "$1" >/dev/null 2>&1 & ;;
-                esac
+                setsid imv "$1" >/dev/null 2>&1 &
                 ;;
-            *mp3|*flac|*opus|*mp3?*|*flac?*|*opus?*)
+            *mp3|*flac|*opus|*mp3?*|*flac?*|*opus?*|*wav)
+                #handles both local and remote
                 setsid mpv --input-ipc-server="/tmp/mpvsoc$(date +%s)" "$1" >/dev/null 2>&1 & ;;
-            *springer.com*)
-                setsid curl -sO "$(curl -s "$scihub$*" | grep -Po "(?<=location.href=').+.pdf")" >/dev/null 2>&1 & ;;
+            *pdf)
+                setsid zathura "$1" & ;;
             *)
                 if [ -f "$1" ]; then "$TERMINAL" -e "$EDITOR $1"
                 else setsid "$BROWSER" "$1" >/dev/null 2>&1 & fi ;;
@@ -67,7 +75,7 @@ case "$TARGET" in
                     setsid mpv --input-ipc-server="/tmp/mpvsoc$(date +%s)" -quiet /tmp/mediabuf/* >/dev/null 2>&1 &
                 fi
                 ;;
-            *mp3|*flac|*opus|*mp3?*|*flac?*|*opus?*|*mp4|*m4a|*mkv|*webm)
+            *mp3|*flac|*opus|*mp3?*|*flac?*|*opus?*|*mp4|*m4a|*mkv|*webm|*wav)
                 wget "$1"
                 setsid mpv --input-ipc-server="/tmp/mpvsoc$(date +%s)" /tmp/mediabuf/* >/dev/null 2>&1 &
                 ;;
@@ -80,6 +88,12 @@ case "$TARGET" in
                         setsid imv "$1" >/dev/null 2>&1 & ;;
                 esac
                 ;;
+            *springer.com*)
+                curl -sO "$(curl -s "$scihub$*" | grep -Po "(?<=location.href=').+.pdf")"
+                setsid zathura ./*pdf & ;;
+            *pdf)
+                wget "$1"
+                setsid zathura "$1" & ;;
             *)
                 paplay ~/dotfiles/media/error.wav > /dev/null 2>/dev/null &
                 ;;
