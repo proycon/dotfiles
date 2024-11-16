@@ -515,7 +515,7 @@ disabled = false
 
 [java]
 disabled = false
-format = "[$symbol($version )]($style)"
+format = "[$symbol]($style)"
 version_format = "v${raw}"
 style = "dimmed"
 symbol = "☕ "
@@ -668,7 +668,7 @@ disabled = false
 heuristic = false
 
 [nodejs]
-format = "via [$symbol($version )]($style)"
+format = "[$symbol]($style)"
 version_format = "v${raw}"
 symbol = " "
 style = "bold green"
@@ -1170,4 +1170,24 @@ format = "$symbol"
 symbol = "👷"
 detect_files = [
     "Makefile",
+]
+
+[custom.gpg]
+format = "$symbol"
+symbol = "🔐"
+detect_extensions = [
+    "gpg",
+    "asc"
+]
+
+[custom.images]
+format = "$symbol"
+symbol = "🖼"
+detect_extensions = [
+    "jpg",
+    "gif",
+    "jpeg",
+    "png",
+    "svg",
+    "webm"
 ]

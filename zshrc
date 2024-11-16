@@ -5,7 +5,8 @@ ZSH=$HOME/.oh-my-zsh
 # Optionally, if you set this to "random", it'll load a random theme each
 # time that oh-my-zsh is loaded.
 [ -z "$ZSH_THEME" ] && ZSH_THEME="proysh"
-# ZSH_THEME is not used anymore when starship is enabled
+
+# ZSH_THEME is not used anymore when starship is enabled!!
 
 # Set to this to use case-sensitive completion
 # CASE_SENSITIVE="true"
@@ -28,7 +29,7 @@ export DISABLE_UNTRACKED_FILES_DIRTY="true"
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
-plugins=(ansible archlinux colored-man-pages debian git git-flow github tig history history-substring-search lxd pip python pylint rust systemd ufw vi-mode zsh-autosuggestions pass podman qrcode rsync kubectl zsh-interactive-cd starship copybuffer)
+plugins=(ansible archlinux debian git git-flow github tig history history-substring-search lxd pip python pylint rust systemd ufw vi-mode zsh-autosuggestions pass podman qrcode rsync kubectl zsh-interactive-cd starship copybuffer)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -87,15 +88,24 @@ resultsound () {
 }
 
 alias en='LANGUAGE="en_US.UTF-8" zsh'
-alias km="setxkbmap proylatin"
 alias mi='LANGUAGE="en_GB.UTF-8" make install; resultsound $? submit.wav boing.wav'
 alias glmi='sshcheck && git pull &&  && git submodule update && LANGUAGE="en_GB.UTF-8" make install; resultsound $? submit.wav boing.wav'
 alias glsi='git pull && git submodule update && pip install .; resultsound $? submit.wav boing.wav'
 alias pi='pip install .; resultsound $? submit.wav boing.wav'
 alias gl='sshcheck && git pull && git submodule update; resultsound $? wipe.wav boing.wav'
-alias glsrht='sshcheck && git pull srht master&& git submodule update; resultsound $? wipe.wav boing.wav'
+alias glgh='sshcheck && git pull github $(git branch --show-current) && git submodule update; resultsound $? wipe.wav boing.wav'
+alias glsrht='sshcheck && git pull srht $(git branch --show-current) && git submodule update; resultsound $? wipe.wav boing.wav'
+alias glu='sshcheck && git pull upstream $(git branch --show-current) && git submodule update; resultsound $? wipe.wav boing.wav'
 alias gp='sshcheck && git push; resultsound $? submit.wav boing.wav'
-alias gpsrht='sshcheck && git push srht master; resultsound $? submit.wav boing.wav'
+alias gpgh='sshcheck && git push github $(git branch --show-current); resultsound $? submit.wav boing.wav'
+alias gpsrht='sshcheck && git push srht $(git branch --show-current); resultsound $? submit.wav boing.wav'
+alias gpcb='sshcheck && git push codeberg $(git branch --show-current); resultsound $? submit.wav boing.wav'
+alias gpu='sshcheck && git push upstream $(git branch --show-current); resultsound $? submit.wav boing.wav'
+gpa() {
+    gpgh
+    gpsrht
+    gpcp
+}
 alias gca="git commit -a"
 alias pm="podman"
 alias pmc="podman-compose"
@@ -246,14 +256,45 @@ case "$HOST" in
         export CDPATH=.:~/work:~/projects
 
         hash -d X=/home/proycon/exp
+        hash -d exp=/home/proycon/exp
         hash -d W=/home/proycon/work
+        hash -d work=/home/proycon/work
+        hash -d .=/home/proycon/dotfiles
+        hash -d dotfiles=/home/proycon/dotfiles
         hash -d P=/home/proycon/projects
+        hash -d projects=/home/proycon/projects
+        hash -d p=/home/proycon/Pictures
+        hash -d pictures=/home/proycon/Pictures
+        hash -d D=/home/proycon/Downloads
+        hash -d downloads=/home/proycon/Downloads
+        hash -d M=/home/proycon/Music
+        hash -d music=/home/proycon/Music
+        hash -d S=/home/proycon/Server
+        hash -d server=/home/proycon/Server
+        hash -d cctv=/home/proycon/Server-scratch/cctv/
+        hash -d V=/home/proycon/Videos
+        hash -d videos=/home/proycon/videos
+        hash -d N=/nettmp
+        hash -d nettmp=/nettmp
+        hash -d T=/tmp
+        hash -d tmp=/tmp
 
-        alias sshm='sshcheck && ssh -A mhysa.anaproy.nl'
         alias sshp='sshcheck && ssh -A pollux.anaproy.nl'
         ;;
-    proyphone|pine64-pinephone|oneplus-enchilada)
+    proyphone|pine64-pinephone|oneplus-enchilada|google-sargo)
         export PATH="/home/proycon/bin:/home/proycon/.cargo/bin:$PATH"
+        hash -d .=/home/proycon/dotfiles
+        hash -d dotfiles=/home/proycon/dotfiles
+        hash -d p=/home/proycon/Pictures
+        hash -d pictures=/home/proycon/Pictures
+        hash -d D=/home/proycon/Downloads
+        hash -d downloads=/home/proycon/Downloads
+        hash -d M=/home/proycon/Music
+        hash -d music=/home/proycon/Music
+        hash -d V=/home/proycon/Videos
+        hash -d tmp=/tmp
+        hash -d T=/tmp
+        hash -d tmp=/tmp
         ;;
     mlp*)
         alias lmws='source lamachine-weblamachine-activate'
@@ -272,10 +313,8 @@ case "$HOST" in
             export TMPDIR="/scratch/proycon/tmp"
         fi
         hash -d X=/scratch/proycon/
+        hash -d .=/home/proycon/dotfiles
         hash -d corpora=/vol/bigdata/corpora/
-        hash -d lm=/vol/customopt/lamachine/
-        hash -d lmdev=/vol/customopt/lamachine.dev/
-        hash -d lmsrc=/vol/customopt/lamachine/src/
         hash -d mt=/vol/customopt/machine-translation/
         hash -d corp=/vol/bigdata/corpora/
         hash -d bd=/vol/bigdata/users/proycon/
@@ -307,9 +346,18 @@ case "$HOST" in
                 export CDPATH=.:~/work:~/projects
 
                 hash -d X=/home/proycon/exp
+                hash -d exp=/home/proycon/exp
+                hash -d .=/home/proycon/dotfiles
+                hash -d dotfiles=/home/proycon/dotfiles
                 hash -d lsrc=/home/proycon/local/src/
                 hash -d W=/home/proycon/work
+                hash -d work=/home/proycon/work
                 hash -d P=/home/proycon/projects
+                hash -d projects=/home/proycon/projects
+                hash -d p=/home/proycon/Pictures
+                hash -d pictures=/home/proycon/Pictures
+                hash -d M=/home/proycon/Music
+                hash -d music=/home/proycon/Music
                 ;;
         esac
         ;;
@@ -375,8 +423,6 @@ gpgmsg() {
     fi
 }
 
-alias dps="dirpersiststore"
-
 alias -s txt=vim
 alias -s cpp=vim
 alias -s cxx=vim
@@ -385,14 +431,18 @@ alias -s tex=vim
 alias -s bib=vim
 alias -s js=vim
 alias -s css=vim
+alias -s rs=vim
+alias -s csv=tw
+alias -s tsv=tw --seperator "	"
 
 alias -s pdf=zathura
+alias -s webm=imv
 alias -s jpg=imv
 alias -s png=imv
 alias -s eps=imv
 alias -s gif=imv
-alias -s mp3=mpg321
-alias -s ogg=play
+alias -s mp3=mpv
+alias -s ogg=mpv
 
 alias -s html=firefox
 
@@ -566,12 +616,11 @@ case $TERM in
         ;;
 esac
 
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 [ -f ~/dotfiles/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh ] && source ~/dotfiles/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
-export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH:$HOME/.local/bin"
+export PATH="$HOME/.local/bin:$PATH"
 unset LESS_TERMCAP_so
 
 if [ "$(tty)" = "/dev/tty1" ]; then
-    exec ~/dotfiles/scripts/startriver.sh
+    command -v river && exec ~/dotfiles/scripts/startriver.sh
 fi
