@@ -1,9 +1,10 @@
 list-entry-date-format "%d %b '%y"
-color-list-item green default
+color-list-item yellow default
 color-list-item-unread default default
-color-list-section green default
+color-list-section yellow default
 color-list-section-unread default default
 bind o exec /home/proycon/dotfiles/scripts/linkhandler "%l"
-bind O exec /home/proycon/dotfiles/scripts/linkhandler "%l" 1
+bind O exec /home/proycon/dotfiles/scripts/linkhandler "%l" pi1
 bind p exec mpv "%l"
+bind P exec /home/proycon/dotfiles/scripts/linkhandler "%l" download
 notification-command ""

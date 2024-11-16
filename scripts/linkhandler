@@ -29,46 +29,81 @@ if [ -f /tmp/linkhandler.target ]; then
     TARGET=$(cat /tmp/linkhandler.target)
     paplay ~/dotfiles/media/glass_low.ogg > /dev/null 2>/dev/null &
 elif [ -n "$2" ]; then
-    TARGET=$2
     paplay ~/dotfiles/media/glass_low.ogg > /dev/null 2>/dev/null &
 else
-    TARGET=0
+    TARGET=local
     paplay ~/dotfiles/media/glass.ogg > /dev/null 2>/dev/null &
 fi
 
-if [ "$TARGET" = "0" ]; then
-    case "$1" in
-        *mkv|*webm|*mp4|*youtube.com*|*youtu.be*|*hooktube.com*|*bitchute.com*|*gifv|*v.redd.it*|*gifs.com*|*mkv?*|*mp4?*|*gifv?*)
-            setsid mpv --ytdl-format="bestvideo[height<=1080]+bestaudio" --input-ipc-server=/tmp/mpvsoc$(date +%s) -quiet "$1" >/dev/null 2>&1 & ;;
-        *png|*jpg|*jpe|*jpeg|*gif)
-            case "$1" in
-                http*)
-                    wget "$1" -O /tmp/image
-                    setsid imv /tmp/image >/dev/null 2>&1 & ;;
-                *)
-                    setsid imv "$1" >/dev/null 2>&1 & ;;
-            esac
-            ;;
-        *mp3|*flac|*opus|*mp3?*|*flac?*|*opus?*)
-            setsid mpv --input-ipc-server=/tmp/mpvsoc$(date +%s) "$1" >/dev/null 2>&1 & ;;
-        *springer.com*)
-            setsid curl -sO "$(curl -s "$scihub$*" | grep -Po "(?<=location.href=').+.pdf")" >/dev/null 2>&1 & ;;
-        *)
-            if [ -f "$1" ]; then "$TERMINAL" -e "$EDITOR $1"
-            else setsid "$BROWSER" "$1" >/dev/null 2>&1 & fi ;;
-    esac
-else
-    case "$1" in
-        *mkv|*webm|*mp4|*mp3|*flac|*youtube.com*|*youtu.be*|*hooktube.com*|*bitchute.com*|*gifv|*v.redd.it*|*gifs.com*)
-           ~/lighthome/send.sh "home/command/videoplayer/pi$TARGET"
-           ~/lighthome/send.sh --notify "home/command/video/pi$TARGET/play" "$1"
-           ;;
-        *png|*jpg|*JPG|*jpeg|*gif)
-           ~/lighthome/send.sh "home/command/videoplayer/pi$TARGET"
-           ~/lighthome/send.sh --notify "home/command/video/pi$TARGET/play" "$1"
-           ;;
-        *)
-           paplay ~/dotfiles/media/error.wav > /dev/null 2>/dev/null &
-           ;;
-    esac
-fi
+case "$TARGET" in 
+    local)
+        case "$1" in
+            *mkv|*webm|*mp4|*youtube.com*|*youtu.be*|*hooktube.com*|*bitchute.com*|*gifv|*v.redd.it*|*gifs.com*|*mkv?*|*mp4?*|*gifv?*)
+                setsid mpv --ytdl-format="bestvideo[height<=1080]+bestaudio" --input-ipc-server="/tmp/mpvsoc$(date +%s)" -quiet "$1" >/dev/null 2>&1 & ;;
+            *png|*jpg|*jpe|*jpeg|*gif|*webp)
+                case "$1" in
+                    http*)
+                        wget "$1" -O /tmp/image
+                        setsid imv /tmp/image >/dev/null 2>&1 & ;;
+                    *)
+                        setsid imv "$1" >/dev/null 2>&1 & ;;
+                esac
+                ;;
+            *mp3|*flac|*opus|*mp3?*|*flac?*|*opus?*)
+                setsid mpv --input-ipc-server="/tmp/mpvsoc$(date +%s)" "$1" >/dev/null 2>&1 & ;;
+            *springer.com*)
+                setsid curl -sO "$(curl -s "$scihub$*" | grep -Po "(?<=location.href=').+.pdf")" >/dev/null 2>&1 & ;;
+            *)
+                if [ -f "$1" ]; then "$TERMINAL" -e "$EDITOR $1"
+                else setsid "$BROWSER" "$1" >/dev/null 2>&1 & fi ;;
+        esac
+        ;;
+    download)
+        mkdir -p /tmp/mediabuf && rm -rf /tmp/mediabuf/*
+        cd /tmp/mediabuf
+        case "$1" in
+            *youtube.com*|*youtu.be*|*hooktube.com*|*bitchute.com*)
+                if yt-dlp "$1"; then
+                    setsid mpv --input-ipc-server="/tmp/mpvsoc$(date +%s)" -quiet /tmp/mediabuf/* >/dev/null 2>&1 &
+                fi
+                ;;
+            *mp3|*flac|*opus|*mp3?*|*flac?*|*opus?*|*mp4|*m4a|*mkv|*webm)
+                wget "$1"
+                setsid mpv --input-ipc-server="/tmp/mpvsoc$(date +%s)" /tmp/mediabuf/* >/dev/null 2>&1 &
+                ;;
+            *png|*jpg|*jpe|*jpeg|*gif|*webp)
+                case "$1" in
+                    http*)
+                        wget "$1" -O image
+                        setsid imv image >/dev/null 2>&1 & ;;
+                    *)
+                        setsid imv "$1" >/dev/null 2>&1 & ;;
+                esac
+                ;;
+            *)
+                paplay ~/dotfiles/media/error.wav > /dev/null 2>/dev/null &
+                ;;
+        esac
+        cd -
+        ;;
+    pi*)
+        case "$1" in
+            *mkv|*webm|*mp4|*mp3|*flac|*youtube.com*|*youtu.be*|*hooktube.com*|*bitchute.com*|*gifv|*v.redd.it*|*gifs.com*)
+               ~/lighthome/send.sh "home/command/videoplayer/$TARGET"
+               ~/lighthome/send.sh --notify "home/command/video/$TARGET/play" "$1"
+               ;;
+            *png|*jpg|*JPG|*jpeg|*gif)
+               ~/lighthome/send.sh "home/command/videoplayer/$TARGET"
+               ~/lighthome/send.sh --notify "home/command/video/$TARGET/play" "$1"
+               ;;
+            *)
+               paplay ~/dotfiles/media/error.wav > /dev/null 2>/dev/null &
+               ;;
+        esac
+        ;;
+    *)
+        echo "Invalid target: $TARGET" >&1
+        paplay ~/dotfiles/media/error.wav > /dev/null 2>/dev/null &
+        ;;
+esac;
+
