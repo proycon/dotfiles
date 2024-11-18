@@ -879,7 +879,7 @@ python_binary = [
 ]
 format = '[${symbol}${pyenv_prefix}(\($virtualenv\) )]($style)'
 version_format = "v${raw}"
-style = "yellow"
+style = "green bold"
 symbol = "🐍 "
 disabled = false
 detect_extensions = [
