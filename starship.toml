@@ -511,8 +511,6 @@ format = "[$ssh_symbol$hostname]($style) "
 style = "blue"
 disabled = false
 
-[hostname.aliases]
-
 [java]
 disabled = false
 format = "[$symbol]($style)"
@@ -583,7 +581,6 @@ disabled = true
 detect_extensions = []
 detect_files = []
 detect_folders = []
-detect_env_vars = []
 contexts = []
 
 [kubernetes.context_aliases]
@@ -624,18 +621,6 @@ format = "via [$symbol$project]($style) "
 symbol = "⬢ "
 style = "blue bold"
 disabled = false
-
-[mojo]
-format = "with [$symbol($version )]($style)"
-symbol = "🔥 "
-style = "bold 208"
-disabled = false
-detect_extensions = [
-    "mojo",
-    "🔥",
-]
-detect_files = []
-detect_folders = []
 
 [nats]
 format = "[$symbol($name )]($style)"
@@ -897,7 +882,8 @@ detect_files = [
     "pixi.toml",
 ]
 detect_folders = []
-detect_env_vars = ["VIRTUAL_ENV"]
+#TODO: re-enable once all starships support it?
+#detect_env_vars = ["VIRTUAL_ENV"]
 
 [quarto]
 format = "via [$symbol($version )]($style)"

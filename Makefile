@@ -113,7 +113,7 @@ else ifeq ($(DISTRO),$(filter $(DISTRO), alpine postmarketos))
 	sudo apk update
 	sudo apk upgrade
 	#core
-	${APK} build-base bash fzf gnupg htop lm_sensors lshw neovim openssh openssl readline starship doas doas-sudo-shim tmux tree zip zsh pass docs rsync rclone pciutils
+	${APK} build-base bash fzf gnupg htop lm_sensors lshw neovim openssh openssl readline starship doas doas-sudo-shim tmux tree zip zsh pass docs rsync rclone pciutils pcsc-lite-libs
 	#vcs
 	${APK} git tig github-cli hut
 	#networking
@@ -140,7 +140,7 @@ ifeq ($(DESKTOP),1)
 	#icons & themes
 	${APK} breeze-icons 
 	#containers
-	${APK} cargo go nodejs npm
+	${APK} cargo go nodejs npm zig
 	#browser
 	${APK} firefox
 	#IME & languages
@@ -159,6 +159,8 @@ ifeq ($(FULLDESKTOP),1)
 	${APK} nfs-utils
 	#multimedia
 	${APK} gimp inkscape krita calibre kdenlive obs-studio
+	#dev
+	${APK} python3-dev pcsc-lite-dev
 	#containers
 	${APK} podman podman-compose podman-zsh-completion flatpak
 	#libreoffice
