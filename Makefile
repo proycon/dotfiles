@@ -1,5 +1,7 @@
 # -- config variables you can adapt on the command line
 DESKTOP := 1
+FULLDESKTOP := 0 #only for alpine/pmos, distinguishes from phone
+
 
 
 # -- automatically computed or static parameters
@@ -111,37 +113,59 @@ else ifeq ($(DISTRO),$(filter $(DISTRO), alpine postmarketos))
 	sudo apk update
 	sudo apk upgrade
 	#core
-	${APK} build-base bash fzf gnupg htop lm_sensors lshw neovim openssh openssl readline sudo tmux tree zip zsh pass docs rsync rclone
+	${APK} build-base bash fzf gnupg htop lm_sensors lshw neovim openssh openssl readline starship sudo tmux tree zip zsh pass docs rsync rclone
 	#vcs
 	${APK} git tig github-cli hut
 	#networking
-	${APK} curl nmap sshfs mosquitto-clients vnstat
+	${APK} curl nmap sshfs mosquitto-clients vnstat termshark bmon
 	#dev: C/C++
 	${APK} autoconf autoconf-archive automake cmake ctags doxygen gdb gmp icu m4 meson ninja libxml2
 	${APK} shellcheck tokei hyperfine
+	${APK} zola
 	#CLI text tools
-	${APK} ack bat fmt fzf highlight dasel delta jless jq miller pandoc ripgrep sed xsv
+	${APK} ack bat fmt highlight dasel delta jless jq miller pandoc ripgrep sed xsv mdcat
 	#CLI file management
-	${APK} exa fd ncdu
+	${APK} exa fd ncdu yazi yazi-cli
 	#python
 	${APK} python3 py3-pip py3-wheel py3-setuptools py3-pylint py3-numpy py3-scipy py3-lxml py3-virtualenv jupyter-notebook py3-matplotlib
 	#various:
-	${APK} btop gnuplot todo.txt-cli todo.txt-cli w3m lynx links urlscan tailspin
+	${APK} btop gnuplot todo.txt-cli todo.txt-cli amfora w3m lynx links urlscan tailspin tldr-python-client oath-toolkit pwgen
 	#languages
-	${APK} aspell aspell-en
+	${APK} aspell aspell-en aspell-es aspell-fr aspell-de
 	#communication
-	${APK} aerc mailcap msmtp newsboat weechat
+	${APK} aerc mailcap msmtp newsboat newsraft
 ifeq ($(DESKTOP),1)
 	#core desktop
-	${APK} bemenu rofi-wayland foot mako kanshi swaybg swayidle waybar wtype xdg-desktop-portal-wlr catimg wl-clipboard libnotify py3-pynitrokey libnitrokey
+	${APK} bemenu rofi-wayland foot mako kanshi river river-bedload rivercarro swaybg swayidle waybar waylock peanutbutter wofi wtype xdg-desktop-portal-wlr catimg wl-clipboard libnotify py3-pynitrokey libnitrokey
+	#icons & themes
+	${APK} breeze-icons 
+	#browser
+	${APK} firefox
+	#IME & languages
+	${APK} fcitx5 fcitx5-chinese-addons fcitx5-qt fcitx5-gtk fcitx5-configtool
 	#multimedia
-	${APK} mpv mpc espeak sxiv imv yt-dlp ncmpcpp lf chafa
+	${APK} mpv mpc espeak sxiv imv yt-dlp ncmpcpp lf chafa grim slurp ffmpeg ytfzf
 	#fonts
-	${APK} font-fira-mono-nerd font-ubuntu-nerd font-wqy-zenhei
+	${APK} font-fira-mono-nerd font-ubuntu-nerd font-wqy-zenhei font-noto-all font-cantarell font-awesome font-ubuntu font-droid font-material-icons
 	#communication
-	${APK} nheko telegram-desktop
+	${APK} nheko telegram-desktop buku fractal iamb
 	#various
-	${APK} zathura evince geary
+	${APK} zathura evince geary flawz
+ifeq ($(FULLDESKTOP),1)
+	#things that go only on a desktop/laptop and not on a phone
+	#multimedia
+	${APK} gimp inkscape krita calibre kdenlive obs-studio
+	#containers
+	${APK} podman podman-compose podman-zsh-completion flatpak
+	#libreoffice
+	${APK} libreoffice
+	#various
+	${APK} element-desktop cheese chromium plantuml
+	#printer
+	${APK} cups cups-filters
+	#LaTeX
+	${APK} texlive texlive-full texmf-dist-humanities
+endif
 endif
 else ifeq ($(DISTRO),$(filter $(DISTRO), debian ubuntu))
 	sudo apt-get update
