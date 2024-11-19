@@ -136,7 +136,7 @@ else ifeq ($(DISTRO),$(filter $(DISTRO), alpine postmarketos))
 	${APK} aerc mailcap msmtp newsboat newsraft
 ifeq ($(DESKTOP),1)
 	#core desktop
-	${APK} bemenu rofi-wayland foot mako kanshi river river-bedload rivercarro swaybg swayidle waybar waylock peanutbutter wofi wtype xdg-desktop-portal-wlr catimg wl-clipboard libnotify py3-pynitrokey libnitrokey
+	${APK} bemenu rofi-wayland foot mako kanshi river river-bedload rivercarro swaybg swayidle waybar waylock peanutbutter wofi wtype xdg-desktop-portal-wlr catimg wl-clipboard libnotify py3-pynitrokey libnitrokey udiskie
 	#icons & themes
 	${APK} breeze-icons 
 	#browser
