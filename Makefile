@@ -113,7 +113,7 @@ else ifeq ($(DISTRO),$(filter $(DISTRO), alpine postmarketos))
 	sudo apk update
 	sudo apk upgrade
 	#core
-	${APK} build-base bash fzf gnupg htop lm_sensors lshw neovim openssh openssl readline starship sudo tmux tree zip zsh pass docs rsync rclone pciutils
+	${APK} build-base bash fzf gnupg htop lm_sensors lshw neovim openssh openssl readline starship doas doas-sudo-shim tmux tree zip zsh pass docs rsync rclone pciutils
 	#vcs
 	${APK} git tig github-cli hut
 	#networking
@@ -133,7 +133,7 @@ else ifeq ($(DISTRO),$(filter $(DISTRO), alpine postmarketos))
 	#languages
 	${APK} aspell aspell-en aspell-es aspell-fr aspell-de
 	#communication
-	${APK} aerc mailcap msmtp newsboat newsraft
+	${APK} aerc mailcap msmtp newsboat newsraft senpai
 ifeq ($(DESKTOP),1)
 	#core desktop
 	${APK} bemenu rofi-wayland foot mako kanshi river river-bedload rivercarro swaybg swayidle waybar waylock peanutbutter wofi wtype xdg-desktop-portal-wlr catimg wl-clipboard libnotify py3-pynitrokey libnitrokey udiskie
