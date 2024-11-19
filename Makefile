@@ -113,7 +113,7 @@ else ifeq ($(DISTRO),$(filter $(DISTRO), alpine postmarketos))
 	sudo apk update
 	sudo apk upgrade
 	#core
-	${APK} build-base bash fzf gnupg htop lm_sensors lshw neovim openssh openssl readline starship doas doas-sudo-shim tmux tree zip zsh pass docs rsync rclone pciutils pcsc-lite-libs
+/	${APK} build-base bash fzf gnupg gnupg-scdaemon htop lm_sensors lshw neovim openssh openssl readline starship doas doas-sudo-shim tmux tree zip zsh pass docs rsync rclone pciutils pcsc-lite-libs pcsc-tools lspci
 	#vcs
 	${APK} git tig github-cli hut
 	#networking
@@ -129,38 +129,38 @@ else ifeq ($(DISTRO),$(filter $(DISTRO), alpine postmarketos))
 	#python
 	${APK} python3 py3-pip py3-wheel py3-setuptools py3-pylint py3-numpy py3-scipy py3-lxml py3-virtualenv jupyter-notebook py3-matplotlib
 	#various:
-	${APK} btop gnuplot todo.txt-cli todo.txt-cli amfora w3m lynx links urlscan tailspin tldr-python-client oath-toolkit pwgen vocage
+	${APK} btop gnuplot todo.txt-cli todo.txt-cli amfora w3m lynx links urlscan tailspin tldr-python-client oath-toolkit pwgen vocage strace powertop
 	#languages
 	${APK} aspell aspell-en aspell-es aspell-fr aspell-de
 	#communication
 	${APK} aerc mailcap msmtp newsboat newsraft senpai
 ifeq ($(DESKTOP),1)
 	#core desktop
-	${APK} bemenu rofi-wayland foot mako kanshi river river-bedload rivercarro swaybg swayidle waybar waylock peanutbutter wofi wtype xdg-desktop-portal-wlr catimg wl-clipboard libnotify py3-pynitrokey libnitrokey udiskie
+	${APK} bemenu rofi-wayland foot mako kanshi river river-bedload rivercarro swaybg swayidle waybar waylock peanutbutter wofi wtype xdg-desktop-portal-wlr catimg wl-clipboard libnotify py3-pynitrokey libnitrokey nitrokey-udev-rules udiskie
 	#icons & themes
 	${APK} breeze-icons 
-	#containers
-	${APK} cargo go nodejs npm zig
+	#dev
+	${APK} cargo go nodejs npm zig rust-analyzer clang-analyzer
 	#browser
 	${APK} firefox
 	#IME & languages
 	${APK} fcitx5 fcitx5-chinese-addons fcitx5-qt fcitx5-gtk fcitx5-configtool
 	#multimedia
-	${APK} mpv mpc espeak sxiv imv yt-dlp ncmpcpp lf chafa grim slurp ffmpeg ytfzf
+	${APK} mpv mpc espeak sxiv imv yt-dlp ncmpcpp lf chafa grim slurp ffmpeg ytfzf pavucontrol pamixer
 	#fonts
 	${APK} font-fira-mono-nerd font-ubuntu-nerd font-wqy-zenhei font-noto-all font-cantarell font-awesome font-ubuntu font-droid font-material-icons
 	#communication
-	${APK} nheko telegram-desktop buku fractal iamb
+	${APK} nheko telegram-desktop buku fractal iamb tuba
 	#various
-	${APK} zathura evince geary flawz
+	${APK} zathura evince geary flawz gucharmap
 ifeq ($(FULLDESKTOP),1)
 	#things that go only on a desktop/laptop and not on a phone
 	#networking
-	${APK} nfs-utils
+	${APK} nfs-utils rpcbind
 	#multimedia
 	${APK} gimp inkscape krita calibre kdenlive obs-studio
 	#dev
-	${APK} python3-dev pcsc-lite-dev
+	${APK} python3-dev pcsc-lite-dev lua-language-server texlab
 	#containers
 	${APK} podman podman-compose podman-zsh-completion flatpak
 	#libreoffice
