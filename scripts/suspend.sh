@@ -1,7 +1,11 @@
 #!/bin/sh
 ~/dotfiles/scripts/lock.sh &
 sleep 5
-while pidof notmuch rsync pacman git; do
+while pidof notmuch rsync pacman git apk; do
     sleep 5
 done
-systemctl suspend
+if command -v systemctl; then
+    systemctl suspend
+elif command -v rtcwake; then
+    doas rtcwake -m mem -s 99999999
+fi
