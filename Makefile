@@ -113,7 +113,7 @@ else ifeq ($(DISTRO),$(filter $(DISTRO), alpine postmarketos))
 	sudo apk update
 	sudo apk upgrade
 	#core
-	${APK} build-base bash fzf gnupg htop lm_sensors lshw neovim openssh openssl readline starship sudo tmux tree zip zsh pass docs rsync rclone
+	${APK} build-base bash fzf gnupg htop lm_sensors lshw neovim openssh openssl readline starship sudo tmux tree zip zsh pass docs rsync rclone pciutils
 	#vcs
 	${APK} git tig github-cli hut
 	#networking
@@ -155,6 +155,8 @@ ifeq ($(DESKTOP),1)
 	${APK} zathura evince geary flawz
 ifeq ($(FULLDESKTOP),1)
 	#things that go only on a desktop/laptop and not on a phone
+	#networking
+	${APK} nfs-utils
 	#multimedia
 	${APK} gimp inkscape krita calibre kdenlive obs-studio
 	#containers
