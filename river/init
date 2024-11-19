@@ -12,6 +12,17 @@ if [ -e ~/dotfiles/kanshi/$HOSTNAME.config ]; then
     kanshi -c ~/dotfiles/kanshi/$HOSTNAME.config &
 fi
 
+if ! pgrep -x pipewire; then
+    #/etc/pulse/client.conf: autospawn = no
+    riverctl spawn pipewire 
+fi
+if ! pgrep -x pipewire-pulse; then
+    riverctl spawn pipewire-pulse
+fi
+if ! pgrep -x wireplumber; then
+    riverctl spawn wireplumber
+fi
+
 pkill -f /usr/lib/xdg-desktop-portal-wlr
 /usr/lib/xdg-desktop-portal-wlr &
 
