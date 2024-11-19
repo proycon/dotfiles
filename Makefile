@@ -139,6 +139,8 @@ ifeq ($(DESKTOP),1)
 	${APK} bemenu rofi-wayland foot mako kanshi river river-bedload rivercarro swaybg swayidle waybar waylock peanutbutter wofi wtype xdg-desktop-portal-wlr catimg wl-clipboard libnotify py3-pynitrokey libnitrokey udiskie
 	#icons & themes
 	${APK} breeze-icons 
+	#containers
+	${APK} cargo go nodejs npm
 	#browser
 	${APK} firefox
 	#IME & languages

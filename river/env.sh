@@ -23,8 +23,18 @@ export QT_IM_MODULE=fcitx
 #export GDK_DPI_SCALE=2    # only needed for firefox, messes up others
 export BEMENU_BACKEND=wayland
 
+if [ -z "$XDG_RUNTIME_DIR" ]; then
+    if [ -e /dev/shm ]; then
+        mkdir -p /dev/shm/run/proycon
+        export XDG_RUNTIME_DIR=/dev/shm/run/proycon
+    else
+        mkdir -p /tmp/run/proycon
+        export XDG_RUNTIME_DIR=/tmp/run/proycon
+    fi
+fi
+
 HOSTNAME=$(hostname)
-if [ "$HOSTNAME" = "trantor" ]; then
+if [ "$HOSTNAME" = "trantor" ] || [ "$HOSTNAME" = "toren" ]; then
     KB_OPTS="-options lv3:ralt_switch,caps:ctrl_modifier,altwin:swap_alt_win,grp:alt_shift_toggle"
 else
     KB_OPTS=

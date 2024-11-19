@@ -247,7 +247,7 @@ topcommands() {
 
 #PATHS
 case "$HOST" in 
-    rocinante|trantor|mhysa|pollux)
+    rocinante|trantor|mhysa|pollux|toren)
         export PATH="/home/proycon/bin:/home/proycon/.cargo/bin:/home/proycon/local/bin:$PATH"
         export CDPATH=.:~/work:~/projects
 
@@ -475,7 +475,13 @@ GPG_TTY=$(tty)
 export GPG_TTY
 
 if [ -z "$XDG_RUNTIME_DIR" ]; then
-    export XDG_RUNTIME_DIR="/tmp"
+    if [ -e /dev/shm ]; then
+        mkdir -p /dev/shm/run/proycon
+        export XDG_RUNTIME_DIR=/dev/shm/run/proycon
+    else
+        mkdir -p /tmp/run/proycon
+        export XDG_RUNTIME_DIR=/tmp/run/proycon
+    fi
 fi
 
 if ! pgrep -u "$USER" ssh-agent > /dev/null; then
