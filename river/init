@@ -4,7 +4,8 @@ echo "River init">&2
 . ~/.config/river/env.sh
 
 if [ -z "$DBUS_SESSION_BUS_ADDRESS" ]; then
-    dbus-run-session -- "$0" "with_dbus" 
+    dbus-run-session -- "$0" "with_dbus" &
+    exit 0
 fi
 echo "Dbus session: $DBUS_SESSION_BUS_ADDRESS">&2
 
@@ -282,7 +283,7 @@ rivercarro -outer-gaps 0 -inner-gaps 5 -per-tag &
 riverctl spawn "swaybg -m fill -i ~/dotfiles/media/forest.jpg"
 riverctl spawn "waybar"
 riverctl spawn "mako" 
-riverctl spawn "gnome-keyring-daemon -s --components=pkcs11,secrets,ssh,gpg"
+riverctl spawn "gnome-keyring-daemon -d -s --components=pkcs11,secrets,ssh,gpg"
 riverctl spawn "udiskie"
 riverctl spawn "setsid /home/proycon/projects/lighthome/client.sh"
 riverctl spawn "swayidle timeout 600 '/home/proycon/dotfiles/scripts/lock.sh' timeout 900 'wlopm --off \*' resume 'wlopm --on \*' timeout 3600 '/home/proycon/dotfiles/scripts/trysuspend.sh'"
