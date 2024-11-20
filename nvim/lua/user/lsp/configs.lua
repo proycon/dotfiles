@@ -8,7 +8,8 @@ end
 local lspconfig = require("lspconfig")
 
 -- (proycon) I don't think it should be necessary to add all those explicitly here (kinda conflicts with nvim-lsp-installer), but I can't get it to work otherwise
-local servers = { "jsonls", "lua_ls", "pyright", 'html', 'bashls', 'rust_analyzer', 'texlab', 'yamlls', 'jsonls', 'jdtls','kotlin_language_server', 'clangd', 'lemminx', 'cssls', 'eslint', 'gopls', 'ansiblels', 'zls' }
+local servers = { "jsonls", "lua_ls", "pyright", 'html', 'bashls', 'rust_analyzer', 'texlab', 'yamlls', 'jsonls', 'jdtls','kotlin_language_server',  'cssls', 'eslint', 'gopls', 'ansiblels', 'zls' }
+-- (proycon) these don't work on arm alpine: 'clangd', 'lemminx'
 
 lsp_installer.setup {
 	ensure_installed = servers
