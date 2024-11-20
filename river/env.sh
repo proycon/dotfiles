@@ -24,7 +24,7 @@ _find_runtime_dir() {
 	fi
 
 	# Fallback to a shared memory location
-    _RDIR="/dev/shm/user/%s" "$(id -u)"
+    _RDIR="/dev/shm/user/$(id -u)"
     mkdir -p "$_RDIR"
 	echo "$_RDIR"
 }
