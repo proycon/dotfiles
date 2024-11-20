@@ -56,6 +56,12 @@ if [ -z "$XDG_RUNTIME_DIR" ]; then
     XDG_RUNTIME_DIR="$(_find_runtime_dir)"
     export XDG_RUNTIME_DIR
 fi
+export PATH="/home/proycon/bin:/home/proycon/.cargo/bin:/home/proycon/local/bin:$PATH"
+export GPGKEY="8AC624881EF2AC30C0E68E2C39FE11201A31555C"
+export MPD_HOST="anaproy.nl"
+export DEBEMAIL="proycon@anaproy.nl"
+export DEBFULLNAME="Maarten van Gompel"
+export TODO_DIR="$HOME/.todo"
 
 HOSTNAME=$(hostname)
 if [ "$HOSTNAME" = "trantor" ] || [ "$HOSTNAME" = "toren" ]; then
