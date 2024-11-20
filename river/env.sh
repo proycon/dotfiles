@@ -24,7 +24,9 @@ _find_runtime_dir() {
 	fi
 
 	# Fallback to a shared memory location
-	printf "/dev/shm/user/%s" "$(id -u)"
+    _RDIR="/dev/shm/user/%s" "$(id -u)"
+    mkdir -p "$_RDIR"
+	echo "$_RDIR"
 }
 
 export QT_AUTO_SCREEN_SCALE_FACTOR=1
