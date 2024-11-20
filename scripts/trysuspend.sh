@@ -8,7 +8,7 @@ ssh_connected() {
 		'
 }
 
-if ! ssh_connected && ! pidof notmuch rsync pacman git apk scp cp tar zip unzip; then
+if ! ssh_connected && ! pidof notmuch rsync pacman git apk scp cp tar zip unzip mpv; then
     LOADAVG=$(cut -d" " -f 2 /proc/loadavg | cut -d "." -f 1)
     if [ "$LOADAVG" -le 3 ]; then
         echo "auto suspending">&2
@@ -16,7 +16,13 @@ if ! ssh_connected && ! pidof notmuch rsync pacman git apk scp cp tar zip unzip;
             ~/dotfiles/scripts/lock.sh &
             sleep 3
         fi
-        systemctl suspend
+        if command -v systemctl; then
+            systemctl suspend
+        elif command -v zzz; then
+            wlopm --off eDP-1
+            doas zzz
+            wlopm --on eDP-1
+        fi
     fi
 else
     echo "suspension blocked">&2

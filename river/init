@@ -285,7 +285,11 @@ riverctl spawn "mako"
 riverctl spawn "gnome-keyring-daemon -d -s --components=pkcs11,secrets,ssh,gpg"
 riverctl spawn "udiskie"
 riverctl spawn "setsid /home/proycon/projects/lighthome/client.sh"
-riverctl spawn "swayidle timeout 600 '/home/proycon/dotfiles/scripts/lock.sh' timeout 900 'wlopm --off \*' resume 'wlopm --on \*' timeout 3600 '/home/proycon/dotfiles/scripts/trysuspend.sh'"
+if [ "$HOSTNAME" = "toren" ]; then
+    riverctl spawn "swayidle timeout 500 '/home/proycon/dotfiles/scripts/lock.sh' timeout 600 '/home/proycon/dotfiles/scripts/trysuspend.sh'"
+else
+    riverctl spawn "swayidle timeout 600 '/home/proycon/dotfiles/scripts/lock.sh' timeout 900 'wlopm --off \*' resume 'wlopm --on \*' timeout 3600 '/home/proycon/dotfiles/scripts/trysuspend.sh'"
+fi
 
 #swayidle -w timeout 300 'swaylock -f -i $wallpaper' timeout 600 'wlopm --off \*;swaylock -F -i $wallpaper' resume 'wlopm --on \*' \ before-sleep 'swaylock -f -i $wallpaper' &
 
