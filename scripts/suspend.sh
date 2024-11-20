@@ -6,6 +6,10 @@ while pidof notmuch rsync pacman git apk; do
 done
 if command -v systemctl; then
     systemctl suspend
+elif command -v zzz; then
+    wlopm --off eDP-1
+    doas zzz
+    wlopm --on eDP-1
 elif command -v rtcwake; then
     if [ "$HOST" != "toren" ]; then
         doas rtcwake -m mem -s 99999999
