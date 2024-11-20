@@ -1,5 +1,32 @@
 #!/bin/sh
 
+_find_runtime_dir() {
+    #(copied from sxmo)
+
+	# Take what we gave to you
+	if [ -n "$XDG_RUNTIME_DIR" ]; then
+		printf %s "$XDG_RUNTIME_DIR"
+		return
+	fi
+
+	# Try something existing
+	for root in /run /var/run; do
+		path="$root/user/$(id -u)"
+		if [ -d "$path" ] && [ -w "$path" ]; then
+			printf %s "$path"
+			return
+		fi
+	done
+
+	if command -v mkrundir > /dev/null 2>&1; then
+		mkrundir
+		return
+	fi
+
+	# Fallback to a shared memory location
+	printf "/dev/shm/user/%s" "$(id -u)"
+}
+
 export QT_AUTO_SCREEN_SCALE_FACTOR=1
 export QT_QPA_PLATFORM="wayland;xcb"
 export QT_WAYLAND_DISABLE_WINDOWDECORATION=1
@@ -36,29 +63,3 @@ else
 fi
 export KB_OPTS
 
-_find_runtime_dir() {
-    #(copied from sxmo)
-
-	# Take what we gave to you
-	if [ -n "$XDG_RUNTIME_DIR" ]; then
-		printf %s "$XDG_RUNTIME_DIR"
-		return
-	fi
-
-	# Try something existing
-	for root in /run /var/run; do
-		path="$root/user/$(id -u)"
-		if [ -d "$path" ] && [ -w "$path" ]; then
-			printf %s "$path"
-			return
-		fi
-	done
-
-	if command -v mkrundir > /dev/null 2>&1; then
-		mkrundir
-		return
-	fi
-
-	# Fallback to a shared memory location
-	printf "/dev/shm/user/%s" "$(id -u)"
-}
