@@ -214,6 +214,7 @@ riverctl map normal Super b spawn ~/dotfiles/scripts/switchbg.sh
 riverctl map normal Super escape spawn ~/dotfiles/scripts/lock.sh
 riverctl map normal Control escape spawn ~/dotfiles/scripts/lock.sh
 riverctl map normal Super+Shift escape spawn ~/dotfiles/scripts/suspend.sh
+riverctl map normal Control+Shift escape spawn ~/dotfiles/scripts/suspend.sh
 
 
 riverctl map normal Super F9 spawn "riverctl keyboard-layout $KB_OPTS proybasic && play ~/dotfiles/media/key.wav"
