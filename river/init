@@ -1,9 +1,16 @@
 #!/bin/sh
 
+echo "River init">&2
+. ~/.config/river/env.sh
+
+if [ -z "$DBUS_SESSION_BUS_ADDRESS" ]; then
+    dbus-run-session -- "$0" "with_dbus" 
+fi
+echo "Dbus session: $DBUS_SESSION_BUS_ADDRESS">&2
+
 killall client.sh
 pkill -f lighthome
 rm /tmp/locked
-. ~/.config/river/env.sh
 
 # See the river(1), riverctl(1), and rivertile(1) man pages for complete
 # documentation.
@@ -353,3 +360,4 @@ if [ "$HOSTNAME" = "pollux" ]; then
 fi
 riverctl set-focused-tags 1
 mpv --quiet ~/dotfiles/media/lovelyboot.ogg
+echo "River init done">&2

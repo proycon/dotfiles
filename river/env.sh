@@ -25,13 +25,8 @@ export BEMENU_BACKEND=wayland
 export GTK_THEME=Adwaita-dark
 
 if [ -z "$XDG_RUNTIME_DIR" ]; then
-    if [ -e /dev/shm ]; then
-        mkdir -p /dev/shm/run/proycon
-        export XDG_RUNTIME_DIR=/dev/shm/run/proycon
-    else
-        mkdir -p /tmp/run/proycon
-        export XDG_RUNTIME_DIR=/tmp/run/proycon
-    fi
+    XDG_RUNTIME_DIR="$(_find_runtime_dir)"
+    export XDG_RUNTIME_DIR
 fi
 
 HOSTNAME=$(hostname)
@@ -41,3 +36,30 @@ else
     KB_OPTS=
 fi
 export KB_OPTS
+
+_find_runtime_dir() {
+    #(copied from sxmo)
+
+	# Take what we gave to you
+	if [ -n "$XDG_RUNTIME_DIR" ]; then
+		printf %s "$XDG_RUNTIME_DIR"
+		return
+	fi
+
+	# Try something existing
+	for root in /run /var/run; do
+		path="$root/user/$(id -u)"
+		if [ -d "$path" ] && [ -w "$path" ]; then
+			printf %s "$path"
+			return
+		fi
+	done
+
+	if command -v mkrundir > /dev/null 2>&1; then
+		mkrundir
+		return
+	fi
+
+	# Fallback to a shared memory location
+	printf "/dev/shm/user/%s" "$(id -u)"
+}

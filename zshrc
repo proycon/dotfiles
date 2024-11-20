@@ -474,23 +474,14 @@ export GPGKEY="8AC624881EF2AC30C0E68E2C39FE11201A31555C"
 GPG_TTY=$(tty)
 export GPG_TTY
 
-if [ -z "$XDG_RUNTIME_DIR" ]; then
-    if [ -e /dev/shm ]; then
-        mkdir -p /dev/shm/run/proycon
-        export XDG_RUNTIME_DIR=/dev/shm/run/proycon
-    else
-        mkdir -p /tmp/run/proycon
-        export XDG_RUNTIME_DIR=/tmp/run/proycon
+if [ -n "$XDG_RUNTIME_DIR" ]; then
+    if ! pgrep -u "$USER" ssh-agent > /dev/null; then
+        ssh-agent -t 6h > "$XDG_RUNTIME_DIR/ssh-agent.env"
+    fi
+    if [[ ! "$SSH_AUTH_SOCK" ]]; then
+        source "$XDG_RUNTIME_DIR/ssh-agent.env" >/dev/null
     fi
 fi
-
-if ! pgrep -u "$USER" ssh-agent > /dev/null; then
-    ssh-agent -t 6h > "$XDG_RUNTIME_DIR/ssh-agent.env"
-fi
-if [[ ! "$SSH_AUTH_SOCK" ]]; then
-    source "$XDG_RUNTIME_DIR/ssh-agent.env" >/dev/null
-fi
-
 
 export NNN_FIFO="/tmp/nnn.fifo"
 export NNN_PLUG="o:fzopen;c:fcd;j:jump;p:preview-tui;i:imgview;d:dragdrop"
