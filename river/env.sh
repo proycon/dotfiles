@@ -22,7 +22,6 @@ export IMSETTINGS_MODULE=fcitx
 export QT_IM_MODULE=fcitx
 #export GDK_DPI_SCALE=2    # only needed for firefox, messes up others
 export BEMENU_BACKEND=wayland
-export GTK_THEME=Adwaita-dark
 
 if [ -z "$XDG_RUNTIME_DIR" ]; then
     XDG_RUNTIME_DIR="$(_find_runtime_dir)"

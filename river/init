@@ -35,13 +35,6 @@ if ! pgrep -x wireplumber; then
     riverctl spawn wireplumber
 fi
 
-if [ -e /usr/lib/xdg-desktop-portal-wlr ]; then
-    pkill -f /usr/lib/xdg-desktop-portal-wlr
-    /usr/lib/xdg-desktop-portal-wlr &
-elif [ -e /usr/libexec/xdg-desktop-portal-wlr ]; then
-    pkill -f /usr/libexec/xdg-desktop-portal-wlr
-    /usr/libexec/xdg-desktop-portal-wlr &
-fi
 
 # Super+Shift+Return to start an instance of foot (https://codeberg.org/dnkl/foot)
 riverctl map normal Super+Shift Return spawn foot
@@ -295,7 +288,21 @@ riverctl spawn "setsid /home/proycon/projects/lighthome/client.sh"
 riverctl spawn "swayidle timeout 600 '/home/proycon/dotfiles/scripts/lock.sh' timeout 900 'wlopm --off \*' resume 'wlopm --on \*' timeout 3600 '/home/proycon/dotfiles/scripts/trysuspend.sh'"
 
 #swayidle -w timeout 300 'swaylock -f -i $wallpaper' timeout 600 'wlopm --off \*;swaylock -F -i $wallpaper' resume 'wlopm --on \*' \ before-sleep 'swaylock -f -i $wallpaper' &
+
+#tells dbus about the graphical session (required for various things like password prompt to work)
 dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP
+
+#start portals
+if [ -e /usr/lib/xdg-desktop-portal-wlr ]; then
+    pkill -f /usr/lib/xdg-desktop-portal-wlr
+    /usr/lib/xdg-desktop-portal-wlr &
+elif [ -e /usr/libexec/xdg-desktop-portal-wlr ]; then
+    pkill -f /usr/libexec/xdg-desktop-portal-wlr
+    /usr/libexec/xdg-desktop-portal-wlr &
+else
+    echo "No XDG portal found">&2
+fi
+
 fcitx5 &
 riverctl spawn "aa-notify -p -s 1 -w 60 -f /var/log/audit/audit.log"
 #view sources with: pactl list short sources
@@ -304,6 +311,7 @@ if [ "$HOSTNAME" = "pollux" ]; then
     pactl set-default-source alsa_input.usb-Samson_Technologies_Samson_C01U_Pro_Mic-00.3.analog-stereo 
 fi
 gsettings set org.gnome.desktop.interface text-scaling-factor 1.8
+gsettings set org.gnome.desktop.interface color-scheme 'prefer-dark'
 
 # Auto-start all applications on the right tag 
 if [ "$HOSTNAME" = "pollux" ]; then
