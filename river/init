@@ -12,6 +12,11 @@ if [ -e ~/dotfiles/kanshi/$HOSTNAME.config ]; then
     kanshi -c ~/dotfiles/kanshi/$HOSTNAME.config &
 fi
 
+if [ "$HOSTNAME" = "toren" ]; then
+    #kill previous session, if any
+    killall wireplumber pipewire-pulse pipewire
+fi
+
 if ! pgrep -x pipewire; then
     #/etc/pulse/client.conf: autospawn = no
     riverctl spawn pipewire 
@@ -23,8 +28,13 @@ if ! pgrep -x wireplumber; then
     riverctl spawn wireplumber
 fi
 
-pkill -f /usr/lib/xdg-desktop-portal-wlr
-/usr/lib/xdg-desktop-portal-wlr &
+if [ -e /usr/lib/xdg-desktop-portal-wlr ]; then
+    pkill -f /usr/lib/xdg-desktop-portal-wlr
+    /usr/lib/xdg-desktop-portal-wlr &
+elif [ -e /usr/libexec/xdg-desktop-portal-wlr ]; then
+    pkill -f /usr/libexec/xdg-desktop-portal-wlr
+    /usr/libexec/xdg-desktop-portal-wlr &
+fi
 
 # Super+Shift+Return to start an instance of foot (https://codeberg.org/dnkl/foot)
 riverctl map normal Super+Shift Return spawn foot
@@ -313,11 +323,24 @@ riverctl rule-add -app-id 'dev.geopjr.Tuba' tags 32 #workspace 6 = 0b100000 = 32
 riverctl rule-add -app-id 'foot' -title 'newsraft' tags 32 #workspace 6 = 0b100000 = 32
 riverctl rule-add -app-id 'foot' -title 'remote*' tags 128 #workspace 8
 
-#autostart stuff
-riverctl spawn "foot --title aerc aerc"
 riverctl spawn "foot --title nvim ~/bin/tm nvim"
 riverctl spawn "foot --title local ~/bin/tm local"
 riverctl spawn "foot --title remote"
+
+if nmcli -t 2> /dev/null; then
+    #network manager is running
+    while ! nmcli connection show --active | grep -E "(wifi|ethernet)"; do
+        #wait for network connection
+        sleep 2
+    done
+    while [ "$(date +%Y)" -lt 2024 ]; do
+        #wait for NTP time to sync (otherwise all network stuff can't connect because of invalid certificates)
+        sleep 1
+    done
+fi
+
+#autostart stuff
+riverctl spawn "foot --title aerc aerc"
 riverctl spawn "foot --title newsraft newsraft"
 riverctl spawn "foot --title senpai senpai"
 riverctl spawn "telegram-desktop"

@@ -7,5 +7,7 @@ done
 if command -v systemctl; then
     systemctl suspend
 elif command -v rtcwake; then
-    doas rtcwake -m mem -s 99999999
+    if [ "$HOST" != "toren" ]; then
+        doas rtcwake -m mem -s 99999999
+    fi
 fi
