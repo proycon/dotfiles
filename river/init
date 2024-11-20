@@ -295,10 +295,10 @@ dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP
 #start portals
 if [ -e /usr/lib/xdg-desktop-portal-wlr ]; then
     pkill -f /usr/lib/xdg-desktop-portal-wlr
-    /usr/lib/xdg-desktop-portal-wlr &
+    riverctl spawn "/usr/lib/xdg-desktop-portal-wlr"
 elif [ -e /usr/libexec/xdg-desktop-portal-wlr ]; then
     pkill -f /usr/libexec/xdg-desktop-portal-wlr
-    /usr/libexec/xdg-desktop-portal-wlr &
+    riverctl spawn "/usr/libexec/xdg-desktop-portal-wlr"
 else
     echo "No XDG portal found">&2
 fi
