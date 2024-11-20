@@ -163,7 +163,7 @@ riverctl map normal Super+Control Left  send-layout-cmd rivercarro "main-locatio
 #custom actions
 riverctl map normal Super Space spawn 'bemenu-run --fn "Monospace 22" -l 20'
 riverctl map normal Super+Shift space spawn 'rofi -sidebar-mode -show drun'
-riverctl map normal Super F1 spawn 'foot aerc'
+riverctl map normal Super F1 spawn 'foot --title aerc aerc'
 riverctl map normal Super E spawn ~/dotfiles/scripts/translate.sh
 riverctl map normal Alt F2 spawn ~/bin/lala
 riverctl map normal Alt+Shift, F2 spawn 'killall snapclient'
@@ -253,11 +253,13 @@ riverctl set-repeat 50 300
 riverctl rule-add -app-id 'float*' -title 'foo' float
 riverctl rule-add -app-id 'popup*' -title 'foo' float
 
-# Make all views with app-id "bar" and any title use client-side decorations
+# Make some apps use client-side decorations
 riverctl rule-add -app-id "org.telegram.desktop" ssd
 riverctl rule-add -app-id 'libreoffice*' ssd
 riverctl rule-add -app-id 'org.pwmt.zathura' ssd
 riverctl rule-add -app-id 'imv' ssd
+
+
 
 riverctl keyboard-layout $KB_OPTS proybasic
 # Set the default layout generator to be rivercarro and start it.
@@ -280,6 +282,51 @@ dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP
 fcitx5 &
 riverctl spawn "aa-notify -p -s 1 -w 60 -f /var/log/audit/audit.log"
 #view sources with: pactl list short sources
-pactl set-default-sink alsa_output.pci-0000_17_00.6.3.analog-stereo.monitor
-pactl set-default-source alsa_input.usb-Samson_Technologies_Samson_C01U_Pro_Mic-00.3.analog-stereo 
+if [ "$HOSTNAME" = "pollux" ]; then
+    pactl set-default-sink alsa_output.pci-0000_17_00.6.3.analog-stereo.monitor
+    pactl set-default-source alsa_input.usb-Samson_Technologies_Samson_C01U_Pro_Mic-00.3.analog-stereo 
+fi
 gsettings set org.gnome.desktop.interface text-scaling-factor 1.8
+
+# Auto-start all applications on the right tag 
+if [ "$HOSTNAME" = "pollux" ]; then
+    riverctl rule-add -app-id 'foot'-title "nvim*" output DP-3
+    riverctl rule-add -app-id 'foot' -title 'aerc*' output DP-2
+    riverctl rule-add -app-id 'firefox' output DP-2
+    riverctl rule-add -app-id 'foot' -title 'local*' output DP-2
+    riverctl rule-add -app-id 'org.telegram.desktop' output DP-2
+    riverctl rule-add -app-id 'org.gnome.Fractal' output DP-2
+    riverctl rule-add -app-id 'senpai' output DP-2
+    riverctl rule-add -app-id 'dev.geopjr.Tuba' output DP-2
+    riverctl rule-add -app-id 'foot' -title 'newsraft' output DP-2
+    riverctl rule-add -app-id 'foot' -title 'remote*' output DP-2
+fi
+riverctl rule-add -app-id 'foot' -title "nvim*" tags 2 #workspace 2 
+riverctl rule-add -app-id 'foot' -title 'aerc*' tags 1 #workspace 1
+riverctl rule-add -app-id 'firefox' tags 4 #workspace 3 = 0b100 = 4
+riverctl rule-add -app-id 'foot' -title 'local*' tags 8 #workspace 4
+riverctl rule-add -app-id 'org.telegram.desktop' tags 64 #workspace 7 = 0b1000000 = 64
+riverctl rule-add -app-id 'org.gnome.Fractal' tags 64 #workspace 7 = 0b1000000 = 64
+riverctl rule-add -app-id 'senpai' tags 64 #workspace 7 = 0b1000000 = 64
+riverctl rule-add -app-id 'foot' -title '*senpai*' tags 64 #workspace 7 = 0b1000000 = 64
+riverctl rule-add -app-id 'dev.geopjr.Tuba' tags 32 #workspace 6 = 0b100000 = 32
+riverctl rule-add -app-id 'foot' -title 'newsraft' tags 32 #workspace 6 = 0b100000 = 32
+riverctl rule-add -app-id 'foot' -title 'remote*' tags 128 #workspace 8
+
+#autostart stuff
+riverctl spawn "foot --title aerc aerc"
+riverctl spawn "foot --title nvim ~/bin/tm nvim"
+riverctl spawn "foot --title local ~/bin/tm local"
+riverctl spawn "foot --title remote"
+riverctl spawn "foot --title newsraft newsraft"
+riverctl spawn "foot --title senpai senpai"
+riverctl spawn "telegram-desktop"
+riverctl spawn "firefox"
+riverctl spawn "fractal"
+riverctl spawn "tuba"
+
+if [ "$HOSTNAME" = "pollux" ]; then
+    riverctl focus-output DP-2
+fi
+riverctl set-focused-tags 1
+mpv --quiet ~/dotfiles/media/lovelyboot.ogg
