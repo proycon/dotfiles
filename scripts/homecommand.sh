@@ -5,7 +5,7 @@
 . ~/dotfiles/scripts/colorargs.sh
 
 if [ -z "$1" ]; then
-    if [ -x "$(which sxmo_dmenu.sh 2> /dev/null)" ]; then
+    if [ "$SXMO_WM" = "sway" ]; then
         chosen=$(cat ~/dotfiles/homecommands | sxmo_dmenu.sh -i -p "Home" -l 20 | sed "s/.*=//")
     elif [ -n "$WAYLAND_DISPLAY" ]; then
         chosen=$(cat ~/dotfiles/homecommands | bemenu -i -p "Home" -l 20 --fn "$BEMENU_FONT" $BEMENU_COLORARGS | sed "s/.*=//")
