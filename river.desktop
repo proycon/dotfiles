@@ -1,0 +1,11 @@
+[Desktop Entry]
+Name=River
+Name[en]=River
+Comment=This session logs you into River
+Comment[en]=This session logs in you into River
+Exec=/home/proycon/dotfiles/scripts/startriver.sh
+TryExec=/home/proycon/dotfiles/scripts/startriver.sh
+Icon=
+Type=Application
+DesktopNames=River
+Keywords=launch;River;desktop;session;

@@ -2,4 +2,4 @@
 
 . ~/.config/river/env.sh
 
-exec river
+exec dbus-run-session -- river
