@@ -17,20 +17,22 @@ if [ -e ~/dotfiles/kanshi/$HOSTNAME.config ]; then
     kanshi -c ~/dotfiles/kanshi/$HOSTNAME.config &
 fi
 
-if [ "$HOSTNAME" = "toren" ]; then
+if [ ! -e /run/systemd/system ]; then
+    #we do not use systemd
+
     #kill previous session, if any
     killall wireplumber pipewire-pulse pipewire
-fi
 
-if ! pgrep -x pipewire; then
-    #/etc/pulse/client.conf: autospawn = no
-    riverctl spawn pipewire 
-fi
-if ! pgrep -x pipewire-pulse; then
-    riverctl spawn pipewire-pulse
-fi
-if ! pgrep -x wireplumber; then
-    riverctl spawn wireplumber
+    if ! pgrep -x pipewire; then
+        #/etc/pulse/client.conf: autospawn = no
+        riverctl spawn pipewire 
+    fi
+    if ! pgrep -x pipewire-pulse; then
+        riverctl spawn pipewire-pulse
+    fi
+    if ! pgrep -x wireplumber; then
+        riverctl spawn wireplumber
+    fi
 fi
 
 
