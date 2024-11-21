@@ -544,7 +544,7 @@ function lesstsv {
     cattsv | less -F -S -X -K
 }
 function f {
-    if command -v fd; then
+    if command -v fd 2>/dev/null; then
         result=$(fd --color=always | fzf --ansi)
     else
         result=$(find . | fzf)
