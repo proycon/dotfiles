@@ -98,9 +98,17 @@ case "$TARGET" in
                 $BROWSER "$1" & ;;
             *)
                 if tty -s; then
-                    bat "$1"
+                    if [ -d "$(realpath "$1")" ]; then
+                        yazi "$1"
+                    else
+                        bat "$1"
+                    fi
                 else
-                    setsid $TERMINAL bat --paging=always "$1"
+                    if [ -d "$(realpath "$1")" ]; then
+                        setsid $TERMINAL yazi "$1"
+                    else
+                        bat "$1"
+                    fi
                 fi
                 ;;
         esac
