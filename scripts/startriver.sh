@@ -2,4 +2,8 @@
 
 . ~/.config/river/env.sh
 
-exec dbus-run-session -- river
+if [ -n "$DBUS_SESSION_BUS_ADDRESS" ]; then
+    exec dbus-run-session -- river
+else
+    exec river
+fi
