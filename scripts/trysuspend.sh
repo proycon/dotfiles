@@ -19,9 +19,12 @@ if ! ssh_connected && ! pidof notmuch rsync pacman git apk scp cp tar zip unzip 
         if command -v systemctl; then
             systemctl suspend
         elif command -v zzz; then
-            wlopm --off eDP-1
+            umountssh &&\
+            nmcli dev down wlan0 &&\
+            wlopm --off eDP-1 &&\
             doas zzz
             wlopm --on eDP-1
+            nmcli dev up wlan0
         fi
     fi
 else
