@@ -124,7 +124,7 @@ alias sx='sxiv -t .'
 alias gpp='git push origin gh-pages'
 alias mp="ncmpcpp -b ~/dotfiles/ncmpcpp.bindings"
 alias t="todo.sh more"
-alias f='cd $(cat ${XDG_CONFIG_HOME:-$HOME/.config}/directories | fzf)'
+alias D='cd $(cat ${XDG_CONFIG_HOME:-$HOME/.config}/directories | fzf)'
 alias hs="~/dotfiles/scripts/homestatus.sh"
 alias yz=yazi
 alias ttw="tw --separator=\"	\""
@@ -543,7 +543,17 @@ function cattsv {
 function lesstsv {
     cattsv | less -F -S -X -K
 }
-
+function f {
+    if command -v fd; then
+        result=$(fd --color=always | fzf --ansi)
+    else
+        result=$(find . | fzf)
+    fi
+    if [ -n "$result" ]; then
+        open "$result" "$1" #linkhandler
+    fi
+}
+alias fe="f edit"
 alias body="tail -n +2"
 alias header="head -n 1"
 

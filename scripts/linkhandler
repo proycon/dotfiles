@@ -16,7 +16,11 @@ if [ -z "$DISPLAY" ]; then
     BROWSER=w3m
 fi
 if [ -z "$TERMINAL" ]; then
-    TERMINAL=urxvt
+    if [ -n "$WAYLAND_DISPLAY" ]; then
+        TERMINAL=foot
+    else
+        TERMINAL=urxvt
+    fi
 fi
 if [ -z "$EDITOR" ]; then
     EDITOR=vim
@@ -61,9 +65,67 @@ case "$TARGET" in
                 setsid mpv --input-ipc-server="/tmp/mpvsoc$(date +%s)" "$1" >/dev/null 2>&1 & ;;
             *pdf)
                 setsid zathura "$1" & ;;
+            *.md)
+                if command -v mdless; then
+                    if tty -s; then
+                        mdless "$1"
+                    else
+                        setsid $TERMINAL mdless "$1"
+                    fi
+                elif tty -s; then
+                    bat "$1"
+                else
+                    setsid $TERMINAL bat --paging=always "$1"
+                fi
+                ;;
+            *csv)
+                if tty -s; then
+                    tw "$1"
+                else
+                    setsid $TERMINAL tw "$1"
+                fi
+                ;;
+            *tsv)
+                if tty -s; then
+                    tw -d"	" "$1"
+                else
+                    setsid $TERMINAL tw -d"	" "$1"
+                fi
+                ;;
+            *docx|*ppt|*pptx|*xls|*xlsx|*odt|*ods|*odp)
+                setsid libreoffice "$1" & ;;
+            *html|http*)
+                $BROWSER "$1" & ;;
             *)
-                if [ -f "$1" ]; then "$TERMINAL" -e "$EDITOR $1"
-                else setsid "$BROWSER" "$1" >/dev/null 2>&1 & fi ;;
+                if tty -s; then
+                    bat "$1"
+                else
+                    setsid $TERMINAL bat --paging=always "$1"
+                fi
+                ;;
+        esac
+        ;;
+    edit)
+        case "$1" in
+            *png|*jpg|*jpe|*jpeg|*gif|*webp)
+                setsid gimp "$1" >/dev/null 2>&1 &
+                ;;
+            *mp3|*flac|*opus|*mp3?*|*flac?*|*opus?*|*wav)
+                #handles both local and remote
+                setsid audacity "$1" >/dev/null 2>&1 & ;;
+            *pdf)
+                setsid zathura "$1" & ;;
+            *docx|*ppt|*pptx|*xls|*xlsx|*odt|*ods|*odp)
+                setsid libreoffice "$1" & ;;
+            *html|http*)
+                $BROWSER "$1" & ;;
+            *)
+                if tty -s; then
+                    nvim "$1"
+                else
+                    setsid $TERMINAL nvim "$1"
+                fi
+                ;;
         esac
         ;;
     download)
