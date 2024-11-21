@@ -331,6 +331,7 @@ if [ "$HOSTNAME" = "pollux" ]; then
     riverctl rule-add -app-id 'org.gnome.Fractal' output DP-2
     riverctl rule-add -app-id 'senpai' output DP-2
     riverctl rule-add -app-id 'dev.geopjr.Tuba' output DP-2
+    riverctl rule-add -app-id 'im.dino.Dino' output DP-2
     riverctl rule-add -app-id 'foot' -title 'newsraft' output DP-2
     riverctl rule-add -app-id 'foot' -title 'remote*' output DP-2
 fi
@@ -340,6 +341,7 @@ riverctl rule-add -app-id 'firefox' tags 4 #workspace 3 = 0b100 = 4
 riverctl rule-add -app-id 'foot' -title 'local*' tags 8 #workspace 4
 riverctl rule-add -app-id 'org.telegram.desktop' tags 64 #workspace 7 = 0b1000000 = 64
 riverctl rule-add -app-id 'org.gnome.Fractal' tags 64 #workspace 7 = 0b1000000 = 64
+riverctl rule-add -app-id 'im.dino.Dino' tags 64 #workspace 7
 riverctl rule-add -app-id 'senpai' tags 64 #workspace 7 = 0b1000000 = 64
 riverctl rule-add -app-id 'foot' -title '*senpai*' tags 64 #workspace 7 = 0b1000000 = 64
 riverctl rule-add -app-id 'dev.geopjr.Tuba' tags 32 #workspace 6 = 0b100000 = 32
@@ -370,6 +372,7 @@ riverctl spawn "telegram-desktop"
 riverctl spawn "firefox"
 riverctl spawn "fractal"
 riverctl spawn "tuba"
+riverctl spawn "dino"
 
 if [ "$HOSTNAME" = "pollux" ]; then
     riverctl focus-output DP-2
