@@ -272,6 +272,8 @@ riverctl rule-add -app-id 'org.pwmt.zathura' ssd
 riverctl rule-add -app-id 'imv' ssd
 
 
+gsettings set org.gnome.desktop.interface text-scaling-factor 1.8
+gsettings set org.gnome.desktop.interface color-scheme 'prefer-dark'
 
 riverctl keyboard-layout $KB_OPTS proybasic
 # Set the default layout generator to be rivercarro and start it.
@@ -298,15 +300,17 @@ fi
 #tells dbus about the graphical session (required for various things like password prompt to work)
 dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP
 
-#start portals
-if [ -e /usr/lib/xdg-desktop-portal-wlr ]; then
-    pkill -f /usr/lib/xdg-desktop-portal-wlr
-    riverctl spawn "/usr/lib/xdg-desktop-portal-wlr"
-elif [ -e /usr/libexec/xdg-desktop-portal-wlr ]; then
-    pkill -f /usr/libexec/xdg-desktop-portal-wlr
-    riverctl spawn "/usr/libexec/xdg-desktop-portal-wlr"
-else
-    echo "No XDG portal found">&2
+if [ ! -e /run/systemd/system ]; then
+    #start portals if not on systemd
+    if [ -e /usr/lib/xdg-desktop-portal-wlr ]; then
+        pkill -f /usr/lib/xdg-desktop-portal-wlr
+        riverctl spawn "/usr/lib/xdg-desktop-portal-wlr"
+    elif [ -e /usr/libexec/xdg-desktop-portal-wlr ]; then
+        pkill -f /usr/libexec/xdg-desktop-portal-wlr
+        riverctl spawn "/usr/libexec/xdg-desktop-portal-wlr"
+    else
+        echo "No XDG portal found">&2
+    fi
 fi
 
 fcitx5 &
@@ -316,8 +320,6 @@ if [ "$HOSTNAME" = "pollux" ]; then
     pactl set-default-sink alsa_output.pci-0000_17_00.6.3.analog-stereo.monitor
     pactl set-default-source alsa_input.usb-Samson_Technologies_Samson_C01U_Pro_Mic-00.3.analog-stereo 
 fi
-gsettings set org.gnome.desktop.interface text-scaling-factor 1.8
-gsettings set org.gnome.desktop.interface color-scheme 'prefer-dark'
 
 # Auto-start all applications on the right tag 
 if [ "$HOSTNAME" = "pollux" ]; then

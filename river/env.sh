@@ -62,6 +62,7 @@ export MPD_HOST="anaproy.nl"
 export DEBEMAIL="proycon@anaproy.nl"
 export DEBFULLNAME="Maarten van Gompel"
 export TODO_DIR="$HOME/.todo"
+export GTK_THEME=Adwaita-dark
 
 HOSTNAME=$(hostname)
 if [ "$HOSTNAME" = "trantor" ] || [ "$HOSTNAME" = "toren" ]; then
