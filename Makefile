@@ -117,7 +117,7 @@ else ifeq ($(DISTRO),$(filter $(DISTRO), alpine postmarketos))
 	#vcs
 	${APK} git tig github-cli hut
 	#networking
-	${APK} curl nmap sshfs mosquitto-clients vnstat termshark bmon
+	${APK} curl nmap sshfs mosquitto-clients vnstat termshark bmon openfortivpn ppp-daemon
 	#dev: C/C++
 	${APK} autoconf autoconf-archive automake cmake ctags doxygen gdb gmp icu m4 meson ninja libxml2
 	${APK} shellcheck tokei hyperfine
@@ -129,11 +129,11 @@ else ifeq ($(DISTRO),$(filter $(DISTRO), alpine postmarketos))
 	#python
 	${APK} python3 py3-pip py3-wheel py3-setuptools py3-pylint py3-numpy py3-scipy py3-lxml py3-virtualenv jupyter-notebook py3-matplotlib
 	#various:
-	${APK} btop gnuplot todo.txt-cli todo.txt-cli amfora w3m lynx links urlscan tailspin tldr-python-client oath-toolkit pwgen vocage strace powertop
+	${APK} btop gnuplot todo.txt-cli todo.txt-cli amfora w3m lynx links urlscan tailspin tldr-python-client oath-toolkit pwgen vocage strace powertop	
 	#languages
 	${APK} aspell aspell-en aspell-es aspell-fr aspell-de
 	#communication
-	${APK} aerc mailcap msmtp newsboat newsraft senpai
+	${APK} aerc mailcap msmtp newsboat newsraft senpai dante
 ifeq ($(DESKTOP),1)
 	#core desktop
 	${APK} bemenu rofi-wayland foot mako kanshi river river-bedload rivercarro swaybg swayidle waybar waylock peanutbutter wofi wtype xdg-desktop-portal-wlr catimg wl-clipboard libnotify py3-pynitrokey libnitrokey nitrokey-udev-rules udiskie
