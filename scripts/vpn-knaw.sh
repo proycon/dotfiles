@@ -15,5 +15,3 @@ sleep 4 && (
 
 # relies on /etc/ppp/ip-up.d/openfortivpn
 openfortivpn -c /home/proycon/dotfiles.private/openfortivpn-knaw $@
-
-#openfortivpn-1.20.3-1 with ppp 2.4.9-3 works... latest versions don't!
