@@ -124,7 +124,7 @@ alias sx='sxiv -t .'
 alias gpp='git push origin gh-pages'
 alias mp="ncmpcpp -b ~/dotfiles/ncmpcpp.bindings"
 alias t="todo.sh more"
-alias D='cd $(cat ${XDG_CONFIG_HOME:-$HOME/.config}/directories | fzf)'
+alias CD='cd $(cat ${XDG_CONFIG_HOME:-$HOME/.config}/directories | fzf)'
 alias hs="~/dotfiles/scripts/homestatus.sh"
 alias yz=yazi
 alias ttw="tw --separator=\"	\""
@@ -551,6 +551,16 @@ function f {
     fi
     if [ -n "$result" ]; then
         open "$result" "$1" #linkhandler
+    fi
+}
+function D {
+    if command -v fd >/dev/null; then
+        result=$(fd -t d | fzf)
+    else
+        result=$(find -type d . | fzf)
+    fi
+    if [ -n "$result" ]; then
+        cd "$result"
     fi
 }
 alias fe="f edit"
