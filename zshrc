@@ -202,6 +202,7 @@ gitlog() {
         git show "$COMMIT" || break
     done
 }
+
 alias gL=gitlog
 
 export MPD_HOST="anaproy.nl"
