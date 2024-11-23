@@ -172,7 +172,7 @@ case "$TARGET" in
         ;;
     pi*)
         case "$1" in
-            *mkv|*webm|*mp4|*mp3|*flac|*youtube.com*|*youtu.be*|*hooktube.com*|*bitchute.com*|*gifv|*v.redd.it*|*gifs.com*)
+            *mkv*|*webm*|*mp4*|*mp3*|*flac|*youtube.com*|*youtu.be*|*hooktube.com*|*bitchute.com*|*gifv|*v.redd.it*|*gifs.com*)
                ~/lighthome/send.sh "home/command/videoplayer/$TARGET"
                ~/lighthome/send.sh --notify "home/command/video/$TARGET/play" "$1"
                ;;
@@ -182,12 +182,14 @@ case "$TARGET" in
                ;;
             *)
                paplay ~/dotfiles/media/error.wav > /dev/null 2>/dev/null &
+               exit 1
                ;;
         esac
         ;;
     *)
         echo "Invalid target: $TARGET" >&1
         paplay ~/dotfiles/media/error.wav > /dev/null 2>/dev/null &
+        exit 1
         ;;
 esac;
 
