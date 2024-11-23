@@ -1,5 +1,5 @@
 #!/bin/sh
-source /etc/os-release
+. /etc/os-release
 OPT=
 case "$ID" in
     alpine|postmarketos)
@@ -12,7 +12,7 @@ case "$ID" in
             apk info "$pkgname"
             if echo "$pkg" | grep -q installed; then
                 echo "press enter for manifest"
-                read -r x && apk manifest "$pkgname"
+                read -r _x && apk manifest "$pkgname"
             fi
         fi
         ;;
@@ -26,7 +26,19 @@ case "$ID" in
             pkgname="$(echo "$pkg" | cut -d" " -f 1)"
             pacman -Qi "$pkgname"
             echo "press enter for manifest"
-            read -r x && pacman -Ql "$pkgname"
+            read -r _x && pacman -Ql "$pkgname"
+        fi
+        ;;
+    debian|ubuntu)
+        if [ "$1" = "-i" ]; then
+            OPT="-i"
+        fi
+        pkg=$(apt list $OPT | fzf)
+        if [ -n "$pkg" ]; then
+            pkgname="$(echo "$pkg" | sed 's|/.*$||')"
+            apt show "$pkgname"
+            echo "press enter for manifest (if installed)"
+            read -r _x && dpkg -L "$pkgname"
         fi
         ;;
     *)
