@@ -9,4 +9,4 @@ if [ "$HOST" = "pollux" ]; then
     pidof scli || foot --title scli scli &
 fi
 pidof dino || dino &
-pidof fractal || fractal &
+pidof nheko || nheko &
