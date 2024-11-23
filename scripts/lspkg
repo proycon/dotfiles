@@ -3,7 +3,7 @@ source /etc/os-release
 OPT=
 case "$ID" in
     alpine|postmarketos)
-        if [ "$1 " = "-i" ]; then
+        if [ "$1" = "-i" ]; then
             OPT="--installed"
         fi
         pkg=$(apk list $OPT | sed -e "s/{.*}//g" -e "s/(.*)//g" -e "s/x86_64//g" -e "s/aarch64//g" | fzf)
@@ -11,8 +11,22 @@ case "$ID" in
             pkgname="$(echo "$pkg" | cut -d" " -f 1 | sed -e "s/-[0-9].*$//g")"
             apk info "$pkgname"
             if echo "$pkg" | grep -q installed; then
-                apk manifest "$pkgname"
+                echo "press enter for manifest"
+                read -r x && apk manifest "$pkgname"
             fi
+        fi
+        ;;
+    arch)
+        if [ "$1" = "-i" ]; then
+            pkg=$(pacman -Q | fzf)
+        else
+            pkg=$(pacman -Ss | grep "^[a-z].*" | sed "s|[a-z]*/||" | fzf)
+        fi
+        if [ -n "$pkg" ]; then
+            pkgname="$(echo "$pkg" | cut -d" " -f 1)"
+            pacman -Qi "$pkgname"
+            echo "press enter for manifest"
+            read -r x && pacman -Ql "$pkgname"
         fi
         ;;
     *)
