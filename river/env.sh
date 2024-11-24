@@ -51,6 +51,11 @@ export IMSETTINGS_MODULE=fcitx
 export QT_IM_MODULE=fcitx
 #export GDK_DPI_SCALE=2    # only needed for firefox, messes up others
 export BEMENU_BACKEND=wayland
+FG="#bbbbbb"
+BG="#222222"
+FGSEL="#eeeeee"
+BGSEL="#005577"
+export BEMENU_OPTS="--fn 'Monospace 32' --nb $BG --nf $FG --sb $BGSEL --sf $FGSEL"
 
 if [ -z "$XDG_RUNTIME_DIR" ]; then
     XDG_RUNTIME_DIR="$(_find_runtime_dir)"
