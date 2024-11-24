@@ -63,6 +63,11 @@ export DEBEMAIL="proycon@anaproy.nl"
 export DEBFULLNAME="Maarten van Gompel"
 export TODO_DIR="$HOME/.todo"
 export GTK_THEME=Adwaita-dark
+export EDITOR="nvim"
+export TODO_DIR="$HOME/.todo"
+export XDG_CONFIG_HOME="$HOME/.config"
+. ~/dotfiles/user-dirs.dirs
+export XDG_DESKTOP_DIR XDG_DOCUMENTS_DIR XDG_PICTURES_DIR XDG_MUSIC_DIR XDG_DOWNLOAD_DIR XDG_VIDEOS_DIR
 
 HOSTNAME=$(hostname)
 if [ "$HOSTNAME" = "trantor" ] || [ "$HOSTNAME" = "toren" ]; then
