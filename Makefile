@@ -115,7 +115,7 @@ else ifeq ($(DISTRO),$(filter $(DISTRO), alpine postmarketos))
 	#core
  	${APK} build-base bash fzf gnupg gnupg-scdaemon htop lm_sensors lshw neovim openssh openssl readline starship doas doas-sudo-shim tmux tree zip zsh pass docs rsync rclone pciutils pcsc-lite-libs pcsc-tools lspci
 	#vcs
-	${APK} git tig github-cli hut
+	${APK} git  git-email git-lfs tig github-cli hut
 	#networking
 	${APK} curl nmap sshfs mosquitto-clients vnstat termshark bmon openfortivpn ppp-daemon
 	#dev: C/C++
