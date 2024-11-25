@@ -4,7 +4,7 @@
 
 #relies on a proper pager being set for diffs in ~/.gitconfig
 ARGS=$1
-while ; do
+while true ; do
     COMMIT="$(git log --color=always --pretty="%Cgreen%cs%Creset %h %Cblue%an%Creset %Cred%d%Creset %s" $ARGS | fzf --ansi | cut -d" " -f 2)"
     if [ $? -ne 0 ] || [ -z "$COMMIT" ]; then
         break
