@@ -1,0 +1,4 @@
+#!/bin/sh
+
+branch=$(git for-each-ref --color=always --sort=-committerdate refs/heads/ --format='%(color: red)%(committerdate:short)	%(color:green)%(committername)%(color: reset)	%(refname:short)' | fzf --ansi | cut -d"	" -f 3)
+[ -n "$branch" ] && gitlog "$branch"

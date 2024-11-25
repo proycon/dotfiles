@@ -191,21 +191,6 @@ hsk() {
 cedict() {
     grep "$1" ~/Documents/languages/chinese/cedict.txt
 }
-gitlog() {
-    #relies on a proper pager being set for diffs in ~/.gitconfig
-    ARGS=$1
-    while ; do
-        COMMIT="$(git log --color=always --pretty="%Cgreen%cs%Creset %h %Cblue%an%Creset %Cred%d%Creset %s" $ARGS | fzf --ansi | cut -d" " -f 2)"
-        if [ $? -ne 0 ] || [ -z "$COMMIT" ]; then
-            break
-        fi
-        git show "$COMMIT" || break
-    done
-}
-gitbranches() {
-    branch=$(git for-each-ref --color=always --sort=-committerdate refs/heads/ --format='%(color: red)%(committerdate:short)	%(color:green)%(committername)%(color: reset)	%(refname:short)' | fzf --ansi | cut -d"	" -f 3)
-    [ -n "$branch" ] && gitlog "$branch"
-}
 
 alias gL=gitlog
 alias gB=gitbranches
@@ -572,43 +557,6 @@ function D {
 alias fe="f edit"
 alias body="tail -n +2"
 alias header="head -n 1"
-
-function hutlist {
-    if [ -z "$1" ]; then
-        echo "hutlist [list] [[patchno]]">&2
-        return 1;
-    fi
-    list="$1"
-    if [ "$1" = "sxmo" ]; then
-        list="~mil/sxmo-devel"
-    elif [ "$1" = "aerc" ]; then
-        list="~rjarry/aerc-devel"
-    fi
-    if [ -n "$2" ]; then
-        PAGER=less hut lists patchset show -l "$list" "$2"
-    else
-        PAGER=less hut lists patchset list -l "$list"
-    fi
-}
-
-function huttodo {
-    if [ -z "$1" ]; then
-        echo "huttodo [ticketlist] [[ticketno]]">&2
-        return 1;
-    fi
-    tickets="$1"
-    if [ "$1" = "sxmo" ]; then
-        tickets="~mil/sxmo-tickets"
-    elif [ "$1" = "aerc" ]; then
-        tickets="~rjarry/aerc"
-    fi
-    if [ -n "$2" ]; then
-        PAGER=less hut todo ticket show -t "$tickets" "$2"
-    else
-        PAGER=less hut todo ticket list -t "$tickets"
-    fi
-}
-
 
 function yy() {
 	local tmp="$(mktemp -t "yazi-cwd.XXXXXX")"

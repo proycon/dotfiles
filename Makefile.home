@@ -2,7 +2,7 @@
 
 bin: bin/darkmode.sh bin/lightmode.sh bin/emojiselect bin/lock.sh bin/rotdir bin/screencast.sh bin/suspend.sh bin/tm bin/wtime bin/starthyprland.sh bin/network-menu.sh bin/linkhandler bin/colorargs.sh bin/buku-dmenu bin/newmail bin/curmail bin/vpn-knaw.sh bin/runsteam
 
-bin/darkmode.sh bin/lightmode.sh bin/emojiselect bin/lock.sh bin/rotdir bin/screencast.sh bin/suspend.sh bin/tm bin/wtime bin/starthyprland.sh bin/network-menu.sh bin/linkhandler bin/colorargs.sh bin/buku-dmenu bin/newmail bin/curmail bin/vpn-knaw.sh bin/runsteam:
+bin/darkmode.sh bin/lightmode.sh bin/emojiselect bin/lock.sh bin/rotdir bin/screencast.sh bin/suspend.sh bin/tm bin/wtime bin/starthyprland.sh bin/network-menu.sh bin/linkhandler bin/colorargs.sh bin/buku-dmenu bin/newmail bin/curmail bin/vpn-knaw.sh bin/runsteam bin/gitlog bin/gitbranches bin/wclock bin/hutlist bin/huttodo:
 	ln -sf ~/dotfiles/scripts/$(shell basename "$@") $@
 
 all: bin conffiles .oh-my-zsh .oh-my-zsh/themes/proysh.zsh-theme .oh-my-zsh/plugins/zsh-autosuggestions

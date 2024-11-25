@@ -1,3 +1,4 @@
+#!/bin/sh
 TZ=Canada/Pacific date +"🇨🇦 Vancouver: %H:%M %Z" 
 TZ=US/Pacific date +"🇺🇸 Los Angeles: %H:%M %Z" 
 TZ=America/Mexico_City date +"🇲🇽 Mexico Ciudad: %H:%M %Z" 

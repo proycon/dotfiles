@@ -1,0 +1,19 @@
+#!/bin/sh
+
+# lists sourcehut todos
+
+if [ -z "$1" ]; then
+    echo "huttodo [ticketlist] [[ticketno]]">&2
+    return 1;
+fi
+tickets="$1"
+if [ "$1" = "sxmo" ]; then
+    tickets="~mil/sxmo-tickets"
+elif [ "$1" = "aerc" ]; then
+    tickets="~rjarry/aerc"
+fi
+if [ -n "$2" ]; then
+    PAGER=less hut todo ticket show -t "$tickets" "$2"
+else
+    PAGER=less hut todo ticket list -t "$tickets"
+fi

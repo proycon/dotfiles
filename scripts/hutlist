@@ -1,0 +1,19 @@
+#!/bin/sh
+
+# lists sourcehut patches
+
+if [ -z "$1" ]; then
+    echo "hutlist [list] [[patchno]]">&2
+    return 1;
+fi
+list="$1"
+if [ "$1" = "sxmo" ]; then
+    list="~mil/sxmo-devel"
+elif [ "$1" = "aerc" ]; then
+    list="~rjarry/aerc-devel"
+fi
+if [ -n "$2" ]; then
+    PAGER=less hut lists patchset show -l "$list" "$2"
+else
+    PAGER=less hut lists patchset list -l "$list"
+fi
