@@ -193,17 +193,22 @@ cedict() {
 }
 gitlog() {
     #relies on a proper pager being set for diffs in ~/.gitconfig
-    set pipefail
+    ARGS=$1
     while ; do
-        COMMIT="$(git log --color=always --pretty="%Cgreen%cs%Creset %h %Cblue%an%Creset %Cred%d%Creset %s" | fzf --ansi | cut -d" " -f 2)"
+        COMMIT="$(git log --color=always --pretty="%Cgreen%cs%Creset %h %Cblue%an%Creset %Cred%d%Creset %s" $ARGS | fzf --ansi | cut -d" " -f 2)"
         if [ $? -ne 0 ] || [ -z "$COMMIT" ]; then
             break
         fi
         git show "$COMMIT" || break
     done
 }
+gitbranches() {
+    branch=$(git for-each-ref --color=always --sort=-committerdate refs/heads/ --format='%(color: red)%(committerdate:short)	%(color:green)%(committername)%(color: reset)	%(refname:short)' | fzf --ansi | cut -d"	" -f 3)
+    [ -n "$branch" ] && gitlog "$branch"
+}
 
 alias gL=gitlog
+alias gB=gitbranches
 
 export MPD_HOST="anaproy.nl"
 
