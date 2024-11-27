@@ -133,7 +133,7 @@ else ifeq ($(DISTRO),$(filter $(DISTRO), alpine postmarketos))
 	#languages
 	${APK} aspell aspell-en aspell-es aspell-fr aspell-de
 	#communication
-	${APK} aerc mailcap msmtp newsboat newsraft senpai dante
+	${APK} aerc aercbook mailcap msmtp newsboat newsraft senpai dante
 ifeq ($(DESKTOP),1)
 	#core desktop
 	${APK} bemenu rofi-wayland foot mako kanshi river river-bedload rivercarro swaybg swayidle waybar waylock peanutbutter wofi wtype xdg-desktop-portal-wlr catimg wl-clipboard libnotify py3-pynitrokey libnitrokey nitrokey-udev-rules udiskie
