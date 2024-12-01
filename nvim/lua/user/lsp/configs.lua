@@ -13,7 +13,7 @@ local function getLinuxDistroFromReleaseFile()
 
     for line in f:lines() do
         if line:match("^ID=") then
-            local distroName = line:match("[^=]+") -- Extract value after "=" sign
+            local distroName = line:gsub("ID=",""):gsub("\"","")
             return distroName
         end
     end
