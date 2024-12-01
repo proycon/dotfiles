@@ -160,7 +160,7 @@ ifeq ($(FULLDESKTOP),1)
 	#multimedia
 	${APK} gimp inkscape krita calibre kdenlive obs-studio
 	#dev
-	${APK} python3-dev pcsc-lite-dev lua-language-server texlab
+	${APK} python3-dev pcsc-lite-dev lua-language-server texlab tree-sitter-rust tree-sitter-c tree-sitter-python tree-sitter-cpp tree-sitter-markdown tree-sitter-lua tree-sitter-latex tree-sitter-javascript tree-sitter-bash nvim-treesitter
 	#containers
 	${APK} podman podman-compose podman-zsh-completion flatpak
 	#libreoffice
