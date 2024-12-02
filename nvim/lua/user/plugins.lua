@@ -60,7 +60,7 @@ return packer.startup(function(use)
     main = "ibl"
   }
   use "antoinemadec/FixCursorHold.nvim" -- This is needed to fix lsp doc highlight
-  use "folke/which-key.nvim" -- show popup with keybindings
+  use { "folke/which-key.nvim", commit = "0539da0" } -- show popup with keybindings
   use { "AckslD/nvim-neoclip.lua", -- remember yanks
      requires = {
         -- you'll need at least one of these
