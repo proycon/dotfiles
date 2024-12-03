@@ -62,7 +62,6 @@ if [ -z "$XDG_RUNTIME_DIR" ]; then
     export XDG_RUNTIME_DIR
 fi
 export PATH="/home/proycon/bin:/home/proycon/.cargo/bin:/home/proycon/local/bin:$PATH"
-export GPGKEY="8AC624881EF2AC30C0E68E2C39FE11201A31555C"
 export MPD_HOST="anaproy.nl"
 export DEBEMAIL="proycon@anaproy.nl"
 export DEBFULLNAME="Maarten van Gompel"
@@ -71,6 +70,7 @@ export GTK_THEME=Adwaita-dark
 export EDITOR="nvim"
 export TODO_DIR="$HOME/.todo"
 export XDG_CONFIG_HOME="$HOME/.config"
+. ~/dotfiles/scripts/gpgsetup.sh
 . ~/dotfiles/user-dirs.dirs
 export XDG_DESKTOP_DIR XDG_DOCUMENTS_DIR XDG_PICTURES_DIR XDG_MUSIC_DIR XDG_DOWNLOAD_DIR XDG_VIDEOS_DIR
 

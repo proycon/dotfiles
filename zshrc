@@ -393,18 +393,6 @@ sshcheck() {
     true
 }
 
-gpghelp() {
-    echo "gpg --recv-key 8AC624881EF2AC30C0E68E2C39FE11201A31555C"
-    echo "echo \"your secret message here\" | gpg -e --armor -r proycon@anaproy.nl"
-}
-
-gpgmsg() {
-    if [ -n "$1" ]; then
-        gpg -e --armor -r $1
-    else
-        gpg -e --armor -r proycon@anaproy.nl
-    fi
-}
 
 alias -s txt=vim
 alias -s cpp=vim
@@ -455,24 +443,7 @@ function rmd () {
 export VIRTUAL_ENV_DISABLE_PROMPT=1
 
 
-
-export GPGKEY="8AC624881EF2AC30C0E68E2C39FE11201A31555C"
-#if [ -f "${HOME}/.gpg-agent-info" ]; then
-#    . "${HOME}/.gpg-agent-info"
-#    export GPG_AGENT_INFO
-#    #export SSH_AUTH_SOCK
-#fi
-GPG_TTY=$(tty)
-export GPG_TTY
-
-if [ -n "$XDG_RUNTIME_DIR" ]; then
-    if ! pgrep -u "$USER" ssh-agent > /dev/null; then
-        ssh-agent -t 6h > "$XDG_RUNTIME_DIR/ssh-agent.env"
-    fi
-    if [[ ! "$SSH_AUTH_SOCK" ]]; then
-        source "$XDG_RUNTIME_DIR/ssh-agent.env" >/dev/null
-    fi
-fi
+source ~/dotfiles/scripts/gpgsetup.sh
 
 export NNN_FIFO="/tmp/nnn.fifo"
 export NNN_PLUG="o:fzopen;c:fcd;j:jump;p:preview-tui;i:imgview;d:dragdrop"
