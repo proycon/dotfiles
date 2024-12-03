@@ -17,5 +17,4 @@ sleep 4 && (
     echo "routes set"
 ) &
 
-# relies on /etc/ppp/ip-up.d/openfortivpn
 openfortivpn -c /home/proycon/dotfiles.private/openfortivpn-knaw $@
