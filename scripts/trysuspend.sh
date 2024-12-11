@@ -8,7 +8,7 @@ ssh_connected() {
 		'
 }
 
-if ! ssh_connected && ! pidof notmuch rsync pacman git apk scp cp tar zip unzip mpv; then
+if ! ssh_connected && ! pidof notmuch rsync pacman git apk scp cp tar zip unzip mpv steam; then
     LOADAVG=$(cut -d" " -f 2 /proc/loadavg | cut -d "." -f 1)
     if [ "$LOADAVG" -le 3 ]; then
         echo "auto suspending">&2
