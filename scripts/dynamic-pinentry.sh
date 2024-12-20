@@ -1,18 +1,20 @@
 #!/bin/sh
 set -eu
 
-if [ -n "$DISPLAY" ] || [ -n "$WAYLAND_DISPLAY" ]; then
-   #if command -v pinentry-bemenu; then
-   # exec pinentry-bemenu "$@"
-   if command -v pinentry-gnome3; then
-    exec pinentry-gnome3 "$@"
+if tty -s; then
+    if command -v pinentry-curses; then
+        exec pinentry-curses "$@"
+    elif command -v pinentry-tty; then
+        exec pinentry-tty "$@"
+    fi
+else
+   if [ -n "$WAYLAND_DISPLAY" ] && command -v pinentry-wayprompt; then
+        exec pinentry-wayprompt "$@"
+   elif command -v pinentry-gnome3; then
+        exec pinentry-gnome3 "$@"
    elif command -v pinentry-qt; then
-    exec pinentry-qt "$@"
+        exec pinentry-qt "$@"
    fi
-fi
-
-if command -v pinentry-curses; then
-    exec pinentry-curses "$@"
 fi
 echo "No suitable pinentry found"
 exit 1
