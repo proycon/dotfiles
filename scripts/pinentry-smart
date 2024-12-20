@@ -1,0 +1,19 @@
+#!/bin/sh
+
+case $PINENTRY_USER_DATA in
+    curses)
+        exec pinentry-curses "$@"
+        ;;
+    tty)
+        exec pinentry-tty "$@"
+        ;;
+    wayprompt)
+        exec pinentry-wayprompt "$@"
+        ;;
+    gnome3)
+        exec pinentry-gnome3 "$@"
+        ;;
+    *)
+        exec pinentry-tty "$@"
+        ;;
+esac

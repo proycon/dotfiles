@@ -443,6 +443,7 @@ function rmd () {
 export VIRTUAL_ENV_DISABLE_PROMPT=1
 
 
+export PINENTRY_USER_DATA=curses
 source ~/dotfiles/scripts/gpgsetup.sh
 
 export NNN_FIFO="/tmp/nnn.fifo"
