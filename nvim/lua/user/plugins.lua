@@ -194,7 +194,7 @@ return packer.startup(function(use)
   })
   use {
       'yetone/avante.nvim',
-      build = "make BUILD_FROM_SOURCE=true",
+      build = ":AvanteBuild",
       lazy = false,
       version = false,
       BUILD_FROM_SOURCE = true,
