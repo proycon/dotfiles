@@ -14,6 +14,6 @@ case $PINENTRY_USER_DATA in
         exec pinentry-gnome3 "$@"
         ;;
     *)
-        exec pinentry-tty "$@"
+        exec pinentry-wayprompt "$@"
         ;;
 esac
