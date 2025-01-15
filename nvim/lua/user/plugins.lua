@@ -152,9 +152,12 @@ local plugins = {
     --    vim.fn["firenvim#install"](0)
     --end
   },
+
   {
+      -- for this we need to install: luarocks --local --lua-version=5.1 install nvim-nio
       "rest-nvim/rest.nvim",
       dependencies = {
+        "j-hui/fidget.nvim",
         "nvim-treesitter/nvim-treesitter",
         opts = function (_, opts)
           opts.ensure_installed = opts.ensure_installed or {}

@@ -58,8 +58,8 @@ ifeq ($(DISTRO),arch)
 	${PACMAN} cargo rust rust-src
 	#dev: C/C++
 	${PACMAN} autoconf autoconf-archive automake cmake ctags doxygen gdb gmp icu m4 meson ninja pkg-config valgrind libxml2
-	#dev: various programming languages
-	${PACMAN} go groovy jdk-openjdk lua maven nodejs nodejs npm perl ruby
+	#dev: various programming languages (lua51 and luarocks are for neovim)
+	${PACMAN} go groovy jdk-openjdk lua lua51 luarocks maven nodejs nodejs npm perl ruby
 	#dev: distro specific
 	${PACMAN} apk-tools debootstrap pmbootstrap android-tools
 	#(abuild is in AUR)
@@ -134,6 +134,8 @@ else ifeq ($(DISTRO),$(filter $(DISTRO), alpine postmarketos))
 	${APK} aspell aspell-en aspell-es aspell-fr aspell-de
 	#communication
 	${APK} aerc aercbook mailcap msmtp newsboat newsraft senpai dante
+	#for neovim
+	${APK} lua5.1 luarocks5.1
 ifeq ($(DESKTOP),1)
 	#core desktop
 	${APK} bemenu rofi-wayland foot mako kanshi river river-bedload rivercarro swaybg swayidle waybar waylock peanutbutter wofi wtype xdg-desktop-portal-wlr catimg wl-clipboard libnotify py3-pynitrokey libnitrokey nitrokey-udev-rules udiskie
