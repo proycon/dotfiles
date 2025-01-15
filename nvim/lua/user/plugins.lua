@@ -46,6 +46,7 @@ local plugins = {
         require('neoclip').setup()
       end,
   },
+
   -- Colorschemes
   "lunarvim/colorschemes", -- A bunch of colorschemes you can try out
   "lunarvim/darkplus.nvim",
@@ -60,6 +61,7 @@ local plugins = {
     -- In Vim, compat mode is turned on as Lush only works in Neovim.
     dependencies = { { "rktjmp/lush.nvim" } }
   },
+
   -- cmp plugins
   "hrsh7th/nvim-cmp", -- The completion plugin
   "hrsh7th/cmp-buffer", -- buffer completions
@@ -74,15 +76,9 @@ local plugins = {
   "rafamadriz/friendly-snippets", -- a bunch of snippets to use
 
   -- LSP
-  { "williamboman/mason.nvim",
-    config = function()
-            require("mason").setup()
-    end
-  },
+  "williamboman/mason.nvim",
   "williamboman/mason-lspconfig.nvim",
-  {
-        "neovim/nvim-lspconfig", -- enable LSP
-  },
+  "neovim/nvim-lspconfig", -- enable LSP
   "tamago324/nlsp-settings.nvim", -- language server settings defined in json for
   "jose-elias-alvarez/null-ls.nvim", -- for formatters and linters
 
@@ -107,7 +103,7 @@ local plugins = {
   "lewis6991/gitsigns.nvim",
 
   -- Distraction free writing
-  "Pocco81/true-zen.nvim",
+  --"Pocco81/true-zen.nvim",
 
   "jamessan/vim-gnupg",
   "aklt/plantuml-syntax",
@@ -116,19 +112,20 @@ local plugins = {
   "tpope/vim-characterize", -- unicode information on 'ga' character inspection
   "norcalli/nvim-colorizer.lua", -- show colour codes in colour
   { "ellisonleao/glow.nvim", -- markdown preview
-        config = function() require("glow").setup() end
+        config = true, cmd = "Glow"
   },
   "folke/trouble.nvim", -- pretty list for showing diagnostics
   "tpope/vim-fugitive", -- git wrapper (provides :Git commands)
   {
-    "simrat39/symbols-outline.nvim", --symbols (tags) tree like view
+    "simrat39/symbols-outline.nvim", --symbols (tags) tree like view (PLUGIN IS NO LONGER MAINTAINED since jan 2024!
     config = function()
             require("symbols-outline").setup()
     end
   },
   "pwntester/octo.nvim", -- github CLI integration
-  { 
+  {
         "ray-x/lsp_signature.nvim", -- Show function signature as you type
+        event = "VeryLazy",
         config = function()
             require('lsp_signature').setup({
                 floating_window_off_y = -1
@@ -143,16 +140,8 @@ local plugins = {
   "https://git.sr.ht/~sotirisp/vim-tsv",
   "proycon/todo.txt-vim", -- my own extended todo.txt syntax highlighting
   { "glacambre/firenvim",
-    -- Lazy load firenvim
-    -- Explanation: https://github.com/folke/lazy.nvim/discussions/463#discussioncomment-4819297
-    run = function() vim.fn['firenvim#install'](0) end 
-    --cond = not not vim.g.started_by_firenvim,
-    --build = function()
-    --    require("lazy").load({ plugins = "firenvim", wait = true })
-    --    vim.fn["firenvim#install"](0)
-    --end
+     build = ":call firenvim#install(0)"
   },
-
   {
       -- for this we need to install: luarocks --local --lua-version=5.1 install nvim-nio
       "rest-nvim/rest.nvim",
