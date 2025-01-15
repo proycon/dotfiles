@@ -192,33 +192,44 @@ return packer.startup(function(use)
      })
      end
   })
-  use {
-      'yetone/avante.nvim',
-      build = ":AvanteBuild",
-      lazy = false,
-      version = false,
-      BUILD_FROM_SOURCE = true,
-      config = function()
-          require('avante_lib').load()
-          require('avante').setup()
-      end,
-      requires = {
-          'nvim-tree/nvim-web-devicons',
-          'stevearc/dressing.nvim',
-          'nvim-lua/plenary.nvim',
-          'MunifTanjim/nui.nvim',
-          {
-              'MeanderingProgrammer/render-markdown.nvim',
-              config = function()
-                  require('render-markdown').setup({
-                      file_types = { "markdown", "Avante" },
-                  })
-              end,
-          },
-      },
-      run = 'make', -- Optional, only if you want to use tiktoken_core to calculate tokens count
-  }
+--use {
+--    'yetone/avante.nvim',
+--    build = ":AvanteBuild",
+--    lazy = false,
+--    version = false,
+--    BUILD_FROM_SOURCE = true,
+--    config = function()
+--        require('avante_lib').load()
+--        require('avante').setup()
+--    end,
+--    requires = {
+--        'nvim-tree/nvim-web-devicons',
+--        'stevearc/dressing.nvim',
+--        'nvim-lua/plenary.nvim',
+--        'MunifTanjim/nui.nvim',
+--        {
+--            'MeanderingProgrammer/render-markdown.nvim',
+--            config = function()
+--                require('render-markdown').setup({
+--                    file_types = { "markdown", "Avante" },
+--                })
+--            end,
+--        },
+--    },
+--    run = 'make', -- Optional, only if you want to use tiktoken_core to calculate tokens count
+--}
 
+--use( "j-hui/fidget.nvim")
+--use({
+--  'rest-nvim/rest.nvim',
+--  dependencies = {
+--      "nvim-treesitter/nvim-treesitter",
+--      opts = function (_, opts)
+--        opts.ensure_installed = opts.ensure_installed or {}
+--        table.insert(opts.ensure_installed, "http")
+--      end,
+--    }
+--})
 
   -- Automatically set up your configuration after cloning packer.nvim
   -- Put this at the end after all plugins
