@@ -90,7 +90,7 @@ local plugins = {
   -- Treesitter: provides more informed syntax highlighting
   {
     "nvim-treesitter/nvim-treesitter",
-    run = ":TSUpdate",
+    build = ":TSUpdate",
   },
   "JoosepAlviste/nvim-ts-context-commentstring",
   "p00f/nvim-ts-rainbow", --rainbow parantheses
@@ -143,16 +143,16 @@ local plugins = {
      build = ":call firenvim#install(0)"
   },
   {
-      -- for this we need to install: luarocks --local --lua-version=5.1 install nvim-nio
-      "rest-nvim/rest.nvim",
-      dependencies = {
-        "j-hui/fidget.nvim",
-        "nvim-treesitter/nvim-treesitter",
-        opts = function (_, opts)
-          opts.ensure_installed = opts.ensure_installed or {}
-          table.insert(opts.ensure_installed, "http")
-        end,
-      }
+    -- for this we need to install: luarocks --local --lua-version=5.1 install nvim-nio
+    "rest-nvim/rest.nvim",
+    dependencies = {
+      "j-hui/fidget.nvim",
+      "nvim-treesitter/nvim-treesitter",
+      opts = function (_, opts)
+        opts.ensure_installed = opts.ensure_installed or {}
+        table.insert(opts.ensure_installed, "http")
+      end,
+    }
   },
   'sQVe/sort.nvim'
 }
