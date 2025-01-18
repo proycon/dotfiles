@@ -142,20 +142,38 @@ local plugins = {
   { "glacambre/firenvim",
      build = ":call firenvim#install(0)"
   },
-  {
-    -- for this we need to install: luarocks --local --lua-version=5.1 install nvim-nio
-    "rest-nvim/rest.nvim",
-    dependencies = {
-      "j-hui/fidget.nvim",
-      "nvim-treesitter/nvim-treesitter",
-      opts = function (_, opts)
-        opts.ensure_installed = opts.ensure_installed or {}
-        table.insert(opts.ensure_installed, "http")
-      end,
-    }
-  },
   'sQVe/sort.nvim'
 }
+
+local function getLinuxDistroFromReleaseFile()
+    local f = io.open("/etc/os-release", "r")
+    if not f then return nil end
+
+    for line in f:lines() do
+        if line:match("^ID=") then
+            local distroName = line:gsub("ID=",""):gsub("\"","")
+            return distroName
+        end
+    end
+    f:close()
+    return nil
+end
+local distro = getLinuxDistroFromReleaseFile()
+if distro ~= "postmarketos" and distro ~= "alpine" then
+   table.insert(plugins,
+      {
+        -- for this we need to install: luarocks --local --lua-version=5.1 install nvim-nio
+        "rest-nvim/rest.nvim",
+        dependencies = {
+          "j-hui/fidget.nvim",
+          "nvim-treesitter/nvim-treesitter",
+          opts = function (_, opts)
+            opts.ensure_installed = opts.ensure_installed or {}
+            table.insert(opts.ensure_installed, "http")
+          end,
+        }
+      })
+end
 
 local opts = {}
 
