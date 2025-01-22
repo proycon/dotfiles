@@ -140,7 +140,7 @@ ifeq ($(DESKTOP),1)
 	#core desktop
 	${APK} bemenu rofi-wayland foot mako kanshi river river-bedload rivercarro swaybg swayidle waybar waylock peanutbutter wofi wtype xdg-desktop-portal-wlr catimg wl-clipboard libnotify py3-pynitrokey libnitrokey nitrokey-udev-rules udiskie
 	#icons & themes
-	${APK} breeze-icons 
+	${APK} breeze-icons breeze-cursors
 	#dev
 	${APK} cargo go nodejs npm zig rust-analyzer clang-analyzer
 	#browser
