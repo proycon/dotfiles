@@ -35,6 +35,10 @@ if [ ! -e /run/systemd/system ]; then
     fi
 fi
 
+# bigger brighter cursors and suitable for dark themes, because I keep losing them
+riverctl xcursor-theme Breeze_Light 48
+gsettings set org.gnome.desktop.interface cursor-theme Breeze_Light
+gsettings set org.gnome.desktop.interface cursor-size 48
 
 # Super+Shift+Return to start an instance of foot (https://codeberg.org/dnkl/foot)
 riverctl map normal Super+Shift Return spawn foot

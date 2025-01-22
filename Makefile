@@ -195,10 +195,10 @@ ifeq (, $(shell which yay))
 endif
 endif 
 
-aur: yay abuild aercbook-bin dasel gomuks-git lsix-git mblaze-git nerd-fonts-complete-starship powerline-fonts-git rofi-lbonn-wayland todotxt ttf-material-design-icons-git ttf-symbola snapcast-git crates-tui pass-git-helper lswt newsraft wayprompt
+aur: yay abuild aercbook-bin dasel gomuks-git lsix-git mblaze-git nerd-fonts-complete-starship powerline-fonts-git rofi-lbonn-wayland todotxt ttf-material-design-icons-git ttf-symbola snapcast-git crates-tui pass-git-helper lswt newsraft wayprompt xcursor-breeze
 
-.PHONY: abuild aercbook-bin dasel gomuks-git lsix-git mblaze-git nerd-fonts-complete-starship powerline-fonts-git rofi-lbonn-wayland todotxt ttf-material-design-icons-git ttf-symbola snapcast-git crates-tui pass-git-helper lswt newsraft wayprompt
-abuild aercbook-bin dasel gomuks-git lsix-git mblaze-git nerd-fonts-complete-starship powerline-fonts-git rofi-lbonn-wayland todotxt ttf-material-design-icons-git ttf-symbola snapcast-git crates-tui pass-git-helper lswt newsraft wayprompt:
+.PHONY: abuild aercbook-bin dasel gomuks-git lsix-git mblaze-git nerd-fonts-complete-starship powerline-fonts-git rofi-lbonn-wayland todotxt ttf-material-design-icons-git ttf-symbola snapcast-git crates-tui pass-git-helper lswt newsraft wayprompt xcursor-breeze
+abuild aercbook-bin dasel gomuks-git lsix-git mblaze-git nerd-fonts-complete-starship powerline-fonts-git rofi-lbonn-wayland todotxt ttf-material-design-icons-git ttf-symbola snapcast-git crates-tui pass-git-helper lswt newsraft wayprompt xcursor-breeze:
 ifeq ($(DISTRO),arch)
 	yay -S $@
 endif
