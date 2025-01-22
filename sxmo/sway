@@ -253,6 +253,7 @@ bindsym button2 kill
 bindswitch lid:on exec sxmo_wm.sh dpms on
 bindswitch lid:off exec sxmo_wm.sh dpms off
 
+include ~/.config/sxmo/sway.config.d/*
 include /etc/sway/config.d/*
 
 exec 'printf %s "$SWAYSOCK" > "$XDG_RUNTIME_DIR"/sxmo.swaysock'
