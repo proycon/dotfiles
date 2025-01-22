@@ -59,7 +59,6 @@ case "$SXMO_WM" in
 		superctl start sxmo_wob
 		superctl start sxmo_menumode_toggler
 		superctl start bonsaid
-		swaymsg output '*' bg "$SXMO_BG_IMG" fill
 		;;
 	dwm)
 		superctl start dunst
@@ -77,7 +76,6 @@ case "$SXMO_WM" in
 		superctl start sxmo-x11-status
 		superctl start bonsaid
 		[ -n "$SXMO_MONITOR" ] && xrandr --output "$SXMO_MONITOR" --primary
-		feh --bg-fill "$SXMO_BG_IMG"
 		;;
 esac
 
@@ -120,7 +118,7 @@ superctl start sxmo_networkmonitor
 superctl start sxmo_notificationmonitor
 
 # Play a funky startup tune if you want (disabled by default)
-#mpv --quiet --no-video ~/welcome.ogg &
+mpv --quiet --no-video ~/welcome.ogg &
 
 # mmsd and vvmd
 if [ -z "$SXMO_NO_MODEM" ]; then
