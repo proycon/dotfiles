@@ -46,7 +46,7 @@ else
 	    if ! pgrep -u "$USER" ssh-agent > /dev/null; then
 	        ssh-agent -t 12h > "$XDG_RUNTIME_DIR/ssh-agent.env"
 	    fi
-	    if [ ! "$SSH_AUTH_SOCK" ]; then
+	    if [ ! "$SSH_AUTH_SOCK" ] && [ -e "$XDG_RUNTIME_DIR/ssh-agent.env" ]; then
 	        . "$XDG_RUNTIME_DIR/ssh-agent.env" >/dev/null
 	    fi
 	fi
