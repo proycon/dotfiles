@@ -1,20 +1,12 @@
-# Space to setup configversion
-# configversion: 06c91bec544be9fb599acb257c559998
-default-timeout=15000
-background-color=#ffffff
-text-color=#000000
-border-color=#000000
-layer=overlay
-group-by=app-name
-on-touch=invoke-default-action
-
-[urgency=low]
-default-timeout=10000
-background-color=#222222
-text-color=#888888
-
-[urgency=high]
-default-timeout=0
-background-color=#900000
-text-color=#ffffff
-background-color=#ff0000
+default-timeout=5000
+max-visible=5
+max-history=5
+background-color=#000000cc
+border-color=#ff0000ff
+border-size=2
+border-radius=10
+width=800
+height=320
+max-icon-size=128
+font=Monospace 22
+anchor=bottom-right
