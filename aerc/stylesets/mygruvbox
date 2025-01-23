@@ -59,59 +59,49 @@ completion_default.bg=#303030
 completion_gutter.bg=#303030
 completion_pill.bg=aqua
 
+# LATER MATCHES OVERRIDE PREVIOUS ONES!
 
 #dynamic
-"msglist_default.List-Id,~\w+.bg" = #291840
-"msglist_default.Subject,~(automatic reply|automatisch antwoord).fg" = gray
-"msglist_default.Subject,~build (failed|success).fg" = gray
-"msglist_default.Subject,~(newsletter|nieuwsbrief).fg" = gray
-"msglist_default.From,~(anaxotic|gompel|wijck).bg" = #343205
-"msglist_default.To,~/ivdnt.org/.bg" = #052134
-"msglist_default.To,~/kuleuven.be/.bg" = #052134
-"msglist_default.To,~/@vu.nl/.bg" = #052134
-"msglist_default.To,~/.vu.nl/.bg" = #052134
-"msglist_default.To,~/leidenuniv.nl/.bg" = #052134
-"msglist_default.To,~/fryske-akademy.nl/.bg" = #052134
-"msglist_default.To,~/beeldengeluid.nl/.bg" = #052134
-"msglist_default.To,~/@uu.nl/.bg" = #052134
-"msglist_default.To,~/.uu.nl/.bg" = #052134
-"msglist_default.To,~/knaw.nl/.bg" = #052134
-"msglist_default.From,~/ivdnt.org/.bg" = #052134
-"msglist_default.From,~/kuleuven.be/.bg" = #052134
-"msglist_default.From,~/@vu.nl/.bg" = #052134
-"msglist_default.From,~/.vu.nl/.bg" = #052134
-"msglist_default.From,~/leidenuniv.nl/.bg" = #052134
-"msglist_default.From,~/fryske-akademy.nl/.bg" = #052134
-"msglist_default.From,~/beeldengeluid.nl/.bg" = #052134
-"msglist_default.From,~/@uu.nl/.bg" = #052134
-"msglist_default.From,~/uu.nl/.bg" = #052134
-"msglist_default.From,~/knaw.nl/.bg" = #052134
-"msglist_default.Cc,~/admin@cls.ru.nl/.bg" = #0c0534
-"msglist_default.To,~/admin@cls.ru.nl/.bg" = #0c0534
-"msglist_default.To,~/forum@unilang.org/.bg" = #342305
-"msglist_default.From,~notifications?.bg" = #4b2a51
-"msglist_default.From,~/proycon@science.ru.nl/.fg" = gray
-"msglist_default.From,~/slack.com/.fg" = gray
-"msglist_default.From,~/Cron/.fg" = gray
-"msglist_default.From,~/ccpgames/.fg" = gray
-"msglist_default.From,~/steampowered/.fg" = gray
-"msglist_default.From,~/noreply@anaproy.nl/.fg" = gray
-"msglist_default.From,~/dependabot/.fg" = gray
-"msglist_default.From,~/corpora/.fg" = gray
-"msglist_default.From,~/googlegroups/.fg" = gray
-"msglist_default.From,~/cls@let.ru.nl/.fg" = gray
-"msglist_default.From,~/communicatie@let.ru.nl/.fg" = gray
-"msglist_default.From,~/noreply@github.com/.fg" = gray
-"msglist_default.From,~/builds@sr.ht/.fg" = gray
-"msglist_default.From,~/@bitbucket.org/.bg" = #4b2a51
-"msglist_default.From,~/gitlab@/.bg" = #4b2a51
-"msglist_default.From,~/socialhistoryservices.org/.bg" = #4b2a51
-"msglist_default.From,~/comment-noreply@docs.google.com/.bg" = #4b2a51
-"msglist_default.From,~/notification@github.com/.bg" = #4b2a51
-"msglist_default.From,~/outgoing@sr.ht/.bg" = #4b2a51
-"msglist_default.Subject,~PATCH.bg" = #3d0647
 "msglist_default.From,~/proycon@anaproy.nl/.italic" = true
 "msglist_default.From,~proycon.fg" = #497248
+
+
+#notifications
+"msglist_default.From,~notification.bg" = gray
+"msglist_default.From,~notificatie.bg" = gray
+"msglist_default.From,~notify.bg" = gray
+"msglist_default.From,~noreply.bg" = gray
+"msglist_default.From,~no-reply.bg" = gray
+"msglist_default.From,~not-reply.bg" = gray
+"msglist_default.From,~no_reply.bg" = gray
+"msglist_default.From,~automail.bg" = gray
+"msglist_default.From,~bounce.bg" = gray
+"msglist_default.From,~newsletter.bg" = gray
+"msglist_default.From,~nieuwsbrief.bg" = gray
+"msglist_default.From,~invitations.bg" = gray
+"msglist_default.From,~mailer.bg" = gray
+"msglist_default.Subject,~was added to your account.bg" = gray
+"msglist_default.Subject,~bericht voor je.bg" = gray
+"msglist_default.Subject,~build success.bg" = gray
+"msglist_default.Subject,~build fail.bg" = gray
+
+#lists
+"msglist_default.List-Id,~\w+.bg" = #291840
+"msglist_default.Subject,~PATCH.bg" = #3d0647
+"msglist_default.From,~outgoing@sr.ht.bg" = #291840
+
+
+#notifications by domain
+"msglist_default.From,~stripe.com.bg" = gray
+"msglist_default.From,~liberapay.bg" = gray
+"msglist_default.From,~paypal.bg" = gray
+"msglist_default.From,~primera.nl.bg" = gray
+"msglist_default.From,~asnbank.bg" = gray
+"msglist_default.From,~triodos.bg" = gray
+"msglist_default.From,~ftm.nl.bg" = gray
+"msglist_default.From,~ebay.com.bg" = gray
+
+#sourcehut
 "msglist_default.X-Sourcehut-Patchset-Update,~REJECTED.bg" = #3d0647 
 "msglist_default.X-Sourcehut-Patchset-Update,~REJECTED.fg" = #ff0000
 "msglist_default.X-Sourcehut-Patchset-Update,~SUPERSEDED.bg" = #3d0647 
@@ -122,9 +112,33 @@ completion_pill.bg=aqua
 "msglist_default.X-Sourcehut-Patchset-Update,~APPROVED.fg" = green
 "msglist_default.X-Sourcehut-Patchset-Update,~APPLIED.bg" = #3d0647
 "msglist_default.X-Sourcehut-Patchset-Update,~APPLIED.fg" = #00ff00
+
+#spam
 "msglist_default.X-Spam,~Yes.fg" = #000000
-"msglist_default.From,~/@ru/.bg" = #0c0534
-msglist_answered.fg = #1e8b1b
+
+#personal
+"msglist_default.From,~(anaxotic|gompel|wijck).bg" = #343205
+
+#work
+"msglist_default.From,~knaw.bg" = #052134
+"msglist_default.From,~@ru.nl.bg" = #0c0534
+"msglist_default.From,~@cls.ru.nl.bg" = #0c0534
+"msglist_default.From,~@science.ru.nl.bg" = #0c0534
+"msglist_default.From,~@let.ru.nl.bg" = #0c0534
+"msglist_default.To,~admin@cls.ru.nl.bg" = #0c0534
+
+#hobby
+"msglist_default.From,~unilang.bg" = #342305
+"msglist_default.To,~unilang.bg" = #342305
+
+#newletters
+"msglist_default.Subject,~nieuwsbrief.bg" = gray
+"msglist_default.Subject,~Nieuwsbrief.bg" = gray
+"msglist_default.Subject,~newsletter.bg" = gray
+
+#action
+msglist_answered.fg = #57cf53
+
 
 [viewer]
 header.fg=#d845c5
