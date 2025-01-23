@@ -1,1 +1,3 @@
-unmap q
+map f toggle_fullscreen
+map fullscreen f change_mode normal
+map F follow
