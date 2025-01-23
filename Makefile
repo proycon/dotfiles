@@ -99,6 +99,8 @@ ifeq ($(DESKTOP),1)
 	#(rofi will be installed from AUR)
 	#fonts
 	${PACMAN} noto-fonts-emoji otf-fira-mono ttf-dejavu ttf-droid ttf-fira-code ttf-fira-code ttf-fira-mono ttf-fira-sans ttf-font-awesome ttf-khmer ttf-linux-libertine ttf-opensans ttf-roboto ttf-tibetan-machine ttf-ubuntu-font-family wqy-bitmapfont wqy-microhei wqy-zenhei cantarell-fonts gucharmap
+	#themes etc
+	${PACMAN} gnome-themes-extra 
 	#graphics & video
 	${PACMAN} cheese feh ffmpeg gimp imagemagick imv inkscape mplayer mpv sxiv v4l-utils vlc yt-dlp kdenlive ytfzf
 	#IME & languages

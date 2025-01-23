@@ -278,6 +278,7 @@ riverctl rule-add -app-id 'imv' ssd
 
 gsettings set org.gnome.desktop.interface text-scaling-factor 1.8
 gsettings set org.gnome.desktop.interface color-scheme 'prefer-dark'
+gsettings set org.gnome.desktop.interface gtk-theme 'Adwaita-dark'
 
 riverctl keyboard-layout $KB_OPTS proybasic
 # Set the default layout generator to be rivercarro and start it.
