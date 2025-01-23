@@ -1,3 +1,5 @@
+# Space to setup configversion
+# configversion: 06c91bec544be9fb599acb257c559998
 default-timeout=5000
 max-visible=5
 max-history=5
