@@ -1,5 +1,6 @@
 #!/bin/sh
 ~/dotfiles/scripts/lock.sh &
+nitropy nk3 reboot # ensure nitrokey reboots so power cycle is interrupted and any cached PIN is lost
 sleep 5
 while pidof notmuch rsync pacman git apk; do
     sleep 5
