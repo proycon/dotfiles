@@ -68,3 +68,17 @@ else
 	fi
 fi
 
+# To set nitrokey not to demand PIN on every sign action, make sure forcesig is DISABLED
+# PIN is still needed on the first interaction
+
+# $ gpg --card-edit 
+# > admin
+# > forcesig
+
+# then set UIF sign and auth to on as follows, this requires confirmation using physical touch instead
+
+# > uif 1 on
+# > uif 1 off
+
+
+
