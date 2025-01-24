@@ -19,6 +19,22 @@ gpgsshpubkey() {
     gpg --export-ssh-key proycon@anaproy.nl
 }
 
+gpgsign() {
+    if [ -n "$1" ]; then
+        gpg --armor --detach-sign "$1"
+    else
+        echo "Usage: provide a file as argument, it will be signed detached (*.asc)" >&2
+    fi
+}
+
+gpgsignreplace() {
+    if [ -n "$1" ]; then
+        gpg --sign "$1" && mv "$1.asc" "$1"
+    else
+        echo "Usage: provide a file as argument, the original file will be REPLACED with a clear-signed counterpart" >&2
+    fi
+}
+
 export GPGKEY="8AC624881EF2AC30C0E68E2C39FE11201A31555C"
 
 SSH_VIA_GPG=0
