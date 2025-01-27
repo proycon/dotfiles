@@ -6,6 +6,8 @@
 # if a music file or pdf, it will download,
 # otherwise it opens link in browser.
 
+. /etc/os-release
+
 # Sci-Hub's domain occasionally changes due to shutdowns:
 scihub="http://sci-hub.tw/"
 
@@ -64,7 +66,12 @@ case "$TARGET" in
                 #handles both local and remote
                 setsid mpv --input-ipc-server="/tmp/mpvsoc$(date +%s)" "$1" >/dev/null 2>&1 & ;;
             *pdf)
-                setsid zathura "$1" & ;;
+                if [ "$NAME" = "postmarketOS" ]; then
+                    setsid evince "$1" &
+                else
+                    setsid zathura "$1" &
+                fi
+                ;;
             *.md)
                 if command -v mdless; then
                     if tty -s; then
