@@ -67,7 +67,7 @@ case "$TARGET" in
                 setsid mpv --input-ipc-server="/tmp/mpvsoc$(date +%s)" "$1" >/dev/null 2>&1 & ;;
             *pdf)
                 if [ "$NAME" = "postmarketOS" ]; then
-                    setsid evince "$1" &
+                    setsid okular "$1" &
                 else
                     setsid zathura "$1" &
                 fi
