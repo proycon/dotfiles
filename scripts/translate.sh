@@ -27,7 +27,7 @@ if [ ! -d ~/local ]; then
     mkdir ~/local
 fi
 
-if [ ! -d ~/local/argostranslate.env ]; then
+if ! command -v argos-translate && [ ! -d ~/local/argostranslate.env ]; then
     cd ~/local/ || exit 2
     python -m venv argostranslate.env
     notify-send "Installing, creating virtualenv..."
@@ -52,15 +52,18 @@ if [ "$1" ]; then
 else
     DETECTEDLANG=$(lingua-cli -l fr,de,es,it,pt,ru,zh,uk,ro,pl "$TEXT" | cut -f 1)
 fi
-. ~/local/argostranslate.env/bin/activate
-if [ ! -e ~/local/argostranslate.env/bin/argos-translate ]; then
-    notify-send "Pip installing argostranslate, this may take quite a while!"
-    if pip install argostranslate; then
-        argospm update
-        argospm install translate || notify-send "Failed to install translation packages"
-        notify-send "Installation of argostranslate complete"
-    else
-        notify-send "Installation of argostranslate failed"
+#check if not already installed (e.g. from AUR)
+if ! command -v argos-translate; then
+    . ~/local/argostranslate.env/bin/activate
+    if [ ! -e ~/local/argostranslate.env/bin/argos-translate ]; then
+        notify-send "Pip installing argostranslate, this may take quite a while!"
+        if pip install argostranslate; then
+            argospm update
+            argospm install translate || notify-send "Failed to install translation packages"
+            notify-send "Installation of argostranslate complete"
+        else
+            notify-send "Installation of argostranslate failed"
+        fi
     fi
 fi
 if [ -n "$DETECTEDLANG" ]; then
