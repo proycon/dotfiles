@@ -48,7 +48,7 @@ export TERMCMD="sxmo_terminal.sh"
 
 # To load specific part of configuration depending on the running environment
 case "$SXMO_WM" in
-	sway)
+	sway|river)
 		#set either bemenu or wofi
 		export SXMO_MENU=wofi
 		;;
