@@ -34,7 +34,6 @@ local plugins = {
     "lukas-reineke/indent-blankline.nvim", -- add indentation guides
     main = "ibl"
   },
-  "antoinemadec/FixCursorHold.nvim", -- This is needed to fix lsp doc highlight
   { "folke/which-key.nvim", commit = "0539da0" }, -- show popup with keybindings
   { "AckslD/nvim-neoclip.lua", -- remember yanks
      dependencies = {
@@ -123,15 +122,10 @@ local plugins = {
     end
   },
   "pwntester/octo.nvim", -- github CLI integration
-  {
-        "ray-x/lsp_signature.nvim", -- Show function signature as you type
-        event = "VeryLazy",
-        config = function()
-            require('lsp_signature').setup({
-                floating_window_off_y = -1
-            })
-        end
-  },
+{
+      "ray-x/lsp_signature.nvim", -- Show function signature as you type
+      event = "VeryLazy",
+},
   "goerz/jupytext.vim", -- edit ipynb as markdown via jupytext
   "fatih/vim-go", -- Go
   "simrat39/inlay-hints.nvim", -- Inlay hints (e.g for Rust)
