@@ -1,5 +1,5 @@
 #!/bin/sh
-# configversion: 5d6ee4b2f962616e6d88553777889730
+# configversion: e68cefafc3d6e8e0cb0ff95f96d9dc6b
 # SPDX-License-Identifier: AGPL-3.0-only
 # Copyright 2022 Sxmo Contributors
 
