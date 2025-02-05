@@ -161,6 +161,7 @@ if distro ~= "postmarketos" and distro ~= "alpine" then
         "rest-nvim/rest.nvim",
         dependencies = {
           "j-hui/fidget.nvim",
+          "manoelcampos/xml2lua",
           "nvim-treesitter/nvim-treesitter",
           opts = function (_, opts)
             opts.ensure_installed = opts.ensure_installed or {}
@@ -170,6 +171,6 @@ if distro ~= "postmarketos" and distro ~= "alpine" then
       })
 end
 
-local opts = {}
+local opts = {rocks = { hererocks = true}}
 
 require("lazy").setup(plugins, opts)
