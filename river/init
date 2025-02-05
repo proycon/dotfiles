@@ -1,6 +1,13 @@
 #!/bin/sh
+# configversion: dda3d920556787348cb33e1dc400dfcc
+# ^-- for SXMO compatibility
 
 echo "River init">&2
+
+if [ "$SXMO_WM" = "river" ]; then
+    #SXMO is not launced via startriver.sh, we still need to import the environment
+    . ~/.config/river/env.sh
+fi
 
 if [ -z "$DBUS_SESSION_BUS_ADDRESS" ]; then
     echo "No dbus session!">&2
@@ -284,6 +291,39 @@ gsettings set org.gnome.desktop.interface text-scaling-factor 1.8
 gsettings set org.gnome.desktop.interface color-scheme 'prefer-dark'
 gsettings set org.gnome.desktop.interface gtk-theme 'Adwaita-dark'
 
+if [ "$SXMO_WM" = "river" ]; then
+    #SXMO compatibility
+    echo "Configuring sxmo compatibility...">&2
+
+    riverctl map normal None XF86AudioRaiseVolume  spawn 'sxmo_audio.sh vol up'
+    riverctl map normal None XF86AudioLowerVolume  spawn 'sxmo_audio.sh vol down'
+    riverctl map normal None XF86AudioMute         spawn 'sxmo_audio.sh vol togglemute'
+    riverctl map normal None XF86AudioMicMute      spawn 'sxmo_audio.sh mic togglemute'
+
+    # Control MPRIS aware media players with playerctl (https://github.com/altdesktop/playerctl)
+    riverctl map normal None XF86AudioMedia spawn 'playerctl play-pause'
+    riverctl map normal None XF86AudioPlay  spawn 'playerctl play-pause'
+    riverctl map normal None XF86AudioPrev  spawn 'playerctl previous'
+    riverctl map normal None XF86AudioNext  spawn 'playerctl next'
+
+    # Control backlight brightness with brightnessctl (https://github.com/Hummer12007/brightnessctl)
+    riverctl map normal None XF86MonBrightnessUp   spawn 'sxmo_brightness.sh up'
+    riverctl map normal None XF86MonBrightnessDown spawn 'sxmo_brightness.sh down'
+
+    # Launch appmenu
+    riverctl map normal Super P spawn 'sxmo_appmenu.sh'
+    riverctl map normal Super+Shift P spawn 'sxmo_appmenu.sh sys'
+
+    # Start your launcher
+    riverctl map normal Super D spawn 'bemenu-run'
+
+    # Manual locker
+    riverctl map normal Super G spawn 'sxmo_state.sh set locker'
+
+    # Shutdown
+    riverctl map normal Super T spawn 'sxmo_appmenu.sh power'
+fi
+
 riverctl keyboard-layout $KB_OPTS proybasic
 # Set the default layout generator to be rivercarro and start it.
 # River will send the process group of the init executable SIGTERM on exit.
@@ -390,3 +430,5 @@ fi
 riverctl set-focused-tags 1
 mpv --quiet ~/dotfiles/media/lovelyboot.ogg
 echo "River init done">&2
+
+[ "$SXMO_WM" = "river" ] && exec sxmo_hook_start.sh
