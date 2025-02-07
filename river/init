@@ -389,6 +389,7 @@ riverctl rule-add -app-id 'foot' -title "nvim*" tags 2 #workspace 2
 riverctl rule-add -app-id 'foot' -title 'aerc*' tags 1 #workspace 1
 riverctl rule-add -app-id 'firefox' tags 4 #workspace 3 = 0b100 = 4
 riverctl rule-add -app-id 'librewolf' tags 4 #workspace 3 = 0b100 = 4
+riverctl rule-add -app-id 'firefox-esr' tags 4 #workspace 3 = 0b100 = 4
 riverctl rule-add -app-id 'foot' -title 'local*' tags 8 #workspace 4
 riverctl rule-add -app-id 'org.telegram.desktop' tags 64 #workspace 7 = 0b1000000 = 64
 riverctl rule-add -app-id 'nheko' tags 64 #workspace 7 = 0b1000000 = 64
