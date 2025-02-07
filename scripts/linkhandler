@@ -64,7 +64,7 @@ case "$TARGET" in
                 ;;
             *mp3|*flac|*opus|*mp3?*|*flac?*|*opus?*|*wav)
                 #handles both local and remote
-                setsid mpv --input-ipc-server="/tmp/mpvsoc$(date +%s)" "$1" >/dev/null 2>&1 & ;;
+                setsid mpv --profile=pseudo-gui --input-ipc-server="/tmp/mpvsoc$(date +%s)" "$1" >/dev/null 2>&1 & ;;
             *pdf)
                 if [ "$NAME" = "postmarketOS" ]; then
                     setsid okular "$1" &
