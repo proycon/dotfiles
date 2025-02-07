@@ -1,5 +1,5 @@
 #!/bin/sh
-# configversion: dda3d920556787348cb33e1dc400dfcc
+# configversion: 3b2e8ccba705f6788a2d062394706bd2
 # ^-- for SXMO compatibility
 
 echo "River init">&2
@@ -262,6 +262,9 @@ do
     # Control screen backlight brightness with brightnessctl (https://github.com/Hummer12007/brightnessctl)
     riverctl map $mode None XF86MonBrightnessUp   spawn 'brightnessctl set +5%'
     riverctl map $mode None XF86MonBrightnessDown spawn 'brightnessctl set 5%-'
+
+    riverctl map-switch $mode lid open spawn 'sxmo_wm.sh dpms off'
+    riverctl map-switch $mode lid close spawn 'sxmo_wm.sh dpms on'
 done
 
 # Set background and border color
