@@ -328,18 +328,18 @@ fi
 
 # Auto-start all applications on the right tag 
 if [ "$HOSTNAME" = "pollux" ]; then
-    riverctl rule-add -app-id 'foot'-title "nvim*" output DP-3
-    riverctl rule-add -app-id 'foot' -title 'aerc*' output DP-2
-    riverctl rule-add -app-id 'firefox' output DP-2
-    riverctl rule-add -app-id 'foot' -title 'local*' output DP-2
-    riverctl rule-add -app-id 'org.telegram.desktop' output DP-2
-    riverctl rule-add -app-id 'org.gnome.Fractal' output DP-2
-    riverctl rule-add -app-id 'nheko' output DP-2
-    riverctl rule-add -app-id 'senpai' output DP-2
-    riverctl rule-add -app-id 'dev.geopjr.Tuba' output DP-2
-    riverctl rule-add -app-id 'im.dino.Dino' output DP-2
-    riverctl rule-add -app-id 'foot' -title 'newsraft' output DP-2
-    riverctl rule-add -app-id 'foot' -title 'remote*' output DP-2
+    riverctl rule-add -app-id 'foot'-title "nvim*" output DP-2
+    riverctl rule-add -app-id 'foot' -title 'aerc*' output DP-1
+    riverctl rule-add -app-id 'firefox' output DP-1
+    riverctl rule-add -app-id 'foot' -title 'local*' output DP-1
+    riverctl rule-add -app-id 'org.telegram.desktop' output DP-1
+    riverctl rule-add -app-id 'org.gnome.Fractal' output DP-1
+    riverctl rule-add -app-id 'nheko' output DP-1
+    riverctl rule-add -app-id 'senpai' output DP-1
+    riverctl rule-add -app-id 'dev.geopjr.Tuba' output DP-1
+    riverctl rule-add -app-id 'im.dino.Dino' output DP-1
+    riverctl rule-add -app-id 'foot' -title 'newsraft' output DP-1
+    riverctl rule-add -app-id 'foot' -title 'remote*' output DP-1
 fi
 riverctl rule-add -app-id 'foot' -title "nvim*" tags 2 #workspace 2 
 riverctl rule-add -app-id 'foot' -title 'aerc*' tags 1 #workspace 1

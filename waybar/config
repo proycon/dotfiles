@@ -2,7 +2,7 @@
 {
 "layer": "top",
 "position": "bottom",
-"output": "!DP-3",
+"output": "!DP-2",
 "modules-left": ["river/layout", "river/tags", "river/window"],
 "modules-center": ["custom/mail"],
 "modules-right":  ["custom/timetracker","custom/ru","custom/hanzi","pulseaudio","hyprland/language","network","battery", "clock"],
@@ -113,7 +113,7 @@
 {
 "layer": "top",
 "position": "bottom",
-"output": "DP-3",
+"output": "DP-2",
 "modules-left": ["river/layout", "river/tags", "river/window"],
 "modules-right":  ["clock"],
 }
