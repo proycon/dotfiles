@@ -12,7 +12,11 @@
 scihub="http://sci-hub.tw/"
 
 if [ -z "$BROWSER" ]; then
-    BROWSER=firefox
+    if command -v librewolf; then
+        BROWSER=librewolf
+    else
+        BROWSER=firefox
+    fi
 fi
 if [ -z "$DISPLAY" ]; then
     BROWSER=w3m
