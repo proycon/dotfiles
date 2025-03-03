@@ -2,7 +2,7 @@
 if [ ! -f /tmp/locked ]; then
     if pidof mpv steam X-Plane-x86_64; then
         #no lock
-        exit 1
+        exit 0
     fi
     task=$(todo.sh timetrack current -t)
     todo.sh timetrack stop
