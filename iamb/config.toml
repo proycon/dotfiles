@@ -10,3 +10,11 @@ enabled = true
 [settings]
 username_display = "displayname"
 
+[settings.sort]
+rooms = ["unread","name"]
+
+[macros.normal]
+"go" = ":open<Enter>"
+"gc" = ":chats<Enter>"
+"gr" = ":rooms<Enter>"
+
