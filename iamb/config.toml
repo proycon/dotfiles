@@ -17,4 +17,8 @@ rooms = ["unread","name"]
 "go" = ":open<Enter>"
 "gc" = ":chats<Enter>"
 "gr" = ":rooms<Enter>"
+"gd" = ":dms<Enter>"
+"gu" = ":unreads<Enter>"
+"gU" = ":unreads clear<Enter>"
+
 
