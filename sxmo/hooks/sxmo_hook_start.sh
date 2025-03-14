@@ -1,5 +1,5 @@
 #!/bin/sh
-# configversion: 5d6ee4b2f962616e6d88553777889730
+# configversion: 8e4357cf9a229f8cea1fed8d30c78f3c
 # SPDX-License-Identifier: AGPL-3.0-only
 # Copyright 2022 Sxmo Contributors
 
@@ -51,11 +51,17 @@ sxmo_hook_statusbar.sh all
 sxmo_jobs.sh start statusbar_periodics sxmo_run_aligned.sh 60 \
 	sxmo_hook_statusbar.sh periodics
 
+superctl start dunst
+
 # mako/dunst are required for warnings.
 # load some other little things here too.
 case "$SXMO_WM" in
+    river)
+		superctl start sxmo_wob
+		superctl start bonsaid
+		superctl start sxmo_riverbar
+		;;
 	sway)
-		superctl start mako
 		superctl start sxmo_wob
 		superctl start sxmo_menumode_toggler
 		superctl start bonsaid

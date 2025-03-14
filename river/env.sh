@@ -56,6 +56,7 @@ BG="#222222"
 FGSEL="#eeeeee"
 BGSEL="#005577"
 export BEMENU_OPTS="--fn 'Monospace 32' --nb $BG --nf $FG --sb $BGSEL --sf $FGSEL"
+export SXMO_MENU=wofi
 
 if [ -z "$XDG_RUNTIME_DIR" ]; then
     XDG_RUNTIME_DIR="$(_find_runtime_dir)"
