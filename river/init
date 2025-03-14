@@ -186,7 +186,11 @@ riverctl map normal Super F3 spawn ~/dotfiles/scripts/homecommand.sh
 riverctl map normal Super F4 spawn ~/dotfiles/scripts/screenshot.sh
 riverctl map normal Super+Shift F4 spawn "~/dotfiles/scripts/screenshot.sh region"
 riverctl map normal Super+Control+Shift F4 spawn "~/dotfiles/scripts/screenshot.sh annotate"
-riverctl map normal Alt F3 spawn "~/dotfiles/scripts/homecommand.sh mute"
+if [ "$HOSTNAME" = "pollux" ]; then
+    riverctl map normal Alt F3 spawn "~/dotfiles/scripts/homecommand.sh lights/office/on"
+else
+    riverctl map normal Alt F3 spawn "~/dotfiles/scripts/homecommand.sh mute"
+fi
 riverctl map normal Alt F5 spawn ~/dotfiles/scripts/emojiselect
 riverctl map normal Super F6 spawn "foot --title newsraft newsraft"
 riverctl map normal Super+Shift F6 spawn "foot --title ncmpcpp ncmpcpp"
