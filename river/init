@@ -418,7 +418,6 @@ fi
 riverctl spawn "foot --title aerc aerc"
 riverctl spawn "foot --title newsraft newsraft"
 riverctl spawn "foot --title senpai senpai"
-riverctl spawn "telegram-desktop"
 riverctl spawn "firefox"
 riverctl spawn "nheko"
 riverctl spawn "tuba"
