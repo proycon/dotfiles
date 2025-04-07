@@ -79,7 +79,7 @@ local plugins = {
   "williamboman/mason-lspconfig.nvim",
   "neovim/nvim-lspconfig", -- enable LSP
   "tamago324/nlsp-settings.nvim", -- language server settings defined in json for
-  "jose-elias-alvarez/null-ls.nvim", -- for formatters and linters
+  "nvimtools/none-ls.nvim", -- for formatters and linters
 
   -- Telescope
   "nvim-telescope/telescope.nvim",
@@ -92,7 +92,7 @@ local plugins = {
     build = ":TSUpdate",
   },
   "JoosepAlviste/nvim-ts-context-commentstring",
-  "p00f/nvim-ts-rainbow", --rainbow parantheses
+  --"p00f/nvim-ts-rainbow", --rainbow parantheses
   "phelipetls/jsonpath.nvim", --jq
   { -- adds a :FeMaco command to edit fenced code blocks in markdown, with proper syntax highlighting, LSP and all
       'AckslD/nvim-FeMaco.lua',
@@ -116,7 +116,7 @@ local plugins = {
   "folke/trouble.nvim", -- pretty list for showing diagnostics
   "tpope/vim-fugitive", -- git wrapper (provides :Git commands)
   {
-    "simrat39/symbols-outline.nvim", --symbols (tags) tree like view (PLUGIN IS NO LONGER MAINTAINED since jan 2024!
+    "rockerBOO/symbols-outline.nvim", --symbols (tags) tree like view (PLUGIN IS NO LONGER MAINTAINED since jan 2024!
     config = function()
             require("symbols-outline").setup()
     end
@@ -154,22 +154,22 @@ local function getLinuxDistroFromReleaseFile()
     return nil
 end
 local distro = getLinuxDistroFromReleaseFile()
-if distro ~= "postmarketos" and distro ~= "alpine" then
-   table.insert(plugins,
-      {
-        -- for this we need to install: luarocks --local --lua-version=5.1 install nvim-nio
-        "rest-nvim/rest.nvim",
-        dependencies = {
-          "j-hui/fidget.nvim",
-          "manoelcampos/xml2lua",
-          "nvim-treesitter/nvim-treesitter",
-          opts = function (_, opts)
-            opts.ensure_installed = opts.ensure_installed or {}
-            table.insert(opts.ensure_installed, "http")
-          end,
-        }
-      })
-end
+--if distro ~= "postmarketos" and distro ~= "alpine" then
+-- table.insert(plugins,
+--    {
+--      -- for this we need to install: luarocks --local --lua-version=5.1 install nvim-nio
+--      "rest-nvim/rest.nvim",
+--      dependencies = {
+--        "j-hui/fidget.nvim",
+--        "manoelcampos/xml2lua",
+--        "nvim-treesitter/nvim-treesitter",
+--        opts = function (_, opts)
+--          opts.ensure_installed = opts.ensure_installed or {}
+--          table.insert(opts.ensure_installed, "http")
+--        end,
+--      }
+--    })
+--end
 
 local opts = {rocks = { hererocks = true}}
 
