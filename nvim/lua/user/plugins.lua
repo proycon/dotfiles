@@ -75,8 +75,8 @@ local plugins = {
   "rafamadriz/friendly-snippets", -- a bunch of snippets to use
 
   -- LSP
-  "williamboman/mason.nvim",
-  "williamboman/mason-lspconfig.nvim",
+  "williamboman/mason.nvim", -- Portable package manager for Neovim ... --v
+  "williamboman/mason-lspconfig.nvim", -- Easily install and manage LSP servers, DAP servers, linters, and formatters. 
   "neovim/nvim-lspconfig", -- enable LSP
   "tamago324/nlsp-settings.nvim", -- language server settings defined in json for
   "nvimtools/none-ls.nvim", -- for formatters and linters
