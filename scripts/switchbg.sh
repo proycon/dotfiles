@@ -1,21 +1,33 @@
 #!/bin/sh
 
-if ps aux | grep swaybg | grep -v grep | grep photo-of-lake; then
+CURBG=$(ps aux | grep swaybg | grep -v grep)
+
+case "$CURBG" in
+    *photo-of-lake*)
+        NEWBG=~/dotfiles/media/mountain-view-krivec-ales.jpg
+        ;;
+    *mountain-view*)
+        NEWBG=~/dotfiles/media/mountain.jpg
+        ;;
+    *mountain.jpg*)
+        NEWBG=~/dotfiles/media/forest.jpg
+        ;;
+    *forest.jpg*)
+        NEWBG=~/dotfiles/media/night-misty-peaks.png
+        ;;
+    *night-misty-peaks*)
+        NEWBG=~/dotfiles/media/paradox_waves_by_neaben.jpg
+        ;;
+    *paradox_waves*)
+        NEWBG=~/dotfiles/media/photo-of-lake-krivec-ales.jpg
+        ;;
+    *)
+        NEWBG=~/dotfiles/media/paradox_waves_by_neaben.jpg
+        ;;
+esac
+
+if [ -n "$NEWBG" ]; then
     killall swaybg
-    swaybg -m fill -i ~/dotfiles/media/mountain-view-krivec-ales.jpg &
-elif ps aux | grep swaybg | grep -v grep | grep mountain-view; then
-    killall swaybg
-    swaybg -m fill -i ~/dotfiles/media/mountain.jpg &
-elif ps aux | grep swaybg | grep -v grep | grep mountain.jpg; then
-    killall swaybg
-    swaybg -m fill -i ~/dotfiles/media/forest.jpg &
-elif ps aux | grep swaybg | grep -v grep | grep forest.jpg; then
-    killall swaybg
-    swaybg -m fill -i ~/dotfiles/media/night-misty-peaks.png &
-elif ps aux | grep swaybg | grep -v grep | grep night-misty-peaks.png; then
-    killall swaybg
-    swaybg -m fill -i ~/dotfiles/media/paradox_waves_by_neaben.jpg &
-else
-    killall swaybg
-    swaybg -m fill -i ~/dotfiles/media/photo-of-lake-krivec-ales.jpg &
+    echo "setting background $NEWBG" >&2
+    swaybg -m fill -i "$NEWBG" &
 fi

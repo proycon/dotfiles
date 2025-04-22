@@ -332,7 +332,7 @@ riverctl default-attach-mode bottom
 riverctl set-cursor-warp on-focus-change
 riverctl focus-follows-cursor always
 rivercarro -outer-gaps 0 -inner-gaps 5 -per-tag &
-riverctl spawn "swaybg -m fill -i ~/dotfiles/media/forest.jpg"
+riverctl spawn ~/dotfiles/scripts/switchbg.sh
 riverctl spawn "waybar"
 riverctl spawn "mako" 
 riverctl spawn "gnome-keyring-daemon -d -s --components=pkcs11,secrets,ssh,gpg"
