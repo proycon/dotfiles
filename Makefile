@@ -45,7 +45,7 @@ ifeq ($(DISTRO),arch)
 	#sync once
 	sudo pacman -Sy
 	#core
-	${PACMAN} base-devel bash busybox bzip2 coreutils e2fsprogs fzf gnupg gnutls gzip hdparm htop iotop iperf less lm_sensors lsb-release lshw lsof make nano neovim openssh openssl procps-ng psmisc readline rsync rclone sudo tar time tmux tree udiskie vi zip zsh pass apparmor firejail man tldr tailspin
+	${PACMAN} base-devel bash busybox bzip2 coreutils e2fsprogs fzf gnupg gnutls gzip hdparm htop iotop iperf less lm_sensors lsb-release lshw lsof make nano neovim openssh openssl procps-ng psmisc readline rsync rclone sudo tar time tmux tree udiskie vi zip zsh nushell pass apparmor firejail man tldr tailspin starship
 	#networking
 	${PACMAN} curl fping inetutils netcat networkmanager nfs-utils nm-connection-editor nmap nmap smbclient sshfs traceroute usbutils wget whois wireshark-cli termshark openfortivpn gocryptfs
 	#version control
@@ -115,7 +115,7 @@ else ifeq ($(DISTRO),$(filter $(DISTRO), alpine postmarketos))
 	sudo apk update
 	sudo apk upgrade
 	#core
- 	${APK} build-base bash fzf gnupg gnupg-scdaemon htop lm_sensors lshw neovim openssh openssl readline starship doas doas-sudo-shim tmux tree zip zsh pass docs rsync rclone pciutils pcsc-lite-libs pcsc-tools lspci
+ 	${APK} build-base bash fzf gnupg gnupg-scdaemon htop lm_sensors lshw neovim openssh openssl readline starship doas doas-sudo-shim tmux tree zip zsh pass docs rsync rclone pciutils pcsc-lite-libs pcsc-tools lspci nushell carapace
 	#vcs
 	${APK} git  git-email git-lfs tig github-cli hut
 	#networking
@@ -197,10 +197,10 @@ ifeq (, $(shell which yay))
 endif
 endif 
 
-aur: yay abuild aercbook-bin dasel gomuks-git lsix-git mblaze-git nerd-fonts-complete-starship powerline-fonts-git rofi-lbonn-wayland todotxt ttf-material-design-icons-git ttf-symbola snapcast-git crates-tui pass-git-helper lswt newsraft wayprompt xcursor-breeze
+aur: yay abuild aercbook-bin dasel gomuks-git lsix-git mblaze-git nerd-fonts-complete-starship powerline-fonts-git rofi-lbonn-wayland todotxt ttf-material-design-icons-git ttf-symbola snapcast-git crates-tui pass-git-helper lswt newsraft wayprompt xcursor-breeze carapace-bin
 
-.PHONY: abuild aercbook-bin dasel gomuks-git lsix-git mblaze-git nerd-fonts-complete-starship powerline-fonts-git rofi-lbonn-wayland todotxt ttf-material-design-icons-git ttf-symbola snapcast-git crates-tui pass-git-helper lswt newsraft wayprompt xcursor-breeze
-abuild aercbook-bin dasel gomuks-git lsix-git mblaze-git nerd-fonts-complete-starship powerline-fonts-git rofi-lbonn-wayland todotxt ttf-material-design-icons-git ttf-symbola snapcast-git crates-tui pass-git-helper lswt newsraft wayprompt xcursor-breeze:
+.PHONY: abuild aercbook-bin dasel gomuks-git lsix-git mblaze-git nerd-fonts-complete-starship powerline-fonts-git rofi-lbonn-wayland todotxt ttf-material-design-icons-git ttf-symbola snapcast-git crates-tui pass-git-helper lswt newsraft wayprompt xcursor-breeze carapace-bin
+abuild aercbook-bin dasel gomuks-git lsix-git mblaze-git nerd-fonts-complete-starship powerline-fonts-git rofi-lbonn-wayland todotxt ttf-material-design-icons-git ttf-symbola snapcast-git crates-tui pass-git-helper lswt newsraft wayprompt xcursor-breeze carapace-bin:
 ifeq ($(DISTRO),arch)
 	yay -S $@
 endif

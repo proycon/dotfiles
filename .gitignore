@@ -9,6 +9,7 @@ nvim/.netrwhist
 nvim/plugged
 nvim/plugin
 nvim/spell
+nvim/lazy-lock.json
 #protects against accidental commits of sensitive data
 aliases
 aerc/accounts.conf
@@ -22,3 +23,5 @@ muttaliases
 mblaze/cur
 mblaze/curmail
 mblaze/seq
+nushell/history.txt
+nushell/plugin.msgpackz
