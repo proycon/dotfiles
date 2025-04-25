@@ -1,21 +1,48 @@
 #!/bin/sh
 
-if [ -n "$WAYLAND_DISPLAY" ]; then
-    TEXT="$(wl-paste -p)"
-elif [ -n "$DISPLAY" ]; then
-    TEXT="$(xclip -out)"
+#you may pass a two letter language code for source and target and a text,  order doesn't matter except source language must come before target language
+
+while [ $# -gt 0 ]; do
+    CHARS=$(echo -n "$1" | wc -c)
+    if [ "$CHARS" -eq 2 ]; then
+        if [ -z "$FROMLANG" ]; then
+            FROMLANG=$1
+        elif [ -z "$TOLANG" ]; then
+            TOLANG=$1
+        else
+            TEXT=$1
+        fi
+    else
+        if [ -n "$TEXT" ]; then
+            TEXT="$TEXT $1"
+        else
+            TEXT=$1
+        fi
+    fi
+    shift
+done
+
+[ -z "$TOLANG" ] && TOLANG=en
+
+if [ -z "$TEXT" ]; then
+    if [ -n "$WAYLAND_DISPLAY" ]; then
+        TEXT="$(wl-paste -p)"
+    elif [ -n "$DISPLAY" ]; then
+        TEXT="$(xclip -out)"
+    fi
 fi
-[ -z "$TEXT" ] && notify-send "No text selected"
-echo "IN: $TEXT"
+[ -z "$TEXT" ] && notify-send "No text provided or selected"
 
 if echo -n "$TEXT" | ~/dotfiles/scripts/ischinese.py; then
     TRANS=$(grep -h "$TEXT" ~/projects/vocadata/zh/hsk*.tsv | cut -f 1-4)
     if [ -n "$TRANS" ]; then
         notify-send -t 10000 "HSK Lookup" "$TRANS"
+        echo "$TRANS"
         exit 0
     elif [ -e ~/Documents/languages/chinese/cedict.txt ]; then
         TRANS=$(grep -h "$TEXT" ~/Documents/languages/chinese/cedict.txt | head)
         if [ -n "$TRANS" ]; then
+            echo "$TRANS"
             notify-send -t 10000 "CEDICT Lookup" "$TRANS"
             exit 0
         fi
@@ -27,7 +54,7 @@ if [ ! -d ~/local ]; then
     mkdir ~/local
 fi
 
-if ! command -v argos-translate && [ ! -d ~/local/argostranslate.env ]; then
+if ! command -v argos-translate > /dev/null && [ ! -d ~/local/argostranslate.env ]; then
     cd ~/local/ || exit 2
     python -m venv argostranslate.env
     notify-send "Installing, creating virtualenv..."
@@ -47,13 +74,11 @@ if [ ! -e ~/.cargo/bin/lingua-cli ]; then
 fi
 
 
-if [ "$1" ]; then
-    DETECTEDLANG="$1"
-else
-    DETECTEDLANG=$(lingua-cli -l fr,de,es,it,pt,ru,zh,uk,ro,pl "$TEXT" | cut -f 1)
+if [ -z "$FROMLANG" ] || [ "$FROMLANG" = "xx" ]; then
+    FROMLANG=$(lingua-cli -l fr,de,es,it,pt,ru,zh,uk,ro,pl "$TEXT" | cut -f 1)
 fi
 #check if not already installed (e.g. from AUR)
-if ! command -v argos-translate; then
+if ! command -v argos-translate > /dev/null; then
     . ~/local/argostranslate.env/bin/activate
     if [ ! -e ~/local/argostranslate.env/bin/argos-translate ]; then
         notify-send "Pip installing argostranslate, this may take quite a while!"
@@ -66,11 +91,11 @@ if ! command -v argos-translate; then
         fi
     fi
 fi
-if [ -n "$DETECTEDLANG" ]; then
-    echo "LANG: $DETECTEDLANG"
-    TRANS=$(argos-translate -f "$DETECTEDLANG" -t en "$TEXT")
-    notify-send -t 10000 "Translation ($DETECTEDLANG->en)" "$TRANS"
-    echo "OUT: $TRANS"
+if [ -n "$FROMLANG" ]; then
+    TRANS=$(argos-translate -f "$FROMLANG" -t "$TOLANG" "$TEXT")
+    notify-send -t 10000 "Translation ($FROMLANG->$TOLANG)" "$TRANS"
+    echo "(Translation $FROMLANG->$TOLANG)" >&2
+    echo "$TRANS"
 else 
     notify-send "No language detected, lingua-cli not in $PATH (~/.cargo/bin)?"
 fi
