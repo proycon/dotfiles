@@ -107,38 +107,65 @@ alias gB = gitbranches
 alias xl = translate.sh
 
 
+# Git pull
 def gl []  {
     git pull; git submodule update; resultsound $env.LAST_EXIT_CODE submit.wav boing.wav
 }
+
+# Git pull and make install
 def glmi [] {
     git pull; git submodule update; make install; resultsound $env.LAST_EXIT_CODE submit.wav boing.wav
 }
+
+# Git pull and pip install
 def glsi []  {
     git pull; git submodule update; pip install .; resultsound $env.LAST_EXIT_CODE submit.wav boing.wav
 }
+
+# Pip install
 def pi [] {
     pip install .; resultsound $env.LAST_EXIT_CODE submit.wav boing.wav
 }
+
+# Cargo build
 def cb [] {
     cargo build; resultsound $env.LAST_EXIT_CODE submit.wav boing.wav
 }
+# Cargo build --release
 def cbr [] {
     cargo build --release; resultsound $env.LAST_EXIT_CODE submit.wav boing.wav
 }
 
+# Git push to github
+def gpgh [] {
+    git push github (git branch --show-current); resultsound $env.LAST_EXIT_CODE submit.wav boing.wav
+}
+
+# Git push to sourcehut
+def gpsrht [] {
+    git push srht (git branch --show-current); resultsound $env.LAST_EXIT_CODE submit.wav boing.wav
+}
+
+# Git push to codeberg
+def gpcb [] {
+    git push srht (git branch --show-current); resultsound $env.LAST_EXIT_CODE submit.wav boing.wav
+}
+
+# Git push all remotes 
 def gpa [] {
     echo "default: "; gp
     let remotes = git remote | lines
-    if ($remotes | where {|x| $x == "github"}) { echo "github: "; gpgh }
-    if ($remotes | where {|x| $x == "srht"}) { echo "sourcehut: "; gpsrht }
-    if ($remotes | where {|x| $x == "codeberg"}) { echo "codeberg: "; gpcb }
+    if ("github" in $remotes) { echo "github: "; gpgh}
+    if ("srht" in $remotes) { echo "srht: "; gpsrht }
+    if ("codeberg" in $remotes) { echo "codeberg: "; gpcb }
 }
 
+# Git fetch all remotes 
 def gfa [] {
     let remotes = git remote | lines
-    if ($remotes | where {|x| $x == "github"}) { echo "github: "; git fetch github }
-    if ($remotes | where {|x| $x == "srht"}) { echo "sourcehut: "; git fetch sourcehut }
-    if ($remotes | where {|x| $x == "codeberg"}) { echo "codeberg: "; git fetch codeberg }
+    if ("github" in $remotes) { echo "github: "; git fetch github }
+    if ("srht" in $remotes) { echo "srht: "; git fetch srht }
+    if ("codeberg" in $remotes) { echo "codeberg: "; git fetch codeberg }
 }
 
 # Get vatsim Air-traffic controllers online in Europe
@@ -147,6 +174,7 @@ def vatsim [] {
 }
 
 
+# Generate QR code on the terminal
 def qr [url] {
     curl -s $"http://qrenco.de/($url | url encode)"
 }
