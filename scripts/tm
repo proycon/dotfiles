@@ -2,6 +2,7 @@
 
 # Start Tmux
 
+sleep 1 #minor delay to allow river to read the title and move the window before tmux changes it
 if [ -n "$1" ]; then
     if command -v "$1" 2> /dev/null && [ "$1" != "local" ]; then
         name=$1

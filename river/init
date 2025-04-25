@@ -433,18 +433,22 @@ unset PASS #very important!
 
 
 #autostart stuff
-riverctl spawn "foot --title nvim ~/bin/tm nvim"
-riverctl spawn "foot --title local ~/bin/tm local"
 if command -v nu; then
+    #with nushell overriding default shell
     riverctl spawn "foot --title aerc nu -e aerc"
     riverctl spawn "foot --title newsraft nu -e newsraft"
     riverctl spawn "foot --title senpai nu -e senpai"
     riverctl spawn "foot --title remote nu"
+    riverctl spawn "foot --title nvim nu -e ~/bin/tm nvim"
+    riverctl spawn "foot --title local nu -e ~/bin/tm local"
 else
+    #with system default shell (zsh/bash/ash)
     riverctl spawn "foot --title remote"
     riverctl spawn "foot --title aerc aerc"
     riverctl spawn "foot --title newsraft newsraft"
     riverctl spawn "foot --title senpai senpai"
+    riverctl spawn "foot --title nvim ~/bin/tm nvim"
+    riverctl spawn "foot --title local ~/bin/tm local"
 fi
 riverctl spawn "firefox"
 riverctl spawn "nheko"
