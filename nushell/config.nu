@@ -138,6 +138,7 @@ def gfa [] {
     if ($remotes | where {|x| $x == "codeberg"}) { echo "codeberg: "; git fetch codeberg }
 }
 
+
 def qr [url] {
     curl -s $"http://qrenco.de/($url | url encode)"
 }

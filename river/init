@@ -48,7 +48,11 @@ gsettings set org.gnome.desktop.interface cursor-theme Breeze_Light
 gsettings set org.gnome.desktop.interface cursor-size 48
 
 # Super+Shift+Return to start an instance of foot (https://codeberg.org/dnkl/foot)
-riverctl map normal Super+Shift Return spawn foot
+if command -v nu; then
+    riverctl map normal Super+Shift Return spawn "foot -e nu"
+else
+    riverctl map normal Super+Shift Return spawn foot
+fi
 
 # Super+Q to close the focused view
 riverctl map normal Super+Shift Q close
@@ -184,7 +188,11 @@ riverctl map normal Super+Control Left  send-layout-cmd rivercarro "main-locatio
 #custom actions
 riverctl map normal Super Space spawn 'bemenu-run --fn "Monospace 22" -l 20'
 riverctl map normal Super+Shift space spawn 'rofi -sidebar-mode -show drun'
-riverctl map normal Super F1 spawn 'foot --title aerc aerc'
+if command -v nu; then
+    riverctl map normal Super F1 spawn 'foot --title aerc nu -e aerc'
+else
+    riverctl map normal Super F1 spawn 'foot --title aerc aerc'
+fi
 riverctl map normal Super E spawn ~/dotfiles/scripts/translate.sh
 riverctl map normal Alt F2 spawn ~/bin/lala
 riverctl map normal Alt+Shift, F2 spawn 'killall snapclient'
@@ -335,7 +343,6 @@ rivercarro -outer-gaps 0 -inner-gaps 5 -per-tag &
 riverctl spawn ~/dotfiles/scripts/switchbg.sh
 riverctl spawn "waybar"
 riverctl spawn "mako" 
-riverctl spawn "gnome-keyring-daemon -d -s --components=pkcs11,secrets,ssh,gpg"
 riverctl spawn "udiskie"
 riverctl spawn "setsid /home/proycon/projects/lighthome/client.sh"
 if [ "$HOSTNAME" = "toren" ]; then
@@ -398,9 +405,7 @@ riverctl rule-add -app-id 'dev.geopjr.Tuba' tags 32 #workspace 6 = 0b100000 = 32
 riverctl rule-add -app-id 'foot' -title 'newsraft' tags 32 #workspace 6 = 0b100000 = 32
 riverctl rule-add -app-id 'foot' -title 'remote*' tags 128 #workspace 8
 
-riverctl spawn "foot --title nvim ~/bin/tm nvim"
-riverctl spawn "foot --title local ~/bin/tm local"
-riverctl spawn "foot --title remote"
+
 
 if nmcli -t 2> /dev/null; then
     #network manager is running
@@ -414,10 +419,33 @@ if nmcli -t 2> /dev/null; then
     done
 fi
 
+#use --login if passwordless login is enabled, otherwise use --start
+if pidof gnome-keyring-daemon; then
+    #keyring daemon already running (initalized by PAM, we only need to 'start' it)
+    pass dummy #blocks until password is given
+    riverctl spawn "gnome-keyring-daemon --daemonize --start --components=pkcs11,secrets,ssh,gpg"
+else
+    #no keyring daemon running (start one from scratch and pass the password to it so we don't have an extra prompt)
+    PASS=$(pass "$HOSTNAME") #blocks until password is given
+    riverctl spawn "echo -n \"$PASS\" | gnome-keyring-daemon --daemonize --login --components=pkcs11,secrets,ssh,gpg --unlock"
+fi
+unset PASS #very important!
+
+
 #autostart stuff
-riverctl spawn "foot --title aerc aerc"
-riverctl spawn "foot --title newsraft newsraft"
-riverctl spawn "foot --title senpai senpai"
+riverctl spawn "foot --title nvim ~/bin/tm nvim"
+riverctl spawn "foot --title local ~/bin/tm local"
+if command -v nu; then
+    riverctl spawn "foot --title aerc nu -e aerc"
+    riverctl spawn "foot --title newsraft nu -e newsraft"
+    riverctl spawn "foot --title senpai nu -e senpai"
+    riverctl spawn "foot --title remote nu"
+else
+    riverctl spawn "foot --title remote"
+    riverctl spawn "foot --title aerc aerc"
+    riverctl spawn "foot --title newsraft newsraft"
+    riverctl spawn "foot --title senpai senpai"
+fi
 riverctl spawn "firefox"
 riverctl spawn "nheko"
 riverctl spawn "tuba"
