@@ -1,6 +1,7 @@
 #!/bin/sh
 
 #you may pass a two letter language code for source and target and a text,  order doesn't matter except source language must come before target language
+#Pass - for stdin , pass xx as a dummy language code for autodetection on the source side.
 
 while [ $# -gt 0 ]; do
     CHARS=$(echo -n "$1" | wc -c)
