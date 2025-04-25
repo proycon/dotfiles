@@ -40,13 +40,23 @@ use std/log
 def resultsound [returncode sound_ok sound_fail] {
    if $returncode == 0 {
        if ($"($env.HOME)/dotfiles/media/($sound_ok)" | path exists) {
-           job spawn { mpv --really-quiet $"($env.HOME)/dotfiles/media/($sound_ok)" | ignore } | ignore
+           try {
+               job spawn { mpv --really-quiet $"($env.HOME)/dotfiles/media/($sound_ok)" | ignore } | ignore
+           } catch {
+               #fallback for nushell <0.103 without job 
+               mpv --really-quiet $"($env.HOME)/dotfiles/media/($sound_ok)" | ignore
+           }
        } else {
            log warning "ok sound not found"
         }
    } else {
        if ($"($env.HOME)/dotfiles/media/($sound_fail)" | path exists) {
-           job spawn { mpv --really-quiet $"($env.HOME)/dotfiles/media/($sound_fail)" | ignore } | ignore
+           try {
+               job spawn { mpv --really-quiet $"($env.HOME)/dotfiles/media/($sound_fail)" | ignore } | ignore
+           } catch {
+               #fallback for nushell <0.103 without job 
+               mpv --really-quiet $"($env.HOME)/dotfiles/media/($sound_ok)" | ignore
+           }
        } else {
            log warning "fail sound not found"
        }
