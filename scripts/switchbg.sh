@@ -1,7 +1,7 @@
 #!/bin/sh
 
 #stop the sxmo background daemon if we're on sxmo
-command -v superctl && superctl stop sxmo_bg 
+command -v superctl && superctl stop sxmo_bg && killall swaybg
 
 CURBG=$(ps aux | grep swaybg | grep -v grep)
 
