@@ -106,6 +106,7 @@ alias gL = gitlog
 alias gB = gitbranches
 alias xl = translate.sh
 
+
 def gl []  {
     git pull; git submodule update; resultsound $env.LAST_EXIT_CODE submit.wav boing.wav
 }
@@ -124,6 +125,7 @@ def cb [] {
 def cbr [] {
     cargo build --release; resultsound $env.LAST_EXIT_CODE submit.wav boing.wav
 }
+
 def gpa [] {
     echo "default: "; gp
     let remotes = git remote | lines
@@ -131,11 +133,17 @@ def gpa [] {
     if ($remotes | where {|x| $x == "srht"}) { echo "sourcehut: "; gpsrht }
     if ($remotes | where {|x| $x == "codeberg"}) { echo "codeberg: "; gpcb }
 }
+
 def gfa [] {
     let remotes = git remote | lines
     if ($remotes | where {|x| $x == "github"}) { echo "github: "; git fetch github }
     if ($remotes | where {|x| $x == "srht"}) { echo "sourcehut: "; git fetch sourcehut }
     if ($remotes | where {|x| $x == "codeberg"}) { echo "codeberg: "; git fetch codeberg }
+}
+
+# Get vatsim Air-traffic controllers online in Europe
+def vatsim [] {
+    http get https://api.vatsim.net/v2/atc/online | where callsign =~ "^[LE].*" | sort-by callsign
 }
 
 
