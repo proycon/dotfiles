@@ -104,6 +104,7 @@ alias vim = nvim
 alias l = ls -l
 alias gL = gitlog
 alias gB = gitbranches
+alias xl = translate.sh
 
 def gl []  {
     git pull; git submodule update; resultsound $env.LAST_EXIT_CODE submit.wav boing.wav

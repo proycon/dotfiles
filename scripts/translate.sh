@@ -33,6 +33,17 @@ if [ -z "$TEXT" ]; then
 fi
 [ -z "$TEXT" ] && notify-send "No text provided or selected"
 
+if [ "$TEXT" = "-" ]; then
+    TEXT=""
+    while read -r line; do
+        if [ -n "$TEXT" ]; then
+            TEXT="$TEXT\n$line"
+        else
+            TEXT=$line
+        fi
+    done
+fi
+
 if echo -n "$TEXT" | ~/dotfiles/scripts/ischinese.py; then
     TRANS=$(grep -h "$TEXT" ~/projects/vocadata/zh/hsk*.tsv | cut -f 1-4)
     if [ -n "$TRANS" ]; then
@@ -75,7 +86,7 @@ fi
 
 
 if [ -z "$FROMLANG" ] || [ "$FROMLANG" = "xx" ]; then
-    FROMLANG=$(lingua-cli -l fr,de,es,it,pt,ru,zh,uk,ro,pl "$TEXT" | cut -f 1)
+    FROMLANG=$(lingua-cli -l fr,de,es,it,pt,ru,zh,uk,ro,pl,nl "$TEXT" | cut -f 1)
 fi
 #check if not already installed (e.g. from AUR)
 if ! command -v argos-translate > /dev/null; then

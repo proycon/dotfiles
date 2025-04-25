@@ -142,6 +142,7 @@ alias surfdrive="rclone ls surfdrive_knaw:"
 alias lh="linkhandler"
 alias open="linkhandler"
 alias z='less -rN'
+alias xl='translate.sh'
 alias myip="dig +short myip.opendns.com @resolver1.opendns.com"
 alias whatismyip="dig +short myip.opendns.com @resolver1.opendns.com"
 if [[ "$HOST" == "proyphone" ]] || [[ "$HOST" == "oneplus-enchilada" ]] || [[ "$HOST" == "google-sargo" ]]; then
@@ -161,30 +162,6 @@ else
         fi
     fi
 fi
-alias en2de="xl en de"
-alias en2fr="xl en fr"
-alias en2es="xl en es"
-alias en2pt="xl en pt"
-alias en2it="xl en it"
-alias en2ru="xl en ru"
-alias en2zh="xl en zh"
-alias en2nl="xl en nl"
-alias de2en="xl de en"
-alias fr2en="xl fr en"
-alias es2en="xl es en"
-alias pt2en="xl pt en"
-alias it2en="xl it en"
-alias ru2en="xl ru en"
-alias zh2en="xl zh en"
-xl() {
-    . ~/local/argostranslate.env/bin/activate
-    FROM="$1"
-    shift
-    TO="$1"
-    shift
-    argos-translate -f "$FROM" -t "$TO" "$*"
-    deactivate
-}
 hsk() {
     grep "$1" ~/projects/vocadata/zh/hsk*.tsv | cut -f 1-4
 }
