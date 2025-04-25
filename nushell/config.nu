@@ -30,8 +30,10 @@ export-env {
     $env.BROWSER = "firefox"
     $env.XDG_CONFIG_HOME = $"($env.HOME)/.config"
     $env.TODO_DIR = $"($env.HOME)/.todo"
-    $env.BAT-THEME = "gruvbox-dark"
     $env.PINENTRY_USER_DATA = "curses"
+    $env.PAGER = try { (which bat).0.cmd } catch { "less" }
+    $env.BAT_PAGER = "less"
+    $env.BAT_THEME = "gruvbox-dark"
 }
 
 use std/dirs
@@ -80,6 +82,8 @@ alias gp = git push; resultsound $env.LAST_EXIT_CODE submit.wav boing.wav
 #alias gpcb = 'sshcheck && git push codeberg $(git branch --show-current); resultsound $env.LAST_EXIT_CODE submit.wav boing.wav'
 #alias gpu = 'sshcheck && git push upstream $(git branch --show-current); resultsound $env.LAST_EXIT_CODE submit.wav boing.wav'
 alias gca = git commit -a
+alias gco = git checkout
+alias gb = git branch
 alias pm = podman
 alias pmc = podman-compose
 alias a = tmux attach
@@ -189,7 +193,13 @@ def qr [url] {
     curl -s $"http://qrenco.de/($url | url encode)"
 }
 
-#source: https://github.com/nushell/nu_scripts/blob/main/sourced/cool-oneliners/cargo_search.nu , license: MIT
+# build an ssh tunnel SSH tunnel
+def sshtunnel [targethost: string, port: int] {
+    ssh -N -f -L $"localhost:($port):localhost:$(port)" $targethost
+}
+
+# Cargo search
+# source: https://github.com/nushell/nu_scripts/blob/main/sourced/cool-oneliners/cargo_search.nu , license: MIT
 def "cargo search" [ query: string, --limit=10] { 
     ^cargo search $query --limit $limit
     | lines 
