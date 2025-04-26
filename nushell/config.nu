@@ -136,12 +136,15 @@ def resultsound [returncode sound_ok sound_fail] {
    }
 }
 
-#def mkenv [] {
-#    if not ("env" | path exists) { virtualenv env };  overlay use env/bin/activate.nu
-#}
-#def mk.env [] { 
-#    if not (".env" | path exists) { virtualenv .env };  overlay use .env/bin/activate.nu
-#}
+# Make or activate virtual python environment. Note that nushell variables from the current shell are not passed as this is a new subshell!
+def mkenv [envname?: string] {
+    #this will launch a subshell so non-environment variables from current shell are lost
+    if ($envname == "" or $envname == null) {
+        mkenv "env"
+    } else {
+        if not ($envname | path exists) { virtualenv $envname };  nu -e $"$env.VIRTUAL_ENV_DISABLE_PROMPT = true; overlay use ($envname)/bin/activate.nu; "
+    }
+}
 
 #alias glgh= 'sshcheck && git pull github $(git branch --show-current) && git submodule update; resultsound $env.LAST_EXIT_CODE wipe.wav boing.wav'
 #alias glsrht= 'sshcheck && git pull srht $(git branch --show-current) && git submodule update; resultsound $env.LAST_EXIT_CODE wipe.wav boing.wav'
