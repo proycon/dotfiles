@@ -146,6 +146,17 @@ def mkenv [envname?: string] {
     }
 }
 
+def --wrapped man [...args] {
+    $env.GROFF_NO_SGR = 1
+    $env.LESS_TERMCAP_mb = ansi --escape '01;31m'  #\E[01;31m'
+    $env.LESS_TERMCAP_md = ansi --escape '01;38;5;74m'  #\E[01;38;5;74m' 
+    $env.LESS_TERMCAP_me = ansi reset
+    $env.LESS_TERMCAP_se = ansi reset
+    $env.LESS_TERMCAP_ue = ansi reset
+    $env.LESS_TERMCAP_us = ansi --escape '04;38;5;146m' #$'\E[04;38;5;146m'
+    ^man ...$args
+}
+
 #alias glgh= 'sshcheck && git pull github $(git branch --show-current) && git submodule update; resultsound $env.LAST_EXIT_CODE wipe.wav boing.wav'
 #alias glsrht= 'sshcheck && git pull srht $(git branch --show-current) && git submodule update; resultsound $env.LAST_EXIT_CODE wipe.wav boing.wav'
 #alias glu = 'sshcheck && git pull upstream $(git branch --show-current) && git submodule update; resultsound $env.LAST_EXIT_CODE wipe.wav boing.wav'
