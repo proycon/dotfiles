@@ -409,6 +409,11 @@ riverctl rule-add -app-id 'foot' -title 'newsraft' tags 32 #workspace 6 = 0b1000
 riverctl rule-add -app-id 'foot' -title 'remote*' tags 128 #workspace 8
 
 
+if [ "$HOSTNAME" = "pollux" ]; then
+    riverctl focus-output DP-2
+fi
+riverctl set-focused-tags 1
+
 
 if nmcli -t 2> /dev/null; then
     #network manager is running
@@ -425,12 +430,16 @@ fi
 #use --login if passwordless login is enabled, otherwise use --start
 if pidof gnome-keyring-daemon; then
     #keyring daemon already running (initalized by PAM, we only need to 'start' it)
-    pass dummy #blocks until password is given
+    while ! pass dummy ; do #blocks until password is given
+        echo "waiting for password">&2
+    done
     riverctl spawn "gnome-keyring-daemon --daemonize --start --components=pkcs11,secrets,ssh,gpg"
 else
     #no keyring daemon running (start one from scratch and pass the password to it so we don't have an extra prompt)
-    PASS=$(pass "$HOSTNAME") #blocks until password is given
-    riverctl spawn "echo -n \"$PASS\" | gnome-keyring-daemon --daemonize --login --components=pkcs11,secrets,ssh,gpg --unlock"
+    PASS=""
+    while [ -z "$PASS" ]; do
+        PASS=$(pass "$HOSTNAME") #blocks until password is given
+    done
 fi
 unset PASS #very important!
 
