@@ -40,8 +40,10 @@
 },
 "river/layout": {
     "format": "[{}] ",
-    "min-length": 4,
-    "align": "right"
+    "min-length": 5,
+    "align": "right",
+    "on-click": "riverctl send-layout-cmd rivercarro 'main-location-cycle left,right,top,bottom'",
+    "on-click-right": "riverctl send-layout-cmd rivercarro 'main-location-cycle monocle,left'"
 },
 "hyprland/workspaces": {
 },

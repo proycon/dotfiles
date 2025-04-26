@@ -107,3 +107,12 @@ tooltip label {
 window#waybar.fullscreen {
     background: #495732;
 }
+#layout {
+    background: #902020;
+}
+#layout.focused {
+    background: #205020;
+}
+#layout.monocle {
+    background: #2020ff;
+}
