@@ -294,14 +294,14 @@ def F --env () {
     }
 }
 
-# Fuzzy filefinder and linkhandler
+# Fuzzy directory finder
 def D --env () {
     let result = fd -t d --color=always | fzf --ansi --preview='nu ~/dotfiles/scripts/preview.nu {}'
     if $result != "" {
         cd $result
     }
 }
-# Fuzzy filefinder and linkhandler
+# Fuzzy filefinder and linkhandler (edit mode)
 def E --env () {
     let result = fd --color=always | fzf --ansi --preview='nu ~/dotfiles/scripts/preview.nu {}'
     if ($result | path type) == "dir" {
