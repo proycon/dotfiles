@@ -113,6 +113,6 @@ window#waybar.fullscreen {
 #layout.focused {
     background: #205020;
 }
-#layout.monocle {
+#layout.monocle.focused {
     background: #2020ff;
 }
