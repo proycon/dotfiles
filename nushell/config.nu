@@ -286,7 +286,7 @@ def "cargo search" [ query: string, --limit=10] {
 
 # Fuzzy filefinder and linkhandler
 def F --env () {
-    let result = sk --color=always --preview='nu ~/dotfiles/scripts/preview.nu {}'
+    let result = fzf --preview='nu ~/dotfiles/scripts/preview.nu {}'
     if ($result | path type) == "dir" {
         cd $result
     } else {
@@ -296,7 +296,7 @@ def F --env () {
 
 # Fuzzy filefinder and linkhandler
 def E --env () {
-    let result = sk --ansi --preview='nu ~/dotfiles/scripts/preview.nu {}'
+    let result = fzf --preview='nu ~/dotfiles/scripts/preview.nu {}'
     if ($result | path type) == "dir" {
         cd $result
     } else {
