@@ -38,6 +38,11 @@ export-env {
 
 use std/dirs
 use std/log
+use std/util "path add"
+
+path add "~/.cargo/bin"
+path add "~/.local/bin"
+path add "~/bin"
 
 def resultsound [returncode sound_ok sound_fail] {
    if $returncode == 0 {
