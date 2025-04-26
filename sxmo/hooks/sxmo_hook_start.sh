@@ -11,11 +11,13 @@
 xdg-user-dirs-update
 
 #kill possibly stale things from previous session
-killall fcitx5
-killall peanutbutter
-killall client.sh
-killall mosquitto_sub
-killall -9 mpv
+if [ "$HOSTNAME" != "river" ]; then
+    killall fcitx5
+    killall peanutbutter
+    killall client.sh
+    killall mosquitto_sub
+    killall -9 mpv
+fi
 
 sxmo_jobs.sh start daemon_manager superd
 
@@ -124,7 +126,7 @@ superctl start sxmo_networkmonitor
 superctl start sxmo_notificationmonitor
 
 # Play a funky startup tune if you want (disabled by default)
-mpv --quiet --no-video ~/welcome.ogg &
+[ "$HOSTNAME" != "toren" ] && mpv --quiet --no-video ~/welcome.ogg &
 
 # mmsd and vvmd
 if [ -z "$SXMO_NO_MODEM" ]; then
@@ -146,12 +148,16 @@ fi
 sxmo_migrate.sh state || sxmo_notify_user.sh --urgency=critical \
 	"Config needs migration" "$? file(s) in your sxmo configuration are out of date and disabled - using defaults until you migrate (run sxmo_migrate.sh)"
 
-GLFW_IM_MODULE=fcitx
-INPUT_METHOD=fcitx
-XMODIFIERS=@im=fcitx
-IMSETTINGS_MODULE=fcitx
-QT_IM_MODULE=fcitx
-export GLFW_IM_MODULE INPUT_METHOD XMODIFIERS IMSETTINGS_MODULE QT_IM_MODULE
-fcitx5 &
+if [ "$HOSTNAME" != "toren" ]; then
+    GLFW_IM_MODULE=fcitx
+    INPUT_METHOD=fcitx
+    XMODIFIERS=@im=fcitx
+    IMSETTINGS_MODULE=fcitx
+    QT_IM_MODULE=fcitx
+    export GLFW_IM_MODULE INPUT_METHOD XMODIFIERS IMSETTINGS_MODULE QT_IM_MODULE
+    fcitx5 &
+fi
 
-(sleep 10 && ~/lighthome/client.sh > /dev/null 2>&1)
+if ! pgrep -f lighthome/client; then
+    (sleep 10 && ~/lighthome/client.sh > /dev/null 2>&1)
+fi
