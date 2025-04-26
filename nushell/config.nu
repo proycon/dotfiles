@@ -289,17 +289,24 @@ def F --env () {
     let result = fd --color=always | fzf --ansi --preview='nu ~/dotfiles/scripts/preview.nu {}'
     if ($result | path type) == "dir" {
         cd $result
-    } else {
+    } else if ($result != "") {
         linkhandler $result
     }
 }
 
 # Fuzzy filefinder and linkhandler
+def D --env () {
+    let result = fd -t d --color=always | fzf --ansi --preview='nu ~/dotfiles/scripts/preview.nu {}'
+    if $result != "" {
+        cd $result
+    }
+}
+# Fuzzy filefinder and linkhandler
 def E --env () {
     let result = fd --color=always | fzf --ansi --preview='nu ~/dotfiles/scripts/preview.nu {}'
     if ($result | path type) == "dir" {
         cd $result
-    } else {
+    } else if ($result != "") {
         $env.TARGET = "edit"
         linkhandler $result
         hide-env TARGET
