@@ -21,7 +21,7 @@ export DISABLE_AUTO_UPDATE="true"
 # DISABLE_AUTO_TITLE="true"
 
 # Uncomment following line if you want red dots to be displayed while waiting for completion
-# COMPLETION_WAITING_DOTS="true"
+COMPLETION_WAITING_DOTS="true"
 
 unset CHECKGIT
 export DISABLE_UNTRACKED_FILES_DIRTY="true"
@@ -88,8 +88,7 @@ resultsound () {
     return $1
 }
 
-alias en='LANGUAGE="en_US.UTF-8" zsh'
-alias mi='LANGUAGE="en_GB.UTF-8" make install; resultsound $? submit.wav boing.wav'
+alias mi='make install; resultsound $? submit.wav boing.wav'
 alias glmi='sshcheck && git pull &&  && git submodule update && LANGUAGE="en_GB.UTF-8" make install; resultsound $? submit.wav boing.wav'
 alias glsi='git pull && git submodule update && pip install .; resultsound $? submit.wav boing.wav'
 alias pi='pip install .; resultsound $? submit.wav boing.wav'

@@ -432,19 +432,16 @@ fi
 
 
 #use --login if passwordless login is enabled, otherwise use --start
+PASS=""
+while [ -z "$PASS" ]; do
+    echo "waiting for password for $HOSTNAME">&2
+    PASS=$(pass "$HOSTNAME") #blocks until password is given
+done
 if pidof gnome-keyring-daemon; then
-    #keyring daemon already running (initalized by PAM, we only need to 'start' it)
-    while ! pass dummy ; do #blocks until password is given
-        echo "waiting for password">&2
-    done
-    riverctl spawn "gnome-keyring-daemon --daemonize --start --components=pkcs11,secrets,ssh,gpg"
+    echo -n \"$PASS\" | gnome-keyring-daemon --daemonize --start --components=pkcs11,secrets,ssh,gpg --unlock
 else
     #no keyring daemon running (start one from scratch and pass the password to it so we don't have an extra prompt)
-    PASS=""
-    while [ -z "$PASS" ]; do
-        PASS=$(pass "$HOSTNAME") #blocks until password is given
-    done
-    riverctl spawn "echo -n \"$PASS\" | gnome-keyring-daemon --daemonize --login --components=pkcs11,secrets,ssh,gpg --unlock"
+    echo -n \"$PASS\" | gnome-keyring-daemon --daemonize --login --components=pkcs11,secrets,ssh,gpg --unlock
 fi
 unset PASS #very important!
 
