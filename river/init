@@ -438,10 +438,11 @@ while [ -z "$PASS" ]; do
     PASS=$(pass "$HOSTNAME") #blocks until password is given
 done
 if pidof gnome-keyring-daemon; then
-    echo -n \"$PASS\" | gnome-keyring-daemon --daemonize --start --components=pkcs11,secrets,ssh,gpg --unlock
+    echo "replacing and unlocking existing gnome-keyring-daemon">&2
+    echo -n "$PASS" | gnome-keyring-daemon --daemonize --replace --components=pkcs11,secrets,ssh,gpg --unlock
 else
-    #no keyring daemon running (start one from scratch and pass the password to it so we don't have an extra prompt)
-    echo -n \"$PASS\" | gnome-keyring-daemon --daemonize --login --components=pkcs11,secrets,ssh,gpg --unlock
+    echo "starting and unlocking new gnome-keyring-daemon">&2
+    echo -n "$PASS" | gnome-keyring-daemon --daemonize --login --components=pkcs11,secrets,ssh,gpg --unlock
 fi
 unset PASS #very important!
 
