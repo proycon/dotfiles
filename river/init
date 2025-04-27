@@ -48,8 +48,8 @@ gsettings set org.gnome.desktop.interface cursor-theme Breeze_Light
 gsettings set org.gnome.desktop.interface cursor-size 48
 
 # Super+Shift+Return to start an instance of foot (https://codeberg.org/dnkl/foot)
-if command -v nu; then
-    riverctl map normal Super+Shift Return spawn "foot -e nu"
+if [ -n "$OVERRIDESHELL" ]; then
+    riverctl map normal Super+Shift Return spawn "foot -e $OVERRIDESHELL"
 else
     riverctl map normal Super+Shift Return spawn foot
 fi
@@ -188,8 +188,8 @@ riverctl map normal Super+Control Left  send-layout-cmd rivercarro "main-locatio
 #custom actions
 riverctl map normal Super Space spawn 'bemenu-run --fn "Monospace 22" -l 20'
 riverctl map normal Super+Shift space spawn 'rofi -sidebar-mode -show drun'
-if command -v nu; then
-    riverctl map normal Super F1 spawn 'foot --title aerc nu -e aerc'
+if [ -n "$OVERRIDESHELL" ]; then
+    riverctl map normal Super F1 spawn "foot --title aerc $OVERRIDESHELL -e aerc"
 else
     riverctl map normal Super F1 spawn 'foot --title aerc aerc'
 fi
@@ -447,14 +447,14 @@ unset PASS #very important!
 
 
 #autostart stuff
-if command -v nu; then
+if [ -n "$OVERRIDESHELL" ]; then
     #with nushell overriding default shell
-    riverctl spawn "foot --title aerc nu -e aerc"
-    riverctl spawn "foot --title newsraft nu -e newsraft"
-    riverctl spawn "foot --title senpai nu -e senpai"
-    riverctl spawn "foot --title remote nu"
-    riverctl spawn "foot --title nvim nu -e ~/bin/tm nvim"
-    riverctl spawn "foot --title local nu -e ~/bin/tm local"
+    riverctl spawn "foot --title aerc $OVERRIDESHELL -e aerc"
+    riverctl spawn "foot --title newsraft $OVERRIDESHELL -e newsraft"
+    riverctl spawn "foot --title senpai $OVERRIDESHELL -e senpai"
+    riverctl spawn "foot --title remote $OVERRIDESHELL"
+    riverctl spawn "foot --title nvim $OVERRIDESHELL -e ~/bin/tm nvim"
+    riverctl spawn "foot --title local $OVERRIDESHELL -e ~/bin/tm local"
 else
     #with system default shell (zsh/bash/ash)
     riverctl spawn "foot --title remote"
