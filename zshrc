@@ -140,7 +140,6 @@ alias mk.env="[ ! -e .env ] && python3 -m venv .env; . .env/bin/activate"
 alias surfdrive="rclone ls surfdrive_knaw:"
 alias lh="linkhandler"
 alias open="linkhandler"
-alias z='less -rN'
 alias xl='translate.sh'
 alias myip="dig +short myip.opendns.com @resolver1.opendns.com"
 alias whatismyip="dig +short myip.opendns.com @resolver1.opendns.com"
