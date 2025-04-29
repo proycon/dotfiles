@@ -236,8 +236,8 @@ riverctl map normal Super n spawn ~/dotfiles/scripts/network-menu.sh
 riverctl map normal Super+Shift n spawn ~/dotfiles/scripts/startnumen.sh
 riverctl map normal Super+Control k spawn ~/dotfiles/scripts/killmenu.sh
 riverctl map normal Super b spawn ~/dotfiles/scripts/switchbg.sh
-riverctl map normal Super escape spawn ~/dotfiles/scripts/lock.sh
-riverctl map normal Control escape spawn ~/dotfiles/scripts/lock.sh
+riverctl map normal Super escape spawn ~/dotfiles/scripts/lock.sh force
+riverctl map normal Control escape spawn ~/dotfiles/scripts/lock.sh force
 riverctl map normal Super+Shift escape spawn ~/dotfiles/scripts/suspend.sh
 riverctl map normal Control+Shift escape spawn ~/dotfiles/scripts/suspend.sh
 
@@ -372,13 +372,23 @@ if [ ! -e /run/systemd/system ]; then
     fi
 fi
 
-fcitx5 &
-riverctl spawn "aa-notify -p -s 1 -w 60 -f /var/log/audit/audit.log"
-#view sources with: pactl list short sources
 if [ "$HOSTNAME" = "pollux" ]; then
+    #left monitor uses top layout
+    #riverctl focus-output DP-1 && riverctl output-layout top
+    #right monitor is default
+    riverctl focus-output DP-2
+    riverctl set-focused-tags 1
+
+    #set default sources for sound
+    #view sources with: pactl list short sources
     pactl set-default-sink alsa_output.pci-0000_17_00.6.3.analog-stereo.monitor
     pactl set-default-source alsa_input.usb-Samson_Technologies_Samson_C01U_Pro_Mic-00.3.analog-stereo 
 fi
+
+fcitx5 &
+
+#apparmor notifications
+#riverctl spawn "aa-notify -p -s 1 -w 60 -f /var/log/audit/audit.log"
 
 # Auto-start all applications on the right tag 
 if [ "$HOSTNAME" = "pollux" ]; then
@@ -413,10 +423,6 @@ riverctl rule-add -app-id 'foot' -title 'newsraft' tags 32 #workspace 6 = 0b1000
 riverctl rule-add -app-id 'foot' -title 'remote*' tags 128 #workspace 8
 
 
-if [ "$HOSTNAME" = "pollux" ]; then
-    riverctl focus-output DP-2
-fi
-riverctl set-focused-tags 1
 
 if nmcli -t 2> /dev/null; then
     #network manager is running
