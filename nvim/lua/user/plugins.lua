@@ -61,6 +61,9 @@ local plugins = {
     dependencies = { { "rktjmp/lush.nvim" } }
   },
 
+  -- text movements
+  "echasnovski/mini.nvim",
+
   -- cmp plugins
   "hrsh7th/nvim-cmp", -- The completion plugin
   "hrsh7th/cmp-buffer", -- buffer completions
@@ -122,6 +125,7 @@ local plugins = {
     end
   },
   "pwntester/octo.nvim", -- github CLI integration
+  "mistweaverco/kulala.nvim", -- REST API client
 {
       "ray-x/lsp_signature.nvim", -- Show function signature as you type
       event = "VeryLazy",
@@ -158,7 +162,7 @@ local distro = getLinuxDistroFromReleaseFile()
 -- table.insert(plugins,
 --    {
 --      -- for this we need to install: luarocks --local --lua-version=5.1 install nvim-nio
---      "rest-nvim/rest.nvim",
+--      "rest-nvim/rest.nvim", -- replaced with kulala
 --      dependencies = {
 --        "j-hui/fidget.nvim",
 --        "manoelcampos/xml2lua",
