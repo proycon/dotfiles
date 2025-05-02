@@ -330,6 +330,11 @@ if [ "$SXMO_WM" = "river" ]; then
 
     # Shutdown
     riverctl map normal Super T spawn 'sxmo_appmenu.sh power'
+
+    for mode in normal locked; do
+        riverctl map-switch $mode lid open spawn 'sxmo_wm.sh dpms on'
+        riverctl map-switch $mode lid close spawn 'sxmo_wm.sh dpms off'
+    done
 fi
 
 riverctl keyboard-layout $KB_OPTS proybasic
