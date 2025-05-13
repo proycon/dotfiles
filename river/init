@@ -99,8 +99,8 @@ riverctl map normal Super+Shift L send-layout-cmd rivercarro "main-count -1"
 # And for monocle
 riverctl map normal Super M     send-layout-cmd rivercarro "main-location-cycle monocle,left"
 # Cycle through layout
-riverctl map normal Super comma     send-layout-cmd rivercarro "main-location-cycle right,left,bottom,top"
-riverctl map normal Super period     send-layout-cmd rivercarro "main-location-cycle left,right,top,bottom"
+riverctl map normal Super comma     send-layout-cmd rivercarro "main-location left"
+riverctl map normal Super period     send-layout-cmd rivercarro "main-location top"
 
 # Add others rivercarro's commands the same way with the keybinds you'd like.
 # e.g.
@@ -379,7 +379,7 @@ fi
 
 if [ "$HOSTNAME" = "pollux" ]; then
     #left monitor uses top layout
-    #riverctl focus-output DP-1 && riverctl output-layout top
+    riverctl focus-output DP-1 && riverctl send-layout-cmd rivercarro "main-location top"
     #right monitor is default
     riverctl focus-output DP-2
     riverctl set-focused-tags 1
