@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/sh
 
 ls -d /tmp > ~/.config/directories
 ls -d /nettmp >> ~/.config/directories

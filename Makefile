@@ -95,7 +95,7 @@ ifeq ($(DESKTOP),1)
 	#desktop: wayland core
 	${PACMAN} bemenu foot grim river waylock waybar kanshi i3status imv libpipewire mako mesa slurp swaybg swayidle wofi wtype xdg-desktop-portal-wlr xorg-xwayland ydotool catimg wl-clipboard
 	#desktop: basic
-	${PACMAN} bemenu-wayland chromium element-desktop firefox gedit gnome-keyring libreoffice-fresh network-manager-applet telegram-desktop thunar xdg-utils zathura zathura-pdf-poppler
+	${PACMAN} bemenu-wayland chromium element-desktop firefox gedit gnome-keyring libreoffice-fresh network-manager-applet telegram-desktop thunar xdg-utils zathura zathura-pdf-poppler archlinux-xdg-menu dolphin
 	#(rofi will be installed from AUR)
 	#fonts
 	${PACMAN} noto-fonts-emoji otf-fira-mono ttf-dejavu ttf-droid ttf-fira-code ttf-fira-code ttf-fira-mono ttf-fira-sans ttf-font-awesome ttf-khmer ttf-linux-libertine ttf-opensans ttf-roboto ttf-tibetan-machine ttf-ubuntu-font-family wqy-bitmapfont wqy-microhei wqy-zenhei cantarell-fonts gucharmap
@@ -213,6 +213,9 @@ update:
 
 updating: install
 	make -C ~/.config/ update
+ifeq ($(DISTRO),$(filter $(DISTRO), arch))
+	command -v kbuildsycoca6 && XDG_MENU_PREFIX=arch- kbuildsycoca6 --noincremental #updates kservice desktop-file config cache (for KDE apps), requires archlinux-xdg-menu
+endif
 	make -C ~ update
 
 all: install
