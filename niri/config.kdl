@@ -15,7 +15,7 @@ input {
             // For example:
             layout "proybasic,proylatin,proyeo,proyru,proyar"
             // options "grp:win_space_toggle,compose:ralt,ctrl:nocaps"
-            options "lv3:ralt_switch,caps:ctrl_modifier,grp:alt_shift_toggle"
+            options "lv3:ralt_switch,caps:ctrl_modifier,grp:menu_toggle"
         }
 
         repeat-rate 50
@@ -64,7 +64,7 @@ input {
 
     // Focus windows and outputs automatically when moving the mouse into them.
     // Setting max-scroll-amount="0%" makes it work only on windows already fully on screen.
-    focus-follows-mouse
+    focus-follows-mouse max-scroll-amount="95%" 
 }
 
 // You can configure outputs by their name, which you can find
@@ -156,6 +156,7 @@ layout {
     // If you don't like that, you should uncomment `prefer-no-csd` below.
     // Niri will draw focus ring and border *around* windows that agree to omit their
     // client-side decorations.
+    prefer-no-csd
     //
     // Alternatively, you can override it with a window rule called
     // `draw-border-with-background`.
@@ -376,7 +377,7 @@ binds {
     // Open/close the Overview: a zoomed-out view of workspaces and windows.
     // You can also move the mouse into the top-left hot corner,
     // or do a four-finger swipe up on a touchpad.
-    Mod+O repeat=false { toggle-overview; }
+    Mod+V repeat=false { toggle-overview; }
 
     Mod+Shift+Q { close-window; }
 
@@ -525,13 +526,12 @@ binds {
     // The following binds move the focused window in and out of a column.
     // If the window is alone, they will consume it into the nearby column to the side.
     // If the window is already in a column, they will expel it out.
-    Mod+BracketLeft  { consume-or-expel-window-left; }
-    Mod+BracketRight { consume-or-expel-window-right; }
 
-    // Consume one window from the right to the bottom of the focused column.
-    Mod+Comma  { consume-window-into-column; }
-    // Expel the bottom window from the focused column to the right.
-    Mod+Period { expel-window-from-column; }
+    //Mod+BracketLeft  { consume-or-expel-window-left; }
+    //Mod+BracketRight { consume-or-expel-window-right; }
+
+    Mod+Comma  { consume-or-expel-window-left; }
+    Mod+Period  { consume-or-expel-window-right; }
 
     Mod+R { switch-preset-column-width; }
     Mod+Shift+R { switch-preset-window-height; }
@@ -541,7 +541,7 @@ binds {
 
     // Expand the focused column to space not taken up by other fully visible columns.
     // Makes the column "fill the rest of the space".
-    Mod+Return { expand-column-to-available-width; }
+    Mod+Return { maximize-column; }
 
     Mod+C { center-column; }
 
@@ -564,8 +564,8 @@ binds {
     Mod+Shift+Equal { set-window-height "+10%"; }
 
     // Move the focused window between the floating and the tiling layout.
-    Mod+V       { toggle-window-floating; }
-    Mod+Shift+V { switch-focus-between-floating-and-tiling; }
+    Mod+C       { toggle-window-floating; }
+    Mod+Shift+C { switch-focus-between-floating-and-tiling; }
 
     // Toggle tabbed column display mode.
     // Windows in this column will appear as vertical tabs,
