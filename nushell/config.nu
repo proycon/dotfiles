@@ -93,7 +93,7 @@ export-env {
     $env.DEBFULLNAME = "Maarten van Gompel"
     $env.BROWSER = "firefox"
     $env.XDG_CONFIG_HOME = $"($env.HOME)/.config"
-    $env.TODO_DIR = $"($env.HOME)/.todo"
+    $env.TODO_DIR = $"($env.HOME)/Server/.todo"
     $env.PAGER = try { (which bat).0.cmd } catch { "less" }
     $env.BAT_PAGER = "less"
     $env.BAT_THEME = "gruvbox-dark"

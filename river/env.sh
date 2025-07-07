@@ -66,10 +66,9 @@ export PATH="/home/proycon/bin:/home/proycon/.cargo/bin:/home/proycon/local/bin:
 export MPD_HOST="anaproy.nl"
 export DEBEMAIL="proycon@anaproy.nl"
 export DEBFULLNAME="Maarten van Gompel"
-export TODO_DIR="$HOME/.todo"
+export TODO_DIR="$HOME/Server/.todo"
 export GTK_THEME=Adwaita-dark
 export EDITOR="nvim"
-export TODO_DIR="$HOME/.todo"
 export XDG_CONFIG_HOME="$HOME/.config"
 export PINENTRY_USER_DATA=wayprompt
 . ~/dotfiles/scripts/gpgsetup.sh
