@@ -404,7 +404,7 @@ if [ "$HOSTNAME" = "pollux" ]; then
     pactl set-default-source alsa_input.usb-Samson_Technologies_Samson_C01U_Pro_Mic-00.3.analog-stereo 
 fi
 
-#fcitx5 &
+fcitx5 &
 
 #apparmor notifications
 #riverctl spawn "aa-notify -p -s 1 -w 60 -f /var/log/audit/audit.log"
