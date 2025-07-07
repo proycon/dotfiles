@@ -98,6 +98,7 @@ riverctl map normal Super+Shift L send-layout-cmd rivercarro "main-count -1"
 # Mod+{Up,Right,Down,Left} to change layout orientation
 # And for monocle
 riverctl map normal Super M     send-layout-cmd rivercarro "main-location-cycle monocle,left"
+riverctl map normal Super V     send-layout-cmd rivercarro "main-location-cycle monocle,left"
 # Cycle through layout
 riverctl map normal Super comma     send-layout-cmd rivercarro "main-location left"
 riverctl map normal Super period     send-layout-cmd rivercarro "main-location top"
@@ -162,9 +163,6 @@ done
 
 #riverctl map normal Super s set-view-tags ${sticky_tag}		# set sticky
 
-riverctl map normal Super a toggle-focused-tags ${scratch_tag}		# toggle the scratchpad
-riverctl map normal Super+Shift a set-view-tags ${scratch_tag}		# send windows to the scratchpad
-
 # Set spawn tagmask to ensure new windows do not have the scratchpad tag unless explicitly set.
 all_but_scratch_tag=$(( ((1 << 32) - 1) ^ scratch_tag ))
 riverctl spawn-tagmask ${all_but_scratch_tag}
@@ -186,8 +184,16 @@ riverctl map normal Super+Control Down  send-layout-cmd rivercarro "main-locatio
 riverctl map normal Super+Control Left  send-layout-cmd rivercarro "main-location left"
 
 #custom actions
-riverctl map normal Super Space spawn 'bemenu-run --fn "Monospace 22" -l 20'
-riverctl map normal Super+Shift space spawn 'rofi -sidebar-mode -show drun'
+if command -v kickoff; then
+    riverctl map normal Super Space spawn 'kickoff'
+else
+    riverctl map normal Super Space spawn 'bemenu-run --fn "Monospace 22" -l 20'
+fi
+if command -v fuzzel; then
+    riverctl map normal Super+Shift space spawn 'fuzzel'
+else
+    riverctl map normal Super+Shift space spawn 'rofi -sidebar-mode -show drun'
+fi
 if [ -n "$OVERRIDESHELL" ]; then
     riverctl map normal Super F1 spawn "foot --title aerc $OVERRIDESHELL -e aerc"
 else
@@ -225,6 +231,7 @@ riverctl map normal Super dead_tilde spawn newmail
 riverctl map normal Super dead_grave spawn curmail
 riverctl map normal Super w spawn ~/dotfiles/scripts/buku-dmenu
 riverctl map normal Super u spawn "~/dotfiles/scripts/dmenu-files.sh /nettmp -t"
+riverctl map normal Super+Shift u spawn "~/dotfiles/scripts/dmenu-files.sh /home/proycon/Downloads -t"
 riverctl map normal Super i spawn "~/dotfiles/scripts/dmenu-files.sh /home/proycon -t"
 riverctl map normal Super o spawn ~/dotfiles/scripts/castnone.sh
 riverctl map normal Super+Shift o spawn ~/dotfiles/scripts/castpi1.sh
@@ -284,15 +291,22 @@ riverctl border-color-unfocused 0x595959
 # Set keyboard repeat rate
 riverctl set-repeat 50 300
 
-# Make all views with an app-id that starts with "float" and title "foo" start floating.
-riverctl rule-add -app-id 'float*' -title 'foo' float
-riverctl rule-add -app-id 'popup*' -title 'foo' float
+#use lswt to find app IDs and titles 
+riverctl rule-add -app-id 'float*' float
+riverctl rule-add -app-id 'popup*' float
+riverctl rule-add -title 'Select file*' float
+riverctl rule-add -title 'Open file*' float
+riverctl rule-add -title 'Save file*' float
+riverctl rule-add -title '*dialog*' float
+riverctl rule-add -title 'Confirm*' float
 
-# Make some apps use client-side decorations
-riverctl rule-add -app-id "org.telegram.desktop" ssd
-riverctl rule-add -app-id 'libreoffice*' ssd
-riverctl rule-add -app-id 'org.pwmt.zathura' ssd
-riverctl rule-add -app-id 'imv' ssd
+# Use server-side decorations everywhere 
+riverctl rule-add -app-id '*' ssd
+#riverctl rule-add -app-id "org.telegram.desktop" ssd
+#riverctl rule-add -app-id 'libreoffice*' ssd
+#riverctl rule-add -app-id 'org.pwmt.zathura' ssd
+#riverctl rule-add -app-id 'imv' ssd
+#riverctl rule-add -app-id 'gimp' ssd
 
 
 gsettings set org.gnome.desktop.interface text-scaling-factor 1.8
@@ -390,7 +404,7 @@ if [ "$HOSTNAME" = "pollux" ]; then
     pactl set-default-source alsa_input.usb-Samson_Technologies_Samson_C01U_Pro_Mic-00.3.analog-stereo 
 fi
 
-fcitx5 &
+#fcitx5 &
 
 #apparmor notifications
 #riverctl spawn "aa-notify -p -s 1 -w 60 -f /var/log/audit/audit.log"
