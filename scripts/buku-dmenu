@@ -33,7 +33,11 @@ fi
 
 #get all bmks | swap tabs for spaces | run dmenu | cut to ID | run buku if not empty
 if [ -n "$WAYLAND_DISPLAY" ]; then
-    buku -p -f 5 | sed 's/\t/ /g' | bemenu -p buku --ignorecase -l 10 --fn "$BEMENU_FONT" $BEMENU_COLORARGS | cut -d ' ' -f 1 | xargs --no-run-if-empty buku -o
+    if command -v rofi; then
+        buku -p -f 5 |  sed -r 's/^([[:digit:]]+)\t(.*)\t(.*)/<small><span fgcolor="gray">\1<\/span><\/small> \2 <span fgcolor="darkcyan">\3<\/span>/' | rofi -p "Bookmarks" -dmenu -i -tokenize -markup -markup-rows | sed 's/<[^>]*>//g' | cut -d ' ' -f 1 | xargs --no-run-if-empty buku -o
+    else
+        buku -p -f 5 | sed 's/\t/ /g' | bemenu -p buku --ignorecase -l 10 --fn "$BEMENU_FONT" $BEMENU_COLORARGS | cut -d ' ' -f 1 | xargs --no-run-if-empty buku -o
+    fi
 else
     buku -p -f 5 | sed 's/\t/ /g' | dmenu -i -fn "Monospace:24" -l 10 $DMENU_COLORARGS | cut -d ' ' -f 1 | xargs --no-run-if-empty buku -o
 fi
