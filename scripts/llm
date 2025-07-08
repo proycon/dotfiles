@@ -1,0 +1,12 @@
+#!/bin/sh
+
+if ! pidof ollama; then
+    ollama serve > /dev/null 2> /dev/null &
+    sleep 1
+fi
+
+cd ~/dotfiles/llm/
+make "$@"
+cd -
+
+killall ollama
