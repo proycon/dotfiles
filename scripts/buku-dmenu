@@ -33,7 +33,7 @@ fi
 
 #get all bmks | swap tabs for spaces | run dmenu | cut to ID | run buku if not empty
 if [ -n "$WAYLAND_DISPLAY" ]; then
-    buku -p -f 5 | sed 's/\t/ /g' | bemenu -p buku -l 10 --fn "$BEMENU_FONT" $BEMENU_COLORARGS | cut -d ' ' -f 1 | xargs --no-run-if-empty buku -o
+    buku -p -f 5 | sed 's/\t/ /g' | bemenu -p buku --ignorecase -l 10 --fn "$BEMENU_FONT" $BEMENU_COLORARGS | cut -d ' ' -f 1 | xargs --no-run-if-empty buku -o
 else
     buku -p -f 5 | sed 's/\t/ /g' | dmenu -i -fn "Monospace:24" -l 10 $DMENU_COLORARGS | cut -d ' ' -f 1 | xargs --no-run-if-empty buku -o
 fi
