@@ -21,7 +21,7 @@ elif [ "$1" = "annotate" ]; then
         notify-send "Screenshot failed!"
     fi
 else
-    NAME="$(date +%Y-%m-%d-%H%M%S)_screenshot-$(pwgen -1 -0 -A).png"
+    NAME="screenshot$(date +%Y%m%d%H%M%S)-$(pwgen -1 -0 -A).png"
     wl-copy "/home/proycon/$NAME"
     grim "/home/proycon/$NAME" && notify-send "Full screenshot ready" "In /home/proycon/$NAME (copied to clipboard)"
     magick convert "/tmp/$NAME" /tmp/screenshot-latest.jpg
