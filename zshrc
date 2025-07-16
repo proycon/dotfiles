@@ -110,7 +110,7 @@ gpa() {
     git remote | grep -q srht && echo "sourcehut: " && gpsrht
     git remote | grep -q codeberg &&  echo "codeberg: " && gpcb
 }
-alias gca="git commit -a"
+alias gca="git commit -a -v"
 alias pm="podman"
 alias pmc="podman-compose"
 alias a='tmux attach'
