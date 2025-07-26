@@ -86,7 +86,7 @@ ifeq ($(DISTRO),arch)
 	#plotting
 	${PACMAN} gnuplot graphviz plantuml
 	#various
-	${PACMAN} amfora lynx links w3m urlscan chafa semver oath-toolkit pwgen
+	${PACMAN} amfora lynx links w3m urlscan chafa semver oath-toolkit pwgen zbar
 	#compression
 	${PACMAN} p7zip unrar xz zstd
 ifeq ($(DESKTOP),1)
@@ -131,7 +131,7 @@ else ifeq ($(DISTRO),$(filter $(DISTRO), alpine postmarketos))
 	#python
 	${APK} python3 py3-pip py3-wheel py3-setuptools py3-pylint py3-numpy py3-scipy py3-lxml py3-virtualenv jupyter-notebook py3-matplotlib
 	#various:
-	${APK} btop gnuplot todo.txt-cli todo.txt-cli amfora w3m lynx links urlscan tailspin tldr-python-client oath-toolkit pwgen vocage strace powertop	
+	${APK} btop gnuplot todo.txt-cli todo.txt-cli amfora w3m lynx links urlscan tailspin tldr-python-client oath-toolkit pwgen vocage strace powertop zbar	
 	#languages
 	${APK} aspell aspell-en aspell-es aspell-fr aspell-de
 	#communication
