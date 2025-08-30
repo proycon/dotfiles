@@ -363,8 +363,8 @@ rivercarro -outer-gaps 0 -inner-gaps 5 -per-tag &
 riverctl spawn ~/dotfiles/scripts/switchbg.sh
 riverctl spawn "waybar"
 if [ -z "$SXMO_WM" ]; then
-    #not on sxmo
-    riverctl spawn "mako" 
+    #not on sxmo (sxmo spawns it for us)
+    riverctl spawn "dunst" 
 fi
 riverctl spawn "udiskie"
 riverctl spawn "setsid /home/proycon/projects/lighthome/client.sh"
