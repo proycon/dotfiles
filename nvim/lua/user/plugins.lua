@@ -152,9 +152,7 @@ local plugins = {
   "https://git.sr.ht/~sotirisp/vim-tsv",
   "proycon/todo.txt-vim", -- my own extended todo.txt syntax highlighting
   "dylon/vim-antlr",
-  { "glacambre/firenvim",
-     build = ":call firenvim#install(0)"
-  },
+  "raghur/vim-ghost",
   'sQVe/sort.nvim'
 }
 
