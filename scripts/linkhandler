@@ -82,7 +82,7 @@ case "$TARGET" in
                 elif tty -s; then
                     bat "$1"
                 else
-                    setsid $TERMINAL bat --paging=always "$1"
+                    setsid $TERMINAL bat --style=plain --paging=always "$1"
                 fi
                 ;;
             *csv)
@@ -103,7 +103,7 @@ case "$TARGET" in
                 setsid libreoffice "$1" & ;;
             *html|http*)
                 $BROWSER "$1" & ;;
-            *)
+            *.py|*.cpp|*.c|*.java|*.rs|*.pl|*.sh|*.tex|*.h|*.cxx|*.hxx|*.go|*.zig|*.yml|*.yaml|*.json|*.toml|*.ini|*.conf)
                 if tty -s; then
                     if [ -d "$(realpath "$1")" ]; then
                         yazi "$1"
@@ -115,6 +115,21 @@ case "$TARGET" in
                         setsid $TERMINAL yazi "$1"
                     else
                         bat "$1"
+                    fi
+                fi
+                ;;
+            *)
+                if tty -s; then
+                    if [ -d "$(realpath "$1")" ]; then
+                        yazi "$1"
+                    else
+                        bat --style=plain "$1"
+                    fi
+                else
+                    if [ -d "$(realpath "$1")" ]; then
+                        setsid $TERMINAL yazi "$1"
+                    else
+                        bat --style=plain "$1"
                     fi
                 fi
                 ;;
