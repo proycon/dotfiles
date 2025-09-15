@@ -1,36 +1,34 @@
 # Space to setup configversion
 # configversion: 5c5604cb397a06754e7961cc55730ecc
 [global]
-    width = 300
-    height = 100
-    offset = (5,50)
+    width = 420
+    origin = bottom-right
+    offset = (5,30)
     padding = 2
     horizontal_padding = 5
     frame_width = 2
-    frame_color = "#888888"
+    frame_color = "#202020"
+    corner_radius = 10
     idle_threshold = 120
-    font = Monospace 12
+    font = "Monospace 16"
     markup = full
     max_icon_size = 32
     dmenu = sxmo_dmenu.sh -p dunst:
     follow=mouse
     mouse_left_click = do_action
 
-[shortcuts]
-    close_all = ctrl+shift+space
-
 [urgency_low]
-    background = "#222222"
-    foreground = "#888888"
-    timeout = 10
+    background = "#202020"
+    foreground = "#d8caac"
+    timeout = 5
 
 [urgency_normal]
-    background = "#ffffff"
-    foreground = "#000000"
-    timeout = 15
+    background = "#202020"
+    foreground = "#ffffff"
+    timeout = 10
 
 [urgency_critical]
-    background = "#900000"
+    background = "#202020"
     foreground = "#ffffff"
     frame_color = "#ff0000"
     timeout = 0
