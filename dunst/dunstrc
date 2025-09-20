@@ -25,6 +25,7 @@
 [urgency_normal]
     background = "#202020"
     foreground = "#ffffff"
+    frame_color = "#7f9f7f"
     timeout = 10
 
 [urgency_critical]
