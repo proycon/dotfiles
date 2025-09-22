@@ -66,7 +66,7 @@ ifeq ($(DISTRO),arch)
 	#dev: linters, formatters, misc
 	${PACMAN} bash-language-server lua-language-server ccls cppcheck eslint flake8 prettier openapi-tui pyright python-pylint rustfmt shellcheck tokei hyperfine
 	#communication
-	${PACMAN} aerc mailcap mosquitto msmtp-mta newsboat weechat notmuch senpai
+	${PACMAN} aerc mailcap mosquitto msmtp-mta weechat notmuch senpai
 	#libs
 	${PACMAN} perl-mime-tools perl-net-smtp-ssl
 	#containers & VM
@@ -135,7 +135,7 @@ else ifeq ($(DISTRO),$(filter $(DISTRO), alpine postmarketos))
 	#languages
 	${APK} aspell aspell-en aspell-es aspell-fr aspell-de
 	#communication
-	${APK} aerc aercbook mailcap msmtp newsboat newsraft senpai dante
+	${APK} aerc aercbook mailcap msmtp newsraft senpai dante
 	#for neovim
 	${APK} lua5.1 luarocks5.1
 ifeq ($(DESKTOP),1)
