@@ -249,6 +249,7 @@ riverctl map normal Control escape spawn "~/dotfiles/scripts/lock.sh force"
 riverctl map normal Super+Shift escape spawn ~/dotfiles/scripts/suspend.sh
 riverctl map normal Control+Shift escape spawn ~/dotfiles/scripts/suspend.sh
 riverctl map normal Super+Shift g spawn "wlopm --toggle \*"
+riverctl map normal Super+Shift z spawn "wlopm --toggle DP-2"
 
 riverctl map normal Super F9 spawn "riverctl keyboard-layout $KB_OPTS proybasic && play ~/dotfiles/media/key.wav"
 riverctl map normal Alt F9 spawn "riverctl keyboard-layout $KB_OPTS proylatin && play ~/dotfiles/media/key.wav"
