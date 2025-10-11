@@ -1,5 +1,5 @@
 #!/bin/sh
-# configversion: 5d6ee4b2f962616e6d88553777889730
+# configversion: 1fa88bee76f37a68120602db65ac4925
 # SPDX-License-Identifier: AGPL-3.0-only
 # Copyright 2022 Sxmo Contributors
 
@@ -36,13 +36,15 @@ fi
 # Load our sound daemons
 
 if [ -z "$SXMO_NO_AUDIO" ]; then
-	if [ "$(command -v pulseaudio)" ]; then
-		superctl start pulseaudio
-	elif [ "$(command -v pipewire)" ]; then
-		# pipewire-pulse will start pipewire
-		superctl start pipewire-pulse
-		superctl start wireplumber
-	fi
+    if ! [ -d /run/systemd/system ]; then
+        if [ "$(command -v pulseaudio)" ]; then
+            superctl start pulseaudio
+        elif [ "$(command -v pipewire)" ]; then
+            # pipewire-pulse will start pipewire
+            superctl start pipewire-pulse
+            superctl start wireplumber
+        fi
+    fi
 
 	# monitor for headphone for statusbar
 	superctl start sxmo_soundmonitor
@@ -53,12 +55,12 @@ sxmo_hook_statusbar.sh all
 sxmo_jobs.sh start statusbar_periodics sxmo_run_aligned.sh 60 \
 	sxmo_hook_statusbar.sh periodics
 
+# dunst is required for warnings.
 superctl start dunst
 
-# mako/dunst are required for warnings.
 # load some other little things here too.
 case "$SXMO_WM" in
-    river)
+	river)
 		superctl start sxmo_wob
 		superctl start bonsaid
 		superctl start sxmo_riverbar
@@ -68,8 +70,8 @@ case "$SXMO_WM" in
 		superctl start sxmo_menumode_toggler
 		superctl start bonsaid
 		;;
-	dwm)
-		superctl start dunst
+	dwm|i3)
+		superctl start sxmo_xob
 
 		# Auto hide cursor with touchscreen, Show it with a mouse
 		if command -v "unclutter-xfixes" > /dev/null; then
@@ -84,6 +86,15 @@ case "$SXMO_WM" in
 		superctl start sxmo-x11-status
 		superctl start bonsaid
 		[ -n "$SXMO_MONITOR" ] && xrandr --output "$SXMO_MONITOR" --primary
+		# Set onboard to auto-hide in config first
+		if [ "$KEYBOARD" = "onboard" ]; then
+			onboard "$KEYBOARD_ARGS"
+		fi
+		case "$SXMO_WM" in
+			i3)
+				xbindkeys -f "$XDG_CONFIG_HOME/sxmo/xbindkeysrc_$SXMO_BINDING_PROVIDER"
+				;;
+		esac
 		;;
 esac
 

@@ -1,4 +1,4 @@
 #!/bin/sh
-# configversion: 3b2e8ccba705f6788a2d062394706bd2
+# configversion: eb50add730f7395f38f1b8b92b9b76dc
 
 exec ~/.config/river/init

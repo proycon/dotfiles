@@ -1,5 +1,5 @@
 # Default config for sway
-# configversion: 1a60335e6ec05c931ab71abc00eabc81
+# configversion: f75d50359b121629d85bf64cd71330fe
 #
 # Copy this to ~/.config/sway/config and edit it to your liking.
 #
@@ -36,6 +36,22 @@ mode "menu" {
     bindsym XF86PowerOff exec wtype -k Return
     bindsym XF86AudioRaiseVolume exec wtype -k Up
     bindsym XF86AudioLowerVolume exec wtype -k Down
+}
+
+# Mode specifically for use with Nokia N900 hardware keyboard
+mode "N900" {
+    # follow the standard sxmo keybinds as far as possible
+    bindsym t exec $term; mode "default"
+    bindsym q mode "default"
+    bindsym Shift+p exec sxmo_appmenu.sh sys; mode "default"
+    bindsym p exec sxmo_appmenu.sh; mode "default"
+    bindsym d exec $menu; mode "default"
+    bindsym Shift+q kill; mode "default"
+    bindsym i exec sxmo_wmmenu.sh windowswitcher; mode "default"
+    bindsym Shift+c reload; mode "default"
+    bindsym f fullscreen; mode "default"
+    bindsym Shift+space floating toggle; mode "default"
+    bindsym a focus parent; mode "default"
 }
 
 ### Key bindings
@@ -80,7 +96,7 @@ mode "menu" {
     bindsym $mod+Shift+c reload
 
     # Exit sway (logs you out of your Wayland session)
-    bindsym $mod+Shift+e exec swaynag -t warning -m 'You pressed the exit shortcut. Do you really want to exit sway? This will end your Wayland session.' -b 'Yes, exit sway' 'swaymsg exit'
+    bindsym $mod+Shift+e exec swaynag -t warning -m 'You pressed the exit shortcut. Do you really want to exit sway? This will end your Wayland session.' -b 'Yes, exit sway' 'sxmo_power.sh logout'
 #
 # Moving around:
 #
@@ -238,13 +254,21 @@ titlebar_border_thickness 3
 hide_edge_borders smart
 
 # Need playerctl installed and running
-bindsym XF86AudioPlay exec playerctl play-pause
-bindsym XF86AudioStop exec playerctl stop
-bindsym XF86AudioNext exec playerctl next
-bindsym XF86AudioPrev exec playerctl previous
+bindsym --locked XF86AudioPlay exec playerctl play-pause
+bindsym --locked XF86AudioPause exec playerctl play-pause
+bindsym --locked XF86AudioStop exec playerctl stop
+bindsym --locked XF86AudioNext exec playerctl next
+bindsym --locked XF86AudioPrev exec playerctl previous
 
-bindsym XF86MonBrightnessUp exec sxmo_brightness.sh up
-bindsym XF86MonBrightnessDown exec sxmo_brightness.sh down
+bindsym --locked XF86MonBrightnessUp exec sxmo_brightness.sh up
+bindsym --locked XF86MonBrightnessDown exec sxmo_brightness.sh down
+
+# Nokia N900-specific key bindings:
+# 1. Bind lock key (XF86ScreenSaver)
+#      Use keycode due to https://github.com/swaywm/sway/issues/8438
+bindcode --release --locked --input-device="1:1:gpio_keys" 160 exec sxmo_state.sh set unlock
+# 2. Workaround the lack of a free ModX key on hardware keyboard
+bindsym --input-device="1:1:TWL4030_Keypad" Shift+space mode "N900"
 
 bindsym Print exec sxmo_screenshot.sh
 
@@ -259,3 +283,5 @@ include /etc/sway/config.d/*
 exec 'printf %s "$SWAYSOCK" > "$XDG_RUNTIME_DIR"/sxmo.swaysock'
 
 exec sxmo_hook_start.sh
+
+# vim: ft=swayconfig
