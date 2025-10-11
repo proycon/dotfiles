@@ -15,8 +15,9 @@
     max_icon_size = 32
     dmenu = sxmo_dmenu.sh -p dunst:
     follow=mouse
-    mouse_left_click = do_action
-    mouse_right_click = remove_current
+    mouse_left_click = remove_current
+    mouse_right_click = do_action
+    mouse_middle_click = do_action
 
 [urgency_low]
     background = "#202020"
