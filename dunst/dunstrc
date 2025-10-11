@@ -1,21 +1,22 @@
 # Space to setup configversion
 # configversion: 6092950204b3b2a92c3435749b266816
 [global]
-    width = 420
+    width = 320
     origin = bottom-right
     offset = (5,30)
     padding = 2
-    horizontal_padding = 5
+    horizontal_padding = 3
     frame_width = 2
     frame_color = "#202020"
     corner_radius = 10
     idle_threshold = 120
-    font = "Monospace 16"
+    font = "Monospace 14"
     markup = full
     max_icon_size = 32
     dmenu = sxmo_dmenu.sh -p dunst:
     follow=mouse
     mouse_left_click = do_action
+    mouse_right_click = remove_current
 
 [urgency_low]
     background = "#202020"
