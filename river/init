@@ -351,6 +351,37 @@ if [ "$SXMO_WM" = "river" ]; then
         riverctl map-switch $mode lid open spawn 'sxmo_wm.sh dpms on'
         riverctl map-switch $mode lid close spawn 'sxmo_wm.sh dpms off'
     done
+
+    if [ "$HOSTNAME" != "toren" ]; then
+        # sxmo on phones rather than laptop
+
+        # bonsaictl should be working, but for an obscure reason it doesn't.
+        multikey_retrocompat() {
+            sxmo_multikey.sh clear
+            for mode in normal locked
+            do
+                riverctl map $mode None XF86PowerOff spawn "sxmo_multikey.sh \
+                    powerbutton \
+                    powerbutton_one \
+                    powerbutton_two \
+                    powerbutton_three"
+                riverctl map $mode None XF86AudioRaiseVolume spawn \
+                    "sxmo_multikey.sh \
+                    volup \
+                    volup_one \
+                    volup_two \
+                    volup_three"
+                riverctl map $mode None XF86AudioLowerVolume spawn \
+                    "sxmo_multikey.sh \
+                    voldown \
+                    voldown_one \
+                    voldown_two \
+                    voldown_three"
+            done
+        }
+
+        multikey_retrocompat
+    fi
 fi
 
 riverctl keyboard-layout $KB_OPTS proybasic
@@ -443,60 +474,65 @@ riverctl rule-add -app-id 'dev.geopjr.Tuba' tags 32 #workspace 6 = 0b100000 = 32
 riverctl rule-add -app-id 'foot' -title 'newsraft' tags 32 #workspace 6 = 0b100000 = 32
 riverctl rule-add -app-id 'foot' -title 'remote*' tags 128 #workspace 8
 
+if [ -z "$SXMO_WM" ] || [ "$HOSTNAME" = "toren" ]; then
+    #not sxmo or sxmo on toren
+
+    #ensure we hacve network
+    if nmcli -t 2> /dev/null; then
+        #network manager is running
+        while ! nmcli connection show --active | grep -E "(wifi|ethernet)"; do
+            #wait for network connection
+            sleep 2
+        done
+        while [ "$(date +%Y)" -lt 2024 ]; do
+            #wait for NTP time to sync (otherwise all network stuff can't connect because of invalid certificates)
+            sleep 1
+        done
+    fi
 
 
-if nmcli -t 2> /dev/null; then
-    #network manager is running
-    while ! nmcli connection show --active | grep -E "(wifi|ethernet)"; do
-        #wait for network connection
-        sleep 2
+    #prompt for master password
+
+    #use --login if passwordless login is enabled, otherwise use --start
+    PASS=""
+    while [ -z "$PASS" ]; do
+        echo "waiting for password for $HOSTNAME">&2
+        PASS=$(pass "$HOSTNAME") #blocks until password is given
     done
-    while [ "$(date +%Y)" -lt 2024 ]; do
-        #wait for NTP time to sync (otherwise all network stuff can't connect because of invalid certificates)
-        sleep 1
-    done
+    ps aux | grep gnome-keyring-daemon | grep -v grep
+    if ! pidof gnome-keyring-daemon || [ "$HOSTNAME" = "toren" ]; then
+        echo "starting new gnome-keyring-daemon">&2
+        echo -n "$PASS" | gnome-keyring-daemon --daemonize --login --components=pkcs11,secrets,ssh,gpg
+    fi
+    echo "initialising gnome-keyring-daemon (--start)">&2
+    gnome-keyring-daemon --start --components=pkcs11,secrets,ssh,gpg
+    unset PASS #very important!
+    ps aux | grep gnome-keyring-daemon | grep -v grep
+
+
+    #autostart stuff
+    if [ -n "$OVERRIDESHELL" ]; then
+        #with nushell overriding default shell
+        riverctl spawn "foot --title aerc $OVERRIDESHELL -e aerc"
+        riverctl spawn "foot --title newsraft $OVERRIDESHELL -e newsraft"
+        riverctl spawn "foot --title senpai $OVERRIDESHELL -e senpai"
+        riverctl spawn "foot --title remote $OVERRIDESHELL"
+        riverctl spawn "foot --title nvim $OVERRIDESHELL -e ~/bin/tm nvim"
+        riverctl spawn "foot --title local $OVERRIDESHELL -e ~/bin/tm local"
+    else
+        #with system default shell (zsh/bash/ash)
+        riverctl spawn "foot --title remote"
+        riverctl spawn "foot --title aerc aerc"
+        riverctl spawn "foot --title newsraft newsraft"
+        riverctl spawn "foot --title senpai senpai"
+        riverctl spawn "foot --title nvim ~/bin/tm nvim"
+        riverctl spawn "foot --title local ~/bin/tm local"
+    fi
+    riverctl spawn "firefox"
+    riverctl spawn "nheko"
+    riverctl spawn "tuba"
+    riverctl spawn "dino"
 fi
-
-
-#use --login if passwordless login is enabled, otherwise use --start
-PASS=""
-while [ -z "$PASS" ]; do
-    echo "waiting for password for $HOSTNAME">&2
-    PASS=$(pass "$HOSTNAME") #blocks until password is given
-done
-ps aux | grep gnome-keyring-daemon | grep -v grep
-if ! pidof gnome-keyring-daemon || [ "$HOSTNAME" = "toren" ]; then
-    echo "starting new gnome-keyring-daemon">&2
-    echo -n "$PASS" | gnome-keyring-daemon --daemonize --login --components=pkcs11,secrets,ssh,gpg
-fi
-echo "initialising gnome-keyring-daemon (--start)">&2
-gnome-keyring-daemon --start --components=pkcs11,secrets,ssh,gpg
-unset PASS #very important!
-ps aux | grep gnome-keyring-daemon | grep -v grep
-
-
-#autostart stuff
-if [ -n "$OVERRIDESHELL" ]; then
-    #with nushell overriding default shell
-    riverctl spawn "foot --title aerc $OVERRIDESHELL -e aerc"
-    riverctl spawn "foot --title newsraft $OVERRIDESHELL -e newsraft"
-    riverctl spawn "foot --title senpai $OVERRIDESHELL -e senpai"
-    riverctl spawn "foot --title remote $OVERRIDESHELL"
-    riverctl spawn "foot --title nvim $OVERRIDESHELL -e ~/bin/tm nvim"
-    riverctl spawn "foot --title local $OVERRIDESHELL -e ~/bin/tm local"
-else
-    #with system default shell (zsh/bash/ash)
-    riverctl spawn "foot --title remote"
-    riverctl spawn "foot --title aerc aerc"
-    riverctl spawn "foot --title newsraft newsraft"
-    riverctl spawn "foot --title senpai senpai"
-    riverctl spawn "foot --title nvim ~/bin/tm nvim"
-    riverctl spawn "foot --title local ~/bin/tm local"
-fi
-riverctl spawn "firefox"
-riverctl spawn "nheko"
-riverctl spawn "tuba"
-riverctl spawn "dino"
 
 mpv --quiet ~/dotfiles/media/lovelyboot.ogg
 echo "River init done">&2
