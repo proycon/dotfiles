@@ -65,8 +65,10 @@ keymap("x", "<A-k>", ":move '<-2<CR>gv-gv", opts)
 
 -- Custom --
 keymap("n", "<C-b>", ":Gitsigns blame_line<CR>", opts)
-keymap("n", "<leader>L", ":TroubleToggle<CR>", opts)
-keymap("n", "<leader>T", ":SymbolsOutline<CR>", opts)
+keymap("n", "<leader>T", ":Trouble symbols toggle<CR>", opts)
+keymap("n", "<leader>D", ":Trouble diagnostics toggle filter.buf=0<CR>", opts)
+keymap("n", "<leader>L", ":Trouble diagnostics toggle<CR>", opts)
+keymap("n", "<leader>S", ":Outline<CR>", opts)
 keymap("n", "<leader>o", ":Telescope git_files<CR>", opts)
 
 -- custom copy'n'paste

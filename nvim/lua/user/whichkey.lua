@@ -199,8 +199,10 @@ local mappings = {
     h = { "<cmd>ToggleTerm size=10 direction=horizontal<cr>", "Horizontal" },
     v = { "<cmd>ToggleTerm size=80 direction=vertical<cr>", "Vertical" },
   },
-  T = { "Symbols Tree" },  --SymbolsOutlineOpen
-  L = { "Diagnostics List" },  --TroubleToggle
+  S = { "Symbols Tree (Outline)" },  --SymbolsOutlineOpen
+  T = { "Symbols Viewer (Trouble)" },  --Trouble
+  D = { "Diagnostics List (buffer) (Trouble)" },  --Trouble
+  L = { "Diagnostics List (all) (Trouble)" },  --Trouble
 
   Z = {
     name = "zen",

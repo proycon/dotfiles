@@ -116,14 +116,9 @@ local plugins = {
   { "ellisonleao/glow.nvim", -- markdown preview
         config = true, cmd = "Glow"
   },
-  "folke/trouble.nvim", -- pretty list for showing diagnostics
+   { "folke/trouble.nvim", opts = {}, cmd = "Trouble" }, -- pretty list for showing diagnostics
   "tpope/vim-fugitive", -- git wrapper (provides :Git commands)
-  {
-    "rockerBOO/symbols-outline.nvim", --symbols (tags) tree like view (PLUGIN IS NO LONGER MAINTAINED since jan 2024!
-    config = function()
-            require("symbols-outline").setup()
-    end
-  },
+   { "hedyhli/outline.nvim", opts= {}, cmd = { "Outline", "OutlineOpen" } }, --symbols (tags) tree like view
   "pwntester/octo.nvim", -- github CLI integration
   {
   "mistweaverco/kulala.nvim", -- REST API client
