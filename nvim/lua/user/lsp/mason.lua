@@ -5,8 +5,6 @@ if not status_ok then
 	return
 end
 
-local lspconfig = require("lspconfig")
-
 local function getLinuxDistroFromReleaseFile()
     local f = io.open("/etc/os-release", "r")
     if not f then return nil end
@@ -43,7 +41,8 @@ for _, server in pairs(servers) do
 	if has_custom_opts then
 	 	opts = vim.tbl_deep_extend("force", server_custom_opts, opts)
 	end
-	lspconfig[server].setup(opts)
+	vim.lsp.config(server, opts)
+	vim.lsp.enable(server)
 end
 
 
