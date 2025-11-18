@@ -87,7 +87,10 @@ hi Special		ctermfg=229		cterm=none		guifg=#eadead	gui=none
 hi String		ctermfg=113		cterm=none		guifg=#95e454	gui=italic
 hi Comment		ctermfg=246		cterm=none		guifg=#9c998e	gui=italic
 hi Todo			ctermfg=160		cterm=none		guifg=#857b6f	gui=italic
-
+hi VirtualTextError		ctermfg=209		cterm=none		guifg=#ff865e	gui=italic
+hi VirtualTextWarning		ctermfg=216		cterm=none		guifg=#ff865e	gui=italic
+hi VirtualTextInfo		ctermfg=218		cterm=none		guifg=#ff865e	gui=italic
+hi VirtualTextHint		ctermfg=218		cterm=none		guifg=#ff865e	gui=italic
 
 " Links
 hi! link FoldColumn		Folded

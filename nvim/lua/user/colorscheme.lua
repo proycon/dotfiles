@@ -14,5 +14,9 @@ else
       colorscheme default
       set background=dark
     endtry
+    hi VirtualTextError		ctermfg=209		cterm=none		guifg=#ff865e	gui=italic
+    hi VirtualTextWarning		ctermfg=216		cterm=none		guifg=#ff865e	gui=italic
+    hi VirtualTextInfo		ctermfg=218		cterm=none		guifg=#ff865e	gui=italic
+    hi VirtualTextHint		ctermfg=218		cterm=none		guifg=#ff865e	gui=italic
 endif
 ]]
