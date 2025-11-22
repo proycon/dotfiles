@@ -492,6 +492,9 @@ if [ -f /usr/share/zsh/plugins/fzf-tab-git/fzf-tab.plugin.zsh ]; then
     source /usr/share/zsh/plugins/fzf-tab-git/fzf-tab.plugin.zsh #AUR
 elif [ -f /usr/share/zsh/plugins/fzf-tab/fzf-tab.plugin.zsh ]; then
     source /usr/share/zsh/plugins/fzf-tab/fzf-tab.plugin.zsh
+elif [ -f ~/.zsh-fzf-tab/fzf-tab.plugin.zsh ]; then
+    #run make `zsh-fzf-tab` to install this
+    source ~/.zsh-fzf-tab/fzf-tab.plugin.zsh
 fi
 
 # disable sort when completing `git checkout`

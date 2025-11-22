@@ -115,7 +115,7 @@ else ifeq ($(DISTRO),$(filter $(DISTRO), alpine postmarketos))
 	sudo apk update
 	sudo apk upgrade
 	#core
- 	${APK} build-base bash fzf gnupg gnupg-scdaemon htop lm_sensors lshw neovim openssh openssl readline starship doas doas-sudo-shim tmux tree zip zsh zsh-autosuggestions zsh-syntax-highlighting zsh-fzf-tab pass docs rsync rclone pciutils pcsc-lite-libs pcsc-tools lspci nushell nushell-plugins carapace zoxide libsixel-tools
+ 	${APK} build-base bash fzf gnupg gnupg-scdaemon htop lm_sensors lshw neovim openssh openssl readline starship doas doas-sudo-shim tmux tree zip zsh zsh-autosuggestions zsh-syntax-highlighting pass docs rsync rclone pciutils pcsc-lite-libs pcsc-tools lspci nushell nushell-plugins carapace zoxide libsixel-tools
 	#vcs
 	${APK} git  git-email git-lfs tig github-cli hut
 	#networking
@@ -217,5 +217,10 @@ ifeq ($(DISTRO),$(filter $(DISTRO), arch))
 	command -v kbuildsycoca6 && XDG_MENU_PREFIX=arch- kbuildsycoca6 --noincremental #updates kservice desktop-file config cache (for KDE apps), requires archlinux-xdg-menu
 endif
 	make -C ~ update
+
+zsh-fzf-tab: .zsh-fzf-tab
+.zsh-fzf-tab:
+	git clone https://github.com/Aloxaf/fzf-tab $@
+
 
 all: install
