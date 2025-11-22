@@ -1,10 +1,6 @@
-#plugins=(ansible archlinux debian git git-flow github tig history history-substring-search lxd pip python pylint rust systemd ufw vi-mode zsh-autosuggestions pass podman qrcode rsync kubectl zsh-interactive-cd starship copybuffer zoxide)
-
-
-
-unset GREP_OPTIONS #deprecated
-if [ "$OSTYPE" = "linux-musl" ]; then
-    unalias grep 2>/dev/null
+source /etc/os-release
+if [ "$OSTYPE" != "linux-musl" ]; then
+    alias grep=grep --color=auto
 fi
 
 #apps
