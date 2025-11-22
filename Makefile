@@ -179,7 +179,7 @@ endif
 endif
 else ifeq ($(DISTRO),$(filter $(DISTRO), debian ubuntu))
 	sudo apt-get update
-	${APT} ack aptitude autoconf-archive bat chafa curl fping gawk gcc git glances highlight htop iotop jq ncdu neovim netcat pandoc sed tig tmux wget whiptail zsh
+	${APT} ack aptitude autoconf-archive bat chafa curl fping gawk gcc git glances highlight htop iotop jq ncdu neovim netcat pandoc sed tig tmux wget whiptail zsh zsh-syntax-highlighting zsh-autosuggestions
 else
 	$(error "Unknown distribution")
 endif

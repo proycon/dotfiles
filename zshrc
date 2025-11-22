@@ -491,7 +491,11 @@ zstyle ':completion:*' matcher-list 'm:{a-z}={A-Za-z}'
 [ -f /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh ] && source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 [ -f /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh ] && source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
 [ -f /usr/share/zsh/plugins/zsh-history-substring-search/zsh-history-substring-search.zsh ] && source /usr/share/zsh/plugins/zsh-history-substring-search/zsh-history-substring-search.zsh
-[ -f /usr/share/zsh/plugins/fzf-tab/fzf-tab.plugin.zsh ] && source /usr/share/zsh/plugins/fzf-tab/fzf-tab.plugin.zsh
+if [ -f /usr/share/zsh/plugins/fzf-tab-git/fzf-tab.plugin.zsh ]; then
+    source /usr/share/zsh/plugins/fzf-tab-git/fzf-tab.plugin.zsh #AUR
+elif [ -f /usr/share/zsh/plugins/fzf-tab/fzf-tab.plugin.zsh ]; then
+    source /usr/share/zsh/plugins/fzf-tab/fzf-tab.plugin.zsh
+fi
 
 # disable sort when completing `git checkout`
 zstyle ':completion:*:git-checkout:*' sort false
