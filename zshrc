@@ -490,11 +490,14 @@ zstyle ':completion:*' matcher-list 'm:{a-z}={A-Za-z}'
 [ -f /usr/share/zsh/plugins/zsh-history-substring-search/zsh-history-substring-search.zsh ] && source /usr/share/zsh/plugins/zsh-history-substring-search/zsh-history-substring-search.zsh
 if [ -f /usr/share/zsh/plugins/fzf-tab-git/fzf-tab.plugin.zsh ]; then
     source /usr/share/zsh/plugins/fzf-tab-git/fzf-tab.plugin.zsh #AUR
+    HAVE_FZF_TAB=1
 elif [ -f /usr/share/zsh/plugins/fzf-tab/fzf-tab.plugin.zsh ]; then
     source /usr/share/zsh/plugins/fzf-tab/fzf-tab.plugin.zsh
+    HAVE_FZF_TAB=1
 elif [ -f ~/.zsh-fzf-tab/fzf-tab.plugin.zsh ]; then
     #run make `zsh-fzf-tab` to install this
     source ~/.zsh-fzf-tab/fzf-tab.plugin.zsh
+    HAVE_FZF_TAB=1
 fi
 
 # disable sort when completing `git checkout`
@@ -505,7 +508,20 @@ zstyle ':completion:*:descriptions' format '[%d]'
 # set list-colors to enable filename colorizing
 zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS}
 # force zsh not to show completion menu, which allows fzf-tab to capture the unambiguous prefix
-zstyle ':completion:*' menu no
+if [ "$HAVE_FZF_TAB" = "1" ]; then
+    zstyle ':completion:*' menu no
+else
+    #zsh's own completion
+    zstyle ':completion:*' completer _expand _complete _ignored _correct _approximate
+    zstyle ':completion:*' expand prefix
+    zstyle ':completion:*' matcher-list '' 'm:{[:lower:]}={[:upper:]}' 'm:{[:lower:][:upper:]}={[:upper:][:lower:]}' 'r:|[._-]=* r:|=*'
+    zstyle ':completion:*' menu select=2
+    zstyle ':completion:*' select-prompt %SScrolling active: current selection at %p%s
+    zstyle ':completion:*' file-list all
+    zstyle ':completion:*:default' list-colors ${(s.:.)LS_COLORS}
+    zstyle ':completion:*' group-name ''
+    zmodload zsh/complist
+fi
 # preview directory's content with eza when completing cd
 zstyle ':fzf-tab:complete:cd:*' fzf-preview 'eza -1 --color=always $realpath'
 # custom fzf flags
@@ -518,17 +534,7 @@ zstyle ':fzf-tab:*' use-fzf-default-opts yes
 zstyle ':fzf-tab:*' switch-group '<' '>'
 
 
-#zsh's own completion
 
-#zstyle ':completion:*' completer _expand _complete _ignored _correct _approximate
-#zstyle ':completion:*' expand prefix
-#zstyle ':completion:*' matcher-list '' 'm:{[:lower:]}={[:upper:]}' 'm:{[:lower:][:upper:]}={[:upper:][:lower:]}' 'r:|[._-]=* r:|=*'
-#zstyle ':completion:*' menu select=2
-#zstyle ':completion:*' select-prompt %SScrolling active: current selection at %p%s
-#zstyle ':completion:*' file-list all
-#zstyle ':completion:*:default' list-colors ${(s.:.)LS_COLORS}
-#zstyle ':completion:*' group-name ''
-#zmodload zsh/complist
 
 export PATH="$HOME/.local/bin:$PATH"
 unset LESS_TERMCAP_so
