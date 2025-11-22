@@ -1,15 +1,9 @@
-[submodule "zsh-syntax-highlighting"]
-	path = zsh-syntax-highlighting
-	url = https://github.com/zsh-users/zsh-syntax-highlighting.git
 [submodule "gruvbox-rofi"]
 	path = gruvbox-rofi
 	url = https://github.com/bardisty/gruvbox-rofi
 [submodule "tmux/tpm"]
 	path = tmux/tpm
 	url = https://github.com/tmux-plugins/tpm
-[submodule "zsh-autosuggestions"]
-	path = zsh-autosuggestions
-	url = https://github.com/zsh-users/zsh-autosuggestions
 [submodule "yazi/flavors"]
 	path = yazi/flavors
 	url = https://github.com/yazi-rs/flavors

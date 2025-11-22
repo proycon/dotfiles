@@ -11,18 +11,3 @@ conffiles: .zshrc .urlview .muttrc .mailcap .signature .signature.ru.txt .signat
 
 .zshrc .urlview .muttrc .mailcap .signature .signature.ru.txt .signature.knaw.txt .signature.unilang .tmux.conf .tmux-powerlinerc .tmux .tigrc:
 	ln -sf ~/dotfiles/$(shell echo $@ | sed s/^\.//) $@
-
-update: oh-my-zsh
-	cd oh-my-zsh && git pull
-
-oh-my-zsh:
-	git clone https://github.com/ohmyzsh/ohmyzsh.git oh-my-zsh
-
-.oh-my-zsh: oh-my-zsh
-	ln -sf $< $@
-
-.oh-my-zsh/themes/proysh.zsh-theme: .oh-my-zsh	
-	ln -sf ~/dotfiles/proysh.zsh-theme $@
-
-.oh-my-zsh/plugins/zsh-autosuggestions: .oh-my-zsh	
-	ln -s ~/dotfiles/zsh-autosuggestions/
