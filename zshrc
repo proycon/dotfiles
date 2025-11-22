@@ -550,4 +550,6 @@ if [ "$(tty)" = "/dev/tty1" ]; then
 elif command -v starship > /dev/null; then
     export VIRTUAL_ENV_DISABLE_PROMPT=1
     eval "$(starship init zsh)"
+else
+    PROMPT="$(tput setaf 3)%n@%m$(tput sgr0) $(tput setaf 6)%~$(tput sgr0)$(tput setaf 3)%#$(tput sgr0)"
 fi
