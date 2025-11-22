@@ -1,6 +1,8 @@
-source /etc/os-releasezsh
-if [ "$OSTYPE" != "linux-musl" ]; then
-    alias grep=grep --color=auto
+if [ -e /etc/os-release ]; then
+    source /etc/os-release
+    if [ "$OSTYPE" != "linux-musl" ]; then
+        alias grep=grep --color=auto
+    fi
 fi
 
 #apps
