@@ -100,6 +100,7 @@ alias glsrht='sshcheck && git pull srht $(git branch --show-current) && git subm
 alias glu='sshcheck && git pull upstream $(git branch --show-current) && git submodule update; resultsound $? wipe.wav boing.wav'
 alias gf='sshcheck && git fetch -a'
 alias gco='git checkout'
+alias gr='git remote -v'
 alias gp='sshcheck && git push; resultsound $? submit.wav boing.wav'
 alias gpgh='sshcheck && git push github $(git branch --show-current); resultsound $? submit.wav boing.wav'
 alias gpsrht='sshcheck && git push srht $(git branch --show-current); resultsound $? submit.wav boing.wav'
