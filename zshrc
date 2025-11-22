@@ -536,8 +536,6 @@ zstyle ':fzf-tab:*' use-fzf-default-opts yes
 zstyle ':fzf-tab:*' switch-group '<' '>'
 
 
-
-
 export PATH="$HOME/.local/bin:$PATH"
 unset LESS_TERMCAP_so
 
@@ -545,11 +543,11 @@ if (( $+commands[zoxide] )); then
   eval "$(zoxide init --cmd ${ZOXIDE_CMD_OVERRIDE:-z} zsh)"
 fi
 
-if [ "$(tty)" = "/dev/tty1" ]; then
-    command -v river && exec ~/dotfiles/scripts/startriver.sh
+if [ "$(tty)" = "/dev/tty1" ] && [ command -v river ]; then
+    exec ~/dotfiles/scripts/startriver.sh
 elif command -v starship > /dev/null; then
     export VIRTUAL_ENV_DISABLE_PROMPT=1
     eval "$(starship init zsh)"
 else
-    PROMPT="$(tput setaf 3)%n@%m$(tput sgr0) $(tput setaf 6)%~$(tput sgr0)$(tput setaf 3)%#$(tput sgr0)"
+    PROMPT="$(tput setaf 3)%n@%m$(tput sgr0) $(tput setaf 6)%~$(tput sgr0)$(tput setaf 3)%#$(tput sgr0) "
 fi
