@@ -45,7 +45,7 @@ ifeq ($(DISTRO),arch)
 	#sync once
 	sudo pacman -Sy
 	#core
-	${PACMAN} base-devel bash busybox bzip2 coreutils e2fsprogs fzf gnupg gnutls gzip hdparm htop iotop iperf less lm_sensors lsb-release lshw lsof make nano neovim openssh openssl procps-ng psmisc readline rsync rclone sudo tar time tmux tree udiskie vi zip zsh zsh-syntax-highlighting zsh-autosuggestions nushell pass apparmor firejail man tldr tailspin starship zoxide libsixel
+	${PACMAN} base-devel bash busybox bzip2 coreutils e2fsprogs fzf gnupg gnutls gzip hdparm htop iotop iperf less lm_sensors lsb-release lshw lsof make nano neovim openssh openssl procps-ng psmisc readline rsync rclone sudo tar time tmux tree udiskie vi zip zsh zsh-syntax-highlighting zsh-autosuggestions zsh-history-substring-search nushell pass apparmor firejail man tldr tailspin starship zoxide libsixel
 	#networking
 	${PACMAN} curl fping inetutils netcat networkmanager nfs-utils nm-connection-editor nmap nmap smbclient sshfs traceroute usbutils wget whois wireshark-cli termshark openfortivpn gocryptfs
 	#version control
