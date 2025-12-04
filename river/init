@@ -348,8 +348,8 @@ if [ "$SXMO_WM" = "river" ]; then
     riverctl map normal Super T spawn 'sxmo_appmenu.sh power'
 
     for mode in normal locked; do
-        riverctl map-switch $mode lid open spawn 'sxmo_wm.sh dpms on'
-        riverctl map-switch $mode lid close spawn 'sxmo_wm.sh dpms off'
+        riverctl map-switch $mode lid open spawn 'sxmo_wm.sh display on'
+        riverctl map-switch $mode lid close spawn 'sxmo_wm.sh display off'
     done
 
     if [ "$HOSTNAME" != "toren" ]; then
