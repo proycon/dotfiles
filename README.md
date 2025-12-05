@@ -21,18 +21,18 @@ Current setup:
 * 📊 Presentations: [LaTeX](https://www.latex-project.org/) with beamer (more often via Markdown + pandoc)
 * 📜 PDF viewer: [zathura](https://pwmt.org/projects/zathura/)
 * 🎥 Media Player: [mpv](https://mpv.io)
-* 🎵 Music: [ncmpcpp](https://rybczak.net/ncmpcpp/) (client) + [mpd](https://musicpd.org) + [snapcast](https://github.com/badaix/snapcast)
+* 🎵 Music: [rmpc](https://rmpc.mierak.dev/) (client) or [ncmpcpp](https://rybczak.net/ncmpcpp/) (client) with  [mpd](https://musicpd.org) + [snapcast](https://github.com/badaix/snapcast)
 * 📝 Notes: [neovim](https://neovim.org) and markdown files in a git repo
 * ✅ To-Do: [todo.txt](https://todotxt.org) with my own [todo.txt-more](https://git.sr.ht/~proycon/todotxt-more) extension.
 * 📆 Calendar: [todo.txt-more](https://git.sr.ht/~proycon/todotxt-more)
-* 🗞️ RSS Client:  [newsboat](https://newsboat.org)
-* 🎤 Podcasts: podboat (comes with newsboat)
+* 🗞️ RSS Client:  [newsraft](https://codeberg.org/newsraft/newsraft)
+* 🎤 Podcasts: same as above
 * ⌨️ Launcher:  [bemenu](https://github.com/Cloudef/bemenu)
 * 🌅 Photo viewer: [imv](https://sr.ht/~exec64/imv/)
 * 🌅 Photo editing: [gimp](https://gimp.org)
 * 🌅 Image editing (vector): [inkscape](https://inkscape.org)
 * 📹 Video editing: [kdenlive](https://kdenlive.org)
-* 💬 Chat: [senpai](https://sr.ht/~taiite/senpai/) + [soju](https://git.sr.ht/~emersion/soju) (IRC), [bitlbee](https://bitlbee.org) (XMPP), [gomuks](https://github.com/tulir/gomuks) (Matrix), [Telegram](https://desktop.telegram.org/) (or [tg](https://github.com/paul-nameless/tg))
+* 💬 Chat: [senpai](https://sr.ht/~taiite/senpai/) + [soju](https://git.sr.ht/~emersion/soju) (IRC), [nheko](https://nheko-reborn.github.io/) (Matrix, using bridges for Signal, Discord, Telegram), [Dino](https://dino.im/) (XMPP)
 * 🔖 Bookmarks: [buku](https://github.com/jarun/Buku) + bemenu script
 * 🔐 Password Management: [pass](https://www.passwordstore.org/)
 * 🤦 Social Media: [Mastodon](https://social.anaproy.nl/@proycon) (sometimes via [tut](https://github.com/RasmusLindroth/tut))
