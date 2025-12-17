@@ -335,8 +335,8 @@ if [ "$SXMO_WM" = "river" ]; then
     riverctl map normal None XF86MonBrightnessDown spawn 'sxmo_brightness.sh down'
 
     # Launch appmenu
-    riverctl map normal Super P spawn 'sxmo_appmenu.sh'
-    riverctl map normal Super+Shift P spawn 'sxmo_appmenu.sh sys'
+    riverctl map normal Super A spawn 'sxmo_appmenu.sh'
+    riverctl map normal Super+Shift A spawn 'sxmo_appmenu.sh sys'
 
     # Start your launcher
     riverctl map normal Super D spawn 'bemenu-run'
