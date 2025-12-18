@@ -77,7 +77,7 @@ export XDG_DESKTOP_DIR XDG_DOCUMENTS_DIR XDG_PICTURES_DIR XDG_MUSIC_DIR XDG_DOWN
 
 HOSTNAME=$(hostname)
 if [ "$HOSTNAME" = "trantor" ] || [ "$HOSTNAME" = "toren" ]; then
-    KB_OPTS="-options lv3:ralt_switch,caps:ctrl_modifier,altwin:swap_alt_win,grp:alt_shift_toggle"
+    KB_OPTS="-options lv3:ralt_switch,caps:ctrl_modifier,altwin:swap_lalt_lwin,compose:rctrl"
 else
     KB_OPTS=
 fi

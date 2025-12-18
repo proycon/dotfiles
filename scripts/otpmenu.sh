@@ -12,6 +12,7 @@ fi
 
 export PROTOCOL_BUFFERS_PYTHON_IMPLEMENTATION=python 
 
+export PATH=~/bin:$PATH
 target=$(nitropy nk3 secrets list | tail -n +1 | cut  -f 1 | cut -d " " -f 2 | bemenu -p "Target" --fn "$BEMENU_FONT" -l 10 $BEMENU_COLORARGS )
 [ -n "$target" ] || exit
 
