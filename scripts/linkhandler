@@ -58,7 +58,7 @@ case "$TARGET" in
         case "$1" in
             *mkv|*webm|*mp4|*youtube.com*|*youtu.be*|*hooktube.com*|*bitchute.com*|*gifv|*v.redd.it*|*gifs.com*|*mkv?*|*mp4?*|*gifv?*)
                 #handles both local and remote
-                setsid mpv --ytdl-format="bestvideo[height<=1080]+bestaudio" --input-ipc-server="/tmp/mpvsoc$(date +%s)" -quiet "$1" >/dev/null 2>&1 & ;;
+                setsid mpv --vo=gpu --ytdl-format="bestvideo[height<=1080]+bestaudio" --input-ipc-server="/tmp/mpvsoc$(date +%s)" -quiet "$1" >/dev/null 2>&1 & ;;
             *png|*jpg|*jpe|*jpeg|*gif|*webp)
                 setsid imv "$1" >/dev/null 2>&1 &
                 ;;
