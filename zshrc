@@ -545,7 +545,7 @@ if (( $+commands[zoxide] )); then
   eval "$(zoxide init --cmd ${ZOXIDE_CMD_OVERRIDE:-z} zsh)"
 fi
 
-if [ "$(tty)" = "/dev/tty1" ] && [ command -v river ]; then
+if [ "$(tty)" = "/dev/tty1" ] && command -v river; then
     exec ~/dotfiles/scripts/startriver.sh
 elif command -v starship > /dev/null; then
     export VIRTUAL_ENV_DISABLE_PROMPT=1
