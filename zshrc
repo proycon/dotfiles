@@ -547,9 +547,18 @@ fi
 
 if [ "$(tty)" = "/dev/tty1" ] && command -v river; then
     exec ~/dotfiles/scripts/startriver.sh
-elif command -v starship > /dev/null; then
+elif command -v starship > /dev/null && [ -z "$NO_STARSHIP" ] && ping -c 1 -W 1 192.168.0.1 > /dev/null; then
     export VIRTUAL_ENV_DISABLE_PROMPT=1
     eval "$(starship init zsh)"
 else
-    PROMPT="$(tput setaf 3)%n@%m$(tput sgr0) $(tput setaf 6)%~$(tput sgr0)$(tput setaf 3)%#$(tput sgr0) "
+    #black=$(tput setaf 0)
+    #red=$(tput setaf 1)
+    #green=$(tput setaf 2)
+    yellow=$(tput setaf 3)
+    #blue=$(tput setaf 4)
+    #magenta=$(tput setaf 5)
+    cyan=$(tput setaf 6)
+    #white=$(tput setaf 7)
+    reset=$(tput sgr0)
+    PROMPT="${yellow}%n@%m${reset} ${cyan}%~${reset}${yellow}%#${reset} "
 fi
