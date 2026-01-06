@@ -314,6 +314,9 @@ riverctl rule-add -app-id '*' ssd
 gsettings set org.gnome.desktop.interface text-scaling-factor 1.8
 gsettings set org.gnome.desktop.interface color-scheme 'prefer-dark'
 gsettings set org.gnome.desktop.interface gtk-theme 'Adwaita-dark'
+gsettings set org.gnome.desktop.wm.preferences theme 'Adwaita-dark'
+gsettings set org.gnome.desktop.interface icon-theme Adwaita
+gsettings set org.gnome.desktop.interface accent-color 'green'
 
 if [ "$SXMO_WM" = "river" ]; then
     #SXMO compatibility
