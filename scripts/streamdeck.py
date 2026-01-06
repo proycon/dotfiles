@@ -13,7 +13,7 @@ from StreamDeck.Devices.StreamDeck import DialEventType, TouchscreenEventType, S
 from StreamDeck.Transport.Transport import TransportError
 
 ASSETS_PATH = os.path.join(os.path.dirname(__file__), "../media/icons")
-IMAGES = ['muted','unmuted','play','stopmusic', 'next', 'pause']
+IMAGES = ['muted','unmuted','play','stopmusic', 'next', 'pause', 'screenshot', 'videocam', 'novideocam']
 PA = pulsectl.Pulse("volume-controller")
 
 class Key():
@@ -45,13 +45,14 @@ class MuteKey(Key):
             deck.set_key_image(self.index, self.images['unmuted'])
 
 class ProcessCommandKey(Key):
-    def __init__(self, index: int, process_name: str, cmd_turn_on: str, cmd_turn_off: str, img_turn_on: str, img_turn_off: str):
+    def __init__(self, index: int, process_name: str, cmd_turn_on: str, cmd_turn_off: str, img_turn_on: str, img_turn_off: str, pgrep_opts: str = ""):
         super().__init__(index)
         self.process_name = process_name
         self.cmd_turn_on = cmd_turn_on
         self.cmd_turn_off = cmd_turn_off
         self.img_turn_on = img_turn_on
         self.img_turn_off = img_turn_off
+        self.pgrep_opts = pgrep_opts
         self.last_img = None
 
     def load(self, deck: Deck, images: dict):
@@ -59,7 +60,7 @@ class ProcessCommandKey(Key):
         self.set_image(deck)
 
     def set_image(self, deck: Deck):
-        if subprocess.call(f"pgrep {self.process_name}", shell=True) != 0:
+        if subprocess.call(f"pgrep {self.pgrep_opts} \"{self.process_name}\"", shell=True) != 0:
             if self.last_img != self.img_turn_on:
                 deck.set_key_image(self.index, self.images[self.img_turn_on])
                 self.last_img = self.img_turn_on
@@ -69,7 +70,7 @@ class ProcessCommandKey(Key):
                 self.last_img = self.img_turn_off
 
     def pressed(self, deck: Deck):
-        if subprocess.call(f"pgrep {self.process_name}", shell=True) != 0:
+        if subprocess.call(f"pgrep {self.pgrep_opts} \"{self.process_name}\"", shell=True) != 0:
             subprocess.call(f"{self.cmd_turn_on} &", shell=True)
             deck.set_key_image(self.index, self.images[self.img_turn_off])
             self.last_img = self.img_turn_off
@@ -97,8 +98,10 @@ class CommandKey(Key):
 
 
 KEYS = {
+    1: CommandKey(1, "~/dotfiles/scripts/screenshot.sh region","screenshot"),
     2: ProcessCommandKey(2, "snapclient", "lala","pkill snapclient && mpc stop", "play","stopmusic"),
     3: CommandKey(3, "mpc pause-if-playing || mpc play","pause"),
+    5: ProcessCommandKey(5, "mpv rtsp",  "~/bin/streetcam.sh","pkill -f \"mpv rtsp\"","videocam", "novideocam", "-f"),
     6: CommandKey(6, "mpc next","next"),
     7: MuteKey(7)
 }
