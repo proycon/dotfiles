@@ -4,6 +4,3 @@
 [submodule "tmux/tpm"]
 	path = tmux/tpm
 	url = https://github.com/tmux-plugins/tpm
-[submodule "yazi/flavors"]
-	path = yazi/flavors
-	url = https://github.com/yazi-rs/flavors
