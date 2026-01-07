@@ -95,3 +95,5 @@ map b bulkrename
 map <c-e> down
 map <c-y> up
 map V push :!nvim<space>
+
+map ` !true

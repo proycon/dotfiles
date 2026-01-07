@@ -74,7 +74,7 @@ ifeq ($(DISTRO),arch)
 	#CLI text tools
 	${PACMAN} ack antiword bat difftastic fmt fzf gawk glow grep highlight jless jq miller pandoc ripgrep sed tabiew xsv
 	#CLI file management
-	${PACMAN} exa fd ncdu lf yazi
+	${PACMAN} exa fd ncdu lf yazi perl-file-mimeinfo
 	#CLI process management
 	${PACMAN} btop
 	#printing
@@ -150,7 +150,7 @@ ifeq ($(DESKTOP),1)
 	#IME & languages
 	${APK} fcitx5 fcitx5-chinese-addons fcitx5-qt fcitx5-gtk fcitx5-configtool
 	#multimedia
-	${APK} mpv mpc espeak sxiv imv yt-dlp ncmpcpp lf chafa grim slurp ffmpeg ytfzf pavucontrol pamixer
+	${APK} mpv mpc espeak sxiv imv yt-dlp ncmpcpp lf chafa grim slurp ffmpeg ytfzf pavucontrol pamixer perl-file-mimeinfo
 	#fonts
 	${APK} font-fira-mono-nerd font-ubuntu-nerd font-wqy-zenhei font-noto-all font-cantarell font-awesome font-ubuntu font-droid font-material-icons font-noto-emoji
 	#communication
