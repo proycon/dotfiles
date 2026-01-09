@@ -438,6 +438,9 @@ if [ "$HOSTNAME" = "pollux" ]; then
     #view sources with: pactl list short sources
     pactl set-default-sink alsa_output.pci-0000_17_00.6.3.analog-stereo.monitor
     pactl set-default-source alsa_input.usb-Samson_Technologies_Samson_C01U_Pro_Mic-00.3.analog-stereo 
+
+    #start streamdeck
+    riverctl spawn "setsid python /home/proycon/dotfiles/scripts/streamdeck.py"
 fi
 
 fcitx5 &

@@ -11,6 +11,9 @@ ssh_connected() {
 if ! ssh_connected && ! pidof notmuch rsync pacman git apk scp cp tar zip unzip mpv steam X-Plane-x86_64; then
     LOADAVG=$(cut -d" " -f 2 /proc/loadavg | cut -d "." -f 1)
     if [ "$LOADAVG" -le 3 ]; then
+        if [ "$HOSTNAME" = "pollux" ]; then
+            pkill -f streamdeck.py
+        fi
         echo "auto suspending">&2
         if ! pidof waylock; then
             ~/dotfiles/scripts/lock.sh &
@@ -18,6 +21,9 @@ if ! ssh_connected && ! pidof notmuch rsync pacman git apk scp cp tar zip unzip 
         fi
         if command -v systemctl; then
             systemctl suspend
+            if [ "$HOSTNAME" = "pollux" ]; then
+                riverctl spawn "setsid python /home/proycon/dotfiles/scripts/streamdeck.py"
+            fi
         elif command -v zzz; then
             umountssh &&\
             nmcli dev down wlan0 &&\
