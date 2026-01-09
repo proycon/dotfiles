@@ -13,7 +13,7 @@ from StreamDeck.Devices.StreamDeck import DialEventType, TouchscreenEventType, S
 from StreamDeck.Transport.Transport import TransportError
 
 ASSETS_PATH = os.path.join(os.path.dirname(__file__), "../media/icons")
-IMAGES = ['muted','unmuted','play','stopmusic', 'next', 'pause', 'screenshot', 'videocam', 'novideocam']
+IMAGES = ['muted','unmuted','play','stopmusic', 'next', 'pause', 'screenshot', 'videocam', 'novideocam','vpn','novpn']
 PA = pulsectl.Pulse("volume-controller")
 
 class Key():
@@ -98,6 +98,7 @@ class CommandKey(Key):
 
 
 KEYS = {
+    0: ProcessCommandKey(0, "openfortivpn", "sudo vpn-knaw.sh","pkill openfortivpn", "novpn","vpn"),
     1: CommandKey(1, "~/dotfiles/scripts/screenshot.sh region","screenshot"),
     2: ProcessCommandKey(2, "snapclient", "lala","pkill snapclient && mpc stop", "play","stopmusic"),
     3: CommandKey(3, "mpc pause-if-playing || mpc play","pause"),
