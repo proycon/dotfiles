@@ -33,4 +33,9 @@ if [ ! -f /tmp/locked ]; then
             ~/dotfiles/scripts/fixworkspaces.sh
         fi
     fi
+    if [ "$HOSTNAME" = "pollux" ]; then
+        if ! pgrep -f streamdeck.py; then
+            riverctl spawn "setsid python /home/proycon/dotfiles/scripts/streamdeck.py"
+        fi
+    fi
 fi

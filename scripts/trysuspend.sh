@@ -21,9 +21,6 @@ if ! ssh_connected && ! pidof notmuch rsync pacman git apk scp cp tar zip unzip 
         fi
         if command -v systemctl; then
             systemctl suspend
-            if [ "$HOSTNAME" = "pollux" ]; then
-                riverctl spawn "setsid python /home/proycon/dotfiles/scripts/streamdeck.py"
-            fi
         elif command -v zzz; then
             umountssh &&\
             nmcli dev down wlan0 &&\
