@@ -57,6 +57,8 @@
             "<C-h>":     PaneLeft,
             "<C-l>":     PaneRight,
             "<C-u>":     UpHalf,
+            "<PageUp>":   UpHalf,
+            "<PageDown>":    DownHalf,
             "N":         PreviousResult,
             "a":         Add,
             "A":         AddAll,
