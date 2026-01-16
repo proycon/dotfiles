@@ -4,6 +4,7 @@ import os
 import threading
 import sys
 import io
+import time
 
 import pulsectl
 import subprocess
@@ -16,9 +17,15 @@ ASSETS_PATH = os.path.join(os.path.dirname(__file__), "../media/icons")
 IMAGES = ['muted','unmuted','play','stopmusic', 'next', 'pause', 'screenshot', 'videocam', 'novideocam','vpn','novpn']
 PA = pulsectl.Pulse("volume-controller")
 
+class Timer(threading.Timer):
+    def run(self):
+        while not self.finished.wait(self.interval):
+            self.function(*self.args, **self.kwargs)
 class Key():
+    POLL_INTERVAL = 1
     def __init__(self, index: int):
         self.index = index
+        self.last_img = None
 
     def load(self, deck: Deck, images: dict):
         self.images = images
@@ -26,7 +33,12 @@ class Key():
     def pressed(self, deck: Deck):
         pass
 
+    def poll(self, deck: Deck):
+        pass
+
 class MuteKey(Key):
+    POLL_INTERVAL = 1
+
     def load(self, deck: Deck, images: dict):
         super().load(deck, images)
         pa = pulsectl.Pulse("volume-controller")
@@ -38,13 +50,21 @@ class MuteKey(Key):
         self.set_image(deck, muted)
 
     def set_image(self, deck: Deck, muted: bool):
-        if muted:
+        if muted and self.last_img != 'muted':
             deck.set_key_image(self.index, self.images['muted'])
-        else:
-            volume = get_volume()
+            self.last_image = 'muted'
+        elif not muted and self.last_img != 'unmuted':
             deck.set_key_image(self.index, self.images['unmuted'])
+            self.last_image = 'unmuted'
+
+    def poll(self, deck: Deck):
+        pa = pulsectl.Pulse("volume-controller")
+        sink = pa.sink_default_get()
+        self.set_image(deck, sink.mute)
 
 class ProcessCommandKey(Key):
+    POLL_INTERVAL = 5
+
     def __init__(self, index: int, process_name: str, cmd_turn_on: str, cmd_turn_off: str, img_turn_on: str, img_turn_off: str, pgrep_opts: str = ""):
         super().__init__(index)
         self.process_name = process_name
@@ -53,7 +73,6 @@ class ProcessCommandKey(Key):
         self.img_turn_on = img_turn_on
         self.img_turn_off = img_turn_off
         self.pgrep_opts = pgrep_opts
-        self.last_img = None
 
     def load(self, deck: Deck, images: dict):
         super().load(deck,images)
@@ -79,6 +98,9 @@ class ProcessCommandKey(Key):
             deck.set_key_image(self.index, self.images[self.img_turn_on])
             self.last_img = self.img_turn_on
 
+    def poll(self, deck: Deck):
+        self.set_image(deck)
+
 class CommandKey(Key):
     def __init__(self, index: int,  cmd: str, img: str):
         super().__init__(index)
@@ -98,7 +120,7 @@ class CommandKey(Key):
 
 
 KEYS = {
-    0: ProcessCommandKey(0, "openfortivpn", "sudo vpn-knaw.sh","pkill openfortivpn", "novpn","vpn"),
+    0: ProcessCommandKey(0, "openfortivpn", "sudo vpn-knaw.sh","sudo pkill openfortivpn", "novpn","vpn"),
     1: CommandKey(1, "~/dotfiles/scripts/screenshot.sh region","screenshot"),
     2: ProcessCommandKey(2, "snapclient", "lala","pkill snapclient && mpc stop", "play","stopmusic"),
     3: CommandKey(3, "mpc pause-if-playing || mpc play","pause"),
@@ -194,6 +216,8 @@ def main():
 
         for key in KEYS.values():
             key.load(deck, images)
+            Timer( float(key.POLL_INTERVAL), key.poll, [deck]).start()
+
 
         # build an image for the touch lcd
         img = Image.new('RGB', (800, 100), 'black')
@@ -212,6 +236,8 @@ def main():
                 t.join()
             except (TransportError, RuntimeError):
                 pass
+
+        deck.reset()
 
 if __name__ == "__main__":
     main()
