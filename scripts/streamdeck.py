@@ -4,7 +4,7 @@ import os
 import threading
 import sys
 import io
-import time
+import signal
 
 import pulsectl
 import subprocess
@@ -21,6 +21,7 @@ class Timer(threading.Timer):
     def run(self):
         while not self.finished.wait(self.interval):
             self.function(*self.args, **self.kwargs)
+
 class Key():
     POLL_INTERVAL = 1
     def __init__(self, index: int):
@@ -184,6 +185,18 @@ def toggle_mute() -> bool:
     PA.mute(sink, not sink.mute)
     return sink.mute
 
+def signal_handler(deck):
+    """Handler for graceful shutdown on SIGINT"""
+
+    def handler(signum, frame):
+        for t in threading.enumerate():
+            if hasattr(t,'cancel'):
+                t.cancel()
+        deck.reset()
+        sys.exit(0)
+
+    return handler
+
 def main():
     images = {}
 
@@ -204,6 +217,8 @@ def main():
 
         deck.open()
         deck.reset()
+
+        signal.signal(signal.SIGINT, signal_handler(deck))
 
         deck.set_key_callback(key_change_callback)
         deck.set_dial_callback(dial_change_callback)
@@ -236,8 +251,6 @@ def main():
                 t.join()
             except (TransportError, RuntimeError):
                 pass
-
-        deck.reset()
 
 if __name__ == "__main__":
     main()
