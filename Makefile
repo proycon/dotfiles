@@ -102,7 +102,7 @@ ifeq ($(DESKTOP),1)
 	#themes etc
 	${PACMAN} gnome-themes-extra 
 	#graphics & video
-	${PACMAN} cheese feh ffmpeg gimp imagemagick imv inkscape mplayer mpv sxiv v4l-utils vlc yt-dlp kdenlive ytfzf
+	${PACMAN} cheese feh ffmpeg gimp imagemagick imv swayimg inkscape mplayer mpv sxiv v4l-utils vlc yt-dlp kdenlive ytfzf
 	#IME & languages
 	${PACMAN} fcitx5 fcitx5-chinese-addons fcitx5-gtk fcitx5-qt fcitx5-configtool ibus-libpinyin
 	#various
@@ -150,7 +150,7 @@ ifeq ($(DESKTOP),1)
 	#IME & languages
 	${APK} fcitx5 fcitx5-chinese-addons fcitx5-qt fcitx5-gtk fcitx5-configtool
 	#multimedia
-	${APK} mpv mpc espeak sxiv imv yt-dlp ncmpcpp lf chafa grim slurp ffmpeg ytfzf pavucontrol pamixer perl-file-mimeinfo
+	${APK} mpv mpc espeak sxiv imv swayimg yt-dlp ncmpcpp lf chafa grim slurp ffmpeg ytfzf pavucontrol pamixer perl-file-mimeinfo
 	#fonts
 	${APK} font-fira-mono-nerd font-ubuntu-nerd font-wqy-zenhei font-noto-all font-cantarell font-awesome font-ubuntu font-droid font-material-icons font-noto-emoji
 	#communication
