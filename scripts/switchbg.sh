@@ -22,10 +22,13 @@ case "$CURBG" in
         NEWBG=~/dotfiles/media/paradox_waves_by_neaben.jpg
         ;;
     *paradox_waves*)
+        NEWBG=~/dotfiles/media/fern.jpg
+        ;;
+    *fern*)
         NEWBG=~/dotfiles/media/photo-of-lake-krivec-ales.jpg
         ;;
     *)
-        NEWBG=~/dotfiles/media/paradox_waves_by_neaben.jpg
+        NEWBG=~/dotfiles/media/fern.jpg
         ;;
 esac
 
