@@ -60,7 +60,7 @@ case "$TARGET" in
                 #handles both local and remote
                 setsid mpv --vo=gpu --ytdl-format="bestvideo[height<=1080]+bestaudio" --input-ipc-server="/tmp/mpvsoc$(date +%s)" -quiet "$1" >/dev/null 2>&1 & ;;
             *png|*jpg|*jpe|*jpeg|*gif|*webp)
-                setsid imv "$1" >/dev/null 2>&1 &
+                setsid swayimg "$1" >/dev/null 2>&1 &
                 ;;
             *mp3|*flac|*opus|*mp3?*|*flac?*|*opus?*|*wav)
                 #handles both local and remote
@@ -175,9 +175,9 @@ case "$TARGET" in
                 case "$1" in
                     http*)
                         wget "$1" -O image
-                        setsid imv image >/dev/null 2>&1 & ;;
+                        setsid swayimg image >/dev/null 2>&1 & ;;
                     *)
-                        setsid imv "$1" >/dev/null 2>&1 & ;;
+                        setsid swayimg "$1" >/dev/null 2>&1 & ;;
                 esac
                 ;;
             *springer.com*)
