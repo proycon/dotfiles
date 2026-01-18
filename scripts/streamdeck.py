@@ -146,7 +146,17 @@ def key_change_callback(deck, key, key_state):
         KEYS[key].pressed(deck)
 
 def dial_change_callback(deck, dial, event, value):
-    if dial == 3:
+    if dial == 0:
+        if event == DialEventType.PUSH and value is True:
+            subprocess.call(f"wtype -k Return",shell=True)
+        elif event == DialEventType.TURN:
+            if value > 0:
+                for _ in range(0,value):
+                    subprocess.call(f"wtype -k Down",shell=True)
+            elif value < 0:
+                for _ in range(0,value * -1):
+                    subprocess.call(f"wtype -k Up",shell=True)
+    elif dial == 3:
         if event == DialEventType.PUSH and value is True:
             KEYS[7].pressed(deck)
         elif event == DialEventType.TURN:
@@ -186,7 +196,6 @@ def toggle_mute() -> bool:
     return sink.mute
 
 def signal_handler(deck):
-    """Handler for graceful shutdown on SIGINT"""
 
     def handler(signum, frame):
         for t in threading.enumerate():
@@ -219,6 +228,7 @@ def main():
         deck.reset()
 
         signal.signal(signal.SIGINT, signal_handler(deck))
+        signal.signal(signal.SIGTERM, signal_handler(deck))
 
         deck.set_key_callback(key_change_callback)
         deck.set_dial_callback(dial_change_callback)
