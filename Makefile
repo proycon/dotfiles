@@ -119,7 +119,7 @@ else ifeq ($(DISTRO),$(filter $(DISTRO), alpine postmarketos))
 	#vcs
 	${APK} git  git-email git-lfs tig github-cli hut
 	#networking
-	${APK} curl nmap sshfs mosquitto-clients vnstat termshark bmon openfortivpn ppp-daemon
+	${APK} curl nmap sshfs mosquitto-clients vnstat termshark bmon ppp-daemon wireshark
 	#dev: C/C++
 	${APK} autoconf autoconf-archive automake cmake ctags doxygen gdb gmp icu m4 meson ninja libxml2
 	${APK} shellcheck tokei hyperfine
@@ -156,7 +156,7 @@ ifeq ($(DESKTOP),1)
 	#communication
 	${APK} nheko telegram-desktop buku fractal iamb tuba
 	#various
-	${APK} zathura evince geary flawz gucharmap
+	${APK} zathura evince geary gucharmap
 ifeq ($(FULLDESKTOP),1)
 	#things that go only on a desktop/laptop and not on a phone
 	#networking
