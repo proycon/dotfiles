@@ -152,7 +152,7 @@ ifeq ($(DESKTOP),1)
 	#multimedia
 	${APK} mpv mpc espeak imv swayimg yt-dlp ncmpcpp lf chafa grim slurp ffmpeg ytfzf pavucontrol pamixer perl-file-mimeinfo
 	#fonts
-	${APK} font-fira-mono-nerd font-ubuntu-nerd font-wqy-zenhei font-noto-all font-cantarell font-awesome font-ubuntu font-droid font-material-icons font-noto-emoji
+	${APK} font-fira-mono-nerd font-ubuntu-nerd font-wqy-zenhei font-noto-all font-cantarell font-awesome font-droid font-noto-emoji
 	#communication
 	${APK} nheko telegram-desktop buku fractal iamb tuba
 	#various
