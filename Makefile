@@ -125,7 +125,7 @@ else ifeq ($(DISTRO),$(filter $(DISTRO), alpine postmarketos))
 	${APK} shellcheck tokei hyperfine
 	${APK} zola
 	#CLI text tools
-	${APK} ack bat fmt highlight dasel delta jless jq miller pandoc ripgrep sed xsv mdcat
+	${APK} ack bat fmt highlight dasel delta jless jq miller pandoc ripgrep sed xsv
 	#CLI file management
 	${APK} exa fd ncdu yazi yazi-cli
 	#python
