@@ -4,7 +4,7 @@ FULLDESKTOP := 0 #only for alpine/pmos, distinguishes from phone
 
 
 
-# -- automatically computed or static parameters
+# -- automatically computed or static parametersSXMO
 DISTRO := $(shell . /etc/os-release; echo $$ID)
 PACMAN := sudo pacman -S --needed
 APK := sudo apk add --no-interactive
@@ -115,7 +115,7 @@ else ifeq ($(DISTRO),$(filter $(DISTRO), alpine postmarketos))
 	sudo apk update
 	sudo apk upgrade
 	#core
- 	${APK} build-base bash fzf gnupg gnupg-scdaemon htop lm_sensors lshw neovim openssh openssl readline starship doas doas-sudo-shim tmux tree zip zsh zsh-autosuggestions zsh-syntax-highlighting pass docs rsync rclone pciutils pcsc-lite-libs pcsc-tools lspci nushell nushell-plugins carapace zoxide libsixel-tools
+ 	${APK} build-base bash fzf gnupg gnupg-scdaemon htop lm_sensors lshw neovim openssh openssl readline starship doas doas-sudo-shim tmux tree zip zsh zsh-autosuggestions zsh-syntax-highlighting pass docs rsync rclone pciutils pcsc-lite-libs pcsc-tools carapace zoxide libsixel-tools
 	#vcs
 	${APK} git  git-email git-lfs tig github-cli hut
 	#networking
