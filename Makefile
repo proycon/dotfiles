@@ -115,7 +115,7 @@ else ifeq ($(DISTRO),$(filter $(DISTRO), alpine postmarketos))
 	sudo apk update
 	sudo apk upgrade
 	#core
- 	${APK} build-base bash fzf gnupg gnupg-scdaemon htop lm_sensors lshw neovim openssh openssl readline starship doas doas-sudo-shim tmux tree zip zsh zsh-autosuggestions zsh-syntax-highlighting pass docs rsync rclone pciutils pcsc-lite-libs pcsc-tools carapace zoxide libsixel-tools
+	${APK} build-base bash fzf gnupg gnupg-scdaemon htop lm_sensors lshw neovim openssh openssl readline starship doas doas-sudo-shim tmux tree zip zsh zsh-autosuggestions zsh-syntax-highlighting pass docs rsync rclone pciutils pcsc-lite-libs pcsc-tools carapace zoxide libsixel-tools
 	#vcs
 	${APK} git  git-email git-lfs tig github-cli hut
 	#networking
