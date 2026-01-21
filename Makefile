@@ -115,17 +115,17 @@ else ifeq ($(DISTRO),$(filter $(DISTRO), alpine postmarketos))
 	sudo apk update
 	sudo apk upgrade
 	#core
-	${APK} build-base bash fzf gnupg gnupg-scdaemon htop lm_sensors lshw neovim openssh openssl readline starship doas doas-sudo-shim tmux tree zip zsh zsh-autosuggestions zsh-syntax-highlighting pass docs rsync rclone pciutils pcsc-lite-libs pcsc-tools carapace zoxide libsixel-tools
+	${APK} build-base bash fzf gnupg gnupg-scdaemon htop lm_sensors lshw neovim openssh openssl readline starship doas doas-sudo-shim tmux tree zip zsh zsh-autosuggestions zsh-syntax-highlighting zsh-history-substring-search pass docs rsync rclone pciutils pcsc-lite-libs pcsc-tools carapace zoxide libsixel-tools libcap-setcap
 	#vcs
 	${APK} git  git-email git-lfs tig github-cli hut
 	#networking
 	${APK} curl nmap sshfs mosquitto-clients vnstat termshark bmon ppp-daemon wireshark
 	#dev: C/C++
-	${APK} autoconf autoconf-archive automake cmake ctags doxygen gdb gmp icu m4 meson ninja libxml2
+	${APK} autoconf autoconf-archive automake cmake ctags doxygen gdb gmp icu m4 meson ninja libxml2 linux-headers
 	${APK} shellcheck tokei hyperfine
 	${APK} zola
 	#CLI text tools
-	${APK} ack bat fmt highlight dasel delta jless jq miller pandoc ripgrep sed xsv
+	${APK} ack bat fmt highlight dasel delta jless jq miller pandoc ripgrep sed xsv scdoc
 	#CLI file management
 	${APK} exa fd ncdu yazi yazi-cli
 	#python
