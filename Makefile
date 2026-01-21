@@ -133,7 +133,7 @@ else ifeq ($(DISTRO),$(filter $(DISTRO), alpine postmarketos))
 	#various:
 	${APK} btop gnuplot todo.txt-cli todo.txt-cli amfora w3m lynx links urlscan oath-toolkit pwgen vocage strace powertop zbar	
 	#languages
-	${APK} aspell aspell-en aspell-es aspell-fr aspell-de
+	${APK} aspell aspell-en aspell-fr aspell-de
 	#communication
 	${APK} aerc aercbook mailcap msmtp newsraft senpai dante
 	#for neovim
@@ -150,7 +150,7 @@ ifeq ($(DESKTOP),1)
 	#IME & languages
 	${APK} fcitx5 fcitx5-chinese-addons fcitx5-qt fcitx5-gtk fcitx5-configtool
 	#multimedia
-	${APK} mpv mpc espeak sxiv imv swayimg yt-dlp ncmpcpp lf chafa grim slurp ffmpeg ytfzf pavucontrol pamixer perl-file-mimeinfo
+	${APK} mpv mpc espeak imv swayimg yt-dlp ncmpcpp lf chafa grim slurp ffmpeg ytfzf pavucontrol pamixer perl-file-mimeinfo
 	#fonts
 	${APK} font-fira-mono-nerd font-ubuntu-nerd font-wqy-zenhei font-noto-all font-cantarell font-awesome font-ubuntu font-droid font-material-icons font-noto-emoji
 	#communication
