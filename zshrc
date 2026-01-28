@@ -147,6 +147,7 @@ alias x='~/dotfiles/scripts/translate.sh'
 alias xl='~/dotfiles/scripts/translate.sh'
 alias myip="dig +short myip.opendns.com @resolver1.opendns.com"
 alias whatismyip="dig +short myip.opendns.com @resolver1.opendns.com"
+alias hx="helix"
 
 if [[ "$HOST" == "proyphone" ]] || [[ "$HOST" == "oneplus-enchilada" ]] || [[ "$HOST" == "google-sargo" ]]; then
     if which vis > /dev/null 2> /dev/null; then
