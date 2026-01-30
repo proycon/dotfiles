@@ -80,7 +80,7 @@ keymap("n", ",y", ":w! ~/.vbuf<CR>:!xsel -i -b < ~/.vbuf<CR>", opts)
 keymap("n", ",p", ":r ~/.vbuf<CR>", opts)
 keymap("n", ",P", ":-1r ~/.vbuf<CR>", opts)
 
-keymap("n", "<F9>", ":Git commit -a<CR>", opts)
+keymap("n", "<F9>", ":Git commit -av<CR>", opts)
 keymap("n", "<F10>", ":Git push<CR>", opts)
 keymap("n", "<F12>", ":Octo issue list<CR>", opts)
 
