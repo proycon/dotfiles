@@ -1,5 +1,8 @@
 .PHONY: zh en ru es de fr pt it nl synonyms ner chat
 
+clean:
+	for l in zh en ru es de fr pt it nl; do ollama rm gemma-translator-$$l; done
+
 zh en ru es de fr pt it nl:
 	(ollama list | grep gemma-translator-$@) || ollama create gemma-translator-$@ -f gemma-translator-$@.modelfile
 	@while true; do read -p "> " prompt && ollama run gemma-translator-$@ "$$prompt"; done
