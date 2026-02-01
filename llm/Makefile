@@ -5,7 +5,7 @@ clean:
 
 zh en ru es de fr pt it nl:
 	(ollama list | grep gemma-translator-$@) || ollama create gemma-translator-$@ -f gemma-translator-$@.modelfile
-	@while true; do read -p "> " prompt && ollama run gemma-translator-$@ "$$prompt"; done
+	@while true; do read -p "> " prompt && ollama run gemma-translator-$@ "$$prompt" | tee /tmp/out; wl-copy < /tmp/out; done
 
 synonyms:
 	ollama create gemma-synonyms -f gemma-synonyms.modelfile
