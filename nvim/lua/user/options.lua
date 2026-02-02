@@ -41,9 +41,9 @@ for k, v in pairs(options) do
   vim.opt[k] = v
 end
 
--- autoformat rust files
+-- autoformat various files
 vim.api.nvim_create_autocmd("BufWritePre", {
-    pattern = { "*.rs" },
+    pattern = { "*.rs", "Makefile", "*.py" },
     buffer = buffer,
     callback = function()
         vim.lsp.buf.format { async = false }
