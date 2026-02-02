@@ -34,7 +34,7 @@ target/home/Makefile: target/home
 target/home/bin:
 	mkdir target/home/bin
 
-links: targets 
+links: targets
 	make -C ~/.config/ all
 	make -C ~ all
 	~/dotfiles/scripts/darkmode.sh || true
@@ -100,7 +100,7 @@ ifeq ($(DESKTOP),1)
 	#fonts
 	${PACMAN} noto-fonts-emoji otf-fira-mono ttf-dejavu ttf-droid ttf-fira-code ttf-fira-code ttf-fira-mono ttf-fira-sans ttf-font-awesome ttf-khmer ttf-linux-libertine ttf-opensans ttf-roboto ttf-tibetan-machine ttf-ubuntu-font-family wqy-bitmapfont wqy-microhei wqy-zenhei cantarell-fonts gucharmap
 	#themes etc
-	${PACMAN} gnome-themes-extra 
+	${PACMAN} gnome-themes-extra
 	#graphics & video
 	${PACMAN} cheese feh ffmpeg gimp imagemagick imv swayimg inkscape mplayer mpv sxiv v4l-utils vlc yt-dlp kdenlive ytfzf
 	#IME & languages
@@ -131,7 +131,7 @@ else ifeq ($(DISTRO),$(filter $(DISTRO), alpine postmarketos))
 	#python
 	${APK} python3 py3-pip py3-wheel py3-setuptools py3-pylint py3-numpy py3-scipy py3-lxml py3-virtualenv jupyter-notebook py3-matplotlib
 	#various:
-	${APK} btop gnuplot todo.txt-cli todo.txt-cli amfora w3m lynx links urlscan oath-toolkit pwgen vocage strace powertop zbar	
+	${APK} btop gnuplot todo.txt-cli todo.txt-cli amfora w3m lynx links urlscan oath-toolkit pwgen vocage strace powertop zbar
 	#languages
 	${APK} aspell aspell-en aspell-fr aspell-de
 	#communication

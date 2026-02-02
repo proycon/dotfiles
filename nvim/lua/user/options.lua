@@ -50,6 +50,15 @@ vim.api.nvim_create_autocmd("BufWritePre", {
     end
 })
 
+-- highlight trailing whitespace
+vim.api.nvim_create_autocmd('BufEnter', {
+    pattern = { "*" },
+    callback = function()
+        vim.cmd "highlight ExtraWhitespace ctermbg=darkred guibg=darkred"
+        vim.cmd "match ExtraWhitespace /\\s\\+$/"
+    end
+})
+
 -- firenvim in github issues, use markdown
 vim.api.nvim_create_autocmd('BufEnter', {
     pattern = { "github.com_*.txt" },
