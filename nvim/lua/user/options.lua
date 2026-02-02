@@ -55,7 +55,7 @@ vim.api.nvim_create_autocmd('BufEnter', {
     pattern = { "*" },
     callback = function()
         vim.cmd "highlight ExtraWhitespace ctermbg=darkred guibg=darkred"
-        vim.cmd "match ExtraWhitespace /\\s\\+$/"
+        vim.cmd "match ExtraWhitespace /\\s\\+\\%#\\@<!$/"
     end
 })
 
