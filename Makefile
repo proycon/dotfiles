@@ -195,7 +195,7 @@ ifeq (, $(shell which yay))
 		sudo pacman -U yay*zst
 	}
 endif
-endif 
+endif
 
 aur: yay abuild aercbook-bin dasel lsix-git mblaze-git nerd-fonts-complete-starship powerline-fonts-git rofi-lbonn-wayland todotxt ttf-material-design-icons-git ttf-symbola snapcast-git crates-tui pass-git-helper lswt newsraft wayprompt xcursor-breeze carapace-bin fzf-tab-git
 
