@@ -186,8 +186,10 @@ export DEBFULLNAME="Maarten van Gompel"
 export BROWSER="firefox"
 
 export XDG_CONFIG_HOME="$HOME/.config"
-. ~/dotfiles/user-dirs.dirs
-export XDG_DESKTOP_DIR XDG_DOCUMENTS_DIR XDG_PICTURES_DIR XDG_MUSIC_DIR XDG_DOWNLOAD_DIR XDG_VIDEOS_DIR
+if [ -e ~/dotfiles/user-dirs.dirs ]; then
+    . ~/dotfiles/user-dirs.dirs
+    export XDG_DESKTOP_DIR XDG_DOCUMENTS_DIR XDG_PICTURES_DIR XDG_MUSIC_DIR XDG_DOWNLOAD_DIR XDG_VIDEOS_DIR
+fi
 
 export TODO_DIR="$HOME/Server/.todo"
 
@@ -387,7 +389,9 @@ alias -s xcf=gimp
 alias -s svg=inkscape
 
 export PINENTRY_USER_DATA=curses
-source ~/dotfiles/scripts/gpgsetup.sh
+if [ -e ~/dotfiles/scripts/gpgsetup.sh ]; then
+    source ~/dotfiles/scripts/gpgsetup.sh
+fi
 
 export NNN_FIFO="/tmp/nnn.fifo"
 export NNN_PLUG="o:fzopen;c:fcd;j:jump;p:preview-tui;i:imgview;d:dragdrop"
