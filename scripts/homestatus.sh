@@ -71,7 +71,7 @@ elif [ "$format" = "ansi" ]; then
     boldgreen=${bold}$(tput setaf 2) #  green
     green=${normal}$(tput setaf 2) #  green
     yellow=${normal}$(tput setaf 3) #  yellow
-    magenta=${normal}$(tput setaf 5) 
+    magenta=${normal}$(tput setaf 5)
     #blue=${normal}$(tput setaf 4) #  blue
     #boldblue=${bold}$(tput setaf 4) #  blue
     boldyellow=${bold}$(tput setaf 3) #  yellow
@@ -94,14 +94,14 @@ printstategroup() {
     filenames="$*"
     grouplabel="$label:"
     color=
-    for filename in $filenames; do 
+    for filename in $filenames; do
         if [ -e "$STATEDIR/$filename" ]; then
             VALUE=$(cat "$STATEDIR/$filename")
             WITHTIMEDELTA=0
-            case $label in 
+            case $label in
                 alarm)
                     TIMESTAMP=$(stat -c %Y "$STATEDIR/$filename" | tr -d '\n')
-                    TIMEDELTA=$(( (NOW - TIMESTAMP) ))
+                    TIMEDELTA=$(( NOW - TIMESTAMP ))
                     WITHTIMEDELTA=1
                     case $VALUE in
                         triggered)
@@ -117,7 +117,7 @@ printstategroup() {
                     ;;
                 presence)
                     TIMESTAMP=$(stat -c %Y "$STATEDIR/$filename" | tr -d '\n')
-                    TIMEDELTA=$(( (NOW - TIMESTAMP) ))
+                    TIMEDELTA=$(( NOW - TIMESTAMP ))
                     WITHTIMEDELTA=1
                     case $VALUE in
                         off|OFF)
@@ -186,10 +186,12 @@ printstategroup() {
             if [ $WITHTIMEDELTA -eq 1 ]; then
                 extralabel=$(printtimedelta)
             fi
-            if [ -n "$extralabel" ]; then
-                printf "${bold}%-13s${normal} %s%s (%s)\n" "$grouplabel" "${color}$VALUE${colorend}" "$unit" "$extralabel"
-            else
-                printf "${bold}%-13s${normal} %s%s\n" "$grouplabel" "${color}$VALUE${colorend}" "$unit"
+            if [ -n "$VALUE" ]; then
+                if [ -n "$extralabel" ]; then
+                    printf "${bold}%-13s${normal} %s%s (%s)\n" "$grouplabel" "${color}$VALUE${colorend}" "$unit" "$extralabel"
+                else
+                    printf "${bold}%-13s${normal} %s%s\n" "$grouplabel" "${color}$VALUE${colorend}" "$unit"
+                fi
             fi
             grouplabel=""
         fi
@@ -198,15 +200,15 @@ printstategroup() {
 
 
 getlastupdate() {
-    for filename in $1/*; do
-        case $filename in 
+    for filename in "$1"/*; do
+        case $filename in
             *trigger)
                 continue #ignore
                 ;;
         esac
         if [ -f "$filename" ]; then
             TIMESTAMP=$(stat -c %Y "$filename" | tr -d '\n')
-            if [ $TIMESTAMP -gt $LASTUPDATE ]; then
+            if [ "$TIMESTAMP" -gt "$LASTUPDATE" ]; then
                 LASTUPDATE=$TIMESTAMP
             fi
         elif [ -d "$filename" ]; then
@@ -217,18 +219,18 @@ getlastupdate() {
 }
 
 printtimedelta() {
-    if [ $TIMEDELTA -lt 30 ]; then 
-        echo -en  "${bold}${TIMEDELTA} s${normal}"
-    elif [ $TIMEDELTA -lt 60 ]; then 
-        echo -en  "${TIMEDELTA} s"
+    if [ $TIMEDELTA -lt 30 ]; then
+        printf "%s%s s%s" "${bold}" "${TIMEDELTA}" "${normal}"
+    elif [ $TIMEDELTA -lt 60 ]; then
+        printf "% s" "${TIMEDELTA}"
     else
         TIMEDELTA=$(( TIMEDELTA / 60 ))
         if [ $TIMEDELTA -ge 60 ]; then
             REMAINDER=$(( TIMEDELTA % 60 ))
             TIMEDELTA=$(( TIMEDELTA / 60 ))
-            echo -en  "${TIMEDELTA}h${REMAINDER}m"
+            printf "%sh%sm" "${TIMEDELTA}" "${REMAINDER}"
         else
-            echo -en  "${TIMEDELTA} min"
+            printf "%s min" "${TIMEDELTA}"
         fi
     fi
 }
@@ -237,7 +239,7 @@ printhomestatus() {
     NOW=$(date +%s | tr -d '\n')
     LASTUPDATE=0
     getlastupdate $STATEDIR
-    TIMEDELTA=$(( (NOW - LASTUPDATE) ))
+    TIMEDELTA=$(( NOW - LASTUPDATE ))
 
     if [ "$format" = "pango" ] && command -v sxmo_common.sh > /dev/null 2> /dev/null; then
         date +"<big><big><big><big><big><big><big><big><b>%H</b>:%M</big></big></big></big></big></big></big></big>:%S" #date with some pango markup syntax (https://docs.gtk.org/Pango/pango_markup.html)
@@ -249,26 +251,26 @@ printhomestatus() {
 
     $HADIR
 
-    if [ $TIMEDELTA -lt 120 ]; then 
-        echo -en  "${bold}Last update:${normal}  ${green}$TIMEDELTA secs ago${normal} "
+    if [ $TIMEDELTA -lt 120 ]; then
+        printf "%sLast update:%s  %s%s%s" "$bold" "$normal" "$green" "${TIMEDELTA}s ago" "$normal"
     else
         TIMEDELTA=$(( TIMEDELTA / 60 ))
         if [ $TIMEDELTA -lt 10 ]; then
-            echo -en  "${bold}Last update:${normal}  ${yellow}$TIMEDELTA mins ago${normal}"
+            printf "%sLast update:%s  %s%s%s" "$bold" "$normal" "$yellow" "${TIMEDELTA}m ago" "$normal"
         else
             if [ $TIMEDELTA -ge 60 ]; then
                 REMAINDER=$(( TIMEDELTA % 60 ))
                 TIMEDELTA=$(( TIMEDELTA / 60 ))
-                echo -en  "${bold}Last update:${normal}  ${red}${TIMEDELTA}h ${REMAINDER}m ago${normal}"
+                printf "%sLast update:%s  %s%s%s" "$bold" "$normal" "$boldred" "${TIMEDELTA}h ${REMAINDER}m ago" "$normal"
             else
-                echo -en  "${bold}Last update:${normal}  ${red}$TIMEDELTA mins ago${normal}"
+                printf "%sLast update:%s  %s%s%s" "$bold" "$normal" "$boldred" "${TIMEDELTA}m ago" "$normal"
             fi
         fi
     fi
     if pgrep mosquitto_sub > /dev/null; then
-        echo -e  " (${boldgreen}run${normal})"
+        printf " (%s%s%s)\n" "${boldgreen}" "up" "${normal}"
     else
-        echo -e  "(${boldred}OFF${normal})"
+        printf " (%s%s%s)\n" "${boldred}" "down" "${normal}"
     fi
     #if pgrep NetworkManager >/dev/null 2>/dev/null; then
     #    nmcli -w 3 -c no -p -f DEVICE,STATE,NAME,TYPE con show | grep activated | sed 's/activated/   /' | sed '/^\s*$/d' 2> /dev/null
@@ -290,18 +292,8 @@ printhomestatus() {
     printstategroup "climate" "climate/cv"
     printstategroup "apertures" "binary_sensor/frontdoor" "binary_sensor/backdoor" "binary_sensor/bathroom_window_sensor" "binary_sensor/bedroomwindow_right" "binary_sensor/bedroomwindow_left"
     printstategroup "lights" "lights/tv_spots" "lights/front_room" "lights/midspots" "lights/back_room" "lights/back_corner" "lights/kitchen" "lights/hall" "lights/office" "lights/bedroom" "lights/balcony" "lights/garden" "lights/porch" "lights/roof"
-
-   #if command -v sxmo_common.sh > /dev/null 2> /dev/null; then
-   #    cannot_suspend_reasons="$(sxmo_mutex.sh can_suspend list)"
-   #    if [ "$format" = "pango" ] && [ -n "$cannot_suspend_reasons" ]; then
-   #        echo "<small><small><small><small>"
-   #        printf "%s" "$cannot_suspend_reasons" | awk '{print "• " $0}'
-   #        echo "</small></small></small></small>"
-   #    fi
-   #fi
-    echo -e "\n"
+    echo #newline
 }
-
 
 #update when a file updates
 #additionally we have an extra trigger file that cron can poke each minute to update the clock
@@ -310,10 +302,11 @@ if [ $loop -eq 1 ]; then
     touch /tmp/homestatus/trigger
 	while true; do
         files=$(find /tmp/homestatus -type f)
-        inotifywait -t 3 -e create,modify,attrib /tmp/homestatus $files /tmp/homestatus/trigger | printhomestatus
+        #shellcheck disable=SC2086
+        inotifywait -t 3 -e create,modify,attrib /tmp/homestatus $files /tmp/homestatus/trigger | printhomestatus "$@"
     done
 else
-    printhomestatus
+    printhomestatus "$@"
 fi
 
 if [ -n "$finalkill" ]; then
