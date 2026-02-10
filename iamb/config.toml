@@ -20,5 +20,6 @@ rooms = ["unread","name"]
 "gd" = ":dms<Enter>"
 "gu" = ":unreads<Enter>"
 "gU" = ":unreads clear<Enter>"
+"gC" = ":unreads clear<Enter>"
 
 
