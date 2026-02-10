@@ -43,7 +43,7 @@ end
 
 -- autoformat various files
 vim.api.nvim_create_autocmd("BufWritePre", {
-    pattern = { "*.rs", "Makefile", "*.py" },
+    pattern = { "*.rs", "Makefile" },
     buffer = buffer,
     callback = function()
         vim.lsp.buf.format { async = false }
