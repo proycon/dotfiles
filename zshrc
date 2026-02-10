@@ -106,11 +106,13 @@ alias gpgh='sshcheck && git push github $(git branch --show-current); resultsoun
 alias gpsrht='sshcheck && git push srht $(git branch --show-current); resultsound $? submit.wav boing.wav'
 alias gpcb='sshcheck && git push codeberg $(git branch --show-current); resultsound $? submit.wav boing.wav'
 alias gpu='sshcheck && git push upstream $(git branch --show-current); resultsound $? submit.wav boing.wav'
+alias gphuc='sshcheck && git push huc $(git branch --show-current); resultsound $? submit.wav boing.wav'
 gpa() {
     echo "default: " && gp
     git remote | grep -q github && echo "github: " && gpgh
     git remote | grep -q srht && echo "sourcehut: " && gpsrht
     git remote | grep -q codeberg &&  echo "codeberg: " && gpcb
+    git remote | grep -q huc &&  echo "huc: " && gphuc
 }
 alias gca="git commit -a -v"
 alias gfa="git fetch -a"
