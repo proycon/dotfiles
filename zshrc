@@ -115,7 +115,7 @@ gpa() {
     git remote | grep -q huc &&  echo "huc: " && gphuc
 }
 alias gca="git commit -a -v"
-alias gfa="git fetch -a"
+alias gfa="git fetch --all"
 alias pm="podman"
 alias pmc="podman-compose"
 alias a='tmux attach'
