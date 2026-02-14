@@ -544,7 +544,7 @@ fi
 
 if [ "$(tty)" = "/dev/tty1" ] && command -v river; then
     exec ~/dotfiles/scripts/startriver.sh
-elif command -v starship > /dev/null && [ -z "$NO_STARSHIP" ] && ping -c 1 -W 1 192.168.0.1 > /dev/null; then
+elif command -v starship > /dev/null && [ -z "$NO_STARSHIP" ] && ping -c 1 -W 1 192.168.0.1 > /dev/null 2> /dev/null; then
     export VIRTUAL_ENV_DISABLE_PROMPT=1
     eval "$(starship init zsh)"
 else
