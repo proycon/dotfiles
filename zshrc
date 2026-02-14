@@ -482,18 +482,6 @@ function yy() {
 	rm -f -- "$tmp"
 }
 
-case $TERM in
-    xterm*|rxvt)
-        PROMPT_COMMAND='echo -ne "\033]0;${USER}@${HOSTNAME}\007"'
-        export PROMPT_COMMAND
-        ;;
-    screen*|screen)
-      TITLE=$(hostname -s)
-      PROMPT_COMMAND='/bin/echo -ne "\033k${TITLE}\033\\"'
-      export PROMPT_COMMAND
-        ;;
-esac
-
 #case insensitive completion
 autoload -U compinit && compinit
 zstyle ':completion:*' matcher-list 'm:{a-z}={A-Za-z}'
