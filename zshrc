@@ -548,14 +548,5 @@ elif command -v starship > /dev/null && [ -z "$NO_STARSHIP" ] && ping -c 1 -W 1 
     export VIRTUAL_ENV_DISABLE_PROMPT=1
     eval "$(starship init zsh)"
 else
-    #black=$(tput setaf 0)
-    #red=$(tput setaf 1)
-    #green=$(tput setaf 2)
-    yellow=$(tput setaf 3)
-    #blue=$(tput setaf 4)
-    #magenta=$(tput setaf 5)
-    cyan=$(tput setaf 6)
-    #white=$(tput setaf 7)
-    reset=$(tput sgr0)
-    PROMPT="${yellow}%n@%m${reset} ${cyan}%~${reset}${yellow}%#${reset} "
+    PROMPT='%F{green}%n%F{white}@%F{blue}%m %F{cyan}%d%F{yellow}%(?.%B%F{yellow}.%B%F{red})$ %b%F{reset}'
 fi
