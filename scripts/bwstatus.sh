@@ -1,7 +1,7 @@
 #!/bin/sh
 
 if [ -e /sys/class/net/qmapmux0.0 ]; then
-    vnstat qmapmux0.0 --oneline | cut -d ';' -f 11
+    vnstat qmapmux0.0 --oneline | cut -d ';' -f 11 2>/dev/null
 else
-    vnstat wwan0 --oneline | cut -d ';' -f 11
+    vnstat wwan0 --oneline | cut -d ';' -f 11 2>/dev/null
 fi
