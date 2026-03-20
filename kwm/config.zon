@@ -23,7 +23,7 @@
         // .top
         // .bottom
         .position = .bottom,
-        .font = "proymono:size=22",
+        .font = "proymono:size=20",
         .color = .{
             .normal = .{
                 .fg = 0x909090ff,
@@ -61,13 +61,13 @@
                 .middle = null,
             },
             .status = .{
-                .left = null,
-                .right = null,
-                .middle = .{ .spawn = .{ .argv = .{ "foot" } } },
+                .left = .{ .spawn_shell = .{ .cmd = "~/dotfiles/scripts/dcal" } },
+                .right = .{ .spawn_shell = .{ .cmd = "todo.sh rofi list @work" } },
+                .middle = .{ .spawn = .{ .argv = .{ "fuzzel" } } },
                 .side = null,
                 .extra = null,
-                .forward = null,
-                .back = null,
+                .forward = . { .spawn_shell = .{ .cmd = "wpctl set-volume @DEFAULT_SINK@ 5%+ && kill -34 $(pgrep -x bar.sh) && aplay ~/dotfiles/media/submit.wav" } },
+                .back = . { .spawn_shell = .{ .cmd = "wpctl set-volume @DEFAULT_SINK@ 5%- && kill -34 $(pgrep -x bar.sh) && aplay ~/dotfiles/media/submit.wav" } },
                 .task = null,
             },
         },
@@ -929,6 +929,17 @@
                 },
             },
             .{
+                .keysym = "T",
+                .modifiers = .{ .mod4 = true, .shift = true },
+                .event = .{
+                    .click = .{
+                        .pressed = .{
+                            .spawn_shell = .{ .cmd = "foot --app-id remoteterm --title remote -o colors-dark.background=20191a" },
+                        },
+                    },
+                },
+            },
+            .{
                 .keysym = "slash",
                 .modifiers = .{ .mod4 = true },
                 .event = .{
@@ -1138,6 +1149,17 @@
                 },
             },
             .{
+                .keysym = "F3",
+                .modifiers = .{ .mod1 = true },
+                .event = .{
+                    .click = .{
+                        .pressed = .{
+                            .spawn_shell = .{ .cmd = "~/dotfiles/scripts/homecommand.sh lights/office/on" },
+                        },
+                    },
+                },
+            },
+            .{
                 .keysym = "F4",
                 .modifiers = .{ .mod4 = true },
                 .event = .{
@@ -1299,6 +1321,7 @@
     //      title: rule pattern
     //
     //      tag: window tag
+    //      output: output name pattern, same as rule pattern
     //      floating: bool, if floating
     //      dimension: .{ .width = i32, .height = i32 }, initial dimension
     //      decoration: .csd or .ssd, window decoration
@@ -1312,6 +1335,7 @@
         .{ .app_id = .{ .str = "xdg-desktop-portal-gtk" }, .floating = true },
         .{ .app_id = .{ .str = "nm-connection-editor" }, .floating = true },
         .{ .app_id = .{ .str = "pavucontrol" }, .floating = true },
+        .{ .app_id = .{ .str = "gcr-prompter" }, .floating = true },
         .{ .title = .{ .str = "([Oo]pen|[Cc]oose|[Cc]onfirm|[Pp]ick)|[Ch]ange|[Ss]elect|[Ff]ile).*" }, .floating = true },
         .{ .app_id = .{ .str = "chromium" }, .tag = 0b100, .scroller_mfact = 0.9 },
         .{ .app_id = .{ .str = "firefox" }, .tag = 0b100, .scroller_mfact = 0.9 },
@@ -1325,13 +1349,14 @@
         .{ .app_id = .{ .str = "inkscape" }, .tag = 0b10000, .scroller_mfact = 0.9 },
         .{ .app_id = .{ .str = "im.dino.Dino" }, .tag = 0b1000000, .scroller_mfact = 0.6 },
         .{ .app_id = .{ .str = "org.telegram.desktop" }, .tag = 0b1000000, .scroller_mfact = 0.6 },
-        .{ .app_id = .{ .str = "Little Navmap" }, .tag = 0b10000, .scroller_mfact = 0.9 },
-        .{ .app_id = .{ .str = "xPilot" }, .tag = 0b10000 },
-        .{ .app_id = .{ .str = "X-Plane" }, .tag = 0b100000000, .scroller_mfact = 0.9 },
-        .{ .app_id = .{ .str = "foot" }, .title = .{ .str = "aerc" }, .tag = 0b1, .is_terminal = false, .scroller_mfact = 0.9 },
-        .{ .app_id = .{ .str = "foot" }, .title = .{ .str = "nvim.*" }, .tag = 0b10, .is_terminal = false, .scroller_mfact = 0.9 },
-        .{ .app_id = .{ .str = "foot" }, .title = .{ .str = "remote" }, .tag = 0b10000000, .is_terminal = false, .scroller_mfact = 0.9 },
-        .{ .app_id = .{ .str = "foot" }, .title = .{ .str = "newsraft" }, .tag = 0b100000 },
+        .{ .app_id = .{ .str = "Little Navmap" }, .tag = 0b10000, .output = .{ .str = "DP-2" }, .scroller_mfact = 0.9 },
+        .{ .app_id = .{ .str = "xPilot" }, .output = .{ .str = "DP-2" }, .tag = 0b10000 },
+        .{ .app_id = .{ .str = "X-Plane" }, .tag = 0b100000000, .scroller_mfact = 1.0 },
+        .{ .app_id = .{ .str = "aerc" },  .tag = 0b1, .is_terminal = false, .scroller_mfact = 0.9 },
+        .{ .app_id = .{ .str = "nvim" },  .tag = 0b10, .is_terminal = false, .scroller_mfact = 0.9 },
+        .{ .app_id = .{ .str = "remoteterm" }, .tag = 0b10000000, .is_terminal = false, .scroller_mfact = 0.9 },
+        .{ .app_id = .{ .str = "localterm" }, .tag = 0b1000, .is_terminal = false, .scroller_mfact = 0.9 },
+        .{ .app_id = .{ .str = "newsraft" }, .tag = 0b100000 },
         .{ .app_id = .{ .str = "foot" }, .is_terminal = true, .scroller_mfact = 0.6 },
     },
 

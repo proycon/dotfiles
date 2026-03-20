@@ -21,7 +21,7 @@ if [ ! -f /tmp/locked ]; then
     todo.sh timetrack start "$task"
     if [ "$HOSTNAME" = "pollux" ]; then
         if ! pgrep -f streamdeck.py; then
-            nohup setsid python /home/proycon/dotfiles/scripts/streamdeck.py &
+            setsid --fork python /home/proycon/dotfiles/scripts/streamdeck.py >~/streamdeck.log 2>&1 &
         fi
     fi
 fi

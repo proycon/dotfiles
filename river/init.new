@@ -29,7 +29,9 @@ killall pipewire-pulse
 #tells dbus about the graphical session (required for various things like password prompt to work)
 dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP
 
+
 pipewire-pulse &
+fcitx5 &
 
 if [ "$HOSTNAME" = "pollux" ]; then
     #set default sources for sound
@@ -108,12 +110,12 @@ if [ -z "$SXMO_WM" ] || [ "$HOSTNAME" = "toren" ]; then
     #autostart stuff
     mpv --quiet ~/dotfiles/media/lovelyboot.ogg &
     sleep 2
-    foot --title remote &
-    foot --title aerc aerc &
-    foot --title newsraft newsraft &
-    foot --title senpai senpai &
-    foot --title nvim ~/bin/tm nvim &
-    foot --title local ~/bin/tm local &
+    foot --app-id remoteterm --title remote -o colors-dark.background=20191a &
+    foot --app-id aerc --title aerc aerc &
+    foot --app-id newsraft --title newsraft newsraft &
+    foot --app-id senpai --title senpai senpai &
+    foot --app-id nvim --title nvim ~/bin/tm nvim &
+    foot --app-id localterm --title local -o colors-dark.background=171927 ~/bin/tm local &
     firefox &
     nheko &
 else
