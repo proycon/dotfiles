@@ -81,7 +81,7 @@
     .cursor_wrap = .on_output_changed,
 
     // if to remember last floating geometry
-    .remember_floating_geometry = false,
+    .remember_floating_geometry = true,
 
     .auto_swallow = true,
 
@@ -111,7 +111,7 @@
 
         .tile = .{
             .nmaster = 1,
-            .mfact = 0.55,
+            .mfact = 0.6,
             .inner_gap = 12,
             .outer_gap = 9,
 
@@ -152,16 +152,16 @@
     // layout tags show on bar
     .layout_tag = .{
         .tile = .{
-            .left = "[]=",
-            .right = "=[]",
-            .top = "[^]",
-            .bottom = "[_]",
+            .left = "",
+            .right = "",
+            .top = "",
+            .bottom = "",
         },
         .grid = .{
             .horizontal = "|+|",
             .vertical = "|||",
         },
-        .monocle = "[=]",
+        .monocle = "",
         .deck = .{
             .left = "[D]=",
             .right = "=[D]",
@@ -1176,7 +1176,7 @@
                 .event = .{
                     .click = .{
                         .pressed = .{
-                            .spawn_shell = .{ .cmd = "pamixer --toggle-mute && kill -34 $(pgrep -x bar.sh) && aplay ~/dotfiles/media/submit.wav" },
+                            .spawn_shell = .{ .cmd = "wpctl set-mute @DEFAULT_SINK@ toggle && kill -34 $(pgrep -x bar.sh) && aplay ~/dotfiles/media/submit.wav" },
                         },
                     },
                 },
@@ -1187,7 +1187,7 @@
                 .event = .{
                     .click = .{
                         .pressed = .{
-                            .spawn_shell = .{ .cmd = "pamixer -d 5 && kill -34 $(pgrep -x bar.sh) && aplay ~/dotfiles/media/submit.wav" },
+                            .spawn_shell = .{ .cmd = "wpctl set-volume @DEFAULT_SINK@ 5%- && kill -34 $(pgrep -x bar.sh) && aplay ~/dotfiles/media/submit.wav" },
                         },
                     },
                 },
@@ -1198,7 +1198,40 @@
                 .event = .{
                     .click = .{
                         .pressed = .{
-                            .spawn_shell = .{ .cmd = "pamixer -i 5 && kill -34 $(pgrep -x bar.sh) && aplay ~/dotfiles/media/submit.wav" },
+                            .spawn_shell = .{ .cmd = "wpctl set-volume @DEFAULT_SINK@ 5%+ && kill -34 $(pgrep -x bar.sh) && aplay ~/dotfiles/media/submit.wav" },
+                        },
+                    },
+                },
+            },
+            .{
+                .keysym = "XF86AudioMute",
+                .modifiers = .{ },
+                .event = .{
+                    .click = .{
+                        .pressed = .{
+                            .spawn_shell = .{ .cmd = "wpctl set-mute @DEFAULT_SINK@ toggle && kill -34 $(pgrep -x bar.sh)" },
+                        },
+                    },
+                },
+            },
+            .{
+                .keysym = "XF86AudioLowerVolume",
+                .modifiers = .{ },
+                .event = .{
+                    .click = .{
+                        .pressed = .{
+                            .spawn_shell = .{ .cmd = "wpctl set-volume @DEFAULT_SINK@ 2%- && kill -34 $(pgrep -x bar.sh)" },
+                        },
+                    },
+                },
+            },
+            .{
+                .keysym = "XF86AudioRaiseVolume",
+                .modifiers = .{ },
+                .event = .{
+                    .click = .{
+                        .pressed = .{
+                            .spawn_shell = .{ .cmd = "wpctl set-volume @DEFAULT_SINK@ 2%+ && kill -34 $(pgrep -x bar.sh)" },
                         },
                     },
                 },
@@ -1277,6 +1310,9 @@
         .{ .app_id = .{ .str = "zenity" }, .floating = true },
         .{ .app_id = .{ .str = "DesktopEditors" }, .floating = true },
         .{ .app_id = .{ .str = "xdg-desktop-portal-gtk" }, .floating = true },
+        .{ .app_id = .{ .str = "nm-connection-editor" }, .floating = true },
+        .{ .app_id = .{ .str = "pavucontrol" }, .floating = true },
+        .{ .title = .{ .str = "([Oo]pen|[Cc]oose|[Cc]onfirm|[Pp]ick)|[Ch]ange|[Ss]elect).*" }, .floating = true },
         .{ .app_id = .{ .str = "chromium" }, .tag = 0b100, .scroller_mfact = 0.9 },
         .{ .app_id = .{ .str = "firefox" }, .tag = 0b100, .scroller_mfact = 0.9 },
         .{ .app_id = .{ .str = "librewolf" }, .tag = 0b100, .scroller_mfact = 0.9 },
@@ -1284,12 +1320,13 @@
         .{ .app_id = .{ .str = "dev.geopjr.Tuba" }, .tag = 0b100000 },
         .{ .app_id = .{ .str = "senpai" }, .tag = 0b1000000, .scroller_mfact = 0.6 },
         .{ .app_id = .{ .str = "nheko" }, .tag = 0b1000000, .scroller_mfact = 0.6 },
-        .{ .app_id = .{ .str = "gimp" }, .tag = 0b100000, .scroller_mfact = 0.9 },
-        .{ .app_id = .{ .str = "inkscape" }, .tag = 0b100000, .scroller_mfact = 0.9 },
+        .{ .app_id = .{ .str = "gimp" }, .title = .{ .str = "Change*" }, .floating = true, .tag = 0b10000 },
+        .{ .app_id = .{ .str = "gimp" }, .tag = 0b10000, .scroller_mfact = 0.9 },
+        .{ .app_id = .{ .str = "inkscape" }, .tag = 0b10000, .scroller_mfact = 0.9 },
         .{ .app_id = .{ .str = "im.dino.Dino" }, .tag = 0b1000000, .scroller_mfact = 0.6 },
         .{ .app_id = .{ .str = "org.telegram.desktop" }, .tag = 0b1000000, .scroller_mfact = 0.6 },
         .{ .app_id = .{ .str = "foot" }, .title = .{ .str = "aerc" }, .tag = 0b1, .is_terminal = false, .scroller_mfact = 0.9 },
-        .{ .app_id = .{ .str = "foot" }, .title = .{ .str = "nvim" }, .tag = 0b10, .is_terminal = false, .scroller_mfact = 0.9 },
+        .{ .app_id = .{ .str = "foot" }, .title = .{ .str = "nvim.*" }, .tag = 0b10, .is_terminal = false, .scroller_mfact = 0.9 },
         .{ .app_id = .{ .str = "foot" }, .title = .{ .str = "remote" }, .tag = 0b10000000, .is_terminal = false, .scroller_mfact = 0.9 },
         .{ .app_id = .{ .str = "foot" }, .title = .{ .str = "newsraft" }, .tag = 0b100000 },
         .{ .app_id = .{ .str = "foot" }, .is_terminal = true, .scroller_mfact = 0.6 },
@@ -1381,7 +1418,7 @@
             .keymap = .{
                 .options = .{
                     .layout = "proybasic,proylatin,proyeo,proyru,proyar",
-                    .options = "altwin:swap_lalt_lwin"
+                    .options = "altwin:swap_lalt_lwin,grp:alt_shift_toggle,grp:alt_space_toggle"
                 },
             },
         },

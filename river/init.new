@@ -30,8 +30,8 @@ dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP
 if [ "$HOSTNAME" = "pollux" ]; then
     #set default sources for sound
     #view sources with: pactl list short sources
-    pactl set-default-sink alsa_output.pci-0000_17_00.6.3.analog-stereo.monitor
-    pactl set-default-source alsa_input.usb-Samson_Technologies_Samson_C01U_Pro_Mic-00.3.analog-stereo
+    #pactl set-default-sink alsa_output.pci-0000_17_00.6.3.analog-stereo.monitor
+    #pactl set-default-source alsa_input.usb-Samson_Technologies_Samson_C01U_Pro_Mic-00.3.analog-stereo
 fi
 
 rm -f "$XDG_RUNTIME_DIR/bar.fifo" 2> /dev/null
@@ -40,8 +40,9 @@ mkfifo "$XDG_RUNTIME_DIR/bar.fifo"
 BARPID=$!
 
 while true; do
-    $RIVER_WM && exit 0
+    $RIVER_WM | tee ~/river.log && exit 0
     echo "Wm died.. restarting...">&2
+    mv river.log river.1.log
     mpv --quiet ~/dotfiles/media/error.wav
     sleep 1
 done &
@@ -53,7 +54,7 @@ if [ -z "$SXMO_WM" ]; then
     dunst &
 fi
 udiskie &
-setsid /home/proycon/projects/lighthome/client.sh &
+setsid /home/proycon/projects/lighthome/client.sh > lighthome.log 2>&1 &
 if [ "$HOSTNAME" = "toren" ]; then
     swayidle timeout 500 '/home/proycon/dotfiles/scripts/lock.sh' timeout 600 '/home/proycon/dotfiles/scripts/trysuspend.sh' &
 else
@@ -101,7 +102,7 @@ if [ -z "$SXMO_WM" ] || [ "$HOSTNAME" = "toren" ]; then
 
     #autostart stuff
     mpv --quiet ~/dotfiles/media/lovelyboot.ogg &
-    sleep 1
+    sleep 2
     foot --title remote &
     foot --title aerc aerc &
     foot --title newsraft newsraft &
