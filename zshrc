@@ -543,7 +543,7 @@ if (( $+commands[zoxide] )); then
 fi
 
 if [ "$(tty)" = "/dev/tty1" ] && command -v river; then
-    exec ~/dotfiles/scripts/startriver.sh
+    exec ~/dotfiles/scripts/startriver.sh > ~/river.log 2>&1
 elif command -v starship > /dev/null && [ -z "$NO_STARSHIP" ] && ping -c 1 -W 1 192.168.0.1 > /dev/null 2> /dev/null; then
     export VIRTUAL_ENV_DISABLE_PROMPT=1
     eval "$(starship init zsh)"

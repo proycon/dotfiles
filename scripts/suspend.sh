@@ -1,4 +1,5 @@
 #!/bin/sh
+killall gpg-agent
 ~/dotfiles/scripts/lock.sh &
 nitropy nk3 reboot # ensure nitrokey reboots so power cycle is interrupted and any cached PIN is lost
 sleep 5

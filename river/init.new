@@ -24,14 +24,18 @@ if [ -e ~/dotfiles/kanshi/$HOSTNAME.config ]; then
     kanshi -c ~/dotfiles/kanshi/$HOSTNAME.config &
 fi
 
+killall pipewire-pulse
+
 #tells dbus about the graphical session (required for various things like password prompt to work)
 dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP
+
+pipewire-pulse &
 
 if [ "$HOSTNAME" = "pollux" ]; then
     #set default sources for sound
     #view sources with: pactl list short sources
-    #pactl set-default-sink alsa_output.pci-0000_17_00.6.3.analog-stereo.monitor
-    #pactl set-default-source alsa_input.usb-Samson_Technologies_Samson_C01U_Pro_Mic-00.3.analog-stereo
+    pactl set-default-sink alsa_output.pci-0000_17_00.6.3.analog-stereo.monitor
+    pactl set-default-source alsa_input.usb-Samson_Technologies_Samson_C01U_Pro_Mic-00.3.analog-stereo
 fi
 
 rm -f "$XDG_RUNTIME_DIR/bar.fifo" 2> /dev/null
@@ -40,9 +44,10 @@ mkfifo "$XDG_RUNTIME_DIR/bar.fifo"
 BARPID=$!
 
 while true; do
-    $RIVER_WM | tee ~/river.log && exit 0
+    echo "Starting $RIVER_WM">&2
+    $RIVER_WM 2>&1 | tee ~/kwm.log && exit 0
     echo "Wm died.. restarting...">&2
-    mv river.log river.1.log
+    mv kwm.log kwm.1.log
     mpv --quiet ~/dotfiles/media/error.wav
     sleep 1
 done &

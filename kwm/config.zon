@@ -1312,7 +1312,7 @@
         .{ .app_id = .{ .str = "xdg-desktop-portal-gtk" }, .floating = true },
         .{ .app_id = .{ .str = "nm-connection-editor" }, .floating = true },
         .{ .app_id = .{ .str = "pavucontrol" }, .floating = true },
-        .{ .title = .{ .str = "([Oo]pen|[Cc]oose|[Cc]onfirm|[Pp]ick)|[Ch]ange|[Ss]elect).*" }, .floating = true },
+        .{ .title = .{ .str = "([Oo]pen|[Cc]oose|[Cc]onfirm|[Pp]ick)|[Ch]ange|[Ss]elect|[Ff]ile).*" }, .floating = true },
         .{ .app_id = .{ .str = "chromium" }, .tag = 0b100, .scroller_mfact = 0.9 },
         .{ .app_id = .{ .str = "firefox" }, .tag = 0b100, .scroller_mfact = 0.9 },
         .{ .app_id = .{ .str = "librewolf" }, .tag = 0b100, .scroller_mfact = 0.9 },
@@ -1325,6 +1325,9 @@
         .{ .app_id = .{ .str = "inkscape" }, .tag = 0b10000, .scroller_mfact = 0.9 },
         .{ .app_id = .{ .str = "im.dino.Dino" }, .tag = 0b1000000, .scroller_mfact = 0.6 },
         .{ .app_id = .{ .str = "org.telegram.desktop" }, .tag = 0b1000000, .scroller_mfact = 0.6 },
+        .{ .app_id = .{ .str = "Little Navmap" }, .tag = 0b10000, .scroller_mfact = 0.9 },
+        .{ .app_id = .{ .str = "xPilot" }, .tag = 0b10000 },
+        .{ .app_id = .{ .str = "X-Plane" }, .tag = 0b100000000, .scroller_mfact = 0.9 },
         .{ .app_id = .{ .str = "foot" }, .title = .{ .str = "aerc" }, .tag = 0b1, .is_terminal = false, .scroller_mfact = 0.9 },
         .{ .app_id = .{ .str = "foot" }, .title = .{ .str = "nvim.*" }, .tag = 0b10, .is_terminal = false, .scroller_mfact = 0.9 },
         .{ .app_id = .{ .str = "foot" }, .title = .{ .str = "remote" }, .tag = 0b10000000, .is_terminal = false, .scroller_mfact = 0.9 },
@@ -1418,7 +1421,7 @@
             .keymap = .{
                 .options = .{
                     .layout = "proybasic,proylatin,proyeo,proyru,proyar",
-                    .options = "altwin:swap_lalt_lwin,grp:alt_shift_toggle,grp:alt_space_toggle"
+                    .options = "altwin:swap_lalt_lwin,grp:alt_shift_toggle"
                 },
             },
         },
