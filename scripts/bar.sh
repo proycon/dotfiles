@@ -162,7 +162,7 @@ display () {
     local delimiter_end="$delimiter_color]^#!"
     local separator="$delimiter_color][^#!"
     #printf "%s" "${delimiter_home}${memory}${space}${cpu}${space}${temperature}${separator}${wifi}${space}${ethernet}${separator}${brightness}${space}${microphone}${space}${volume}${separator}${battery}${space}${bluetooth}${separator}${time}${delimiter_end}"
-    printf "%s" "(${task}...)${space}${cpu}${space}${wifi}${space}${volume}${space}${battery}${space}${time}"
+    printf "%s\n" "(${task}...)${space}${cpu}${space}${wifi}${space}${volume}${space}${battery}${space}${time}"
 }
 
 while true
