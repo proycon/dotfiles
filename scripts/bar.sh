@@ -148,7 +148,7 @@ update_task() {
     task=$(todo.sh timetrack current -d | sed 's/&/&amp;/g' | awk '{print substr($0, 0, 40)}')
 }
 
-update_volume;
+update_volume;update_time
 #update_microphone; update_brightness
 
 trap	"update_volume;display"	  	"RTMIN"   # -34 .local/bin/audio
@@ -170,7 +170,7 @@ do
     # to update item ever n seconds with a offset of m
     {
         ## [ $((sec % n)) -eq m ] && udpate_item
-        [ $((sec % 10 )) -eq 0 ] && update_task 	# update volume every minute
+        [ $((sec % 10 )) -eq 0 ] && update_task 	# update task every 10 seconds
         [ $((sec % 60 )) -eq 0 ] && update_volume 	# update volume every minute
         [ $((sec % 10 )) -eq 0 ] && update_time 	# update time every 10 seconds
         if [ "$HOSTNAME" != "pollux" ]; then

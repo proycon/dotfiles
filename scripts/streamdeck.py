@@ -159,6 +159,7 @@ def dial_change_callback(deck, dial, event, value):
     elif dial == 3:
         if event == DialEventType.PUSH and value is True:
             KEYS[7].pressed(deck)
+            subprocess.call(f"kill -34 $(pgrep -x bar.sh)",shell=True)
         elif event == DialEventType.TURN:
             try:
                 set_volume(value)
@@ -181,6 +182,7 @@ def set_volume(increase: int):
     new_volume: float = max(min(sink.volume.value_flat + (increase / 100.0), 1.0),0.0)
     sink.volume.value_flat = new_volume
     PA.volume_set(sink, sink.volume)
+    subprocess.call(f"kill -34 $(pgrep -x bar.sh)",shell=True)
     print(f"Set volume {new_volume}")
 
 def get_volume() -> float:
