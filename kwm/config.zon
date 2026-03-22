@@ -18,6 +18,10 @@
         .size = 48
     },
 
+    // solid color background
+    // note: set this to null if you use other wallpaper program like `swaybg`, orelse it will be covered by this and unable to see
+    .background = null,
+
     .bar = .{
         .show_default = true,
         // .top
@@ -84,6 +88,14 @@
     .remember_floating_geometry = true,
 
     .auto_swallow = true,
+    .default_attach_mode = .{
+        .tile = .stack_top,
+        .grid = .top,
+        .monocle = .top,
+        .deck = .stack_top,
+        .scroller = .below_focused,
+        .float = .top,
+    },
 
     // .csd
     // .ssd
@@ -101,13 +113,15 @@
     // tags show on bar
     .tags = .{ "1", "2", "3", "4", "5", "6", "7", "8", "9" },
 
+    // .tile
+    // .grid
+    // .monocle
+    // .deck
+    // .scroller
+    // .float
+    .default_layout = .tile,
+
     .layout = .{
-        // .tile
-        // .grid
-        // .monocle
-        // .deck
-        // .scroller
-        .default = .tile,
 
         .tile = .{
             .nmaster = 1,
@@ -1336,7 +1350,7 @@
         .{ .app_id = .{ .str = "nm-connection-editor" }, .floating = true },
         .{ .app_id = .{ .str = "pavucontrol" }, .floating = true },
         .{ .app_id = .{ .str = "gcr-prompter" }, .floating = true },
-        .{ .title = .{ .str = "([Oo]pen|[Cc]oose|[Cc]onfirm|[Pp]ick)|[Ch]ange|[Ss]elect|[Ff]ile).*" }, .floating = true },
+        .{ .title = .{ .str = "([Oo]pen|[Cc]hoose|[Cc]onfirm|[Pp]ick|[Ch]ange|[Ss]elect|[Ff]ile)*" }, .floating = true },
         .{ .app_id = .{ .str = "chromium" }, .tag = 0b100, .scroller_mfact = 0.9 },
         .{ .app_id = .{ .str = "firefox" }, .tag = 0b100, .scroller_mfact = 0.9 },
         .{ .app_id = .{ .str = "librewolf" }, .tag = 0b100, .scroller_mfact = 0.9 },
@@ -1452,4 +1466,15 @@
         },
         //
     },
+
+    // output rules
+    // full scheme:
+    //      name: rule pattern
+    //
+    //      presentation_mode: presentation mode, .vsync or .async
+    .output_rules = .{
+        //
+    },
+
+
 }
