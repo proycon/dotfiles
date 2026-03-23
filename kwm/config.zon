@@ -12,15 +12,17 @@
         .{ "swaybg", "-m","fill", "-i", "/home/proycon/dotfiles/media/fern.jpg" },
     },
 
-    // .{ .name = []const u8, .size = u32 }
-    .xcursor_theme = .{
+    // .none
+    // or
+    // .theme = .{ .name = []const u8, .size = u32 }
+    .xcursor_theme = .{ .theme = .{
         .name = "Breeze_Light",
         .size = 48
-    },
+    } },
 
     // solid color background
-    // note: set this to null if you use other wallpaper program like `swaybg`, orelse it will be covered by this and unable to see
-    .background = null,
+    // note: set this to .none if you use other wallpaper program like `swaybg`, orelse it will be covered by this and unable to see
+    .background = .none,
 
     .bar = .{
         .show_default = true,
@@ -45,34 +47,25 @@
         .click = .{
             .tags = .{
                 // could use 0 there because it will be replace with the tag clicked
-                .left = .{ .set_output_tag = .{ .tag = 0 } },
-                .right = .{ .toggle_output_tag = .{ .mask = 0 } },
-                .middle = .{ .toggle_window_tag = .{ .mask = 0 } },
+                .left = .{ .action = .{ .set_output_tag = .{ .tag = .{ .tag = 0 } } } },
+                .right = .{ .action = .{ .toggle_output_tag = .{ .mask = 0 } } },
+                .middle = .{ .action = .{ .toggle_window_tag = .{ .mask = 0 } } },
             },
             .layout = .{
-                .left = .switch_to_previous_layout,
-                .right = null,
-                .middle = null,
+                .left = .{ .action = .switch_to_previous_layout },
             },
             .mode = .{
-                .left = .{ .switch_mode = .{ .mode = "default" } },
-                .right = null,
-                .middle = null,
+                .left = .{ .action = .{ .switch_mode = .{ .mode = "default" } } },
             },
             .title = .{
-                .left = .{ .zoom = .{ .swap = false } },
-                .right = null,
-                .middle = null,
+                .left = .{ .action = .{ .zoom = .{ .swap = false } } },
             },
             .status = .{
-                .left = .{ .spawn_shell = .{ .cmd = "~/dotfiles/scripts/dcal" } },
-                .right = .{ .spawn_shell = .{ .cmd = "todo.sh rofi list @work" } },
-                .middle = .{ .spawn = .{ .argv = .{ "fuzzel" } } },
-                .side = null,
-                .extra = null,
-                .forward = . { .spawn_shell = .{ .cmd = "wpctl set-volume @DEFAULT_SINK@ 5%+ && kill -34 $(pgrep -x bar.sh) && aplay ~/dotfiles/media/submit.wav" } },
-                .back = . { .spawn_shell = .{ .cmd = "wpctl set-volume @DEFAULT_SINK@ 5%- && kill -34 $(pgrep -x bar.sh) && aplay ~/dotfiles/media/submit.wav" } },
-                .task = null,
+                .left = .{ .action = .{ .spawn_shell = .{ .cmd = "~/dotfiles/scripts/dcal" } } },
+                .right = .{ .action = .{ .spawn_shell = .{ .cmd = "todo.sh rofi list @work" } } },
+                .middle = .{ .action = .{ .spawn = .{ .argv = .{ "fuzzel" } } } },
+                .forward = .{ .action = .{ .spawn_shell = .{ .cmd = "wpctl set-volume @DEFAULT_SINK@ 5%+ && kill -34 $(pgrep -x bar.sh) && aplay ~/dotfiles/media/submit.wav" } } },
+                .back = .{ .action = .{ .spawn_shell = .{ .cmd = "wpctl set-volume @DEFAULT_SINK@ 5%- && kill -34 $(pgrep -x bar.sh) && aplay ~/dotfiles/media/submit.wav" } } },
             },
         },
     },
@@ -740,16 +733,16 @@
           //    },
           //},
 
-            .{ .keysym = "1", .modifiers = .{ .mod4 = true }, .event = .{ .click = .{ .pressed = .{ .set_output_tag = .{ .tag = 0b1 } } } } },
-            .{ .keysym = "2", .modifiers = .{ .mod4 = true }, .event = .{ .click = .{ .pressed = .{ .set_output_tag = .{ .tag = 0b10 } } } } },
-            .{ .keysym = "3", .modifiers = .{ .mod4 = true }, .event = .{ .click = .{ .pressed = .{ .set_output_tag = .{ .tag = 0b100 } } } } },
-            .{ .keysym = "4", .modifiers = .{ .mod4 = true }, .event = .{ .click = .{ .pressed = .{ .set_output_tag = .{ .tag = 0b1000 } } } } },
-            .{ .keysym = "5", .modifiers = .{ .mod4 = true }, .event = .{ .click = .{ .pressed = .{ .set_output_tag = .{ .tag = 0b10000 } } } } },
-            .{ .keysym = "6", .modifiers = .{ .mod4 = true }, .event = .{ .click = .{ .pressed = .{ .set_output_tag = .{ .tag = 0b100000 } } } } },
-            .{ .keysym = "7", .modifiers = .{ .mod4 = true }, .event = .{ .click = .{ .pressed = .{ .set_output_tag = .{ .tag = 0b1000000 } } } } },
-            .{ .keysym = "8", .modifiers = .{ .mod4 = true }, .event = .{ .click = .{ .pressed = .{ .set_output_tag = .{ .tag = 0b10000000 } } } } },
-            .{ .keysym = "9", .modifiers = .{ .mod4 = true }, .event = .{ .click = .{ .pressed = .{ .set_output_tag = .{ .tag = 0b100000000 } } } } },
-            .{ .keysym = "0", .modifiers = .{ .mod4 = true }, .event = .{ .click = .{ .pressed = .{ .set_output_tag = .{ .tag = 0b111111111 } } } } },
+            .{ .keysym = "1", .modifiers = .{ .mod4 = true }, .event = .{ .click = .{ .pressed = .{ .set_output_tag = .{ .tag = .{ .tag = 0b1 } } } } } },
+            .{ .keysym = "2", .modifiers = .{ .mod4 = true }, .event = .{ .click = .{ .pressed = .{ .set_output_tag = .{ .tag = .{ .tag = 0b10 } } } } } },
+            .{ .keysym = "3", .modifiers = .{ .mod4 = true }, .event = .{ .click = .{ .pressed = .{ .set_output_tag = .{ .tag = .{ .tag = 0b100 } } } } } },
+            .{ .keysym = "4", .modifiers = .{ .mod4 = true }, .event = .{ .click = .{ .pressed = .{ .set_output_tag = .{ .tag = .{ .tag = 0b1000 } } } } } },
+            .{ .keysym = "5", .modifiers = .{ .mod4 = true }, .event = .{ .click = .{ .pressed = .{ .set_output_tag = .{ .tag = .{ .tag = 0b10000 } } } } } },
+            .{ .keysym = "6", .modifiers = .{ .mod4 = true }, .event = .{ .click = .{ .pressed = .{ .set_output_tag = .{ .tag = .{ .tag = 0b100000 } } } } } },
+            .{ .keysym = "7", .modifiers = .{ .mod4 = true }, .event = .{ .click = .{ .pressed = .{ .set_output_tag = .{ .tag = .{ .tag = 0b1000000 } } } } } },
+            .{ .keysym = "8", .modifiers = .{ .mod4 = true }, .event = .{ .click = .{ .pressed = .{ .set_output_tag = .{ .tag = .{ .tag = 0b10000000 } } } } } },
+            .{ .keysym = "9", .modifiers = .{ .mod4 = true }, .event = .{ .click = .{ .pressed = .{ .set_output_tag = .{ .tag = .{ .tag = 0b100000000 } } } } } },
+            .{ .keysym = "0", .modifiers = .{ .mod4 = true }, .event = .{ .click = .{ .pressed = .{ .set_output_tag = .{ .tag = .{ .tag = 0b111111111 } } } } } },
 
             .{ .keysym = "1", .modifiers = .{ .mod4 = true, .ctrl = true }, .event = .{ .click = .{ .pressed = .{ .toggle_output_tag = .{ .mask = 0b1 } } } } },
             .{ .keysym = "2", .modifiers = .{ .mod4 = true, .ctrl = true }, .event = .{ .click = .{ .pressed = .{ .toggle_output_tag = .{ .mask = 0b10 } } } } },
@@ -761,15 +754,15 @@
             .{ .keysym = "8", .modifiers = .{ .mod4 = true, .ctrl = true }, .event = .{ .click = .{ .pressed = .{ .toggle_output_tag = .{ .mask = 0b10000000 } } } } },
             .{ .keysym = "9", .modifiers = .{ .mod4 = true, .ctrl = true }, .event = .{ .click = .{ .pressed = .{ .toggle_output_tag = .{ .mask = 0b100000000 } } } } },
 
-            .{ .keysym = "1", .modifiers = .{ .mod4 = true, .shift = true }, .event = .{ .click = .{ .pressed = .{ .set_window_tag = .{ .tag = 0b1 } } } } },
-            .{ .keysym = "2", .modifiers = .{ .mod4 = true, .shift = true }, .event = .{ .click = .{ .pressed = .{ .set_window_tag = .{ .tag = 0b10 } } } } },
-            .{ .keysym = "3", .modifiers = .{ .mod4 = true, .shift = true }, .event = .{ .click = .{ .pressed = .{ .set_window_tag = .{ .tag = 0b100 } } } } },
-            .{ .keysym = "4", .modifiers = .{ .mod4 = true, .shift = true }, .event = .{ .click = .{ .pressed = .{ .set_window_tag = .{ .tag = 0b1000 } } } } },
-            .{ .keysym = "5", .modifiers = .{ .mod4 = true, .shift = true }, .event = .{ .click = .{ .pressed = .{ .set_window_tag = .{ .tag = 0b10000 } } } } },
-            .{ .keysym = "6", .modifiers = .{ .mod4 = true, .shift = true }, .event = .{ .click = .{ .pressed = .{ .set_window_tag = .{ .tag = 0b100000 } } } } },
-            .{ .keysym = "7", .modifiers = .{ .mod4 = true, .shift = true }, .event = .{ .click = .{ .pressed = .{ .set_window_tag = .{ .tag = 0b1000000 } } } } },
-            .{ .keysym = "8", .modifiers = .{ .mod4 = true, .shift = true }, .event = .{ .click = .{ .pressed = .{ .set_window_tag = .{ .tag = 0b10000000 } } } } },
-            .{ .keysym = "9", .modifiers = .{ .mod4 = true, .shift = true }, .event = .{ .click = .{ .pressed = .{ .set_window_tag = .{ .tag = 0b100000000 } } } } },
+            .{ .keysym = "1", .modifiers = .{ .mod4 = true, .shift = true }, .event = .{ .click = .{ .pressed = .{ .set_window_tag = .{ .tag = .{ .tag = 0b1 } } } } } },
+            .{ .keysym = "2", .modifiers = .{ .mod4 = true, .shift = true }, .event = .{ .click = .{ .pressed = .{ .set_window_tag = .{ .tag = .{ .tag = 0b10 } } } } } },
+            .{ .keysym = "3", .modifiers = .{ .mod4 = true, .shift = true }, .event = .{ .click = .{ .pressed = .{ .set_window_tag = .{ .tag = .{ .tag = 0b100 } } } } } },
+            .{ .keysym = "4", .modifiers = .{ .mod4 = true, .shift = true }, .event = .{ .click = .{ .pressed = .{ .set_window_tag = .{ .tag = .{ .tag = 0b1000 } } } } } },
+            .{ .keysym = "5", .modifiers = .{ .mod4 = true, .shift = true }, .event = .{ .click = .{ .pressed = .{ .set_window_tag = .{ .tag = .{ .tag = 0b10000 } } } } } },
+            .{ .keysym = "6", .modifiers = .{ .mod4 = true, .shift = true }, .event = .{ .click = .{ .pressed = .{ .set_window_tag = .{ .tag = .{ .tag = 0b100000 } } } } } },
+            .{ .keysym = "7", .modifiers = .{ .mod4 = true, .shift = true }, .event = .{ .click = .{ .pressed = .{ .set_window_tag = .{ .tag = .{ .tag = 0b1000000 } } } } } },
+            .{ .keysym = "8", .modifiers = .{ .mod4 = true, .shift = true }, .event = .{ .click = .{ .pressed = .{ .set_window_tag = .{ .tag = .{ .tag = 0b10000000 } } } } } },
+            .{ .keysym = "9", .modifiers = .{ .mod4 = true, .shift = true }, .event = .{ .click = .{ .pressed = .{ .set_window_tag = .{ .tag = .{ .tag = 0b100000000 } } } } } },
 
             .{ .keysym = "1", .modifiers = .{ .mod4 = true, .ctrl = true, .shift = true }, .event = .{ .click = .{ .pressed = .{ .toggle_window_tag = .{ .mask = 0b1 } } } } },
             .{ .keysym = "2", .modifiers = .{ .mod4 = true, .ctrl = true, .shift = true }, .event = .{ .click = .{ .pressed = .{ .toggle_window_tag = .{ .mask = 0b10 } } } } },
