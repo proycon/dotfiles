@@ -1421,7 +1421,7 @@
     //      disable_while_trackpointing: .enabled or .disabled
     //      rotation_angle: u32
     .libinput_device_rules = .{
-        .{ .name = .{ .str = ".*[tT]ouchpad", .regex = true }, .tap = .enabled, .drag = .enabled, .natural_scroll = .enabled },
+        .{ .name = .{ .str = ".*[tT]ouchpad", .regex = true }, .tap = .enabled, .drag = .enabled, .natural_scroll = .disabled },
         .{ .tap = .enabled, .drag = .enabled }
     },
 
