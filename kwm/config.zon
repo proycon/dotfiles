@@ -21,7 +21,7 @@
     } },
 
     // solid color background
-    // note: set this to .none if you use other wallpaper program like `swaybg`, orelse it will be covered by this and unable to see
+    // note: set this to .none if you use other wallpaper program like `swaybg`, or else it will be covered by this and unable to see
     .background = .none,
 
     .bar = .{
@@ -36,8 +36,8 @@
                 .bg = 0x20202090,
             },
             .select = .{
-                .fg = 0x202020ff,
-                .bg = 0x90909090,
+                .fg = 0xffffffff,
+                .bg = 0x5e875fff,
             },
         },
         .status = .{ .fifo = "${XDG_RUNTIME_DIR}/bar.fifo" }, // .stdin or .{ .fifo = "fifo file path" }, could use ^#RGBA to switch text color, and use ^#! to switch back to default color
@@ -1343,7 +1343,7 @@
         .{ .app_id = .{ .str = "nm-connection-editor" }, .floating = true },
         .{ .app_id = .{ .str = "pavucontrol" }, .floating = true },
         .{ .app_id = .{ .str = "gcr-prompter" }, .floating = true },
-        .{ .title = .{ .str = "([Oo]pen|[Cc]hoose|[Cc]onfirm|[Pp]ick|[Ch]ange|[Ss]elect|[Ff]ile)*" }, .floating = true },
+        .{ .title = .{ .str = "([Oo]pen|[Cc]hoose|[Cc]onfirm|[Pp]ick|[Ch]ange|[Ss]elect|[Ff]ile).*", .regex = true }, .floating = true },
         .{ .app_id = .{ .str = "chromium" }, .tag = 0b100, .scroller_mfact = 0.9 },
         .{ .app_id = .{ .str = "firefox" }, .tag = 0b100, .scroller_mfact = 0.9 },
         .{ .app_id = .{ .str = "librewolf" }, .tag = 0b100, .scroller_mfact = 0.9 },
@@ -1351,7 +1351,6 @@
         .{ .app_id = .{ .str = "dev.geopjr.Tuba" }, .tag = 0b100000 },
         .{ .app_id = .{ .str = "senpai" }, .tag = 0b1000000, .scroller_mfact = 0.6 },
         .{ .app_id = .{ .str = "nheko" }, .tag = 0b1000000, .scroller_mfact = 0.6 },
-        .{ .app_id = .{ .str = "gimp" }, .title = .{ .str = "Change*" }, .floating = true, .tag = 0b10000 },
         .{ .app_id = .{ .str = "gimp" }, .tag = 0b10000, .scroller_mfact = 0.9 },
         .{ .app_id = .{ .str = "inkscape" }, .tag = 0b10000, .scroller_mfact = 0.9 },
         .{ .app_id = .{ .str = "im.dino.Dino" }, .tag = 0b1000000, .scroller_mfact = 0.6 },
@@ -1463,10 +1462,18 @@
     // output rules
     // full scheme:
     //      name: rule pattern
-    //
+    //      layout: same as `layout` before but you only need to specify the values you want to change
+    //      default_layout: same as `default_layout` before
     //      presentation_mode: presentation mode, .vsync or .async
     .output_rules = .{
-        //
+        .{
+            .name = .{ .str = "DP-2" },
+            .layout = .{
+                .tile = .{
+                    .master_location = .top,
+                },
+            }
+        },
     },
 
 
