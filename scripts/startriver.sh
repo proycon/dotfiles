@@ -3,7 +3,7 @@
 . ~/.config/river/env.sh
 
 if [ -n "$DBUS_SESSION_BUS_ADDRESS" ]; then
-    exec river.new -c ~/dotfiles/river/init.new
+    exec river -c ~/dotfiles/river/init
 else
-    exec dbus-run-session -- river.new -c ~/dotfiles/river/init.new
+    exec dbus-run-session -- river -c ~/dotfiles/river/init
 fi
