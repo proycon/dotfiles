@@ -31,6 +31,61 @@
         //              the pressed action and released action could define at the same time
         .key = .{
             .{
+                .keysym = "a",
+                .modifiers = .{ .mod4 = true },
+                .event = .{
+                    .click = .{
+                        .pressed = .{
+                            .spawn_shell = .{ .cmd = "sxmo_appmenu.sh" },
+                        },
+                    },
+                },
+            },
+            .{
+                .keysym = "a",
+                .modifiers = .{ .mod4 = true, .shift = true },
+                .event = .{
+                    .click = .{
+                        .pressed = .{
+                            .spawn_shell = .{ .cmd = "sxmo_appmenu.sh sys" },
+                        },
+                    },
+                },
+            },
+            .{
+                .keysym = "d",
+                .modifiers = .{ .mod4 = true },
+                .event = .{
+                    .click = .{
+                        .pressed = .{
+                            .spawn_shell = .{ .cmd = "bemenu-run" },
+                        },
+                    },
+                },
+            },
+            .{
+                .keysym = "g",
+                .modifiers = .{ .mod4 = true },
+                .event = .{
+                    .click = .{
+                        .pressed = .{
+                            .spawn_shell = .{ .cmd = "sxmo_state.sh set locker" },
+                        },
+                    },
+                },
+            },
+            .{
+                .keysym = "t",
+                .modifiers = .{ .mod4 = true },
+                .event = .{
+                    .click = .{
+                        .pressed = .{
+                            .spawn_shell = .{ .cmd = "sxmo_appmenu.sh power" },
+                        },
+                    },
+                },
+            },
+            .{
                 .keysym = "F3",
                 .modifiers = .{ .mod4 = true, .shift = true },
                 .event = .{
@@ -48,6 +103,39 @@
                     .click = .{
                         .pressed = .{
                             .spawn_shell = .{ .cmd = "~/dotfiles/scripts/homecommand.sh mute" },
+                        },
+                    },
+                },
+            },
+            .{
+                .keysym = "XF86AudioMute",
+                .modifiers = .{ },
+                .event = .{
+                    .click = .{
+                        .pressed = .{
+                            .spawn_shell = .{ .cmd = "sxmo_audio.sh vol togglemute" },
+                        },
+                    },
+                },
+            },
+            .{
+                .keysym = "XF86AudioLowerVolume",
+                .modifiers = .{ },
+                .event = .{
+                    .click = .{
+                        .pressed = .{
+                            .spawn_shell = .{ .cmd = "sxmo_audio.sh vol down" },
+                        },
+                    },
+                },
+            },
+            .{
+                .keysym = "XF86AudioRaiseVolume",
+                .modifiers = .{ },
+                .event = .{
+                    .click = .{
+                        .pressed = .{
+                            .spawn_shell = .{ .cmd = "sxmo_audio.sh vol up" },
                         },
                     },
                 },
@@ -92,6 +180,28 @@
                     .click = .{
                         .pressed = .{
                             .spawn_shell = .{ .cmd = "playerctl next" },
+                        },
+                    },
+                },
+            },
+            .{
+                .keysym = "XF86MonBrightnessUp",
+                .modifiers = .{ },
+                .event = .{
+                    .click = .{
+                        .pressed = .{
+                            .spawn_shell = .{ .cmd = "sxmo_brightness.sh up" },
+                        },
+                    },
+                },
+            },
+            .{
+                .keysym = "XF86MonBrightnessDown",
+                .modifiers = .{ },
+                .event = .{
+                    .click = .{
+                        .pressed = .{
+                            .spawn_shell = .{ .cmd = "sxmo_brightness.sh down" },
                         },
                     },
                 },

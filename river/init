@@ -69,14 +69,14 @@ mkfifo "$XDG_RUNTIME_DIR/bar.fifo"
 BARPID=$!
 
 while true; do
-    echo "Starting $RIVER_WM">&2
+    set -o pipefail
     if [ -e ~/dotfiles/kwm/config."$HOSTNAME".zon ]; then
-        $RIVER_WM -c ~/dotfiles/kwm/config."$HOSTNAME".zon 2>&1 | tee ~/kwm.log && exit 0
+        $RIVER_WM -c ~/dotfiles/kwm/config."$HOSTNAME".zon 2>&1 | tee ~/"$RIVER_WM".log && exit 0
     else
-        $RIVER_WM 2>&1 | tee ~/kwm.log && exit 0
+        $RIVER_WM 2>&1 | tee ~/"$RIVER_WM".log && exit 0
     fi
     echo "Wm died.. restarting...">&2
-    mv kwm.log kwm.1.log
+    mv "$RIVER_WM.log" "$RIVER_WM.1.log"
     mpv --quiet ~/dotfiles/media/error.wav
     sleep 1
 done &
