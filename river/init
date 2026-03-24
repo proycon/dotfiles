@@ -150,6 +150,7 @@ else
     mpv --quiet ~/dotfiles/media/lovelyboot.ogg &
 fi
 
+[ "$SXMO_WM" = "river" ] && sxmo_hook_start.sh
 
 echo "River init done">&2
 wait $WMLOOPPID $BARPID
