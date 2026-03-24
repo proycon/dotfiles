@@ -70,11 +70,7 @@ BARPID=$!
 
 while true; do
     set -o pipefail
-    if [ -e ~/dotfiles/kwm/config."$HOSTNAME".zon ]; then
-        $RIVER_WM -c ~/dotfiles/kwm/config."$HOSTNAME".zon 2>&1 | tee ~/"$RIVER_WM".log && exit 0
-    else
-        $RIVER_WM 2>&1 | tee ~/"$RIVER_WM".log && exit 0
-    fi
+    $RIVER_WM 2>&1 | tee ~/"$RIVER_WM".log && exit 0
     echo "Wm died.. restarting...">&2
     mv "$RIVER_WM.log" "$RIVER_WM.1.log"
     mpv --quiet ~/dotfiles/media/error.wav

@@ -1254,6 +1254,238 @@
                     },
                 },
             },
+            // Bindings for pollux only
+            .{
+                .keysym = "z",
+                .modifiers = .{ .mod4 = true, .shift = true },
+                .event = .{
+                    .click = .{
+                        .pressed = .{
+                            .spawn_shell = .{ .cmd = "wlopm --toggle DP-2" },
+                        },
+                    },
+                },
+                .host = .{ .str = "pollux" },
+            },
+            .{
+                .keysym = "F3",
+                .modifiers = .{ .mod4 = true, .shift = true },
+                .event = .{
+                    .click = .{
+                        .pressed = .{
+                            .spawn_shell = .{ .cmd = "~/dotfiles/scripts/homecommand.sh lights/office/on" },
+                        },
+                    },
+                },
+                .host = .{ .str = "pollux" },
+            },
+            .{
+                .keysym = "F3",
+                .modifiers = .{ .mod1 = true },
+                .event = .{
+                    .click = .{
+                        .pressed = .{
+                            .spawn_shell = .{ .cmd = "~/dotfiles/scripts/homecommand.sh lights/office/on" },
+                        },
+                    },
+                },
+                .host = .{ .str = "pollux" },
+            },
+
+            // Bindings for toren only
+            .{
+                .keysym = "a",
+                .modifiers = .{ .mod4 = true },
+                .event = .{
+                    .click = .{
+                        .pressed = .{
+                            .spawn_shell = .{ .cmd = "sxmo_appmenu.sh" },
+                        },
+                    },
+                },
+                .host = .{ .str = "toren" },
+            },
+            .{
+                .keysym = "a",
+                .modifiers = .{ .mod4 = true, .shift = true },
+                .event = .{
+                    .click = .{
+                        .pressed = .{
+                            .spawn_shell = .{ .cmd = "sxmo_appmenu.sh sys" },
+                        },
+                    },
+                },
+                .host = .{ .str = "toren" },
+            },
+            .{
+                .keysym = "d",
+                .modifiers = .{ .mod4 = true },
+                .event = .{
+                    .click = .{
+                        .pressed = .{
+                            .spawn_shell = .{ .cmd = "bemenu-run" },
+                        },
+                    },
+                },
+                .host = .{ .str = "toren" },
+            },
+            .{
+                .keysym = "g",
+                .modifiers = .{ .mod4 = true },
+                .event = .{
+                    .click = .{
+                        .pressed = .{
+                            .spawn_shell = .{ .cmd = "sxmo_state.sh set locker" },
+                        },
+                    },
+                },
+                .host = .{ .str = "toren" },
+            },
+            .{
+                .keysym = "t",
+                .modifiers = .{ .mod4 = true },
+                .event = .{
+                    .click = .{
+                        .pressed = .{
+                            .spawn_shell = .{ .cmd = "sxmo_appmenu.sh power" },
+                        },
+                    },
+                },
+                .host = .{ .str = "toren" },
+            },
+            .{
+                .keysym = "F3",
+                .modifiers = .{ .mod4 = true, .shift = true },
+                .event = .{
+                    .click = .{
+                        .pressed = .{
+                            .spawn_shell = .{ .cmd = "~/dotfiles/scripts/homecommand.sh mute" },
+                        },
+                    },
+                },
+                .host = .{ .str = "toren" },
+            },
+            .{
+                .keysym = "F3",
+                .modifiers = .{ .mod1 = true },
+                .event = .{
+                    .click = .{
+                        .pressed = .{
+                            .spawn_shell = .{ .cmd = "~/dotfiles/scripts/homecommand.sh mute" },
+                        },
+                    },
+                },
+                .host = .{ .str = "toren" },
+            },
+            .{
+                .keysym = "XF86AudioMute",
+                .modifiers = .{ },
+                .event = .{
+                    .click = .{
+                        .pressed = .{
+                            .spawn_shell = .{ .cmd = "sxmo_audio.sh vol togglemute" },
+                        },
+                    },
+                },
+                .host = .{ .str = "toren" },
+            },
+            .{
+                .keysym = "XF86AudioLowerVolume",
+                .modifiers = .{ },
+                .event = .{
+                    .click = .{
+                        .pressed = .{
+                            .spawn_shell = .{ .cmd = "sxmo_audio.sh vol down" },
+                        },
+                    },
+                },
+                .host = .{ .str = "toren" },
+            },
+            .{
+                .keysym = "XF86AudioRaiseVolume",
+                .modifiers = .{ },
+                .event = .{
+                    .click = .{
+                        .pressed = .{
+                            .spawn_shell = .{ .cmd = "sxmo_audio.sh vol up" },
+                        },
+                    },
+                },
+                .host = .{ .str = "toren" },
+            },
+            .{
+                .keysym = "XF86AudioMedia",
+                .modifiers = .{ },
+                .event = .{
+                    .click = .{
+                        .pressed = .{
+                            .spawn_shell = .{ .cmd = "playerctl play-pause" },
+                        },
+                    },
+                },
+                .host = .{ .str = "toren" },
+            },
+            .{
+                .keysym = "XF86AudioPlay",
+                .modifiers = .{ },
+                .event = .{
+                    .click = .{
+                        .pressed = .{
+                            .spawn_shell = .{ .cmd = "playerctl play-pause" },
+                        },
+                    },
+                },
+                .host = .{ .str = "toren" },
+            },
+            .{
+                .keysym = "XF86AudioPrev",
+                .modifiers = .{ },
+                .event = .{
+                    .click = .{
+                        .pressed = .{
+                            .spawn_shell = .{ .cmd = "playerctl previous" },
+                        },
+                    },
+                },
+                .host = .{ .str = "toren" },
+            },
+            .{
+                .keysym = "XF86AudioPrev",
+                .modifiers = .{ },
+                .event = .{
+                    .click = .{
+                        .pressed = .{
+                            .spawn_shell = .{ .cmd = "playerctl next" },
+                        },
+                    },
+                },
+                .host = .{ .str = "toren" },
+            },
+            .{
+                .keysym = "XF86MonBrightnessUp",
+                .modifiers = .{ },
+                .event = .{
+                    .click = .{
+                        .pressed = .{
+                            .spawn_shell = .{ .cmd = "sxmo_brightness.sh up" },
+                        },
+                    },
+                },
+                .host = .{ .str = "toren" },
+            },
+            .{
+                .keysym = "XF86MonBrightnessDown",
+                .modifiers = .{ },
+                .event = .{
+                    .click = .{
+                        .pressed = .{
+                            .spawn_shell = .{ .cmd = "sxmo_brightness.sh down" },
+                        },
+                    },
+                },
+                .host = .{ .str = "toren" },
+            },
+
         },
 
         // list of pointer bindings
@@ -1351,6 +1583,9 @@
         .{ .app_id = .{ .str = "localterm" }, .tag = 0b1000, .is_terminal = false, .scroller_mfact = 0.9 },
         .{ .app_id = .{ .str = "newsraft" }, .tag = 0b100000 },
         .{ .app_id = .{ .str = "foot" }, .is_terminal = true, .scroller_mfact = 0.6 },
+        //pollux only:
+        .{ .app_id = .{ .str = "Little Navmap" }, .tag = 0b10000, .output = .{ .str = "DP-2" }, .host = .{ .str = "pollux" }, .scroller_mfact = 0.9 },
+        .{ .app_id = .{ .str = "xPilot" }, .output = .{ .str = "DP-2" }, .tag = 0b10000, .host = .{ .str = "pollux" }},
     },
 
     // input device rules
