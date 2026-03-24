@@ -75,7 +75,7 @@
     // .none
     // .on_focus_changed: wrap cursor to the center of window focused
     // .on_output_changed: wrap cursor to the center of output focused
-    .cursor_wrap = .on_output_changed,
+    .cursor_warp = .on_output_changed,
 
     // if to remember last floating geometry
     .remember_floating_geometry = true,
@@ -1101,17 +1101,6 @@
                 },
             },
             .{
-                .keysym = "z",
-                .modifiers = .{ .mod4 = true, .shift = true },
-                .event = .{
-                    .click = .{
-                        .pressed = .{
-                            .spawn_shell = .{ .cmd = "wlopm --toggle DP-2" },
-                        },
-                    },
-                },
-            },
-            .{
                 .keysym = "F2",
                 .modifiers = .{ .mod4 = true },
                 .event = .{
@@ -1355,8 +1344,6 @@
         .{ .app_id = .{ .str = "inkscape" }, .tag = 0b10000, .scroller_mfact = 0.9 },
         .{ .app_id = .{ .str = "im.dino.Dino" }, .tag = 0b1000000, .scroller_mfact = 0.6 },
         .{ .app_id = .{ .str = "org.telegram.desktop" }, .tag = 0b1000000, .scroller_mfact = 0.6 },
-        .{ .app_id = .{ .str = "Little Navmap" }, .tag = 0b10000, .output = .{ .str = "DP-2" }, .scroller_mfact = 0.9 },
-        .{ .app_id = .{ .str = "xPilot" }, .output = .{ .str = "DP-2" }, .tag = 0b10000 },
         .{ .app_id = .{ .str = "X-Plane" }, .tag = 0b100000000, .scroller_mfact = 1.0 },
         .{ .app_id = .{ .str = "aerc" },  .tag = 0b1, .is_terminal = false, .scroller_mfact = 0.9 },
         .{ .app_id = .{ .str = "nvim" },  .tag = 0b10, .is_terminal = false, .scroller_mfact = 0.9 },
@@ -1452,7 +1439,7 @@
             .keymap = .{
                 .options = .{
                     .layout = "proybasic,proylatin,proyeo,proyru,proyar",
-                    .options = "altwin:swap_lalt_lwin,grp:alt_shift_toggle"
+                    .options = "altwin:swap_lalt_lwin,grp:alt_space_toggle"
                 },
             },
         },
@@ -1466,14 +1453,7 @@
     //      default_layout: same as `default_layout` before
     //      presentation_mode: presentation mode, .vsync or .async
     .output_rules = .{
-        .{
-            .name = .{ .str = "DP-2" },
-            .layout = .{
-                .tile = .{
-                    .master_location = .top,
-                },
-            }
-        },
+
     },
 
 

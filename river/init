@@ -14,6 +14,11 @@ if [ -n "$HOSTNAME" ]; then
     HOSTNAME=$(hostname)
 fi
 
+if [ "$SXMO_WM" = "river" ]; then
+    #SXMO is not launced via startriver.sh, we still need to import the environment
+    . ~/.config/river/env.sh
+fi
+
 if [ -z "$DBUS_SESSION_BUS_ADDRESS" ]; then
     echo "No dbus session!">&2
 fi
@@ -31,16 +36,32 @@ killall pipewire-pulse
 #tells dbus about the graphical session (required for various things like password prompt to work)
 dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP
 
+if [ ! -e /run/systemd/system ]; then
+    #we do not use systemd
 
-pipewire-pulse &
-fcitx5 &
+    #kill previous session, if any
+    killall wireplumber pipewire-pulse pipewire
 
-if [ "$HOSTNAME" = "pollux" ]; then
+    if ! pgrep -x pipewire; then
+        #/etc/pulse/client.conf: autospawn = no
+        pipewire &
+    fi
+    if ! pgrep -x pipewire-pulse; then
+        pipewire-pulse &
+    fi
+    if ! pgrep -x wireplumber; then
+        wireplumber &
+    fi
+elif [ "$HOSTNAME" = "pollux" ]; then
+    pipewire-pulse &
+
     #set default sources for sound
     #view sources with: pactl list short sources
     pactl set-default-sink alsa_output.pci-0000_17_00.6.3.analog-stereo.monitor
     pactl set-default-source alsa_input.usb-Samson_Technologies_Samson_C01U_Pro_Mic-00.3.analog-stereo
 fi
+
+fcitx5 &
 
 rm -f "$XDG_RUNTIME_DIR/bar.fifo" 2> /dev/null
 mkfifo "$XDG_RUNTIME_DIR/bar.fifo"
@@ -49,7 +70,11 @@ BARPID=$!
 
 while true; do
     echo "Starting $RIVER_WM">&2
-    $RIVER_WM 2>&1 | tee ~/kwm.log && exit 0
+    if [ -e ~/dotfiles/kwm/config."$HOSTNAME".zon ]; then
+        $RIVER_WM -c ~/dotfiles/kwm/config."$HOSTNAME".zon 2>&1 | tee ~/kwm.log && exit 0
+    else
+        $RIVER_WM 2>&1 | tee ~/kwm.log && exit 0
+    fi
     echo "Wm died.. restarting...">&2
     mv kwm.log kwm.1.log
     mpv --quiet ~/dotfiles/media/error.wav
@@ -69,6 +94,7 @@ if [ "$HOSTNAME" = "toren" ]; then
 else
     swayidle timeout 600 '/home/proycon/dotfiles/scripts/lock.sh' timeout 900 'wlopm --off \*' resume 'wlopm --on \*' timeout 3600 '/home/proycon/dotfiles/scripts/trysuspend.sh' &
 fi
+
 if [ "$HOSTNAME" = "pollux" ]; then
     #start streamdeck
     setsid python /home/proycon/dotfiles/scripts/streamdeck.py &
