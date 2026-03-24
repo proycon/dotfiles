@@ -110,7 +110,7 @@ update_ethernet() {
 }
 
 update_wifi() {
-    local status="$(cat /sys/class/net/w*/operstate 2>/dev/null)"
+    local status="$(cat /sys/class/net/wlan*/operstate 2>/dev/null)"
     local level="$(awk '/^\s*w/ {print int($3 * 100 / 70)"%"}' /proc/net/wireless)"
     [ "$status" = "up" ] && icon="󰖩 " || icon="^#ff0000FF󰖪 ^#!" level=""
     wifi="${icon}${level}"
