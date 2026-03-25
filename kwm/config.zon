@@ -1134,28 +1134,6 @@
                 },
             },
             .{
-                .keysym = "F3",
-                .modifiers = .{ .mod4 = true, .shift = true },
-                .event = .{
-                    .click = .{
-                        .pressed = .{
-                            .spawn_shell = .{ .cmd = "~/dotfiles/scripts/homecommand.sh lights/office/on" },
-                        },
-                    },
-                },
-            },
-            .{
-                .keysym = "F3",
-                .modifiers = .{ .mod1 = true },
-                .event = .{
-                    .click = .{
-                        .pressed = .{
-                            .spawn_shell = .{ .cmd = "~/dotfiles/scripts/homecommand.sh lights/office/on" },
-                        },
-                    },
-                },
-            },
-            .{
                 .keysym = "F4",
                 .modifiers = .{ .mod4 = true },
                 .event = .{
@@ -1255,6 +1233,7 @@
                 },
             },
             // Bindings for pollux only
+            // @if(hostname=pollux)
             .{
                 .keysym = "z",
                 .modifiers = .{ .mod4 = true, .shift = true },
@@ -1265,7 +1244,6 @@
                         },
                     },
                 },
-                .host = .{ .str = "pollux" },
             },
             .{
                 .keysym = "F3",
@@ -1277,7 +1255,6 @@
                         },
                     },
                 },
-                .host = .{ .str = "pollux" },
             },
             .{
                 .keysym = "F3",
@@ -1289,10 +1266,32 @@
                         },
                     },
                 },
-                .host = .{ .str = "pollux" },
             },
-
-            // Bindings for toren only
+            // @else
+            .{
+                .keysym = "F3",
+                .modifiers = .{ .mod4 = true, .shift = true },
+                .event = .{
+                    .click = .{
+                        .pressed = .{
+                            .spawn_shell = .{ .cmd = "~/dotfiles/scripts/homecommand.sh mute" },
+                        },
+                    },
+                },
+            },
+            .{
+                .keysym = "F3",
+                .modifiers = .{ .mod1 = true },
+                .event = .{
+                    .click = .{
+                        .pressed = .{
+                            .spawn_shell = .{ .cmd = "~/dotfiles/scripts/homecommand.sh mute" },
+                        },
+                    },
+                },
+            },
+            // @endif
+            // @if(hostname=toren)
             .{
                 .keysym = "a",
                 .modifiers = .{ .mod4 = true },
@@ -1303,7 +1302,6 @@
                         },
                     },
                 },
-                .host = .{ .str = "toren" },
             },
             .{
                 .keysym = "a",
@@ -1315,7 +1313,6 @@
                         },
                     },
                 },
-                .host = .{ .str = "toren" },
             },
             .{
                 .keysym = "d",
@@ -1327,7 +1324,6 @@
                         },
                     },
                 },
-                .host = .{ .str = "toren" },
             },
             .{
                 .keysym = "g",
@@ -1339,7 +1335,6 @@
                         },
                     },
                 },
-                .host = .{ .str = "toren" },
             },
             .{
                 .keysym = "t",
@@ -1351,7 +1346,6 @@
                         },
                     },
                 },
-                .host = .{ .str = "toren" },
             },
             .{
                 .keysym = "F3",
@@ -1363,7 +1357,6 @@
                         },
                     },
                 },
-                .host = .{ .str = "toren" },
             },
             .{
                 .keysym = "F3",
@@ -1375,7 +1368,6 @@
                         },
                     },
                 },
-                .host = .{ .str = "toren" },
             },
             .{
                 .keysym = "XF86AudioMute",
@@ -1387,7 +1379,6 @@
                         },
                     },
                 },
-                .host = .{ .str = "toren" },
             },
             .{
                 .keysym = "XF86AudioLowerVolume",
@@ -1399,7 +1390,6 @@
                         },
                     },
                 },
-                .host = .{ .str = "toren" },
             },
             .{
                 .keysym = "XF86AudioRaiseVolume",
@@ -1411,7 +1401,6 @@
                         },
                     },
                 },
-                .host = .{ .str = "toren" },
             },
             .{
                 .keysym = "XF86AudioMedia",
@@ -1423,7 +1412,6 @@
                         },
                     },
                 },
-                .host = .{ .str = "toren" },
             },
             .{
                 .keysym = "XF86AudioPlay",
@@ -1435,7 +1423,6 @@
                         },
                     },
                 },
-                .host = .{ .str = "toren" },
             },
             .{
                 .keysym = "XF86AudioPrev",
@@ -1447,7 +1434,6 @@
                         },
                     },
                 },
-                .host = .{ .str = "toren" },
             },
             .{
                 .keysym = "XF86AudioPrev",
@@ -1459,7 +1445,6 @@
                         },
                     },
                 },
-                .host = .{ .str = "toren" },
             },
             .{
                 .keysym = "XF86MonBrightnessUp",
@@ -1471,7 +1456,6 @@
                         },
                     },
                 },
-                .host = .{ .str = "toren" },
             },
             .{
                 .keysym = "XF86MonBrightnessDown",
@@ -1483,9 +1467,8 @@
                         },
                     },
                 },
-                .host = .{ .str = "toren" },
             },
-
+            //@endif
         },
 
         // list of pointer bindings
@@ -1583,9 +1566,10 @@
         .{ .app_id = .{ .str = "localterm" }, .tag = 0b1000, .is_terminal = false, .scroller_mfact = 0.9 },
         .{ .app_id = .{ .str = "newsraft" }, .tag = 0b100000 },
         .{ .app_id = .{ .str = "foot" }, .is_terminal = true, .scroller_mfact = 0.6 },
-        //pollux only:
-        .{ .app_id = .{ .str = "Little Navmap" }, .tag = 0b10000, .output = .{ .str = "DP-2" }, .host = .{ .str = "pollux" }, .scroller_mfact = 0.9 },
-        .{ .app_id = .{ .str = "xPilot" }, .output = .{ .str = "DP-2" }, .tag = 0b10000, .host = .{ .str = "pollux" }},
+        //@if(hostname=pollux)
+        .{ .app_id = .{ .str = "Little Navmap" }, .tag = 0b10000, .output = .{ .str = "DP-2" }, .scroller_mfact = 0.9 },
+        .{ .app_id = .{ .str = "xPilot" }, .output = .{ .str = "DP-2" }, .tag = 0b10000 },
+        //@endif
     },
 
     // input device rules
