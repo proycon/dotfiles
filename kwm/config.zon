@@ -1091,7 +1091,29 @@
             },
             .{
                 .keysym = "Escape",
+                .modifiers = .{ .ctrl = true },
+                .event = .{
+                    .click = .{
+                        .pressed = .{
+                            .spawn_shell = .{ .cmd = "~/dotfiles/scripts/lock.sh force" },
+                        },
+                    },
+                },
+            },
+            .{
+                .keysym = "Escape",
                 .modifiers = .{ .mod4 = true, .shift = true },
+                .event = .{
+                    .click = .{
+                        .pressed = .{
+                            .spawn_shell = .{ .cmd = "~/dotfiles/scripts/suspend.sh" },
+                        },
+                    },
+                },
+            },
+            .{
+                .keysym = "Escape",
+                .modifiers = .{ .ctrl = true, .shift = true },
                 .event = .{
                     .click = .{
                         .pressed = .{
