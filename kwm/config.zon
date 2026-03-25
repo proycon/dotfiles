@@ -29,7 +29,7 @@
         // .top
         // .bottom
         .position = .bottom,
-        .font = "proymono:size=20",
+        .font = "monospace:size=20",
         .color = .{
             .normal = .{
                 .fg = 0x909090ff,
@@ -1233,7 +1233,7 @@
                 },
             },
             // Bindings for pollux only
-            // @if(hostname=pollux)
+// @if(hostname=pollux)
             .{
                 .keysym = "z",
                 .modifiers = .{ .mod4 = true, .shift = true },
@@ -1290,8 +1290,9 @@
                     },
                 },
             },
-            // @endif
-            // @if(hostname=toren)
+// @endif
+
+// @if(hostname=toren)
             .{
                 .keysym = "a",
                 .modifiers = .{ .mod4 = true },
@@ -1468,7 +1469,7 @@
                     },
                 },
             },
-            //@endif
+// @endif
         },
 
         // list of pointer bindings
@@ -1566,10 +1567,10 @@
         .{ .app_id = .{ .str = "localterm" }, .tag = 0b1000, .is_terminal = false, .scroller_mfact = 0.9 },
         .{ .app_id = .{ .str = "newsraft" }, .tag = 0b100000 },
         .{ .app_id = .{ .str = "foot" }, .is_terminal = true, .scroller_mfact = 0.6 },
-        //@if(hostname=pollux)
+// @if(hostname=pollux)
         .{ .app_id = .{ .str = "Little Navmap" }, .tag = 0b10000, .output = .{ .str = "DP-2" }, .scroller_mfact = 0.9 },
         .{ .app_id = .{ .str = "xPilot" }, .output = .{ .str = "DP-2" }, .tag = 0b10000 },
-        //@endif
+// @endif
     },
 
     // input device rules
