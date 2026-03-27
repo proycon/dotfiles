@@ -1681,7 +1681,7 @@
             .keymap = .{
                 .options = .{
                     .layout = "proybasic,proylatin,proyeo,proyru,proyar",
-                    .options = "altwin:swap_lalt_lwin,grp:alt_space_toggle"
+                    .options = "altwin:swap_lalt_lwin,grp:lalt_lshift_toggle"
                 },
             },
         },

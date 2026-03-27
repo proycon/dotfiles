@@ -144,6 +144,14 @@ update_memory() {
     memory="${icon}${usage}"
 }
 
+update_keyboard() {
+    if [ -e "$XDG_RUNTIME_DIR/rivermap.state" ]; then
+        keyboard=" $(cat "$XDG_RUNTIME_DIR/rivermap.state" | sed 's/ (Proycon)//g' | sed 's/Universal //g')"
+    else
+        keyboard="^#ff0000FF^#!"
+    fi
+}
+
 update_task() {
     task=$(todo.sh timetrack current -d | sed 's/&/&amp;/g' | awk '{print substr($0, 0, 40)}')
 }
@@ -154,6 +162,7 @@ update_volume;update_time
 trap	"update_volume;display"	  	"RTMIN"   # -34 .local/bin/audio
 trap	"update_microphone;display"	"RTMIN+1"   # -35 .local/bin/audio
 trap	"update_brightness;display"	"RTMIN+2"   # -36 .local/bin/bright
+trap	"update_keyboard;display"   "RTMIN+3"   # -37
 
 display () {
     local space=" "         # ` `(U+2009) is the Thin Space
@@ -162,8 +171,16 @@ display () {
     local delimiter_end="$delimiter_color]^#!"
     local separator="$delimiter_color][^#!"
     #printf "%s" "${delimiter_home}${memory}${space}${cpu}${space}${temperature}${separator}${wifi}${space}${ethernet}${separator}${brightness}${space}${microphone}${space}${volume}${separator}${battery}${space}${bluetooth}${separator}${time}${delimiter_end}"
-    printf "%s\n" "(${task}...)${space}${cpu}${space}${wifi}${space}${volume}${space}${battery}${space}${time}"
+    printf "%s\n" "(${task}...)${space}${keyboard}${space}${cpu}${space}${wifi}${space}${volume}${space}${battery}${space}${time}"
 }
+
+MAINPID=$$
+(rivermap -d | while read -r line; do
+    #write to temporary file (memory-backed fs)
+    echo "$line"  > "$XDG_RUNTIME_DIR/rivermap.state"
+    #send signal to parent
+    kill -37 "$MAINPID"
+done) &
 
 while true
 do
@@ -171,6 +188,7 @@ do
     {
         ## [ $((sec % n)) -eq m ] && udpate_item
         [ $((sec % 10 )) -eq 0 ] && update_task 	# update task every 10 seconds
+        [ $((sec % 10 )) -eq 0 ] && update_keyboard 	# update task every 10 seconds
         [ $((sec % 60 )) -eq 0 ] && update_volume 	# update volume every minute
         [ $((sec % 10 )) -eq 0 ] && update_time 	# update time every 10 seconds
         if [ "$HOSTNAME" != "pollux" ]; then
