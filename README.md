@@ -8,7 +8,7 @@ Software
 
 Current setup:
 
-* 🐧 **OS**: [Arch Linux](https://archlinux.org) (workstation & laptop) / [postmarketOS](https://postmarketos.org) (2nd laptop)
+* 🐧 **OS**: [Arch Linux](https://archlinux.org) (workstation & laptop) / [postmarketOS](https://postmarketos.org) (2nd laptop & phone, with [sxmo](https://sxmo.org))
 * ⚙ **Compositor**: [River](https://codeberg.org/river/river)
 * ⚙ **Window Manager**: [kwm](https://github.com/kewuaa/kwm)
 * 🍫 **Bar**: [kwm's bar](https://github.com/kewuaa/kwm) with [custom blocks](scripts/bar.sh)
