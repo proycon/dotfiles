@@ -152,22 +152,8 @@ display () {
 }
 
 MAINPID=$$
-setsid ~/dotfiles/scripts/rivermap_wrapper.sh $MAINPID 2> "$XDG_RUNTIME_DIR/rivermap.log" &
-
-(
-while true; do
-    inotifywait --monitor ~/.todo/timetrack.txt 2>&1 | while read -r line; do
-        case $line in
-            *MODIFY*)
-                #send signal to parent
-                kill -38 "$MAINPID"
-                ;;
-        esac
-    done
-    echo "inotifywait timetrack died....">&2
-    sleep 1
-done
-) &
+setsid ~/dotfiles/scripts/bar_rivermap.sh $MAINPID 2> "$XDG_RUNTIME_DIR/rivermap.log" &
+setsid ~/dotfiles/scripts/bar_timetrack.sh $MAINPID 2> "$XDG_RUNTIME_DIR/timetrack.log" &
 
 while true
 do
