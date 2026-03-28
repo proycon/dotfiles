@@ -207,5 +207,5 @@ do
         sec=$((sec + 1))
     }
     sleep 1 &
-    wait $?
+    wait $!
 done
