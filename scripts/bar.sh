@@ -152,8 +152,8 @@ display () {
 }
 
 MAINPID=$$
-setsid ~/dotfiles/scripts/bar_rivermap.sh $MAINPID 2> "$XDG_RUNTIME_DIR/rivermap.log" &
-setsid ~/dotfiles/scripts/bar_timetrack.sh $MAINPID 2> "$XDG_RUNTIME_DIR/timetrack.log" &
+~/dotfiles/scripts/bar_rivermap.sh $MAINPID 2> "$XDG_RUNTIME_DIR/rivermap.log" &
+~/dotfiles/scripts/bar_timetrack.sh $MAINPID 2> "$XDG_RUNTIME_DIR/timetrack.log" &
 
 while true
 do
