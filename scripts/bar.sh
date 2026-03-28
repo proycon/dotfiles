@@ -151,12 +151,16 @@ display () {
 }
 
 MAINPID=$$
-(rivermap -d | while read -r line; do
-    #write to temporary file (memory-backed fs)
-    echo "$line"  > "$XDG_RUNTIME_DIR/rivermap.state"
-    #send signal to parent
-    kill -37 "$MAINPID"
-done) &
+(
+while true; do
+    rivermap -d | while read -r line; do
+        #write to temporary file (memory-backed fs)
+        echo "$line"  > "$XDG_RUNTIME_DIR/rivermap.state"
+        #send signal to parent
+        kill -37 "$MAINPID"
+    done
+done
+) &
 
 while true
 do
