@@ -144,6 +144,7 @@ trap	"update_volume;display"	  	"RTMIN"   # -34 .local/bin/audio
 trap	"update_microphone;display"	"RTMIN+1"   # -35 .local/bin/audio
 trap	"update_brightness;display"	"RTMIN+2"   # -36 .local/bin/bright
 trap	"update_keyboard;display"   "RTMIN+3"   # -37
+trap	"update_task;display"   "RTMIN+4"   # -38
 
 display () {
     #printf "%s" "${delimiter_home}${memory}${space}${cpu}${space}${temperature}${separator}${wifi}${space}${ethernet}${separator}${brightness}${space}${microphone}${space}${volume}${separator}${battery}${space}${bluetooth}${separator}${time}${delimiter_end}"
@@ -159,6 +160,24 @@ while true; do
         #send signal to parent
         kill -37 "$MAINPID"
     done
+    echo "rivermap died....">&2
+    sleep 1
+done
+) &
+
+
+(
+while true; do
+    inotifywait --monitor ~/.todo/timetrack.txt 2>&1 | while read -r line; do
+        case $line in
+            *MODIFY*)
+                #send signal to parent
+                kill -38 "$MAINPID"
+                ;;
+        esac
+    done
+    echo "inotifywait timetrack died....">&2
+    sleep 1
 done
 ) &
 
@@ -167,7 +186,7 @@ do
     # to update item ever n seconds with a offset of m
     {
         ## [ $((sec % n)) -eq m ] && udpate_item
-        [ $((sec % 10 )) -eq 0 ] && update_task 	# update task every 10 seconds
+        [ $((sec % 60 )) -eq 0 ] && update_task 	# update task every 10 seconds
         [ $((sec % 60 )) -eq 0 ] && update_keyboard 	# update task every 10 seconds
         [ $((sec % 60 )) -eq 0 ] && update_volume 	# update volume every minute
         [ $((sec % 60 )) -eq 0 ] && update_microphone 	# update volume every minute
