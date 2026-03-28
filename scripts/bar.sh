@@ -206,5 +206,6 @@ do
 
         sec=$((sec + 1))
     }
-    sleep 1 & wait
+    sleep 1 &
+    wait $?
 done
