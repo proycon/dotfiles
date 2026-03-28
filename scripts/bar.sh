@@ -1,9 +1,10 @@
 #!/bin/sh
 sec=0
 proc_num=$(nproc)
+space=" "         # ` `(U+2009) is the Thin Space
 
 update_time () {
-    local icon=""
+    icon=""
     case "$(date +'%I')" in
         01) icon="󱐿" ;;
         02) icon="󱑀" ;;
@@ -22,57 +23,37 @@ update_time () {
 }
 
 update_bluetooth() {
-    local icon="󰂯"
+    icon="^#0000ffFF󰂯^#!"
     if ! pgrep -x 'bluetoothd' >/dev/null; then
         icon="󰂲"
     else
-        local level="$(bluetoothctl info | grep -m1 'Battery Percentage' | awk -F'[()]' '{print $2}')"
+        level="$(bluetoothctl info | grep -m1 'Battery Percentage' | awk -F'[()]' '{print $2}')"
         [ -n "$level" ] && icon="󰂱" level="${level}%"
     fi
     bluetooth="${icon}${level}"
 }
 
 update_volume() {
-    local text=$(amixer get Master | tail -1)
-    local status=$(echo $text | grep -oE '\[on\]|\[off\]')
-    local level=$(echo $text | grep -oE '[0-9]+%')
-    [ "$status" = "[on]" ] && icon=" " || icon=" "
+    text=$(amixer get Master | tail -1)
+    status=$(echo "$text" | grep -oE '\[on\]|\[off\]')
+    level=$(echo "$text" | grep -oE '[0-9]+%')
+    [ "$status" = "[on]" ] && icon=" " || icon="^#ff0000FF^#!"
     volume="${icon}${level}"
 }
 
 update_microphone() {
-    local text=$(amixer get Capture | tail -1)
-    local status=$(echo $text | grep -oE '\[on\]|\[off\]')
-    local level=$(echo $text | grep -oE '[0-9]+%')
-    [ "$status" = "[on]" ] && icon="" || icon=""
-    microphone="${icon}${level}"
-}
-
-update_brightness() {
-    local icon=""
-    local level="$(( $(brightnessctl g) * 100 / $(brightnessctl m) ))"
-    case $level in
-        [0-9]) icon="󱩎 " ;;
-        1[0-9]) icon="󱩏 " ;;
-        2[0-9]) icon="󱩐 " ;;
-        3[0-9]) icon="󱩐 " ;;
-        4[0-9]) icon="󱩑 " ;;
-        5[0-9]) icon="󱩒 " ;;
-        6[0-9]) icon="󱩓 " ;;
-        7[0-9]) icon="󱩔 " ;;
-        8[0-9]) icon="󱩕 " ;;
-        9[0-9]) icon="󱩖 " ;;
-        100%)     icon="󰛨 "  ;;
-    esac
-    [ -z "$level" ] || level="${level}%"
-    brightness="${icon}${level}"
+    text=$(amixer get Capture | tail -1)
+    status=$(echo "$text" | grep -oE '\[on\]|\[off\]')
+    level=$(echo "$text" | grep -oE '[0-9]+%')
+    [ "$status" = "[on]" ] && icon="" || icon="^#ff0000FF^#!"
+    microphone="${icon}" #${level}"
 }
 
 update_battery () {
-    local icon=""
-    local POWER="/sys/class/power_supply"
-    local status="$(cat $POWER/BAT?/status)"
-    local level="$(cat $POWER/BAT?/capacity)"
+    icon=""
+    POWER="/sys/class/power_supply"
+    status="$(cat $POWER/BAT?/status)"
+    level="$(cat $POWER/BAT?/capacity)"
     case "$status" in
         "Discharging")
             case "$level" in
@@ -98,28 +79,31 @@ update_battery () {
             icon="" level="${level}%"
             ;;
     esac
-    ls ${POWER}/BAT? > /dev/null || icon=""
-    battery="${icon}${level}"
+    if ls ${POWER}/BAT? > /dev/null; then
+        battery="${icon}${level}"
+    else
+        battery=""
+    fi
 }
 
 update_ethernet() {
-    local status="$(cat /sys/class/net/e*/operstate 2>/dev/null)"
-    local icon="󰛳 "
+    status="$(cat /sys/class/net/e*/operstate 2>/dev/null)"
+    icon="󰛳 "
     [ "$status" != "up" ] && icon="󰲛 "
     ethernet="$icon"
 }
 
 update_wifi() {
-    local status="$(cat /sys/class/net/wlan*/operstate 2>/dev/null)"
-    local level="$(awk '/^\s*w/ {print int($3 * 100 / 70)"%"}' /proc/net/wireless)"
+    status="$(cat /sys/class/net/wlan*/operstate 2>/dev/null)"
+    level="$(awk '/^\s*w/ {print int($3 * 100 / 70)"%"}' /proc/net/wireless)"
     [ "$status" = "up" ] && icon="󰖩 " || icon="^#ff0000FF󰖪 ^#!" level=""
     wifi="${icon}${level}"
 }
 
 update_temperature() {
-    local icon=""
-    local THERMEL="/sys/class/thermal/thermal_zone0/temp"
-    local value="$(sed 's/000$//' "$THERMEL")"
+    icon=""
+    THERMEL="/sys/class/thermal/thermal_zone0/temp"
+    value="$(sed 's/000$//' "$THERMEL")"
     [ -z "$value" ] && icon="󱔱" temperature=""
     case "$value" in
         [0-3][0-9]) icon="" ;;
@@ -132,16 +116,13 @@ update_temperature() {
 }
 
 update_cpu() {
-    local usage="$(( $(awk '{ printf "%.0f", $1*100 }' /proc/loadavg) / $proc_num ))"
-    local icon=" "
+    usage="$(( $(awk '{ printf "%.0f", $1*100 }' /proc/loadavg) / $proc_num ))"
     [ -z "$usage" ] || usage="${usage}%"
-    cpu="${icon}${usage}"
+    cpu=" ${usage}"
 }
 
 update_memory() {
-    local usage="$(free | awk 'NR==2 {printf "%.0f%%(%.1fG)\n", $3/$2 * 100, $3/1024/1024}')"
-    local icon=" "
-    memory="${icon}${usage}"
+    memory=" $(free | awk 'NR==2 {printf "%.0f%%(%.1fG)\n", $3/$2 * 100, $3/1024/1024}')"
 }
 
 update_keyboard() {
@@ -165,13 +146,8 @@ trap	"update_brightness;display"	"RTMIN+2"   # -36 .local/bin/bright
 trap	"update_keyboard;display"   "RTMIN+3"   # -37
 
 display () {
-    local space=" "         # ` `(U+2009) is the Thin Space
-    local delimiter_color="^#EED49FFF"
-    local delimiter_home="$delimiter_color[^#!"
-    local delimiter_end="$delimiter_color]^#!"
-    local separator="$delimiter_color][^#!"
     #printf "%s" "${delimiter_home}${memory}${space}${cpu}${space}${temperature}${separator}${wifi}${space}${ethernet}${separator}${brightness}${space}${microphone}${space}${volume}${separator}${battery}${space}${bluetooth}${separator}${time}${delimiter_end}"
-    printf "%s\n" "(${task}...)${space}${keyboard}${space}${cpu}${space}${wifi}${space}${volume}${space}${battery}${space}${time}"
+    printf "%s\n" "(${task}...)${space}${keyboard}${space}${cpu}${space}${wifi}${space}${microphone}${volume}${space}${battery}${space}${time}"
 }
 
 MAINPID=$$
@@ -188,8 +164,9 @@ do
     {
         ## [ $((sec % n)) -eq m ] && udpate_item
         [ $((sec % 10 )) -eq 0 ] && update_task 	# update task every 10 seconds
-        [ $((sec % 10 )) -eq 0 ] && update_keyboard 	# update task every 10 seconds
+        [ $((sec % 60 )) -eq 0 ] && update_keyboard 	# update task every 10 seconds
         [ $((sec % 60 )) -eq 0 ] && update_volume 	# update volume every minute
+        [ $((sec % 60 )) -eq 0 ] && update_microphone 	# update volume every minute
         [ $((sec % 10 )) -eq 0 ] && update_time 	# update time every 10 seconds
         if [ "$HOSTNAME" != "pollux" ]; then
             [ $((sec % 10)) -eq 0 ] && update_wifi
