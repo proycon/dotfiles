@@ -1205,7 +1205,7 @@
                 .event = .{
                     .click = .{
                         .pressed = .{
-                            .spawn_shell = .{ .cmd = "wpctl set-volume @DEFAULT_SINK@ 5%- && kill -34 $(pgrep -x bar.sh) && aplay ~/dotfiles/media/submit.wav" },
+                            .spawn_shell = .{ .cmd = "wpctl set-volume @DEFAULT_SINK@ 0.05- && kill -34 $(pgrep -x bar.sh) && aplay ~/dotfiles/media/submit.wav" },
                         },
                     },
                 },
@@ -1216,7 +1216,7 @@
                 .event = .{
                     .click = .{
                         .pressed = .{
-                            .spawn_shell = .{ .cmd = "wpctl set-volume @DEFAULT_SINK@ 5%+ && kill -34 $(pgrep -x bar.sh) && aplay ~/dotfiles/media/submit.wav" },
+                            .spawn_shell = .{ .cmd = "wpctl set-volume @DEFAULT_SINK@ 0.05+ && kill -34 $(pgrep -x bar.sh) && aplay ~/dotfiles/media/submit.wav" },
                         },
                     },
                 },

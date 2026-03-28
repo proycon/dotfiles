@@ -7,6 +7,7 @@ import io
 import signal
 
 import pulsectl
+
 import subprocess
 from PIL import Image
 from StreamDeck.DeviceManager import DeviceManager
@@ -15,7 +16,6 @@ from StreamDeck.Transport.Transport import TransportError
 
 ASSETS_PATH = os.path.join(os.path.dirname(__file__), "../media/icons")
 IMAGES = ['muted','unmuted','play','stopmusic', 'next', 'pause', 'screenshot', 'videocam', 'novideocam','vpn','novpn']
-PA = pulsectl.Pulse("volume-controller")
 
 class Timer(threading.Timer):
     def run(self):
@@ -42,9 +42,8 @@ class MuteKey(Key):
 
     def load(self, deck: Deck, images: dict):
         super().load(deck, images)
-        pa = pulsectl.Pulse("volume-controller")
-        sink = pa.sink_default_get()
-        self.set_image(deck, sink.mute)
+        muted = subprocess.call(f"wpctl get-volume @DEFAULT_SINK@ | grep MUTED",shell=True) == 0
+        self.set_image(deck, muted)
 
     def pressed(self, deck: Deck):
         muted = toggle_mute()
@@ -59,9 +58,8 @@ class MuteKey(Key):
             self.last_image = 'unmuted'
 
     def poll(self, deck: Deck):
-        pa = pulsectl.Pulse("volume-controller")
-        sink = pa.sink_default_get()
-        self.set_image(deck, sink.mute)
+        muted = subprocess.call(f"wpctl get-volume @DEFAULT_SINK@ | grep MUTED",shell=True) == 0
+        self.set_image(deck, muted)
 
 class ProcessCommandKey(Key):
     POLL_INTERVAL = 5
@@ -177,25 +175,16 @@ def touchscreen_event_callback(deck, evt_type, value):
 
 
 def set_volume(increase: int):
-    #pa = pulsectl.Pulse("volume-controller")
-    sink = PA.sink_default_get()
-    new_volume: float = max(min(sink.volume.value_flat + (increase / 100.0), 1.0),0.0)
-    sink.volume.value_flat = new_volume
-    PA.volume_set(sink, sink.volume)
-    subprocess.call(f"kill -34 $(pgrep -x bar.sh)",shell=True)
-    print(f"Set volume {new_volume}")
-
-def get_volume() -> float:
-    #pa = pulsectl.Pulse("volume-controller")
-    sink = PA.sink_default_get()
-    return sink.volume.value_flat
+    if increase >= 0:
+        subprocess.call(f"wpctl set-volume @DEFAULT_SINK@ 0.0{increase}+ && kill -34 $(pgrep -x bar.sh)",shell=True)
+    else:
+        subprocess.call(f"wpctl set-volume @DEFAULT_SINK@ 0.0{abs(increase)}- && kill -34 $(pgrep -x bar.sh)",shell=True)
 
 def toggle_mute() -> bool:
-    #pa = pulsectl.Pulse("volume-controller")
-    # Get the default sink (audio output)
-    sink = PA.sink_default_get()
-    PA.mute(sink, not sink.mute)
-    return sink.mute
+    muted = subprocess.call(f"wpctl set-mute @DEFAULT_SINK@ toggle && wpctl get-volume @DEFAULT_SINK@ | grep MUTED", shell=True) == 0
+    subprocess.call("kill -34 $(pgrep -x bar.sh)", shell=True)
+    return muted
+
 
 def signal_handler(deck):
 
