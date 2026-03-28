@@ -10,7 +10,8 @@ Current setup:
 
 * 🐧 **OS**: [Arch Linux](https://archlinux.org)
 * ⚙ **Compositor**: [River](https://codeberg.org/river/river)
-* 🍫 **Bar**: [waybar](https://github.com/Alexays/Waybar)
+* ⚙ **Window Manager**: [kwm](https://github.com/kewuaa/kwm)
+* 🍫 **Bar**: [kwm's bar](https://github.com/kewuaa/kwm) with [custom blocks](scripts/bar.sh)
 * 🐚 **Shell**: zsh
 * 🤖 **Terminal:** [foot](https://codeberg.org/dnkl/foot)
 * 🤖 **Terminal Multiplexer**: tmux
@@ -28,14 +29,15 @@ Current setup:
 * 🗞️ RSS Client:  [newsraft](https://codeberg.org/newsraft/newsraft)
 * 🎤 Podcasts: same as above
 * ⌨️ Launcher:  [bemenu](https://github.com/Cloudef/bemenu)
-* 🌅 Photo viewer: [imv](https://sr.ht/~exec64/imv/)
+* 🌅 Photo viewer: [swayimg](https://github.com/artemsen/swayimg)
 * 🌅 Photo editing: [gimp](https://gimp.org)
 * 🌅 Image editing (vector): [inkscape](https://inkscape.org)
 * 📹 Video editing: [kdenlive](https://kdenlive.org)
 * 💬 Chat: [senpai](https://sr.ht/~taiite/senpai/) + [soju](https://git.sr.ht/~emersion/soju) (IRC), [nheko](https://nheko-reborn.github.io/) (Matrix, using bridges for Signal, Discord, Telegram), [Dino](https://dino.im/) (XMPP)
 * 🔖 Bookmarks: [buku](https://github.com/jarun/Buku) + bemenu script
 * 🔐 Password Management: [pass](https://www.passwordstore.org/)
-* 🤦 Social Media: [Mastodon](https://social.anaproy.nl/@proycon) (sometimes via [tut](https://github.com/RasmusLindroth/tut))
+* 🛩 Flight Simulator: [X-Plane 12](https://www.x-plane.com/) with [simheaven](https://simheaven.com/), [LittleNavMap](https://albar965.github.io/), 
+* 🤦 Social Media: [Mastodon](https://social.anaproy.nl/@proycon)
 
 Install
 --------------
@@ -70,26 +72,26 @@ Key bindings
     * ``cmd+tab`` - Switch to last used workspace (and back)
     * ``cmd+period`` - switch to right monitor
     * ``cmd+comma`` - switch to left monitor
-    * ``cmd+Shift+period`` - switch to right monitor
-    * ``cmd+Shift+comma`` - switch to left monitor
-    * ``cmd+space`` - Launcher (rofi)
+    * ``cmd+Shift+period`` - move window to right monitor
+    * ``cmd+Shift+comma`` - move windows to left monitor
+    * ``cmd+space`` - Launcher (kickoff)
+    * ``cmd+shift+space`` - Launcher (fuzzel)
     * ``cmd+enter`` - Put window in focus/master area
     * ``cmd+Shift+enter`` - New terminal
     * ``cmd+j|k`` - cycle window focus
     * ``cmd+l|h`` - resize master window
-    * ``cmd+s`` - toggle sticky
-    * ``cmd+Shift+backspace`` - Quit dwm (auto restarts)
+    * ``cmd+ctrl+delete`` - Quit
     * ``cmd+Escape`` - Lock
     * ``cmd+Shift+Escape`` - Suspend
     * Layouts:
         * ``cmd+t`` - Switch to tiling layout
         * ``cmd+m`` - Monocle layout
-        * ``cmd+apostrophe`` - cycle layouts
+        * ``cmd+g`` - Grid layout
+        * ``cmd+s`` - Scroll layout
         * ``cmd+Shift+apostrophe`` - toggle floating
     * Timetracker:
         * ``cmd+slash`` - Timetracker
-        * ``cmd+Shift+slash`` - Timetracker 15 minutes back
-        * ``cmd+Ctrl+Shift+slash`` - Timetracker 60 minutes back
+        * ``cmd+Shift+slash`` - Stop tracking
 * **tmux**
     * ``alt+left/right/up/down`` - Switch pane
     * ``alt+pageup/pagedown`` - Switch window
@@ -112,9 +114,6 @@ Key bindings
         * ``v`` - copy mode
             * VI bindings (v,y,w,/,hjkl etc..)
         * ``P`` - paste buffer
-        * ``Y`` - copy existing buffer to X clipboard and ``~/.vbuf``
-        * ``I`` - Paste from ``~/.vbuf`` (mnemonic: Insert from vim)
-        * ``O`` - Paste from X clipboard
         * ``W`` - Swap window
         * ``Q`` - Swap pane
         * ``M`` - Move pane (to another window or tmux)
@@ -142,18 +141,13 @@ Key bindings
         * ``K`` - documentation
         * ``<space>lc`` - Incoming calls
         * ``<space>lC`` - Outgoing calls
-        * ``gd`` - Goto definition
+        * ``<space>ld`` - Goto definition
         * ``gi`` - Goto implementation
         * ``gr`` - goto references
-        * ``<space>ld`` - Goto definition
         * ``ga`` - show (unicode) character information
     * editing
         * ``<space>_`` - strip trailing whitespace
         * visual mode
             * ``gc`` - (un)comment selection
-    * copy/paste
-        * ``,y`` - yank selection (to ~/.vbuf and X clipboard)
-        * ``,p`` - paste
-        * ``,P`` - paste before
 
 
