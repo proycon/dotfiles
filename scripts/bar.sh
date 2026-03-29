@@ -84,7 +84,7 @@ update_battery () {
             icon="" level="${level}%"
             ;;
     esac
-    if ls ${POWER}/BAT? > /dev/null; then
+    if [ "$level" != "" ]; then
         battery="${icon}${level}"
     else
         battery=""
