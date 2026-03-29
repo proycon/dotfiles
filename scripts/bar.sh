@@ -1,4 +1,5 @@
-#!/bin/sh
+#!/bin/bash
+# ^-- POSIX shell doesn't have trap RTMIN so we use bash
 sec=0
 proc_num=$(nproc)
 space=" "         # ` `(U+2009) is the Thin Space
@@ -143,7 +144,7 @@ update_task() {
 }
 
 update_volume;update_time
-#update_microphone; update_brightness
+update_microphone;
 
 trap	"update_volume;display"	  	"RTMIN"   # -34 .local/bin/audio
 trap	"update_microphone;display"	"RTMIN+1"   # -35 .local/bin/audio
