@@ -1316,6 +1316,17 @@
 
 // @if(hostname=toren)
             .{
+                .keysym = "Escape",
+                .modifiers = .{  .ctrl = true },
+                .event = .{
+                    .click = .{
+                        .pressed = .{
+                            .spawn_shell = .{ .cmd = "~/dotfiles/scripts/lock.sh" },
+                        },
+                    },
+                },
+            },
+            .{
                 .keysym = "a",
                 .modifiers = .{ .mod4 = true },
                 .event = .{
