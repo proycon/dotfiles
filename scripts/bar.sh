@@ -52,8 +52,13 @@ update_microphone() {
 update_battery () {
     icon=""
     POWER="/sys/class/power_supply"
-    status="$(cat $POWER/BAT?/status)"
-    level="$(cat $POWER/BAT?/capacity)"
+    if [ -e "$POWER/qcom-battmgr-bat" ]; then
+        status="$(cat $POWER/qcom-battmgr-bat/status)"
+        level="$(cat $POWER/qcom-battmgr-bat/capacity)"
+    else
+        status="$(cat $POWER/BAT?/status)"
+        level="$(cat $POWER/BAT?/capacity)"
+    fi
     case "$status" in
         "Discharging")
             case "$level" in
