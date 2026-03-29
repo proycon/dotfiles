@@ -6,6 +6,7 @@ import sys
 import io
 import signal
 import re
+import time
 
 import subprocess
 from PIL import Image, ImageDraw, ImageFont
@@ -21,6 +22,7 @@ class Timer(threading.Timer):
     def run(self):
         while not self.finished.wait(self.interval):
             self.function(*self.args, **self.kwargs)
+
 
 class Key():
     POLL_INTERVAL = 1
@@ -158,9 +160,11 @@ def dial_change_callback(deck, dial, event, value):
         if event == DialEventType.PUSH and value is True:
             KEYS[7].pressed(deck)
             subprocess.call(f"kill -34 $(pgrep -x bar.sh)",shell=True)
+            build_screen(deck)
         elif event == DialEventType.TURN:
             try:
                 set_volume(value)
+                build_screen(deck)
             except Exception as e:
                 print(e, file=sys.stderr)
 
@@ -189,20 +193,23 @@ def toggle_mute() -> bool:
 def signal_handler(deck):
 
     def handler(signum, frame):
+        print("Got kill signal", file=sys.stderr)
         for t in threading.enumerate():
             if hasattr(t,'cancel'):
+                print("Cancelling a thread", file=sys.stderr)
                 t.cancel()
+        print("Resetting the deck", file=sys.stderr)
         deck.reset()
         sys.exit(0)
 
     return handler
 
-def build_screen(deck, prevtext):
+def build_screen(deck):
     with open(os.path.join(os.environ['XDG_RUNTIME_DIR'], "bar.out"), 'r', encoding='utf-8') as f:
         text = f.read()
 
-    if text != prevtext:
-        prevtext = text
+    if text != deck.prevtext:
+        deck.prevtext = text
         img = Image.new('RGB', (800, 100), 'black')
         draw = ImageDraw.Draw(img)
 
@@ -232,8 +239,13 @@ def main():
             print("Sorry, this only works with Stream Deck +")
             continue
 
-        deck.open()
-        deck.reset()
+
+        try:
+            deck.open()
+            deck.reset()
+        except Exception as e:
+            print("Unable to open device (other process in use or hard reset required?): ", e)
+            sys.exit(1)
 
         signal.signal(signal.SIGINT, signal_handler(deck))
         signal.signal(signal.SIGTERM, signal_handler(deck))
@@ -247,21 +259,29 @@ def main():
         # Set initial screen brightness to 30%.
         deck.set_brightness(100)
 
-        prevtext = ""
+        setattr(deck, 'prevtext', "")
 
-        Timer(2, lambda x,y : build_screen(x,y), [deck, prevtext]).start()
+        Timer(2, lambda x: build_screen(x), [deck]).start()
         for key in KEYS.values():
             key.load(deck, images)
             Timer( float(key.POLL_INTERVAL), key.poll, [deck]).start()
 
+        while threading.active_count() <= len(KEYS) + 1:
+            print("Waiting for all threads to become alive", file=sys.stderr)
+            time.sleep(1)
 
         # Wait until all application threads have terminated (for this example,
         # this is when all deck handles are closed).
-        for t in threading.enumerate():
-            try:
-                t.join()
-            except (TransportError, RuntimeError):
-                pass
+        for i, t in enumerate(threading.enumerate()):
+            if i > 0: #first thread is main thread and can not join itself
+                try:
+                    t.join()
+                except (TransportError, RuntimeError) as e:
+                    print(f"#{i} Error waiting for join: {e}", file=sys.stderr)
+                    break
+
+    print("Exiting cleanly", file=sys.stderr)
+
 
 if __name__ == "__main__":
     main()

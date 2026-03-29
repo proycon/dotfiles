@@ -1,4 +1,7 @@
 #!/bin/sh
+if [ -z "$HOSTNAME" ]; then
+    HOSTNAME=$(hostname)
+fi
 killall gpg-agent
 ~/dotfiles/scripts/lock.sh &
 nitropy nk3 reboot # ensure nitrokey reboots so power cycle is interrupted and any cached PIN is lost
@@ -6,6 +9,9 @@ sleep 5
 while pidof notmuch rsync pacman git apk; do
     sleep 5
 done
+if [ "$HOSTNAME" = "pollux" ]; then
+    pkill -f -9 streamdeck.py
+fi
 if command -v systemctl; then
     systemctl suspend
 elif command -v zzz; then
