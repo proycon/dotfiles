@@ -5,17 +5,17 @@ import threading
 import sys
 import io
 import signal
-
-import pulsectl
+import re
 
 import subprocess
-from PIL import Image
+from PIL import Image, ImageDraw, ImageFont
 from StreamDeck.DeviceManager import DeviceManager
 from StreamDeck.Devices.StreamDeck import DialEventType, TouchscreenEventType, StreamDeck as Deck
 from StreamDeck.Transport.Transport import TransportError
 
 ASSETS_PATH = os.path.join(os.path.dirname(__file__), "../media/icons")
 IMAGES = ['muted','unmuted','play','stopmusic', 'next', 'pause', 'screenshot', 'videocam', 'novideocam','vpn','novpn']
+FONT = ImageFont.truetype("/usr/share/fonts/TTF/UbuntuNerdFont-Regular.ttf", 42, encoding="unic")
 
 class Timer(threading.Timer):
     def run(self):
@@ -197,6 +197,23 @@ def signal_handler(deck):
 
     return handler
 
+def build_screen(deck, prevtext):
+    with open(os.path.join(os.environ['XDG_RUNTIME_DIR'], "bar.out"), 'r', encoding='utf-8') as f:
+        text = f.read()
+
+    if text != prevtext:
+        prevtext = text
+        img = Image.new('RGB', (800, 100), 'black')
+        draw = ImageDraw.Draw(img)
+
+        pattern = r"\^\#(?:[0-9a-fA-F]{8}|!)"
+        monotext = re.sub(pattern, "", text)
+        draw.text((5,5), monotext, 'white', FONT)
+
+        img_bytes = io.BytesIO()
+        img.save(img_bytes, format='JPEG')
+        deck.set_touchscreen_image(img_bytes.getvalue(), 0, 0, 800, 100)
+
 def main():
     images = {}
 
@@ -230,20 +247,13 @@ def main():
         # Set initial screen brightness to 30%.
         deck.set_brightness(100)
 
+        prevtext = ""
+
+        Timer(2, lambda x,y : build_screen(x,y), [deck, prevtext]).start()
         for key in KEYS.values():
             key.load(deck, images)
             Timer( float(key.POLL_INTERVAL), key.poll, [deck]).start()
 
-
-        # build an image for the touch lcd
-        img = Image.new('RGB', (800, 100), 'black')
-        #icon = Image.open(os.path.join(ASSETS_PATH, 'Exit.png')).resize((80, 80))
-        #img.paste(icon, (690, 10), icon)
-
-        #for dial in range(0, deck.DIAL_COUNT - 1):
-        #    img.paste(released_icon, (30 + (dial * 220), 10), released_icon)
-
-        #deck.set_touchscreen_image(touchscreen_image_bytes, 0, 0, 800, 100)
 
         # Wait until all application threads have terminated (for this example,
         # this is when all deck handles are closed).

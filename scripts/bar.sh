@@ -149,6 +149,7 @@ trap	"update_task;display"   "RTMIN+4"   # -38
 display () {
     #printf "%s" "${delimiter_home}${memory}${space}${cpu}${space}${temperature}${separator}${wifi}${space}${ethernet}${separator}${brightness}${space}${microphone}${space}${volume}${separator}${battery}${space}${bluetooth}${separator}${time}${delimiter_end}"
     printf "%s\n" "(${task}...)${space}${keyboard}${space}${cpu}${space}${wifi}${space}${microphone}${volume}${space}${battery}${space}${time}"
+    printf "%s\n" "${keyboard}${space}${cpu}${space}${wifi}${space}${microphone}${volume}${space}${battery}${space}${time}" > "$XDG_RUNTIME_DIR/bar.out"
 }
 
 MAINPID=$$
