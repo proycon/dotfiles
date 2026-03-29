@@ -64,9 +64,7 @@ $ make update
 Key bindings
 --------------
 
-* **river**
-    * TODO, very comparable to what I had for dwm though
-* **dwm**
+* **river/kwm**
     * ``cmd+1,2,3,4,5,6,7,8,9`` - switch tags/workspace
     * ``cmd+Shift+1,2,3,4,5,6,7,8,9`` - move window to selected workspaces
     * ``cmd+tab`` - Switch to last used workspace (and back)
@@ -79,7 +77,7 @@ Key bindings
     * ``cmd+enter`` - Put window in focus/master area
     * ``cmd+Shift+enter`` - New terminal
     * ``cmd+j|k`` - cycle window focus
-    * ``cmd+l|h`` - resize master window
+    * ``cmd+l|h`` - resize window
     * ``cmd+ctrl+delete`` - Quit
     * ``cmd+Escape`` - Lock
     * ``cmd+Shift+Escape`` - Suspend
