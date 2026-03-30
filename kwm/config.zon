@@ -157,6 +157,8 @@
     },
 
     // layout tags show on bar
+    // {{?}} will be replaced with managed window count, when the count is 0, `?` will be used as replacement.
+    // e.g. [{{{=}}], when managed window count > 0, [N] will be showed, else [=] will be showed
     .layout_tag = .{
         .tile = .{
             .left = "",
@@ -168,7 +170,7 @@
             .horizontal = "|+|",
             .vertical = "|||",
         },
-        .monocle = "",
+        .monocle = "{{}}",
         .deck = .{
             .left = "[D]=",
             .right = "=[D]",
