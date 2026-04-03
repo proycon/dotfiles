@@ -77,10 +77,19 @@
     // .on_output_changed: wrap cursor to the center of output focused
     .cursor_warp = .on_output_changed,
 
+    // disable wrap around when iter focus or swap window in scroller layout
+    .disable_wrap_around_for_scroller = false,
+
     // if to remember last floating geometry
     .remember_floating_geometry = true,
 
     .auto_swallow = true,
+
+    // .top: stack top
+    // .bottom: stack bottom
+    // .stack_top: for tile and deck layout
+    // .above_focused
+    // .below_focused
     .default_attach_mode = .{
         .tile = .stack_top,
         .grid = .top,
@@ -782,7 +791,7 @@
                 .event = .{
                     .click = .{
                         .pressed = .{
-                            .modify_mfact = .{ .step = 0.01 },
+                            .modify_mfact = .{ .change = .{ .step = 0.01 } },
                         },
                     },
                 },
@@ -793,7 +802,7 @@
                 .event = .{
                     .click = .{
                         .pressed = .{
-                            .modify_mfact = .{ .step = -0.01 },
+                            .modify_mfact = .{ .change = .{ .step = -0.01 } },
                         },
                     },
                 },
@@ -1608,7 +1617,19 @@
 // @endif
     },
 
+    // output rules
+    // full scheme:
+    //      name: rule pattern
+    //      layout: same as `layout` before but you only need to specify the values you want to change
+    //      default_layout: same as `default_layout` before
+    //      presentation_mode: presentation mode, .vsync or .async
+    .output_rules = .{
+
+    },
+
     // input device rules
+    // NOTE: do not delete next line if you are compiling kwm
+    // @if(kewuaa=super_hansome)
     // full scheme:
     //      name: rule pattern
     //
@@ -1700,16 +1721,6 @@
         },
         //
     },
-
-    // output rules
-    // full scheme:
-    //      name: rule pattern
-    //      layout: same as `layout` before but you only need to specify the values you want to change
-    //      default_layout: same as `default_layout` before
-    //      presentation_mode: presentation mode, .vsync or .async
-    .output_rules = .{
-
-    },
-
+    // @endif
 
 }
