@@ -103,6 +103,9 @@ end)
 swayimg.viewer.on_key("G", function()
   swayimg.viewer.switch_image("last")
 end)
+swayimg.viewer.on_key("Space", function()
+  swayimg.viewer.switch_image("next")
+end)
 
 -- Slide show mode, same config as for viewer mode with the following defaults:
 swayimg.slideshow.set_timeout(5)                    -- timeout to switch image
