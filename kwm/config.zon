@@ -12,17 +12,12 @@
         .{ "swaybg", "-m","fill", "-i", "/home/proycon/dotfiles/media/fern.jpg" },
     },
 
-    // .none
-    // or
-    // .theme = .{ .name = []const u8, .size = u32 }
-    .xcursor_theme = .{ .theme = .{
+    .xcursor_theme = .{
         .name = "Breeze_Light",
         .size = 48
-    } },
+    },
 
-    // solid color background
-    // note: set this to .none if you use other wallpaper program like `swaybg`, or else it will be covered by this and unable to see
-    .background = .none,
+    .background = null,
 
     .bar = .{
         .show_default = true,
@@ -30,7 +25,7 @@
         // .bottom
         .position = .bottom,
         .font = "monospace:size=20",
-        .color = .{
+        .scheme = .{
             .normal = .{
                 .fg = 0x909090ff,
                 .bg = 0x20202090,
@@ -40,34 +35,112 @@
                 .bg = 0x5e875fff,
             },
         },
-        .status = .{ .fifo = "${XDG_RUNTIME_DIR}/bar.fifo" }, // .stdin or .{ .fifo = "fifo file path" }, could use ^#RGBA to switch text color, and use ^#! to switch back to default color
-        //.status = .{ .text = "^#ff0000ffk^#00ff00ffw^#0000ffffm" }, // .stdin or .{ .fifo = "fifo file path" }, could use ^#RGBA to switch text color, and use ^#! to switch back to default color
-        // bar clicked callback
-        // each part supports left/right/middle/side/extra/forward/back/task
-        .click = .{
-            .tags = .{
-                // could use 0 there because it will be replace with the tag clicked
-                .left = .{ .action = .{ .set_output_tag = .{ .tag = .{ .tag = 0 } } } },
-                .right = .{ .action = .{ .toggle_output_tag = .{ .mask = 0 } } },
-                .middle = .{ .action = .{ .toggle_window_tag = .{ .mask = 0 } } },
-            },
-            .layout = .{
-                .left = .{ .action = .switch_to_previous_layout },
-            },
-            .mode = .{
-                .left = .{ .action = .{ .switch_mode = .{ .mode = "default" } } },
-            },
-            .title = .{
-                .left = .{ .action = .{ .zoom = .{ .swap = false } } },
-            },
-            .status = .{
-                .left = .{ .action = .{ .spawn_shell = .{ .cmd = "~/dotfiles/scripts/dcal" } } },
-                .right = .{ .action = .{ .spawn_shell = .{ .cmd = "todo.sh rofi list @work" } } },
-                .middle = .{ .action = .{ .spawn = .{ .argv = .{ "fuzzel" } } } },
-                .forward = .{ .action = .{ .spawn_shell = .{ .cmd = "wpctl set-volume @DEFAULT_SINK@ 5%+ && kill -34 $(pgrep -x bar.sh) && aplay ~/dotfiles/media/submit.wav" } } },
-                .back = .{ .action = .{ .spawn_shell = .{ .cmd = "wpctl set-volume @DEFAULT_SINK@ 5%- && kill -34 $(pgrep -x bar.sh) && aplay ~/dotfiles/media/submit.wav" } } },
+        .status = .{
+            .data = .{ .fifo = "${XDG_RUNTIME_DIR}/bar.fifo" },
+            .click = .{
+                .left = .{ .spawn_shell = .{ .cmd = "~/dotfiles/scripts/dcal" }  },
+                .right = .{ .spawn_shell = .{ .cmd = "todo.sh rofi list @work" }  },
+                .middle = .{ .spawn = .{ .argv = .{ "fuzzel" } }  },
+                .forward = .{ .spawn_shell = .{ .cmd = "wpctl set-volume @DEFAULT_SINK@ 5%+ && kill -34 $(pgrep -x bar.sh) && aplay ~/dotfiles/media/submit.wav" } },
+                .back = .{ .spawn_shell = .{ .cmd = "wpctl set-volume @DEFAULT_SINK@ 5%- && kill -34 $(pgrep -x bar.sh) && aplay ~/dotfiles/media/submit.wav" } },
+            }
+        },
+
+
+        .title = .{
+            .click = .{
+                .left = .{ .zoom = .{ .swap = false } },
             },
         },
+
+        .tags = .{
+            .tags = .{ "1", "2", "3", "4", "5", "6", "7", "8", "9" },
+            .click = .{
+                // could use 0 there because it will be replace with the tag clicked
+                .left = .{ .set_output_tag = .{ .tag = .{ .tag = 0 } } },
+                .right = .{ .toggle_output_tag = .{ .mask = 0 } },
+                .middle = .{ .toggle_window_tag = .{ .mask = 0 } },
+            }
+        },
+
+        .layout = .{
+            .tags = .{
+                .tile = .{
+                    .left = "",
+                    .right = "",
+                    .top = "",
+                    .bottom = "",
+                },
+                .grid = .{
+                    .horizontal = "|+|",
+                    .vertical = "|||",
+                },
+                .monocle = "{{}}",
+                .deck = .{
+                    .left = "[D]=",
+                    .right = "=[D]",
+                    .top = "[D^]",
+                    .bottom = "[D_]",
+                },
+                .scroller = "[==]",
+                .float = "><>",
+            },
+
+            .click = .{
+                .left = .switch_to_previous_layout,
+            },
+        },
+
+        .mode = .{
+            // mode tags show on bar
+            // display full mode string by default
+            .tags = .{
+                .{ "default", "" },         // hide mode tag in default mode
+                .{ "passthrough", "P" },    // only show "P" on bar in passthrough mode
+                .{ "floating", "F" },       // only show "F" on bar in floating mode
+            },
+
+            .click = .{
+                .left = .{ .switch_mode = .{ .mode = "default" } },
+            },
+        },
+
+        // override colors
+        .override_colors = .{
+            // areas:
+            //      .tags
+            //      .{ .mode = "floating" or other modes }, null will match all mode
+            //      .{ layout = .tile or other layout }, null will match all layouts
+            //      .title
+            //      .status
+            //
+            // scheme is a struct, no need to specify all fields:
+            //      .{
+            //          .normal = .{
+            //              .fg = u32,
+            //              .bg = u32,
+            //          },
+            //          .select = .{
+            //              .fg = u32,
+            //              .bg = u32,
+            //          }
+            //      }
+            //
+            // mode, layout and status will only use the `normal` color
+            // tags and title will use both `normal` and `select` color
+            //
+
+            // set scheme for mode tag
+            .{
+                .area = .{ .layout = .monocle },
+                .scheme = .{
+                    .normal = .{
+                        .fg = 0x444a73ff,
+                        .bg = 0xc8d3f5d0,
+                    }
+                }
+            },
+        }
     },
 
     .sloppy_focus = true,
@@ -109,11 +182,10 @@
         .color = .{
             .focus = 0x1affffff,
             .unfocus = 0x595959ff,
+            .swallowing = 0x0830e6ff,
         },
     },
 
-    // tags show on bar
-    .tags = .{ "1", "2", "3", "4", "5", "6", "7", "8", "9" },
 
     // .tile
     // .grid
@@ -124,7 +196,6 @@
     .default_layout = .tile,
 
     .layout = .{
-
         .tile = .{
             .nmaster = 1,
             .mfact = 0.6,
@@ -168,27 +239,6 @@
     // layout tags show on bar
     // {{?}} will be replaced with managed window count, when the count is 0, `?` will be used as replacement.
     // e.g. [{{{=}}], when managed window count > 0, [N] will be showed, else [=] will be showed
-    .layout_tag = .{
-        .tile = .{
-            .left = "",
-            .right = "",
-            .top = "",
-            .bottom = "",
-        },
-        .grid = .{
-            .horizontal = "|+|",
-            .vertical = "|||",
-        },
-        .monocle = "{{}}",
-        .deck = .{
-            .left = "[D]=",
-            .right = "=[D]",
-            .top = "[D^]",
-            .bottom = "[D_]",
-        },
-        .scroller = "[==]",
-        .float = "><>",
-    },
 
     // key/pointer bindings
     .bindings = .{
@@ -198,13 +248,6 @@
             .delay = 300,
         },
 
-        // mode tags show on bar
-        // display full mode string by default
-        .mode_tag = .{
-            .{ "default", "" },         // hide mode tag in default mode
-            .{ "passthrough", "P" },    // only show "P" on bar in passthrough mode
-            .{ "floating", "F" },       // only show "F" on bar in floating mode
-        },
 
         // list of key bindings
         // full scheme:
