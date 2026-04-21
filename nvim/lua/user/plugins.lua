@@ -80,7 +80,7 @@ local plugins = {
   -- LSP
   "williamboman/mason.nvim", -- Portable package manager for Neovim ... --v
   "williamboman/mason-lspconfig.nvim", -- Easily install and manage LSP servers, DAP servers, linters, and formatters. 
-  "neovim/nvim-lspconfig", -- enable LSP
+  "neovim/nvim-lspconfig", -- enable LSP (plugin deprecated, native since neovim 0.12)
   "tamago324/nlsp-settings.nvim", -- language server settings defined in json for
   "nvimtools/none-ls.nvim", -- for formatters and linters
 
@@ -89,11 +89,12 @@ local plugins = {
   "nvim-telescope/telescope-media-files.nvim",
   "benfowler/telescope-luasnip.nvim",
 
-  -- Treesitter: provides more informed syntax highlighting
-  {
-    "nvim-treesitter/nvim-treesitter",
-    build = ":TSUpdate",
-  },
+  -- Treesitter: provides more informed syntax highlighting (is built into neovim 0.12 now!)
+  --{
+  --  "nvim-treesitter/nvim-treesitter",
+  --  build = ":TSUpdate",
+  --},
+
   "JoosepAlviste/nvim-ts-context-commentstring",
   --"p00f/nvim-ts-rainbow", --rainbow parantheses
   "phelipetls/jsonpath.nvim", --jq
