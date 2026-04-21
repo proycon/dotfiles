@@ -70,11 +70,20 @@ BARPID=$!
 
 while true; do
     set -o pipefail
+    if [ -e ~/"$RIVER_WM.1.log" ]; then
+        mv -f ~/"$RIVER_WM.log" ~/"$RIVER_WM.2.log"
+    fi
+    if [ -e ~/"$RIVER_WM.log" ]; then
+        mv -f ~/"$RIVER_WM.log" ~/"$RIVER_WM.1.log"
+    fi
     $RIVER_WM 2>&1 | tee ~/"$RIVER_WM".log && exit 0
-    echo "Wm died.. restarting...">&2
-    mv "$RIVER_WM.log" "$RIVER_WM.1.log"
     mpv --quiet ~/dotfiles/media/error.wav
-    sleep 1
+    if ! pidof river; then
+        echo "River died!">&2
+        exit 1
+    fi
+    echo "Wm died.. restarting...">&2
+    sleep 2
 done &
 WMLOOPPID=$!
 
