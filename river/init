@@ -76,7 +76,11 @@ while true; do
     if [ -e ~/"$RIVER_WM.log" ]; then
         mv -f ~/"$RIVER_WM.log" ~/"$RIVER_WM.1.log"
     fi
-    $RIVER_WM 2>&1 | tee ~/"$RIVER_WM".log && exit 0
+    $RIVER_WM 2>&1 | tee ~/"$RIVER_WM".log
+    if [ -e "$XDG_RUNTIME_DIR/kwm.exit" ]; then
+        rm "$XDG_RUNTIME_DIR/kwm.exit"
+        exit 0
+    fi
     mpv --quiet ~/dotfiles/media/error.wav
     if ! pidof river; then
         echo "River died!">&2
