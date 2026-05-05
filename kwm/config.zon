@@ -9,13 +9,10 @@
     .working_directory = .home,
 
     .startup_cmds = .{
-        .{ "swaybg", "-m","fill", "-i", "/home/proycon/dotfiles/media/fern.jpg" },
+        .{ "swaybg", "-m", "fill", "-i", "/home/proycon/dotfiles/media/fern.jpg" },
     },
 
-    .xcursor_theme = .{
-        .name = "Breeze_Light",
-        .size = 48
-    },
+    .xcursor_theme = .{ .name = "Breeze_Light", .size = 48 },
 
     .background = null,
 
@@ -35,17 +32,13 @@
                 .bg = 0x5e875fff,
             },
         },
-        .status = .{
-            .data = .{ .fifo = "${XDG_RUNTIME_DIR}/bar.fifo" },
-            .click = .{
-                .left = .{ .spawn_shell = .{ .cmd = "~/dotfiles/scripts/dcal" }  },
-                .right = .{ .spawn_shell = .{ .cmd = "todo.sh rofi list @work" }  },
-                .middle = .{ .spawn = .{ .argv = .{ "fuzzel" } }  },
-                .forward = .{ .spawn_shell = .{ .cmd = "wpctl set-volume @DEFAULT_SINK@ 5%+ && kill -34 $(pgrep -x bar.sh) && aplay ~/dotfiles/media/submit.wav" } },
-                .back = .{ .spawn_shell = .{ .cmd = "wpctl set-volume @DEFAULT_SINK@ 5%- && kill -34 $(pgrep -x bar.sh) && aplay ~/dotfiles/media/submit.wav" } },
-            }
-        },
-
+        .status = .{ .data = .{ .fifo = "${XDG_RUNTIME_DIR}/bar.fifo" }, .click = .{
+            .left = .{ .spawn_shell = .{ .cmd = "~/dotfiles/scripts/dcal" } },
+            .right = .{ .spawn_shell = .{ .cmd = "todo.sh rofi list @work" } },
+            .middle = .{ .spawn = .{ .argv = .{"fuzzel"} } },
+            .forward = .{ .spawn_shell = .{ .cmd = "wpctl set-volume @DEFAULT_SINK@ 5%+ && kill -34 $(pgrep -x bar.sh) && aplay ~/dotfiles/media/submit.wav" } },
+            .back = .{ .spawn_shell = .{ .cmd = "wpctl set-volume @DEFAULT_SINK@ 5%- && kill -34 $(pgrep -x bar.sh) && aplay ~/dotfiles/media/submit.wav" } },
+        } },
 
         .title = .{
             .click = .{
@@ -60,7 +53,7 @@
                 .left = .{ .set_output_tag = .{ .tag = .{ .tag = 0 } } },
                 .right = .{ .toggle_output_tag = .{ .mask = 0 } },
                 .middle = .{ .toggle_window_tag = .{ .mask = 0 } },
-            }
+            },
         },
 
         .layout = .{
@@ -95,9 +88,9 @@
             // mode tags show on bar
             // display full mode string by default
             .tags = .{
-                .{ "default", "" },         // hide mode tag in default mode
-                .{ "passthrough", "P" },    // only show "P" on bar in passthrough mode
-                .{ "floating", "F" },       // only show "F" on bar in floating mode
+                .{ "default", "" }, // hide mode tag in default mode
+                .{ "passthrough", "P" }, // only show "P" on bar in passthrough mode
+                .{ "floating", "F" }, // only show "F" on bar in floating mode
             },
 
             .click = .{
@@ -131,16 +124,11 @@
             //
 
             // set scheme for mode tag
-            .{
-                .area = .{ .layout = .monocle },
-                .scheme = .{
-                    .normal = .{
-                        .fg = 0x444a73ff,
-                        .bg = 0xc8d3f5d0,
-                    }
-                }
-            },
-        }
+            .{ .area = .{ .layout = .monocle }, .scheme = .{ .normal = .{
+                .fg = 0x444a73ff,
+                .bg = 0xc8d3f5d0,
+            } } },
+        },
     },
 
     .sloppy_focus = true,
@@ -185,7 +173,6 @@
             .swallowing = 0x0830e6ff,
         },
     },
-
 
     // .tile
     // .grid
@@ -247,7 +234,6 @@
             .rate = 50,
             .delay = 300,
         },
-
 
         // list of key bindings
         // full scheme:
@@ -682,7 +668,7 @@
             },
             .{
                 .keysym = "a",
-                .modifiers = .{ .mod4 = true, .ctrl= true },
+                .modifiers = .{ .mod4 = true, .ctrl = true },
                 .event = .{
                     .click = .{
                         .pressed = .toggle_swallow,
@@ -764,28 +750,28 @@
                     },
                 },
             },
-          //.{
-          //    .keysym = "apostrophe",
-          //    .modifiers = .{ .mod4 = true },
-          //    .event = .{
-          //        .click = .{
-          //            .pressed = .{
-          //                .shift_tag = .{ .direction = .forward },
-          //            },
-          //        },
-          //    },
-          //},
-          //.{
-          //    .keysym = "semicolon",
-          //    .modifiers = .{ .mod4 = true },
-          //    .event = .{
-          //        .click = .{
-          //            .pressed = .{
-          //                .shift_tag = .{ .direction = .reverse },
-          //            },
-          //        },
-          //    },
-          //},
+            //.{
+            //    .keysym = "apostrophe",
+            //    .modifiers = .{ .mod4 = true },
+            //    .event = .{
+            //        .click = .{
+            //            .pressed = .{
+            //                .shift_tag = .{ .direction = .forward },
+            //            },
+            //        },
+            //    },
+            //},
+            //.{
+            //    .keysym = "semicolon",
+            //    .modifiers = .{ .mod4 = true },
+            //    .event = .{
+            //        .click = .{
+            //            .pressed = .{
+            //                .shift_tag = .{ .direction = .reverse },
+            //            },
+            //        },
+            //    },
+            //},
 
             .{ .keysym = "1", .modifiers = .{ .mod4 = true }, .event = .{ .click = .{ .pressed = .{ .set_output_tag = .{ .tag = .{ .tag = 0b1 } } } } } },
             .{ .keysym = "2", .modifiers = .{ .mod4 = true }, .event = .{ .click = .{ .pressed = .{ .set_output_tag = .{ .tag = .{ .tag = 0b10 } } } } } },
@@ -894,28 +880,28 @@
                     },
                 },
             },
-          //.{
-          //    .keysym = "equal",
-          //    .modifiers = .{ .mod4 = true },
-          //    .event = .{
-          //        .click = .{
-          //            .pressed = .{
-          //                .modify_nmaster = .{ .change = .increase },
-          //            },
-          //        },
-          //    },
-          //},
-          //.{
-          //    .keysym = "minus",
-          //    .modifiers = .{ .mod4 = true },
-          //    .event = .{
-          //        .click = .{
-          //            .pressed = .{
-          //                .modify_nmaster = .{ .change = .decrease },
-          //            },
-          //        },
-          //    },
-          //},
+            //.{
+            //    .keysym = "equal",
+            //    .modifiers = .{ .mod4 = true },
+            //    .event = .{
+            //        .click = .{
+            //            .pressed = .{
+            //                .modify_nmaster = .{ .change = .increase },
+            //            },
+            //        },
+            //    },
+            //},
+            //.{
+            //    .keysym = "minus",
+            //    .modifiers = .{ .mod4 = true },
+            //    .event = .{
+            //        .click = .{
+            //            .pressed = .{
+            //                .modify_nmaster = .{ .change = .decrease },
+            //            },
+            //        },
+            //    },
+            //},
             .{
                 .keysym = "equal",
                 .modifiers = .{ .mod4 = true },
@@ -984,7 +970,7 @@
                 .event = .{
                     .click = .{
                         .pressed = .{
-                            .spawn = .{ .argv = .{ "foot" } },
+                            .spawn = .{ .argv = .{"foot"} },
                         },
                     },
                 },
@@ -1006,7 +992,7 @@
                 .event = .{
                     .click = .{
                         .pressed = .{
-                            .spawn_shell = .{ .cmd = "todo.sh rofi list @work"  },
+                            .spawn_shell = .{ .cmd = "todo.sh rofi list @work" },
                         },
                     },
                 },
@@ -1017,7 +1003,7 @@
                 .event = .{
                     .click = .{
                         .pressed = .{
-                            .spawn_shell = .{ .cmd =  "foot -e todo.sh edit" },
+                            .spawn_shell = .{ .cmd = "foot -e todo.sh edit" },
                         },
                     },
                 },
@@ -1039,7 +1025,7 @@
                 .event = .{
                     .click = .{
                         .pressed = .{
-                            .spawn_shell = .{ .cmd = "todo.sh rofi list @calendar"  },
+                            .spawn_shell = .{ .cmd = "todo.sh rofi list @calendar" },
                         },
                     },
                 },
@@ -1050,7 +1036,7 @@
                 .event = .{
                     .click = .{
                         .pressed = .{
-                            .spawn_shell = .{ .cmd =  "todo.sh timetrack stop" },
+                            .spawn_shell = .{ .cmd = "todo.sh timetrack stop" },
                         },
                     },
                 },
@@ -1061,7 +1047,7 @@
                 .event = .{
                     .click = .{
                         .pressed = .{
-                            .spawn_shell = .{ .cmd =  "~/dotfiles/scripts/buku-dmenu" },
+                            .spawn_shell = .{ .cmd = "~/dotfiles/scripts/buku-dmenu" },
                         },
                     },
                 },
@@ -1072,7 +1058,7 @@
                 .event = .{
                     .click = .{
                         .pressed = .{
-                            .spawn_shell = .{ .cmd =  "~/dotfiles/scripts/dmenu-files.sh /nettmp -t" },
+                            .spawn_shell = .{ .cmd = "~/dotfiles/scripts/dmenu-files.sh /nettmp -t" },
                         },
                     },
                 },
@@ -1083,7 +1069,7 @@
                 .event = .{
                     .click = .{
                         .pressed = .{
-                            .spawn_shell = .{ .cmd =  "~/dotfiles/scripts/dmenu-files.sh /home/proycon/Downloads -t" },
+                            .spawn_shell = .{ .cmd = "~/dotfiles/scripts/dmenu-files.sh /home/proycon/Downloads -t" },
                         },
                     },
                 },
@@ -1094,7 +1080,7 @@
                 .event = .{
                     .click = .{
                         .pressed = .{
-                            .spawn_shell = .{ .cmd =  "~/dotfiles/scripts/dmenu-files.sh /home/proycon -t" },
+                            .spawn_shell = .{ .cmd = "~/dotfiles/scripts/dmenu-files.sh /home/proycon -t" },
                         },
                     },
                 },
@@ -1105,7 +1091,7 @@
                 .event = .{
                     .click = .{
                         .pressed = .{
-                            .spawn_shell = .{ .cmd =  "~/dotfiles/scripts/passmenu.sh" },
+                            .spawn_shell = .{ .cmd = "~/dotfiles/scripts/passmenu.sh" },
                         },
                     },
                 },
@@ -1116,7 +1102,7 @@
                 .event = .{
                     .click = .{
                         .pressed = .{
-                            .spawn_shell = .{ .cmd =  "~/dotfiles/scripts/otpmenu.sh" },
+                            .spawn_shell = .{ .cmd = "~/dotfiles/scripts/otpmenu.sh" },
                         },
                     },
                 },
@@ -1127,11 +1113,23 @@
                 .event = .{
                     .click = .{
                         .pressed = .{
-                            .spawn_shell = .{ .cmd =  "~/dotfiles/scripts/network-menu.sh" },
+                            .spawn_shell = .{ .cmd = "~/dotfiles/scripts/network-menu.sh" },
                         },
                     },
                 },
             },
+            .{
+                .keysym = "e",
+                .modifiers = .{ .mod4 = true },
+                .event = .{
+                    .click = .{
+                        .pressed = .{
+                            .spawn_shell = .{ .cmd = "~/dotfiles/scripts/translate.sh" },
+                        },
+                    },
+                },
+            },
+
             .{
                 .keysym = "Escape",
                 .modifiers = .{ .mod4 = true },
@@ -1277,7 +1275,7 @@
             },
             .{
                 .keysym = "XF86AudioMute",
-                .modifiers = .{ },
+                .modifiers = .{},
                 .event = .{
                     .click = .{
                         .pressed = .{
@@ -1288,7 +1286,7 @@
             },
             .{
                 .keysym = "XF86AudioLowerVolume",
-                .modifiers = .{ },
+                .modifiers = .{},
                 .event = .{
                     .click = .{
                         .pressed = .{
@@ -1299,7 +1297,7 @@
             },
             .{
                 .keysym = "XF86AudioRaiseVolume",
-                .modifiers = .{ },
+                .modifiers = .{},
                 .event = .{
                     .click = .{
                         .pressed = .{
@@ -1309,7 +1307,7 @@
                 },
             },
             // Bindings for pollux only
-// @if(hostname=pollux)
+            // @if(hostname=pollux)
             .{
                 .keysym = "z",
                 .modifiers = .{ .mod4 = true, .shift = true },
@@ -1366,12 +1364,12 @@
                     },
                 },
             },
-// @endif
+            // @endif
 
-// @if(hostname=toren)
+            // @if(hostname=toren)
             .{
                 .keysym = "Escape",
-                .modifiers = .{  .ctrl = true },
+                .modifiers = .{ .ctrl = true },
                 .event = .{
                     .click = .{
                         .pressed = .{
@@ -1459,7 +1457,7 @@
             },
             .{
                 .keysym = "XF86AudioMute",
-                .modifiers = .{ },
+                .modifiers = .{},
                 .event = .{
                     .click = .{
                         .pressed = .{
@@ -1470,7 +1468,7 @@
             },
             .{
                 .keysym = "XF86AudioLowerVolume",
-                .modifiers = .{ },
+                .modifiers = .{},
                 .event = .{
                     .click = .{
                         .pressed = .{
@@ -1481,7 +1479,7 @@
             },
             .{
                 .keysym = "XF86AudioRaiseVolume",
-                .modifiers = .{ },
+                .modifiers = .{},
                 .event = .{
                     .click = .{
                         .pressed = .{
@@ -1492,7 +1490,7 @@
             },
             .{
                 .keysym = "XF86AudioMedia",
-                .modifiers = .{ },
+                .modifiers = .{},
                 .event = .{
                     .click = .{
                         .pressed = .{
@@ -1503,7 +1501,7 @@
             },
             .{
                 .keysym = "XF86AudioPlay",
-                .modifiers = .{ },
+                .modifiers = .{},
                 .event = .{
                     .click = .{
                         .pressed = .{
@@ -1514,7 +1512,7 @@
             },
             .{
                 .keysym = "XF86AudioPrev",
-                .modifiers = .{ },
+                .modifiers = .{},
                 .event = .{
                     .click = .{
                         .pressed = .{
@@ -1525,7 +1523,7 @@
             },
             .{
                 .keysym = "XF86AudioPrev",
-                .modifiers = .{ },
+                .modifiers = .{},
                 .event = .{
                     .click = .{
                         .pressed = .{
@@ -1536,7 +1534,7 @@
             },
             .{
                 .keysym = "XF86MonBrightnessUp",
-                .modifiers = .{ },
+                .modifiers = .{},
                 .event = .{
                     .click = .{
                         .pressed = .{
@@ -1547,7 +1545,7 @@
             },
             .{
                 .keysym = "XF86MonBrightnessDown",
-                .modifiers = .{ },
+                .modifiers = .{},
                 .event = .{
                     .click = .{
                         .pressed = .{
@@ -1556,7 +1554,7 @@
                     },
                 },
             },
-// @endif
+            // @endif
         },
 
         // list of pointer bindings
@@ -1648,16 +1646,16 @@
         .{ .app_id = .{ .str = "im.dino.Dino" }, .tag = 0b1000000, .scroller_mfact = 0.6 },
         .{ .app_id = .{ .str = "org.telegram.desktop" }, .tag = 0b1000000, .scroller_mfact = 0.6 },
         .{ .app_id = .{ .str = "X-Plane" }, .tag = 0b100000000, .scroller_mfact = 1.0 },
-        .{ .app_id = .{ .str = "aerc" },  .tag = 0b1, .is_terminal = false, .scroller_mfact = 0.9 },
-        .{ .app_id = .{ .str = "nvim" },  .tag = 0b10, .is_terminal = false, .scroller_mfact = 0.9 },
+        .{ .app_id = .{ .str = "aerc" }, .tag = 0b1, .is_terminal = false, .scroller_mfact = 0.9 },
+        .{ .app_id = .{ .str = "nvim" }, .tag = 0b10, .is_terminal = false, .scroller_mfact = 0.9 },
         .{ .app_id = .{ .str = "remoteterm" }, .tag = 0b10000000, .is_terminal = false, .scroller_mfact = 0.9 },
         .{ .app_id = .{ .str = "localterm" }, .tag = 0b1000, .is_terminal = false, .scroller_mfact = 0.9 },
         .{ .app_id = .{ .str = "newsraft" }, .tag = 0b100000 },
         .{ .app_id = .{ .str = "foot" }, .is_terminal = true, .scroller_mfact = 0.6 },
-// @if(hostname=pollux)
+        // @if(hostname=pollux)
         .{ .app_id = .{ .str = "Little Navmap" }, .tag = 0b10000, .output = .{ .str = "DP-2" }, .scroller_mfact = 0.9 },
         .{ .app_id = .{ .str = "xPilot" }, .output = .{ .str = "DP-2" }, .tag = 0b10000 },
-// @endif
+        // @endif
     },
 
     // output rules
@@ -1666,9 +1664,7 @@
     //      layout: same as `layout` before but you only need to specify the values you want to change
     //      default_layout: same as `default_layout` before
     //      presentation_mode: presentation mode, .vsync or .async
-    .output_rules = .{
-
-    },
+    .output_rules = .{},
 
     // input device rules
     // NOTE: do not delete next line if you are compiling kwm
@@ -1726,10 +1722,7 @@
     //      disable_while_typing: .enabled or .disabled
     //      disable_while_trackpointing: .enabled or .disabled
     //      rotation_angle: u32
-    .libinput_device_rules = .{
-        .{ .name = .{ .str = ".*[tT]ouchpad", .regex = true }, .tap = .enabled, .drag = .enabled, .natural_scroll = .disabled },
-        .{ .tap = .enabled, .drag = .enabled }
-    },
+    .libinput_device_rules = .{ .{ .name = .{ .str = ".*[tT]ouchpad", .regex = true }, .tap = .enabled, .drag = .enabled, .natural_scroll = .disabled }, .{ .tap = .enabled, .drag = .enabled } },
 
     // xkb_keyboard rules
     // full scheme:
@@ -1756,10 +1749,7 @@
     .xkb_keyboard_rules = .{
         .{
             .keymap = .{
-                .options = .{
-                    .layout = "proybasic,proylatin,proyeo,proyru,proyar",
-                    .options = "altwin:swap_lalt_lwin,grp:lalt_lshift_toggle"
-                },
+                .options = .{ .layout = "proybasic,proylatin,proyeo,proyru,proyar", .options = "altwin:swap_lalt_lwin,grp:lalt_lshift_toggle" },
             },
         },
         //
