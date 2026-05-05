@@ -60,12 +60,17 @@ u = ["undo", "collapse_selection"]
 esc = ["collapse_selection", "keep_primary_selection"]
 
 # Search for word under cursor
-"*" = ["move_char_right", "move_prev_word_start", "move_next_word_end", "search_selection", "search_next"]
-"#" = ["move_char_right", "move_prev_word_start", "move_next_word_end", "search_selection", "search_prev"]
+"*" = ["move_char_right", "move_prev_word_start", "move_next_word_end", "search_selection", "make_search_word_bounded", "search_next"]
+"#" = ["move_char_right", "move_prev_word_start", "move_next_word_end", "search_selection", "make_search_word_bounded", "search_prev"]
 
 # Make j and k behave as they do Vim when soft-wrap is enabled
 j = "move_line_down"
 k = "move_line_up"
+
+# Make gj and gk behave the same
+[keys.normal.g]
+j = "move_visual_line_down"
+k = "move_visual_line_up"
 
 # Extend and select commands that expect a manual input can't be chained
 # I've kept d[X] commands here because it's better to at least have the stuff you want to delete
@@ -95,6 +100,7 @@ G = ["select_mode", "extend_to_line_bounds", "goto_last_line", "extend_to_line_b
 w = ["move_next_word_start", "yank_main_selection_to_clipboard", "collapse_selection", "normal_mode"]
 W = ["move_next_long_word_start", "yank_main_selection_to_clipboard", "collapse_selection", "normal_mode"]
 g = { g = ["select_mode", "extend_to_line_bounds", "goto_file_start", "extend_to_line_bounds", "yank_main_selection_to_clipboard", "collapse_selection", "normal_mode"] }
+"$" = ["ensure_selections_forward", "extend_to_line_end", "yank_main_selection_to_clipboard", "collapse_selection", "normal_mode" ]
 
 [keys.insert]
 # Escape the madness! No more fighting with the cursor! Or with multiple cursors!
