@@ -4,6 +4,30 @@ theme = "gruvbox_dark_hard"
 #vim mode: https://github.com/usagi-flow/evil-helix
 evil = true
 
+# Show currently open buffers, only when more than one exists.
+bufferline = "multiple"
+
+# Minimum severity to show a diagnostic after the end of a line
+end-of-line-diagnostics = "hint"
+
+[editor.indent-guides]
+character = "⎸"
+render = true
+
+[editor.cursor-shape]
+insert = "bar"
+normal = "block"
+select = "underline"
+
+
 [keys.normal]
 # Print the current line's git blame information to the statusline.
 space.B = ":echo %sh{git blame -L %{cursor_line},+1 %{buffer_name}}"
+"A-," = "goto_previous_buffer"
+"A-." = "goto_next_buffer"
+"A-w" = ":buffer-close"
+"A-/" = "repeat_last_motion"
+
+[editor.statusline]
+left = ["mode", "spinner", "version-control", "file-name"]
+
