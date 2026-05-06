@@ -4,7 +4,11 @@
 
 shopt -s nullglob globstar
 
-typeit=0
+if command -v wtype >/dev/null 2>/dev/null; then
+    typeit=1
+else
+    typeit=0
+fi
 if [ "$1" == "--type" ]; then
 	typeit=1
 	shift
@@ -26,8 +30,10 @@ if [ $typeit -eq 0 ]; then
         mpv --really-quiet "$HOME/dotfiles/media/boing.wav" &
     fi
 else
-	if pass show "$password" | { IFS= read -r pass; printf %s "$pass"; } | ydotool type --file -; then
+	if pass show "$password" | { IFS= read -r pass; wtype "$pass"; }; then
         mpv --really-quiet "$HOME/dotfiles/media/unlock2.wav" &
+    else
+        mpv --really-quiet "$HOME/dotfiles/media/boing.wav" &
     fi
 fi
 
