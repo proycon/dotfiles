@@ -76,7 +76,7 @@ while true; do
     if [ -e ~/"$RIVER_WM.log" ]; then
         mv -f ~/"$RIVER_WM.log" ~/"$RIVER_WM.1.log"
     fi
-    $RIVER_WM 2>&1 | tee ~/"$RIVER_WM".log
+    $RIVER_WM > ~/"$RIVER_WM".log 2>&1
     if [ -e "$XDG_RUNTIME_DIR/kwm.exit" ]; then
         rm "$XDG_RUNTIME_DIR/kwm.exit"
         exit 0
