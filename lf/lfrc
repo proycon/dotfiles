@@ -92,6 +92,11 @@ map i push A<a-b><a-b><a-f> # before extention
 map a push A<a-b> # after extention
 map b bulkrename
 
+map Z set ratios 1:8:1
+map Q set ratios 1:2:1
+map zm set ratios 1:8:1
+map zr set ratios 1:2:3
+
 map <c-e> down
 map <c-y> up
 map V push :!nvim<space>
