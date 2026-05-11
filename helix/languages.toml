@@ -1,0 +1,41 @@
+[[language]]
+name = "rust"
+language-servers = ["rust-analyzer", "helix-assist"]
+auto-format = true
+
+[[language]]
+name = "python"
+# auto-format = true
+language-servers = ["ty", "ruff", "pylsp", "helix-assist"]
+
+[[language]]
+name = "zig"
+language-servers = [ "zls", "helix-assist" ]
+
+[[language]]
+name = "c"
+language-servers = [ "clangd", "helix-assist" ]
+
+[[language]]
+name = "bash"
+language-servers = [ "bash-language-server", "helix-assist" ]
+
+[[language]]
+name = "javascript"
+language-servers = [ "typescript-language-server", "helix-assist" ]
+
+[[language]]
+name = "typescript"
+language-servers = [ "typescript-language-server", "helix-assist" ]
+
+[language-server.ruff.config.settings]
+args = ["--ignore", "E501"]
+
+[language-server.pylsp.config.pylsp.plugins.pycodestyle]
+enabled = true
+ignore = ["E231","E501","E302"]
+
+[language-server.helix-assist]
+command = "helix-assist"
+#a minimal local LLM only
+args = ["--handler", "ollama", "--ollama-model", "qwen3-coder:30b", "--ollama-disable-fim"]
