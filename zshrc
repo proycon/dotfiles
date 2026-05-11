@@ -1,3 +1,4 @@
+# ft: zsh
 if [ -e /etc/os-release ]; then
     source /etc/os-release
     if [ "$OSTYPE" != "linux-musl" ]; then
@@ -254,6 +255,13 @@ case "$HOST" in
         hash -d tmp=/tmp
 
         alias sshp='sshcheck && ssh -A pollux.anaproy.nl'
+
+        if [ "$HOST" = "pollux" ]; then
+            export OLLAMA_HOST=0.0.0.0:11434
+            export OLLAMA_ORIGINS=*
+        fi
+        export AIDER_MODEL=ollama/qwen3-coder:30b
+        export OLLAMA_API_BASE=http://pollux.anaproy.nl:11434
         ;;
     proyphone|pine64-pinephone|oneplus-enchilada|google-sargo)
         export PATH="/home/proycon/bin:/home/proycon/.cargo/bin:$PATH"
