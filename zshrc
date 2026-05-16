@@ -394,7 +394,7 @@ alias -s html=firefox
 alias -s git="git clone --recursive"
 
 alias -s {ape,avi,flv,m4a,mkv,mov,mp3,mp4,mpeg,mpg,ogg,ogm,wav,webm}=mpv
-alias -s {jpg,png,gif,jpeg,tif,webp}=imv
+alias -s {jpg,png,gif,jpeg,tif,webp}=swayimg
 alias -s xcf=gimp
 alias -s svg=inkscape
 
