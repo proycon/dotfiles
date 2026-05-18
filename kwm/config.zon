@@ -70,12 +70,16 @@
                 },
                 .monocle = "{{}}",
                 .deck = .{
-                    .left = "[D]=",
-                    .right = "=[D]",
-                    .top = "[D^]",
-                    .bottom = "[D_]",
+                    .left = "[{{D}}]=",
+                    .right = "=[{{D}}]",
+                    .top = "[{{D}}^]",
+                    .bottom = "[{{D}}_]",
                 },
                 .scroller = "[==]",
+                .centered_master = .{
+                    .horizontal = "=[]=",
+                    .vertical = "=[V]="
+                },
                 .float = "><>",
             },
 
@@ -131,6 +135,8 @@
         },
     },
 
+    .single_tagset = false,
+
     .sloppy_focus = true,
 
     // .none
@@ -157,6 +163,7 @@
         .monocle = .top,
         .deck = .stack_top,
         .scroller = .below_focused,
+        .centered_master = .top,
         .float = .top,
     },
 
@@ -179,6 +186,7 @@
     // .monocle
     // .deck
     // .scroller
+    // .centered_master
     // .float
     .default_layout = .tile,
 
@@ -207,6 +215,8 @@
             .gap = 9,
         },
         .deck = .{
+            .nmaster = 1,
+            .mfact = 0.55,
             .inner_gap = 12,
             .outer_gap = 9,
 
@@ -220,6 +230,16 @@
             .mfact = 0.5,
             .inner_gap = 16,
             .outer_gap = 9,
+        },
+        .centered_master = .{
+            .nmaster = 1,
+            .mfact = 0.55,
+            .inner_gap = 12,
+            .outer_gap = 9,
+
+            // .horizontal
+            // .vertical
+            .direction = .horizontal,
         },
     },
 
