@@ -4,7 +4,11 @@
 
 shopt -s nullglob globstar
 
-typeit=0
+if command -v wtype >/dev/null 2>/dev/null; then
+    typeit=1
+else
+    typeit=0
+fi
 if [ "$1" == "--type" ]; then
 	typeit=1
 	shift
@@ -18,9 +22,18 @@ target=$(nitropy nk3 secrets list | tail -n +1 | cut  -f 1 | cut -d " " -f 2 | b
 
 password=$(nitropy nk3 secrets get-otp "$target" | tail -n 1)
 
-if [ -n "$password" ]; then
-    echo -n "$password" | wl-copy
-    mpv --really-quiet "$HOME/dotfiles/media/unlock2.wav" &
+if [ "$typeit" -eq 0 ]; then
+  if [ -n "$password" ]; then
+      echo -n "$password" | wl-copy
+      mpv --really-quiet "$HOME/dotfiles/media/unlock2.wav" &
+  else
+      mpv --really-quiet "$HOME/dotfiles/media/boing.wav" &
+  fi
 else
-    mpv --really-quiet "$HOME/dotfiles/media/boing.wav" &
+  if [ -n "$password" ]; then
+      wtype "$password"
+      mpv --really-quiet "$HOME/dotfiles/media/unlock2.wav" &
+  else
+      mpv --really-quiet "$HOME/dotfiles/media/boing.wav" &
+  fi
 fi
