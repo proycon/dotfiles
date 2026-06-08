@@ -1326,6 +1326,17 @@
                     },
                 },
             },
+            .{
+                .keysym = "x",
+                .modifiers = .{ .mod4 = true, .shift = true },
+                .event = .{
+                    .click = .{
+                        .pressed = .{
+                            .spawn_shell = .{ .cmd = "wlopm --toggle '*'" },
+                        },
+                    },
+                },
+            },
             // Bindings for pollux only
             // @if(hostname=pollux)
             .{
