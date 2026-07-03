@@ -52,7 +52,7 @@ local plugins = {
   "NLKNguyen/papercolor-theme",
   "sainnhe/everforest",
   "morhetz/gruvbox",
-  "proycon/gruvbox-baby",
+  --"proycon/gruvbox-baby",
   {
     "mcchrish/zenbones.nvim",
     -- Optionally install Lush. Allows for more configuration or extending the colorscheme
