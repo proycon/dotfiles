@@ -97,4 +97,14 @@ hi! link FoldColumn		Folded
 hi! link CursorColumn	CursorLine
 hi! link NonText		LineNr
 
+hi! link @keyword Keyword
+hi! link @function Function
+hi! link @function.call Function
+hi! link @variable Identifier
+hi! link @variable.parameter Identifier
+hi! link @type Type
+hi! link @string String
+hi! link @comment Comment
+hi! link @constant Constant
+
 " vim:set ts=4 sw=4 noet:
