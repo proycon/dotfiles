@@ -9,7 +9,7 @@ if filereadable($HOME . "/.light")
     colorscheme zenwritten
 else
     try
-      colorscheme gruvbox
+      colorscheme everforest
     catch /^Vim\%((\a\+)\)\=:E185/
       colorscheme default
       set background=dark
