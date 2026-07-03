@@ -51,7 +51,7 @@ local plugins = {
   "lunarvim/darkplus.nvim",
   "NLKNguyen/papercolor-theme",
   "sainnhe/everforest",
-  "morhetz/gruvbox",
+  "gruvbox-community/gruvbox", -- original upstream: https://github.com/morhetz/gruvbox
   --"proycon/gruvbox-baby",
   {
     "mcchrish/zenbones.nvim",
@@ -89,11 +89,11 @@ local plugins = {
   "nvim-telescope/telescope-media-files.nvim",
   "benfowler/telescope-luasnip.nvim",
 
-  -- Treesitter: provides more informed syntax highlighting (is built into neovim 0.12 now!)
-  --{
-  --  "nvim-treesitter/nvim-treesitter",
-  --  build = ":TSUpdate",
-  --},
+  -- Treesitter: provides more informed syntax highlighting (is largely built into neovim 0.12 now but still needed for TS* commands and rulesets for different languages!)
+  {
+    "nvim-treesitter/nvim-treesitter",
+    build = ":TSUpdate",
+  },
 
   "JoosepAlviste/nvim-ts-context-commentstring",
   --"p00f/nvim-ts-rainbow", --rainbow parantheses
