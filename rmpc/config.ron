@@ -3,6 +3,7 @@
 #![enable(unwrap_variant_newtypes)]
 (
     theme: "proycon",
+    browser_song_sort: [Artist, Title],
     album_art: (
         method: Auto,
         max_size_px: (width: 420, height: 420),
