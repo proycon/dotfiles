@@ -1,0 +1,15 @@
+[opener]
+open = [
+    { run = 'linkhandler %s',block=true, desc = "Open", for = "linux" },
+]
+imageedit = [
+	{ run = 'gimp "$@"', desc = "Gimp",  for = "unix" },
+]
+
+[open]
+prepend_rules = [
+	# Text
+	{ mime = "text/*", use = [ "open", "edit", "reveal" ] },
+	# Image
+	{ mime = "image/*", use = [ "open", "imageedit", "reveal" ] }
+]
