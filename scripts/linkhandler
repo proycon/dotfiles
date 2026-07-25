@@ -108,13 +108,13 @@ case "$TARGET" in
                     if [ -d "$(realpath "$1")" ]; then
                         yazi "$1"
                     else
-                        bat "$1"
+                        bat --pager="less -R" --paging=always "$1"
                     fi
                 else
                     if [ -d "$(realpath "$1")" ]; then
                         setsid $TERMINAL yazi "$1"
                     else
-                        bat "$1"
+                        bat --pager="less -R" --paging=always "$1"
                     fi
                 fi
                 ;;
@@ -123,13 +123,13 @@ case "$TARGET" in
                     if [ -d "$(realpath "$1")" ]; then
                         yazi "$1"
                     else
-                        bat --style=plain "$1"
+                        bat --style=plain --pager="less -R" --paging=always "$1"
                     fi
                 else
                     if [ -d "$(realpath "$1")" ]; then
                         setsid $TERMINAL yazi "$1"
                     else
-                        bat --style=plain "$1"
+                        bat --style=plain --pager="less -R" --paging=always "$1"
                     fi
                 fi
                 ;;
