@@ -62,18 +62,7 @@ if echo -n "$TEXT" | ~/dotfiles/scripts/ischinese.py; then
     notify-send "Not in HSK or CEDICT"
 fi
 
-if [ ! -d ~/local ]; then
-    mkdir ~/local
-fi
-
-if ! command -v argos-translate > /dev/null && [ ! -d ~/local/argostranslate.env ]; then
-    cd ~/local/ || exit 2
-    python -m venv argostranslate.env
-    notify-send "Installing, creating virtualenv..."
-fi
-
-
-if [ ! -e ~/.cargo/bin/lingua-cli ]; then
+if ! command -v lingua-cli && [ ! -e ~/.cargo/bin/lingua-cli ]; then
     cd ~/local/ || exit 2
     git clone https://github.com/proycon/lingua-cli || notify-send "git clone failed"
     cd lingua-cli || exit 2
@@ -86,28 +75,26 @@ if [ ! -e ~/.cargo/bin/lingua-cli ]; then
 fi
 
 
+
 if [ -z "$FROMLANG" ] || [ "$FROMLANG" = "xx" ]; then
     FROMLANG=$(lingua-cli -l fr,de,es,it,pt,ru,zh,uk,ro,pl,nl "$TEXT" | cut -f 1)
 fi
 #check if not already installed (e.g. from AUR)
-if ! command -v argos-translate > /dev/null; then
-    . ~/local/argostranslate.env/bin/activate
-    if [ ! -e ~/local/argostranslate.env/bin/argos-translate ]; then
-        notify-send "Pip installing argostranslate, this may take quite a while!"
-        if pip install argostranslate; then
-            argospm update
-            argospm install translate || notify-send "Failed to install translation packages"
-            notify-send "Installation of argostranslate complete"
-        else
-            notify-send "Installation of argostranslate failed"
-        fi
+if command -v argos-translate > /dev/null; then
+    if [ -n "$FROMLANG" ]; then
+        TRANS=$(argos-translate -f "$FROMLANG" -t "$TOLANG" "$TEXT")
+        notify-send -t 10000 "Translation ($FROMLANG->$TOLANG)" "$TRANS"
+        echo "(Translation $FROMLANG->$TOLANG)" >&2
+        echo "$TRANS"
+    else
+        notify-send "No language detected, lingua-cli not in $PATH (~/.cargo/bin)?"
     fi
-fi
-if [ -n "$FROMLANG" ]; then
-    TRANS=$(argos-translate -f "$FROMLANG" -t "$TOLANG" "$TEXT")
+else
+    if [ -z "$FROMLANG" ] || [ "$FROMLANG" = "xx" ]; then
+        FROMLANG="auto"
+    fi
+    TRANS=$(curl --silent --request POST --json "{ \"q\": \"$TEXT\", \"source\": \"$FROMLANG\", \"target\": \"$TOLANG\", \"format\": \"text\" }" https://translate.cls.ru.nl/translate | jq -r .translatedText)
     notify-send -t 10000 "Translation ($FROMLANG->$TOLANG)" "$TRANS"
     echo "(Translation $FROMLANG->$TOLANG)" >&2
     echo "$TRANS"
-else 
-    notify-send "No language detected, lingua-cli not in $PATH (~/.cargo/bin)?"
 fi
