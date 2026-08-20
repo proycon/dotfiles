@@ -62,7 +62,7 @@ if echo -n "$TEXT" | ~/dotfiles/scripts/ischinese.py; then
     notify-send "Not in HSK or CEDICT"
 fi
 
-if ! command -v lingua-cli && [ ! -e ~/.cargo/bin/lingua-cli ]; then
+if ! command -v lingua-cli >/dev/null && [ ! -e ~/.cargo/bin/lingua-cli ]; then
     cd ~/local/ || exit 2
     git clone https://github.com/proycon/lingua-cli || notify-send "git clone failed"
     cd lingua-cli || exit 2
