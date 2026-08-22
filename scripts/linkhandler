@@ -31,17 +31,16 @@ fi
 # If no url given. Opens browser. For using script as $BROWSER.
 [ -z "$1" ] && { "$BROWSER"; exit; }
 
-if [ -f /tmp/linkhandler.target ]; then
-    TARGET=$(cat /tmp/linkhandler.target)
-    paplay ~/dotfiles/media/glass_low.ogg > /dev/null 2>/dev/null &
-elif [ -n "$2" ]; then
+if [ -n "$2" ]; then
     TARGET="$2"
+    paplay ~/dotfiles/media/glass_low.ogg > /dev/null 2>/dev/null &
+elif [ -f /tmp/linkhandler.target ]; then
+    TARGET=$(cat /tmp/linkhandler.target | tr -d "\n")
     paplay ~/dotfiles/media/glass_low.ogg > /dev/null 2>/dev/null &
 else
     TARGET=local
     paplay ~/dotfiles/media/glass.ogg > /dev/null 2>/dev/null &
 fi
-
 
 case "$TARGET" in 
     local)
@@ -191,6 +190,17 @@ case "$TARGET" in
                 ;;
         esac
         cd -
+        ;;
+    pi1-audio)
+        #audio goes to pi1 rest to local
+        case "$1" in
+            *mkv|*webm|*mp4|*youtube.com*|*youtu.be*|*hooktube.com*|*bitchute.com*|*gifv|*v.redd.it*|*gifs.com*|*mkv?*|*mp4?*|*gifv?*)
+                ~/dotfiles/scripts/homecommand.sh audioinit/pi1 && sleep 2
+                setsid mpv --pulse-host=192.168.0.153 --audio-device="pulse/alsa_output.platform-107c701400.hdmi.hdmi-stereo\*" --vo=gpu --ytdl-format="bestvideo[height<=1080]+bestaudio" --input-ipc-server="/tmp/mpvsoc$(date +%s)" -quiet "$1" >/dev/null 2>&1 & ;;
+            *mp3|*flac|*opus|*mp3?*|*flac?*|*opus?*|*wav)
+                #handles both local and remote
+                setsid mpv --pulse-host=192.168.0.153 --audio-device="pulse/alsa_output.platform-107c701400.hdmi.hdmi-stereo\*" --profile=pseudo-gui --input-ipc-server="/tmp/mpvsoc$(date +%s)" "$1" >/dev/null 2>&1 & ;;
+        esac
         ;;
     pi*)
         case "$1" in

@@ -4,6 +4,7 @@ color-list-item-unread default default
 color-list-section yellow default
 color-list-section-unread default default
 bind o exec /home/proycon/dotfiles/scripts/linkhandler "%l"
-bind O exec /home/proycon/dotfiles/scripts/linkhandler "%l" pi1
+bind O exec /home/proycon/dotfiles/scripts/linkhandler "%l" pi1-audio
 bind p exec /home/proycon/dotfiles/scripts/linkhandler "%l" download
+bind P exec /home/proycon/dotfiles/scripts/linkhandler "%l" pi1
 notification-command ""
