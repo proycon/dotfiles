@@ -150,6 +150,7 @@ alias x='~/dotfiles/scripts/translate.sh'
 alias xl='~/dotfiles/scripts/translate.sh'
 alias myip="dig +short myip.opendns.com @resolver1.opendns.com"
 alias whatismyip="dig +short myip.opendns.com @resolver1.opendns.com"
+alias mpv2="~/dotfiles/scripts/homecommand.sh audioinit/pi1 && sleep 2 && mpv --pulse-host=192.168.0.153 --audio-device=pulse/alsa_output.platform-107c701400.hdmi.hdmi-stereo\*"
 #alias hx="helix"
 
 if [[ "$HOST" == "proyphone" ]] || [[ "$HOST" == "oneplus-enchilada" ]] || [[ "$HOST" == "google-sargo" ]]; then
@@ -211,7 +212,7 @@ man() {
 
 
 tlms() {
-    tmux list-windows -a -F "#S.#I: #W (#{window_panes}) -- #{pane_current_command} @ #{pane_current_path} -- #{t:window_activity} #{?window_activity_flag,(changed),} #{?window_active,(active),} " | while read line; do if [[ $line =~ "(changed)" ]]; then clr='\e[1;31m'; elif [[ $line =~ "(active)" ]]; then clr='\e[0;32m'; else clr='\e[0;37m'; fi; echo -e $clr "  " "$line"; done
+    tmux list-windows -a -F "#S.#I: #W (#{window_panes}) -- #{pane_curren2command} @ #{pane_current_path} -- #{t:window_activity} #{?window_activity_flag,(changed),} #{?window_active,(active),} " | while read line; do if [[ $line =~ "(changed)" ]]; then clr='\e[1;31m'; elif [[ $line =~ "(active)" ]]; then clr='\e[0;32m'; else clr='\e[0;37m'; fi; echo -e $clr "  " "$line"; done
 }
 
 topcommands() {
