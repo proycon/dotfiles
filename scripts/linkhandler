@@ -196,10 +196,10 @@ case "$TARGET" in
         case "$1" in
             *mkv|*webm|*mp4|*youtube.com*|*youtu.be*|*hooktube.com*|*bitchute.com*|*gifv|*v.redd.it*|*gifs.com*|*mkv?*|*mp4?*|*gifv?*)
                 ~/dotfiles/scripts/homecommand.sh audioinit/pi1 && sleep 2
-                setsid mpv --pulse-host=192.168.0.153 --audio-device="pulse/alsa_output.platform-107c701400.hdmi.hdmi-stereo\*" --vo=gpu --ytdl-format="bestvideo[height<=1080]+bestaudio" --input-ipc-server="/tmp/mpvsoc$(date +%s)" -quiet "$1" >/dev/null 2>&1 & ;;
+                setsid mpv --pulse-host=192.168.0.153 --audio-device="pulse/alsa_output.platform-107c701400.hdmi.hdmi-stereo" --vo=gpu --ytdl-format="bestvideo[height<=1080]+bestaudio" --input-ipc-server="/tmp/mpvsoc$(date +%s)" -quiet "$1" >/dev/null 2>&1 & ;;
             *mp3|*flac|*opus|*mp3?*|*flac?*|*opus?*|*wav)
                 #handles both local and remote
-                setsid mpv --pulse-host=192.168.0.153 --audio-device="pulse/alsa_output.platform-107c701400.hdmi.hdmi-stereo\*" --profile=pseudo-gui --input-ipc-server="/tmp/mpvsoc$(date +%s)" "$1" >/dev/null 2>&1 & ;;
+                setsid mpv --pulse-host=192.168.0.153 --audio-device="pulse/alsa_output.platform-107c701400.hdmi.hdmi-stereo" --profile=pseudo-gui --input-ipc-server="/tmp/mpvsoc$(date +%s)" "$1" >/dev/null 2>&1 & ;;
         esac
         ;;
     pi*)

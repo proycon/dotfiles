@@ -150,7 +150,7 @@ alias x='~/dotfiles/scripts/translate.sh'
 alias xl='~/dotfiles/scripts/translate.sh'
 alias myip="dig +short myip.opendns.com @resolver1.opendns.com"
 alias whatismyip="dig +short myip.opendns.com @resolver1.opendns.com"
-alias mpv2="~/dotfiles/scripts/homecommand.sh audioinit/pi1 && sleep 2 && mpv --pulse-host=192.168.0.153 --audio-device=pulse/alsa_output.platform-107c701400.hdmi.hdmi-stereo\*"
+alias mpv2="~/dotfiles/scripts/homecommand.sh audioinit/pi1 && sleep 2 && mpv --pulse-host=192.168.0.153 --audio-device=pulse/alsa_output.platform-107c701400.hdmi.hdmi-stereo"
 #alias hx="helix"
 
 if [[ "$HOST" == "proyphone" ]] || [[ "$HOST" == "oneplus-enchilada" ]] || [[ "$HOST" == "google-sargo" ]]; then
